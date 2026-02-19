@@ -33,12 +33,12 @@ app.secret_key = os.environ.get("FLASK_SECRET_KEY")
 if not app.secret_key:
     raise RuntimeError("FLASK_SECRET_KEY fehlt!")
 
-database_url = os.getenv("DATABASE_URL")
 
+database_url = os.getenv("DATABASE_URL")
 if database_url:
     database_url = database_url.replace("postgres://", "postgresql://")
+app.config["SQLALCHEMY_DATABASE_URI"] = database_url or "sqlite:///ibk-shop-db.db"
 
-app.config["SQLALCHEMY_DATABASE_URI"] = database_url or "sqlite:///shop.db"
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
