@@ -45,7 +45,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 csrf = CSRFProtect
 
-app)@app.before_request
+@app.before_request
 def create_tables():
     db.create_all()
 
