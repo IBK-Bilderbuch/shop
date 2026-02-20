@@ -346,16 +346,29 @@ def newsletter():
 # ---------- Checkout ----------
 @app.route("/checkout", methods=["GET", "POST"])
 def checkout():
+
     if request.method == "POST":
+
         name = request.form.get("name")
         email = request.form.get("email")
         payment_method = request.form.get("payment-method")
-        if not name or not email or not payment_method:
-            flash("Bitte fülle alle Pflichtfelder aus.", "error")
+
+        if not name or not email:
+            flash("Bitte Pflichtfelder ausfüllen.", "error")
             return redirect(url_for("checkout"))
-        flash("Zahlung erfolgreich (Simulation). Vielen Dank für deine Bestellung!", "success")
-        return redirect(url_for("kontaktdanke"))
-    return render_template("checkout.html", user_email=session.get("user_email"))
+
+        # ✅ Bestellung speichern
+        bestellung = Bestellung(email=email)
+        db.session.add(bestellung)
+        db.session.commit()
+
+        flash(f"Bestellung gespeichert! Nr: {bestellung.id}", "success")
+        return redirect(url_for("bestelldanke"))
+
+    return render_template(
+        "checkout.html",
+        user_email=session.get("user_email")
+    )
 
 # ---------- Dankeseiten ----------
 @app.route("/danke")
