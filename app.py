@@ -43,7 +43,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = database_url or "sqlite:///ibk-shop-db.d
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
-csrf = CSRFProtect
+csrf = CSRFProtect(app)
 
 @app.before_request
 def create_tables():
@@ -249,11 +249,11 @@ def produkt_detail(produkt_id):
     return render_template("produkt.html", produkt=produkt, user_email=session.get("user_email"))
 
 # ---------- Bestellung ----------
-@csrf.exempt
+
+
 @app.route("/bestellung", methods=["POST"])
+@csrf.exempt
 def neue_bestellung():
-
-
     data = request.get_json() or {}
     data = request.get_json() or {}
     liefer = data.get("lieferadresse", {})
