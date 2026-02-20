@@ -253,9 +253,6 @@ def produkt_detail(produkt_id):
 @app.route("/bestellung", methods=["POST"])
 def neue_bestellung():
 
-    print("REQUEST HEADERS:", request.headers)
-    print("RAW DATA:", request.data)
-    print("JSON:", request.get_json())
 
     data = request.get_json() or {}
     data = request.get_json() or {}
