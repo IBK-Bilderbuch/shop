@@ -43,7 +43,13 @@ app.config["SQLALCHEMY_DATABASE_URI"] = database_url or "sqlite:///ibk-shop-db.d
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
-csrf = CSRFProtect(app)
+csrf = CSRFProtect
+
+app)@app.before_request
+def create_tables():
+    db.create_all()
+
+
 
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 EMAIL_SENDER = os.getenv("EMAIL_SENDER")
@@ -87,8 +93,6 @@ class StornoToken(db.Model):
     token = db.Column(db.String(200))
     created = db.Column(db.DateTime, default=datetime.utcnow)
 
-with app.app_context():
-    db.create_all()
 
 # =====================================================
 # PRODUKTE LADEN
