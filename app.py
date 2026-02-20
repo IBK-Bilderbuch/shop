@@ -254,40 +254,55 @@ def produkt_detail(produkt_id):
 @app.route("/bestellung", methods=["POST"])
 @csrf.exempt
 def neue_bestellung():
-    data = request.get_json() or {}
-    data = request.get_json() or {}
-    liefer = data.get("lieferadresse", {})
-    email = data.get("email")
-    if not email:
-        return jsonify({"success": False, "error": "E-Mail fehlt"}), 400
-    bestellung = Bestellung(email=email)
-    db.session.add(bestellung)
-    db.session.flush()
-    for pos in data.get("auftrag_position", []):
-        ean = pos.get("ean")
-        menge = int(pos.get("menge", 1))
-        movement = lade_bestand_von_api(ean)
-        if not movement:
-            db.session.rollback()
-            return jsonify({"success": False, "error": f"Produkt {ean} nicht verfügbar"}), 400
-        preis = movement["preis"]
-        db.session.add(BestellPosition(
-            bestell_id=bestellung.id,
-            ean=ean,
-            bezeichnung=pos.get("pos_bezeichnung"),
-            menge=menge,
-            preis=preis
-        ))
-    db.session.commit()
+    try:
+        data = request.get_json() or {}
+        email = data.get("email")
+
+        if not email:
+            return jsonify({"success": False, "error": "E-Mail fehlt"}), 400
+
+        bestellung = Bestellung(email=email)
+        db.session.add(bestellung)
+        db.session.flush()   # erzeugt ID ohne commit
+
+        for pos in data.get("auftrag_position", []):
+            ean = pos.get("ean")
+            menge = int(pos.get("menge", 1))
+
+            movement = lade_bestand_von_api(ean)
+            if not movement:
+                db.session.rollback()
+                return jsonify({
+                    "success": False,
+                    "error": f"Produkt {ean} nicht verfügbar"
+                }), 400
+
+            db.session.add(BestellPosition(
+                bestell_id=bestellung.id,
+                ean=ean,
+                bezeichnung=pos.get("pos_bezeichnung"),
+                menge=menge,
+                preis=movement["preis"]
+            ))
+
+        db.session.commit()
+
+    except Exception as e:
+        db.session.rollback()
+        print("BESTELL FEHLER:", e)   # 🔥 DAS IST WICHTIG
+        return jsonify({"success": False, "error": str(e)}), 500
+
     token = generate_cancel_token(bestellung.id)
+
     try:
         send_email(
             subject="Ihre Bestellung",
-            body=f"Vielen Dank für Ihre Bestellung!\nBestellnummer: {bestellung.id}\nStornieren: https://deinedomain.de/storno/{token}",
+            body=f"Vielen Dank!\nBestellnummer: {bestellung.id}",
             recipient=email
         )
     except Exception as e:
-        logger.error(f"Bestellmail Fehler: {e}")
+        print("MAIL FEHLER:", e)
+
     return jsonify({"success": True, "bestellId": bestellung.id})
 
 # ---------- Alle Bestellungen ----------
