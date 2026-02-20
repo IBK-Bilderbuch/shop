@@ -19,8 +19,8 @@ from dotenv import load_dotenv
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail, Attachment, FileContent, FileName, FileType, Disposition
 
-from your_models import db, Bestellung, BestellPosition  
 
+from models import db, User, Bestellung, BestellPosition  # <-- korrekt
 
 # =====================================================
 # CONFIG
