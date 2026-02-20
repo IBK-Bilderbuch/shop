@@ -19,6 +19,9 @@ from dotenv import load_dotenv
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail, Attachment, FileContent, FileName, FileType, Disposition
 
+from your_models import db, Bestellung, BestellPosition  
+
+
 # =====================================================
 # CONFIG
 # =====================================================
@@ -252,58 +255,40 @@ def produkt_detail(produkt_id):
 
 
 @app.route("/bestellung", methods=["POST"])
-@csrf.exempt
 def neue_bestellung():
     try:
         data = request.get_json() or {}
         email = data.get("email")
-
         if not email:
             return jsonify({"success": False, "error": "E-Mail fehlt"}), 400
 
+        # Bestellung anlegen
         bestellung = Bestellung(email=email)
         db.session.add(bestellung)
-        db.session.flush()   # erzeugt ID ohne commit
+        db.session.flush()  # id generieren
 
+        # Positionen hinzufügen
         for pos in data.get("auftrag_position", []):
-            ean = pos.get("ean")
             menge = int(pos.get("menge", 1))
-
-            movement = lade_bestand_von_api(ean)
-            if not movement:
-                db.session.rollback()
-                return jsonify({
-                    "success": False,
-                    "error": f"Produkt {ean} nicht verfügbar"
-                }), 400
-
             db.session.add(BestellPosition(
                 bestell_id=bestellung.id,
-                ean=ean,
+                ean=pos.get("ean"),
                 bezeichnung=pos.get("pos_bezeichnung"),
                 menge=menge,
-                preis=movement["preis"]
+                preis=pos.get("vk_brutto", 0)
             ))
 
         db.session.commit()
 
+        # Optional: Email senden
+        # send_email(...)
+
+        return jsonify({"success": True, "bestellId": bestellung.id})
+
     except Exception as e:
         db.session.rollback()
-        print("BESTELL FEHLER:", e)   # 🔥 DAS IST WICHTIG
+        logger.error(f"Fehler bei Bestellung: {e}")
         return jsonify({"success": False, "error": str(e)}), 500
-
-    token = generate_cancel_token(bestellung.id)
-
-    try:
-        send_email(
-            subject="Ihre Bestellung",
-            body=f"Vielen Dank!\nBestellnummer: {bestellung.id}",
-            recipient=email
-        )
-    except Exception as e:
-        print("MAIL FEHLER:", e)
-
-    return jsonify({"success": True, "bestellId": bestellung.id})
 
 # ---------- Alle Bestellungen ----------
 @app.route("/bestellungen")
