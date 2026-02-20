@@ -367,23 +367,28 @@ def newsletter():
     return redirect("/danke")
 
 # ---------- Checkout ----------
-@app.route("/checkout", methods=["GET", "POST"])
+@@app.route("/checkout", methods=["GET", "POST"])
 def checkout():
 
     if request.method == "POST":
 
         name = request.form.get("name")
         email = request.form.get("email")
-        payment_method = request.form.get("payment-method")
 
         if not name or not email:
             flash("Bitte Pflichtfelder ausfüllen.", "error")
             return redirect(url_for("checkout"))
 
-        # ✅ Bestellung speichern
-        bestellung = Bestellung(email=email)
-        db.session.add(bestellung)
-        db.session.commit()
+        try:
+            bestellung = Bestellung(email=email)
+            db.session.add(bestellung)
+            db.session.commit()
+
+        except Exception as e:
+            db.session.rollback()
+            print("CHECKOUT DB FEHLER:", e)   # 🔥 WICHTIG
+            flash(f"Fehler beim Speichern: {e}", "error")
+            return redirect(url_for("checkout"))
 
         flash(f"Bestellung gespeichert! Nr: {bestellung.id}", "success")
         return redirect(url_for("bestelldanke"))
@@ -392,7 +397,6 @@ def checkout():
         "checkout.html",
         user_email=session.get("user_email")
     )
-
 # ---------- Dankeseiten ----------
 @app.route("/danke")
 def danke():
