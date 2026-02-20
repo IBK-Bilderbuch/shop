@@ -367,7 +367,7 @@ def newsletter():
     return redirect("/danke")
 
 # ---------- Checkout ----------
-@@app.route("/checkout", methods=["GET", "POST"])
+@app.route("/checkout", methods=["GET", "POST"])
 def checkout():
 
     if request.method == "POST":
