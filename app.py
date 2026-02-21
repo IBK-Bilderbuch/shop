@@ -154,8 +154,24 @@ def produkt_detail(produkt_id):
     return render_template("produkt.html", produkt=produkt, user_email=session.get("user_email"))
 
 
+# --------- Bestellung ----------
 
+@app.route("/bestellung", methods=["POST"])
+def bestellung():
+    try:
+        data = request.get_json()
 
+        print("Bestellung erhalten:", data)  # DEBUG
+
+        # Beispiel: Speichern in Datei
+        with open("bestellungen.json", "a", encoding="utf-8") as f:
+            f.write(json.dumps(data, ensure_ascii=False) + "\n")
+
+        return jsonify({"success": True})
+
+    except Exception as e:
+        print("Fehler:", str(e))
+        return jsonify({"success": False, "error": str(e)})
 
 # ============================
 # CART
