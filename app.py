@@ -243,7 +243,9 @@ def checkout():
 
         except Exception as e:
             db.session.rollback()
+            print("DATABASE ERROR:", e)   
             flash(f"Fehler: {e}", "error")
+       
 
     return render_template("checkout.html", cart_items=cart_items, total=total)
 
