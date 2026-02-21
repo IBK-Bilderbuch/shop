@@ -15,6 +15,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import CSRFProtect
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail, Attachment, FileContent, FileName, FileType, Disposition
+from models import db
+
 
 
 # =====================================================
@@ -35,13 +37,16 @@ database_url = database_url.replace("postgres://", "postgresql://")
 app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+db.init_app(app)   
+
+
+
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 EMAIL_SENDER = os.getenv("EMAIL_SENDER")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-db = SQLAlchemy(app)
 csrf = CSRFProtect(app)
 
 
@@ -128,7 +133,11 @@ def calculate_total(cart):
 # =====================================================
 # ROUTES
 # =====================================================
-
+@app.route("/admin-test")
+def admin_test():
+    alle = Bestellung.query.all()
+    return {"anzahl_bestellungen": len(alle)}
+    
 
 # ---------- Homepage ----------
 @app.route("/")
@@ -153,26 +162,10 @@ def produkt_detail(produkt_id):
 
     return render_template("produkt.html", produkt=produkt, user_email=session.get("user_email"))
 
-
-# --------- Bestellung ----------
-
-@app.route("/bestellung", methods=["POST"])
-def bestellung():
-    print("BESTELLUNG WURDE AUFGERUFEN")
-    try:
-        data = request.get_json()
-
-        print("Bestellung erhalten:", data)  # DEBUG
-
-        # Beispiel: Speichern in Datei
-        with open("bestellungen.json", "a", encoding="utf-8") as f:
-            f.write(json.dumps(data, ensure_ascii=False) + "\n")
-
-        return jsonify({"success": True})
-
-    except Exception as e:
-        print("Fehler:", str(e))
-        return jsonify({"success": False, "error": str(e)})
+@app.route("/admin/bestellungen")
+def admin_bestellungen():
+    alle = Bestellung.query.order_by(Bestellung.bestelldatum.desc()).all()
+    return render_template("admin_bestellungen.html", bestellungen=alle)
 
 # ============================
 # CART
