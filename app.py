@@ -1,9 +1,7 @@
 import os
 import json
 import logging
-import secrets
 import base64
-import requests
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -40,16 +38,8 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 EMAIL_SENDER = os.getenv("EMAIL_SENDER")
 
-BUCHBUTLER_USER = os.getenv("BUCHBUTLER_USER")
-BUCHBUTLER_PASSWORD = os.getenv("BUCHBUTLER_PASSWORD")
-BASE_URL = "https://api.buchbutler.de"
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-# =====================================================
-# EXTENSIONS (nur EINMAL!)
-# =====================================================
 
 db = SQLAlchemy(app)
 csrf = CSRFProtect(app)
@@ -58,12 +48,6 @@ csrf = CSRFProtect(app)
 # =====================================================
 # MODELLE
 # =====================================================
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(200), nullable=False)
-
 
 class Bestellung(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -81,22 +65,10 @@ class Bestellung(db.Model):
 class BestellPosition(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     bestell_id = db.Column(db.Integer, db.ForeignKey("bestellung.id"))
-    ean = db.Column(db.String(20))
-    bezeichnung = db.Column(db.String(255))
+    titel = db.Column(db.String(255))
     menge = db.Column(db.Integer)
     preis = db.Column(db.Float)
 
-
-class StornoToken(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    bestell_id = db.Column(db.Integer, db.ForeignKey("bestellung.id"))
-    token = db.Column(db.String(200))
-    created = db.Column(db.DateTime, default=datetime.utcnow)
-
-
-# =====================================================
-# TABELLEN EINMALIG ERSTELLEN
-# =====================================================
 
 with app.app_context():
     db.create_all()
@@ -117,10 +89,10 @@ else:
 
 
 # =====================================================
-# EMAIL SERVICE
+# EMAIL
 # =====================================================
 
-def send_email(subject, body, recipient, pdf_bytes=None):
+def send_email(subject, body, recipient):
     if not SENDGRID_API_KEY or not EMAIL_SENDER:
         logger.warning("SendGrid nicht konfiguriert")
         return
@@ -132,18 +104,25 @@ def send_email(subject, body, recipient, pdf_bytes=None):
         plain_text_content=body
     )
 
-    if pdf_bytes:
-        encoded_file = base64.b64encode(pdf_bytes).decode()
-        attachment = Attachment(
-            FileContent(encoded_file),
-            FileName("Rechnung.pdf"),
-            FileType("application/pdf"),
-            Disposition("attachment")
-        )
-        message.attachment = attachment
-
     sg = SendGridAPIClient(SENDGRID_API_KEY)
     sg.send(message)
+
+
+# =====================================================
+# HILFSFUNKTIONEN
+# =====================================================
+
+def get_cart():
+    return session.get("cart", [])
+
+
+def save_cart(cart):
+    session["cart"] = cart
+    session.modified = True
+
+
+def calculate_total(cart):
+    return sum(item["price"] * item["quantity"] for item in cart)
 
 
 # =====================================================
@@ -163,84 +142,192 @@ def produkt_detail(produkt_id):
     return render_template("produkt.html", produkt=produkt)
 
 
-@app.route("/bestellung", methods=["POST"])
-def neue_bestellung():
-    try:
-        data = request.get_json() or {}
-        email = data.get("email")
+# ============================
+# CART
+# ============================
 
-        if not email:
-            return jsonify({"success": False, "error": "E-Mail fehlt"}), 400
+@app.route("/add-to-cart", methods=["POST"])
+def add_to_cart():
+    produkt_id = int(request.form.get("produkt_id"))
+    produkt = next((p for p in produkte if p["id"] == produkt_id), None)
 
-        bestellung = Bestellung(email=email)
-        db.session.add(bestellung)
-        db.session.flush()
+    if not produkt:
+        abort(404)
 
-        for pos in data.get("auftrag_position", []):
-            db.session.add(
-                BestellPosition(
-                    bestell_id=bestellung.id,
-                    ean=pos.get("ean"),
-                    bezeichnung=pos.get("pos_bezeichnung"),
-                    menge=int(pos.get("menge", 1)),
-                    preis=float(pos.get("vk_brutto", 0))
-                )
-            )
+    cart = get_cart()
 
-        db.session.commit()
+    for item in cart:
+        if item["id"] == produkt_id:
+            item["quantity"] += 1
+            save_cart(cart)
+            return redirect(url_for("cart"))
 
-        return jsonify({"success": True, "bestellId": bestellung.id})
-
-    except Exception as e:
-        db.session.rollback()
-        logger.error(f"Bestellfehler: {e}")
-        return jsonify({"success": False, "error": str(e)}), 500
-
-
-@app.route("/bestellungen")
-def alle_bestellungen():
-    alle = Bestellung.query.all()
-    return jsonify([
-        {
-            "id": b.id,
-            "email": b.email,
-            "bestelldatum": b.bestelldatum.isoformat()
-        }
-        for b in alle
-    ])
-
-
-@app.route("/bestellung/<int:bestell_id>")
-def bestellung_detail(bestell_id):
-    b = Bestellung.query.get_or_404(bestell_id)
-    return jsonify({
-        "id": b.id,
-        "email": b.email,
-        "positionen": [
-            {
-                "ean": p.ean,
-                "bezeichnung": p.bezeichnung,
-                "menge": p.menge,
-                "preis": p.preis
-            }
-            for p in b.positionen
-        ]
+    cart.append({
+        "id": produkt["id"],
+        "title": produkt["name"],
+        "price": float(produkt.get("preis", 0)),
+        "quantity": 1
     })
 
+    save_cart(cart)
+    return redirect(url_for("cart"))
 
-@app.route("/bestellung/<int:bestell_id>", methods=["DELETE"])
-def bestellung_loeschen(bestell_id):
-    b = Bestellung.query.get(bestell_id)
-    if not b:
-        return jsonify({"success": False}), 404
 
-    db.session.delete(b)
-    db.session.commit()
-    return jsonify({"success": True})
+@app.route("/cart")
+def cart():
+    cart_items = get_cart()
+    total = calculate_total(cart_items)
+    return render_template("cart.html", cart_items=cart_items, total=total)
+
+
+@app.route("/remove-from-cart/<int:produkt_id>")
+def remove_from_cart(produkt_id):
+    cart = get_cart()
+    cart = [item for item in cart if item["id"] != produkt_id]
+    save_cart(cart)
+    return redirect(url_for("cart"))
+
+
+# ============================
+# CHECKOUT
+# ============================
+
+@app.route("/checkout", methods=["GET", "POST"])
+def checkout():
+
+    cart_items = get_cart()
+    total = calculate_total(cart_items)
+
+    if request.method == "POST":
+        email = request.form.get("email")
+
+        if not email or not cart_items:
+            flash("Bitte gültige Daten eingeben.", "error")
+            return redirect(url_for("checkout"))
+
+        try:
+            bestellung = Bestellung(email=email)
+            db.session.add(bestellung)
+            db.session.flush()
+
+            for item in cart_items:
+                db.session.add(
+                    BestellPosition(
+                        bestell_id=bestellung.id,
+                        titel=item["title"],
+                        menge=item["quantity"],
+                        preis=item["price"]
+                    )
+                )
+
+            db.session.commit()
+
+            session["cart"] = []
+            flash("Bestellung erfolgreich!", "success")
+            return redirect(url_for("bestelldanke"))
+
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Fehler: {e}", "error")
+
+    return render_template("checkout.html", cart_items=cart_items, total=total)
+
+
+# ============================
+# KONTAKT
+# ============================
+
+@app.route("/kontakt")
+def kontakt():
+    return render_template("kontakt.html")
+
+
+@app.route("/submit", methods=["POST"])
+def submit():
+    name = request.form.get("name")
+    email = request.form.get("email")
+    message = request.form.get("message")
+
+    if not name or not email or not message:
+        flash("Bitte alle Felder ausfüllen.", "error")
+        return redirect(url_for("kontakt"))
+
+    try:
+        send_email(
+            subject=f"Neue Nachricht von {name}",
+            body=f"Von: {name} <{email}>\n\n{message}",
+            recipient=EMAIL_SENDER
+        )
+        flash("Nachricht gesendet!", "success")
+        return redirect(url_for("kontaktdanke"))
+
+    except Exception as e:
+        flash(f"Fehler beim Senden: {e}", "error")
+        return redirect(url_for("kontakt"))
+
+
+# ============================
+# NEWSLETTER
+# ============================
+
+@app.route("/newsletter", methods=["POST"])
+def newsletter():
+    email = request.form.get("email")
+
+    if not email:
+        flash("Bitte gültige E-Mail eingeben.", "error")
+        return redirect(url_for("index"))
+
+    send_email(
+        subject="Neue Newsletter Anmeldung",
+        body=f"Neue Anmeldung: {email}",
+        recipient=EMAIL_SENDER
+    )
+
+    flash("Danke für deine Anmeldung!", "success")
+    return redirect(url_for("danke"))
+
+
+# ============================
+# RECHTLICHES
+# ============================
+
+@app.route("/rechtliches")
+def rechtliches():
+    return render_template("rechtliches.html")
+
+
+@app.route("/datenschutz")
+def datenschutz():
+    return render_template("datenschutz.html")
+
+
+@app.route("/impressum")
+def impressum():
+    return render_template("impressum.html")
+
+
+# ============================
+# DANKE SEITEN
+# ============================
+
+@app.route("/danke")
+def danke():
+    return render_template("danke.html")
+
+
+@app.route("/kontaktdanke")
+def kontaktdanke():
+    return render_template("kontaktdanke.html")
+
+
+@app.route("/bestelldanke")
+def bestelldanke():
+    return render_template("bestelldanke.html")
 
 
 # =====================================================
-# START (wichtig für Render)
+# START (RENDER READY)
 # =====================================================
 
 if __name__ == "__main__":
