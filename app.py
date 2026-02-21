@@ -147,19 +147,10 @@ def index():
 @app.route("/produkt/<int:produkt_id>")
 def produkt_detail(produkt_id):
     produkt = next((p for p in produkte if p["id"] == produkt_id), None)
+
     if not produkt:
         abort(404)
-    if produkt.get("ean"):
-        api_produkt = lade_produkt_von_api(produkt["ean"])
-        if api_produkt:
-            produkt.update(api_produkt)
-        movement = lade_bestand_von_api(produkt["ean"])
-        if movement:
-            produkt.update(movement)
-    produkt.setdefault("bestand", "n/a")
-    produkt.setdefault("preis", 0)
-    produkt.setdefault("handling_zeit", "n/a")
-    produkt.setdefault("erfuellungsrate", "n/a")
+
     return render_template("produkt.html", produkt=produkt, user_email=session.get("user_email"))
 
 
