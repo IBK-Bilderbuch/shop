@@ -158,6 +158,7 @@ def produkt_detail(produkt_id):
 
 @app.route("/bestellung", methods=["POST"])
 def bestellung():
+    print("BESTELLUNG WURDE AUFGERUFEN")
     try:
         data = request.get_json()
 
