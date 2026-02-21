@@ -137,7 +137,53 @@ def calculate_total(cart):
 def admin_test():
     alle = Bestellung.query.all()
     return {"anzahl_bestellungen": len(alle)}
-    
+
+
+
+# ------- Bestellung ---------------
+
+@app.route("/bestellung", methods=["POST"])
+def bestellung():
+    try:
+        data = request.get_json()
+
+        if not data:
+            return jsonify({"success": False, "error": "Keine Daten erhalten"}), 400
+
+        email = data.get("email")
+        positionen = data.get("auftrag_position", [])
+
+        if not email or not positionen:
+            return jsonify({"success": False, "error": "Fehlende Daten"}), 400
+
+        # Bestellung anlegen
+        neue_bestellung = Bestellung(
+            email=email,
+            bestelldatum=datetime.utcnow()
+        )
+        db.session.add(neue_bestellung)
+        db.session.flush()
+
+        # Positionen speichern
+        for pos in positionen:
+            db.session.add(
+                BestellPosition(
+                    bestellung_id=neue_bestellung.id,
+                    ean=pos.get("ean"),
+                    bezeichnung=pos.get("pos_bezeichnung"),
+                    menge=pos.get("menge"),
+                    preis=pos.get("vk_brutto")
+                )
+            )
+
+        db.session.commit()
+
+        return jsonify({"success": True})
+
+    except Exception as e:
+        db.session.rollback()
+        print("BESTELL-FEHLER:", e)
+        return jsonify({"success": False, "error": str(e)}), 500
 
 # ---------- Homepage ----------
 @app.route("/")
