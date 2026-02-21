@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bestellungen</title>
+</head>
+<body>
+    <h1>Alle Bestellungen</h1>
+
+    {% for b in bestellungen %}
+        <div style="border:1px solid #ccc; margin:20px; padding:15px;">
+            <h3>Bestellung #{{ b.id }}</h3>
+            <p>Email: {{ b.email }}</p>
+            <p>Datum: {{ b.bestelldatum }}</p>
+
+            <h4>Positionen:</h4>
+            <ul>
+                {% for pos in b.positionen %}
+                    <li>
+                        {{ pos.titel }} – 
+                        {{ pos.menge }} x {{ pos.preis }} €
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <p>Keine Bestellungen vorhanden.</p>
+    {% endfor %}
+</body>
+</html>
