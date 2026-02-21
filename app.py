@@ -129,17 +129,19 @@ def calculate_total(cart):
 # ROUTES
 # =====================================================
 
+
+# ---------- Homepage ----------
 @app.route("/")
 def index():
-    return render_template("index.html", produkte=produkte)
+    kategorienamen = [
+        "Jacominus Gainsborough", "Mut oder Angst?!",
+        "Klassiker", "Monstergeschichten",
+        "Wichtige Fragen", "Weihnachten",
+        "Kinder und Gefühle", "Dazugehören"
+    ]
+    kategorien = [(k, [p for p in produkte if p.get("kategorie") == k]) for k in kategorienamen]
+    return render_template("index.html", kategorien=kategorien, user_email=session.get("user_email"))
 
-
-@app.route("/produkt/<int:produkt_id>")
-def produkt_detail(produkt_id):
-    produkt = next((p for p in produkte if p["id"] == produkt_id), None)
-    if not produkt:
-        abort(404)
-    return render_template("produkt.html", produkt=produkt)
 
 
 # ============================
@@ -239,53 +241,41 @@ def checkout():
 
 @app.route("/kontakt")
 def kontakt():
-    return render_template("kontakt.html")
-
+    return render_template("kontakt.html", user_email=session.get("user_email"))
 
 @app.route("/submit", methods=["POST"])
 def submit():
     name = request.form.get("name")
     email = request.form.get("email")
     message = request.form.get("message")
-
     if not name or not email or not message:
-        flash("Bitte alle Felder ausfüllen.", "error")
-        return redirect(url_for("kontakt"))
-
+        flash("Bitte fülle alle Felder aus!", "error")
+        return redirect("/kontakt")
     try:
-        send_email(
-            subject=f"Neue Nachricht von {name}",
-            body=f"Von: {name} <{email}>\n\n{message}",
-            recipient=EMAIL_SENDER
-        )
-        flash("Nachricht gesendet!", "success")
-        return redirect(url_for("kontaktdanke"))
-
+        send_email(subject=f"Neue Nachricht von {name}", body=f"Von: {name} <{email}>\n\nNachricht:\n{message}", recipient=EMAIL_SENDER)
+        flash("Danke! Deine Nachricht wurde gesendet.", "success")
     except Exception as e:
         flash(f"Fehler beim Senden: {e}", "error")
-        return redirect(url_for("kontakt"))
+    return redirect("/kontaktdanke")
 
 
 # ============================
 # NEWSLETTER
 # ============================
 
+
 @app.route("/newsletter", methods=["POST"])
 def newsletter():
     email = request.form.get("email")
-
     if not email:
-        flash("Bitte gültige E-Mail eingeben.", "error")
-        return redirect(url_for("index"))
-
-    send_email(
-        subject="Neue Newsletter Anmeldung",
-        body=f"Neue Anmeldung: {email}",
-        recipient=EMAIL_SENDER
-    )
-
-    flash("Danke für deine Anmeldung!", "success")
-    return redirect(url_for("danke"))
+        flash("Bitte gib eine gültige E-Mail-Adresse ein.", "error")
+        return redirect("/")
+    try:
+        send_email(subject="Neue Newsletter-Anmeldung", body=f"Neue Anmeldung: {email}", recipient=EMAIL_SENDER)
+        flash("Danke! Newsletter-Anmeldung erfolgreich.", "success")
+    except Exception as e:
+        flash(f"Fehler beim Newsletter-Versand: {e}", "error")
+    return redirect("/danke")
 
 
 # ============================
@@ -294,36 +284,33 @@ def newsletter():
 
 @app.route("/rechtliches")
 def rechtliches():
-    return render_template("rechtliches.html")
-
+    return render_template("rechtliches.html", user_email=session.get("user_email"))
 
 @app.route("/datenschutz")
 def datenschutz():
-    return render_template("datenschutz.html")
-
+    return render_template("datenschutz.html", user_email=session.get("user_email"))
 
 @app.route("/impressum")
 def impressum():
-    return render_template("impressum.html")
+    return render_template("impressum.html", user_email=session.get("user_email"))
 
 
 # ============================
 # DANKE SEITEN
 # ============================
 
+
 @app.route("/danke")
 def danke():
-    return render_template("danke.html")
-
+    return render_template("danke.html", user_email=session.get("user_email"))
 
 @app.route("/kontaktdanke")
 def kontaktdanke():
-    return render_template("kontaktdanke.html")
-
+    return render_template("kontaktdanke.html", user_email=session.get("user_email"))
 
 @app.route("/bestelldanke")
 def bestelldanke():
-    return render_template("bestelldanke.html")
+    return render_template("bestelldanke.html", user_email=session.get("user_email"))
 
 
 # =====================================================
