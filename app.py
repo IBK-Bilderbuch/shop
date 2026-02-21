@@ -1,7 +1,6 @@
 import os
 import json
 import logging
-import base64
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -14,10 +13,10 @@ from flask import (
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import CSRFProtect
 from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail, Attachment, FileContent, FileName, FileType, Disposition
+from sendgrid.helpers.mail import Mail
+
+# Modelle importieren
 from models import db, Bestellung, BestellPosition
-
-
 
 # =====================================================
 # CONFIG
@@ -37,9 +36,9 @@ database_url = database_url.replace("postgres://", "postgresql://")
 app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-db.init_app(app)   
-
-
+db.init_app(app)
+with app.app_context():
+    db.create_all()
 
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 EMAIL_SENDER = os.getenv("EMAIL_SENDER")
@@ -48,36 +47,6 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 csrf = CSRFProtect(app)
-
-
-# =====================================================
-# MODELLE
-# =====================================================
-
-class Bestellung(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    bestelldatum = db.Column(db.DateTime, default=datetime.utcnow)
-    email = db.Column(db.String(120))
-    status = db.Column(db.String(50), default="offen")
-
-    positionen = db.relationship(
-        "BestellPosition",
-        backref="bestellung",
-        cascade="all, delete-orphan"
-    )
-
-
-class BestellPosition(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    bestell_id = db.Column(db.Integer, db.ForeignKey("bestellung.id"))
-    titel = db.Column(db.String(255))
-    menge = db.Column(db.Integer)
-    preis = db.Column(db.Float)
-
-
-with app.app_context():
-    db.create_all()
-
 
 # =====================================================
 # PRODUKTE LADEN
@@ -91,7 +60,6 @@ if os.path.exists(json_path):
         produkte = json.load(f)
 else:
     produkte = []
-
 
 # =====================================================
 # EMAIL
@@ -112,7 +80,6 @@ def send_email(subject, body, recipient):
     sg = SendGridAPIClient(SENDGRID_API_KEY)
     sg.send(message)
 
-
 # =====================================================
 # HILFSFUNKTIONEN
 # =====================================================
@@ -120,28 +87,50 @@ def send_email(subject, body, recipient):
 def get_cart():
     return session.get("cart", [])
 
-
 def save_cart(cart):
     session["cart"] = cart
     session.modified = True
 
-
 def calculate_total(cart):
     return sum(item["price"] * item["quantity"] for item in cart)
-
 
 # =====================================================
 # ROUTES
 # =====================================================
+
+# Admin Test
 @app.route("/admin-test")
 def admin_test():
     alle = Bestellung.query.all()
     return {"anzahl_bestellungen": len(alle)}
 
+# Homepage
+@app.route("/")
+def index():
+    kategorienamen = [
+        "Jacominus Gainsborough", "Mut oder Angst?!",
+        "Klassiker", "Monstergeschichten",
+        "Wichtige Fragen", "Weihnachten",
+        "Kinder und Gefühle", "Dazugehören"
+    ]
+    kategorien = [(k, [p for p in produkte if p.get("kategorie") == k]) for k in kategorienamen]
+    return render_template("index.html", kategorien=kategorien, user_email=session.get("user_email"))
 
+# Produkt Detail
+@app.route("/produkt/<int:produkt_id>")
+def produkt_detail(produkt_id):
+    produkt = next((p for p in produkte if p["id"] == produkt_id), None)
+    if not produkt:
+        abort(404)
+    return render_template("produkt.html", produkt=produkt, user_email=session.get("user_email"))
 
-# ------- Bestellung ---------------
+# Admin Bestellungen anzeigen
+@app.route("/admin/bestellungen")
+def admin_bestellungen():
+    alle = Bestellung.query.order_by(Bestellung.bestelldatum.desc()).all()
+    return render_template("admin_bestellungen.html", bestellungen=alle)
 
+# Bestellung über API
 @app.route("/bestellung", methods=["POST"])
 def bestellung():
     try:
@@ -156,7 +145,7 @@ def bestellung():
         if not email or not positionen:
             return jsonify({"success": False, "error": "Fehlende Daten"}), 400
 
-        # Bestellung anlegen
+        # Neue Bestellung anlegen
         neue_bestellung = Bestellung(
             email=email,
             bestelldatum=datetime.utcnow()
@@ -177,7 +166,6 @@ def bestellung():
             )
 
         db.session.commit()
-
         return jsonify({"success": True})
 
     except Exception as e:
@@ -185,48 +173,18 @@ def bestellung():
         print("BESTELL-FEHLER:", e)
         return jsonify({"success": False, "error": str(e)}), 500
 
-# ---------- Homepage ----------
-@app.route("/")
-def index():
-    kategorienamen = [
-        "Jacominus Gainsborough", "Mut oder Angst?!",
-        "Klassiker", "Monstergeschichten",
-        "Wichtige Fragen", "Weihnachten",
-        "Kinder und Gefühle", "Dazugehören"
-    ]
-    kategorien = [(k, [p for p in produkte if p.get("kategorie") == k]) for k in kategorienamen]
-    return render_template("index.html", kategorien=kategorien, user_email=session.get("user_email"))
-
-
-# ---------- Produkt ----------
-@app.route("/produkt/<int:produkt_id>")
-def produkt_detail(produkt_id):
-    produkt = next((p for p in produkte if p["id"] == produkt_id), None)
-
-    if not produkt:
-        abort(404)
-
-    return render_template("produkt.html", produkt=produkt, user_email=session.get("user_email"))
-
-@app.route("/admin/bestellungen")
-def admin_bestellungen():
-    alle = Bestellung.query.order_by(Bestellung.bestelldatum.desc()).all()
-    return render_template("admin_bestellungen.html", bestellungen=alle)
-
 # ============================
-# CART
+# CART ROUTES
 # ============================
 
 @app.route("/add-to-cart", methods=["POST"])
 def add_to_cart():
     produkt_id = int(request.form.get("produkt_id"))
     produkt = next((p for p in produkte if p["id"] == produkt_id), None)
-
     if not produkt:
         abort(404)
 
     cart = get_cart()
-
     for item in cart:
         if item["id"] == produkt_id:
             item["quantity"] += 1
@@ -239,17 +197,14 @@ def add_to_cart():
         "price": float(produkt.get("preis", 0)),
         "quantity": 1
     })
-
     save_cart(cart)
     return redirect(url_for("cart"))
-
 
 @app.route("/cart")
 def cart():
     cart_items = get_cart()
     total = calculate_total(cart_items)
     return render_template("cart.html", cart_items=cart_items, total=total)
-
 
 @app.route("/remove-from-cart/<int:produkt_id>")
 def remove_from_cart(produkt_id):
@@ -258,20 +213,17 @@ def remove_from_cart(produkt_id):
     save_cart(cart)
     return redirect(url_for("cart"))
 
-
 # ============================
 # CHECKOUT
 # ============================
 
 @app.route("/checkout", methods=["GET", "POST"])
 def checkout():
-
     cart_items = get_cart()
     total = calculate_total(cart_items)
 
     if request.method == "POST":
         email = request.form.get("email")
-
         if not email or not cart_items:
             flash("Bitte gültige Daten eingeben.", "error")
             return redirect(url_for("checkout"))
@@ -284,27 +236,24 @@ def checkout():
             for item in cart_items:
                 db.session.add(
                     BestellPosition(
-                        bestell_id=bestellung.id,
-                        titel=item["title"],
+                        bestellung_id=bestellung.id,
+                        bezeichnung=item["title"],
                         menge=item["quantity"],
                         preis=item["price"]
                     )
                 )
 
             db.session.commit()
-
             session["cart"] = []
             flash("Bestellung erfolgreich!", "success")
             return redirect(url_for("bestelldanke"))
 
         except Exception as e:
             db.session.rollback()
-            print("DATABASE ERROR:", e)   
+            print("DATABASE ERROR:", e)
             flash(f"Fehler: {e}", "error")
-       
 
     return render_template("checkout.html", cart_items=cart_items, total=total)
-
 
 # ============================
 # KONTAKT
@@ -323,17 +272,19 @@ def submit():
         flash("Bitte fülle alle Felder aus!", "error")
         return redirect("/kontakt")
     try:
-        send_email(subject=f"Neue Nachricht von {name}", body=f"Von: {name} <{email}>\n\nNachricht:\n{message}", recipient=EMAIL_SENDER)
+        send_email(
+            subject=f"Neue Nachricht von {name}",
+            body=f"Von: {name} <{email}>\n\nNachricht:\n{message}",
+            recipient=EMAIL_SENDER
+        )
         flash("Danke! Deine Nachricht wurde gesendet.", "success")
     except Exception as e:
         flash(f"Fehler beim Senden: {e}", "error")
     return redirect("/kontaktdanke")
 
-
 # ============================
 # NEWSLETTER
 # ============================
-
 
 @app.route("/newsletter", methods=["POST"])
 def newsletter():
@@ -342,12 +293,15 @@ def newsletter():
         flash("Bitte gib eine gültige E-Mail-Adresse ein.", "error")
         return redirect("/")
     try:
-        send_email(subject="Neue Newsletter-Anmeldung", body=f"Neue Anmeldung: {email}", recipient=EMAIL_SENDER)
+        send_email(
+            subject="Neue Newsletter-Anmeldung",
+            body=f"Neue Anmeldung: {email}",
+            recipient=EMAIL_SENDER
+        )
         flash("Danke! Newsletter-Anmeldung erfolgreich.", "success")
     except Exception as e:
         flash(f"Fehler beim Newsletter-Versand: {e}", "error")
     return redirect("/danke")
-
 
 # ============================
 # RECHTLICHES
@@ -365,11 +319,9 @@ def datenschutz():
 def impressum():
     return render_template("impressum.html", user_email=session.get("user_email"))
 
-
 # ============================
 # DANKE SEITEN
 # ============================
-
 
 @app.route("/danke")
 def danke():
@@ -382,7 +334,6 @@ def kontaktdanke():
 @app.route("/bestelldanke")
 def bestelldanke():
     return render_template("bestelldanke.html", user_email=session.get("user_email"))
-
 
 # =====================================================
 # START (RENDER READY)
