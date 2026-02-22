@@ -130,51 +130,7 @@ def admin_bestellungen():
     alle = Bestellung.query.order_by(Bestellung.bestelldatum.desc()).all()
     return render_template("admin_bestellungen.html", bestellungen=alle)
 
-# Bestellung über API
-@app.route("/bestellung", methods=["POST"])
-@csrf.exempt
-def bestellung():
-    print("BESTELLUNG ROUTE AUFGERUFEN")
-def bestellung():
-    try:
-        data = request.get_json()
 
-        if not data:
-            return jsonify({"success": False, "error": "Keine Daten erhalten"}), 400
-
-        email = data.get("email")
-        positionen = data.get("auftrag_position", [])
-
-        if not email or not positionen:
-            return jsonify({"success": False, "error": "Fehlende Daten"}), 400
-
-        # Neue Bestellung anlegen
-        neue_bestellung = Bestellung(
-            email=email,
-            bestelldatum=datetime.utcnow()
-        )
-        db.session.add(neue_bestellung)
-        db.session.flush()
-
-        # Positionen speichern
-        for pos in positionen:
-            db.session.add(
-                BestellPosition(
-                    bestellung_id=neue_bestellung.id,
-                    ean=pos.get("ean"),
-                    bezeichnung=pos.get("pos_bezeichnung"),
-                    menge=pos.get("menge"),
-                    preis=pos.get("vk_brutto")
-                )
-            )
-
-        db.session.commit()
-        return jsonify({"success": True})
-
-    except Exception as e:
-        db.session.rollback()
-        print("BESTELL-FEHLER:", e)
-        return jsonify({"success": False, "error": str(e)}), 500
 
 # ============================
 # CART ROUTES
