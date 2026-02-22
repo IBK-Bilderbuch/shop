@@ -282,12 +282,7 @@ def index():
     return render_template("index.html", kategorien=kategorien, user_email=session.get("user_email"))
 
 # Produkt Detail
-@app.route("/produkt/<int:produkt_id>")
-def produkt_detail(produkt_id):
-    produkt = next((p for p in produkte if p["id"] == produkt_id), None)
-    if not produkt:
-        abort(404)
-    return render_template("produkt.html", produkt=produkt, user_email=session.get("user_email"))
+
 
 
 @app.route('/produkt/<int:produkt_id>')
