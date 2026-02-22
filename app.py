@@ -143,6 +143,20 @@ def admin_bestellungen():
 # CART ROUTES
 # ============================
 
+@app.route("/sync-cart", methods=["POST"])
+def sync_cart():
+    data = request.get_json()
+
+    if not data:
+        return {"status": "error"}, 400
+
+    session["cart"] = data
+    session.modified = True
+
+    print("SYNCED CART:", session["cart"])
+
+    return {"status": "ok"}
+
 @app.route("/add-to-cart", methods=["POST"])
 def add_to_cart():
     produkt_id = int(request.form.get("produkt_id"))
