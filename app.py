@@ -181,8 +181,15 @@ def checkout():
     cart_items = get_cart()
     total = calculate_total(cart_items)
 
+    # DEBUG
+    print("METHOD:", request.method)
+    print("FORM:", request.form)
+    print("CART:", cart_items)
+
     if request.method == "POST":
         email = request.form.get("email")
+        print("EMAIL:", email)
+
         if not email or not cart_items:
             flash("Bitte gültige Daten eingeben.", "error")
             return redirect(url_for("checkout"))
