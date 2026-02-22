@@ -135,9 +135,21 @@ function updateCartCountIfPossible() {
 // --- Checkout-Button Event ---
 function setupCheckoutButton(buttonId = "checkout-btn") {
   const checkoutBtn = document.getElementById(buttonId);
+
   if (checkoutBtn) {
-    checkoutBtn.addEventListener('click', () => {
-      window.location.href = '/checkout'; // Flask Route
+    checkoutBtn.addEventListener('click', async () => {
+
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      await fetch("/sync-cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(cart)
+      });
+
+      window.location.href = "/checkout";
     });
   }
 }
