@@ -28,8 +28,8 @@
 
     <!-- Checkout Formular -->
     <div class="checkout-form">
-      <form id="payment-form">
-        <h3>Lieferadresse und Zahlungsmethode </h3><br><br>
+     <form method="POST" action="/checkout">
+      <h3>Lieferadresse und Zahlungsmethode </h3><br><br>
 
         <div class="half-container">
           <label>
@@ -144,63 +144,7 @@
     submitButton.disabled = !privacyCheckbox.checked;
   });
 
-  // --- Bestellung an Backend senden ---
-  const paymentForm = document.getElementById("payment-form");
-
-  paymentForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(paymentForm);
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    if (cart.length === 0) {
-      alert("Warenkorb leer");
-      return;
-    }
-
-    const positionen = cart.map(item => ({
-      ean: item.ean,
-      pos_bezeichnung: item.title,
-      menge: item.quantity,
-      vk_brutto: item.price
-    }));
-
-    const bestellung = {
-      email: formData.get("email"),
-      lieferadresse: {
-        vorname: formData.get("vorname"),
-        nachname: formData.get("nachname"),
-        strasse: formData.get("address"),
-        hausnummer: formData.get("hausnummer"),
-        stadt: formData.get("stadt"),
-        plz: formData.get("plz"),
-        zusatz: formData.get("adresszusatz") || ""
-      },
-      mol_zahlart_id: formData.get("payment-method"),
-      auftrag_position: positionen
-    };
-
-    try {
-      const response = await fetch("/bestellung", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bestellung)
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        localStorage.removeItem("cart"); // Warenkorb leeren
-        window.location.href = "/bestelldanke"; // Weiterleitung
-      } else {
-        alert("Bestellung konnte nicht gespeichert werden: " + result.error);
-      }
-
-    } catch (err) {
-      console.error(err);
-      alert("Fehler beim Speichern der Bestellung");
-    }
-  });
+ 
 </script>
 </body>
 </html>
