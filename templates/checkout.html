@@ -28,9 +28,9 @@
 
     <!-- Checkout Formular -->
     <div class="checkout-form">
-     <form method="POST" action="/checkout">
-      <h3>Lieferadresse und Zahlungsmethode </h3><br><br>
-
+      <form method="POST" action="/checkout">
+        {{ csrf_token() }}
+        <h3>Lieferadresse und Zahlungsmethode </h3><br><br>
         <div class="half-container">
           <label>
             <input type="text" name="vorname" required placeholder="Vorname">
