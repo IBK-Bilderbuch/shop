@@ -29,7 +29,7 @@
     <!-- Checkout Formular -->
     <div class="checkout-form">
       <form method="POST" action="/checkout">
-        {{ csrf_token() }}
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <h3>Lieferadresse und Zahlungsmethode </h3><br><br>
         <div class="half-container">
           <label>
