@@ -18,6 +18,8 @@ from sendgrid.helpers.mail import Mail
 # Modelle importieren
 from models import db, Bestellung, BestellPosition
 
+
+
 # =====================================================
 # CONFIG
 # =====================================================
@@ -26,15 +28,18 @@ load_dotenv()
 
 app = Flask(__name__)
 
-app.secret_key = os.getenv("FLASK_SECRET_KEY")
-
-app.config["SESSION_COOKIE_SECURE"] = True
+app.config["SESSION_COOKIE_HTTPONLY"] = True
+app.config["PERMANENT_SESSION_LIFETIME"] = 3600
+app.config["SESSION_COOKIE_SECURE"] = os.getenv("FLASK_ENV") == "production"
 app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
 app.config["SESSION_PERMANENT"] = False
 
 
-app.secret_key = os.getenv("FLASK_SECRET_KEY")
-if not app.secret_key:
+
+
+app.config["SECRET_KEY"] = os.getenv("FLASK_SECRET_KEY")
+
+if not app.config["SECRET_KEY"]:
     raise RuntimeError("FLASK_SECRET_KEY fehlt!")
 
 database_url = os.getenv("DATABASE_URL", "sqlite:///ibk-shop-db.db")
@@ -54,6 +59,20 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 csrf = CSRFProtect(app)
+
+
+
+# ---------- BUCHBUTLER API ZUGANG ----------
+
+
+logger = logging.getLogger(__name__)
+
+BUCHBUTLER_USER = os.getenv("BUCHBUTLER_USER")
+BUCHBUTLER_PASSWORD = os.getenv("BUCHBUTLER_PASSWORD")
+
+BASE_URL = "https://api.buchbutler.de"
+
+
 
 # =====================================================
 # PRODUKTE LADEN
@@ -85,8 +104,10 @@ def send_email(subject, body, recipient):
     )
 
     sg = SendGridAPIClient(SENDGRID_API_KEY)
-    sg.send(message)
-
+    try:
+            sg.send(message)
+    except Exception:
+            logger.exception("Email Versand fehlgeschlagen")
 # =====================================================
 # HILFSFUNKTIONEN
 # =====================================================
@@ -100,6 +121,124 @@ def save_cart(cart):
 
 def calculate_total(cart):
     return sum(item["price"] * item["quantity"] for item in cart)
+
+
+def check_auth():
+    if not BUCHBUTLER_USER or not BUCHBUTLER_PASSWORD:
+        logger.error("Buchbutler Zugangsdaten fehlen")
+        return False
+    return True
+
+
+def to_float(value):
+    """Konvertiert API Preis sicher"""
+    if not value:
+        return 0.0
+    try:
+        return float(str(value).replace(",", "."))
+    except ValueError:
+        return 0.0
+
+
+def to_int(value):
+    """Konvertiert Zahlen sicher"""
+    if not value:
+        return 0
+    try:
+        return int(value)
+    except ValueError:
+        return 0
+
+
+def attr(attrs, key):
+    """Greift sicher auf Artikelattribute zu"""
+    return (attrs.get(key) or {}).get("Wert", "")
+
+
+# -----------------------------
+# CONTENT API
+# -----------------------------
+
+def lade_produkt_von_api(ean):
+    """Lädt Produktdaten von CONTENT API"""
+
+    if not check_auth():
+        return None
+
+    try:
+        res = buchbutler_request("CONTENT", ean)
+
+        if not res:
+            return None
+
+        attrs = res.get("Artikelattribute") or {}
+
+        produkt = {
+            "id": to_int(res.get("pim_artikel_id")),
+            "name": res.get("bezeichnung"),
+            "autor": attr(attrs, "Autor"),
+            "preis": to_float(res.get("vk_brutto")),
+           
+            "isbn": attr(attrs, "ISBN_13"),
+            "seiten": attr(attrs, "Seiten"),
+            "format": attr(attrs, "Buchtyp"),
+            "sprache": attr(attrs, "Sprache"),
+            "verlag": attr(attrs, "Verlag"),
+            "erscheinungsjahr": attr(attrs, "Erscheinungsjahr"),
+            "erscheinungsdatum": attr(attrs, "Erscheinungsdatum"),
+            "alter_von": attr(attrs, "Altersempfehlung_von"),
+            "alter_bis": attr(attrs, "Altersempfehlung_bis"),
+            "lesealter": attr(attrs, "Lesealter"),
+            "gewicht": attr(attrs, "Gewicht"),
+            "laenge": attr(attrs, "Laenge"),
+            "breite": attr(attrs, "Breite"),
+            "hoehe": attr(attrs, "Hoehe"),
+            "extra": attrs
+        }
+
+        return produkt
+
+    except Exception:
+        logger.exception("Fehler beim Laden von CONTENT API")
+        return None
+
+
+# -----------------------------
+# MOVEMENT API
+# -----------------------------
+
+def lade_bestand_von_api(ean):
+    """Lädt Bestand / Preis / Lieferdaten"""
+
+    if not check_auth():
+        return None
+
+    try:
+        res = buchbutler_request("MOVEMENT", ean)
+
+        if not res:
+            return None
+
+        # 🔥 FIX — falls Liste zurückkommt
+        if isinstance(res, list):
+            if len(res) == 0:
+                return None
+            res = res[0]
+
+        return {
+            "bestand": to_int(res.get("Bestand")),
+            "preis": to_float(res.get("Preis")),
+            "erfuellungsrate": res.get("Erfuellungsrate"),
+            "handling_zeit": res.get("Handling_Zeit_in_Werktagen")
+
+        }
+
+
+    except Exception:
+        logger.exception("Fehler beim Laden von MOVEMENT API")
+        return None
+
+
 
 # =====================================================
 # ROUTES
@@ -131,11 +270,36 @@ def produkt_detail(produkt_id):
         abort(404)
     return render_template("produkt.html", produkt=produkt, user_email=session.get("user_email"))
 
+
+# Admin-Schutzfunktion
+def admin_required():
+    if not session.get("admin"):
+        abort(403)
+
 # Admin Bestellungen anzeigen
 @app.route("/admin/bestellungen")
 def admin_bestellungen():
-    alle = Bestellung.query.order_by(Bestellung.bestelldatum.desc()).all()
-    return render_template("admin_bestellungen.html", bestellungen=alle)
+    admin_required()  # Schutz aufrufen
+    alle = Bestellung.query.order_by(
+        Bestellung.bestelldatum.desc()
+    ).all()
+    return render_template(
+        "admin_bestellungen.html",
+        bestellungen=alle
+    )
+ 
+        
+
+
+
+
+@app.route("/admin/bestellungen")
+def admin_bestellungen():
+    admin_required()  # Schutz aufrufen
+    alle = Bestellung.query.order_by(
+        Bestellung.bestelldatum.desc()
+    ).all()
+   
 
 
 
@@ -143,22 +307,9 @@ def admin_bestellungen():
 # CART ROUTES
 # ============================
 
-@app.route("/sync-cart", methods=["POST"])
-@csrf.exempt
-def sync_cart():
-    data = request.get_json()
-
-    if not data:
-        return {"status": "error"}, 400
-
-    session["cart"] = data
-    session.modified = True
-
-    print("SYNCED CART:", session["cart"])
-
-    return {"status": "ok"}
 
 @app.route("/add-to-cart", methods=["POST"])
+
 def add_to_cart():
     produkt_id = int(request.form.get("produkt_id"))
     produkt = next((p for p in produkte if p["id"] == produkt_id), None)
@@ -202,11 +353,8 @@ def remove_from_cart(produkt_id):
 def checkout():
     cart_items = get_cart()
     total = calculate_total(cart_items)
-
-    # DEBUG
-    print("METHOD:", request.method)
-    print("FORM:", request.form)
-    print("CART:", cart_items)
+    
+    logger.info("Checkout gestartet")
 
     if request.method == "POST":
         email = request.form.get("email")
@@ -222,17 +370,19 @@ def checkout():
             db.session.flush()
 
             for item in cart_items:
+                produkt = next(p for p in produkte if p["id"] == item["id"])
+
                 db.session.add(
                     BestellPosition(
-                        bestellung_id=bestellung.id,
-                        bezeichnung=item["title"],
-                        menge=item["quantity"],
-                        preis=item["price"]
-                    )
-                )
+                       bestellung_id=bestellung.id,
+                       bezeichnung=produkt["name"],
+                       menge=item["quantity"],
+                       preis=produkt["preis"]  # SERVER PRICE
+               )
+            )
 
             db.session.commit()
-            session["cart"] = []
+            session.pop("cart", None)
             flash("Bestellung erfolgreich!", "success")
             return redirect(url_for("bestelldanke"))
 
