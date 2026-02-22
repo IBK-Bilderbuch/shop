@@ -409,7 +409,8 @@ def checkout():
 # KONTAKT
 # ============================
 
-@app.route("/kontakt")
+@app.route("/kontakt")  
+{{ csrf_token() }}
 def kontakt():
     return render_template("kontakt.html", user_email=session.get("user_email"))
 
@@ -437,6 +438,7 @@ def submit():
 # ============================
 
 @app.route("/newsletter", methods=["POST"])
+{{ csrf_token() }}
 def newsletter():
     email = request.form.get("email")
     if not email:
