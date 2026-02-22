@@ -11,7 +11,7 @@ from flask import (
 )
 
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf import CSRFProtect
+from flask_wtf.csrf import CSRFProtect
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
@@ -132,6 +132,9 @@ def admin_bestellungen():
 
 # Bestellung über API
 @app.route("/bestellung", methods=["POST"])
+@csrf.exempt
+def bestellung():
+    print("BESTELLUNG ROUTE AUFGERUFEN")
 def bestellung():
     try:
         data = request.get_json()
