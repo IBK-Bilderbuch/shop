@@ -11,7 +11,7 @@ from flask import (
 )
 
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf.csrf import CSRFProtect
+from flask_wtf.csrf import CSRFProtect, exempt
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
@@ -143,6 +143,7 @@ def admin_bestellungen():
 # CART ROUTES
 # ============================
 
+@csrf.exempt
 @app.route("/sync-cart", methods=["POST"])
 def sync_cart():
     data = request.get_json()
