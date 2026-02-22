@@ -154,7 +154,25 @@ def attr(attrs, key):
     """Greift sicher auf Artikelattribute zu"""
     return (attrs.get(key) or {}).get("Wert", "")
 
+def buchbutler_request(endpoint, ean):
+    """Allgemeine Request Funktion"""
+    url = f"{BASE_URL}/{endpoint}/"
 
+    params = {
+        "username": BUCHBUTLER_USER,
+        "passwort": BUCHBUTLER_PASSWORD,
+        "ean": ean
+    }
+
+    response = requests.get(url, params=params, timeout=10)
+    response.raise_for_status()
+
+    data = response.json()
+
+    if not data or "response" not in data:
+        return None
+
+    return data["response"]
 # -----------------------------
 # CONTENT API
 # -----------------------------
@@ -293,13 +311,7 @@ def admin_bestellungen():
 
 
 
-@app.route("/admin/bestellungen")
-def admin_bestellungen():
-    admin_required()  # Schutz aufrufen
-    alle = Bestellung.query.order_by(
-        Bestellung.bestelldatum.desc()
-    ).all()
-   
+
 
 
 
