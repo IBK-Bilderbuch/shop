@@ -21,6 +21,7 @@ from sendgrid.helpers.mail import Mail
 from models import db, Bestellung, BestellPosition
 
 
+from datetime import timedelta
 
 # =====================================================
 # CONFIG
@@ -31,7 +32,7 @@ load_dotenv()
 app = Flask(__name__)
 
 app.config["SESSION_COOKIE_HTTPONLY"] = True
-app.config["PERMANENT_SESSION_LIFETIME"] = 3600
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=1)
 app.config["SESSION_COOKIE_SECURE"] = os.getenv("FLASK_ENV") == "production"
 app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
 app.config["SESSION_PERMANENT"] = False
@@ -402,49 +403,63 @@ def sync_cart():
 
     
 @app.route("/checkout", methods=["GET", "POST"])
-@csrf.exempt
 def checkout():
     cart_items = get_cart()
     total = calculate_total(cart_items)
-    
+
     logger.info("Checkout gestartet")
 
     if request.method == "POST":
+
         email = request.form.get("email")
-        print("EMAIL:", email)
 
         if not email or not cart_items:
             flash("Bitte gültige Daten eingeben.", "error")
             return redirect(url_for("checkout"))
 
         try:
+            # Bestellung anlegen
             bestellung = Bestellung(email=email)
             db.session.add(bestellung)
             db.session.flush()
 
+            # Positionen speichern
             for item in cart_items:
-                produkt = next(p for p in produkte if p["id"] == item["id"])
+
+                produkt = next(
+                    (p for p in produkte if p["id"] == item["id"]),
+                    None
+                )
+
+                if not produkt:
+                    continue
 
                 db.session.add(
                     BestellPosition(
-                       bestellung_id=bestellung.id,
-                       bezeichnung=produkt["name"],
-                       menge=item["quantity"],
-                       preis=produkt["preis"]  # SERVER PRICE
-               )
-            )
+                        bestellung_id=bestellung.id,
+                        bezeichnung=produkt["name"],
+                        menge=item["quantity"],
+                        preis=item["price"]
+                    )
+                )
 
             db.session.commit()
             session.pop("cart", None)
+
             flash("Bestellung erfolgreich!", "success")
             return redirect(url_for("bestelldanke"))
 
         except Exception as e:
             db.session.rollback()
-            print("DATABASE ERROR:", e)
+            import traceback
+            traceback.print_exc()
             flash(f"Fehler: {e}", "error")
 
-    return render_template("checkout.html", cart_items=cart_items, total=total)
+    return render_template(
+        "checkout.html",
+        cart_items=cart_items,
+        total=total
+    )
 
 # ============================
 # KONTAKT
