@@ -13,7 +13,7 @@ from flask import (
 )
 
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf.csrf import CSRFProtect, exempt
+from flask_wtf.csrf import CSRFProtect
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
@@ -381,8 +381,8 @@ def remove_from_cart(produkt_id):
     return redirect(url_for("cart"))
 
 
-@csrf.exempt
 @app.route("/sync-cart", methods=["POST"])
+@csrf.exempt  
 def sync_cart():
     data = request.get_json()
 
