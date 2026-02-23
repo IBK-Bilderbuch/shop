@@ -31,6 +31,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
+
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=1)
 app.config["SESSION_COOKIE_SECURE"] = os.getenv("FLASK_ENV") == "production"
@@ -54,6 +55,10 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 with app.app_context():
     db.create_all()
+
+
+
+ADMIN_PASSWORD = os.getenv("FLASK_ADMIN_PASSWORD")
 
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 EMAIL_SENDER = os.getenv("EMAIL_SENDER")
@@ -271,6 +276,36 @@ def admin_test():
     alle = Bestellung.query.all()
     return {"anzahl_bestellungen": len(alle)}
 
+
+
+def admin_required():
+    if not session.get("admin"):
+        return redirect("/admin-login")
+
+@app.route("/admin-login", methods=["GET", "POST"])
+def admin_login():
+    if request.method == "POST":
+        pw = request.form.get("password")
+        if pw == ADMIN_PASSWORD:
+            session["admin"] = True
+            return redirect("/admin/bestellungen")
+        else:
+            flash("Falsches Passwort!", "error")
+    return render_template("admin_login.html")
+
+
+
+# Admin Bestellungen anzeigen
+@app.route("/admin/bestellungen")
+def admin_bestellungen():
+    if not admin_required():  # Weiterleitung, wenn nicht eingeloggt
+        return admin_required()
+    alle = Bestellung.query.order_by(
+        Bestellung.bestelldatum.desc()
+    ).all()
+    return render_template("admin_bestellungen.html", bestellungen=alle)
+ 
+    
 # Homepage
 @app.route("/")
 def index():
@@ -313,23 +348,6 @@ def produkt_detail(produkt_id):
 
 
 
-# Admin-Schutzfunktion
-def admin_required():
-    if not session.get("admin"):
-        abort(403)
-
-# Admin Bestellungen anzeigen
-@app.route("/admin/bestellungen")
-def admin_bestellungen():
-    admin_required()  # Schutz aufrufen
-    alle = Bestellung.query.order_by(
-        Bestellung.bestelldatum.desc()
-    ).all()
-    return render_template(
-        "admin_bestellungen.html",
-        bestellungen=alle
-    )
- 
         
 
 
