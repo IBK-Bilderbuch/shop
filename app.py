@@ -99,6 +99,17 @@ else:
 # EMAIL
 # =====================================================
 
+@app.route("/rebuild-db")
+def rebuild_db():
+    from models import Bestellung, BestellPosition
+
+    try:
+        db.drop_all()
+        db.create_all()
+        return "Datenbank neu erstellt ✅"
+    except Exception as e:
+        return str(e)
+
 def send_email(subject, body, recipient):
     if not SENDGRID_API_KEY or not EMAIL_SENDER:
         logger.warning("SendGrid nicht konfiguriert")
