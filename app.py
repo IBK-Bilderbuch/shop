@@ -443,6 +443,7 @@ def checkout():
                 vorname=request.form.get("vorname"),
                 nachname=request.form.get("nachname"),
                 strasse=request.form.get("strasse"),
+                hausnummer=request.form.get("hausnummer"),
                 plz=request.form.get("plz"),
                 stadt=request.form.get("stadt"),
                 land=request.form.get("land"),
