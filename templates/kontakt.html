@@ -34,6 +34,7 @@
 
    
 <form action="/submit" method="POST" class="kontakt-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
   <label for="name">Name:
   <input type="text" id="name" name="name" required>
   </label>
