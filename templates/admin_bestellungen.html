@@ -4,26 +4,61 @@
     <title>Bestellungen</title>
 </head>
 <body>
-    <h1>Alle Bestellungen</h1>
 
-    {% for b in bestellungen %}
-        <div style="border:1px solid #ccc; margin:20px; padding:15px;">
-            <h3>Bestellung #{{ b.id }}</h3>
-            <p>Email: {{ b.email }}</p>
-            <p>Datum: {{ b.bestelldatum }}</p>
+<h1>Alle Bestellungen</h1>
 
-            <h4>Positionen:</h4>
-            <ul>
-                {% for pos in b.positionen %}
-                    <li>
-                        {{ pos.titel }} – 
-                        {{ pos.menge }} x {{ pos.preis }} €
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-    {% else %}
-        <p>Keine Bestellungen vorhanden.</p>
-    {% endfor %}
+{% for b in bestellungen %}
+<div style="border:1px solid #ccc; margin:20px; padding:15px;">
+
+    <h2>Bestellung #{{ b.id }}</h2>
+
+    <h3>Kunde</h3>
+    <p>
+        {{ b.vorname }} {{ b.nachname }}<br>
+        {{ b.strasse }}<br>
+        {{ b.plz }} {{ b.stadt }}<br>
+        {{ b.land }}<br>
+        Email: {{ b.email }}<br>
+        Telefon: {{ b.telefon }}
+    </p>
+
+    <p><b>Datum:</b> {{ b.bestelldatum }}</p>
+
+    <h3>Positionen</h3>
+
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>Produkt</th>
+            <th>Menge</th>
+            <th>Preis</th>
+            <th>Summe</th>
+        </tr>
+
+        {% set gesamt = 0 %}
+
+        {% for pos in b.positionen %}
+        {% set summe = pos.menge * pos.preis %}
+        {% set gesamt = gesamt + summe %}
+
+        <tr>
+            <td>{{ pos.bezeichnung }}</td>
+            <td>{{ pos.menge }}</td>
+            <td>{{ "%.2f"|format(pos.preis) }} €</td>
+            <td>{{ "%.2f"|format(summe) }} €</td>
+        </tr>
+        {% endfor %}
+
+        <tr>
+            <td colspan="3"><b>Gesamt</b></td>
+            <td><b>{{ "%.2f"|format(gesamt) }} €</b></td>
+        </tr>
+    </table>
+
+</div>
+
+{% else %}
+<p>Keine Bestellungen vorhanden.</p>
+{% endfor %}
+
 </body>
 </html>
