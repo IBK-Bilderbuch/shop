@@ -426,22 +426,14 @@ def checkout():
             # Positionen speichern
             for item in cart_items:
 
-                produkt = next(
-                    (p for p in produkte if p["id"] == item["id"]),
-                    None
-                )
-
-                if not produkt:
-                    continue
-
                 db.session.add(
                     BestellPosition(
                         bestellung_id=bestellung.id,
-                        bezeichnung=produkt["name"],
-                        menge=item["quantity"],
-                        preis=item["price"]
+                        bezeichnung=item.get("title"),
+                        menge=item.get("quantity", 1),
+                        preis=item.get("price", 0)
                     )
-                )
+               )
 
             db.session.commit()
             session.pop("cart", None)
