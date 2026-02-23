@@ -280,7 +280,8 @@ def admin_test():
 
 def admin_required():
     if not session.get("admin"):
-        return redirect("/admin-login")
+        return redirect(url_for("admin_login"))
+    return None
 
 @app.route("/admin-login", methods=["GET", "POST"])
 def admin_login():
@@ -298,13 +299,11 @@ def admin_login():
 # Admin Bestellungen anzeigen
 @app.route("/admin/bestellungen")
 def admin_bestellungen():
-    if not admin_required():  # Weiterleitung, wenn nicht eingeloggt
-        return admin_required()
-    alle = Bestellung.query.order_by(
-        Bestellung.bestelldatum.desc()
-    ).all()
+    resp = admin_required()
+    if resp:  # wenn redirect zurückkommt
+        return resp
+    alle = Bestellung.query.order_by(Bestellung.bestelldatum.desc()).all()
     return render_template("admin_bestellungen.html", bestellungen=alle)
- 
     
 # Homepage
 @app.route("/")
