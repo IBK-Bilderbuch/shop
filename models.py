@@ -30,6 +30,7 @@ class Bestellung(db.Model):
     vorname = db.Column(db.String(120))
     nachname = db.Column(db.String(120))
     strasse = db.Column(db.String(200))
+    hausnummer = db.Column(db.String(20))
     plz = db.Column(db.String(20))
     stadt = db.Column(db.String(120))
     land = db.Column(db.String(120))
