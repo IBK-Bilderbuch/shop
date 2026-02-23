@@ -437,7 +437,6 @@ def checkout():
 
         try:
             # Bestellung anlegen
-            bestellung = Bestellung(email=email)
             bestellung = Bestellung(
                 email=request.form.get("email"),
                 vorname=request.form.get("vorname"),
