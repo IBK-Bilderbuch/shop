@@ -380,6 +380,22 @@ def remove_from_cart(produkt_id):
     save_cart(cart)
     return redirect(url_for("cart"))
 
+
+@csrf.exempt
+@app.route("/sync-cart", methods=["POST"])
+def sync_cart():
+    data = request.get_json()
+
+    if not data:
+        return {"status": "error"}, 400
+
+    session["cart"] = data
+    session.modified = True
+
+    print("SYNCED CART:", session["cart"])
+
+    return {"status": "ok"}
+    
 # ============================
 # CHECKOUT
 # ============================
