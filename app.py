@@ -437,6 +437,16 @@ def checkout():
         try:
             # Bestellung anlegen
             bestellung = Bestellung(email=email)
+            bestellung = Bestellung(
+                email=request.form.get("email"),
+                vorname=request.form.get("vorname"),
+                nachname=request.form.get("nachname"),
+                strasse=request.form.get("strasse"),
+                plz=request.form.get("plz"),
+                stadt=request.form.get("stadt"),
+                land=request.form.get("land"),
+                telefon=request.form.get("telefon")
+            )
             db.session.add(bestellung)
             db.session.flush()
 
