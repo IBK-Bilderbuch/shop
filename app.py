@@ -13,7 +13,7 @@ from flask import (
 )
 
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf.csrf import CSRFProtect
+from flask_wtf.csrf import CSRFProtect, exempt
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
