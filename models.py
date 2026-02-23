@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -18,15 +19,23 @@ class User(db.Model):
 # ----------------------
 # Bestell-Modelle
 # ----------------------
+
 class Bestellung(db.Model):
     __tablename__ = "bestellungen"
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), nullable=False)
-    bestelldatum = db.Column(db.DateTime)
-    # weitere Felder nach Bedarf
+    bestelldatum = db.Column(
+        db.DateTime,
+        default=datetime.utcnow,
+        nullable=False
+    )
 
-    positionen = db.relationship("BestellPosition", backref="bestellung", cascade="all, delete-orphan")
+    positionen = db.relationship(
+        "BestellPosition",
+        backref="bestellung",
+        cascade="all, delete-orphan"
+    )
 
 class BestellPosition(db.Model):
     __tablename__ = "bestellpositionen"
