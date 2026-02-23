@@ -25,12 +25,21 @@ class Bestellung(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), nullable=False)
+
+    # ⭐ PERSONENDATEN
+    vorname = db.Column(db.String(120))
+    nachname = db.Column(db.String(120))
+    strasse = db.Column(db.String(200))
+    plz = db.Column(db.String(20))
+    stadt = db.Column(db.String(120))
+    land = db.Column(db.String(120))
+    telefon = db.Column(db.String(50))
+
     bestelldatum = db.Column(
         db.DateTime,
         default=datetime.utcnow,
         nullable=False
     )
-
     positionen = db.relationship(
         "BestellPosition",
         backref="bestellung",
