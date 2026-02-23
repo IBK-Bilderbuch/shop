@@ -384,7 +384,9 @@ def remove_from_cart(produkt_id):
 # CHECKOUT
 # ============================
 
+    
 @app.route("/checkout", methods=["GET", "POST"])
+@csrf.exempt
 def checkout():
     cart_items = get_cart()
     total = calculate_total(cart_items)
