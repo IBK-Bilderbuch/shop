@@ -393,16 +393,20 @@ def add_to_cart():
     cart = get_cart()
 
     for item in cart:
-        if item["id"] == produkt_id:
-            item["quantity"] += 1
-            save_cart(cart)
-            return redirect(url_for("cart"))
+    if item["id"] == produkt_id:
+        item["quantity"] += 1
+        if "price" not in item:
+            item["price"] = produkt.get("preis", 0)
+        save_cart(cart)
+        return redirect(url_for("cart"))
 
     cart.append({
-        "id": produkt["id"],
-        "quantity": 1
-    })
-
+    "id": produkt["id"],
+    "title": produkt["name"],
+    "price": produkt.get("preis", 0),  # hier den Preis setzen
+    "quantity": 1
+})
+    
     save_cart(cart)
     return redirect(url_for("cart"))
 
