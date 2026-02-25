@@ -361,16 +361,26 @@ def produkt_detail(produkt_id):
 # CART ROUTES
 # ============================
 
-
 @app.route("/add-to-cart", methods=["POST"])
-
 def add_to_cart():
+
     produkt_id = int(request.form.get("produkt_id"))
     produkt = next((p for p in produkte if p["id"] == produkt_id), None)
+
     if not produkt:
         abort(404)
 
+    # ✅ WICHTIG: Kopie machen (kein globales Update!)
+    produkt = produkt.copy()
+
+    # ✅ Preis + Bestand laden
+    if produkt.get("ean"):
+        movement = lade_bestand_von_api(produkt["ean"])
+        if movement:
+            produkt.update(movement)
+
     cart = get_cart()
+
     for item in cart:
         if item["id"] == produkt_id:
             item["quantity"] += 1
@@ -379,10 +389,9 @@ def add_to_cart():
 
     cart.append({
         "id": produkt["id"],
-        "title": produkt["name"],
-        "price": float(produkt.get("preis", 0)),
         "quantity": 1
     })
+
     save_cart(cart)
     return redirect(url_for("cart"))
 
@@ -449,7 +458,6 @@ def checkout():
                 adresszusatz=request.form.get("adresszusatz"),
                 telefon=request.form.get("telefon"),
                 paymentmethod=request.form.get("paymentmethod"),
-                newsletter=newsletter
             )
             db.session.add(bestellung)
             db.session.flush()
