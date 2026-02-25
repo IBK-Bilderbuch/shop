@@ -101,7 +101,7 @@ header {
   object-fit: contain;
    
   position: absolute;
-  top: 50%;              /* mittig in Navbar */
+  top: 25%;              /* mittig in Navbar */
   transform: translateY(20%); /* nach unten rausziehen */
   z-index: 10;           /* Logo über Nav-Links */
 }
