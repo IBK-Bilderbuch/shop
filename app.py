@@ -17,6 +17,9 @@ from flask_wtf.csrf import CSRFProtect
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+
 # Modelle importieren
 from models import db, Bestellung, BestellPosition
 
@@ -30,7 +33,7 @@ from datetime import timedelta
 load_dotenv()
 
 app = Flask(__name__)
-
+limiter = Limiter(get_remote_address, app=app)
 
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=1)
@@ -284,12 +287,17 @@ def admin_required():
         return redirect(url_for("admin_login"))
     return None
 
-@app.route("/admin-login", methods=["GET", "POST"])
+
+
+@limiter.limit("5 per minute")
+@app.route("/ibk-control-8471", methods=["GET", "POST"])
 def admin_login():
     if request.method == "POST":
         pw = request.form.get("password")
         if pw == ADMIN_PASSWORD:
+            session.clear()
             session["admin"] = True
+            session.permanent = True
             return redirect("/admin/bestellungen")
         else:
             flash("Falsches Passwort!", "error")
