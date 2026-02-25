@@ -448,7 +448,8 @@ def checkout():
                 land=request.form.get("land"),
                 adresszusatz=request.form.get("adresszusatz"),
                 telefon=request.form.get("telefon"),
-                paymentmethod=request.form.get("paymentmethod")
+                paymentmethod=request.form.get("paymentmethod"),
+                newsletter=newsletter
             )
             db.session.add(bestellung)
             db.session.flush()
