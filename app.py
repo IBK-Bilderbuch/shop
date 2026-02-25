@@ -332,7 +332,11 @@ def index():
 
 @app.route('/produkt/<int:produkt_id>')
 def produkt_detail(produkt_id):
-    produkt = next((p for p in produkte if p['id'] == produkt_id), None)
+    # Produkte nach ID als Dictionary einmal bauen (schnell)
+    produkte_by_id = {p["id"]: p for p in produkte}
+    
+    # Produkt holen
+    produkt = produkte_by_id.get(produkt_id)
     if not produkt:
         abort(404)
 
@@ -353,7 +357,6 @@ def produkt_detail(produkt_id):
     produkt.setdefault("erfuellungsrate", "n/a")
 
     return render_template('produkt.html', produkt=produkt, user_email=session.get("user_email"))
-
 
 
         
