@@ -446,6 +446,7 @@ def checkout():
                 plz=request.form.get("plz"),
                 stadt=request.form.get("stadt"),
                 land=request.form.get("land"),
+                adresszusatz=request.form.get("adresszusatz"),
                 telefon=request.form.get("telefon"),
                 paymentmethod=request.form.get("paymentmethod")
             )
