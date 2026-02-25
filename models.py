@@ -34,6 +34,7 @@ class Bestellung(db.Model):
     plz = db.Column(db.String(20))
     stadt = db.Column(db.String(120))
     land = db.Column(db.String(120))
+    adresszusatz =  db.Column(db.String(120))
     telefon = db.Column(db.String(50))
     paymentmethod = db.Column(db.String(50))
 
