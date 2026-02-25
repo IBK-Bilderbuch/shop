@@ -76,7 +76,6 @@ csrf = CSRFProtect(app)
 # ---------- BUCHBUTLER API ZUGANG ----------
 
 
-logger = logging.getLogger(__name__)
 
 BUCHBUTLER_USER = os.getenv("BUCHBUTLER_USER")
 BUCHBUTLER_PASSWORD = os.getenv("BUCHBUTLER_PASSWORD")
@@ -374,7 +373,6 @@ def produkt_detail(produkt_id):
 
 @app.route("/add-to-cart", methods=["POST"])
 def add_to_cart():
-
     produkt_id = int(request.form.get("produkt_id"))
     produkt = next((p for p in produkte if p["id"] == produkt_id), None)
 
@@ -392,23 +390,25 @@ def add_to_cart():
 
     cart = get_cart()
 
+    found = False
     for item in cart:
         if item["id"] == produkt_id:
-           item["quantity"] += 1
-        if "price" not in item:
-            item["price"] = produkt.get("preis", 0)
-        save_cart(cart)
-        return redirect(url_for("cart"))
+            item["quantity"] += 1
+            found = True
+            break
 
-    cart.append({
-    "id": produkt["id"],
-    "title": produkt["name"],
-    "price": produkt.get("preis", 0),  # hier den Preis setzen
-    "quantity": 1
-})
-    
+    if not found:
+        cart.append({
+            "id": produkt["id"],
+            "title": produkt["name"],
+            "price": produkt.get("preis", 0),
+            "quantity": 1
+        })
+
     save_cart(cart)
     return redirect(url_for("cart"))
+
+
 
 @app.route("/cart")
 def cart():
