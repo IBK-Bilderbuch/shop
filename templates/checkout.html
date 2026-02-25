@@ -30,7 +30,7 @@
     <div class="checkout-form">
       <form method="POST" action="{{ url_for('checkout') }}">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <h3>Lieferadresse und Zahlungsmethode </h3><br><br>
+        <h3>Lieferdaten und Zahlungsmethode </h3><br><br>
         <div class="half-container">
           <label>
             <input type="text" name="vorname" required placeholder="Vorname">
@@ -41,7 +41,6 @@
         </div>
 
         <label>
-          E-Mail Adresse:
           <input type="email" name="email" required placeholder="Ihre E-Mail">
         </label>
 
@@ -65,6 +64,9 @@
 
         <label>
           <input type="text" name="adresszusatz" placeholder="Adresszusatz">
+        </label>
+        <label>
+          <input type="text" name="telefon" placeholder="Telefonnummer">
         </label>
 
         <label>
