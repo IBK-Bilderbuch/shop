@@ -35,7 +35,7 @@ class Bestellung(db.Model):
     stadt = db.Column(db.String(120))
     land = db.Column(db.String(120))
     telefon = db.Column(db.String(50))
-    payment-method = db.Column(db.String(50))
+    paymentmethod = db.Column(db.String(50))
 
     bestelldatum = db.Column(
         db.DateTime,
