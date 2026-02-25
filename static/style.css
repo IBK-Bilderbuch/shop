@@ -90,6 +90,7 @@ header {
   align-items: center;
   flex: 1;
   min-width: 0;
+  position: relative;
 }
 
 .logo {
@@ -98,6 +99,11 @@ header {
   transition: height 0.3s ease;
   display: block;
   object-fit: contain;
+   
+  position: absolute;
+  top: 50%;              /* mittig in Navbar */
+  transform: translateY(20%); /* nach unten rausziehen */
+  z-index: 10;           /* Logo über Nav-Links */
 }
 
 .hidden-category {
