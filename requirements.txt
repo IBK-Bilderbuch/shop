@@ -24,3 +24,5 @@ psycopg2-binary==2.9.9
 
 # Forms & CSRF Schutz
 Flask-WTF==1.2.1
+
+flask-limiter
