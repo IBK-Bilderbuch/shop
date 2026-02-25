@@ -462,7 +462,7 @@ def checkout():
         try:
             # Bestellung anlegen
             bestellung = Bestellung(
-                email=request.form.get("email"),
+                email=email,
                 vorname=request.form.get("vorname"),
                 nachname=request.form.get("nachname"),
                 strasse=request.form.get("strasse"),
@@ -475,11 +475,10 @@ def checkout():
                 paymentmethod=request.form.get("paymentmethod"),
             )
             db.session.add(bestellung)
-            db.session.flush()
+            db.session.flush()  # ID verfügbar machen
 
             # Positionen speichern
             for item in cart_items:
-
                 db.session.add(
                     BestellPosition(
                         bestellung_id=bestellung.id,
@@ -487,10 +486,14 @@ def checkout():
                         menge=item.get("quantity", 1),
                         preis=item.get("price", 0)
                     )
-               )
+                )
 
+            # Commit der Bestellung
             db.session.commit()
+
+            # ✅ Warenkorb zuverlässig leeren
             session.pop("cart", None)
+            session.modified = True  # <- sehr wichtig!
 
             flash("Bestellung erfolgreich!", "success")
             return redirect(url_for("bestelldanke"))
@@ -500,13 +503,13 @@ def checkout():
             import traceback
             traceback.print_exc()
             flash(f"Fehler: {e}", "error")
+            return redirect(url_for("checkout"))
 
     return render_template(
         "checkout.html",
         cart_items=cart_items,
         total=total
     )
-
 # ============================
 # KONTAKT
 # ============================
