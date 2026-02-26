@@ -362,31 +362,7 @@ button.next {
 button.prev { left: 10px; }
 button.next { right: 10px; }
 
-/* Mobile Carousel */
-@media (max-width: 480px) {
-  .carousel-slide img {
-    max-height: 500px;
-  }
 
-  .carousel-slide h2 {
-    font-size: 24px;
-    margin-left: 15px;
-    bottom: 90px;
-  }
-
-  .slide-btn {
-    font-size: 8px;
-    padding: 10px 23px;
-    bottom: 20px;
-    left: 70%;
-  }
-
-  button.prev,
-  button.next {
-    padding: 8px;
-    font-size: 14px;
-  }
-}
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .carousel-slide img {
@@ -415,6 +391,31 @@ button.next { right: 10px; }
    }
 }
 
+/* Mobile Carousel */
+@media (max-width: 480px) {
+  .carousel-slide img {
+    max-height: 500px;
+  }
+
+  .carousel-slide h2 {
+    font-size: 24px;
+    margin-left: 15px;
+    bottom: 90px;
+  }
+
+  .slide-btn {
+    font-size: 8px;
+    padding: 10px 23px;
+    bottom: 20px;
+    left: 70%;
+  }
+
+  button.prev,
+  button.next {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
 /* =========================================
    BOOK LIST
 ========================================= */
