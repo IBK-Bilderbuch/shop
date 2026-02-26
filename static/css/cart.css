@@ -1,3 +1,16 @@
+footer {
+  background-color: #ebebe3;
+  padding: 25px 10px;
+  text-align: center;
+  color: #333;
+  font-family: var(--font-heading);
+  margin-top: auto; /* schiebt Footer nach unten */
+  font-size: 16px;
+}
+
+
+
+
 .quantity-btn {
       font-size: 20px;
       user-select: none;
