@@ -337,8 +337,8 @@ def produkt_detail(produkt_id):
 
     # 1️⃣ lokale Zusatzdaten (Bilder / Leseprobe)
     lokale_daten = next(
-        (p for p in produkte if p["id"] == produkt_id),
-        None
+         (p.copy() for p in produkte if p["id"] == produkt_id),
+         None
     )
 
     if not lokale_daten:
