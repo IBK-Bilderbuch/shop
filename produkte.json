@@ -235,9 +235,7 @@
 {
   "id": 16,
   "ean": "9783791374932",
-
   "beschreibung": "Wut ist ein kraftvolles Gefühl. Wie ein Sturm in einem dunklen Wald packt die Heldin dieses wunderbare Bilderbuch die Wut. Sie reißt sie mit sich, und sie donnert und heult. Die Wut nimmt sie mit auf einen wilden Ritt und ihre Gefühle entladen sich wie Naturgewalten. Dieses Buch zeigt, wie Wut überwältigend, isolierend oder beängstigend sein kann – aber auch, wie sie eine Quelle von Kraft und Veränderung sein kann. (Kinder und ihre Gefühle, Band 1)\"",
- 
   "leseprobe_pdf": "wuetend.pdf",
   "bilder": [
     "images/wuetend/wuetend.jpg"
@@ -248,7 +246,6 @@
 {
   "id": 17,
   "ean": "9783791375755",
-
   "beschreibung": "Was wir nicht kennen, kann ganz schön furchteinflößend sein. In diesem ausdrucksstarken Bilderbuch geht Britta Teckentrup der Frage nach, was es bedeutet, mutig zu sein. Sie erzählt die Geschichte eines Mädchens, das alleine durch einen dunklen Wald wandert und sich vor einem Bären fürchtet. Zuerst macht der Bär ihr Angst, er wirkt riesig und fremd. Doch als sie sich ihm nähert, wird der Bär ihr Begleiter und schließlich ihr Freund. Dieses Buch eignet sich perfekt für die Behandlung von Angst für Kinder im Kindergarten- und Grundschulalter. Es zeigt, wie lähmend sich Angst manchmal anfühlen kann, aber auch, wie gut es tut, sich mit seinen Ängsten zu konfrontieren und sie damit zu überwinden.",  
   "preis": 18.00,
   "bilder": [
@@ -261,7 +258,6 @@
 {
   "id": 18,
   "ean": "9783791376189",
- 
   "beschreibung": "Mit stimmungsvollen Illustrationen und gereimten Texten erkundet dieses Buch das Gefühl der Einsamkeit aus der Perspektive eines Kindes. Britta Teckentrups neues Buch über Emotionen ist dem leider äußerst aktuellen Thema Einsamkeit in der Kindheit gewidmet. Zwar ist das Gefühl, allein zu sein, ganz natürlich und jeder kennt es. Doch kann es auch sehr beunruhigend und beängstigend sein, wenn sich ein Kind einsam fühlt. Mit der für sie charakteristischen Sensibilität erkundet sie Momente, in denen die Welt weit entfernt scheint und man mit der schweren Stille kämpft, die uns umgibt, wenn sich Einsamkeit wie ein allumfassender Schatten über uns legt. Das Buch vermittelt Kindern, dass Einsamkeit zwar traurig und schwierig sein kann, aber ein Teil des Lebens ist, den jede*r erlebt. Es bietet einen Hoffnungsschimmer: auch in den dunkelsten Momenten liegt vor uns die Möglichkeit von Licht und Verbindung.",
   "bilder": [
     "images/einsam/einsam.jpg"
@@ -273,7 +269,6 @@
 {
   "id": 19,
   "ean": "9783791375366",
-
   "beschreibung": "Die Schaukel ist ein philosophisches Bilderbuch, das Kinder behutsam an die Höhen und Tiefen des Lebens heranführt. In vielen kleinen Miniatur-Erzählungen spielt die Schaukel eine tragende Rolle – sie weiß von Kinderträumen, Freundschaften, Sorgen und Zeiten des Wachsens. Wer sind wir, was bewegt uns gerade? Dieses Buch lädt dazu ein, über das Leben ins Gespräch zu kommen. (Ab 5 Jahren)",
   "preis": 25.00,
   "bilder": [
@@ -287,9 +282,7 @@
 {
   "id": 20,
   "ean": "9781851244942",
- 
   "beschreibung": "One day an old lady swallows a fly and the only way she can get rid of it is to swallow a wriggling, tickling spider ... For over a century this subversive rhyme has delighted children and parents alike. Graboff's bright and startling illustrations combine beautifully with the traditional verse to bring this classic tale to life.",
- 
   "bilder": [
     "images/anonldlady/anoldlady.jpg",
     "images/anonldlady/anoldlady1.jpg",
@@ -301,25 +294,13 @@
     "images/anonldlady/anoldlady7.jpg",
     "images/anonldlady/anoldlady8.jpg"
   ],
-  "kategorie": "Klassiker",
-  "seitenzahl": 36,
-  "format": {
-    "breite_cm": 20.3,
-    "höhe_cm": 25.4
-  },
-  "einband": "Hardcover",
-  "erscheinungsjahr": null,
-  "isbn": null,
-  "zielalter": "ab 3 Jahren"
+  "kategorie": "Klassiker"
 },
 
 {
   "id": 21,
   "ean": "9781851245031",
-  "name": "Hungry Goat",
-  "autor": "Alan Mills & Abner Graboff",
   "beschreibung": "The (very) hungry goat has a big appetite which gets him into all kinds of adventures. He’ll eat anything, from pig swill to frying pans and even barbed wire. As a result he grows fatter and fatter until one day he gobbles up something that sends him on the biggest adventure of all. Abner Graboff’s timeless illustrations bring this greedy animal to life in a comic rhyming tale for younger children.",
-  "preis": 12.99,
   "bilder": [
      "images/hungrygoat/hungrygoat.jpg",
      "images/hungrygoat/hungrygoat1.jpg",
@@ -330,73 +311,40 @@
      "images/hungrygoat/hungrygoat6.jpg",
      "images/hungrygoat/hungrygoat7.jpg"
   ],
-  "kategorie": "Klassiker",
-  "seitenzahl": 52,
-  "einband": "Hardback",
-  "zielalter": null,
-  "isbn": null
+  "kategorie": "Klassiker"
 },
 
 {
   "id": 22,
   "ean": "9783458643852",
-  "name": "Monster trinken keine Erdbeermilch",
-  "autor": "Marie-Hélène Versini & Vincent Boudgourd",
   "übersetzer": "Felicia Bomhoff",
   "beschreibung": "Monster sind wirklich merkwürdige Wesen. Und sie haben eigenartige Gewohnheiten: Sie gehen nie zum Friseur, tragen keine Schuhe, spielen nicht Klavier. Und auch leckere Erdbeermilch trinken sie nie. Doch warum tun sie all das nicht? Dieses Buch liefert die erstaunliche Antwort – und zeigt, dass man sich vor Monstern gar nicht gruseln muss. Mit knallbunten Bildern und witzigen Texten vertreibt dieses Buch die Angst vor Monstern im Nu. Empfohlen ab 3 Jahren. :contentReference[oaicite:0]{index=0}",
-  "preis": 16.95,
   "bilder": [
     "images/monstermilch/monstermilch.jpg",
     "images/monstermilch/monstermilch1.jpg", 
     "images/monstermilch/monstermilch2.jpg"
   ],
-  "kategorie": "Monstergeschichten",
-  "seitenzahl": 36,
-  "format": {
-    "breite_cm": 24.3,
-    "höhe_cm": 30.9,
-    "tiefe_cm": 1.0
-  },
-  "einband": "Fester Einband (Hardcover)",
-  "erscheinungsjahr": 2024,
-  "isbn": "978-3-458-64385-2",
-  "zielalter": "ab 3 Jahren",
-  "originaltitel": "Les monstres ne boivent pas de lait fraise",
-  "verlag": "Insel Verlag (Teil des Suhrkamp Verlags)‎"
+  "kategorie": "Monstergeschichten"
 },
 {
   "id": 23,
   "ean": "9783848901760",
-  "name": "Unsichtbar in der großen Stadt",
-  "autor": "Sydney Smith",
   "beschreibung": "Allein in der großen Stadt zu sein, ist manchmal unheimlich. Besonders, wenn man klein ist und alles um einen herum so laut und riesengroß. Da ist es gut, wenn es jemanden gibt, der die besten Geheimverstecke kennt, zum Beispiel unterm Haselstrauch oder hoch oben im Walnussbaum. (Ausgezeichnet mit dem Deutschen Jugendliteraturpreis 2021 in der Kategorie Bilderbuch.)",
-  "preis": 18.00,
   "bilder": [
     "images/unsichtbar/unsichtbar.jpg",
     "images/unsichtbar/unsichtbar1.jpg",
     "images/unsichtbar/unsichtbar2.jpg",
     "images/unsichtbar/unsichtbar3.jpg"
   ],
-  "kategorie": "Kinder und Gefühle",
-  "seitenzahl": 40,
-  "format": {
-    "breite_cm": 18.4,
-    "höhe_cm": 28.6
-  },
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": 2020,
-  "isbn": "978-3-8489-0176-0",
-  "zielalter": "ab 4 Jahren",
-  "verlag": "Thienemann-Esslinger Verlag"
+  "kategorie": "Kinder und Gefühle"
 },
 
 {
   "id": 24,
   "ean": "9783570181553",
-  "name": "Drei kleine Handschuhe",
-  "autor": "Linda Bailey",
+ 
   "beschreibung": "Pünktchen und Pünktchen sind ein perfekt zusammen-passendes Paar Handschuhe. Und in ihren Augen ist es völlig richtig, dass der partnerlose Handschuh Streifi in die dunkle Jackentasche verbannt wird! Bis sich eines Tages die Verhältnisse umkehren, als ein Pünktchen verschwindet und der zweite Streifi wieder auftaucht. Ist das jetzt noch immer gerecht? Und warum müssen eigentlich immer alle zusammenpassen? Eine Rebellion im Kleiderschrank beginnt!" ,
-  "preis": 15.00,
+
   "bilder": [
     "images/handschuhe/Handschuhe.jpg",
     "images/handschuhe/Handschuhe1.jpg",
@@ -408,23 +356,14 @@
      "images/handschuhe/Handschuhe7.jpg",
      "images/handschuhe/Handschuhe8.jpg"
   ],
-  "kategorie": "Dazugehören",
-  "seitenzahl": 40,
-  "einband": "Hardcover, Pappband",
-  "erscheinungsjahr": 2024,
-  "isbn": "978-3-570-18155-3",
-  "zielalter": "ab 4 Jahren",
-  "verlag": "cbj Kinderbücher"
+  "kategorie": "Dazugehören"
 },
 
 {
   "id": 25,
   "ean": "9783779503712",
-  "name": "Zwei, die sich lieben",
-  "autor": "Jürg Schubiger",
-  "illustrierer": "Wolf Erlbruch",
   "beschreibung": "Was Liebe ist, ist schwer zu sagen. Nur soviel scheint klar: irgendwas mit Küssen und so. Zwei, die sich lieben jedenfalls ist ein kleines Buch für alle, die sich ihre Gedanken machen über die Liebe. Darüber, wer wen küssen will und darf und sogar soll. Über das Davor und das Danach. Das Sehnen, das Finden, Genießen und Abschied nehmen.",
-  "preis": 14.00,
+ 
   "bilder": [
     "images/zweilieben/zweilieben.jpg",
     "images/zweilieben/zweilieben1.jpg",
@@ -445,24 +384,15 @@
     "images/zweilieben/zweilieben16.jpg",
     "images/zweilieben/zweilieben17.jpg"
   ],
-  "kategorie": "Kinder und Gefühle",
-  "seitenzahl": 48,
-  "einband": "Halbleinen, gebunden",
-  "erscheinungsjahr": null,
-  "isbn": "978-3-7795-0371-2",
-  "zielalter": null,
-  "verlag": "Peter Hammer Verlag"
+  "kategorie": "Kinder und Gefühle"
 },
 
 
 {
   "id": 26,
   "ean": "9783779507123",
-  "name": "Mut ist was Gutes",
-  "autor": "Arne Rautenberg",
-  "illustrierer": "Wolf Erlbruch",
   "beschreibung": "Wer sein Herz in die Hand nimmt und das Zaudern überwindet, auf den wartet echtes Hochgefühl! Wolf Erlbruch hat diesen speziellen Moment in hinreißenden Bildern eingefangen. Arne Rautenberg hat sich von ihnen inspirieren lassen zu vergnüglichen Gedichten. Gedichte zu Bildern von Wolf Erlbruch.",
-  "preis": 14.00,
+
   "bilder": [
     "images/mutwasgutes/mutwasgutes.jpg",
     "images/mutwasgutes/mutwasgutes1.jpg",
@@ -471,71 +401,38 @@
     "images/mutwasgutes/mutwasgutes4.jpg",
     "images/mutwasgutes/mutwasgutes5.jpg"
   ],
-  "kategorie": "Mut oder Angst?!",
-  "seitenzahl": 48,
-  "einband": "Halbleinen, gebunden",
-  "erscheinungsjahr": 2023,
-  "isbn": "978-3-7795-0712-3",
-  "zielalter": "ab 6 Jahren",
-  "verlag": "Peter Hammer Verlag",
-  "lieferstatus": "lieferbar"
+  "kategorie": "Mut oder Angst?!"
 },
 
 
 {
   "id": 27,
   "ean": "9783779506201",
-  "name": "Vier Kerzen, drei Könige, zwei Augen, ein Stern",
-  "autor": "Arne Rautenberg",
-  "illustrierer": "Katrin Stangl",
   "beschreibung": "24 Weihnachtsgedichte – Ein Sack voller Gedichte von Arne Rautenberg! Was drin ist, möchtet ihr wissen? Alles, was das Herz zum Fest begehrt: Kerzen, Lieder, Leckereien. Wichtel, Wünsche, Tannenbaum. Vom hohoho bis pipapo. Es fehlt also nichts, doch hat der Dichter alles einen Tick anders aufgehängt und arrangiert. So flicht er das Lametta ins Haar von Marietta. Er rettet die Weihnachtsgans, nennt sie erst Hans und tauft sie dann ganz schnell auf den Namen Isabell. Aus dem Weihnachtsmann macht er ein Weihnachtsmännchen, aus dessen großer Hand ein Händchen und aus dem Sack ein Säckchen mit winzigen Päckchen. Oft lustig und ungestüm, manchmal leise und besinnlich runden sich Rautenbergs Verse mit Katrin Stangls Illustrationen – in Weihnachtsrot und Blau und voller schöner Einfälle!",  
-  "preis": 14.00,
+
   "bilder": [
     "images/vierkerzen/vierkerzen.jpg"
   ],
-  "kategorie": "Weihnachten",
-  "seitenzahl": 32,
-  "format": {
-    "breite_cm": 16.5,
-    "höhe_cm": 21.6
-  },
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": 2019,
-  "isbn": "978-3-7795-0620-1",
-  "zielalter": "ab 5 Jahren",
-  "verlag": "Peter Hammer Verlag",
-  "lieferstatus": "lieferbar"
+  "kategorie": "Weihnachten"
 },
 
 {
   "id": 28,
   "ean": "9783779506386",
-  "name": "Wolf Erlbruchs Adventskalender",
-  "autor": "Wolf Erlbruch",
   "beschreibung": "Zwei zappelige Katzenkinder, denen das geduldige Singen vor der Bescherung sichtlich schwerfällt, während ihre Eltern davon nicht genug bekommen – dieses Bild gehört zu den schönsten Motiven aus Wolf Erlbruchs Kinderzimmerkalendern. Jetzt kommt es als Adventskalender zu neuen Ehren: Hinter 24 Klapptürchen verbergen sich ausgesuchte Motive aus dem Werk des Künstlers – täglich eine feine Überraschung auf dem Weg zum Weihnachtsfest.",
-  "preis": 12.00,
+  
   "bilder": [
     "images/advent/advent.jpg"
   ],
-  "kategorie": "Weihnachten",
-  "format": {
-    "breite_cm": 29.7,
-    "höhe_cm": 42.0
-  },
-  "einband": "Papierkalender mit 24 Klapptürchen",
-  "erscheinungsjahr": null,
-  "isbn": "978-3-7795-0638-6",
-  "zielalter": "Nicht geeignet für Kinder unter 36 Monaten",
-  "verlag": "Peter Hammer Verlag"
+  "kategorie": "Weihnachten"
 },
 
 {
   "id": 29,
   "ean": "9783872949486",
-  "name": "Die große Frage",
-  "autor": "Wolf Erlbruch",
+
   "beschreibung": "Auf die große Frage „Warum bin ich auf der Welt?“ weiß Wolf Erlbruch selbst keine Antwort – also lässt er andere antworten. Vater, Mutter, Tiere und andere Figuren geben jeweils ihre persönliche Sichtweise, humorvoll, nachdenklich und überraschend. In wenigen Worten und einfachen Bildern widmet sich das Buch dem Sinn des Lebens aus ganz unterschiedlichen Perspektiven, regt zum Staunen und Gespräch an und lässt am Ende Raum für eigene Antworten.",
-  "preis": 25.00,
+  
   "bilder": [
     "images/diegroßenfragen/diegroßenfragen.jpg",
     "images/diegroßenfragen/diegroßenfragen1.jpg",
@@ -544,12 +441,6 @@
     "images/diegroßenfragen/diegroßenfragen4.jpg"
 ],
   "kategorie": "Wichtige Fragen",
-  "seitenzahl": 52,
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": 2004,
-  "isbn": "978-3-87294-948-6",
-  "zielalter": "ab 3 Jahren",
-  "verlag": "Peter Hammer Verlag",
   "auszeichnungen": [
     "Bologna Ragazzi Award 2004 – Kategorie Fiction",
     "Nominiert Deutscher Jugendliteraturpreis 2005 – Kategorie Bilderbuch"
@@ -559,11 +450,8 @@
 {
   "id": 30,
   "ean": "9783957287090",
-  "name": "Frau Leo legt los",
-  "autor": "Natalia Shaloshvili",
-  "übersetzer": "Thomas Weiler",
   "beschreibung": "Frau Leo schlief immer in einem Baum. Und wenn sie nicht schlief, fuhr sie ihren Bus. Jeden Tag beförderte sie Tiere von A nach B – das war eine schöne Arbeit. Bis eines Tages ein kleines dunkles Auto an ihrem Bus vorbei raste und alle Passagiere so begeistert waren, dass sie auch ein kleines Auto haben wollten. Damit gerät Frau Leos Job und ihr Zuhause in Gefahr, doch sie findet eine neue, sensationelle Idee. Ein bezauberndes Vorlesebuch mit liebenswerter Protagonistin und humorvollen Details.",
-  "preis": 16.00,
+ 
   "bilder": [
     "images/leolegtlos/leolegtlos.jpg",
     "images/leolegtlos/leolegtlos2.jpg",
@@ -572,27 +460,14 @@
     "images/leolegtlos/leolegtlos5.jpg",
     "images/leolegtlos/leolegtlos6.jpg"
   ],
-  "kategorie": "Mut oder Angst?!",
-  "seitenzahl": 48,
-  "format": {
-    "breite_cm": 27.0,
-    "höhe_cm": 24.0
-  },
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": 2023,
-  "isbn": "978-3-95728-709-0",
-  "zielalter": "ab 4 Jahren",
-  "verlag": "Knesebeck Verlag"
+  "kategorie": "Mut oder Angst?!"
 },
 
 {
   "id": 31,
   "ean": "9783314103544",
-  "name": "Der Nussknacker",
-  "autor": "E. T. A. Hoffmann",
-  "übersetzer": null,
   "beschreibung": "Die berühmte Weihnachtsgeschichte über Clara und ihren Nussknacker: Am Weihnachtsabend schenkt ihr der geheimnisvolle Drosselmeyer einen Holz-Nussknacker, der in der folgenden Nacht lebendig wird. Gemeinsam mit ihm und seinen Soldaten kämpft sie gegen den Mäusekönig und erlebt ein zauberhaftes Abenteuer voller Fantasie und Wunder – ein Klassiker der Weihnachts- und Kindermärchenliteratur.",
-  "preis": 20.00,
+  
   "bilder": [
     "images/nussknacker/nussknacker.jpg",
     "images/nussknacker/nussknacker1.jpg",
@@ -603,16 +478,6 @@
     "images/nussknacker/nussknacker6.jpg"
   ],
   "kategorie": "Klassiker",
-  "seitenzahl": 40,
-  "format": {
-    "breite_cm": 22.8,
-    "höhe_cm": 27.8
-  },
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": 2016,
-  "isbn": "978-3-314-10354-4",
-  "zielalter": "ab 4 Jahren",
-  "verlag": "NordSüd Verlag AG",
   "leseprobe_url": "https://www.book2look.com/book/uZR7FghOdm"
 },
 
@@ -620,11 +485,8 @@
 {
   "id": 32,
   "ean": "9783314106668",
-  "name": "Der kleine Häwelmann",
-  "autor": "Theodor Storm",
-  "illustrierer": "Lisbeth Zwerger",
   "beschreibung": "Der kleine Häwelmann kann nicht einschlafen. Er möchte, dass seine Mutter ihn in seinem Bettchen herumschiebt, doch sie schläft schon. Da verwandelt er sein Bett in ein Traumschiff, sein Nachthemd wird zum Segel, und der Mond schickt einen Lichtstrahl durch das Fenster hinaus in die Nacht. Eine fantastische Reise beginnt, die ihn durch die Stadt, den Wald und bis zu den Sternen führt – ein Klassiker der Kinderliteratur mit magischen Bildern.",
-  "preis": 20.00,
+  
   "bilder": [
     "images/haewelmann/haewelmann.jpg",
     "images/haewelmann/haewelmann1.jpg",
@@ -632,16 +494,6 @@
     "images/haewelmann/haewelmann3.jpg"
   ],
   "kategorie": "Klassiker",
-  "seitenzahl": 24,
-  "format": {
-    "breite_cm": 24,
-    "höhe_cm": 27
-  },
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": 2023,
-  "isbn": "978-3-314-10666-8",
-  "zielalter": "ab 5 Jahren",
-  "verlag": "NordSüd Verlag",
   "leseprobe_url": "https://www.book2look.com/book/agb6hWl8UV"
 
 },
@@ -650,11 +502,9 @@
   {
   "id": 33,
   "ean": "9783895654640",
-  "name": "Der Vogel in mir fliegt, wohin er will",
-  "autor": "Sara Lundberg",
-  "übersetzer": "Friederike Buchinger",
+ 
   "beschreibung": "Berta wächst zu Beginn des 20. Jahrhunderts im ländlichen Norden Schwedens auf. Alles in ihr sträubt sich gegen ein vorherbestimmtes Leben auf dem Bauernhof. Frei will sie sein wie ein Vogel und studieren, was sie liebt: die Malerei. Doch ihr Vater ist dagegen und ihre Mutter, die sie versteht und unterstützt, stirbt. Berta fühlt tief in sich eine starke Kraft, die sie handeln lässt. ‚Der Vogel in mir fliegt, wohin er will‘ ist ein Buch über Trauer, Sehnsucht, Kompromisslosigkeit und die Kraft der Fantasie, die alles verändern kann – basierend auf dem Leben der schwedischen Malerin Berta Hansson.:contentReference[oaicite:0]{index=0}",
-  "preis": 18.00,
+ 
   "bilder": [
     "images/dervogelinmir/dervogelinmir.jpg",
     "images/dervogelinmir/dervogelinmir1.jpg",
@@ -666,28 +516,15 @@
     "images/dervogelinmir/dervogelinmir7.jpg"
   ],
   "kategorie": "Wichtige Fragen",
-  "seitenzahl": 128,
-  "format": {
-    "breite_cm": 17.6,
-    "höhe_cm": 21.7,
-    "tiefe_cm": 2.0
-  },
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": 2024,
-  "isbn": "978-3-89565-464-0",
-  "originaltitel": "Fågeln i mig flyger vart den vill",
-  "zielalter": "ab 10 Jahren",
-  "verlag": "Moritz Verlag",
   "leseprobe_url": "https://www.book2look.com//book/WjLI79HvFc&euid=0&ruid=0&refererpath=www.moritzverlag.de&isbnformat=hardcover&bookisbn=9783895654640&dct=0&biblettype=double&clickedby=lk&bibloc=0"
 },
 
   {
   "id": 34,
   "ean": "9783948743307",
-  "name": "Und jetzt sei fröhlich, Knochenmann!",
-  "autor": "Ca Rose",
+ 
   "beschreibung": "Die Urgroßmutter des Mädchens ist alt und möchte tanzen – aber der Tod lässt auf sich warten. Also macht sich das Mädchen auf die Suche nach ihm. Auf ihrer Reise trifft sie ungewöhnliche Gefährten und lernt, dass der Tod ganz anders sein kann als erwartet. Eine philosophische Geschichte über Tod und Abschied mit farbenprächtigen, detailreichen Bildern, die an den mexikanischen Día de Muertos erinnern.",  
-  "preis": 24.00,
+
   "bilder": [
    "images/knochenmann/knochenmann.jpg",
    "images/knochenmann/knochenmann2.jpg",
@@ -697,28 +534,15 @@
    "images/knochenmann/knochenmann6.jpg"
   ],
   "kategorie": "Wichtige Fragen",
-  "seitenzahl": 48,
-  "format": {
-    "breite_cm": 18.3,
-    "höhe_cm": 29.2,
-    "tiefe_cm": 1.1
-  },
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": 2024,
-  "isbn": "978-3-948743-30-7",
-  "zielalter": "ab 3 Jahren",
-  "verlag": "Kunstanstifter GmbH & Co. KG",
+ 
   "leseprobe_url": "https://www.book2look.com/book/9783948743307(buchpalastmuenchen.de)"
 },
 
 {
   "id": 35,
   "ean": "9783314102561",
-  "name": "Kindergedichte und Galgenlieder",
-  "autor": "Christian Morgenstern",
-  "illustrierer": "Lisbeth Zwerger",
   "beschreibung": "Eine liebevoll illustrierte Sammlung von klassischen Kindergedichten und Galgenliedern von Christian Morgenstern, die sowohl Kinder als auch Erwachsene begeistert. In den Gedichten entfaltet Morgenstern seinen scharfsinnigen und zugleich zarten Sprachwitz – perfekt zum Vorlesen und Wiederentdecken der Gedichteklassiker.",
-  "preis": 20.00,
+
   "bilder": [
     "images/galgenlieder/galgenlieder.jpg",
     "images/galgenlieder/galgenlieder1.jpg",
@@ -728,16 +552,6 @@
     "images/galgenlieder/galgenlieder5.jpg"
   ],
   "kategorie": "Klassiker",
-  "seitenzahl": 48,
-  "format": {
-    "breite_cm": 22.8,
-    "höhe_cm": 27.7
-  },
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": 2014,
-  "isbn": "978-3-314-10256-1",
-  "zielalter": "ab 4 Jahren",
-  "verlag": "NordSüd Verlag",
   "leseprobe_url": "https://www.book2look.com/book/osuBL4pubX"
   
 },
@@ -745,11 +559,8 @@
 {
   "id": 36,
   "ean": "9783855815975",
-  "name": "Pinocchio",
-  "autor": "Carlo Collodi",
-  "übersetzer": null,
+ 
   "beschreibung": "Pinocchio ist die klassische Geschichte der hölzernen Marionette, die voller guter Vorsätze ist, aber immer wieder in Schwierigkeiten gerät. Als seine Lügen wachsen, wächst auch seine Nase – und es beginnt eine abenteuerliche Reise voller Begegnungen mit Gaunern, Feen und allerlei Kuriositäten. Ein Meilenstein der Kinder- und Weltliteratur, wunderschön illustriert und für Kinder ab etwa 4–5 Jahren geeignet.",  
-  "preis": 16.00,
   "bilder": [
     "images/pinocchio/pinocchio.jpg",
     "images/pinocchio/pinocchio1.jpg",
@@ -759,75 +570,43 @@
     "images/pinocchio/pinocchio5.jpg",
     "images/pinocchio/pinocchio6.jpg"
   ],
-  "kategorie": "Klassiker",
-  "seitenzahl": 48,
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": null,
-  "isbn": null,
-  "zielalter": "ab 4 Jahren",
-  "verlag": "Coppenrath Kinderklassiker"
+  "kategorie": "Klassiker"
 },
 
 
   {
   "id": 37,
   "ean": "9783480240937",
-  "name": "Lupo, was bedrückt dich?",
-  "autor": "Catherine Rayner",
-  "illustrierer": "Catherine Rayner",
-  "übersetzer": "Sylvia Tress",
+  
   "beschreibung": "Große Gefühle, k(l)eine Worte: Ein warmherziges Bilderbuch über Sorgen, Ängste, Mut und Selbstvertrauen. Lupo, der kleine Wolf, hat viele Sorgen und fühlt sich nicht groß, wild oder mutig genug. Sein Freund Pablo zeigt ihm, wie man mit solchen belastenden Gedanken umgehen kann, indem man sie teilt und zusammen Achtsamkeitstricks übt – so werden die Sorgen kleiner. Eine einfühlsame Geschichte, die zeigt, wie wichtig es ist, über Gefühle zu sprechen.",  
-  "preis": 15.00,
   "bilder": [
     "images/lupo/lupo.jpg",
     "images/lupo/lupo1.jpg",
     "images/lupo/lupo2.jpg"
   ],
-  "kategorie": "Dazugehören",
-  "seitenzahl": 32,
-  "format": {
-    "breite_cm": 25.6,
-    "höhe_cm": 28.6,
-    "tiefe_cm": 0.8
-  },
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": 2025,
-  "isbn": "978-3-480-24093-7",
-  "zielalter": "ab 3 Jahren",
-  "verlag": "Esslinger in der Thienemann-Esslinger Verlag GmbH"
+  "kategorie": "Dazugehören"
 },
 {
   "id": 38,
   "ean": "9783905945560",
-  "name": "Heute bin ich",
-  "autor": "Mies van Hout",
+
   "beschreibung": "Heute bin ich zufrieden. Und du? Bist du neugierig? Gelangweilt? Zornig? In diesem liebevoll illustrierten Bilderbuch drückt jeder Fisch ein anderes Gefühl aus – mal ist es eine schöne, mal eine verwirrende Stimmung, manchmal eine heftige Empfindung, manchmal eine ganz zarte. Das Buch nimmt mit auf eine Reise durch die Welt der Gefühle, regt an, über Empfindungen zu reden, sie zu benennen und besser zu verstehen. Auf jeder Doppelseite wird ein Gefühl visuell dargestellt. Für Kinder ab etwa 3 Jahren geeignet.",
-  "preis": 15.00,
+  
   "bilder": [
     "images/heutebinich/heutebinich.jpg",
     "images/heutebinich/heutebinich1.jpg"
   ],
   "kategorie": "Kinder und Gefühle",
-  "seitenzahl": 48,
-  "format": {
-    "breite_cm": 26.4,
-    "höhe_cm": 21.6
-  },
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": 2025,
-  "isbn": "978-3-905945-30-0",
-  "zielalter": "ab 3 Jahren",
-  "verlag": "Aracari Verlag",
+
   "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=3709063013&ean=9783905945300"
 },
 
 {
   "id": 39,
   "ean": "9783905945478",
-  "name": "Überraschung!",
-  "autor": "Mies van Hout",
+ 
   "beschreibung": "Nach den Bestsellern „Heute bin ich“ und „Freunde“ hat Mies van Hout ein neues Bilderbuch gezeichnet: „Überraschung!“. In gewohnter Weise werden Gefühle und Stimmungen sehr treffend dargestellt – getreu dem Motto ‚ein Wort, ein Bild‘. Die leuchtenden, schillernden Farben aus Pastell und Wachs schaffen eine künstlerisch gestaltete Welt, die sowohl Kinder als auch Erwachsene anspricht und vielseitig in Kindergarten, Schule oder Familie eingesetzt werden kann.",
-  "preis": 15.00,
+ 
   "bilder": [
     "images/ueberraschung/ueberraschung.jpg",
     "images/ueberraschung/ueberraschung1.jpg",
@@ -835,20 +614,8 @@
     "images/ueberraschung/ueberraschung3.jpg",
     "images/ueberraschung/ueberraschung4.jpg"
   ],
-  "kategorie": "Kinder und Gefühle",
-  "seitenzahl": 32,
-  "format": {
-    "breite_cm": 26.0,
-    "höhe_cm": 20.9,
-    "tiefe_cm": 1.0
-  },
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": 2025,
-  "isbn": "978-3-905945-47-8",
-  "originaltitel": "Verrassing",
-  "originalsprache": "niederländisch",
-  "zielalter": "ab 3 Jahren",
-  "verlag": "Aracari Verlag"
+  "kategorie": "Kinder und Gefühle"
+  
 },
 
 {
