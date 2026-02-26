@@ -950,12 +950,8 @@
 {
   "id": 40,
   "ean": "9783522462525",
-  "name": "Bär",
-  "autor": "Natalia Shaloshvili",
-  "illustrierer": "Natalia Shaloshvili",
-  "übersetzer": "Ebi Naumann",
-  "beschreibung": "Bär hat alles, was sein Herz begehrt: ein spannendes Buch, einen fröhlich tanzenden Luftballon, einen knusprigen Keks – und natürlich seine allerliebste Bank. Perfekt! So lässt es sich wunderbar bärenmäßig zufrieden sein.\nDoch dann kommt der Fuchs vorbei. Und der Wolf. Und der Hase. Und schließlich sogar der Elefant! Alle möchten ein kleines Stück von Bärs Glück abhaben. Oje! Was nun? Muss Bär wirklich alles teilen? Und was ist, wenn er manches lieber für sich behalten möchte?\n\nIn dieser warmherzigen und humorvollen Geschichte erfahren Kinder gemeinsam mit dem Bären, dass es gar nicht immer leicht ist, die eigenen Wünsche zu erkennen – und noch schwieriger, sie mutig auszusprechen.\n\nMit ihren ausdrucksstarken Illustrationen und der liebenswerten Hauptfigur erzählt Natalia Shaloshvili eine Geschichte, die zum Schmunzeln einlädt und Kindern hilft, ihre Gefühle besser zu verstehen.\n\nAusgezeichnet schon vor seinem Erscheinen beim „Dipictus Unpublished Picturebook Showcase“ 2024.\n\n Eine fröhliche, kluge und bärenhafte Geschichte über das Teilen und über Gefühle.'#",
-  "preis": 15.00,
+  "beschreibung": "Bär hat alles, was sein Herz begehrt: 
+  ein spannendes Buch, einen fröhlich tanzenden Luftballon, einen knusprigen Keks – und natürlich seine allerliebste Bank. Perfekt! So lässt es sich wunderbar bärenmäßig zufrieden sein.\nDoch dann kommt der Fuchs vorbei. Und der Wolf. Und der Hase. Und schließlich sogar der Elefant! Alle möchten ein kleines Stück von Bärs Glück abhaben. Oje! Was nun? Muss Bär wirklich alles teilen? Und was ist, wenn er manches lieber für sich behalten möchte?\n\nIn dieser warmherzigen und humorvollen Geschichte erfahren Kinder gemeinsam mit dem Bären, dass es gar nicht immer leicht ist, die eigenen Wünsche zu erkennen – und noch schwieriger, sie mutig auszusprechen.\n\nMit ihren ausdrucksstarken Illustrationen und der liebenswerten Hauptfigur erzählt Natalia Shaloshvili eine Geschichte, die zum Schmunzeln einlädt und Kindern hilft, ihre Gefühle besser zu verstehen.\n\nAusgezeichnet schon vor seinem Erscheinen beim „Dipictus Unpublished Picturebook Showcase“ 2024.\n\n Eine fröhliche, kluge und bärenhafte Geschichte über das Teilen und über Gefühle.'#",
   "bilder": [
     "images/bear/bear.jpg",
     "images/bear/bear1.jpg",
@@ -966,36 +962,5 @@
     "images/bear/bear6.jpg"
   ],
   "kategorie": "Wichtige Fragen",
-  "seitenzahl": 40,
-  "format": {
-    "breite_cm": 25.5,
-    "höhe_cm": 28.5,
-    "tiefe_cm": 1.2
-  },
-  "einband": "Gebunden (Hardcover)",
-  "erscheinungsjahr": 2025,
-  "isbn": "978-3-522-46252-5",
-  "originaltitel": "Bear",
-  "originalsprache": "englisch",
-  "zielalter": "ab 4 Jahren",
-  "verlag": "Thienemann-Esslinger Verlag"
-},
-
-
- {
-    "id": 41,
-    "ean": "9783791375755",
-    "kategorie": "Mut oder Angst?!",
-    "ean": "9783551652171",
-    "bilder": []
- },
-
-   {
-    "id": 42,
-    "ean": "9783791375755",
-    "kategorie": "Mut oder Angst?!",
-    "ean": "9783458178385",
-    "bilder": []
- }
-
+}
 ]
