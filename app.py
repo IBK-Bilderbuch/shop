@@ -327,22 +327,21 @@ def index():
 
 # suche icon 
 
-@app.route("/suche")
+@app.route("/suche", methods=["GET", "POST"])
 def suche():
-    suchbegriff = request.args.get("q", "").lower()
-
+    query = ""
     ergebnisse = []
 
-    for titel, liste in kategorien:
-        for produkt in liste:
-            if suchbegriff in produkt.name.lower():
-                ergebnisse.append(produkt)
+    if request.method == "POST":
+        query = request.form.get("q", "").lower()
 
-    return render_template(
-        "suche.html",
-        query=suchbegriff,
-        ergebnisse=ergebnisse
-    )
+        # Beispiel: Suche in allen Produkten
+        for titel, liste in kategorien:
+            for produkt in liste:
+                if query in produkt.name.lower():
+                    ergebnisse.append(produkt)
+
+    return render_template("suche.html", query=query, ergebnisse=ergebnisse)
 
 # Produkt Detail
 
