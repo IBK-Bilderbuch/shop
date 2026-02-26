@@ -327,43 +327,53 @@ def index():
 
 # Produkt Detail
 
+  
+
+        
 
 
 @app.route('/produkt/<int:produkt_id>')
 def produkt_detail(produkt_id):
-    # Produkte nach ID als Dictionary einmal bauen (schnell)
-    produkte_by_id = {p["id"]: p for p in produkte}
-    
-    # Produkt holen
-    produkt = produkte_by_id.get(produkt_id)
+
+    # 1️⃣ lokale Zusatzdaten (Bilder / Leseprobe)
+    lokale_daten = next(
+        (p for p in produkte if p["id"] == produkt_id),
+        None
+    )
+
+    if not lokale_daten:
+        abort(404)
+
+    ean = lokale_daten.get("ean")
+
+    if not ean:
+        abort(404)
+
+    # 2️⃣ Produkt von Buchbutler laden
+    produkt = lade_produkt_von_api(ean)
+
     if not produkt:
         abort(404)
 
-    # 1️⃣ CONTENT API Daten laden
-    if produkt.get("ean"):
-        api_produkt = lade_produkt_von_api(produkt["ean"])
-        if api_produkt:
-            produkt.update(api_produkt)
+    # 3️⃣ Bestand + Preis laden
+    movement = lade_bestand_von_api(ean)
+    if movement:
+        produkt.update(movement)
 
-        movement = lade_bestand_von_api(produkt["ean"])
-        if movement:
-            produkt.update(movement)
+    # 4️⃣ eigene Daten hinzufügen
+    produkt.update(lokale_daten)
 
-    # 2️⃣ Default-Werte setzen
+    # 5️⃣ Defaults (WICHTIG)
     produkt.setdefault("bestand", "n/a")
     produkt.setdefault("preis", 0)
     produkt.setdefault("handling_zeit", "n/a")
     produkt.setdefault("erfuellungsrate", "n/a")
 
-    return render_template('produkt.html', produkt=produkt, user_email=session.get("user_email"))
-
-
-        
-
-
-
-
-
+    return render_template(
+        "produkt.html",
+        produkt=produkt,
+        user_email=session.get("user_email")
+    )
 
 
 
