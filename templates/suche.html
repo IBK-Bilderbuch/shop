@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Impressum | I B K - Buchhandlung für Illustration und Bilderbücher</title>
+  <title>{{ produkt.name }}  | I B K - Buchhandlung für Illustration und Bilderbücher </title>
   <link rel="icon" type="image/x-icon" href="static/ficon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta name="description" content="Details zum Buch '{{ produkt.name }}'. Jetzt entdecken und bestellen.">
 
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='product.css') }}" />
   <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 
   
+
+
 </head>
   
-  {% include 'navbar.html' %}
 
 <main class="search-page">
   <h2>Finde dein Buch</h2>
