@@ -133,10 +133,9 @@
    {
     "id": 10,
     "ean": "9783702659745",
-    "name": "Monstergeburtstag",
-    "autor": "Helga Bansch",
+
     "beschreibung": "Wenn ein kleines Monster seine Freund*innen zur Geburtstagsfeier einlädt, ist das turbulente Chaos nicht weit. Zwischen kreativer Unordnung, lustigem Durcheinander und einer ausgelassenen Tortenschlacht wird gemeinsam ein ganz besonderes Geschenk aufgebaut. Mit leuchtenden Farben und humorvollen Details fängt Helga Bansch den Reiz des wilden Durcheinanders ein – und macht deutlich, wie sehr Kinder es schätzen, wenn ihre Eltern ihnen Raum zum freien Entfalten lassen.",
-    "preis": 18.00,
+    
     "leseprobe_pdf": "Monstergeburtstag.pdf",
     "bilder": [
       "images/monster/Monstergeburtstag.jpg",
@@ -148,8 +147,7 @@
    {
     "id": 11,
     "ean": "9783257011616",
-    "name": "Wo die wilden Kerle wohnen",
-    "autor": "Maurice Sendak",
+   
     "beschreibung": "Maurice Sendaks Kinderbuchklassiker: Die Geschichte vom wilden Max, der von seiner Mutter ohne Essen ins Bett geschickt wird und darauf das Reich der wilden Kerle erobert.\n\nMaurice Sendak, geboren 1928 in New York als Kind polnisch-jüdischer Einwanderer, revolutionierte mit Büchern wie ›Wo die wilden Kerle wohnen‹, ›Die Nachtküche‹ und ›Higgelti Piggelti Pop!‹ die Kinderliteratur. Sendak wurde u.a. mit der Caldecott-Medal, dem internationalen Hans-Christian-Andersen-Preis und dem Astrid-Lindgren-Gedächtnis-Preis ausgezeichnet. Spike Jonzes Verfilmung von ›Wo die wilden Kerle wohnen‹ (Drehbuch: Spike Jonze und Dave Eggers) war 2009 ein großer Kinoerfolg. Maurice Sendak starb 2012 in Danbury, Connecticut.",
     "preis": 20.00,
     "bilder": [
@@ -168,10 +166,9 @@
   {
     "id": 12,
     "ean": "9781592702213",
-    "name": "What color is the wind",
-    "autor": "Anne Herbauts",
+  
     "beschreibung": "Ein poetisches Bilderbuch über das Unsichtbare: Was Farbe hat der Wind? Ein kleines Kind stellt große Fragen und erlebt die Welt mit allen Sinnen.",
-    "preis": 20.00,
+   
     "bilder": [
       "images/wind/windcolor.jpg",
       "images/wind/wind1.jpg",
@@ -191,9 +188,7 @@
   {
     "id": 13,
     "ean": "9783863214180",
-    "preis": 18.00,
-    "name": "Mein Monster-Ich",
-    "autor": "Catarina Knüvener",
+    
     "beschreibung": "Gefühls-Monster bändigen: ein humorvolles Bilderbuch über Emotionen. Der Große Hunger, das Schüchtern oder der Schreck – diese und andere monstermäßigen Emotionen begegnen Kindern jeden Tag und machen ihnen manchmal das Leben schwer. Deswegen hat Catarina Knüvener Gefühle und Situationen aus dem Kinderalltag als lustige Monster visualisiert. So erfahren kleine Leser mehr über ihre Gefühlswelt und lernen, was man tun kann, wenn der Wüterich im Sechseck hüpft, einen die Schadenfreude überkommt oder sich die lilablauen Schimmelsporen der schlechten Laune verteilen.\n\nMit vielen Tipps gegen schlechte Laune, Wut, Traurigkeit & Co.\nInklusive Ausmalseiten für eigene kreative Kritzel-Monster.\nVorlesebuch mit Illustrationen für Kinder ab 5 Jahren.\nThematische Unterstützung für Kita & Grundschule.",
     "bilder": [
       "images/monsterich/Monster-Ich-min.jpg",
@@ -210,10 +205,9 @@
   {
   "id": 14,
   "ean": "9783863214197",
-  "name": "Monster-Besuch",
-  "autor": "Catarina Knüvener",
+ 
   "beschreibung": "Emotions-Monster bändigen: ein humorvolles Bilderbuch über Gefühle. Das Donnerwetter, die Eifersucht und der Nachtschreck – diese und andere monstermäßigen Emotionen begegnen uns jeden Tag und machen uns das Leben schwer. Catarina Knüvener hat unangenehme Gefühle und typische Situationen aus dem Kinderalltag als lustige Monster visualisiert. So erfahren kleine Leser spielerisch mehr über ihre Gefühlswelt und lernen, was man tun kann, wenn der Bock sich schimpfend auf dem Boden wälzt, das Geheul immer lauter wird oder wenn zwei Zornickel gegeneinander kämpfen. \n\n* Gefühle aus dem Alltag kennenlernen\n* 15 emotionale Monster auf jeweils einer Doppelseite\n* Mit vielen Tipps gegen Eifersucht, Zorn, Angst & Co.\n* Inklusive Ausmalseiten für eigene kreative Kritzel-Monster\n* Vorlesebuch mit altersgerechten Illustrationen für Kinder ab 5 Jahren\n* Thematische Unterstützung für Kita & Grundschule",
-  "preis": 18.00,
+ 
   "bilder": [
     "images/monsterbesuch/monsterbesuch.jpg",
     "images/monsterbesuch/monsterbesuch1.jpg",
@@ -222,20 +216,14 @@
     "images/monsterbesuch/monsterbesuch4.jpg"
   ],
   "kategorie": "Monstergeschichten",
-  "seitenzahl": 48,
-  "auflage": 2,
-  "erscheinungsjahr": 2021,
-  "bestellnummer": "202419",
-  "isbn": "978-3-86321-419-7",
-  "zielalter": "ab 5 Jahren"
+ 
 },
   {
   "id": 15,
   "ean": "9783964282842",
-  "name": "Der große und der kleine Igel: Weihnachten",
-  "autor": "Britta Teckentrup",
+ 
   "beschreibung": "Der große und der kleine Igel feiern Weihnachten. Der kleine Igel kann es kaum abwarten, seinen Wunschzettel zu schreiben und den schönsten Weihnachtsbaum zu finden und zu schmücken. Und – endlich – dürfen abends die Geschenke ausgepackt werden. Aber halt! Für einige seiner Freunde, nämlich die Grauhörnchen, die Waschbären und den Nutria aus Amerika, werden am Abend des 24. Dezember nur leere Socken an den Kamin gehängt. Diese befüllt Santa Claus in der Nacht mit Geschenken. Und das Auspacken beginnt erst am Weihnachtsmorgen. Das erweist sich aber gar nicht als Problem: Der kleine Igel kann mit seinen Freunden gleich zweimal Bescherung feiern. Ein Buch, das es leicht macht, über die großen Erwartungen zu sprechen, die ein Kind vor und an Weihnachten haben kann. Und ganz nebenbei zeigt das Buch, dass Weihnachten zwar fast überall, aber oft ein bisschen anders gefeiert wird.",
-  "preis": 15.00,
+ 
   "bilder": [
     "images/weihnachten/Cover_IGEL-6_Weihnachten-min.jpg",
     "images/weihnachten/Cover_IGEL-6_Weihnachten1-min.jpg",
@@ -245,43 +233,22 @@
     "images/weihnachten/Cover_IGEL-6_Weihnachten5-min.jpg",
     "images/weihnachten/Cover_IGEL-6_Weihnachten6-min.jpg"
   ],
-  "kategorie": "Weihnachten",
-  "seitenzahl": 32,
-  "format": {
-    "breite_cm": 21,
-    "höhe_cm": 28
-  },
-  "einband": "Hardcover",
-  "zielalter": "ab 3 Jahren",
-  "isbn": "978-3-96428-284-2"
+  "kategorie": "Weihnachten"
+ 
 },
 
 
 {
   "id": 16,
   "ean": "9783791374932",
-  "name": "Wütend",
-  "autor": "Britta Teckentrup",
+
   "beschreibung": "Wut ist ein kraftvolles Gefühl. Wie ein Sturm in einem dunklen Wald packt die Heldin dieses wunderbare Bilderbuch die Wut. Sie reißt sie mit sich, und sie donnert und heult. Die Wut nimmt sie mit auf einen wilden Ritt und ihre Gefühle entladen sich wie Naturgewalten. Dieses Buch zeigt, wie Wut überwältigend, isolierend oder beängstigend sein kann – aber auch, wie sie eine Quelle von Kraft und Veränderung sein kann. (Kinder und ihre Gefühle, Band 1)\"",
-  "preis": 18.00,
+ 
   "leseprobe_pdf": "wuetend.pdf",
   "bilder": [
     "images/wuetend/wuetend.jpg"
   ],
-  "kategorie": "Kinder und Gefühle",
-  "seitenzahl": 48,
-  "format": {
-    "breite_cm": 21.5,
-    "höhe_cm": 28.0
-  },
-  "einband": "Hardcover / Pappband",
-  "erscheinungsjahr": 2021,
-  "isbn": "978-3-7913-7493-2",
-  "zielalter": "ab 4 Jahren",
-  "reihe": {
-    "titel": "Kinder und Gefühle",
-    "band": 1
-  }
+  "kategorie": "Kinder und Gefühle"
 },
 
 {
@@ -295,49 +262,19 @@
     "images/mutig/mutig.jpg"
   ],
   "leseprobe_pdf": "mutig.pdf",
-  "kategorie": "Kinder und Gefühle",
-  "seitenzahl": 40,
-  "format": {
-    "breite_cm": 21.5,
-    "höhe_cm": 28.0
-  },
-  "einband": "Hardcover / Pappband",
-  "erscheinungsjahr": 2024,
-  "isbn": "978-3-7913-7575-5",
-  "reihe": {
-    "titel": "Kinder und Gefühle",
-    "band": 2
-  },
-  "zielalter": "ab 4 Jahren"
+  "kategorie": "Kinder und Gefühle"
 },
 
 {
   "id": 18,
   "ean": "9783791376189",
-  "name": "Einsam",
-  "autor": "Britta Teckentrup",
+ 
   "beschreibung": "Mit stimmungsvollen Illustrationen und gereimten Texten erkundet dieses Buch das Gefühl der Einsamkeit aus der Perspektive eines Kindes. Britta Teckentrups neues Buch über Emotionen ist dem leider äußerst aktuellen Thema Einsamkeit in der Kindheit gewidmet. Zwar ist das Gefühl, allein zu sein, ganz natürlich und jeder kennt es. Doch kann es auch sehr beunruhigend und beängstigend sein, wenn sich ein Kind einsam fühlt. Mit der für sie charakteristischen Sensibilität erkundet sie Momente, in denen die Welt weit entfernt scheint und man mit der schweren Stille kämpft, die uns umgibt, wenn sich Einsamkeit wie ein allumfassender Schatten über uns legt. Das Buch vermittelt Kindern, dass Einsamkeit zwar traurig und schwierig sein kann, aber ein Teil des Lebens ist, den jede*r erlebt. Es bietet einen Hoffnungsschimmer: auch in den dunkelsten Momenten liegt vor uns die Möglichkeit von Licht und Verbindung.",
-  "preis": 18.00,
   "bilder": [
     "images/einsam/einsam.jpg"
   ],
   "leseprobe_pdf": "einsam.pdf",
-  "kategorie": "Kinder und Gefühle",
-  "seitenzahl": 40,
-  "format": {
-    "breite_cm": 21.5,
-    "höhe_cm": 28.0
-  },
-  "einband": "Hardcover / Pappband",
-  "erscheinungsjahr": 2025,
-  "isbn": "978-3-7913-7618-9",
-  "reihe": {
-    "titel": "Kinder und Gefühle",
-    "band": 3
-  },
-  "zielalter": "ab 4 Jahren",
-  "verlag": "Prestel junior",
-  "erscheinungstermin": "22.10.2025"
+  "kategorie": "Kinder und Gefühle"
 },
 
 {
