@@ -88,10 +88,8 @@
    {
     "id": 7,
     "ean": "9783702659516",
-    "name": "Der Pupu",
-    "autor": "Helga Bansch",
     "beschreibung": "Ziegen und Schafe lebten friedlich zusammen auf einer Weide. Doch eines Tages tauchte ein seltsames Ding mitten auf der Wiese auf. Niemand wusste, was es war, also nannten sie es einfach „PUPU“. Zuerst kümmerten sich alle gemeinsam darum, aber schon bald wollte jede Gruppe es für sich allein haben.\n\nDer Hammel und der Bock begannen zu streiten. Sie zogen so heftig an dem PUPU, dass es schließlich in zwei Stücke riss. Von da an wollten Schafe und Ziegen nichts mehr miteinander zu tun haben und gingen getrennte Wege.\n\nDoch als der Winter kam, wurde es kalt, und in der Ferne heulte ein Wolf. Da erinnerten sich die Tiere daran, wie schön und sicher das gemeinsame Leben früher gewesen war. Sie fanden wieder zueinander – und der PUPU geriet in Vergessenheit.\n\nIm Frühling entdeckte eine alte Ziege plötzlich ein Stück des zerrissenen PUPU auf der Wiese. Sofort rannten Hammel und Bock darauf zu, jeder wollte es zuerst haben. Doch die Ziege war schneller – und warf den halben PUPU entschlossen in die Schlucht.",
-    "preis": 17.00,
+     
     "leseprobe_pdf": "DerPupu.pdf",
     "bilder": [
       "images/pupu/pupu.jpg",
@@ -102,10 +100,8 @@
   {
     "id": 8,
     "ean": "9783702658748",
-    "name": "Die Rabenrosa",
-    "autor": "Helga Bansch",
     "beschreibung": "Im Rabennest, hoch oben in den Baumwipfeln, herrscht reges Treiben – die Küken schlüpfen! Sie werden gefüttert, wachsen heran und wetteifern lautstark miteinander. Doch eines der Kleinen fällt aus der Reihe: Es sieht ganz anders aus, hat keine Federn und kann nicht fliegen. „Unsere kleine Rosa“, sagt die Mutter zärtlich.\n\nDie Tiere aus der Umgebung geben viele gut gemeinte Ratschläge, wie Rosa so werden kann wie ihre Geschwister. Doch irgendwann hat Rosa genug davon. Sie merkt, dass sie ganz eigene Talente besitzt. Und als sie beginnt, offen auf andere zuzugehen, erkennt sie: Es gibt viele Wege, die Welt zu entdecken – ganz auf ihre eigene Art.",
-    "preis": 16.00,
+    
     "leseprobe_pdf": "dierabenrosa.pdf",
     "bilder": [
       "images/rabenrosa/dierabenrosa.jpg",
@@ -117,11 +113,8 @@
    {
     "id": 9,
     "ean": "9783702657376",
-    "name": "Wenn Anna Angst hat...",
-    "autor": "Heinz Janisch (Text) | Barbara Jung (Illustration)",
     "beschreibung": "Wie viele andere Kinder hat auch Anna manchmal abends im Dunkeln Angst, wenn sie allein in ihrem Bett liegt. Doch sie ist nicht wirklich allein – sie ruft ihre Fantasiefreunde zu sich: den riesengroßen Riesen, der niemals müde wird, die 33 tapferen Ritter, die in kleinen Nussschalen leben, die Glückskatze, deren Schnurren alle beruhigt, den Wasserfall, der ihr Gesicht sanft erfrischt – und noch viele mehr.\n\nMit ihrer Hilfe fühlt sich Anna plötzlich sicher und merkt: Die Angst ist verschwunden. Bald schläft sie ein – und mit ihr ihre Freunde. Nur einer bleibt wach: der große Riese, der die ganze Nacht über sie wacht.",
-    "preis": 17.00,
-    "leseprobe_pdf": "wennannaangsthat.pdf",
+   
     "bilder": [
       "images/wennannaangsthat/wennannaangsthat.jpg",
       "images/wennannaangsthat/wennannaangsthat1.jpg",
@@ -149,7 +142,6 @@
     "ean": "9783257011616",
    
     "beschreibung": "Maurice Sendaks Kinderbuchklassiker: Die Geschichte vom wilden Max, der von seiner Mutter ohne Essen ins Bett geschickt wird und darauf das Reich der wilden Kerle erobert.\n\nMaurice Sendak, geboren 1928 in New York als Kind polnisch-jüdischer Einwanderer, revolutionierte mit Büchern wie ›Wo die wilden Kerle wohnen‹, ›Die Nachtküche‹ und ›Higgelti Piggelti Pop!‹ die Kinderliteratur. Sendak wurde u.a. mit der Caldecott-Medal, dem internationalen Hans-Christian-Andersen-Preis und dem Astrid-Lindgren-Gedächtnis-Preis ausgezeichnet. Spike Jonzes Verfilmung von ›Wo die wilden Kerle wohnen‹ (Drehbuch: Spike Jonze und Dave Eggers) war 2009 ein großer Kinoerfolg. Maurice Sendak starb 2012 in Danbury, Connecticut.",
-    "preis": 20.00,
     "bilder": [
       "images/wildekerle/wildeKerle.jpg",
       "images/wildekerle/wildeKerle1.jpg",
@@ -202,6 +194,8 @@
     ],
     "kategorie": "Monstergeschichten"
   },
+
+  
   {
   "id": 14,
   "ean": "9783863214197",
@@ -254,8 +248,7 @@
 {
   "id": 17,
   "ean": "9783791375755",
-  "name": "Mutig",
-  "autor": "Britta Teckentrup",
+
   "beschreibung": "Was wir nicht kennen, kann ganz schön furchteinflößend sein. In diesem ausdrucksstarken Bilderbuch geht Britta Teckentrup der Frage nach, was es bedeutet, mutig zu sein. Sie erzählt die Geschichte eines Mädchens, das alleine durch einen dunklen Wald wandert und sich vor einem Bären fürchtet. Zuerst macht der Bär ihr Angst, er wirkt riesig und fremd. Doch als sie sich ihm nähert, wird der Bär ihr Begleiter und schließlich ihr Freund. Dieses Buch eignet sich perfekt für die Behandlung von Angst für Kinder im Kindergarten- und Grundschulalter. Es zeigt, wie lähmend sich Angst manchmal anfühlen kann, aber auch, wie gut es tut, sich mit seinen Ängsten zu konfrontieren und sie damit zu überwinden.",  
   "preis": 18.00,
   "bilder": [
@@ -280,35 +273,23 @@
 {
   "id": 19,
   "ean": "9783791375366",
-  "name": "Die Schaukel",
-  "autor": "Britta Teckentrup",
+
   "beschreibung": "Die Schaukel ist ein philosophisches Bilderbuch, das Kinder behutsam an die Höhen und Tiefen des Lebens heranführt. In vielen kleinen Miniatur-Erzählungen spielt die Schaukel eine tragende Rolle – sie weiß von Kinderträumen, Freundschaften, Sorgen und Zeiten des Wachsens. Wer sind wir, was bewegt uns gerade? Dieses Buch lädt dazu ein, über das Leben ins Gespräch zu kommen. (Ab 5 Jahren)",
   "preis": 25.00,
   "bilder": [
     "images/schaukel/schaukel.jpg"
   ],
   "leseprobe_pdf": "schaukel.pdf",
-  "kategorie": "Kinder und Gefühle",
-  "seitenzahl": 160,
-  "format": {
-    "breite_cm": 21.0,
-    "höhe_cm": 21.0
-  },
-  "einband": "Hardcover / Pappband",
-  "erscheinungsjahr": 2023,
-  "isbn": "978-3-7913-7531-1",
-  "verlag": "Prestel junior",
-  "zielalter": "ab 5 Jahren",
-  "lieferstatus": "lieferbar"
+  "kategorie": "Kinder und Gefühle"
+ 
 },
 
 {
   "id": 20,
   "ean": "9781851244942",
-  "name": "There Was An Old Lady",
-  "autor": "Abner Graboff",
+ 
   "beschreibung": "One day an old lady swallows a fly and the only way she can get rid of it is to swallow a wriggling, tickling spider ... For over a century this subversive rhyme has delighted children and parents alike. Graboff's bright and startling illustrations combine beautifully with the traditional verse to bring this classic tale to life.",
-  "preis": 12.99,
+ 
   "bilder": [
     "images/anonldlady/anoldlady.jpg",
     "images/anonldlady/anoldlady1.jpg",
