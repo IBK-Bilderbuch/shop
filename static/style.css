@@ -410,6 +410,9 @@ button.next { right: 10px; }
     font-size: 16px;
     padding: 10px;
   }
+   footer {
+        margin-top: auto; /* schiebt Footer nach unten */
+   }
 }
 
 /* =========================================
