@@ -325,12 +325,28 @@ def index():
     kategorien = [(k, [p for p in produkte if p.get("kategorie") == k]) for k in kategorienamen]
     return render_template("index.html", kategorien=kategorien, user_email=session.get("user_email"))
 
+# suche icon 
+
+@app.route("/suche")
+def suche():
+    suchbegriff = request.args.get("q", "").lower()
+
+    ergebnisse = []
+
+    for titel, liste in kategorien:
+        for produkt in liste:
+            if suchbegriff in produkt.name.lower():
+                ergebnisse.append(produkt)
+
+    return render_template(
+        "suche.html",
+        query=suchbegriff,
+        ergebnisse=ergebnisse
+    )
+
 # Produkt Detail
 
   
-
-        
-
 
 @app.route('/produkt/<int:produkt_id>')
 def produkt_detail(produkt_id):
