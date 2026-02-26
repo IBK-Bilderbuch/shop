@@ -333,7 +333,7 @@ main {
   background-color: var(--color-primary);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 0px;
   font-size: 16px;
   cursor: pointer;
   z-index: 5;
@@ -376,7 +376,7 @@ button.next { right: 10px; }
 
   .slide-btn {
     font-size: 8px;
-    padding: 8px 16px;
+    padding: 10px 23px;
     bottom: 20px;
     left: 70%;
   }
@@ -401,7 +401,7 @@ button.next { right: 10px; }
 
   .slide-btn {
     font-size: 15px;
-    padding: 8px 16px;
+    padding: 12px 35px;
     bottom: 40px;
   }
 
