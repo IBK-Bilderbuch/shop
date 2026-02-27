@@ -26,6 +26,9 @@ from models import db, Bestellung, BestellPosition
 
 from datetime import timedelta
 
+from functools import lru_cache
+
+
 # =====================================================
 # CONFIG
 # =====================================================
@@ -188,6 +191,10 @@ def buchbutler_request(endpoint, ean):
 # CONTENT API
 # -----------------------------
 
+@lru_cache(maxsize=128)
+def cached_lade_produkt_von_api(ean):
+    return lade_produkt_von_api(ean)
+
 def lade_produkt_von_api(ean):
     """Lädt Produktdaten von CONTENT API"""
 
@@ -230,7 +237,6 @@ def lade_produkt_von_api(ean):
     except Exception:
         logger.exception("Fehler beim Laden von CONTENT API")
         return None
-
 
 # -----------------------------
 # MOVEMENT API
