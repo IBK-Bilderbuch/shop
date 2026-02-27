@@ -324,22 +324,8 @@ def index():
         "Kinder und Gefühle", "Dazugehören"
     ]
 
-    komplette_produkte = []
-
-    for p in produkte:
-
-        if not p.get("ean"):
-            continue
-
-        api_produkt = lade_produkt_von_api(p["ean"])
-
-        if api_produkt:
-            api_produkt.update(p)  # 🔥 deine Daten überschreiben API
-
-            komplette_produkte.append(api_produkt)
-
     kategorien = [
-        (k, [p for p in komplette_produkte if p.get("kategorie") == k])
+        (k, [p for p in produkte if p.get("kategorie") == k])
         for k in kategorienamen
     ]
 
@@ -348,6 +334,32 @@ def index():
         kategorien=kategorien,
         user_email=session.get("user_email")
     )
+
+
+
+@app.route("/admin/sync-buchbutler")
+def sync_buchbutler():
+
+    if not session.get("admin"):
+        abort(403)
+
+    for produkt in produkte:
+
+        ean = produkt.get("ean")
+        if not ean:
+            continue
+
+        api = lade_produkt_von_api(ean)
+
+        if api:
+            produkt["name"] = api.get("name")
+            produkt["autor"] = api.get("autor")
+            produkt["preis"] = api.get("preis")
+
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(produkte, f, ensure_ascii=False, indent=2)
+
+    return "✅ Buchbutler Sync fertig"
 
 # suche icon 
 @app.route("/suche", methods=["GET", "POST"])
