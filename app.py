@@ -410,8 +410,7 @@ def produkt_detail(produkt_id):
         abort(404)
 
     # 2️⃣ Produkt von Buchbutler laden
-    produkt = lade_produkt_von_api(ean)
-
+   produkt = cached_lade_produkt_von_api(ean)
     if not produkt:
         abort(404)
 
