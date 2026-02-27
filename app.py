@@ -326,7 +326,6 @@ def index():
     return render_template("index.html", kategorien=kategorien, user_email=session.get("user_email"))
 
 # suche icon 
-
 @app.route("/suche", methods=["GET", "POST"])
 def suche():
     query = ""
@@ -335,13 +334,17 @@ def suche():
     if request.method == "POST":
         query = request.form.get("q", "").lower()
 
-        # Beispiel: Suche in allen Produkten
-        for titel, liste in kategorien:
-            for produkt in liste:
-                if query in produkt.name.lower():
-                    ergebnisse.append(produkt)
+        for produkt in produkte:
+            name = produkt.get("name", "").lower()
 
-    return render_template("suche.html", query=query, ergebnisse=ergebnisse)
+            if query in name:
+                ergebnisse.append(produkt)
+
+    return render_template(
+        "suche.html",
+        query=query,
+        ergebnisse=ergebnisse
+    )
 
 # Produkt Detail
 
