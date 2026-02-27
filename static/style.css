@@ -717,7 +717,7 @@ button[type="submit"]:hover {
    RECHTLICHES
 ========================================= */
 
-.rechtliches { 
+.rechtliches, .search-page { 
   margin: 50px 180px;
 }
 
