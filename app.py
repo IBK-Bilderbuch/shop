@@ -316,14 +316,38 @@ def admin_bestellungen():
 # Homepage
 @app.route("/")
 def index():
+
     kategorienamen = [
         "Jacominus Gainsborough", "Mut oder Angst?!",
         "Klassiker", "Monstergeschichten",
         "Wichtige Fragen", "Weihnachten",
         "Kinder und Gefühle", "Dazugehören"
     ]
-    kategorien = [(k, [p for p in produkte if p.get("kategorie") == k]) for k in kategorienamen]
-    return render_template("index.html", kategorien=kategorien, user_email=session.get("user_email"))
+
+    komplette_produkte = []
+
+    for p in produkte:
+
+        if not p.get("ean"):
+            continue
+
+        api_produkt = lade_produkt_von_api(p["ean"])
+
+        if api_produkt:
+            api_produkt.update(p)  # 🔥 deine Daten überschreiben API
+
+            komplette_produkte.append(api_produkt)
+
+    kategorien = [
+        (k, [p for p in komplette_produkte if p.get("kategorie") == k])
+        for k in kategorienamen
+    ]
+
+    return render_template(
+        "index.html",
+        kategorien=kategorien,
+        user_email=session.get("user_email")
+    )
 
 # suche icon 
 @app.route("/suche", methods=["GET", "POST"])
