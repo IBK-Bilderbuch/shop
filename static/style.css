@@ -28,6 +28,7 @@ main.page-content {
 body {
   font-family: var(--font-body);
   color: #333;
+   display: flex;
 }
 
 h1, h2, h3 {
