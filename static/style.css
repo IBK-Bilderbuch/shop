@@ -266,7 +266,7 @@ footer {
   color: #333;
   font-family: var(--font-heading);
   margin-top: auto; /* schiebt Footer nach unten */
-  font-size: 16px;
+  font-size: 1.1rem,
 }
 
 footer a {
