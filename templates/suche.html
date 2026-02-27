@@ -16,7 +16,7 @@
 <div id="navbar-placeholder"></div>
   
 
-<main class="search-page">
+<div class="search-page">
   <h2>Finde dein Buch</h2>
 
   <form action="{{ url_for('suche') }}" method="POST" class="search-form">
@@ -43,7 +43,7 @@
       <p>Keine Ergebnisse gefunden.</p>
     {% endif %}
   {% endif %}
-</main>
+</div>
 
 {% include 'footer.html' %}
 
