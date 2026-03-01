@@ -330,10 +330,34 @@ def index():
         "Kinder und Gefühle", "Dazugehören"
     ]
 
-    kategorien = [
-        (k, [p for p in produkte if p.get("kategorie") == k])
-        for k in kategorienamen
-    ]
+    kategorien = []
+
+    for k in kategorienamen:
+
+        liste = []
+
+        for p in produkte:
+
+            if p.get("kategorie") != k:
+                continue
+
+            produkt = p.copy()
+
+            ean = produkt.get("ean")
+
+            # ⭐ Buchbutler Daten holen
+            if ean:
+                api = cached_lade_produkt_von_api(ean)
+                if api:
+                    produkt.update(api)
+
+                movement = lade_bestand_von_api(ean)
+                if movement:
+                    produkt.update(movement)
+
+            liste.append(produkt)
+
+        kategorien.append((k, liste))
 
     return render_template(
         "index.html",
