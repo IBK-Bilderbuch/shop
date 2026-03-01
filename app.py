@@ -377,11 +377,13 @@ def index():
 
 
 
-@app.route("/admin/sync-buchbutler")
-def sync_buchbutler():
+@app.route("/admin/sync-name-preis")
+def sync_name_preis():
 
     if not session.get("admin"):
         abort(403)
+
+    updated = 0
 
     for produkt in produkte:
 
@@ -389,17 +391,23 @@ def sync_buchbutler():
         if not ean:
             continue
 
-        api = lade_produkt_von_api(ean)
+        print("SYNC:", ean)
 
-        if api:
-            produkt["name"] = api.get("name")
-            produkt["autor"] = api.get("autor")
-            produkt["preis"] = api.get("preis")
+        content = lade_produkt_von_api(ean)
+        movement = lade_bestand_von_api(ean)
+
+        if content:
+            produkt["name"] = content.get("name")
+
+        if movement:
+            produkt["preis"] = movement.get("preis")
+
+        updated += 1
 
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(produkte, f, ensure_ascii=False, indent=2)
 
-    return "✅ Buchbutler Sync fertig"
+    return f"✅ {updated} Bücher aktualisiert"
 
 # suche icon 
 @app.route("/suche", methods=["GET", "POST"])
