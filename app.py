@@ -103,6 +103,16 @@ else:
 # =====================================================
 # EMAIL
 # =====================================================
+#temporär!!!!!!!!!!!!!!!!!
+
+@app.route("/test-api/<ean>")
+def test_api(ean):
+    return {
+        "content": lade_produkt_von_api(ean),
+        "movement": lade_bestand_von_api(ean)
+    }
+
+#temporär!!!!!!!!!!!!!!!!!
 
 
 def send_email(subject, body, recipient):
