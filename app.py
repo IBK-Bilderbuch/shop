@@ -343,18 +343,19 @@ def index():
 
 
 
-@app.route("/admin/sync-buchbutler")
-def sync_buchbutler():
+@app.route("/admin/sync-buchbutler/<int:index>")
+def sync_buchbutler(index):
 
     if not session.get("admin"):
         abort(403)
 
-    for produkt in produkte:
+    if index >= len(produkte):
+        return "✅ Sync komplett"
 
-        ean = produkt.get("ean")
-        if not ean:
-            continue
+    produkt = produkte[index]
+    ean = produkt.get("ean")
 
+    if ean:
         print("SYNC:", ean)
 
         api = lade_produkt_von_api(ean)
@@ -367,11 +368,14 @@ def sync_buchbutler():
         if movement:
             produkt["preis"] = movement.get("preis")
 
-    with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(produkte, f, ensure_ascii=False, indent=2)
+        # sofort speichern → kein RAM Wachstum
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(produkte, f, ensure_ascii=False, indent=2)
 
-    return "✅ Sync fertig"
+    next_index = index + 1
 
+    return redirect(url_for("sync_buchbutler", index=next_index))
+    
 # suche icon 
 @app.route("/suche", methods=["GET", "POST"])
 def suche():
