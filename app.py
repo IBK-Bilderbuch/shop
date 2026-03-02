@@ -103,16 +103,6 @@ else:
 # =====================================================
 # EMAIL
 # =====================================================
-#temporär!!!!!!!!!!!!!!!!!
-
-@app.route("/test-api/<ean>")
-def test_api(ean):
-    return {
-        "content": lade_produkt_von_api(ean),
-        "movement": lade_bestand_von_api(ean)
-    }
-
-#temporär!!!!!!!!!!!!!!!!!
 
 
 def send_email(subject, body, recipient):
@@ -340,34 +330,10 @@ def index():
         "Kinder und Gefühle", "Dazugehören"
     ]
 
-    kategorien = []
-
-    for k in kategorienamen:
-
-        liste = []
-
-        for p in produkte:
-
-            if p.get("kategorie") != k:
-                continue
-
-            produkt = p.copy()
-
-            ean = produkt.get("ean")
-
-            # ⭐ Buchbutler Daten holen
-            if ean:
-                api = cached_lade_produkt_von_api(ean)
-                if api:
-                    produkt.update(api)
-
-                movement = lade_bestand_von_api(ean)
-                if movement:
-                    produkt.update(movement)
-
-            liste.append(produkt)
-
-        kategorien.append((k, liste))
+    kategorien = [
+        (k, [p for p in produkte if p.get("kategorie") == k])
+        for k in kategorienamen
+    ]
 
     return render_template(
         "index.html",
@@ -377,13 +343,11 @@ def index():
 
 
 
-@app.route("/admin/sync-name-preis")
-def sync_name_preis():
+@app.route("/admin/sync-buchbutler")
+def sync_buchbutler():
 
     if not session.get("admin"):
         abort(403)
-
-    updated = 0
 
     for produkt in produkte:
 
@@ -393,21 +357,20 @@ def sync_name_preis():
 
         print("SYNC:", ean)
 
-        content = lade_produkt_von_api(ean)
+        api = lade_produkt_von_api(ean)
         movement = lade_bestand_von_api(ean)
 
-        if content:
-            produkt["name"] = content.get("name")
+        if api:
+            produkt["name"] = api.get("name")
+            produkt["autor"] = api.get("autor")
 
         if movement:
             produkt["preis"] = movement.get("preis")
 
-        updated += 1
-
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(produkte, f, ensure_ascii=False, indent=2)
 
-    return f"✅ {updated} Bücher aktualisiert"
+    return "✅ Sync fertig"
 
 # suche icon 
 @app.route("/suche", methods=["GET", "POST"])
