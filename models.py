@@ -58,3 +58,34 @@ class BestellPosition(db.Model):
     bezeichnung = db.Column(db.String(200))
     menge = db.Column(db.Integer)
     preis = db.Column(db.Float)
+
+# ----------------------
+# Produkt Modell (Hybrid-System)
+# ----------------------
+
+class Produkt(db.Model):
+    __tablename__ = "produkte"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    ean = db.Column(db.String(50), unique=True, nullable=False)
+
+    name = db.Column(db.String(255))
+    autor = db.Column(db.String(255))
+    beschreibung = db.Column(db.Text)
+
+    preis = db.Column(db.Float)
+    kategorie = db.Column(db.String(120))
+
+    lagerbestand = db.Column(db.Integer)
+
+    bild_url = db.Column(db.String(500))
+
+    zuletzt_aktualisiert = db.Column(
+        db.DateTime,
+        default=datetime.utcnow,
+        onupdate=datetime.utcnow
+    )
+
+    def __repr__(self):
+        return f"<Produkt {self.name}>"
