@@ -437,7 +437,6 @@ def import_json_in_db():
             existiert.autor = p.get("autor")
             existiert.preis = p.get("preis")
             existiert.kategorie = p.get("kategorie")
-            existiert.bilder = p.get("bilder")
 
         else:
             neu = Produkt(
@@ -446,7 +445,6 @@ def import_json_in_db():
                 autor=p.get("autor"),
                 preis=p.get("preis"),
                 kategorie=p.get("kategorie"),
-                bilder=p.get("bilder")
             )
             db.session.add(neu)
 
