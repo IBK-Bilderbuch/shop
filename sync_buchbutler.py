@@ -1,26 +1,21 @@
-from app import app, db, lade_produkt_von_api, lade_bestand_von_api, Produkt
+# sync_buchbutler.py
+import os
+from app import app, db, lade_produkt_von_api, lade_bestand_von_api
+from models import Produkt
 
-def sync_all():
-    with app.app_context():
-        alle_produkte = Produkt.query.all()
+with app.app_context():
+    alle_produkte = Produkt.query.all()
+    for produkt in alle_produkte:
+        api = lade_produkt_von_api(produkt.ean)
+        movement = lade_bestand_von_api(produkt.ean)
 
-        for produkt in alle_produkte:
-            ean = produkt.ean
-            api = lade_produkt_von_api(ean)
-            movement = lade_bestand_von_api(ean)
+        if api:
+            produkt.name = api.get("name")
+            produkt.autor = api.get("autor")
+        if movement:
+            produkt.preis = movement.get("preis")
 
-            if api:
-                produkt.name = api.get("name")
-                produkt.autor = api.get("autor")
-            if movement:
-                produkt.preis = movement.get("preis")
+        db.session.add(produkt)
 
-            produkt.json_data = api  # optional: alle Attribute speichern
-
-            db.session.add(produkt)
-
-        db.session.commit()
-        print("✅ Buchbutler Sync abgeschlossen")
-
-if __name__ == "__main__":
-    sync_all()
+    db.session.commit()
+    print("✅ Sync abgeschlossen")
