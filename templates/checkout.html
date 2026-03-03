@@ -21,14 +21,13 @@
     <div class="checkout-cart">
       <h3>Ihre Bestellung</h3>
       {% include 'cart_component.html' %}
-      <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
     </div>
 
     <!-- Checkout Formular -->
     <div class="checkout-form">
       <form id="checkout-form" method="POST" action="{{ url_for('checkout') }}">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <h3>Lieferdaten und Zahlungsmethode</h3><br><br>
+        <h3>Lieferdaten</h3><br><br>
 
         <!-- Kundendaten -->
         <div class="half-container">
@@ -48,43 +47,14 @@
         <label><input type="text" name="adresszusatz" placeholder="Adresszusatz"></label>
         <label><input type="text" name="telefon" required placeholder="Telefonnummer"></label>
 
-        <!-- Zahlungsmethode -->
-        <label>
-          Zahlungsmethode:
-          <select id="payment-method" name="paymentmethod" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="rechnung">Per Rechnung</option>
-            <option value="paypal">PayPal</option>
-            <option value="kreditkarte">Kreditkarte</option>
-          </select>
-        </label>
-
-        <!-- Zahlungsdetails -->
-        <div id="rechnung-details" class="payment-details hidden">
-          <p>Sie erhalten die Rechnung per Post. Bitte zahlen Sie innerhalb von 14 Tagen.</p>
-        </div>
-
-        <div id="paypal-details" class="payment-details hidden">
-          <p>Mit einem Klick auf <em>Bezahlen</em> werden Sie zu PayPal weitergeleitet.</p>
-          <div id="paypal-button-container"></div>
-        </div>
-
-        <div id="kreditkarte-details" class="payment-details hidden">
-          <label>Kreditkartennummer:<input type="text" name="cardnumber" pattern="\d{16}" title="16-stellige Kreditkartennummer"></label>
-          <label>Ablaufdatum:<input type="month" name="expiry"></label>
-          <label>CVV:<input type="text" name="cvv" pattern="\d{3}" title="3-stelliger CVV"></label>
-        </div>
-
-        <label class="newsletter-consent">
-          <input type="checkbox" name="newsletter" id="newsletter-checkbox"> Ich möchte mich für den Newsletter anmelden.
-        </label>
+        <!-- Datenschutz Checkbox -->
         <label class="privacy-consent">
           <input type="checkbox" name="privacy" id="privacy-checkbox" required>
           Ich habe die <a href="{{ url_for('datenschutz') }}" target="_blank">Datenschutzerklärung</a> gelesen und stimme ihr zu.
         </label>
 
-        <!-- Submit Button für Rechnung/Kreditkarte -->
-        <button type="submit" id="submit-button" disabled>Bezahldaten überprüfen</button>
+        <!-- PayPal Button Container -->
+        <div id="paypal-button-container" style="margin-top: 20px;"></div>
       </form>
     </div>
   </div>
@@ -92,59 +62,43 @@
 
 {% include 'footer.html' %}
 
-<!-- JS -->
-<script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}"></script>
+<!-- PayPal JS SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR"></script>
 <script>
-const paymentMethodSelect = document.getElementById('payment-method');
-const rechnungDetails = document.getElementById('rechnung-details');
-const paypalDetails = document.getElementById('paypal-details');
-const kreditkarteDetails = document.getElementById('kreditkarte-details');
 const privacyCheckbox = document.getElementById('privacy-checkbox');
-const submitButton = document.getElementById('submit-button');
 
-paymentMethodSelect.addEventListener('change', () => {
-  const method = paymentMethodSelect.value;
-  rechnungDetails.classList.add('hidden');
-  paypalDetails.classList.add('hidden');
-  kreditkarteDetails.classList.add('hidden');
-  submitButton.style.display = "inline-block"; // Standard sichtbar
-
-  if (method === 'rechnung') rechnungDetails.classList.remove('hidden');
-  if (method === 'paypal') {
-    paypalDetails.classList.remove('hidden');
-    submitButton.style.display = "none"; // PayPal hat eigenen Button
-    renderPayPalButton();
-  }
-  if (method === 'kreditkarte') kreditkarteDetails.classList.remove('hidden');
-});
-
-// Datenschutz Checkbox
-privacyCheckbox.addEventListener('change', () => {
-  if (paymentMethodSelect.value !== 'paypal') {
-    submitButton.disabled = !privacyCheckbox.checked;
-  }
-});
-
-// PayPal Button Funktion
 function renderPayPalButton() {
   if (document.getElementById('paypal-button-container').children.length > 0) return;
 
   paypal.Buttons({
-    createOrder: function() {
+    onInit: function(data, actions) {
+      actions.disable();
+      privacyCheckbox.addEventListener('change', function() {
+        if (this.checked) actions.enable();
+        else actions.disable();
+      });
+    },
+    createOrder: function(data, actions) {
       return fetch("/create-paypal-order", { method: "POST" })
         .then(res => res.json())
-        .then(data => data.id);
+        .then(order => order.id);
     },
-    onApprove: function(data) {
+    onApprove: function(data, actions) {
       return fetch("/capture-paypal-order/" + data.orderID, { method: "POST" })
         .then(res => res.json())
         .then(res => {
           if(res.status === 'success') window.location.href = "/bestelldanke";
           else alert("Fehler bei PayPal-Zahlung.");
         });
+    },
+    onError: function(err) {
+      console.error(err);
+      alert("PayPal-Zahlung konnte nicht gestartet werden.");
     }
   }).render('#paypal-button-container');
 }
+
+renderPayPalButton();
 </script>
 <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
 </body>
