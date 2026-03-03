@@ -156,7 +156,9 @@ def create_paypal_order():
         },
     )
 
-    return jsonify(response.json())
+    order_data = response.json()
+    return jsonify({"id": order_data["id"]})
+
 
 
 
