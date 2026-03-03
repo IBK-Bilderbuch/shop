@@ -21,7 +21,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
 # Modelle importieren
-from models import db, Bestellung, BestellPosition
+from models import db, Bestellung, BestellPosition, Produkt
 
 
 from datetime import timedelta
@@ -87,18 +87,6 @@ BASE_URL = "https://api.buchbutler.de"
 
 
 
-# =====================================================
-# PRODUKTE LADEN
-# =====================================================
-
-basedir = os.path.abspath(os.path.dirname(__file__))
-json_path = os.path.join(basedir, "produkte.json")
-
-if os.path.exists(json_path):
-    with open(json_path, encoding="utf-8") as f:
-        produkte = json.load(f)
-else:
-    produkte = []
 
 # =====================================================
 # EMAIL
@@ -324,16 +312,21 @@ def admin_bestellungen():
 def index():
 
     kategorienamen = [
-        "Jacominus Gainsborough", "Mut oder Angst?!",
-        "Klassiker", "Monstergeschichten",
-        "Wichtige Fragen", "Weihnachten",
-        "Kinder und Gefühle", "Dazugehören"
+        "Jacominus Gainsborough",
+        "Mut oder Angst?!",
+        "Klassiker",
+        "Monstergeschichten",
+        "Wichtige Fragen",
+        "Weihnachten",
+        "Kinder und Gefühle",
+        "Dazugehören"
     ]
 
-    kategorien = [
-        (k, [p for p in produkte if p.get("kategorie") == k])
-        for k in kategorienamen
-    ]
+    kategorien = []
+
+    for k in kategorienamen:
+        liste = Produkt.query.filter_by(kategorie=k).all()
+        kategorien.append((k, liste))
 
     return render_template(
         "index.html",
@@ -343,60 +336,51 @@ def index():
 
 
 
-@app.route("/admin/sync-buchbutler/<int:index>")
-def sync_buchbutler(index):
+@app.route("/admin/sync-buchbutler")
+def sync_buchbutler():
 
     if not session.get("admin"):
         abort(403)
 
-    if index >= len(produkte):
-        return "✅ Sync komplett"
+    produkte = Produkt.query.all()
 
-    produkt = produkte[index]
-    ean = produkt.get("ean")
+    for produkt in produkte:
 
-    if ean:
-        print("SYNC:", ean)
-
-        api = lade_produkt_von_api(ean)
-        movement = lade_bestand_von_api(ean)
+        api = lade_produkt_von_api(produkt.ean)
+        movement = lade_bestand_von_api(produkt.ean)
 
         if api:
-            produkt["name"] = api.get("name")
-            produkt["autor"] = api.get("autor")
+            produkt.name = api.get("name")
+            produkt.autor = api.get("autor")
 
         if movement:
-            produkt["preis"] = movement.get("preis")
+            produkt.preis = movement.get("preis")
 
-        # sofort speichern → kein RAM Wachstum
-        with open(json_path, "w", encoding="utf-8") as f:
-            json.dump(produkte, f, ensure_ascii=False, indent=2)
+    db.session.commit()
 
-    next_index = index + 1
+    return "✅ Sync komplett"
 
-    return redirect(url_for("sync_buchbutler", index=next_index))
+   
     
 # suche icon 
 @app.route("/suche", methods=["GET", "POST"])
 def suche():
+
     query = ""
     ergebnisse = []
 
     if request.method == "POST":
         query = request.form.get("q", "").lower()
 
-        for produkt in produkte:
-            name = produkt.get("name", "").lower()
-
-            if query in name:
-                ergebnisse.append(produkt)
+        ergebnisse = Produkt.query.filter(
+            Produkt.name.ilike(f"%{query}%")
+        ).all()
 
     return render_template(
         "suche.html",
         query=query,
         ergebnisse=ergebnisse
     )
-
 # Produkt Detail
 
   
@@ -404,87 +388,110 @@ def suche():
 @app.route('/produkt/<int:produkt_id>')
 def produkt_detail(produkt_id):
 
-    # 1️⃣ lokale Zusatzdaten (Bilder / Leseprobe)
-    lokale_daten = next(
-         (p.copy() for p in produkte if p["id"] == produkt_id),
-         None
-    )
+    produkt = Produkt.query.get_or_404(produkt_id)
 
-    if not lokale_daten:
-        abort(404)
+    api = cached_lade_produkt_von_api(produkt.ean)
+    movement = lade_bestand_von_api(produkt.ean)
 
-    ean = lokale_daten.get("ean")
+    produkt_daten = {
+        "id": produkt.id,
+        "ean": produkt.ean,
+        "name": produkt.name,
+        "autor": produkt.autor,
+        "preis": produkt.preis,
+        "kategorie": produkt.kategorie
+    }
 
-    if not ean:
-        abort(404)
+    if api:
+        produkt_daten.update(api)
 
-    # 2️⃣ Produkt von Buchbutler laden
-    produkt = cached_lade_produkt_von_api(ean)
-
-    if not produkt:
-        abort(404)
-
-    # 3️⃣ Bestand + Preis laden
-    movement = lade_bestand_von_api(ean)
     if movement:
-        produkt.update(movement)
-
-    # 4️⃣ eigene Daten hinzufügen
-    produkt.update(lokale_daten)
-
-    # 5️⃣ Defaults (WICHTIG)
-    produkt.setdefault("bestand", "n/a")
-    produkt.setdefault("preis", 0)
-    produkt.setdefault("handling_zeit", "n/a")
-    produkt.setdefault("erfuellungsrate", "n/a")
+        produkt_daten.update(movement)
 
     return render_template(
         "produkt.html",
-        produkt=produkt,
+        produkt=produkt_daten,
         user_email=session.get("user_email")
     )
 
 
+def import_json_in_db():
 
+    json_path = os.path.join(os.path.dirname(__file__), "produkte.json")
+
+    if not os.path.exists(json_path):
+        print("Keine JSON gefunden")
+        return
+
+    with open(json_path, "r", encoding="utf-8") as f:
+        produkte = json.load(f)
+
+    for p in produkte:
+
+        if not p.get("ean"):
+            continue
+
+        existiert = Produkt.query.filter_by(ean=p["ean"]).first()
+
+        if existiert:
+            # Update bestehendes Produkt
+            existiert.name = p.get("name")
+            existiert.autor = p.get("autor")
+            existiert.preis = p.get("preis")
+            existiert.kategorie = p.get("kategorie")
+            existiert.bilder = p.get("bilder")
+
+        else:
+            neu = Produkt(
+                ean=p["ean"],
+                name=p.get("name"),
+                autor=p.get("autor"),
+                preis=p.get("preis"),
+                kategorie=p.get("kategorie"),
+                bilder=p.get("bilder")
+            )
+            db.session.add(neu)
+
+    db.session.commit()
+    print("JSON erfolgreich in DB synchronisiert")
 # ============================
 # CART ROUTES
 # ============================
 
 @app.route("/add-to-cart", methods=["POST"])
 def add_to_cart():
+
     produkt_id = int(request.form.get("produkt_id"))
-    produkt = next((p for p in produkte if p["id"] == produkt_id), None)
 
-    if not produkt:
-        abort(404)
+    produkt = Produkt.query.get_or_404(produkt_id)
 
-    # ✅ WICHTIG: Kopie machen (kein globales Update!)
-    produkt = produkt.copy()
+    # Live Preis + Bestand holen
+    preis = produkt.preis
 
-    # ✅ Preis + Bestand laden
-    if produkt.get("ean"):
-        movement = lade_bestand_von_api(produkt["ean"])
-        if movement:
-            produkt.update(movement)
+    if produkt.ean:
+        movement = lade_bestand_von_api(produkt.ean)
+        if movement and movement.get("preis"):
+            preis = movement["preis"]
 
     cart = get_cart()
 
     found = False
     for item in cart:
-        if item["id"] == produkt_id:
+        if item["id"] == produkt.id:
             item["quantity"] += 1
             found = True
             break
 
     if not found:
         cart.append({
-            "id": produkt["id"],
-            "title": produkt["name"],
-            "price": produkt.get("preis", 0),
+            "id": produkt.id,
+            "title": produkt.name,
+            "price": preis,
             "quantity": 1
         })
 
     save_cart(cart)
+
     return redirect(url_for("cart"))
 
 
@@ -669,9 +676,15 @@ def kontaktdanke():
 def bestelldanke():
     return render_template("bestelldanke.html", user_email=session.get("user_email"))
 
+with app.app_context():
+    db.create_all()
+    import_json_in_db()
+
 # =====================================================
 # START (RENDER READY)
 # =====================================================
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
+
