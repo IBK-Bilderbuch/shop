@@ -674,7 +674,6 @@ def bestelldanke():
 
 with app.app_context():
     db.create_all()
-    import_json_in_db()
 
 # =====================================================
 # START (RENDER READY)
