@@ -1,4 +1,3 @@
-<!-- checkout.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -21,6 +20,7 @@
     <div class="checkout-cart">
       <h3>Ihre Bestellung</h3>
       {% include 'cart_component.html' %}
+      <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
     </div>
 
     <!-- Checkout Formular -->
@@ -47,14 +47,14 @@
         <label><input type="text" name="adresszusatz" placeholder="Adresszusatz"></label>
         <label><input type="text" name="telefon" required placeholder="Telefonnummer"></label>
 
-        <!-- Datenschutz Checkbox -->
+        <!-- Datenschutz -->
         <label class="privacy-consent">
           <input type="checkbox" name="privacy" id="privacy-checkbox" required>
           Ich habe die <a href="{{ url_for('datenschutz') }}" target="_blank">Datenschutzerklärung</a> gelesen und stimme ihr zu.
         </label>
 
-        <!-- PayPal Button Container -->
-        <div id="paypal-button-container" style="margin-top: 20px;"></div>
+        <!-- PayPal Button -->
+        <div id="paypal-button-container"></div>
       </form>
     </div>
   </div>
@@ -62,44 +62,56 @@
 
 {% include 'footer.html' %}
 
-<!-- PayPal JS SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR"></script>
+<!-- JS -->
+<script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}"></script>
 <script>
 const privacyCheckbox = document.getElementById('privacy-checkbox');
 
-function renderPayPalButton() {
-  if (document.getElementById('paypal-button-container').children.length > 0) return;
-
-  paypal.Buttons({
-    onInit: function(data, actions) {
-      actions.disable();
-      privacyCheckbox.addEventListener('change', function() {
-        if (this.checked) actions.enable();
-        else actions.disable();
-      });
-    },
-    createOrder: function(data, actions) {
-      return fetch("/create-paypal-order", { method: "POST" })
-        .then(res => res.json())
-        .then(order => order.id);
-    },
-    onApprove: function(data, actions) {
-      return fetch("/capture-paypal-order/" + data.orderID, { method: "POST" })
-        .then(res => res.json())
-        .then(res => {
-          if(res.status === 'success') window.location.href = "/bestelldanke";
-          else alert("Fehler bei PayPal-Zahlung.");
-        });
-    },
-    onError: function(err) {
-      console.error(err);
-      alert("PayPal-Zahlung konnte nicht gestartet werden.");
-    }
-  }).render('#paypal-button-container');
+function allFieldsFilled() {
+  const form = document.getElementById('checkout-form');
+  const requiredFields = form.querySelectorAll('input[required]');
+  return Array.from(requiredFields).every(f => f.value.trim() !== '');
 }
 
-renderPayPalButton();
+function updatePayPalButton(actions) {
+  if (privacyCheckbox.checked && allFieldsFilled()) {
+    actions.enable();
+  } else {
+    actions.disable();
+  }
+}
+
+paypal.Buttons({
+  onInit: function(data, actions) {
+    actions.disable(); // initial disabled
+
+    const form = document.getElementById('checkout-form');
+    const requiredFields = form.querySelectorAll('input[required]');
+
+    // Eventlistener für alle Pflichtfelder
+    requiredFields.forEach(f => f.addEventListener('input', () => updatePayPalButton(actions)));
+    privacyCheckbox.addEventListener('change', () => updatePayPalButton(actions));
+  },
+  createOrder: function(data, actions) {
+    return fetch("/create-paypal-order", { method: "POST" })
+      .then(res => res.json())
+      .then(order => order.id);
+  },
+  onApprove: function(data, actions) {
+    return fetch("/capture-paypal-order/" + data.orderID, { method: "POST" })
+      .then(res => res.json())
+      .then(res => {
+        if(res.status === 'success') window.location.href = "/bestelldanke";
+        else alert("Fehler bei PayPal-Zahlung.");
+      });
+  },
+  onError: function(err) {
+    console.error(err);
+    alert("PayPal-Zahlung konnte nicht gestartet werden.");
+  }
+}).render('#paypal-button-container');
 </script>
+
 <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
 </body>
 </html>
