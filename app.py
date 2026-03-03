@@ -39,13 +39,23 @@ load_dotenv()
 app = Flask(__name__)
 limiter = Limiter(get_remote_address, app=app)
 
+PAYPAL_CLIENT_ID = os.getenv("PAYPAL_CLIENT_ID")
+PAYPAL_SECRET = os.getenv("PAYPAL_SECRET")
+PAYPAL_MODE = os.getenv("PAYPAL_MODE", "sandbox")
+
+PAYPAL_BASE = (
+    "https://api-m.sandbox.paypal.com"
+    if PAYPAL_MODE == "sandbox"
+    else "https://api-m.paypal.com"
+)
+
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=1)
 app.config["SESSION_COOKIE_SECURE"] = os.getenv("FLASK_ENV") == "production"
 app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
 app.config["SESSION_PERMANENT"] = False
 
-
+app.config["PAYPAL_CLIENT_ID"] = PAYPAL_CLIENT_ID
 
 
 app.config["SECRET_KEY"] = os.getenv("FLASK_SECRET_KEY")
@@ -101,6 +111,75 @@ if os.path.exists(json_path):
 else:
     produkte = []
 
+
+# =====================================================
+# PAYPAL
+# =====================================================
+
+def paypal_access_token():
+    response = requests.post(
+        f"{PAYPAL_BASE}/v1/oauth2/token",
+        auth=(PAYPAL_CLIENT_ID, PAYPAL_SECRET),
+        data={"grant_type": "client_credentials"},
+    )
+    return response.json().get("access_token")
+
+
+
+
+
+@app.route("/create-paypal-order", methods=["POST"])
+@csrf.exempt
+def create_paypal_order():
+    cart_items = get_cart()
+    total = calculate_total(cart_items)
+
+    if not cart_items or total <= 0:
+        return jsonify({"error": "Warenkorb leer"}), 400
+
+    access_token = paypal_access_token()
+
+    response = requests.post(
+        f"{PAYPAL_BASE}/v2/checkout/orders",
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {access_token}",
+        },
+        json={
+            "intent": "CAPTURE",
+            "purchase_units": [{
+                "amount": {
+                    "currency_code": "EUR",
+                    "value": f"{total:.2f}"
+                }
+            }]
+        },
+    )
+
+    return jsonify(response.json())
+
+
+
+@app.route("/capture-paypal-order/<order_id>", methods=["POST"])
+@csrf.exempt
+def capture_paypal_order(order_id):
+    access_token = paypal_access_token()
+
+    response = requests.post(
+        f"{PAYPAL_BASE}/v2/checkout/orders/{order_id}/capture",
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {access_token}",
+        }
+    )
+
+    data = response.json()
+
+    if data.get("status") == "COMPLETED":
+        session.pop("cart", None)
+        return jsonify({"status": "success"})
+
+    return jsonify({"status": "error"}), 400
 # =====================================================
 # EMAIL
 # =====================================================
