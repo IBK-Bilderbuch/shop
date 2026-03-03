@@ -36,6 +36,7 @@ from functools import lru_cache
 load_dotenv()
 
 app = Flask(__name__)
+db.init_app(app)
 limiter = Limiter(get_remote_address, app=app)
 
 app.config["SESSION_COOKIE_HTTPONLY"] = True
