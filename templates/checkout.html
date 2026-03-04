@@ -1,3 +1,4 @@
+<!-- checkout.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -8,6 +9,10 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
 <title>Bezahlung | I B K - Buchhandlung für Illustration und Bilderbücher</title>
 <link rel="icon" type="image/x-icon" href="logo.png">
+<style>
+.payment-details { margin-top: 1em; }
+.hidden { display: none; }
+</style>
 </head>
 <body>
 {% include 'navbar.html' %}
@@ -25,7 +30,7 @@
 
     <!-- Checkout Formular -->
     <div class="checkout-form">
-      <form id="checkout-form" method="POST" action="{{ url_for('checkout') }}">
+      <form id="checkout-form" method="POST">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <h3>Lieferdaten</h3><br><br>
 
@@ -44,7 +49,6 @@
           <label class="drittel"><input type="text" name="stadt" required placeholder="Stadt"></label>
           <label class="drittel"><input type="text" name="land" required placeholder="Land"></label>
         </div>
-        <label><input type="text" name="adresszusatz" placeholder="Adresszusatz"></label>
         <label><input type="text" name="telefon" required placeholder="Telefonnummer"></label>
 
         <!-- Datenschutz -->
@@ -54,7 +58,7 @@
         </label>
 
         <!-- PayPal Button -->
-        <div id="paypal-button-container"></div>
+        <div id="paypal-button-container" style="margin-top:1em;"></div>
       </form>
     </div>
   </div>
@@ -62,56 +66,56 @@
 
 {% include 'footer.html' %}
 
-<!-- JS -->
-<script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}"></script>
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR"></script>
 <script>
+const form = document.getElementById('checkout-form');
 const privacyCheckbox = document.getElementById('privacy-checkbox');
+const requiredFields = form.querySelectorAll('input[required]');
 
 function allFieldsFilled() {
-  const form = document.getElementById('checkout-form');
-  const requiredFields = form.querySelectorAll('input[required]');
-  return Array.from(requiredFields).every(f => f.value.trim() !== '');
-}
-
-function updatePayPalButton(actions) {
-  if (privacyCheckbox.checked && allFieldsFilled()) {
-    actions.enable();
-  } else {
-    actions.disable();
-  }
+  return Array.from(requiredFields).every(f => f.value.trim() !== '') && privacyCheckbox.checked;
 }
 
 paypal.Buttons({
   onInit: function(data, actions) {
-    actions.disable(); // initial disabled
+    actions.disable(); // Button initial deaktiviert
 
-    const form = document.getElementById('checkout-form');
-    const requiredFields = form.querySelectorAll('input[required]');
+    function validate() {
+      if (allFieldsFilled()) actions.enable();
+      else actions.disable();
+    }
 
-    // Eventlistener für alle Pflichtfelder
-    requiredFields.forEach(f => f.addEventListener('input', () => updatePayPalButton(actions)));
-    privacyCheckbox.addEventListener('change', () => updatePayPalButton(actions));
+    requiredFields.forEach(f => f.addEventListener('input', validate));
+    privacyCheckbox.addEventListener('change', validate);
   },
+
   createOrder: function(data, actions) {
     return fetch("/create-paypal-order", { method: "POST" })
       .then(res => res.json())
-      .then(order => order.id);
+      .then(data => data.id);
   },
+
   onApprove: function(data, actions) {
-    return fetch("/capture-paypal-order/" + data.orderID, { method: "POST" })
+    const orderID = data.orderID || data.orderId;
+    return fetch("/capture-paypal-order/" + orderID, { method: "POST" })
       .then(res => res.json())
       .then(res => {
-        if(res.status === 'success') window.location.href = "/bestelldanke";
-        else alert("Fehler bei PayPal-Zahlung.");
+        if(res.status === 'success') {
+          window.location.href = "/bestelldanke";
+        } else {
+          alert("Fehler bei PayPal-Zahlung.");
+        }
       });
   },
+
   onError: function(err) {
-    console.error(err);
+    console.error("PayPal Fehler:", err);
     alert("PayPal-Zahlung konnte nicht gestartet werden.");
   }
+
 }).render('#paypal-button-container');
 </script>
-
 <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
 </body>
 </html>
