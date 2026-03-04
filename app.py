@@ -240,6 +240,52 @@ def verify_webhook(headers, body):
 
     if not verify_webhook(request.headers, request.json):
     return jsonify({"error": "Invalid signature"}), 400
+
+
+from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
+from paypalcheckoutsdk.notifications import WebhookEventVerifySignatureRequest
+
+# PayPal Client Setup
+environment = SandboxEnvironment(
+    client_id=PAYPAL_CLIENT_ID,
+    client_secret=PAYPAL_CLIENT_SECRET
+)
+paypal_client = PayPalHttpClient(environment)
+
+@app.route("/paypal-webhook", methods=["POST"])
+@csrf.exempt
+def paypal_webhook():
+    headers = {k: v for k, v in request.headers.items()}
+    body = request.get_data(as_text=True)
+
+    webhook_id = PAYPAL_WEBHOOK_ID
+
+    verify_request = WebhookEventVerifySignatureRequest(
+        headers=headers,
+        webhook_event_body=body,
+        webhook_id=webhook_id
+    )
+
+    try:
+        response = paypal_client.execute(verify_request)
+        if response.result.verification_status != "SUCCESS":
+            logger.warning("PayPal Webhook Signatur ungültig")
+            return "", 400
+
+        event = json.loads(body)
+        logger.info(f"PayPal Webhook Event erhalten: {event['event_type']}")
+
+        # Beispiel: Bestellung als bezahlt markieren
+        if event['event_type'] == "CHECKOUT.ORDER.APPROVED":
+            order_id = event['resource']['id']
+            logger.info(f"Bestellung {order_id} genehmigt")
+
+        return "", 200
+
+    except Exception as e:
+        logger.exception("Webhook Fehler")
+        return "", 500
+
 # =====================================================
 # EMAIL
 # =====================================================
@@ -815,3 +861,5 @@ def bestelldanke():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
+
