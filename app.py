@@ -239,8 +239,6 @@ def verify_webhook(headers, body):
     return response.json().get("verification_status") == "SUCCESS"
 
 
-    if not verify_webhook(request.headers, request.json):
-    return jsonify({"error": "Invalid signature"}), 400
 
 
 from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
