@@ -182,6 +182,64 @@ def capture_paypal_order(order_id):
         return jsonify({"status": "success"})
 
     return jsonify({"status": "error"}), 400
+
+
+
+@app.route("/paypal-webhook", methods=["POST"])
+@csrf.exempt
+def paypal_webhook():
+
+    event = request.json
+
+    if event["event_type"] == "PAYMENT.CAPTURE.COMPLETED":
+
+        capture = event["resource"]
+
+        order_id = capture["supplementary_data"]["related_ids"]["order_id"]
+        transaction_id = capture["id"]
+        amount = capture["amount"]["value"]
+
+        try:
+            # HIER Bestellung speichern
+            # oder Status auf "bezahlt" setzen
+
+            print("Zahlung bestätigt:", transaction_id)
+
+            return jsonify({"status": "ok"}), 200
+
+        except Exception as e:
+            print("Fehler:", e)
+            return jsonify({"status": "error"}), 500
+
+    return jsonify({"status": "ignored"}), 200
+
+
+def verify_webhook(headers, body):
+
+    access_token = paypal_access_token()
+
+    response = requests.post(
+        f"{PAYPAL_BASE}/v1/notifications/verify-webhook-signature",
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {access_token}",
+        },
+        json={
+            "transmission_id": headers.get("PAYPAL-TRANSMISSION-ID"),
+            "transmission_time": headers.get("PAYPAL-TRANSMISSION-TIME"),
+            "cert_url": headers.get("PAYPAL-CERT-URL"),
+            "auth_algo": headers.get("PAYPAL-AUTH-ALGO"),
+            "transmission_sig": headers.get("PAYPAL-TRANSMISSION-SIG"),
+            "webhook_id": "DEINE_WEBHOOK_ID",
+            "webhook_event": body
+        }
+    )
+
+    return response.json().get("verification_status") == "SUCCESS"
+
+
+    if not verify_webhook(request.headers, request.json):
+    return jsonify({"error": "Invalid signature"}), 400
 # =====================================================
 # EMAIL
 # =====================================================
