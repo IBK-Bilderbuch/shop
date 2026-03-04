@@ -39,6 +39,7 @@ load_dotenv()
 app = Flask(__name__)
 limiter = Limiter(get_remote_address, app=app)
 
+PAYPAL_WEBHOOK_ID = os.environ.get("PAYPAL_WEBHOOK_ID")
 PAYPAL_CLIENT_ID = os.getenv("PAYPAL_CLIENT_ID")
 PAYPAL_SECRET = os.getenv("PAYPAL_SECRET")
 PAYPAL_MODE = os.getenv("PAYPAL_MODE", "sandbox")
