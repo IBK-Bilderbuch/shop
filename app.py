@@ -710,7 +710,6 @@ def sync_cart():
 # CHECKOUT
 # ============================
 
-    
 @app.route("/checkout", methods=["GET", "POST"])
 def checkout():
     cart_items = get_cart()
@@ -727,7 +726,6 @@ def checkout():
             return redirect(url_for("checkout"))
 
         try:
-            # Kundendaten für PayPal-Zahlung in Session speichern
             session["checkout_email"] = request.form.get("email")
             session["checkout_vorname"] = request.form.get("vorname")
             session["checkout_nachname"] = request.form.get("nachname")
@@ -752,28 +750,7 @@ def checkout():
         total=total
     )
 
-            # Commit der Bestellung
-            db.session.commit()
-
-            # ✅ Warenkorb zuverlässig leeren
-            session.pop("cart", None)
-            session.modified = True  # <- sehr wichtig!
-
-            flash("Bestellung erfolgreich!", "success")
-            return redirect(url_for("bestelldanke"))
-
-        except Exception as e:
-            db.session.rollback()
-            import traceback
-            traceback.print_exc()
-            flash(f"Fehler: {e}", "error")
-            return redirect(url_for("checkout"))
-
-    return render_template(
-        "checkout.html",
-        cart_items=cart_items,
-        total=total
-    )
+    
 # ============================
 # KONTAKT
 # ============================
