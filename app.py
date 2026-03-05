@@ -29,6 +29,8 @@ from datetime import timedelta
 
 from functools import lru_cache
 
+from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
+from paypalcheckoutsdk.notifications import WebhookEventVerifySignatureRequest
 
 # =====================================================
 # CONFIG
@@ -166,6 +168,7 @@ def create_paypal_order():
 @app.route("/capture-paypal-order/<order_id>", methods=["POST"])
 @csrf.exempt
 def capture_paypal_order(order_id):
+
     access_token = paypal_access_token()
 
     response = requests.post(
@@ -179,40 +182,43 @@ def capture_paypal_order(order_id):
     data = response.json()
 
     if data.get("status") == "COMPLETED":
+
+        cart_items = get_cart()
+
+        bestellung = Bestellung(
+            email=session.get("checkout_email"),
+            vorname=session.get("checkout_vorname"),
+            nachname=session.get("checkout_nachname"),
+            strasse=session.get("checkout_strasse"),
+            hausnummer=session.get("checkout_hausnummer"),
+            plz=session.get("checkout_plz"),
+            stadt=session.get("checkout_stadt"),
+            land=session.get("checkout_land"),
+            telefon=session.get("checkout_telefon"),
+            paymentmethod="paypal"
+        )
+
+        db.session.add(bestellung)
+        db.session.flush()
+
+        for item in cart_items:
+            db.session.add(
+                BestellPosition(
+                    bestellung_id=bestellung.id,
+                    bezeichnung=item["title"],
+                    menge=item["quantity"],
+                    preis=item["price"]
+                )
+            )
+
+        db.session.commit()
+
         session.pop("cart", None)
+
         return jsonify({"status": "success"})
 
     return jsonify({"status": "error"}), 400
 
-
-
-@app.route("/paypal-webhook", methods=["POST"])
-@csrf.exempt
-def paypal_webhook():
-
-    event = request.json
-
-    if event["event_type"] == "PAYMENT.CAPTURE.COMPLETED":
-
-        capture = event["resource"]
-
-        order_id = capture["supplementary_data"]["related_ids"]["order_id"]
-        transaction_id = capture["id"]
-        amount = capture["amount"]["value"]
-
-        try:
-            # HIER Bestellung speichern
-            # oder Status auf "bezahlt" setzen
-
-            print("Zahlung bestätigt:", transaction_id)
-
-            return jsonify({"status": "ok"}), 200
-
-        except Exception as e:
-            print("Fehler:", e)
-            return jsonify({"status": "error"}), 500
-
-    return jsonify({"status": "ignored"}), 200
 
 
 def verify_webhook(headers, body):
@@ -241,13 +247,10 @@ def verify_webhook(headers, body):
 
 
 
-from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
-from paypalcheckoutsdk.notifications import WebhookEventVerifySignatureRequest
-
 # PayPal Client Setup
 environment = SandboxEnvironment(
     client_id=PAYPAL_CLIENT_ID,
-    client_secret=PAYPAL_CLIENT_SECRET
+    client_secret=PAYPAL_SECRET
 )
 paypal_client = PayPalHttpClient(environment)
 
@@ -724,33 +727,30 @@ def checkout():
             return redirect(url_for("checkout"))
 
         try:
-            # Bestellung anlegen
-            bestellung = Bestellung(
-                email=email,
-                vorname=request.form.get("vorname"),
-                nachname=request.form.get("nachname"),
-                strasse=request.form.get("strasse"),
-                hausnummer=request.form.get("hausnummer"),
-                plz=request.form.get("plz"),
-                stadt=request.form.get("stadt"),
-                land=request.form.get("land"),
-                adresszusatz=request.form.get("adresszusatz"),
-                telefon=request.form.get("telefon"),
-                paymentmethod=request.form.get("paymentmethod"),
-            )
-            db.session.add(bestellung)
-            db.session.flush()  # ID verfügbar machen
+            # Kundendaten für PayPal-Zahlung in Session speichern
+            session["checkout_email"] = request.form.get("email")
+            session["checkout_vorname"] = request.form.get("vorname")
+            session["checkout_nachname"] = request.form.get("nachname")
+            session["checkout_strasse"] = request.form.get("strasse")
+            session["checkout_hausnummer"] = request.form.get("hausnummer")
+            session["checkout_plz"] = request.form.get("plz")
+            session["checkout_stadt"] = request.form.get("stadt")
+            session["checkout_land"] = request.form.get("land")
+            session["checkout_telefon"] = request.form.get("telefon")
+            session["checkout_adresszusatz"] = request.form.get("adresszusatz")
 
-            # Positionen speichern
-            for item in cart_items:
-                db.session.add(
-                    BestellPosition(
-                        bestellung_id=bestellung.id,
-                        bezeichnung=item.get("title"),
-                        menge=item.get("quantity", 1),
-                        preis=item.get("price", 0)
-                    )
-                )
+            logger.info("Kundendaten für PayPal gespeichert")
+
+        except Exception as e:
+            logger.error(f"Checkout Fehler: {e}")
+            flash("Fehler beim Checkout.", "error")
+            return redirect(url_for("checkout"))
+
+    return render_template(
+        "checkout.html",
+        cart_items=cart_items,
+        total=total
+    )
 
             # Commit der Bestellung
             db.session.commit()
