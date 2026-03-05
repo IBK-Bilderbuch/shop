@@ -67,8 +67,7 @@
 {% include 'footer.html' %}
 
 <!-- PayPal SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR"></script>
-<script>
+<script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR&disable-funding=sepa,sofort,giropay,bancontact,eps,ideal"></script>
 const form = document.getElementById('checkout-form');
 const privacyCheckbox = document.getElementById('privacy-checkbox');
 const requiredFields = form.querySelectorAll('input[required]');
