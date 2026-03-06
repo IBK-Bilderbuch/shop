@@ -93,6 +93,12 @@ paypal.Buttons({
 
   createOrder: function(data, actions) {
 
+  // Browser Formularvalidierung auslösen
+  if (!form.reportValidity()) {
+      form.querySelector(":invalid").focus();
+      return;
+  }
+
   const formData = new FormData(form);
 
   return fetch("/checkout", {
@@ -105,6 +111,8 @@ paypal.Buttons({
   .then(res => res.json())
   .then(data => data.id);
 },
+
+ 
 
   onApprove: function(data, actions) {
     const orderID = data.orderID || data.orderId;
