@@ -92,10 +92,19 @@ paypal.Buttons({
   },
 
   createOrder: function(data, actions) {
-    return fetch("/create-paypal-order", { method: "POST" })
-      .then(res => res.json())
-      .then(data => data.id);
-  },
+
+  const formData = new FormData(form);
+
+  return fetch("/checkout", {
+      method: "POST",
+      body: formData
+  })
+  .then(() => {
+      return fetch("/create-paypal-order", { method: "POST" })
+  })
+  .then(res => res.json())
+  .then(data => data.id);
+},
 
   onApprove: function(data, actions) {
     const orderID = data.orderID || data.orderId;
