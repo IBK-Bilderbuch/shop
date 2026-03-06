@@ -112,6 +112,12 @@ paypal.Buttons({
       .then(res => res.json())
       .then(res => {
         if(res.status === 'success') {
+          localStorage.removeItem("cart");
+          fetch("/sync-cart", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify([])
+          });
           window.location.href = "/bestelldanke";
         } else {
           alert("Fehler bei PayPal-Zahlung.");
