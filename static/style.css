@@ -209,7 +209,7 @@ nav {
     display: block;
     z-index: 10000;
     position: relative;
-    font-size: 1.8rem;
+    font-size: 1rem;
     color: var(--color-primary);
     cursor: pointer;
   }
