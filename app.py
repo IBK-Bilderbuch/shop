@@ -235,7 +235,7 @@ def verify_webhook(headers, body):
             "cert_url": headers.get("PAYPAL-CERT-URL"),
             "auth_algo": headers.get("PAYPAL-AUTH-ALGO"),
             "transmission_sig": headers.get("PAYPAL-TRANSMISSION-SIG"),
-            "webhook_id": "DEINE_WEBHOOK_ID",
+            "webhook_id": PAYPAL_WEBHOOK_ID,
             "webhook_event": body
         }
     )
@@ -247,36 +247,25 @@ def verify_webhook(headers, body):
 @app.route("/paypal-webhook", methods=["POST"])
 @csrf.exempt
 def paypal_webhook():
-    headers = {k: v for k, v in request.headers.items()}
+
     body = request.get_data(as_text=True)
+    event = json.loads(body)
+    headers = request.headers
 
-    webhook_id = PAYPAL_WEBHOOK_ID
+    if not verify_webhook(headers, body):
+        return "", 400
 
-    verify_request = WebhookEventVerifySignatureRequest(
-        headers=headers,
-        webhook_event_body=body,
-        webhook_id=webhook_id
-    )
+    event_type = body.get("event_type")
 
-    try:
-        response = paypal_client.execute(verify_request)
-        if response.result.verification_status != "SUCCESS":
-            logger.warning("PayPal Webhook Signatur ungültig")
-            return "", 400
+    if event_type == "PAYMENT.CAPTURE.COMPLETED":
+        capture = event["resource"]
+        order_id = capture["supplementary_data"]["related_ids"]["order_id"]
+        amount = capture["amount"]["value"]
+        logger.info(f"PayPal Zahlung abgeschlossen: {order_id} – {amount} EUR")
 
-        event = json.loads(body)
-        logger.info(f"PayPal Webhook Event erhalten: {event['event_type']}")
 
-        # Beispiel: Bestellung als bezahlt markieren
-        if event['event_type'] == "CHECKOUT.ORDER.APPROVED":
-            order_id = event['resource']['id']
-            logger.info(f"Bestellung {order_id} genehmigt")
 
-        return "", 200
-
-    except Exception as e:
-        logger.exception("Webhook Fehler")
-        return "", 500
+    return "", 200
 
 # =====================================================
 # EMAIL
