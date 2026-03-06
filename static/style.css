@@ -209,8 +209,9 @@ nav {
     display: block;
     z-index: 10000;
     position: relative;
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: var(--color-primary);
+    color: #000000;
     cursor: pointer;
   }
 
