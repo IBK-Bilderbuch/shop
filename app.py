@@ -29,8 +29,6 @@ from datetime import timedelta
 
 from functools import lru_cache
 
-from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
-from paypalcheckoutsdk.notifications import WebhookEventVerifySignatureRequest
 
 # =====================================================
 # CONFIG
