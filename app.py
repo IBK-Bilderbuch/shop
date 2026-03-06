@@ -244,14 +244,6 @@ def verify_webhook(headers, body):
 
 
 
-
-# PayPal Client Setup
-environment = SandboxEnvironment(
-    client_id=PAYPAL_CLIENT_ID,
-    client_secret=PAYPAL_SECRET
-)
-paypal_client = PayPalHttpClient(environment)
-
 @app.route("/paypal-webhook", methods=["POST"])
 @csrf.exempt
 def paypal_webhook():
