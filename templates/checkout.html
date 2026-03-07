@@ -137,8 +137,15 @@ paypal.Buttons({
     console.error("PayPal Fehler:", err);
     alert("PayPal-Zahlung konnte nicht gestartet werden.");
   }
-
 }).render('#paypal-button-container');
+
+  requiredFields.forEach(field => {
+    if (!field.value.trim()) {
+        field.style.border = "2px solid red";
+    } else {
+        field.style.border = "";
+    }
+});
 </script>
 <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
 </body>
