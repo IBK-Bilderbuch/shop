@@ -1,3 +1,4 @@
+
 <!-- checkout.html -->
 <!DOCTYPE html>
 <html lang="de">
@@ -25,7 +26,6 @@
     <div class="checkout-cart">
       <h3>Ihre Bestellung</h3>
       {% include 'cart_component.html' %}
-      <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
     </div>
 
     <!-- Checkout Formular -->
@@ -91,12 +91,10 @@ paypal.Buttons({
     privacyCheckbox.addEventListener('change', validate);
   },
 
-  createOrder: function(data, actions) {
+ createOrder: function(data, actions) {
 
-  // Browser Formularvalidierung auslösen
   if (!form.reportValidity()) {
-      form.querySelector(":invalid").focus();
-      return;
+      return;   // Browser zeigt automatisch Fehlermeldung
   }
 
   const formData = new FormData(form);
@@ -105,14 +103,10 @@ paypal.Buttons({
       method: "POST",
       body: formData
   })
-  .then(() => {
-      return fetch("/create-paypal-order", { method: "POST" })
-  })
+  .then(() => fetch("/create-paypal-order", { method: "POST" }))
   .then(res => res.json())
   .then(data => data.id);
 },
-
- 
 
   onApprove: function(data, actions) {
     const orderID = data.orderID || data.orderId;
@@ -137,15 +131,8 @@ paypal.Buttons({
     console.error("PayPal Fehler:", err);
     alert("PayPal-Zahlung konnte nicht gestartet werden.");
   }
-}).render('#paypal-button-container');
 
-  requiredFields.forEach(field => {
-    if (!field.value.trim()) {
-        field.style.border = "2px solid red";
-    } else {
-        field.style.border = "";
-    }
-});
+}).render('#paypal-button-container');
 </script>
 <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
 </body>
