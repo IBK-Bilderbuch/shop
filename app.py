@@ -782,9 +782,9 @@ def newsletter():
 # RECHTLICHES
 # ============================
 
-@app.route("/rechtliches")
-def rechtliches():
-    return render_template("rechtliches.html", user_email=session.get("user_email"))
+@app.route("/agb")
+def agb():
+    return render_template("agb.html", user_email=session.get("user_email"))
 
 @app.route("/datenschutz")
 def datenschutz():
