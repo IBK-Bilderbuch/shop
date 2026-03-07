@@ -3,28 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rechtliches | I B K - Buchhandlung für Illustration und Bilderbücher </title>
-
+  <title>Impressum | I B K - Buchhandlung für Illustration und Bilderbücher</title>
+  <link rel="icon" type="image/x-icon" href="static/ficon.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='product.css') }}" />
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
   <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 
   
 </head>
+
+  {% include 'navbar.html' %}
+
+<div id="navbar-placeholder"></div>
 <body>
   
-
-
-
-
-
-  <div class="rechtliches">
-    <h2>  Impressum: </h2>
-    <p>
-      I B K - Buchhandlung für Illustrationen und Bilderbücher <br>
-      Meller Bogen 14<br>13403 Berlin<br>Deutschland<br><br>Vertreten durch:<br>Ani Antonyan<br>Telefon: +49 987 654321<br>E-Mail: kontakt@ibk-bilderbuch.de <br><br>Handelsregister: Amtsgericht Berlin, HRB 987654 <br>Umsatzsteuer-ID: DE98765432 
-    </p>
-
+ <div class="rechtliches">
+   
 
 <h2>Allgemeine Geschäftsbedingungen (AGB)</h2>
 
@@ -162,5 +157,8 @@
 
 
 
+{% include 'footer.html' %}
+
+  
 </body>
 </html>
