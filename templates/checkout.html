@@ -79,8 +79,19 @@ function allFieldsFilled() {
 }
 
 paypal.Buttons({
+
+  onClick: function(data, actions) {
+
+    if (!form.reportValidity()) {
+      form.querySelector(":invalid")?.focus();
+      return actions.reject();
+    }
+
+    return actions.resolve();
+  },
+
   onInit: function(data, actions) {
-    actions.disable(); // Button initial deaktiviert
+    actions.disable();
 
     function validate() {
       if (allFieldsFilled()) actions.enable();
@@ -91,23 +102,19 @@ paypal.Buttons({
     privacyCheckbox.addEventListener('change', validate);
   },
 
- createOrder: function(data, actions) {
+  createOrder: function(data, actions) {
 
-  if (!form.reportValidity()) {
-      return;   // Browser zeigt automatisch Fehlermeldung
-  }
+    const formData = new FormData(form);
 
-  const formData = new FormData(form);
-
-  return fetch("/checkout", {
-      method: "POST",
-      body: formData
-  })
-  .then(() => fetch("/create-paypal-order", { method: "POST" }))
-  .then(res => res.json())
-  .then(data => data.id);
-},
-
+    return fetch("/checkout", {
+        method: "POST",
+        body: formData
+    })
+    .then(() => fetch("/create-paypal-order", { method: "POST" }))
+    .then(res => res.json())
+    .then(data => data.id);
+  },
+  
   onApprove: function(data, actions) {
     const orderID = data.orderID || data.orderId;
     return fetch("/capture-paypal-order/" + orderID, { method: "POST" })
