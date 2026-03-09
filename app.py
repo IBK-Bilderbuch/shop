@@ -6,6 +6,8 @@ import logging
 from datetime import datetime
 from dotenv import load_dotenv
 import requests
+import uuid
+
 
 from flask import (
     Flask, render_template, request,
@@ -28,6 +30,7 @@ from models import db, Bestellung, BestellPosition
 from datetime import timedelta
 
 from functools import lru_cache
+
 
 
 # =====================================================
@@ -94,6 +97,10 @@ csrf = CSRFProtect(app)
 
 BUCHBUTLER_USER = os.getenv("BUCHBUTLER_USER")
 BUCHBUTLER_PASSWORD = os.getenv("BUCHBUTLER_PASSWORD")
+
+BUCHBUTLER_MOL_KUNDE_ID = os.getenv("BUCHBUTLER_MOL_KUNDE_ID")
+BUCHBUTLER_RECHNUNGSADRESSE_ID = os.getenv("BUCHBUTLER_RECHNUNGSADRESSE_ID")
+BUCHBUTLER_VERKAUFSKANAL_ID = os.getenv("BUCHBUTLER_VERKAUFSKANAL_ID")
 
 BASE_URL = "https://api.buchbutler.de"
 
@@ -210,14 +217,13 @@ def capture_paypal_order(order_id):
             )
 
         db.session.commit()
-
-        session.pop("cart", None)
-
-        return jsonify({"status": "success"})
-
-    return jsonify({"status": "error"}), 400
-
-
+        try:
+            sende_bestellung_an_buchbutler(bestellung, cart_items)
+        except Exception:
+            logger.exception("Buchbutler Bestellung fehlgeschlagen")
+            session.pop("cart", None)
+            return jsonify({"status": "success"})
+            return jsonify({"status": "error"}), 400
 
 def verify_webhook(headers, body):
 
@@ -440,8 +446,70 @@ def lade_bestand_von_api(ean):
         logger.exception("Fehler beim Laden von MOVEMENT API")
         return None
 
+# -----------------------------
+# Bestellung an Buchbutler senden 
+# -----------------------------
 
+def sende_bestellung_an_buchbutler(bestellung, cart_items):
 
+    url = f"{BASE_URL}/ORDER/"
+
+    collectkey = str(uuid.uuid4())
+
+    payload = {
+        "username": BUCHBUTLER_USER,
+        "passwort": BUCHBUTLER_PASSWORD,
+
+        "auftrag_kopf": {
+            "mol_kunde_id": int(BUCHBUTLER_MOL_KUNDE_ID),
+            "rechnungsadresse_id": int(BUCHBUTLER_RECHNUNGSADRESSE_ID),
+            "mol_zahlart_id": 3,  # PayPal
+            "bestelldatum": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "bestellreferenz": f"IBK-{bestellung.id}",
+            "seite": "ibk-buchshop.de",
+            "bestellfreigabe": 1,
+            "mol_verkaufskanal_id": int(BUCHBUTLER_VERKAUFSKANAL_ID)
+        },
+
+        "lieferadresse": {
+            "anrede": "",
+            "vorname": bestellung.vorname,
+            "nachname": bestellung.nachname,
+            "strasse": bestellung.strasse,
+            "hausnummer": bestellung.hausnummer,
+            "plz": bestellung.plz,
+            "ort": bestellung.stadt,
+            "land": bestellung.land,
+            "land_iso": "DE",
+            "tel": bestellung.telefon
+        },
+
+        "auftrag_position": [],
+
+        "auftrag_zusatz": [
+            {
+                "typ": "collectkey",
+                "value": collectkey
+            }
+        ]
+    }
+
+    for i, item in enumerate(cart_items):
+
+        payload["auftrag_position"].append({
+            "ean": item["ean"],
+            "pos_bezeichnung": item["title"],
+            "menge": item["quantity"],
+            "ek_netto": 0,
+            "vk_brutto": item["price"],
+            "pos_referenz": f"{bestellung.id}-{i}"
+        })
+
+    response = requests.post(url, json=payload, timeout=20)
+
+    logger.info("Buchbutler Bestellung:", response.text)
+
+    return response.json()
 # =====================================================
 # ROUTES
 # =====================================================
@@ -643,13 +711,17 @@ def add_to_cart():
             found = True
             break
 
+  
+
     if not found:
         cart.append({
             "id": produkt["id"],
             "title": produkt["name"],
             "price": produkt.get("preis", 0),
-            "quantity": 1
+            "quantity": 1,
+            "ean": produkt["ean"]
         })
+        
 
     save_cart(cart)
     return redirect(url_for("cart"))
