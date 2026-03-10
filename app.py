@@ -507,7 +507,7 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
 
     response = requests.post(url, json=payload, timeout=20)
 
-    logger.info("Buchbutler Bestellung:", response.text)
+    logger.info("Buchbutler Bestellung: %s", response.text)
 
     return response.json()
 # =====================================================
