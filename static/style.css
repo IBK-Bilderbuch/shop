@@ -755,7 +755,13 @@ button[type="submit"]:hover {
     margin: 60px 35px 100px 35px;
   }
 
+
+  .rechtliches h1 {
+     text-align:left;
+     color: black;
+  }
   .rechtliches h2 {
+     text-align: left;
     font-size: 1.8rem;
   }
 
