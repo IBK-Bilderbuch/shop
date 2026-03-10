@@ -722,6 +722,10 @@ button[type="submit"]:hover {
   margin: 50px 180px;
 }
 
+ .rechtliches h1 {
+     text-align:left;
+     color: black;
+  }
 .rechtliches h2 {
   font-family: var(--font-heading);
   color: black;
@@ -756,12 +760,8 @@ button[type="submit"]:hover {
   }
 
 
-  .rechtliches h1 {
-     text-align:left;
-     color: black;
-  }
+ 
   .rechtliches h2 {
-     text-align: left;
     font-size: 1.8rem;
   }
 
