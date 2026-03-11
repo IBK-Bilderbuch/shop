@@ -746,6 +746,12 @@ button[type="submit"]:hover {
   margin-top: 10px;
 }
 
+.impressum {
+     font-size: 1.3rem;
+
+   
+   
+
 @media screen and (max-width: 1024px) {
   .rechtliches {
     margin: 30px 55px 200px 55px;
