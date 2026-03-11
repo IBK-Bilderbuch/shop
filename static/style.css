@@ -722,7 +722,7 @@ button[type="submit"]:hover {
   margin: 50px 180px;
 }
 
- .rechtliches h1 {
+ .rechtliches h1, .impressum h1 {
      text-align:left;
   }
 .rechtliches h2 {
