@@ -174,20 +174,21 @@ def create_paypal_order():
 @app.route("/capture-paypal-order/<order_id>", methods=["POST"])
 @csrf.exempt
 def capture_paypal_order(order_id):
+    try:
+        access_token = paypal_access_token()
 
-    access_token = paypal_access_token()
+        response = requests.post(
+            f"{PAYPAL_BASE}/v2/checkout/orders/{order_id}/capture",
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {access_token}",
+            }
+        )
 
-    response = requests.post(
-        f"{PAYPAL_BASE}/v2/checkout/orders/{order_id}/capture",
-        headers={
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {access_token}",
-        }
-    )
+        data = response.json()
 
-    data = response.json()
-
-    if data.get("status") == "COMPLETED":
+        if data.get("status") != "COMPLETED":
+            return jsonify({"status": "error", "message": "PayPal-Zahlung nicht abgeschlossen", "data": data}), 400
 
         cart_items = get_cart()
 
@@ -218,13 +219,20 @@ def capture_paypal_order(order_id):
             )
 
         db.session.commit()
+
         try:
             sende_bestellung_an_buchbutler(bestellung, cart_items)
         except Exception:
             logger.exception("Buchbutler Bestellung fehlgeschlagen")
-            session.pop("cart", None)
-            return jsonify({"status": "success"})
-            return jsonify({"status": "error"}), 400
+
+        # Warenkorb leeren
+        session.pop("cart", None)
+
+        return jsonify({"status": "success", "order_id": order_id})
+
+    except Exception as e:
+        logger.exception("Fehler beim Capturen der PayPal-Zahlung")
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 def verify_webhook(headers, body):
 
