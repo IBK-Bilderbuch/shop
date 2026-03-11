@@ -466,7 +466,7 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
             "mol_zahlart_id": 3,  # PayPal
             "bestelldatum": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "bestellreferenz": f"IBK-{bestellung.id}",
-            "seite": "ibk-buchshop.de",
+            "seite": "ibk-bilderbuch.de",
             "bestellfreigabe": 1,
             "mol_verkaufskanal_id": int(BUCHBUTLER_VERKAUFSKANAL_ID)
         },
