@@ -29,9 +29,9 @@
     <h3>Suchergebnisse für "{{ query }}":</h3>
 
     {% if ergebnisse %}
-      <div class="book-list">
+      <div class="search-book-list">
         {% for produkt in ergebnisse %}
-          <div class="search-book">
+          <div class="book">
             <img src="{{ url_for('static', filename=produkt.bilder[0]) }}" alt="{{ produkt.name }}">
             <h3>{{ produkt.name }}</h3>
             <p>{{ produkt.preis }} €</p>
