@@ -221,8 +221,6 @@ def capture_paypal_order(order_id):
             sende_bestellung_an_buchbutler(bestellung, cart_items)
         except Exception:
             logger.exception("Buchbutler Bestellung fehlgeschlagen")
-            session.pop("cart", None)
-            return jsonify({"status": "success"})
             return jsonify({"status": "error"}), 400
 
 def verify_webhook(headers, body):
@@ -485,13 +483,19 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
         },
 
         "auftrag_position": [],
-
+        
         "auftrag_zusatz": [
+            {
+                "typ": "SHIPPING_OPTION",
+                "value": "1040"
+            },
             {
                 "typ": "collectkey",
                 "value": collectkey
             }
         ]
+
+        
     }
 
     for i, item in enumerate(cart_items):
