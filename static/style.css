@@ -738,7 +738,7 @@ button[type="submit"]:hover {
   font-size: 1.7rem;
 }
 
-.rechtliches p, impressum p {
+.rechtliches p {
   font-size: 1rem;
   font-family: var(--font-heading);
   line-height: 1.6;
@@ -753,7 +753,7 @@ button[type="submit"]:hover {
    
 
 @media screen and (max-width: 1024px) {
-  .rechtliches {
+  .rechtliches, .search-page {
     margin: 30px 55px 200px 55px;
   }
 }
