@@ -761,7 +761,7 @@ button[type="submit"]:hover {
 /* Mobile Rechtliches */
 @media screen and (max-width: 768px) {
   .rechtliches,  .search-page{
-    argin: 6px 3px 10px 3px;
+    margin: 60px 35px;
   }
 
  
