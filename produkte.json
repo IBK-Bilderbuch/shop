@@ -657,12 +657,13 @@
   {
   "id": 42,
   "ean": "9783702660055",
-  "beschreibung": "Mina bekommt ein Buch mit vielen weißen Seiten geschenkt, dazu Stifte und Pinsel. Seite um Seite füllt sie, und bald sind Katze und Eule nicht nur auf dem Papier ihre ständigen Begleiterinnen. Es wird Sommer, dann kommt der Herbst, und Mina ist kritisch: Sind ihre Eulenschnäbel schief, haben ihre Katzen zu kurze Pfoten? Zeichnen kann leicht von der Hand gehen, doch der eigene Blick auf das Resultat steht einem immer wieder im Weg, so auch Mina. Als gute Freundinnen helfen ihr Katze und Eule, das Wesentliche wiederzuentdecken: die Freude an Papier, Stiften und Pinseln.",  "bilder": [
+  "beschreibung": "Mina bekommt ein Buch mit vielen weißen Seiten geschenkt, dazu Stifte und Pinsel. Seite um Seite füllt sie, und bald sind Katze und Eule nicht nur auf dem Papier ihre ständigen Begleiterinnen. Es wird Sommer, dann kommt der Herbst, und Mina ist kritisch: Sind ihre Eulenschnäbel schief, haben ihre Katzen zu kurze Pfoten? Zeichnen kann leicht von der Hand gehen, doch der eigene Blick auf das Resultat steht einem immer wieder im Weg, so auch Mina. Als gute Freundinnen helfen ihr Katze und Eule, das Wesentliche wiederzuentdecken: die Freude an Papier, Stiften und Pinseln.",
+    "bilder": [
     "images/farbeeulestift/farbeeulestift.jpg"
   ],
   "kategorie": "Wichtige Fragen",
   "leseprobe_pdf": "farbeeulestift.pdf"
 
-},
+}
   
 ]
