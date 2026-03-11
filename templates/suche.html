@@ -31,7 +31,7 @@
     {% if ergebnisse %}
       <div class="book-list">
         {% for produkt in ergebnisse %}
-          <div class="book">
+          <div class="search-book">
             <img src="{{ url_for('static', filename=produkt.bilder[0]) }}" alt="{{ produkt.name }}">
             <h3>{{ produkt.name }}</h3>
             <p>{{ produkt.preis }} €</p>
