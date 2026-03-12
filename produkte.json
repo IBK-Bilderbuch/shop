@@ -708,7 +708,21 @@
   "kategorie": "Wichtige Fragen",
   "leseprobe_pdf": "weitrausschwimmen.pdf"
 
-}
+}, 
+  {
+  "id": 46,
+  "ean": "9783948743550",
+  "beschreibung": "Don Giovanni, ein Schürzenjäger aus Leidenschaft, kann einfach nicht anders, als seine Mitmenschen immerzu ins Unglück zu stürzen. Doch können seine Vergehen nicht ewig ungestraft bleiben. Mit seinem Handeln zieht er nicht nur den Unmut der Verflossenen auf sich, sondern weckt sogar den Groll der Untoten.<br>Anni von Bergen setzt die in der Oper gesungenen Emotionen mit ihren dramatischen und expressiven Zeichnungen gekonnt in Szene. Ein wunderbares Zusammenspiel von Musik, Text und Bild.",
+  "bilder": [
+    "images/dongiovanni/dongiovanni.jpg",
+    "images/dongiovanni/dongiovanni1.jpg",
+    "images/dongiovanni/dongiovanni2.jpg",
+    "images/dongiovanni/dongiovanni3.jpg"
+  ],
+  "kategorie": "Wichtige Fragen",
+  "leseprobe_pdf": "dongiovanni.pdf"
+  }
+    
   
   
 ]
