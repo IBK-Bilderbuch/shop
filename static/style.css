@@ -767,6 +767,7 @@ button[type="submit"]:hover {
   line-height: 1.4;
   display: inline-block;
   margin-left: 6px;
+  font-family: var(--font-heading);
 }
 
 @media screen and (max-width: 1024px) {
