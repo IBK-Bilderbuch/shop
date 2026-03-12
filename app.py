@@ -654,7 +654,8 @@ def slugify(text):
     text = text.lower()
     text = re.sub(r'[^a-z0-9]+', '-', text)
     return text.strip('-')
-    
+
+
 @app.route("/produkt/<int:produkt_id>/<slug>")
 def produkt_detail(produkt_id, slug):
 
