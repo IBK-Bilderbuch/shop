@@ -757,6 +757,17 @@ button[type="submit"]:hover {
   margin-top: 10px;
 }
 
+.dsgvo {
+  margin-top: 10px;
+}
+
+.dsgvo-text {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  display: inline-block;
+  margin-left: 6px;
+}
+
 @media screen and (max-width: 1024px) {
   .rechtliches {
     margin: 30px 55px 200px 55px;
