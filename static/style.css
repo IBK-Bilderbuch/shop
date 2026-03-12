@@ -143,6 +143,7 @@ header {
 
   header {
     padding: 45px;
+    padding-left: 5px;
   }
 
   h2, h1 {
