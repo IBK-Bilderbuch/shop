@@ -655,9 +655,16 @@ def slugify(text):
     text = re.sub(r'[^a-z0-9]+', '-', text)
     return text.strip('-')
 
-
+@app.route("/produkt/<int:produkt_id>/", defaults={"slug": None})
 @app.route("/produkt/<int:produkt_id>/<slug>")
 def produkt_detail(produkt_id, slug):
+    produkt = next((p for p in produkte if p["id"] == produkt_id), None)
+    if not produkt:
+        abort(404)
+
+    correct_slug = slugify(produkt["name"])
+    if slug != correct_slug:
+        return redirect(url_for("produkt_detail", produkt_id=produkt_id, slug=correct_slug), code=301)
 
     # 1️⃣ lokale Zusatzdaten (Bilder / Leseprobe)
     lokale_daten = next(
