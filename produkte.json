@@ -693,8 +693,19 @@
   "kategorie": "Wichtige Fragen",
   "leseprobe_pdf": "eisbären.pdf"
 
-}
+},
 
+  {
+  "id": 45,
+  "ean": "9783948743550",
+  "beschreibung": "Das Wurzelgeflecht der Bäume bildet eine Stufe. Ich setze den rechten Fuß nach unten, hinein in das Wasser. Meine Zehen spüren den weichen Schlamm auf dem Grund, sie graben sich vorsichtig hinein, sie testen aus, ob der Boden fest genug ist. Die kühle Wassertemperatur erfasst mich ohne jede Vorwarnung. Ich verspüre eine Körperlichkeit, die sofort alle Gedanken aus meinem Bewusstsein löscht. Ich kann nicht länger ohne Bewegung bleiben.<br>Aber was passiert, wenn wir weit rausschwimmen, immer weiter, wen das Ufer, das uns Sicherheit gibt, aus dem Blick gerät, wenn Panik sich breitmacht und die Kraft zu schwinden droht? Mitten auf dem See beginnt eine Reise, die über das bloße Schwimmen hinausgeht. Der Essay taucht ein in die metaphorische Kraft des Wassers – Sinnbild für das Leben zwischen Leichtigkeit und Überforderung, Magie und Angst, Orientierungslosigkeit und Verantwortung.<br>Die Bilder der Künstlerin Ånsken Eckert halten Augenblicke fest, in denen das Wasser uns begegnet, ganz alltäglich, ganz unaufgeregt und dennoch: voller Größe. Es sind allesamt Verneigungen vor dem Element, das Leben erhält.<br>Ånsken Eckert: »Ich habe Holzbretter mit Aquarellfarben und Pastellkreide bemalt, um die Holzstrukturen heraus zu arbeiten. Anschließend habe ich diese Strukturen eingescannt und daraus digitale Collagen erstellt.«",
+  "bilder": [
+    "images/weitrausschwimmen/weitrausschwimmen.jpg"
+  ],
+  "kategorie": "Wichtige Fragen",
+  "leseprobe_pdf": "weitrausschwimmen.pdf"
+
+}
   
   
 ]
