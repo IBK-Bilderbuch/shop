@@ -650,8 +650,8 @@ def suche():
 
   
 
-@app.route('/produkt/<int:produkt_id>')
-def produkt_detail(produkt_id):
+@app.route("/produkt/<int:produkt_id>/<slug>")
+def produkt_detail(produkt_id, slug):
 
     # 1️⃣ lokale Zusatzdaten (Bilder / Leseprobe)
     lokale_daten = next(
