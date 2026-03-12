@@ -759,6 +759,7 @@ button[type="submit"]:hover {
 
 .dsgvo {
   margin-top: 10px;
+  display: inline-block;
 }
 
 .dsgvo-text {
