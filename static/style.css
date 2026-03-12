@@ -145,7 +145,7 @@ header {
     padding: 45px;
   }
 
-  h2 {
+  h2, h1 {
     font-size: 2rem;
   }
 }
