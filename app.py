@@ -395,6 +395,7 @@ def lade_produkt_von_api(ean):
             "id": to_int(res.get("pim_artikel_id")),
             "name": res.get("bezeichnung"),
             "autor": attr(attrs, "Autor"),
+            "illustrator": attr(attrs, "Illustrator"),
             "preis": to_float(res.get("vk_brutto")),
            
             "isbn": attr(attrs, "ISBN_13"),
