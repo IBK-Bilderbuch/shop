@@ -38,10 +38,7 @@ class Bestellung(db.Model):
     telefon = db.Column(db.String(50))
     paymentmethod = db.Column(db.String(50))
 
-     # ⭐ BUCHBUTLER / MOLUNA
-    moluna_status = db.Column(db.String(50))
-    moluna_order_id = db.Column(db.String(100))
-    trackingnummer = db.Column(db.String(100))
+   
 
     bestelldatum = db.Column(
         db.DateTime,
