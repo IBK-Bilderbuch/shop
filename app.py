@@ -465,6 +465,8 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
     url = f"{BASE_URL}/ORDER/"
 
     collectkey = str(uuid.uuid4())
+    bestellung.collectkey = collectkey
+    db.session.commit()
 
     payload = {
         "username": BUCHBUTLER_USER,
@@ -524,6 +526,26 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
     logger.info("Buchbutler Bestellung: %s", response.text)
 
     return response.json()
+    
+    
+    
+def buchbutler_orderresponse(collectkey):
+
+    url = f"{BASE_URL}/ORDERRESPONSE/"
+
+    payload = {
+        "username": BUCHBUTLER_USER,
+        "passwort": BUCHBUTLER_PASSWORD,
+        "collectkey": collectkey
+    }
+
+    try:
+        response = requests.post(url, json=payload, timeout=10)
+        return response.json()
+
+    except Exception:
+        logger.exception("ORDERRESPONSE Fehler")
+        return None
 # =====================================================
 # ROUTES
 # =====================================================
@@ -560,13 +582,32 @@ def admin_login():
 
 
 # Admin Bestellungen anzeigen
+
+
 @app.route("/admin/bestellungen")
 def admin_bestellungen():
+
     resp = admin_required()
-    if resp:  # wenn redirect zurückkommt
+    if resp:
         return resp
+
     alle = Bestellung.query.order_by(Bestellung.bestelldatum.desc()).all()
-    return render_template("admin_bestellungen.html", bestellungen=alle)
+
+    for b in alle:
+
+        if getattr(b, "collectkey", None):
+
+            response = buchbutler_orderresponse(b.collectkey)
+
+            if response:
+                b.moluna_status = response
+            else:
+                b.moluna_status = "keine Antwort"
+
+    return render_template(
+        "admin_bestellungen.html",
+        bestellungen=alle
+    )
     
 # Homepage
 @app.route("/")
