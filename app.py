@@ -121,6 +121,22 @@ else:
     produkte = []
 
 
+
+
+@app.route("/admin/add-moluna-columns")
+def add_moluna_columns():
+    from sqlalchemy import text
+    try:
+        db.session.execute(text("""
+            ALTER TABLE bestellungen
+            ADD COLUMN IF NOT EXISTS moluna_status VARCHAR(50),
+            ADD COLUMN IF NOT EXISTS moluna_order_id VARCHAR(100),
+            ADD COLUMN IF NOT EXISTS trackingnummer VARCHAR(100);
+        """))
+        db.session.commit()
+        return "✅ Moluna-Spalten hinzugefügt!"
+    except Exception as e:
+        return f"⚠️ Fehler: {e}"
 # =====================================================
 # PAYPAL
 # =====================================================
