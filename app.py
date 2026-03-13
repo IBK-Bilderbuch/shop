@@ -79,25 +79,7 @@ with app.app_context():
     db.create_all()
 
 
-from sqlalchemy import text, inspect
 
-with app.app_context():
-    inspector = inspect(db.engine)
-    columns = [c['name'] for c in inspector.get_columns('bestellungen')]
-
-    missing = []
-    if 'moluna_status' not in columns:
-        missing.append("moluna_status VARCHAR(50)")
-    if 'moluna_order_id' not in columns:
-        missing.append("moluna_order_id VARCHAR(100)")
-    if 'trackingnummer' not in columns:
-        missing.append("trackingnummer VARCHAR(100)")
-
-    if missing:
-        sql = f"ALTER TABLE bestellungen ADD COLUMN {', ADD COLUMN '.join(missing)};"
-        db.session.execute(text(sql))
-        db.session.commit()
-        print("✅ Moluna-Spalten erstellt!")
 
 
 
