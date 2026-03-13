@@ -79,6 +79,27 @@ with app.app_context():
     db.create_all()
 
 
+from sqlalchemy import text, inspect
+
+with app.app_context():
+    inspector = inspect(db.engine)
+    columns = [c['name'] for c in inspector.get_columns('bestellungen')]
+
+    missing = []
+    if 'moluna_status' not in columns:
+        missing.append("moluna_status VARCHAR(50)")
+    if 'moluna_order_id' not in columns:
+        missing.append("moluna_order_id VARCHAR(100)")
+    if 'trackingnummer' not in columns:
+        missing.append("trackingnummer VARCHAR(100)")
+
+    if missing:
+        sql = f"ALTER TABLE bestellungen ADD COLUMN {', ADD COLUMN '.join(missing)};"
+        db.session.execute(text(sql))
+        db.session.commit()
+        print("✅ Moluna-Spalten erstellt!")
+
+
 
 ADMIN_PASSWORD = os.getenv("FLASK_ADMIN_PASSWORD")
 
@@ -123,20 +144,7 @@ else:
 
 
 
-@app.route("/admin/add-moluna-columns")
-def add_moluna_columns():
-    from sqlalchemy import text
-    try:
-        db.session.execute(text("""
-            ALTER TABLE bestellungen
-            ADD COLUMN IF NOT EXISTS moluna_status VARCHAR(50),
-            ADD COLUMN IF NOT EXISTS moluna_order_id VARCHAR(100),
-            ADD COLUMN IF NOT EXISTS trackingnummer VARCHAR(100);
-        """))
-        db.session.commit()
-        return "✅ Moluna-Spalten hinzugefügt!"
-    except Exception as e:
-        return f"⚠️ Fehler: {e}"
+
 # =====================================================
 # PAYPAL
 # =====================================================
