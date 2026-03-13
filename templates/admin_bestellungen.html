@@ -56,6 +56,14 @@
         </tr>
     </table>
 
+    <td>
+        {% if b.moluna_status %}
+        <pre>{{ b.moluna_status }}</pre>
+        {% else %}
+        -
+        {% endif %}
+    </td>
+
 </div>
 
 {% else %}
