@@ -38,7 +38,11 @@ class Bestellung(db.Model):
     telefon = db.Column(db.String(50))
     paymentmethod = db.Column(db.String(50))
 
-   
+       # ⭐ MOLUNA-FELDER
+    moluna_status = db.Column(db.String(50))         # Status der Bestellung bei Moluna
+    moluna_order_id = db.Column(db.String(100))      # Moluna Order-ID
+    trackingnummer = db.Column(db.String(100))       # Trackingnummer
+
 
     bestelldatum = db.Column(
         db.DateTime,
