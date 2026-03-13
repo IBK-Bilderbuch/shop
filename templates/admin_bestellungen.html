@@ -2,13 +2,19 @@
 <html>
 <head>
     <title>Bestellungen</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+        th, td { border: 1px solid #ccc; padding: 6px; text-align: left; }
+        div.bestellung { border:1px solid #ccc; margin:20px; padding:15px; }
+    </style>
 </head>
 <body>
 
 <h1>Alle Bestellungen</h1>
 
 {% for b in bestellungen %}
-<div style="border:1px solid #ccc; margin:20px; padding:15px;">
+<div class="bestellung">
 
     <h2>Bestellung #{{ b.id }}</h2>
 
@@ -28,41 +34,41 @@
 
     <h3>Positionen</h3>
 
-    <table border="1" cellpadding="6">
+    <table>
         <tr>
             <th>Produkt</th>
             <th>Menge</th>
             <th>Preis</th>
             <th>Summe</th>
+            <th>Moluna Status</th>
+            <th>Tracking</th>
         </tr>
 
         {% set gesamt = 0 %}
 
         {% for pos in b.positionen %}
-        {% set summe = pos.menge * pos.preis %}
-        {% set gesamt = gesamt + summe %}
-
+            {% set summe = pos.menge * pos.preis %}
+            {% set gesamt = gesamt + summe %}
         <tr>
             <td>{{ pos.bezeichnung }}</td>
             <td>{{ pos.menge }}</td>
             <td>{{ "%.2f"|format(pos.preis) }} €</td>
             <td>{{ "%.2f"|format(summe) }} €</td>
+
+            {% if loop.first %}
+                <td rowspan="{{ b.positionen|length }}">{{ b.moluna_status or "-" }}</td>
+                <td rowspan="{{ b.positionen|length }}">{{ b.trackingnummer or "-" }}</td>
+            {% endif %}
         </tr>
         {% endfor %}
 
         <tr>
             <td colspan="3"><b>Gesamt</b></td>
             <td><b>{{ "%.2f"|format(gesamt) }} €</b></td>
+            <td></td>
+            <td></td>
         </tr>
     </table>
-
-    <td>
-        {% if b.moluna_status %}
-        <pre>{{ b.moluna_status }}</pre>
-        {% else %}
-        -
-        {% endif %}
-    </td>
 
 </div>
 
