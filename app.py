@@ -518,21 +518,26 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
 
     for i, item in enumerate(cart_items):
 
-        payload["auftrag_position"].append({
-            "ean": item["ean"],
-            "pos_bezeichnung": item["title"],
-            "menge": item["quantity"],
-            "ek_netto": 0,
-            "vk_brutto": item["price"],
-            "pos_referenz": f"{bestellung.id}-{i}"
-        })
-
-    response = requests.post(url, json=payload, timeout=20)
-
-    logger.info("Buchbutler Bestellung: %s", response.text)
-
-    return response.json()
+    payload["auftrag_position"].append({
+        "ean": item["ean"],
+        "pos_bezeichnung": item["title"],
+        "menge": item["quantity"],
+        "ek_netto": 0,
+        "vk_brutto": item["price"],
+        "pos_referenz": f"{bestellung.id}-{i}"
+    })
     
+    response = requests.post(url, json=payload, timeout=20)
+    
+    data = response.json()
+    
+    if data.get("import_hash"):
+        bestellung.moluna_order_id = data["import_hash"]
+        bestellung.moluna_status = "übermittelt"
+        db.session.commit()
+        
+    logger.info("Buchbutler Bestellung: %s", data)
+    return data
     
     
 def buchbutler_orderresponse(collectkey):
@@ -605,8 +610,15 @@ def admin_bestellungen():
 
             response = buchbutler_orderresponse(b.collectkey)
 
-            if response:
-                b.moluna_status = response
+            if response and "response" in response:
+
+                status = response["response"].get("status")
+
+                if status:
+                    b.moluna_status = status
+                else:
+                    b.moluna_status = "unbekannt"
+
             else:
                 b.moluna_status = "keine Antwort"
 
