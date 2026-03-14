@@ -42,9 +42,9 @@ class Bestellung(db.Model):
     moluna_status = db.Column(db.String(50))         # Status der Bestellung bei Moluna
     moluna_order_id = db.Column(db.String(100))      # Moluna Order-ID
     trackingnummer = db.Column(db.String(100))       # Trackingnummer
-    #logistiker = db.Column(db.String(200))          # Logistiker z.B. DHL, kommagetrennt
+    logistiker = db.Column(db.String(200))          # Logistiker z.B. DHL, kommagetrennt
     #paketart = db.Column(db.String(200))            # z.B. Paket, Grossbrief, kommagetrennt
-    #eans = db.Column(db.String(500))       
+    eans = db.Column(db.String(500))       
 
     bestelldatum = db.Column(
         db.DateTime,
