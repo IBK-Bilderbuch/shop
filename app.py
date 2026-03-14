@@ -33,7 +33,7 @@ from datetime import timedelta
 from functools import lru_cache
 
 
-
+import add_moluna_columns
 # =====================================================
 # CONFIG
 # =====================================================
