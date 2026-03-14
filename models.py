@@ -43,7 +43,7 @@ class Bestellung(db.Model):
     moluna_order_id = db.Column(db.String(100))      # Moluna Order-ID
     trackingnummer = db.Column(db.String(100))       # Trackingnummer
     logistiker = db.Column(db.String(200))          # Logistiker z.B. DHL, kommagetrennt
-    #paketart = db.Column(db.String(200))            # z.B. Paket, Grossbrief, kommagetrennt
+    paketart = db.Column(db.String(200))            # z.B. Paket, Grossbrief, kommagetrennt
     eans = db.Column(db.String(500))       
 
     bestelldatum = db.Column(
