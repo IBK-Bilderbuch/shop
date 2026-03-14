@@ -516,16 +516,17 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
         ]
     }
 
-    for i, item in enumerate(cart_items):
+    
 
-    payload["auftrag_position"].append({
-        "ean": item["ean"],
-        "pos_bezeichnung": item["title"],
-        "menge": item["quantity"],
-        "ek_netto": 0,
-        "vk_brutto": item["price"],
-        "pos_referenz": f"{bestellung.id}-{i}"
-    })
+    for i, item in enumerate(cart_items):
+        payload["auftrag_position"].append({
+            "ean": item["ean"],
+            "pos_bezeichnung": item["title"],
+            "menge": item["quantity"],
+            "ek_netto": 0,
+            "vk_brutto": item["price"],
+            "pos_referenz": f"{bestellung.id}-{i}"
+        })
     
     response = requests.post(url, json=payload, timeout=20)
     
