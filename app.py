@@ -129,23 +129,11 @@ def fix_db():
     from sqlalchemy import text
 
     with db.engine.connect() as conn:
-        conn.execute(text("""
-        ALTER TABLE bestellungen
-        ADD COLUMN IF NOT EXISTS logistiker VARCHAR(200)
-        """))
-
-        conn.execute(text("""
-        ALTER TABLE bestellungen
-        ADD COLUMN IF NOT EXISTS paketart VARCHAR(200)
-        """))
-
-        conn.execute(text("""
-        ALTER TABLE bestellungen
-        ADD COLUMN IF NOT EXISTS eans VARCHAR(500)
-        """))
+        conn.execute(text("ALTER TABLE bestellungen ADD COLUMN logistiker VARCHAR(200)"))
+        conn.execute(text("ALTER TABLE bestellungen ADD COLUMN paketart VARCHAR(200)"))
+        conn.execute(text("ALTER TABLE bestellungen ADD COLUMN eans VARCHAR(500)"))
 
     return "DB FIXED"
-
 
 
 
