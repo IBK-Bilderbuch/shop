@@ -596,6 +596,8 @@ def admin_login():
 # Admin Bestellungen anzeigen
 
 
+
+
 @app.route("/admin/bestellungen")
 def admin_bestellungen():
 
@@ -612,22 +614,48 @@ def admin_bestellungen():
             response = buchbutler_orderresponse(b.collectkey)
 
             if response and "response" in response:
-
                 status = response["response"].get("status")
+                lieferungen = response["response"].get("lieferungen", [])
 
-                if status:
-                    b.moluna_status = status
-                else:
-                    b.moluna_status = "unbekannt"
+                # Status speichern
+                b.moluna_status = status if status else "unbekannt"
+
+                # Trackingnummern & andere Felder sammeln
+                trackingnummern = []
+                logistiker_list = []
+                paketart_list = []
+                eans = []
+
+                for lieferung in lieferungen:
+                    if lieferung.get("trackingnummer"):
+                        trackingnummern.append(lieferung["trackingnummer"])
+                    if lieferung.get("logistiker"):
+                        logistiker_list.append(lieferung["logistiker"])
+                    if lieferung.get("logistik_produkt"):
+                        paketart_list.append(lieferung["logistik_produkt"])
+                    if lieferung.get("ean"):
+                        eans.append(lieferung["ean"])
+
+                # Optional: als kommagetrennte Strings speichern
+                b.trackingnummer = ", ".join(trackingnummern) if trackingnummern else None
+                b.logistiker = ", ".join(logistiker_list) if logistiker_list else None
+                b.paketart = ", ".join(paketart_list) if paketart_list else None
+                b.eans = ", ".join(eans) if eans else None
 
             else:
                 b.moluna_status = "keine Antwort"
+                b.trackingnummer = None
+                b.logistiker = None
+                b.paketart = None
+                b.eans = None
+
+    # Commit nach allen Updates
+    db.session.commit()
 
     return render_template(
         "admin_bestellungen.html",
         bestellungen=alle
     )
-    
 # Homepage
 @app.route("/")
 def index():
