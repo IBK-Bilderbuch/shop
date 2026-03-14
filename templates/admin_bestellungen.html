@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-    <title>Bestellungen</title>
+    <meta charset="UTF-8">
+    <title>Alle Bestellungen</title>
     <style>
-        body { font-family: Arial, sans-serif; }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { margin-bottom: 20px; }
         table { border-collapse: collapse; width: 100%; margin-top: 10px; }
         th, td { border: 1px solid #ccc; padding: 6px; text-align: left; }
-        div.bestellung { border:1px solid #ccc; margin:20px; padding:15px; }
+        th { background-color: #f4f4f4; }
+        div.bestellung { border:1px solid #ccc; margin-bottom: 20px; padding:15px; }
+        .positionen-table { margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -18,60 +22,58 @@
 
     <h2>Bestellung #{{ b.id }}</h2>
 
-    <h3>Kunde</h3>
+    <h3>Kundendaten</h3>
     <p>
         {{ b.vorname }} {{ b.nachname }}<br>
         {{ b.strasse }} {{ b.hausnummer }}<br>
+        {% if b.adresszusatz %}{{ b.adresszusatz }}<br>{% endif %}
         {{ b.plz }} {{ b.stadt }}<br>
         {{ b.land }}<br>
         Email: {{ b.email }}<br>
         Telefon: {{ b.telefon }}<br>
         Zahlungsmethode: {{ b.paymentmethod }}<br>
-        Newsletteranmeldung: {{ b.newsletter }}
+        Newsletter: {{ b.newsletter or "Nein" }}<br>
+        Logistiker: {{ b.logistiker or "-" }}<br>
+        Paketart: {{ b.paketart or "-" }}<br>
+        EANs: {{ b.eans or "-" }}
     </p>
 
-    <p><b>Datum:</b> {{ b.bestelldatum }}</p>
+    <p><b>Datum:</b> {{ b.bestelldatum.strftime("%d.%m.%Y %H:%M") }}</p>
+    <p><b>Moluna Status:</b> {{ b.moluna_status or "-" }} | 
+       <b>Trackingnummer:</b> {{ b.trackingnummer or "-" }} | 
+       <b>Moluna Order-ID:</b> {{ b.moluna_order_id or "-" }}
+    </p>
 
     <h3>Positionen</h3>
-
-    <table>
+    <table class="positionen-table">
         <tr>
             <th>Produkt</th>
+            <th>EAN</th>
             <th>Menge</th>
             <th>Preis</th>
             <th>Summe</th>
-            <th>Moluna Status</th>
-            <th>Tracking</th>
         </tr>
 
         {% set gesamt = 0 %}
-
         {% for pos in b.positionen %}
             {% set summe = pos.menge * pos.preis %}
             {% set gesamt = gesamt + summe %}
         <tr>
             <td>{{ pos.bezeichnung }}</td>
+            <td>{{ pos.ean or "-" }}</td>
             <td>{{ pos.menge }}</td>
             <td>{{ "%.2f"|format(pos.preis) }} €</td>
             <td>{{ "%.2f"|format(summe) }} €</td>
-
-            {% if loop.first %}
-                <td rowspan="{{ b.positionen|length }}">{{ b.moluna_status or "-" }}</td>
-                <td rowspan="{{ b.positionen|length }}">{{ b.trackingnummer or "-" }}</td>
-            {% endif %}
         </tr>
         {% endfor %}
 
         <tr>
-            <td colspan="3"><b>Gesamt</b></td>
+            <td colspan="4"><b>Gesamt</b></td>
             <td><b>{{ "%.2f"|format(gesamt) }} €</b></td>
-            <td></td>
-            <td></td>
         </tr>
     </table>
 
 </div>
-
 {% else %}
 <p>Keine Bestellungen vorhanden.</p>
 {% endfor %}
