@@ -1,7 +1,6 @@
 
 
 
-
 import os
 import json
 import logging
@@ -133,20 +132,12 @@ else:
 # =====================================================
 
 def paypal_access_token():
-
     response = requests.post(
         f"{PAYPAL_BASE}/v1/oauth2/token",
         auth=(PAYPAL_CLIENT_ID, PAYPAL_SECRET),
         data={"grant_type": "client_credentials"},
-        timeout=10
     )
-
-    data = response.json()
-
-    if "access_token" not in data:
-        raise RuntimeError("PayPal Token Fehler")
-
-    return data["access_token"]
+    return response.json().get("access_token")
 
 
 
@@ -155,7 +146,6 @@ def paypal_access_token():
 @app.route("/create-paypal-order", methods=["POST"])
 @csrf.exempt
 def create_paypal_order():
-
     cart_items = get_cart()
     total = calculate_total(cart_items)
 
@@ -179,16 +169,11 @@ def create_paypal_order():
                 }
             }]
         },
-        timeout=10
     )
 
     order_data = response.json()
-
-    if "id" not in order_data:
-        logger.error("PayPal Order Fehler: %s", order_data)
-        return jsonify(order_data), 400
-
     return jsonify({"id": order_data["id"]})
+
 
 
 
@@ -240,6 +225,10 @@ def capture_paypal_order(order_id):
             )
 
         db.session.commit()
+        
+        for i, pos in enumerate(bestellung.positionen):
+            pos.pos_referenz = f"{bestellung.id}-{i}"
+            db.session.commit()
 
         try:
             sende_bestellung_an_buchbutler(bestellung, cart_items)
@@ -255,16 +244,9 @@ def capture_paypal_order(order_id):
         logger.exception("Fehler beim Capturen der PayPal-Zahlung")
         return jsonify({"status": "error", "message": str(e)}), 500
 
-
-
 def verify_webhook(headers, body):
 
     access_token = paypal_access_token()
-
-    try:
-        event = json.loads(body)
-    except Exception:
-        return False
 
     response = requests.post(
         f"{PAYPAL_BASE}/v1/notifications/verify-webhook-signature",
@@ -279,38 +261,34 @@ def verify_webhook(headers, body):
             "auth_algo": headers.get("PAYPAL-AUTH-ALGO"),
             "transmission_sig": headers.get("PAYPAL-TRANSMISSION-SIG"),
             "webhook_id": PAYPAL_WEBHOOK_ID,
-            "webhook_event": event
-        },
-        timeout=10
+            "webhook_event": body
+        }
     )
 
-    data = response.json()
+    return response.json().get("verification_status") == "SUCCESS"
 
-    return data.get("verification_status") == "SUCCESS"
+
 
 @app.route("/paypal-webhook", methods=["POST"])
 @csrf.exempt
 def paypal_webhook():
 
     body = request.get_data(as_text=True)
+    event = json.loads(body)
     headers = request.headers
-
-    try:
-        event = json.loads(body)
-    except Exception:
-        return "", 400
 
     if not verify_webhook(headers, body):
         return "", 400
 
-    event_type = event.get("event_type")
+    event_type = body.get("event_type")
 
     if event_type == "PAYMENT.CAPTURE.COMPLETED":
         capture = event["resource"]
         order_id = capture["supplementary_data"]["related_ids"]["order_id"]
         amount = capture["amount"]["value"]
-
         logger.info(f"PayPal Zahlung abgeschlossen: {order_id} – {amount} EUR")
+
+
 
     return "", 200
 
@@ -401,6 +379,78 @@ def buchbutler_request(endpoint, ean):
         return None
 
     return data["response"]
+
+
+# ============================
+# ADMIN: Liefermeldungen Sync
+# ============================
+
+def aktualisiere_lieferungen():
+    for b in Bestellung.query.all():
+        if getattr(b, "collectkey", None):
+            response = safe_buchbutler_orderresponse(b.collectkey)
+            if response and "response" in response:
+                lieferungen = response["response"].get("lieferungen", [])
+                trackingnummern = [l.get("trackingnummer") for l in lieferungen if l.get("trackingnummer")]
+                b.trackingnummer = ", ".join(trackingnummern) if trackingnummern else None
+    db.session.commit()
+
+
+def aktualisiere_status():
+    for b in Bestellung.query.all():
+        if getattr(b, "collectkey", None):
+            response = safe_buchbutler_orderresponse(b.collectkey)
+            if response and "response" in response:
+                b.moluna_status = response["response"].get("status", "unbekannt")
+    db.session.commit()
+
+
+@app.route("/admin/stornierung/<int:bestellung_id>", methods=["POST"])
+def admin_stornierung(bestellung_id):
+    if not session.get("admin"):
+        abort(403)
+
+    bestellung = Bestellung.query.get_or_404(bestellung_id)
+
+    result = sende_stornierung_an_buchbutler(bestellung)
+    if result:
+        bestellung.moluna_status = "storniert"
+        db.session.commit()
+        flash(f"Bestellung #{bestellung_id} wurde storniert.", "success")
+    else:
+        flash(f"Fehler bei der Stornierung der Bestellung #{bestellung_id}.", "error")
+
+    return redirect(url_for("admin_bestellungen"))
+
+
+# ============================
+# ADMIN: Liefermeldungen Sync
+# ============================
+
+@app.route("/admin/lieferungen-sync")
+def admin_lieferungen_sync():
+    if not session.get("admin"):
+        abort(403)
+
+    aktualisiere_lieferungen()
+    flash("Liefermeldungen wurden aktualisiert.", "success")
+    return redirect(url_for("admin_bestellungen"))
+
+
+# ============================
+# ADMIN: Status Sync
+# ============================
+
+@app.route("/admin/status-sync")
+def admin_status_sync():
+    if not session.get("admin"):
+        abort(403)
+
+    aktualisiere_status()
+    flash("Statusmeldungen wurden aktualisiert.", "success")
+    return redirect(url_for("admin_bestellungen"))
+
+
 # -----------------------------
 # CONTENT API
 # -----------------------------
@@ -566,11 +616,15 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
     logger.info("Buchbutler Bestellung: %s", data)
     return data
     
-    
-def buchbutler_orderresponse(collectkey):
 
+
+
+# ============================
+# Helfer: ORDERRESPONSE sicher abfragen
+# ============================
+
+def safe_buchbutler_orderresponse(collectkey):
     url = f"{BASE_URL}/ORDERRESPONSE/"
-
     payload = {
         "username": BUCHBUTLER_USER,
         "passwort": BUCHBUTLER_PASSWORD,
@@ -579,10 +633,20 @@ def buchbutler_orderresponse(collectkey):
 
     try:
         response = requests.post(url, json=payload, timeout=10)
+
+        # Wenn leer oder Fehlerstatus → None zurückgeben
+        if response.status_code != 200:
+            logger.warning(f"ORDERRESPONSE Fehler: Status {response.status_code} für collectkey {collectkey}")
+            return None
+
+        if not response.text.strip():
+            logger.warning(f"ORDERRESPONSE leer für collectkey {collectkey}")
+            return None
+
         return response.json()
 
     except Exception:
-        logger.exception("ORDERRESPONSE Fehler")
+        logger.exception(f"ORDERRESPONSE Exception für collectkey {collectkey}")
         return None
 # =====================================================
 # ROUTES
@@ -636,8 +700,8 @@ def admin_bestellungen():
     for b in alle:
 
         if getattr(b, "collectkey", None):
-
-            response = buchbutler_orderresponse(b.collectkey)
+            
+            response = safe_buchbutler_orderresponse(b.collectkey)
 
             if response and "response" in response:
                 status = response["response"].get("status")
@@ -871,6 +935,7 @@ def remove_from_cart(produkt_id):
 
 
 @app.route("/sync-cart", methods=["POST"])
+@csrf.exempt  
 def sync_cart():
     data = request.get_json()
 
