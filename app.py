@@ -382,12 +382,13 @@ def buchbutler_request(endpoint, ean):
 
 
 # ============================
-# ADMIN: Stornierung
+# ADMIN: Liefermeldungen Sync
 # ============================
+
 def aktualisiere_lieferungen():
     for b in Bestellung.query.all():
         if getattr(b, "collectkey", None):
-            response = buchbutler_orderresponse(b.collectkey)
+            response = safe_buchbutler_orderresponse(b.collectkey)
             if response and "response" in response:
                 lieferungen = response["response"].get("lieferungen", [])
                 trackingnummern = [l.get("trackingnummer") for l in lieferungen if l.get("trackingnummer")]
@@ -398,11 +399,12 @@ def aktualisiere_lieferungen():
 def aktualisiere_status():
     for b in Bestellung.query.all():
         if getattr(b, "collectkey", None):
-            response = buchbutler_orderresponse(b.collectkey)
+            response = safe_buchbutler_orderresponse(b.collectkey)
             if response and "response" in response:
                 b.moluna_status = response["response"].get("status", "unbekannt")
     db.session.commit()
-    
+
+
 @app.route("/admin/stornierung/<int:bestellung_id>", methods=["POST"])
 def admin_stornierung(bestellung_id):
     if not session.get("admin"):
@@ -614,11 +616,15 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
     logger.info("Buchbutler Bestellung: %s", data)
     return data
     
-    
-def buchbutler_orderresponse(collectkey):
 
+
+
+# ============================
+# Helfer: ORDERRESPONSE sicher abfragen
+# ============================
+
+def safe_buchbutler_orderresponse(collectkey):
     url = f"{BASE_URL}/ORDERRESPONSE/"
-
     payload = {
         "username": BUCHBUTLER_USER,
         "passwort": BUCHBUTLER_PASSWORD,
@@ -627,10 +633,20 @@ def buchbutler_orderresponse(collectkey):
 
     try:
         response = requests.post(url, json=payload, timeout=10)
+
+        # Wenn leer oder Fehlerstatus → None zurückgeben
+        if response.status_code != 200:
+            logger.warning(f"ORDERRESPONSE Fehler: Status {response.status_code} für collectkey {collectkey}")
+            return None
+
+        if not response.text.strip():
+            logger.warning(f"ORDERRESPONSE leer für collectkey {collectkey}")
+            return None
+
         return response.json()
 
     except Exception:
-        logger.exception("ORDERRESPONSE Fehler")
+        logger.exception(f"ORDERRESPONSE Exception für collectkey {collectkey}")
         return None
 # =====================================================
 # ROUTES
@@ -684,8 +700,8 @@ def admin_bestellungen():
     for b in alle:
 
         if getattr(b, "collectkey", None):
-
-            response = buchbutler_orderresponse(b.collectkey)
+            
+            response = safe_buchbutler_orderresponse(b.collectkey)
 
             if response and "response" in response:
                 status = response["response"].get("status")
