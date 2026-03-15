@@ -405,8 +405,51 @@ def aktualisiere_status():
     db.session.commit()
 
 
+# ============================
+# Bestellung stornieren bei Buchbutler
+# ============================
+def sende_stornierung_an_buchbutler(bestellung):
+    """
+    Sendet eine Stornierung an die Buchbutler-API für eine gegebene Bestellung.
+    Gibt True zurück, wenn erfolgreich, sonst False.
+    """
+
+    if not bestellung.collectkey:
+        logger.error(f"Bestellung #{bestellung.id} hat keinen collectkey!")
+        return False
+
+    url = f"{BASE_URL}/ORDERCANCEL/"
+
+    payload = {
+        "username": BUCHBUTLER_USER,
+        "passwort": BUCHBUTLER_PASSWORD,
+        "collectkey": bestellung.collectkey,
+        "grund": "Storniert durch Admin"
+    }
+
+    try:
+        response = requests.post(url, json=payload, timeout=10)
+        response.raise_for_status()  # HTTP-Fehler werden ausgelöst
+
+        data = response.json()
+        logger.info(f"Buchbutler Stornierung für Bestellung #{bestellung.id}: {data}")
+
+        # Prüfen, ob API bestätigt hat
+        if data.get("status") == "ok" or data.get("success"):
+            return True
+        else:
+            return False
+
+    except Exception:
+        logger.exception(f"Fehler beim Stornieren der Bestellung #{bestellung.id}")
+        return False
+
+
+# ============================
+# Admin-Route Stornierung
+# ============================
 @app.route("/admin/stornierung/<int:bestellung_id>", methods=["POST"])
-@csrf.exempt
+@csrf.exempt  # Entfernen, wenn csrf_token() im Formular eingebunden ist
 def admin_stornierung(bestellung_id):
     if not session.get("admin"):
         abort(403)
