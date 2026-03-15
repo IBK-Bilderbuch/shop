@@ -384,7 +384,25 @@ def buchbutler_request(endpoint, ean):
 # ============================
 # ADMIN: Stornierung
 # ============================
+def aktualisiere_lieferungen():
+    for b in Bestellung.query.all():
+        if getattr(b, "collectkey", None):
+            response = buchbutler_orderresponse(b.collectkey)
+            if response and "response" in response:
+                lieferungen = response["response"].get("lieferungen", [])
+                trackingnummern = [l.get("trackingnummer") for l in lieferungen if l.get("trackingnummer")]
+                b.trackingnummer = ", ".join(trackingnummern) if trackingnummern else None
+    db.session.commit()
 
+
+def aktualisiere_status():
+    for b in Bestellung.query.all():
+        if getattr(b, "collectkey", None):
+            response = buchbutler_orderresponse(b.collectkey)
+            if response and "response" in response:
+                b.moluna_status = response["response"].get("status", "unbekannt")
+    db.session.commit()
+    
 @app.route("/admin/stornierung/<int:bestellung_id>", methods=["POST"])
 def admin_stornierung(bestellung_id):
     if not session.get("admin"):
