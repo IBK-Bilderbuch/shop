@@ -405,52 +405,50 @@ def aktualisiere_status():
     db.session.commit()
 
 
+
 # ============================
-# Bestellung stornieren bei Buchbutler
+# Stornierung einer Bestellung
 # ============================
+
 def sende_stornierung_an_buchbutler(bestellung):
     """
-    Sendet eine Stornierung an die Buchbutler-API für eine gegebene Bestellung.
-    Gibt True zurück, wenn erfolgreich, sonst False.
+    Storniert alle Positionen einer Bestellung über die Buchbutler Cancel-API.
+    Laut Schnittstellenbeschreibung muss pos_referenz oder mol_auftrag_position_id übergeben werden.
     """
+    url = f"{BASE_URL}/ORDERCANCEL/"  # Prüfe, ob dein Endpunkt korrekt ist
 
-    if not bestellung.collectkey:
-        logger.error(f"Bestellung #{bestellung.id} hat keinen collectkey!")
+    if not bestellung.positionen:
+        logger.warning(f"Bestellung {bestellung.id} hat keine Positionen.")
         return False
 
-    url = f"{BASE_URL}/ORDERCANCEL/"
+    for pos in bestellung.positionen:
+        payload = {
+            "username": BUCHBUTLER_USER,
+            "passwort": BUCHBUTLER_PASSWORD,
+            "api_typ": "CANCEL",
+            "pos_referenz": pos.pos_referenz
+        }
 
-    payload = {
-        "username": BUCHBUTLER_USER,
-        "passwort": BUCHBUTLER_PASSWORD,
-        "collectkey": bestellung.collectkey,
-        "grund": "Storniert durch Admin"
-    }
-
-    try:
-        response = requests.post(url, json=payload, timeout=10)
-        response.raise_for_status()  # HTTP-Fehler werden ausgelöst
-
-        data = response.json()
-        logger.info(f"Buchbutler Stornierung für Bestellung #{bestellung.id}: {data}")
-
-        # Prüfen, ob API bestätigt hat
-        if data.get("status") == "ok" or data.get("success"):
-            return True
-        else:
+        try:
+            response = requests.post(url, json=payload, timeout=10)
+            response.raise_for_status()  # HTTP-Fehler auslösen
+            logger.info(f"Position {pos.pos_referenz} storniert: {response.json()}")
+        except requests.exceptions.HTTPError as e:
+            logger.error(f"Fehler beim Stornieren der Position {pos.pos_referenz}: {e}")
+            return False
+        except Exception as e:
+            logger.exception(f"Unerwarteter Fehler bei Position {pos.pos_referenz}: {e}")
             return False
 
-    except Exception:
-        logger.exception(f"Fehler beim Stornieren der Bestellung #{bestellung.id}")
-        return False
+    return True
 
 
-# ============================
-# Admin-Route Stornierung
-# ============================
 @app.route("/admin/stornierung/<int:bestellung_id>", methods=["POST"])
-@csrf.exempt  # Entfernen, wenn csrf_token() im Formular eingebunden ist
+@csrf.exempt
 def admin_stornierung(bestellung_id):
+    """
+    Admin-Route zum Stornieren einer Bestellung. Alle Positionen werden einzeln storniert.
+    """
     if not session.get("admin"):
         abort(403)
 
@@ -460,9 +458,10 @@ def admin_stornierung(bestellung_id):
     if result:
         bestellung.moluna_status = "storniert"
         db.session.commit()
-        flash(f"Bestellung #{bestellung_id} wurde storniert.", "success")
+        flash(f"Bestellung #{bestellung_id} wurde erfolgreich storniert.", "success")
     else:
         flash(f"Fehler bei der Stornierung der Bestellung #{bestellung_id}.", "error")
+        logger.error(f"Fehler beim Stornieren der Bestellung #{bestellung_id}")
 
     return redirect(url_for("admin_bestellungen"))
 
