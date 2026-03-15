@@ -1,6 +1,7 @@
 
 
 
+
 import os
 import json
 import logging
@@ -225,10 +226,6 @@ def capture_paypal_order(order_id):
             )
 
         db.session.commit()
-        
-        for i, pos in enumerate(bestellung.positionen):
-            pos.pos_referenz = f"{bestellung.id}-{i}"
-            db.session.commit()
 
         try:
             sende_bestellung_an_buchbutler(bestellung, cart_items)
@@ -379,9 +376,6 @@ def buchbutler_request(endpoint, ean):
         return None
 
     return data["response"]
-
-
-
 # -----------------------------
 # CONTENT API
 # -----------------------------
@@ -547,15 +541,11 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
     logger.info("Buchbutler Bestellung: %s", data)
     return data
     
+    
+def buchbutler_orderresponse(collectkey):
 
-
-
-# ============================
-# Helfer: ORDERRESPONSE sicher abfragen
-# ============================
-
-def safe_buchbutler_orderresponse(collectkey):
     url = f"{BASE_URL}/ORDERRESPONSE/"
+
     payload = {
         "username": BUCHBUTLER_USER,
         "passwort": BUCHBUTLER_PASSWORD,
@@ -564,20 +554,10 @@ def safe_buchbutler_orderresponse(collectkey):
 
     try:
         response = requests.post(url, json=payload, timeout=10)
-
-        # Wenn leer oder Fehlerstatus → None zurückgeben
-        if response.status_code != 200:
-            logger.warning(f"ORDERRESPONSE Fehler: Status {response.status_code} für collectkey {collectkey}")
-            return None
-
-        if not response.text.strip():
-            logger.warning(f"ORDERRESPONSE leer für collectkey {collectkey}")
-            return None
-
         return response.json()
 
     except Exception:
-        logger.exception(f"ORDERRESPONSE Exception für collectkey {collectkey}")
+        logger.exception("ORDERRESPONSE Fehler")
         return None
 # =====================================================
 # ROUTES
@@ -631,8 +611,8 @@ def admin_bestellungen():
     for b in alle:
 
         if getattr(b, "collectkey", None):
-            
-            response = safe_buchbutler_orderresponse(b.collectkey)
+
+            response = buchbutler_orderresponse(b.collectkey)
 
             if response and "response" in response:
                 status = response["response"].get("status")
