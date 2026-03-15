@@ -1,22 +1,3 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>Alle Bestellungen</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { margin-bottom: 20px; }
-        table { border-collapse: collapse; width: 100%; margin-top: 10px; }
-        th, td { border: 1px solid #ccc; padding: 6px; text-align: left; }
-        th { background-color: #f4f4f4; }
-        div.bestellung { border:1px solid #ccc; margin-bottom: 20px; padding:15px; }
-        .positionen-table { margin-top: 10px; }
-    </style>
-</head>
-<body>
-
-<h1>Alle Bestellungen</h1>
-
 {% for b in bestellungen %}
 <div class="bestellung">
 
@@ -73,10 +54,29 @@
         </tr>
     </table>
 
+    <!-- ========================= -->
+    <!-- ADMIN BUTTONS -->
+    <!-- ========================= -->
+    <div style="margin-top:10px;">
+        <!-- Stornieren -->
+        <form action="{{ url_for('admin_stornierung', bestellung_id=b.id) }}" method="POST" style="display:inline;">
+            <button type="submit" style="background-color:#f44336;color:white;border:none;padding:6px 12px;cursor:pointer;">
+                Stornieren
+            </button>
+        </form>
+
+        <!-- Lieferungen Sync -->
+        <a href="{{ url_for('admin_lieferungen_sync') }}" style="background-color:#2196F3;color:white;padding:6px 12px;text-decoration:none;margin-left:5px;">
+            Lieferungen Sync
+        </a>
+
+        <!-- Status Sync -->
+        <a href="{{ url_for('admin_status_sync') }}" style="background-color:#4CAF50;color:white;padding:6px 12px;text-decoration:none;margin-left:5px;">
+            Status Sync
+        </a>
+    </div>
+
 </div>
 {% else %}
 <p>Keine Bestellungen vorhanden.</p>
 {% endfor %}
-
-</body>
-</html>
