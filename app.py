@@ -406,6 +406,7 @@ def aktualisiere_status():
 
 
 @app.route("/admin/stornierung/<int:bestellung_id>", methods=["POST"])
+@csrf.exempt  # 👈 hier CSRF ausschalten
 def admin_stornierung(bestellung_id):
     if not session.get("admin"):
         abort(403)
@@ -428,6 +429,7 @@ def admin_stornierung(bestellung_id):
 # ============================
 
 @app.route("/admin/lieferungen-sync")
+@csrf.exempt  # 👈 hier CSRF ausschalten
 def admin_lieferungen_sync():
     if not session.get("admin"):
         abort(403)
@@ -442,6 +444,8 @@ def admin_lieferungen_sync():
 # ============================
 
 @app.route("/admin/status-sync")
+@csrf.exempt  # 👈 hier CSRF ausschalten
+
 def admin_status_sync():
     if not session.get("admin"):
         abort(403)
