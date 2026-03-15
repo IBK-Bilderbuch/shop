@@ -406,64 +406,7 @@ def aktualisiere_status():
 
 
 
-# ============================
-# Stornierung einer Bestellung
-# ============================
 
-def sende_stornierung_an_buchbutler(bestellung):
-    """
-    Storniert alle Positionen einer Bestellung über die Buchbutler Cancel-API.
-    Laut Schnittstellenbeschreibung muss pos_referenz oder mol_auftrag_position_id übergeben werden.
-    """
-    url = f"{BASE_URL}/ORDERCANCEL/"  # Prüfe, ob dein Endpunkt korrekt ist
-
-    if not bestellung.positionen:
-        logger.warning(f"Bestellung {bestellung.id} hat keine Positionen.")
-        return False
-
-    for pos in bestellung.positionen:
-        payload = {
-            "username": BUCHBUTLER_USER,
-            "passwort": BUCHBUTLER_PASSWORD,
-            "api_typ": "CANCEL",
-            "pos_referenz": pos.pos_referenz
-        }
-
-        try:
-            response = requests.post(url, json=payload, timeout=10)
-            response.raise_for_status()  # HTTP-Fehler auslösen
-            logger.info(f"Position {pos.pos_referenz} storniert: {response.json()}")
-        except requests.exceptions.HTTPError as e:
-            logger.error(f"Fehler beim Stornieren der Position {pos.pos_referenz}: {e}")
-            return False
-        except Exception as e:
-            logger.exception(f"Unerwarteter Fehler bei Position {pos.pos_referenz}: {e}")
-            return False
-
-    return True
-
-
-@app.route("/admin/stornierung/<int:bestellung_id>", methods=["POST"])
-@csrf.exempt
-def admin_stornierung(bestellung_id):
-    """
-    Admin-Route zum Stornieren einer Bestellung. Alle Positionen werden einzeln storniert.
-    """
-    if not session.get("admin"):
-        abort(403)
-
-    bestellung = Bestellung.query.get_or_404(bestellung_id)
-
-    result = sende_stornierung_an_buchbutler(bestellung)
-    if result:
-        bestellung.moluna_status = "storniert"
-        db.session.commit()
-        flash(f"Bestellung #{bestellung_id} wurde erfolgreich storniert.", "success")
-    else:
-        flash(f"Fehler bei der Stornierung der Bestellung #{bestellung_id}.", "error")
-        logger.error(f"Fehler beim Stornieren der Bestellung #{bestellung_id}")
-
-    return redirect(url_for("admin_bestellungen"))
 
 
 # ============================
