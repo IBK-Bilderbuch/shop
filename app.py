@@ -225,6 +225,10 @@ def capture_paypal_order(order_id):
             )
 
         db.session.commit()
+        
+        for i, pos in enumerate(bestellung.positionen):
+            pos.pos_referenz = f"{bestellung.id}-{i}"
+            db.session.commit()
 
         try:
             sende_bestellung_an_buchbutler(bestellung, cart_items)
@@ -375,6 +379,78 @@ def buchbutler_request(endpoint, ean):
         return None
 
     return data["response"]
+
+
+# ============================
+# ADMIN: Stornierung
+# ============================
+
+@app.route("/admin/stornierung/<int:bestellung_id>", methods=["POST"])
+def admin_stornierung(bestellung_id):
+    if not session.get("admin"):
+        abort(403)
+
+    bestellung = Bestellung.query.get_or_404(bestellung_id)
+
+    result = sende_stornierung_an_buchbutler(bestellung)
+    if result:
+        bestellung.moluna_status = "storniert"
+        db.session.commit()
+        flash(f"Bestellung #{bestellung_id} wurde storniert.", "success")
+    else:
+        flash(f"Fehler bei der Stornierung der Bestellung #{bestellung_id}.", "error")
+
+    return redirect(url_for("admin_bestellungen"))
+
+
+# ============================
+# ADMIN: Liefermeldungen Sync
+# ============================
+
+@app.route("/admin/lieferungen-sync")
+def admin_lieferungen_sync():
+    if not session.get("admin"):
+        abort(403)
+
+    aktualisiere_lieferungen()
+    flash("Liefermeldungen wurden aktualisiert.", "success")
+    return redirect(url_for("admin_bestellungen"))
+
+
+# ============================
+# ADMIN: Status Sync
+# ============================
+
+@app.route("/admin/status-sync")
+def admin_status_sync():
+    if not session.get("admin"):
+        abort(403)
+
+    aktualisiere_status()
+    flash("Statusmeldungen wurden aktualisiert.", "success")
+    return redirect(url_for("admin_bestellungen"))
+
+# ============================
+# Cronjob / Scheduler (optional)
+# ============================
+
+from flask_apscheduler import APScheduler
+
+scheduler = APScheduler()
+scheduler.init_app(app)
+scheduler.start()
+
+# Status täglich 1x um 3 Uhr
+@scheduler.task('cron', id='status_sync', hour=3)
+def scheduled_status_sync():
+    logger.info("Automatisches Status-Update gestartet")
+    aktualisiere_status()
+
+# Liefermeldungen stündlich
+@scheduler.task('interval', id='lieferungen_sync', hours=1)
+def scheduled_lieferungen_sync():
+    logger.info("Automatisches Lieferungen-Update gestartet")
+    aktualisiere_lieferungen()
 # -----------------------------
 # CONTENT API
 # -----------------------------
