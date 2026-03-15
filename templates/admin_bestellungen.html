@@ -1,81 +1,83 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Bestellungen</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        table { border-collapse: collapse; width: 100%; margin-top: 10px; }
-        th, td { border: 1px solid #ccc; padding: 6px; text-align: left; }
-        div.bestellung { border:1px solid #ccc; margin:20px; padding:15px; }
-    </style>
-</head>
-<body>
-
-<h1>Alle Bestellungen</h1>
-
 {% for b in bestellungen %}
 <div class="bestellung">
 
     <h2>Bestellung #{{ b.id }}</h2>
 
-    <h3>Kunde</h3>
+    <h3>Kundendaten</h3>
     <p>
         {{ b.vorname }} {{ b.nachname }}<br>
         {{ b.strasse }} {{ b.hausnummer }}<br>
+        {% if b.adresszusatz %}{{ b.adresszusatz }}<br>{% endif %}
         {{ b.plz }} {{ b.stadt }}<br>
         {{ b.land }}<br>
         Email: {{ b.email }}<br>
         Telefon: {{ b.telefon }}<br>
         Zahlungsmethode: {{ b.paymentmethod }}<br>
-        Newsletteranmeldung: {{ b.newsletter }}
+        Newsletter: {{ b.newsletter or "Nein" }}<br>
+        Logistiker: {{ b.logistiker or "-" }}<br>
+        Paketart: {{ b.paketart or "-" }}<br>
+        EANs: {{ b.eans or "-" }}
     </p>
 
-    <p><b>Datum:</b> {{ b.bestelldatum }}</p>
+    <p><b>Datum:</b> {{ b.bestelldatum.strftime("%d.%m.%Y %H:%M") }}</p>
+    <p><b>Moluna Status:</b> {{ b.moluna_status or "-" }} | 
+       <b>Trackingnummer:</b> {{ b.trackingnummer or "-" }} | 
+       <b>Moluna Order-ID:</b> {{ b.moluna_order_id or "-" }}
+    </p>
 
     <h3>Positionen</h3>
-
-    <table>
+    <table class="positionen-table">
         <tr>
             <th>Produkt</th>
+            <th>EAN</th>
             <th>Menge</th>
             <th>Preis</th>
             <th>Summe</th>
-            <th>Moluna Status</th>
-            <th>Tracking</th>
         </tr>
 
         {% set gesamt = 0 %}
-
         {% for pos in b.positionen %}
             {% set summe = pos.menge * pos.preis %}
             {% set gesamt = gesamt + summe %}
         <tr>
             <td>{{ pos.bezeichnung }}</td>
+            <td>{{ pos.ean or "-" }}</td>
             <td>{{ pos.menge }}</td>
             <td>{{ "%.2f"|format(pos.preis) }} €</td>
             <td>{{ "%.2f"|format(summe) }} €</td>
-
-            {% if loop.first %}
-                <td rowspan="{{ b.positionen|length }}">{{ b.moluna_status or "-" }}</td>
-                <td rowspan="{{ b.positionen|length }}">{{ b.trackingnummer or "-" }}</td>
-            {% endif %}
         </tr>
         {% endfor %}
 
         <tr>
-            <td colspan="3"><b>Gesamt</b></td>
+            <td colspan="4"><b>Gesamt</b></td>
             <td><b>{{ "%.2f"|format(gesamt) }} €</b></td>
-            <td></td>
-            <td></td>
         </tr>
     </table>
 
-</div>
+    <!-- ========================= -->
+    <!-- ADMIN BUTTONS -->
+    <!-- ========================= -->
+    <div style="margin-top:10px;">
+        <!-- Stornieren -->
+        <form action="{{ url_for('admin_stornierung', bestellung_id=b.id) }}" method="POST" style="display:inline;">
+            <button type="submit" style="background-color:#f44336;color:white;border:none;padding:6px 12px;cursor:pointer;">
+                Stornieren
+            </button>
+        </form>
 
+        <!-- Lieferungen Sync -->
+        <a href="{{ url_for('admin_lieferungen_sync') }}" style="background-color:#2196F3;color:white;padding:6px 12px;text-decoration:none;margin-left:5px;">
+            Lieferungen Sync
+        </a>
+
+        <!-- Status Sync -->
+        <a href="{{ url_for('admin_status_sync') }}" style="background-color:#4CAF50;color:white;padding:6px 12px;text-decoration:none;margin-left:5px;">
+            Status Sync
+        </a>
+    </div>
+
+</div>
 {% else %}
 <p>Keine Bestellungen vorhanden.</p>
 {% endfor %}
-
-</body>
-</html>
