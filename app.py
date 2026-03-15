@@ -406,6 +406,7 @@ def aktualisiere_status():
 
 
 @app.route("/admin/stornierung/<int:bestellung_id>", methods=["POST"])
+@csrf.exempt
 def admin_stornierung(bestellung_id):
     if not session.get("admin"):
         abort(403)
