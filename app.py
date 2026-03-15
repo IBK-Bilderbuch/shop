@@ -32,9 +32,7 @@ from datetime import timedelta
 
 from functools import lru_cache
 
-from flask import session, abort, flash, redirect, url_for
-from app import db
-from buchbutler_api import safe_buchbutler_orderresponse  # deine bestehende API-Hilfe
+
 # =====================================================
 # CONFIG
 # =====================================================
