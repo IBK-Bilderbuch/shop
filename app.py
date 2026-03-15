@@ -32,7 +32,9 @@ from datetime import timedelta
 
 from functools import lru_cache
 
-
+from flask import session, abort, flash, redirect, url_for
+from app import db
+from buchbutler_api import safe_buchbutler_orderresponse  # deine bestehende API-Hilfe
 # =====================================================
 # CONFIG
 # =====================================================
@@ -382,59 +384,70 @@ def buchbutler_request(endpoint, ean):
 
 
 # ============================
-# ADMIN: Liefermeldungen Sync
+# ADMIN: Liefermeldungen & Status Sync
 # ============================
 
+# ----------------------------
+# Liefermeldungen aktualisieren
+# ----------------------------
 def aktualisiere_lieferungen():
     for b in Bestellung.query.all():
         if getattr(b, "collectkey", None):
             response = safe_buchbutler_orderresponse(b.collectkey)
             if response and "response" in response:
                 lieferungen = response["response"].get("lieferungen", [])
+                
+                # JSON direkt speichern
+                b.lieferdaten = lieferungen
+
+                # Trackingnummern zusammenführen (falls vorhanden)
                 trackingnummern = [l.get("trackingnummer") for l in lieferungen if l.get("trackingnummer")]
                 b.trackingnummer = ", ".join(trackingnummern) if trackingnummern else None
+
+                # Optional: Logistiker & Paketarten sammeln
+                b.logistiker = ", ".join({l.get("logistiker") for l in lieferungen if l.get("logistiker")})
+                b.paketart = ", ".join({l.get("logistik_produkt") for l in lieferungen if l.get("logistik_produkt")})
+                
     db.session.commit()
 
 
+# ----------------------------
+# Statusmeldungen aktualisieren
+# ----------------------------
 def aktualisiere_status():
     for b in Bestellung.query.all():
         if getattr(b, "collectkey", None):
             response = safe_buchbutler_orderresponse(b.collectkey)
             if response and "response" in response:
-                b.moluna_status = response["response"].get("status", "unbekannt")
+                status_data = response["response"].get("status_objekt", {})
+                b.status_objekt = status_data
+
+                # Optional: Moluna-Status direkt ins Feld schreiben
+                b.moluna_status = status_data.get("status", "unbekannt")
+                
     db.session.commit()
 
 
-
-
-
-
-# ============================
-# ADMIN: Liefermeldungen Sync
-# ============================
-
+# ----------------------------
+# Routen für Admin
+# ----------------------------
 @app.route("/admin/lieferungen-sync")
 def admin_lieferungen_sync():
     if not session.get("admin"):
         abort(403)
-
     aktualisiere_lieferungen()
     flash("Liefermeldungen wurden aktualisiert.", "success")
     return redirect(url_for("admin_bestellungen"))
 
 
-# ============================
-# ADMIN: Status Sync
-# ============================
-
 @app.route("/admin/status-sync")
 def admin_status_sync():
     if not session.get("admin"):
         abort(403)
-
     aktualisiere_status()
     flash("Statusmeldungen wurden aktualisiert.", "success")
     return redirect(url_for("admin_bestellungen"))
+
 
 
 # -----------------------------
