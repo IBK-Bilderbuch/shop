@@ -133,12 +133,20 @@ else:
 # =====================================================
 
 def paypal_access_token():
+
     response = requests.post(
         f"{PAYPAL_BASE}/v1/oauth2/token",
         auth=(PAYPAL_CLIENT_ID, PAYPAL_SECRET),
         data={"grant_type": "client_credentials"},
+        timeout=10
     )
-    return response.json().get("access_token")
+
+    data = response.json()
+
+    if "access_token" not in data:
+        raise RuntimeError("PayPal Token Fehler")
+
+    return data["access_token"]
 
 
 
@@ -147,6 +155,7 @@ def paypal_access_token():
 @app.route("/create-paypal-order", methods=["POST"])
 @csrf.exempt
 def create_paypal_order():
+
     cart_items = get_cart()
     total = calculate_total(cart_items)
 
@@ -170,11 +179,16 @@ def create_paypal_order():
                 }
             }]
         },
+        timeout=10
     )
 
     order_data = response.json()
-    return jsonify({"id": order_data["id"]})
 
+    if "id" not in order_data:
+        logger.error("PayPal Order Fehler: %s", order_data)
+        return jsonify(order_data), 400
+
+    return jsonify({"id": order_data["id"]})
 
 
 
@@ -241,9 +255,16 @@ def capture_paypal_order(order_id):
         logger.exception("Fehler beim Capturen der PayPal-Zahlung")
         return jsonify({"status": "error", "message": str(e)}), 500
 
+
+
 def verify_webhook(headers, body):
 
     access_token = paypal_access_token()
+
+    try:
+        event = json.loads(body)
+    except Exception:
+        return False
 
     response = requests.post(
         f"{PAYPAL_BASE}/v1/notifications/verify-webhook-signature",
@@ -258,34 +279,38 @@ def verify_webhook(headers, body):
             "auth_algo": headers.get("PAYPAL-AUTH-ALGO"),
             "transmission_sig": headers.get("PAYPAL-TRANSMISSION-SIG"),
             "webhook_id": PAYPAL_WEBHOOK_ID,
-            "webhook_event": body
-        }
+            "webhook_event": event
+        },
+        timeout=10
     )
 
-    return response.json().get("verification_status") == "SUCCESS"
+    data = response.json()
 
-
+    return data.get("verification_status") == "SUCCESS"
 
 @app.route("/paypal-webhook", methods=["POST"])
 @csrf.exempt
 def paypal_webhook():
 
     body = request.get_data(as_text=True)
-    event = json.loads(body)
     headers = request.headers
+
+    try:
+        event = json.loads(body)
+    except Exception:
+        return "", 400
 
     if not verify_webhook(headers, body):
         return "", 400
 
-    event_type = body.get("event_type")
+    event_type = event.get("event_type")
 
     if event_type == "PAYMENT.CAPTURE.COMPLETED":
         capture = event["resource"]
         order_id = capture["supplementary_data"]["related_ids"]["order_id"]
         amount = capture["amount"]["value"]
+
         logger.info(f"PayPal Zahlung abgeschlossen: {order_id} – {amount} EUR")
-
-
 
     return "", 200
 
@@ -846,7 +871,6 @@ def remove_from_cart(produkt_id):
 
 
 @app.route("/sync-cart", methods=["POST"])
-@csrf.exempt  
 def sync_cart():
     data = request.get_json()
 
