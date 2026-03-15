@@ -430,27 +430,7 @@ def admin_status_sync():
     flash("Statusmeldungen wurden aktualisiert.", "success")
     return redirect(url_for("admin_bestellungen"))
 
-# ============================
-# Cronjob / Scheduler (optional)
-# ============================
 
-from flask_apscheduler import APScheduler
-
-scheduler = APScheduler()
-scheduler.init_app(app)
-scheduler.start()
-
-# Status täglich 1x um 3 Uhr
-@scheduler.task('cron', id='status_sync', hour=3)
-def scheduled_status_sync():
-    logger.info("Automatisches Status-Update gestartet")
-    aktualisiere_status()
-
-# Liefermeldungen stündlich
-@scheduler.task('interval', id='lieferungen_sync', hours=1)
-def scheduled_lieferungen_sync():
-    logger.info("Automatisches Lieferungen-Update gestartet")
-    aktualisiere_lieferungen()
 # -----------------------------
 # CONTENT API
 # -----------------------------
