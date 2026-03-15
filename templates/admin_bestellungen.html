@@ -61,7 +61,6 @@
     <div style="margin-top:10px;">
         <!-- Stornieren -->
         <form action="{{ url_for('admin_stornierung', bestellung_id=b.id) }}" method="POST" style="display:inline;">
-            {{ csrf_token() }}
             <button type="submit" style="background-color:#f44336;color:white;border:none;padding:6px 12px;cursor:pointer;">
                 Stornieren
             </button>
