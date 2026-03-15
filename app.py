@@ -554,6 +554,17 @@ def buchbutler_orderresponse(collectkey):
 
     try:
         response = requests.post(url, json=payload, timeout=10)
+
+        # Wenn keine erfolgreiche Antwort
+        if response.status_code != 200:
+            logger.warning(f"ORDERRESPONSE Statuscode: {response.status_code}")
+            return None
+
+        # Wenn Antwort leer ist
+        if not response.text.strip():
+            logger.info("ORDERRESPONSE leer")
+            return None
+
         return response.json()
 
     except Exception:
