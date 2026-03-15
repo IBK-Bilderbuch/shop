@@ -61,10 +61,13 @@
     <div style="margin-top:10px;">
         <!-- Stornieren -->
         <form action="{{ url_for('admin_stornierung', bestellung_id=b.id) }}" method="POST" style="display:inline;">
+            {{ csrf_token() }}
             <button type="submit" style="background-color:#f44336;color:white;border:none;padding:6px 12px;cursor:pointer;">
                 Stornieren
             </button>
         </form>
+
+       
 
         <!-- Lieferungen Sync -->
         <a href="{{ url_for('admin_lieferungen_sync') }}" style="background-color:#2196F3;color:white;padding:6px 12px;text-decoration:none;margin-left:5px;">
