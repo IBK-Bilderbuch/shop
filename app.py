@@ -749,7 +749,6 @@ def suche():
 
 # Produkt Detail
 
-# Produkt Detail
 
   
 def slugify(text):
@@ -757,8 +756,13 @@ def slugify(text):
     text = re.sub(r'[^a-z0-9äöüß ]', '', text)
     return text.replace(" ", "-")
 
+
+
 for p in produkte:
-    p["slug"] = slugify(p.get("name", "produkt"))
+    if p.get("name"):
+        p["slug"] = slugify(p["name"])
+    else:
+        p["slug"] = "produkt"
 
 
 @app.route('/produkt/<int:produkt_id>/<slug>')
