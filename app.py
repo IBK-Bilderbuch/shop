@@ -749,10 +749,20 @@ def suche():
 
 # Produkt Detail
 
-  
+# Produkt Detail
 
-@app.route('/produkt/<int:produkt_id>')
-def produkt_detail(produkt_id):
+  
+def slugify(text):
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9äöüß ]', '', text)
+    return text.replace(" ", "-")
+
+for p in produkte:
+    p["slug"] = slugify(p.get("name", "produkt"))
+
+
+@app.route('/produkt/<int:produkt_id>/<slug>')
+def produkt_detail(produkt_id, slug):
 
     # 1️⃣ lokale Zusatzdaten (Bilder / Leseprobe)
     lokale_daten = next(
