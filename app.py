@@ -278,7 +278,7 @@ def paypal_webhook():
     if not verify_webhook(headers, body):
         return "", 400
 
-    event_type = body.get("event_type")
+    event_type = event.get("event_type")  # ✅ richtig
 
     if event_type == "PAYMENT.CAPTURE.COMPLETED":
         capture = event["resource"]
