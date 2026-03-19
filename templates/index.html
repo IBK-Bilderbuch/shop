@@ -91,11 +91,12 @@
                 {% endif %}
 
                 {% set alt = produkt.name ~ " – Bilderbuch für Kinder" %}
-                <img src="{{ src }}" alt="{{ alt }}" loading="lazy">
 
-                <a href="{{ url_for('produkt_detail', produkt_id=produkt.id, slug=produkt.slug) }}" class="hover-btn">
-                  Mehr erfahren
+                <a href="{{ url_for('produkt_detail', produkt_id=produkt.id, slug=produkt.slug) }}">
+                   <img src="{{ src }}" alt="{{ alt }}" loading="lazy">
                 </a>
+
+              
               </div>
 
               <h3>{{ produkt.name }}</h3>
