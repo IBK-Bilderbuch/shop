@@ -34,10 +34,22 @@ from datetime import timedelta
 
 from functools import lru_cache
 
+
 import re
+
+from flask_compress import Compress
+
 # =====================================================
 # CONFIG
 # =====================================================
+
+load_dotenv()
+
+app = Flask(__name__)
+
+Compress(app)  # ✅ JETZT korrekt
+
+limiter = Limiter(get_remote_address, app=app)
 
 load_dotenv()
 
