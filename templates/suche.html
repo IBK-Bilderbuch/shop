@@ -35,10 +35,8 @@
             <img src="{{ url_for('static', filename=produkt.bilder[0]) }}" alt="{{ produkt.name }}">
             <h3>{{ produkt.name }}</h3>
             <p>{{ produkt.preis }} €</p>
-            <a href="{{ url_for('produkt_detail', produkt_id=produkt.id) }}">Mehr erfahren</a>
-            <a href="{{ url_for('produkt_detail', produkt_id=produkt.id,
-              slug=produkt.slug if produkt.slug else produkt.name|lower|replace(' ', '-')
-) }}">
+            <a href="{{ url_for('produkt_detail', produkt_id=produkt.id, slug=produkt.slug) }}">Mehr erfahren</a>
+
           </div>
         {% endfor %}
       </div>
