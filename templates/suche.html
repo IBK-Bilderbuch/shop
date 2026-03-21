@@ -22,7 +22,7 @@
   <form action="{{ url_for('suche') }}" method="POST" class="search-form">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input type="text" name="q" placeholder="Buchname eingeben..." required>
-    <button type="submit"><i class="fas fa-search"></i></button>
+    <button type="submit"><i class="fas fa-sarch"></i></button>
   </form>
 
   {% if query %}
