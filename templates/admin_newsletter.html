@@ -1,0 +1,26 @@
+
+<h1>Newsletter Anmeldungen</h1>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Bestätigt</th>
+        <th>Datum</th>
+    </tr>
+
+    {% for s in subscribers %}
+    <tr>
+        <td>{{ s.id }}</td>
+        <td>{{ s.email }}</td>
+        <td>
+            {% if s.confirmed %}
+                ✅ Ja
+            {% else %}
+                ❌ Nein
+            {% endif %}
+        </td>
+        <td>{{ s.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
