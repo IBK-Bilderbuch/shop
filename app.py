@@ -1235,9 +1235,9 @@ def bestelldanke():
 def newsletterbesteatigung():
     return render_template("newsletterbesteatigung.html", user_email=session.get("user_email"))
     
-@app.route("/nwsletter")
-def nwsletter():
-    return render_template("nwsletter.html", user_email=session.get("user_email"))
+@app.route("/newsletteranmeldung")
+def newsletteranmeldung():
+    return render_template("newsletteranmeldung.html", user_email=session.get("user_email"))
     
 # ============================
 # INDEX HAUPTSEITE
