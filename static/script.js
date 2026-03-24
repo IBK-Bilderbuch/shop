@@ -1,3 +1,11 @@
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggleMobileMenu();
+    });
+  });
+});
+
 // -----------------------------
 // Helper für Cookies (optional für späteres Tracking)
 // -----------------------------
