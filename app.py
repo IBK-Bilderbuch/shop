@@ -3,6 +3,10 @@
 
 
 
+
+
+
+
 import os
 import json
 import logging
@@ -27,29 +31,21 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
 # Modelle importieren
-from models import db, Bestellung, BestellPosition
+from models import db, Bestellung, BestellPosition, NewsletterSubscriber
 
 
 from datetime import timedelta
 
 from functools import lru_cache
 
-
 import re
 
-from flask_compress import Compress
+
+
 
 # =====================================================
 # CONFIG
 # =====================================================
-
-load_dotenv()
-
-app = Flask(__name__)
-
-Compress(app)  # ✅ JETZT korrekt
-
-limiter = Limiter(get_remote_address, app=app)
 
 load_dotenv()
 
@@ -137,9 +133,104 @@ else:
     produkte = []
 
 
+# =====================================================
+# LOGIN
+# =====================================================
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        if User.query.filter_by(email=email).first():
+            flash("E-Mail existiert bereits", "error")
+            return redirect("/register")
+
+        user = User(email=email)
+        user.set_password(password)
+
+        db.session.add(user)
+        db.session.commit()
+
+        session["user_id"] = user.id
+
+        return redirect("/")
+
+    return render_template("register.html")
 
 
 
+@app.route("/login", methods=["GET", "POST"])
+@csrf.exempt
+def login():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        user = User.query.filter_by(email=email).first()
+
+        if not user or not user.check_password(password):
+            flash("Login fehlgeschlagen", "error")
+            return redirect("/login")
+
+        session["user_id"] = user.id
+        return redirect("/")
+
+    return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    session.pop("user_id", None)
+    return redirect("/")
+
+
+
+
+
+@app.context_processor
+def inject_user():
+    user = None
+    if "user_id" in session:
+        user = User.query.get(session["user_id"])
+    return dict(current_user=user)
+
+
+@app.route("/meine-gutscheine")
+def meine_gutscheine():
+    if "user_id" not in session:
+        return redirect("/login")
+
+    gutscheine = Gutschein.query.filter_by(user_id=session["user_id"]).all()
+
+    return render_template("gutscheine.html", gutscheine=gutscheine)
+
+
+def update_user_punkte_und_gutschein(user, cart_items):
+    """Fügt Punkte hinzu und vergibt ggf. Gutschein"""
+    punkte = int(calculate_total(cart_items))
+    user.punkte += punkte
+
+    # 🎁 Gutschein bei 100 Punkten
+    if user.punkte >= 100:
+        code = str(uuid.uuid4())[:8]
+        gutschein = Gutschein(
+            code=code,
+            wert=10,  # z.B. 10€
+            user_id=user.id
+        )
+        user.punkte -= 100
+        db.session.add(gutschein)
+
+        send_email(
+            subject="Dein Gutschein 🎁",
+            body=f"Dein Code: {code}",
+            recipient=user.email
+        )
+
+    db.session.commit()
 
 # =====================================================
 # PAYPAL
@@ -290,7 +381,7 @@ def paypal_webhook():
     if not verify_webhook(headers, body):
         return "", 400
 
-    event_type = event.get("event_type")  # ✅ richtig
+    event_type = body.get("event_type")
 
     if event_type == "PAYMENT.CAPTURE.COMPLETED":
         capture = event["resource"]
@@ -681,28 +772,6 @@ def admin_bestellungen():
         "admin_bestellungen.html",
         bestellungen=alle
     )
-# Homepage
-@app.route("/")
-def index():
-
-    kategorienamen = [
-        "Jacominus Gainsborough", "Mut oder Angst?!",
-        "Klassiker", "Monstergeschichten",
-        "Wichtige Fragen", "Weihnachten",
-        "Kinder und Gefühle", "Dazugehören"
-    ]
-
-    kategorien = [
-        (k, [p for p in produkte if p.get("kategorie") == k])
-        for k in kategorienamen
-    ]
-
-    return render_template(
-        "index.html",
-        kategorien=kategorien,
-        user_email=session.get("user_email")
-    )
-
 
 
 @app.route("/admin/sync-buchbutler/<int:index>")
@@ -761,54 +830,53 @@ def suche():
 
 # Produkt Detail
 
-
   
 def slugify(text):
     text = text.lower()
     text = re.sub(r'[^a-z0-9äöüß ]', '', text)
     return text.replace(" ", "-")
 
-
-
 for p in produkte:
-    if p.get("name"):
-        p["slug"] = slugify(p["name"])
-    else:
-        p["slug"] = "produkt"
-
-
+    p["slug"] = slugify(p.get("name", "produkt"))
+    
 @app.route('/produkt/<int:produkt_id>/<slug>')
 def produkt_detail(produkt_id, slug):
 
-    # 1️⃣ lokale Zusatzdaten (Bilder / Leseprobe)
     lokale_daten = next(
-         (p.copy() for p in produkte if p["id"] == produkt_id),
-         None
+        (p.copy() for p in produkte if p["id"] == produkt_id),
+        None
     )
 
     if not lokale_daten:
         abort(404)
+
+    # ✅ richtigen slug berechnen
+    richtiger_slug = lokale_daten.get("slug")
+
+    # 🔥 WICHTIG: redirect wenn falsch
+    if slug != richtiger_slug:
+        return redirect(url_for(
+            "produkt_detail",
+            produkt_id=produkt_id,
+            slug=richtiger_slug
+        ), code=301)
 
     ean = lokale_daten.get("ean")
 
     if not ean:
         abort(404)
 
-    # 2️⃣ Produkt von Buchbutler laden
     produkt = cached_lade_produkt_von_api(ean)
 
     if not produkt:
         abort(404)
 
-    # 3️⃣ Bestand + Preis laden
     movement = lade_bestand_von_api(ean)
     if movement:
         produkt.update(movement)
 
-    # 4️⃣ eigene Daten hinzufügen
     produkt.update(lokale_daten)
 
-    # 5️⃣ Defaults (WICHTIG)
     produkt.setdefault("bestand", "n/a")
     produkt.setdefault("preis", 0)
     produkt.setdefault("handling_zeit", "n/a")
@@ -816,11 +884,8 @@ def produkt_detail(produkt_id, slug):
 
     return render_template(
         "produkt.html",
-        produkt=produkt,
-        user_email=session.get("user_email")
+        produkt=produkt
     )
-
-
 
 # ============================
 # CART ROUTES
@@ -917,6 +982,26 @@ def checkout():
             flash("Bitte gültige Daten eingeben.", "error")
             return redirect(url_for("checkout"))
 
+
+         # Kunde erfassen / Punkte vergeben
+        if "user_id" in session:
+            user = User.query.get(session["user_id"])
+            punkte = int(total)  # Beispiel: 1€ = 1 Punkt
+            user.punkte += punkte
+
+            # Gutschein vergeben bei 100 Punkten
+            if user.punkte >= 100:
+                code = str(uuid.uuid4())[:8]
+                gutschein = Gutschein(code=code, wert=10, user_id=user.id)
+                user.punkte -= 100
+                db.session.add(gutschein)
+                send_email(
+                    subject="Dein Gutschein 🎁",
+                    body=f"Dein Code: {code}",
+                    recipient=user.email
+                )
+            db.session.commit()
+
         try:
             session["checkout_email"] = request.form.get("email")
             session["checkout_vorname"] = request.form.get("vorname")
@@ -944,53 +1029,171 @@ def checkout():
 
     
 # ============================
-# KONTAKT
-# ============================
-
-@app.route("/kontakt")  
-def kontakt():
-    return render_template("kontakt.html", user_email=session.get("user_email"))
-
-@app.route("/submit", methods=["POST"])
-def submit():
-    name = request.form.get("name")
-    email = request.form.get("email")
-    message = request.form.get("message")
-    if not name or not email or not message:
-        flash("Bitte fülle alle Felder aus!", "error")
-        return redirect("/kontakt")
-    try:
-        send_email(
-            subject=f"Neue Nachricht von {name}",
-            body=f"Von: {name} <{email}>\n\nNachricht:\n{message}",
-            recipient=EMAIL_SENDER
-        )
-        flash("Danke! Deine Nachricht wurde gesendet.", "success")
-    except Exception as e:
-        flash(f"Fehler beim Senden: {e}", "error")
-    return redirect("/kontaktdanke")
-
-# ============================
 # NEWSLETTER
 # ============================
+
+
+def send_email(subject, recipient, html, plain_text=None):
+    if not SENDGRID_API_KEY or not EMAIL_SENDER:
+        logger.warning("SendGrid nicht konfiguriert")
+        return
+
+    message = Mail(
+        from_email=EMAIL_SENDER,
+        to_emails=recipient,
+        subject=subject,
+        html_content=html,
+        plain_text_content=plain_text
+    )
+
+    sg = SendGridAPIClient(SENDGRID_API_KEY)
+
+    try:
+        sg.send(message)
+    except Exception:
+        logger.exception("Email Versand fehlgeschlagen")
+
+
+@app.route("/admin/newsletter")
+def admin_newsletter():
+    if not session.get("admin"):
+        abort(403)
+
+    subscribers = NewsletterSubscriber.query.order_by(
+        NewsletterSubscriber.created_at.desc()
+    ).all()
+
+    return render_template(
+        "admin_newsletter.html",
+        subscribers=subscribers
+    )
+
 
 @app.route("/newsletter", methods=["POST"])
 def newsletter():
     email = request.form.get("email")
+
     if not email:
         flash("Bitte gib eine gültige E-Mail-Adresse ein.", "error")
         return redirect("/")
-    try:
-        send_email(
-            subject="Neue Newsletter-Anmeldung",
-            body=f"Neue Anmeldung: {email}",
-            recipient=EMAIL_SENDER
-        )
-        flash("Danke! Newsletter-Anmeldung erfolgreich.", "success")
-    except Exception as e:
-        flash(f"Fehler beim Newsletter-Versand: {e}", "error")
+
+    # Prüfen ob schon vorhanden
+    existing = NewsletterSubscriber.query.filter_by(email=email).first()
+    if existing:
+        flash("Du bist bereits angemeldet.", "info")
+        return redirect("/")
+
+    # Token erzeugen
+    token = str(uuid.uuid4())
+
+    subscriber = NewsletterSubscriber(
+        email=email,
+        token=token,
+        confirmed=False
+    )
+
+    db.session.add(subscriber)
+    db.session.commit()
+
+    # Bestätigungslink
+    confirm_url = url_for("confirm_newsletter", token=token, _external=True)
+    # HTML-Mail
+    html_body = f"""
+    <div style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
+        <h2>Newsletter bestätigen</h2>
+        <p>Danke für deine Anmeldung!</p>
+        <p>Klicke auf den Button, um deine E-Mail zu bestätigen:</p>
+
+        <a href="{confirm_url}" 
+           style="
+               display: inline-block;
+               padding: 12px 20px;
+               background-color: #7393B3;
+               color: white;
+               text-decoration: none;
+               border-radius: 6px;
+               font-weight: bold;
+           ">
+           Jetzt bestätigen
+        </a>
+    </div>
+    """
+
+    send_email(
+        subject="Bitte bestätige deine Newsletter-Anmeldung",
+        recipient=email,
+        html=html_body
+    )
+
+    flash("Bitte bestätige deine Anmeldung per E-Mail.", "success")
+    return redirect("/newsletterbesteatigung")
+
+
+@app.route("/newsletter/confirm/<token>")
+def confirm_newsletter(token):
+    subscriber = NewsletterSubscriber.query.filter_by(token=token).first()
+
+    if not subscriber:
+        flash("Ungültiger Bestätigungslink.", "error")
+        return redirect("/")
+
+    subscriber.confirmed = True
+    subscriber.token = None
+    db.session.commit()
+
+    flash("Newsletter erfolgreich bestätigt 🎉", "success")
     return redirect("/danke")
 
+
+@app.route("/admin/send-newsletter", methods=["POST"])
+def send_newsletter():
+    if not session.get("admin"):
+        abort(403)
+
+    subject = request.form.get("subject")
+    content = request.form.get("content")  # HTML erlaubt
+
+    subscribers = NewsletterSubscriber.query.filter_by(confirmed=True).all()
+
+    for sub in subscribers:
+        unsubscribe_url = url_for(
+            "unsubscribe_newsletter",
+            token=sub.token,
+            _external=True
+        )
+
+        html_body = f"""
+        <div style="font-family: Arial, sans-serif; padding: 20px;">
+            {content}
+
+            <p style="margin-top:20px; font-size:12px; color: gray;">
+                <a href="{unsubscribe_url}">Abmelden vom Newsletter</a>
+            </p>
+        </div>
+        """
+
+        send_email(
+            subject=subject,
+            recipient=sub.email,
+            html=html_body
+        )
+
+    return f"{len(subscribers)} Emails gesendet ✅"
+
+
+@app.route("/newsletter/unsubscribe/<token>")
+def unsubscribe_newsletter(token):
+    subscriber = NewsletterSubscriber.query.filter_by(token=token).first()
+
+    if not subscriber:
+        flash("Ungültiger Abmeldelink.", "error")
+        return redirect("/")
+
+    db.session.delete(subscriber)
+    db.session.commit()
+
+    flash("Du hast dich erfolgreich vom Newsletter abgemeldet.", "success")
+    return redirect("/")
 # ============================
 # RECHTLICHES
 # ============================
@@ -1007,6 +1210,11 @@ def datenschutz():
 def impressum():
     return render_template("impressum.html", user_email=session.get("user_email"))
 
+@app.route("/kontakt")
+def kontakt():
+    return render_template("kontakt.html", user_email=session.get("user_email"))
+
+
 # ============================
 # DANKE SEITEN
 # ============================
@@ -1022,6 +1230,44 @@ def kontaktdanke():
 @app.route("/bestelldanke")
 def bestelldanke():
     return render_template("bestelldanke.html", user_email=session.get("user_email"))
+
+@app.route("/newsletterbesteatigung")
+def newsletterbesteatigung():
+    return render_template("newsletterbesteatigung.html", user_email=session.get("user_email"))
+    
+
+# ============================
+# INDEX HAUPTSEITE
+# ============================
+
+@app.route("/")
+def index():
+
+    kategorienamen = [
+        "Jacominus Gainsborough", "Mut oder Angst?!",
+        "Klassiker", "Monstergeschichten",
+        "Wichtige Fragen", "Weihnachten",
+        "Kinder und Gefühle", "Dazugehören"
+    ]
+
+    kategorie_beschreibungen = {
+        "Jacominus Gainsborough": {
+            "kurz": "Einer, der sich erinnert. Und manchmal auch vergisst.",
+            "lang": "Jacominus sitzt im Garten, denkt nach, lauscht dem Wind. Eine Erinnerung streift ihn – kaum greifbar, wie ein Traum, der sich beim Aufwachen auflöst. Und doch ist da etwas, das bleibt: ein Gefühl, warm und vertraut. Es sind die winzig kleinen Sekunden, die zählen. Die kaum sichtbaren Augenblicke zwischen zwei Herzschlägen, in denen sich alles entscheiden kann. Ein Blick. Ein Lächeln. Ein Wiedersehen. Und irgendwo ist immer jemand unterwegs. Über Wiesen, durch Straßen, vorbei an flüchtigen Begegnungen. Schritt für Schritt, einer Verabredung entgegen. Vielleicht Punkt zwölf. Vielleicht genau im richtigen Moment. So entfaltet sich ein Leben – nicht laut und in Bildern und Worten, die bleiben. In Begegnungen, die alles verändern können. Kein außergewöhnliches Leben. Und doch ein ganz besonderes. Das Leben von Jacominus Gainsborough"
+        }
+    }
+
+    kategorien = [
+        (k, [p for p in produkte if p.get("kategorie") == k])
+        for k in kategorienamen
+    ]
+
+    return render_template(
+        "index.html",
+        kategorien=kategorien,
+        kategorie_beschreibungen=kategorie_beschreibungen,
+        user_email=session.get("user_email")
+    )
 
 # =====================================================
 # START (RENDER READY)
