@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Liebevoll illustrierte Bilderbücher für Kinder entdecken ✓ Klassiker & Neuerscheinungen, alles Besondere ✓ Hochwertige Kinderbücher online kaufen bei I B K. Ein besonderes Geschenk für kleine und große LeserInnen.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ausgewählte Bilderbücher für Kinder und alle, die sich für Illustrationskunst begeistern </title>
+
+  <link rel="icon" type="image/x-icon" href="static/ficon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+
+
+<!-- 🔹 NEWSLETTER -->
+
+
+
+ <section class="newsletter-section">
+      <h3>Melden Sie sich zu unserem Newsletter an!</h3> <br>
+      <p>Erhalten Sie exklusive Neuigkeiten und Angebote rund um unsere Bilderbücher.</p>
+     <form action="{{ url_for('newsletter') }}" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required /><br> 
+        <label for="consent" class="dsgvo-text">
+    * Mit der Anmeldung bestätigen Sie, dass Sie die<a href="/datenschutz"> Datenschutzerklärung</a> gelesen haben und die <a href="/agb">AGBs</a> akzeptieren.
+  
+    </label>
+        <button type="submit">Anmelden</button>
+  </a>
+      </form>
+    </section>
+
+</main>
+
+{% include 'footer.html' %}
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+
+</body>
+</html>
