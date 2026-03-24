@@ -1,4 +1,7 @@
 
+
+
+
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -15,6 +18,16 @@ class Gutschein(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey("users.id")) 
     eingelöst = db.Column(db.Boolean, default=False)
+
+# ----------------------
+# Newsletter
+# ----------------------
+class NewsletterSubscriber(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(255), unique=True, nullable=False)
+    confirmed = db.Column(db.Boolean, default=False)
+    token = db.Column(db.String(100), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 # ----------------------
 # User Modell
