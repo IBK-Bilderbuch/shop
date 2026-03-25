@@ -1036,6 +1036,7 @@ def kontakt():
     return render_template("kontakt.html", user_email=session.get("user_email"))
 
 @app.route("/submit", methods=["POST"])
+@csrf.exempt
 def submit():
     name = request.form.get("name")
     email = request.form.get("email")
@@ -1236,9 +1237,6 @@ def datenschutz():
 def impressum():
     return render_template("impressum.html", user_email=session.get("user_email"))
 
-@app.route("/kontakt")
-def kontakt():
-    return render_template("kontakt.html", user_email=session.get("user_email"))
 
 
 # ============================
