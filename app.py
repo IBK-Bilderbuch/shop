@@ -1027,7 +1027,33 @@ def checkout():
         total=total
     )
 
-    
+# ============================
+# KONTAKT
+# ============================
+
+@app.route("/kontakt")  
+def kontakt():
+    return render_template("kontakt.html", user_email=session.get("user_email"))
+
+@app.route("/submit", methods=["POST"])
+def submit():
+    name = request.form.get("name")
+    email = request.form.get("email")
+    message = request.form.get("message")
+    if not name or not email or not message:
+        flash("Bitte fülle alle Felder aus!", "error")
+        return redirect("/kontakt")
+    try:
+        send_email(
+            subject=f"Neue Nachricht von {name}",
+            body=f"Von: {name} <{email}>\n\nNachricht:\n{message}",
+            recipient=EMAIL_SENDER
+        )
+        flash("Danke! Deine Nachricht wurde gesendet.", "success")
+    except Exception as e:
+        flash(f"Fehler beim Senden: {e}", "error")
+    return redirect("/kontaktdanke")
+
 # ============================
 # NEWSLETTER
 # ============================
