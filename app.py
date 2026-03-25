@@ -393,28 +393,7 @@ def paypal_webhook():
 
     return "", 200
 
-# =====================================================
-# EMAIL
-# =====================================================
 
-
-def send_email(subject, body, recipient):
-    if not SENDGRID_API_KEY or not EMAIL_SENDER:
-        logger.warning("SendGrid nicht konfiguriert")
-        return
-
-    message = Mail(
-        from_email=EMAIL_SENDER,
-        to_emails=recipient,
-        subject=subject,
-        plain_text_content=body
-    )
-
-    sg = SendGridAPIClient(SENDGRID_API_KEY)
-    try:
-            sg.send(message)
-    except Exception:
-            logger.exception("Email Versand fehlgeschlagen")
 # =====================================================
 # HILFSFUNKTIONEN
 # =====================================================
@@ -1047,8 +1026,12 @@ def submit():
     try:
         send_email(
             subject=f"Neue Nachricht von {name}",
-            body=f"Von: {name} <{email}>\n\nNachricht:\n{message}",
-            recipient=EMAIL_SENDER
+            recipient=EMAIL_SENDER,
+            html=f"""
+                <p><b>Von:</b> {name} ({email})</p>
+                <p>{message}</p>
+            """,
+            plain_text=f"Von: {name} <{email}>\n\n{message}"
         )
         flash("Danke! Deine Nachricht wurde gesendet.", "success")
     except Exception as e:
