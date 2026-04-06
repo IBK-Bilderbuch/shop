@@ -773,6 +773,52 @@
 
   {
   "id": 49,
+  "ean": "9783907114056",
+  "name": "Einmal Katze sein",
+  "beschreibung": "Noch nie wurde das eigensinnige Wesen unseres beliebtesten Haustiers so liebevoll inszeniert wie in den zwanzig Porträts, die Mies van Hout für dieses Buch geschaffen hat. Egal, ob man Katzen liebt oder nicht, die Zuordnung der typischenKatzenstimmungen wie verärgert, beleidigt, zufrieden und tollpatschig ziehen einen sofort in den Bann und machen dieses Buch unwiderstehlich. Mies van Hout ist nicht nur ein großer Katzenliebhaber, sie hat auch ein sehr gutes Auge für Details und es ist ihr möglich, die Gefühle von Tieren überzeugend auf Papier zu bringen. Inspiriert von ihrer eigenen Katze hatsie zwanzig Katzenemotionen dargestellt und diese in leuchtenden Ölpastellkreiden auf schwarzem Papier eingefangen.Fünf sehr bekannte niederländische Autoren, Bette Westera, Hans und Monique Hagen, Koos Meinderts sowie Sjoerd Kuyper, verfassten hierzu in ihrer jeweils eigenen Art prachtvolle Katzenpoesie, welche behutsam und sorgfältig von Rolf Erdorf in die deutsche Sprache übersetzt wurde.<br><br>Mies van Hout wurde 1962 geboren und studierte an der Kunstakademie in Groningen Grafikdesign. Seit 1989 arbeitet sie als freie Illustratorin und Grafikdesignerin und hat inzwischen über 100 Bilderbücher illustriert. Ihr gelingt es, mit einfachen Mitteln und doch sehr überzeugend auf ungewöhnliche Weise Gefühle in Figuren und Bilder umzuwandeln. Sie hält uns mit ihren Bilderbüchern immer wieder einen Spiegel vor: Monster sind Freunde, Fische haben Stimmungen und ein Oktopus sucht Hilfe. Die Illustrationen von Mies van Hout sind von großer Farbtiefe und Brillanz. Sie visualisieren Emotionen auf einzigartige Weise, lassen den Betrachter die eigene Gefühlswelt aus der Distanz sehen und öffnen so auch neue Wege, darüber zu sprechen.",
+  "bilder": [
+    "images/einmalkatzesein/einmalkatzesein.jpg",
+    "images/einmalkatzesein/einmalkatzesein1.jpg",
+    "images/einmalkatzesein/einmalkatzesein2.jpg",
+    "images/einmalkatzesein/einmalkatzesein3.jpg",
+    "images/einmalkatzesein/einmalkatzesein4.jpg"
+  ],
+ "kategorie": "Kinder und Gefühle"
+},
+  {
+  "id": 50,
+  "name": "Bob the Artist",
+  "ean": "9781780677712",
+  "beschreibung": "Bob the bird is just like all his friends, apart from his skinny legs. When Bob is teased, he decides to try and change himself to fit in. But little does he know where all his efforts will lead him... \nAn affirming picture book for age 3+ about the power of art and of being confident enough to be yourself. \n\nAuthor of the best-selling Let's Make Some Great Art series, Marion Deuchars has a globally recognisable illustration style. Her hand-lettering and illustrations have been used on advertising campaigns from Samsung to HP, and her books have won six awards for design and illustration. She is a member of the Alliance Graphique Internationale.",
+  "bilder": [
+    "images/bobtheartist/bobtheartist.jpg",
+    "images/bobtheartist/bobtheartist1.jpg",
+    "images/bobtheartist/bobtheartist2.jpg",
+    "images/bobtheartist/bobtheartist3.jpg",
+    "images/bobtheartist/bobtheartist4.jpg",
+    "images/bobtheartist/bobtheartist5.jpg",
+    "images/bobtheartist/bobtheartist6.jpg",
+    "images/bobtheartist/bobtheartist7.jpg"
+  ],
+ "kategorie": "Bob der Künstler"
+},
+  
+  {
+  "id": 51,
+  "name": "Einmal Katze sein",
+  "ean": "9783907114056",
+  "beschreibung": "Noch nie wurde das eigensinnige Wesen unseres beliebtesten Haustiers so liebevoll inszeniert wie in den zwanzig Porträts, die Mies van Hout für dieses Buch geschaffen hat. Egal, ob man Katzen liebt oder nicht, die Zuordnung der typischenKatzenstimmungen wie verärgert, beleidigt, zufrieden und tollpatschig ziehen einen sofort in den Bann und machen dieses Buch unwiderstehlich. Mies van Hout ist nicht nur ein großer Katzenliebhaber, sie hat auch ein sehr gutes Auge für Details und es ist ihr möglich, die Gefühle von Tieren überzeugend auf Papier zu bringen. Inspiriert von ihrer eigenen Katze hatsie zwanzig Katzenemotionen dargestellt und diese in leuchtenden Ölpastellkreiden auf schwarzem Papier eingefangen.Fünf sehr bekannte niederländische Autoren, Bette Westera, Hans und Monique Hagen, Koos Meinderts sowie Sjoerd Kuyper, verfassten hierzu in ihrer jeweils eigenen Art prachtvolle Katzenpoesie, welche behutsam und sorgfältig von Rolf Erdorf in die deutsche Sprache übersetzt wurde.<br><br>Mies van Hout wurde 1962 geboren und studierte an der Kunstakademie in Groningen Grafikdesign. Seit 1989 arbeitet sie als freie Illustratorin und Grafikdesignerin und hat inzwischen über 100 Bilderbücher illustriert. Ihr gelingt es, mit einfachen Mitteln und doch sehr überzeugend auf ungewöhnliche Weise Gefühle in Figuren und Bilder umzuwandeln. Sie hält uns mit ihren Bilderbüchern immer wieder einen Spiegel vor: Monster sind Freunde, Fische haben Stimmungen und ein Oktopus sucht Hilfe. Die Illustrationen von Mies van Hout sind von großer Farbtiefe und Brillanz. Sie visualisieren Emotionen auf einzigartige Weise, lassen den Betrachter die eigene Gefühlswelt aus der Distanz sehen und öffnen so auch neue Wege, darüber zu sprechen.",
+  "bilder": [
+    "images/bobtheartist/einmalkatzesein.jpg",
+    "images/einmalkatzesein/einmalkatzesein1.jpg",
+    "images/einmalkatzesein/einmalkatzesein2.jpg",
+    "images/einmalkatzesein/einmalkatzesein3.jpg",
+    "images/einmalkatzesein/einmalkatzesein4.jpg"
+  ],
+ "kategorie": "Bob der Künstler"
+},
+  {
+  "id": 52,
   "name": "Einmal Katze sein",
   "ean": "9783907114056",
   "beschreibung": "Noch nie wurde das eigensinnige Wesen unseres beliebtesten Haustiers so liebevoll inszeniert wie in den zwanzig Porträts, die Mies van Hout für dieses Buch geschaffen hat. Egal, ob man Katzen liebt oder nicht, die Zuordnung der typischenKatzenstimmungen wie verärgert, beleidigt, zufrieden und tollpatschig ziehen einen sofort in den Bann und machen dieses Buch unwiderstehlich. Mies van Hout ist nicht nur ein großer Katzenliebhaber, sie hat auch ein sehr gutes Auge für Details und es ist ihr möglich, die Gefühle von Tieren überzeugend auf Papier zu bringen. Inspiriert von ihrer eigenen Katze hatsie zwanzig Katzenemotionen dargestellt und diese in leuchtenden Ölpastellkreiden auf schwarzem Papier eingefangen.Fünf sehr bekannte niederländische Autoren, Bette Westera, Hans und Monique Hagen, Koos Meinderts sowie Sjoerd Kuyper, verfassten hierzu in ihrer jeweils eigenen Art prachtvolle Katzenpoesie, welche behutsam und sorgfältig von Rolf Erdorf in die deutsche Sprache übersetzt wurde.<br><br>Mies van Hout wurde 1962 geboren und studierte an der Kunstakademie in Groningen Grafikdesign. Seit 1989 arbeitet sie als freie Illustratorin und Grafikdesignerin und hat inzwischen über 100 Bilderbücher illustriert. Ihr gelingt es, mit einfachen Mitteln und doch sehr überzeugend auf ungewöhnliche Weise Gefühle in Figuren und Bilder umzuwandeln. Sie hält uns mit ihren Bilderbüchern immer wieder einen Spiegel vor: Monster sind Freunde, Fische haben Stimmungen und ein Oktopus sucht Hilfe. Die Illustrationen von Mies van Hout sind von großer Farbtiefe und Brillanz. Sie visualisieren Emotionen auf einzigartige Weise, lassen den Betrachter die eigene Gefühlswelt aus der Distanz sehen und öffnen so auch neue Wege, darüber zu sprechen.",
@@ -783,7 +829,22 @@
     "images/einmalkatzesein/einmalkatzesein3.jpg",
     "images/einmalkatzesein/einmalkatzesein4.jpg"
   ],
- "kategorie": "Kinder und Gefühle"
-}
+ "kategorie": "Bob der Künstler"
+},
+  {
+  "id": 49,
+  "name": "Einmal Katze sein",
+  "ean": "9783907114056",
+  "beschreibung": "Noch nie wurde das eigensinnige Wesen unseres beliebtesten Haustiers so liebevoll inszeniert wie in den zwanzig Porträts, die Mies van Hout für dieses Buch geschaffen hat. Egal, ob man Katzen liebt oder nicht, die Zuordnung der typischenKatzenstimmungen wie verärgert, beleidigt, zufrieden und tollpatschig ziehen einen sofort in den Bann und machen dieses Buch unwiderstehlich. Mies van Hout ist nicht nur ein großer Katzenliebhaber, sie hat auch ein sehr gutes Auge für Details und es ist ihr möglich, die Gefühle von Tieren überzeugend auf Papier zu bringen. Inspiriert von ihrer eigenen Katze hatsie zwanzig Katzenemotionen dargestellt und diese in leuchtenden Ölpastellkreiden auf schwarzem Papier eingefangen.Fünf sehr bekannte niederländische Autoren, Bette Westera, Hans und Monique Hagen, Koos Meinderts sowie Sjoerd Kuyper, verfassten hierzu in ihrer jeweils eigenen Art prachtvolle Katzenpoesie, welche behutsam und sorgfältig von Rolf Erdorf in die deutsche Sprache übersetzt wurde.<br><br>Mies van Hout wurde 1962 geboren und studierte an der Kunstakademie in Groningen Grafikdesign. Seit 1989 arbeitet sie als freie Illustratorin und Grafikdesignerin und hat inzwischen über 100 Bilderbücher illustriert. Ihr gelingt es, mit einfachen Mitteln und doch sehr überzeugend auf ungewöhnliche Weise Gefühle in Figuren und Bilder umzuwandeln. Sie hält uns mit ihren Bilderbüchern immer wieder einen Spiegel vor: Monster sind Freunde, Fische haben Stimmungen und ein Oktopus sucht Hilfe. Die Illustrationen von Mies van Hout sind von großer Farbtiefe und Brillanz. Sie visualisieren Emotionen auf einzigartige Weise, lassen den Betrachter die eigene Gefühlswelt aus der Distanz sehen und öffnen so auch neue Wege, darüber zu sprechen.",
+  "bilder": [
+    "images/einmalkatzesein/einmalkatzesein.jpg",
+    "images/einmalkatzesein/einmalkatzesein1.jpg",
+    "images/einmalkatzesein/einmalkatzesein2.jpg",
+    "images/einmalkatzesein/einmalkatzesein3.jpg",
+    "images/einmalkatzesein/einmalkatzesein4.jpg"
+  ],
+ "kategorie": "Bob der Künstler"
+},
 
+  
 ]
