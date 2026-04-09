@@ -569,7 +569,7 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
             "bestelldatum": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "bestellreferenz": f"IBK-{bestellung.id}",
             "seite": "ibk-bilderbuch.de",
-            "bestellfreigabe": 0,
+            "bestellfreigabe": 1,
             "mol_verkaufskanal_id": int(BUCHBUTLER_VERKAUFSKANAL_ID)
         },
 
