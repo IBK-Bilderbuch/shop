@@ -763,7 +763,7 @@ button[type="submit"]:hover {
   position: fixed;
   top:0;
   right: 0;
-  width: 48%;
+  width: 50%;
   ox-shadow: 0 4px 10px rgba(0,0,0,0.1);
   height: 100vh;     /* ganze Bildschirmhöhe */
   background: white;
@@ -777,7 +777,7 @@ button[type="submit"]:hover {
 
 @media screen and (max-width: 768px) {
    .nav-links {
-      width: 50%;}
+      width: 60%;}
    .menu-toggle {
   font-size: 21px;
 }
@@ -805,9 +805,9 @@ button[type="submit"]:hover {
 
 
 .close-btn {
-  font-size: 28px;
+  font-size: 25px;
   text-align: right;
-  padding: 40px;
+  padding: 45px;
   cursor: pointer;
   border-bottom: none;
 }
