@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
@@ -5,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
 // -----------------------------
 // Helper für Cookies (optional für späteres Tracking)
 // -----------------------------
@@ -53,18 +53,7 @@ function addToCart(title, price, image, ean) {
 }
 
 
-// -----------------------------
-// Mobile Menü
-// -----------------------------
-function toggleMobileMenu() {
-  const navLinks = document.querySelector('.nav-links');
-  const closeBtn = document.querySelector('.close-menu');
-  const hamburger = document.querySelector('.mobile-menu');
 
-  if (navLinks) navLinks.classList.toggle('show');
-  if (closeBtn) closeBtn.classList.toggle('show');
-  if (hamburger) hamburger.classList.toggle('hide');
-}
 
 // -----------------------------
 // Carousel-Slider
@@ -179,3 +168,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+function toggleMenu() {
+  const menu = document.getElementById("nav-links");
+  document.body.classList.toggle("menu-open");
+  menu.classList.toggle("active");
+}
