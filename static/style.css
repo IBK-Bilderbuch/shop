@@ -115,7 +115,7 @@ header {
 /* iPad / Tablets */
 @media (min-width: 769px) and (max-width: 1024px) {
   header {
-    padding: 0 40px;
+    padding: 35px 40px;
   }
 
   .logo {
@@ -139,7 +139,7 @@ header {
   }
 
    header {
-    padding: 35px 50px;
+    padding: 35px 27px;
     padding-left: 20px;
   }
 
