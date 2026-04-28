@@ -143,6 +143,10 @@ header {
     padding-left: 20px;
   }
 
+  .nav-links li a {
+    font-size: 20px;
+  }
+   
   h2, h1 {
     ont-size: 2rem;
   }
@@ -770,7 +774,7 @@ button[type="submit"]:hover {
   color: var(--color-secondary);
   padding: 8px 10px;
   margin: 0 auto;
-  font-size: 25px;
+  font-size: 20px;
   font-family: var(--font-heading);
   font-weight: 300;
 }
