@@ -330,7 +330,7 @@ button.next { right: 10px; }
 
 .book-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 150px));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 20px;
   max-width: 2200px;
   margin-left: 140px;
