@@ -600,7 +600,6 @@ button[type="submit"]:hover {
   }
 }
 
-/* Tablet allgemein */
 
 
 /* ===== Checkout Layout ===== */
@@ -783,9 +782,10 @@ button[type="submit"]:hover {
    .nav-links {
       width: 60%;}
    .menu-toggle {
-  font-size: 21px;
+     font-size: 21px;
+   }
 }
-}
+
 /* Sichtbar wenn aktiv */
 .nav-links.active {
   display: block;
