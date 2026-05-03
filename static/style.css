@@ -378,7 +378,7 @@ button.next { right: 10px; }
   background: #f8f8f8;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  ox-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 15px;
   transition: transform 0.3s ease;
