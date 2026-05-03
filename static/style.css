@@ -330,9 +330,9 @@ button.next { right: 10px; }
 
 .book-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  max-width: 2200px;
+  max-width: 1000px;
   margin-left: 140px;
   padding: 50px 0;
 }
@@ -375,10 +375,10 @@ button.next { right: 10px; }
 .book {
   width: 100%;
   height: auto;
-  ackground: #f8f8f8;
+  background: #f8f8f8;
   border-radius: 10px;
   overflow: hidden;
-  ox-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 15px;
   transition: transform 0.3s ease;
