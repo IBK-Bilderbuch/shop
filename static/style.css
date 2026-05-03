@@ -375,7 +375,7 @@ button.next { right: 10px; }
 .book {
   width: 100%;
   height: auto;
-  background: #f8f8f8;
+  ackground: #f8f8f8;
   border-radius: 10px;
   overflow: hidden;
   ox-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
