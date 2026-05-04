@@ -848,24 +848,9 @@
   ],
   "kategorie": "azugehören"
 },
-  
+
 {
   "id": 38,
-  "name": "Heute bin ich",
-  "ean": "9783905945560",
-
-  "beschreibung": "Heute bin ich zufrieden. Und du? Bist du neugierig? Gelangweilt? Zornig? In diesem liebevoll illustrierten Bilderbuch drückt jeder Fisch ein anderes Gefühl aus – mal ist es eine schöne, mal eine verwirrende Stimmung, manchmal eine heftige Empfindung, manchmal eine ganz zarte. Das Buch nimmt mit auf eine Reise durch die Welt der Gefühle, regt an, über Empfindungen zu reden, sie zu benennen und besser zu verstehen. Auf jeder Doppelseite wird ein Gefühl visuell dargestellt. Für Kinder ab etwa 3 Jahren geeignet.",
-  
-  "bilder": [
-    "images/heutebinich/heutebinich.jpg"
-  ],
-  "kategorie": "Kinder und Gefühle",
-
-  "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=3709063013&ean=9783905945300"
-},
-
-{
-  "id": 388,
   "name": "Heute bin ich",
   "ean": "9783905945560",
 
@@ -875,26 +860,14 @@
     "images/heutebinich/heutebinich.jpg",
     "images/heutebinich/heutebinich1.jpg"
   ],
-  "kategorie": "inder und Gefühle",
+  "kategorie": "Kinder und Gefühle",
 
   "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=3709063013&ean=9783905945300"
 },
 
-{
-  "id": 39,
-  "name": "Ueberraschung",
-  "ean": "9783905945478",
- 
-  "beschreibung": "Nach den Bestsellern „Heute bin ich“ und „Freunde“ hat Mies van Hout ein neues Bilderbuch gezeichnet: „Überraschung!“. In gewohnter Weise werden Gefühle und Stimmungen sehr treffend dargestellt – getreu dem Motto ‚ein Wort, ein Bild‘. Die leuchtenden, schillernden Farben aus Pastell und Wachs schaffen eine künstlerisch gestaltete Welt, die sowohl Kinder als auch Erwachsene anspricht und vielseitig in Kindergarten, Schule oder Familie eingesetzt werden kann.",
- 
-  "bilder": [
-    "images/ueberraschung/ueberraschung.jpg"
-  ],
-  "kategorie": "inder und Gefühle"
-  
-},
+
   {
-  "id": 399,
+  "id": 39,
   "name": "Ueberraschung",
   "ean": "9783905945478",
  
@@ -907,7 +880,7 @@
     "images/ueberraschung/ueberraschung3.jpg",
     "images/ueberraschung/ueberraschung4.jpg"
   ],
-  "kategorie": "inder und Gefühle"
+  "kategorie": "Kinder und Gefühle"
   
 },
 
@@ -1041,18 +1014,8 @@
   "leseprobe_pdf": "huebsch.pdf"
   },
 
-  {
+ {
   "id": 49,
-  "ean": "9783907114056",
-  "name": "Einmal Katze sein",
-  "beschreibung": "Noch nie wurde das eigensinnige Wesen unseres beliebtesten Haustiers so liebevoll inszeniert wie in den zwanzig Porträts, die Mies van Hout für dieses Buch geschaffen hat. Egal, ob man Katzen liebt oder nicht, die Zuordnung der typischenKatzenstimmungen wie verärgert, beleidigt, zufrieden und tollpatschig ziehen einen sofort in den Bann und machen dieses Buch unwiderstehlich. Mies van Hout ist nicht nur ein großer Katzenliebhaber, sie hat auch ein sehr gutes Auge für Details und es ist ihr möglich, die Gefühle von Tieren überzeugend auf Papier zu bringen. Inspiriert von ihrer eigenen Katze hatsie zwanzig Katzenemotionen dargestellt und diese in leuchtenden Ölpastellkreiden auf schwarzem Papier eingefangen.Fünf sehr bekannte niederländische Autoren, Bette Westera, Hans und Monique Hagen, Koos Meinderts sowie Sjoerd Kuyper, verfassten hierzu in ihrer jeweils eigenen Art prachtvolle Katzenpoesie, welche behutsam und sorgfältig von Rolf Erdorf in die deutsche Sprache übersetzt wurde.<br><br>Mies van Hout wurde 1962 geboren und studierte an der Kunstakademie in Groningen Grafikdesign. Seit 1989 arbeitet sie als freie Illustratorin und Grafikdesignerin und hat inzwischen über 100 Bilderbücher illustriert. Ihr gelingt es, mit einfachen Mitteln und doch sehr überzeugend auf ungewöhnliche Weise Gefühle in Figuren und Bilder umzuwandeln. Sie hält uns mit ihren Bilderbüchern immer wieder einen Spiegel vor: Monster sind Freunde, Fische haben Stimmungen und ein Oktopus sucht Hilfe. Die Illustrationen von Mies van Hout sind von großer Farbtiefe und Brillanz. Sie visualisieren Emotionen auf einzigartige Weise, lassen den Betrachter die eigene Gefühlswelt aus der Distanz sehen und öffnen so auch neue Wege, darüber zu sprechen.",
-  "bilder": [
-    "images/einmalkatzesein/einmalkatzesein.jpg"
-  ],
- "kategorie": "Kinder und Gefühle"
-},
-    {
-  "id": 499,
   "ean": "9783907114056",
   "name": "Einmal Katze sein",
   "beschreibung": "Noch nie wurde das eigensinnige Wesen unseres beliebtesten Haustiers so liebevoll inszeniert wie in den zwanzig Porträts, die Mies van Hout für dieses Buch geschaffen hat. Egal, ob man Katzen liebt oder nicht, die Zuordnung der typischenKatzenstimmungen wie verärgert, beleidigt, zufrieden und tollpatschig ziehen einen sofort in den Bann und machen dieses Buch unwiderstehlich. Mies van Hout ist nicht nur ein großer Katzenliebhaber, sie hat auch ein sehr gutes Auge für Details und es ist ihr möglich, die Gefühle von Tieren überzeugend auf Papier zu bringen. Inspiriert von ihrer eigenen Katze hatsie zwanzig Katzenemotionen dargestellt und diese in leuchtenden Ölpastellkreiden auf schwarzem Papier eingefangen.Fünf sehr bekannte niederländische Autoren, Bette Westera, Hans und Monique Hagen, Koos Meinderts sowie Sjoerd Kuyper, verfassten hierzu in ihrer jeweils eigenen Art prachtvolle Katzenpoesie, welche behutsam und sorgfältig von Rolf Erdorf in die deutsche Sprache übersetzt wurde.<br><br>Mies van Hout wurde 1962 geboren und studierte an der Kunstakademie in Groningen Grafikdesign. Seit 1989 arbeitet sie als freie Illustratorin und Grafikdesignerin und hat inzwischen über 100 Bilderbücher illustriert. Ihr gelingt es, mit einfachen Mitteln und doch sehr überzeugend auf ungewöhnliche Weise Gefühle in Figuren und Bilder umzuwandeln. Sie hält uns mit ihren Bilderbüchern immer wieder einen Spiegel vor: Monster sind Freunde, Fische haben Stimmungen und ein Oktopus sucht Hilfe. Die Illustrationen von Mies van Hout sind von großer Farbtiefe und Brillanz. Sie visualisieren Emotionen auf einzigartige Weise, lassen den Betrachter die eigene Gefühlswelt aus der Distanz sehen und öffnen so auch neue Wege, darüber zu sprechen.",
@@ -1063,7 +1026,7 @@
     "images/einmalkatzesein/einmalkatzesein3.jpg",
     "images/einmalkatzesein/einmalkatzesein4.jpg"
   ],
- "kategorie": "inder und Gefühle"
+ "kategorie": "Kinder und Gefühle"
 },
   {
   "id": 50,
