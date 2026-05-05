@@ -33,30 +33,41 @@
    
 <form action="/submitwiderruf" method="POST" class="kontakt-form">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-  <label for="name" class="half-container">Name des/der Verbraucher(s):
+  <div class="half-container">
+  <label for="name">Name des/der Verbraucher(s):
      <input type="text" id="name" name="name" required>
   </label>
-  
-  
+  </div>
+
+  <div class="half-container">
   <label for="email" class="half-container">E-Mail des/der Verbraucher(s):
      <input type="email" id="email" name="email" required>
   </label>
-  
+  </div>
+
+ <div class="half-container">
   <label for="anschrift">Anschrift des/der Verbraucher(s):
        <input type="text" id="name" name="anschrift" required>
   </label>
-  
+  </div>
+
+  <div class="half-container">
    <label for="datum"> <label for="datum">Datum der Bestellung:
        <input type="text" id="datum" name="datum" required>
    </label>
+  </div>
 
-    <label for="warenbezeichnung"> <label for="warenbezeichnung">Bezeichnung der Ware(n):
-       <input type="text" id="warenbezeichnung" name="warenbezeichnung" required>
-    </label>
+   
 
+  <div class="half-container">
 
     <label for="anzahl"> <label for="anzahl"> Anzahl der bestellten Waren:
        <input type="text" id="anzahl" name="anzahl" required>
+    </label>
+         </div>
+
+   <label for="warenbezeichnung"> <label for="warenbezeichnung">Bezeichnung der Ware(n):
+       <input type="text" id="warenbezeichnung" name="warenbezeichnung" required>
     </label>
       
   
