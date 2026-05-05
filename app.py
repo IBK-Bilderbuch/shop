@@ -1049,7 +1049,7 @@ def submitwiderruf():
     anzahl = request.form.get("anzahl")
     warenbeichnung = request.form.get("warenbeichnung")
     datum = request.form.get("datum")
-    if not name or not email or not message or not anschrift or not anzahl or not warenbeichnung or not datum:
+    if not name or not email or not message or not anschrift or not anzahl or not warenbezeichnung or not datum:
         flash("Bitte fülle alle Felder aus!", "error")
         return redirect("/widerruf")
     try:
