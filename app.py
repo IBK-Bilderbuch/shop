@@ -1048,8 +1048,7 @@ def submit():
     message = request.form.get("anschrift")
     message = request.form.get("anzahl")
     message = request.form.get("warenbeichnung")
-    message = request.form.get("datum
-    ")
+    message = request.form.get("datum")
     if not name or not email or not message:
         flash("Bitte fülle alle Felder aus!", "error")
         return redirect("/widerruf")
@@ -1059,6 +1058,12 @@ def submit():
             recipient=EMAIL_SENDER,
             html=f"""
                 <p><b>Von:</b> {name} ({email})</p>
+                
+                <p><b>anschrift:</b> {anschrift}</p>
+                <p><b>anzahl:</b> {anzahl}</p>
+                <p><b>warenbeichnung:</b> {warenbeichnung}</p>
+                <p><b>datum:</b> {datum}</p>
+                
                 <p>{message}</p>
             """,
             plain_text=f"Von: {name} <{email}>\n\n{message}"
