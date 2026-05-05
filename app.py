@@ -1061,7 +1061,7 @@ def submitwiderruf():
                 
                 <p><b>anschrift:</b> {anschrift}</p>
                 <p><b>anzahl:</b> {anzahl}</p>
-                <p><b>warenbeichnung:</b> {warenbeichnung}</p>
+                <p><b>warenbezeichnung:</b> {warenbezeichnung}</p>
                 <p><b>datum:</b> {datum}</p>
                 
                 <p>{message}</p>
