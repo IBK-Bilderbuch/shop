@@ -27,21 +27,43 @@
    <h1>Widerrufsformular</h1>
 
   
-  <h4> Bitte tragen Sie  </h4><br> 
+  <h4>  Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden Waren (*) / die Erbringung der folgenden Dienstleistung (*) :
+ </h4><br> 
 
    
 <form action="/submit" method="POST" class="kontakt-form">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-  <label for="name">Name:
-  <input type="text" id="name" name="name" required>
+  <label for="name">Name des/der Verbraucher(s):
+     <input type="text" id="name" name="name" required>
   </label>
   
-  <label for="email">E-Mail:
-  <input type="email" id="email" name="email" required>
+  
+  <label for="email">E-Mail des/der Verbraucher(s):
+     <input type="email" id="email" name="email" required>
   </label>
+  
+  <label for="name">Anschrift des/der Verbraucher(s):
+       <input type="text" id="name" name="name" required>
+  </label>
+  
+   <label for="name"> <label for="name">Datum der Bestellung:
+       <input type="text" id="name" name="name" required>
+   </label>
+
+    <label for="name"> <label for="name">Bezeichnung der Ware(n):
+       <input type="text" id="name" name="name" required>
+    </label>
+
+
+    <label for="name"> <label for="name"> Anzahl der bestellten Waren:
+       <input type="text" id="name" name="name" required>
+    </label>
+      
   
  
-  <label for="nachricht">Nachricht: </label>
+  
+
+
   <input id="nachricht" name="message"></input><br>
   <div class="dsgvo">
     <input type="checkbox" id="consent" name="consent" required>
