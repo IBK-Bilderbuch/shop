@@ -1038,18 +1038,18 @@ def submit():
 def widerruf():
     return render_template("widerruf.html", user_email=session.get("user_email"))
 
-@app.route("/submit", methods=["POST"])
+@app.route("/submitwiderruf", methods=["POST"])
 @csrf.exempt
-def submit():
+def submitwiderruf():
     name = request.form.get("name")
     email = request.form.get("email")
     message = request.form.get("message")
 
-    message = request.form.get("anschrift")
-    message = request.form.get("anzahl")
-    message = request.form.get("warenbeichnung")
-    message = request.form.get("datum")
-    if not name or not email or not message:
+    anschrift = request.form.get("anschrift")
+    anzahl = request.form.get("anzahl")
+    warenbeichnung = request.form.get("warenbeichnung")
+    datum = request.form.get("datum")
+    if not name or not email or not message or not anschrift or not anzahl or not warenbeichnung or not datum:
         flash("Bitte fülle alle Felder aus!", "error")
         return redirect("/widerruf")
     try:
