@@ -1281,9 +1281,7 @@ def newsletterbesteatigung():
 def newsletteranmeldung():
     return render_template("newsletteranmeldung.html", user_email=session.get("user_email"))
 
-@app.route("/widerruf")
-def widerruf():
-    return render_template("widerruf.html", user_email=session.get("user_email"))
+
     
 # ============================
 # INDEX HAUPTSEITE
