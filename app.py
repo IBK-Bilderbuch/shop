@@ -1029,6 +1029,45 @@ def submit():
         flash(f"Fehler beim Senden: {e}", "error")
     return redirect("/kontaktdanke")
 
+
+# ============================
+# WIderruf
+# ============================
+
+@app.route("/widerruf")  
+def kontakt():
+    return render_template("widerruf.html", user_email=session.get("user_email"))
+
+@app.route("/submit", methods=["POST"])
+@csrf.exempt
+def submit():
+    name = request.form.get("name")
+    email = request.form.get("email")
+    message = request.form.get("message")
+
+    message = request.form.get("anschrift")
+    message = request.form.get("anzahl")
+    message = request.form.get("warenbeichnung")
+    message = request.form.get("datum
+    ")
+    if not name or not email or not message:
+        flash("Bitte fülle alle Felder aus!", "error")
+        return redirect("/widerruf")
+    try:
+        send_email(
+            subject=f"Neue Nachricht von {name}",
+            recipient=EMAIL_SENDER,
+            html=f"""
+                <p><b>Von:</b> {name} ({email})</p>
+                <p>{message}</p>
+            """,
+            plain_text=f"Von: {name} <{email}>\n\n{message}"
+        )
+        flash("Danke! Deine Nachricht wurde gesendet.", "success")
+    except Exception as e:
+        flash(f"Fehler beim Senden: {e}", "error")
+    return redirect("/kontaktdanke")
+
 # ============================
 # NEWSLETTER
 # ============================
