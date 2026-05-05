@@ -536,7 +536,7 @@ label {
   gap: 10px;
 }
 input:not([type="checkbox"]), select {
-  width: 100%;
+  width: 70%;
   padding: 10px 12px;
   border: 1px solid #ccc;
   font-size: 16px;
