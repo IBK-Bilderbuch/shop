@@ -1035,7 +1035,7 @@ def submit():
 # ============================
 
 @app.route("/widerruf")  
-def kontakt():
+def widerruf():
     return render_template("widerruf.html", user_email=session.get("user_email"))
 
 @app.route("/submit", methods=["POST"])
