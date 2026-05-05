@@ -1047,7 +1047,7 @@ def submitwiderruf():
 
     anschrift = request.form.get("anschrift")
     anzahl = request.form.get("anzahl")
-    warenbeichnung = request.form.get("warenbeichnung")
+    warenbezeichnung = request.form.get("warenbezeichnung")
     datum = request.form.get("datum")
     if not name or not email or not message or not anschrift or not anzahl or not warenbezeichnung or not datum:
         flash("Bitte fülle alle Felder aus!", "error")
