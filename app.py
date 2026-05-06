@@ -473,12 +473,16 @@ def lade_produkt_von_api(ean):
 
         attrs = res.get("Artikelattribute") or {}
 
-        # 🔥 1. Bild aus JSON holen (je nach API-Struktur anpassen!)
-        bild = res.get("bild") or res.get("bilder")
+        bilder = res.get("bilder") or []
 
-        # 🔁 2. Fallback zur Image-API
-        if not bild:
-            bild = lade_bild_von_api(ean)
+        if not bilder:
+            fallback = lade_bild_von_api(ean)
+            if fallback:
+                bilder = [fallback]
+
+        produkt["bilder"] = bilder
+
+      
 
         produkt = {
             "id": to_int(res.get("pim_artikel_id")),
