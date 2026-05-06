@@ -458,6 +458,7 @@ def buchbutler_request(endpoint, ean):
 def cached_lade_produkt_von_api(ean):
     return lade_produkt_von_api(ean)
 
+
 def lade_produkt_von_api(ean):
     """Lädt Produktdaten von CONTENT API"""
 
@@ -472,13 +473,20 @@ def lade_produkt_von_api(ean):
 
         attrs = res.get("Artikelattribute") or {}
 
+        # 🔥 1. Bild aus JSON holen (je nach API-Struktur anpassen!)
+        bild = res.get("bild") or res.get("bilder")
+
+        # 🔁 2. Fallback zur Image-API
+        if not bild:
+            bild = lade_bild_von_api(ean)
+
         produkt = {
             "id": to_int(res.get("pim_artikel_id")),
             "name": res.get("bezeichnung"),
             "autor": attr(attrs, "Autor"),
             "illustrator": attr(attrs, "Illustrator"),
             "preis": to_float(res.get("vk_brutto")),
-           
+
             "isbn": attr(attrs, "ISBN_13"),
             "seiten": attr(attrs, "Seiten"),
             "format": attr(attrs, "Buchtyp"),
@@ -493,6 +501,8 @@ def lade_produkt_von_api(ean):
             "laenge": attr(attrs, "Laenge"),
             "breite": attr(attrs, "Breite"),
             "hoehe": attr(attrs, "Hoehe"),
+
+            "bild": bild,  # ✅ jetzt korrekt gesetzt
             "extra": attrs
         }
 
@@ -501,6 +511,25 @@ def lade_produkt_von_api(ean):
     except Exception:
         logger.exception("Fehler beim Laden von CONTENT API")
         return None
+
+
+
+def lade_bild_von_api(ean):
+    """Prüft, ob ein Bild über die Image-API existiert"""
+    url = f"https://api.buchbutler.de/image/{ean}"
+    
+    try:
+        res = requests.head(url, allow_redirects=False)
+
+        if res.status_code in (200, 302):
+            return url  # funktioniert direkt im Browser / Frontend
+        elif res.status_code == 404:
+            return None
+
+    except Exception:
+        logger.exception("Fehler beim Laden des Bildes")
+    
+    return None
 
 # -----------------------------
 # MOVEMENT API
