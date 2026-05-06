@@ -512,7 +512,6 @@ def lade_produkt_von_api(ean):
             "hoehe": attr(attrs, "Hoehe"),
 
             "bilder": bilder,  # Liste (für Galerie etc.)
-            "bild": bild,      # Einzelbild (für einfache Nutzung)
 
             "extra": attrs
         }
