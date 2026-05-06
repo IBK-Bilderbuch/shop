@@ -12,13 +12,7 @@
 
   <script src="{{ url_for('static', filename='script.js') }}" defer></script>
   <style>
-.checkout-form {
-  flex: 1.2;
-}
 
-.checkout-text {
-  flex: 0.8;
-}
   </style>
 </head>
 
@@ -30,7 +24,7 @@
     <h1>Widerruf und Rücksendungen</h1>
     
 <div class="checkout-layout">
-  <div class="checkout-form">
+  <div class="checkout-form" style="flex: 1;">
 
     <h3>Widerrufsformular</h3>
 
@@ -72,7 +66,7 @@
      
   
 
-  <div class="checkout-text">
+  <div class="checkout-text" style="flex: 1">
 
     <h3>Rücksendung</h3>
 
