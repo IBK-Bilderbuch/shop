@@ -3,79 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> I B K - Buchhandlung für Illustration und Bilderbücher | Widerrufsformular  </title>
+  <title>I B K - Buchhandlung für Illustration und Bilderbücher | Widerrufsformular</title>
+
   <link rel="icon" type="image/x-icon" href="static/ficon.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-
   <script src="{{ url_for('static', filename='script.js') }}" defer></script>
-
-  
 </head>
+
+<body>
 
   {% include 'navbar.html' %}
 
-<div id="navbar-placeholder"></div>
-<body>
+  <section class="rechtliches">
+    <h1>Widerruf und Rücksendungen</h1>
 
-   
+    <h2>Widerrufsformular</h2>
 
+    <h4>
+      Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf
+      der folgenden Waren (*) / die Erbringung der folgenden Dienstleistung (*):
+    </h4>
 
- <section class="rechtliches" >
-   <h1>Widerrufsformular</h1><br><br>
+    <form action="/submitwiderruf" method="POST" class="kontakt-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-  
-  <h4>  Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden Waren (*) / die Erbringung der folgenden Dienstleistung (*) :
- </h4><br> <br>
+      <label for="name">Name des/der Verbraucher(s):</label>
+      <input type="text" id="name" name="name" required>
 
-   
-<form action="/submitwiderruf" method="POST" class="kontakt-form">
-  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-  <label for="name">Name des/der Verbraucher(s):
-     <input type="text" id="name" name="name" required>
-  </label>
+      <label for="email">E-Mail des/der Verbraucher(s):</label>
+      <input type="email" id="email" name="email" required>
 
-  <label for="email">E-Mail des/der Verbraucher(s):
-     <input type="email" id="email" name="email" required>
-  </label>
+      <label for="anschrift">Anschrift des/der Verbraucher(s):</label>
+      <input type="text" id="anschrift" name="anschrift" required>
 
-  <label for="anschrift">Anschrift des/der Verbraucher(s):
-       <input type="text" id="name" name="anschrift" required>
-  </label>
+      <label for="datum">Datum der Bestellung:</label>
+      <input type="text" id="datum" name="datum" required>
 
-   <label for="datum"> <label for="datum">Datum der Bestellung:
-       <input type="text" id="datum" name="datum" required>
-   </label>
+      <label for="anzahl">Anzahl der bestellten Waren:</label>
+      <input type="text" id="anzahl" name="anzahl" required>
 
-   
+      <label for="warenbezeichnung">Bezeichnung der Ware(n):</label>
+      <input type="text" id="warenbezeichnung" name="warenbezeichnung" required>
 
+      <label for="nachricht">Nachricht (optional):</label>
+      <textarea id="nachricht" name="message"></textarea>
 
-    <label for="anzahl"> <label for="anzahl"> Anzahl der bestellten Waren:
-       <input type="text" id="anzahl" name="anzahl" required>
-    </label>
+      <button type="submit">Absenden</button>
+    </form>
 
-   <label for="warenbezeichnung"> <label for="warenbezeichnung">Bezeichnung der Ware(n):
-       <input type="text" id="warenbezeichnung" name="warenbezeichnung" required>
-    </label>
-      
-  
- 
-  
+    <h2>Rücksendung</h2>
 
-<label for="nachricht">Nachricht (optional): </label>
-  <input id="nachricht" name="message"></input><br>
+    <p>
+      Auch bei uns kann es vorkommen, dass ein Artikel nicht Deinen Vorstellungen entspricht.
+      Als Endverbraucher steht Dir ein gesetzliches Widerrufsrecht zu, das Du in Anspruch nehmen kannst.
+    </p>
 
-  <button type="submit">Absenden</button>
+    <p>
+      Genehmigte Retouren senden Sie bitte ausreichend frankiert an:
+    </p>
 
-</form>
- 
-</section>
+    <p>
+      Moluna GmbH – Buchbutler Retoure<br>
+      Engberdingdamm 27<br>
+      48268 Greven
+    </p>
+
+    <p>
+      <strong>Wichtig:</strong> Rücksendungen können nur angenommen werden, wenn sie ausreichend frankiert sind.
+      Unfreie Sendungen werden nicht entgegengenommen.
+    </p>
+
+    <p>
+      Nähere Informationen zum gesetzlichen Widerrufsrecht findest Du auch in unseren AGBs.
+    </p>
+
+    <h3>Erstattung</h3>
+
+    <p>
+      Nach Eingang der Rücksendung wird die Ware zunächst geprüft. Bitte achte darauf,
+      die Artikel sorgfältig zu behandeln und zeitnah zurückzusenden.
+    </p>
+
+    <p>
+      Die Rückerstattung erfolgt anschließend über die ursprünglich gewählte Zahlungsart.
+    </p>
+
+    <h3>Fehlerhafte oder beschädigte Lieferung</h3>
+
+    <p>
+      Falls etwas mit Deiner Bestellung nicht in Ordnung sein sollte, kontaktiere bitte unseren Kundenservice unter:
+      kontakt@ibk-bilderbuch.de
+    </p>
+
+    <p>
+      Bitte halte Deine Bestellnummer bereit, damit wir Deine Anfrage schnell und unkompliziert bearbeiten können.
+    </p>
+
+  </section>
 
   {% include 'footer.html' %}
 
 </body>
 </html>
-
- 
