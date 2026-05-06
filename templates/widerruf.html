@@ -8,7 +8,6 @@
   <link rel="icon" type="image/x-icon" href="static/ficon.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -38,26 +37,26 @@
     <form action="/submitwiderruf" method="POST" class="kontakt-form">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-      <label for="name">Name des/der Verbraucher(s):</label>
-      <input type="text" id="name" name="name" required>
+      <label for="name"></label>
+      <input type="text" id="name" name="name" placeholder="Name" required>
 
-      <label for="email">E-Mail des/der Verbraucher(s):</label>
-      <input type="email" id="email" name="email" required>
+      <label for="email"></label>
+      <input type="email" id="email" name="email" placeholder="E-Mail" required>
 
       <label for="anschrift">Anschrift des/der Verbraucher(s):</label>
-      <input type="text" id="anschrift" name="anschrift" required>
+      <input type="text" id="anschrift" name="anschrift" placeholder="Adresse" required>
 
-      <label for="datum">Datum der Bestellung:</label>
-      <input type="text" id="datum" name="datum" required>
+      <label for="datum"></label>
+      <input type="text" id="datum" name="datum" placeholder="Datum der Bestellung" required>
 
-      <label for="anzahl">Anzahl der bestellten Waren:</label>
-      <input type="text" id="anzahl" name="anzahl" required>
+      <label for="anzahl"></label>
+      <input type="text" id="anzahl" name="anzahl" placeholder="Anzahl der bestellten Waren" required>
 
-      <label for="warenbezeichnung">Bezeichnung der Ware(n):</label>
-      <input type="text" id="warenbezeichnung" name="warenbezeichnung" required>
+      <label for="warenbezeichnung"></label>
+      <input type="text" id="warenbezeichnung" name="warenbezeichnung" placeholder="Bezeichnung der Waren" required>
 
-      <label for="nachricht">Nachricht (optional):</label>
-      <textarea id="nachricht" name="message"></textarea>
+      <label for="nachricht"></label>
+      <textarea id="nachricht" name="message" placeholder="Nachricht (optional)"></textarea>
 
       <button type="submit">Absenden</button>
     </form>
@@ -93,30 +92,27 @@
     </p>
 
     <p>
-      Nähere Informationen zum gesetzlichen Widerrufsrecht findest Du auch in unseren AGBs.
-    </p>
+  Nähere Informationen zum gesetzlichen Widerrufsrecht finden Sie auch in unseren AGBs.
+</p>
 
+<p>
+  <strong>Erstattung:</strong> Nach Eingang der Rücksendung wird die Ware zunächst geprüft. Bitte achten Sie darauf,
+  die Artikel sorgfältig zu behandeln und zeitnah zurückzusenden.
+</p>
 
-    <p>
-         <strong>Erstattung:</strong> Nach Eingang der Rücksendung wird die Ware zunächst geprüft. Bitte achte darauf,
-      die Artikel sorgfältig zu behandeln und zeitnah zurückzusenden.
-    </p>
+<p>
+  Die Rückerstattung erfolgt anschließend über die ursprünglich gewählte Zahlungsart.
+</p>
 
-    <p>
-      Die Rückerstattung erfolgt anschließend über die ursprünglich gewählte Zahlungsart.
-    </p>
+<p>
+  <strong>Fehlerhafte oder beschädigte Lieferung:</strong> Falls etwas mit Ihrer Bestellung nicht in Ordnung sein sollte, kontaktieren Sie bitte unseren Kundenservice unter:
+  kontakt@ibk-bilderbuch.de
+</p>
 
-
-    <p>
-      <strong>Fehlerhafte oder beschädigte Lieferung:</strong> Falls etwas mit Deiner Bestellung nicht in Ordnung sein sollte, kontaktiere bitte unseren Kundenservice unter:
-      kontakt@ibk-bilderbuch.de
-    </p>
-
-    <p>
-      Bitte halte Deine Bestellnummer bereit, damit wir Deine Anfrage schnell und unkompliziert bearbeiten können.
-    </p>
-  
-
+<p>
+  Bitte halten Sie Ihre Bestellnummer bereit, damit wir Ihre Anfrage schnell und unkompliziert bearbeiten können.
+</p>
+    
   </div>
   </div>
 
