@@ -460,7 +460,7 @@ def cached_lade_produkt_von_api(ean):
 
 
 def lade_produkt_von_api(ean):
-    """Lädt Produktdaten von CONTENT API"""
+    """Lädt Produktdaten von CONTENT API inkl. Bild-Fallback"""
 
     if not check_auth():
         return None
@@ -473,16 +473,21 @@ def lade_produkt_von_api(ean):
 
         attrs = res.get("Artikelattribute") or {}
 
+        # 🔥 Bilder aus API
         bilder = res.get("bilder") or []
 
+        # Falls "bilder" keine Liste ist (kommt bei manchen APIs vor)
+        if isinstance(bilder, str):
+            bilder = [bilder]
+
+        # 🔁 Fallback zur Image-API
         if not bilder:
             fallback = lade_bild_von_api(ean)
             if fallback:
                 bilder = [fallback]
 
-        produkt["bilder"] = bilder
-
-      
+        # 👇 Hauptbild bestimmen
+        bild = bilder[0] if bilder else DEFAULT_IMAGE
 
         produkt = {
             "id": to_int(res.get("pim_artikel_id")),
@@ -506,7 +511,9 @@ def lade_produkt_von_api(ean):
             "breite": attr(attrs, "Breite"),
             "hoehe": attr(attrs, "Hoehe"),
 
-            "bild": bild,  # ✅ jetzt korrekt gesetzt
+            "bilder": bilder,  # Liste (für Galerie etc.)
+            "bild": bild,      # Einzelbild (für einfache Nutzung)
+
             "extra": attrs
         }
 
@@ -515,6 +522,24 @@ def lade_produkt_von_api(ean):
     except Exception:
         logger.exception("Fehler beim Laden von CONTENT API")
         return None
+
+
+def lade_bild_von_api(ean):
+    """Prüft, ob ein Bild über die Image-API existiert"""
+    url = f"https://api.buchbutler.de/image/{ean}"
+
+    try:
+        res = requests.head(url, allow_redirects=False, timeout=3)
+
+        if res.status_code in (200, 302):
+            return url
+        elif res.status_code == 404:
+            return None
+
+    except Exception:
+        logger.exception("Fehler beim Laden des Bildes")
+
+    return None
 
 
 
