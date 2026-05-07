@@ -453,13 +453,12 @@ def buchbutler_request(endpoint, ean):
 # -----------------------------
 # CONTENT API
 # -----------------------------
-
 @lru_cache(maxsize=128)
 def cached_lade_produkt_von_api(ean):
     return lade_produkt_von_api(ean)
 
+
 def lade_produkt_von_api(ean):
-    """Lädt Produktdaten von CONTENT API"""
 
     if not check_auth():
         return None
@@ -472,27 +471,55 @@ def lade_produkt_von_api(ean):
 
         attrs = res.get("Artikelattribute") or {}
 
+        # 🔥 Bild suchen
+        bild_url = (
+            res.get("cover_url")
+            or res.get("bild_url")
+            or attr(attrs, "Cover")
+            or attr(attrs, "Bild")
+        )
+
+        # 🔥 OpenLibrary Fallback
+        if not bild_url:
+
+            isbn = attr(attrs, "ISBN_13")
+
+            if isbn:
+                bild_url = (
+                    f"https://covers.openlibrary.org/b/isbn/{isbn}-L.jpg"
+                )
+
         produkt = {
+
             "id": to_int(res.get("pim_artikel_id")),
+
+            "ean": ean,
+
             "name": res.get("bezeichnung"),
+
             "autor": attr(attrs, "Autor"),
+
             "illustrator": attr(attrs, "Illustrator"),
+
             "preis": to_float(res.get("vk_brutto")),
-           
+
             "isbn": attr(attrs, "ISBN_13"),
+
             "seiten": attr(attrs, "Seiten"),
+
             "format": attr(attrs, "Buchtyp"),
+
             "sprache": attr(attrs, "Sprache"),
+
             "verlag": attr(attrs, "Verlag"),
+
             "erscheinungsjahr": attr(attrs, "Erscheinungsjahr"),
+
             "erscheinungsdatum": attr(attrs, "Erscheinungsdatum"),
-            "alter_von": attr(attrs, "Altersempfehlung_von"),
-            "alter_bis": attr(attrs, "Altersempfehlung_bis"),
-            "lesealter": attr(attrs, "Lesealter"),
-            "gewicht": attr(attrs, "Gewicht"),
-            "laenge": attr(attrs, "Laenge"),
-            "breite": attr(attrs, "Breite"),
-            "hoehe": attr(attrs, "Hoehe"),
+
+            # 🔥 Bilder
+            "bilder": [bild_url] if bild_url else [],
+
             "extra": attrs
         }
 
