@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="description" content="Liebevoll illustrierte Bilderbücher für Kinder entdecken ✓ Klassiker & Neuerscheinungen, alles Besondere ✓ Hochwertige Kinderbücher online kaufen bei I B K. Ein besonderes Geschenk für kleine und große LeserInnen.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>I B K - Ausgewählte Bilderbücher für Kinder und alle, die sich für Illustrationskunst begeistern </title>
+  <title>I B K - Ausgewählte Bilderbücher für Kinder und alle, die sich für Illustrationskunst begeistern</title>
 
   <link rel="icon" type="image/x-icon" href="static/ficon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -50,7 +50,6 @@
 <!-- 🔹 MAIN -->
 <main>
 
-
 {% set visiblePerClick = 3 %}
 
 {% for titel, liste in kategorien %}
@@ -62,7 +61,7 @@
   <!-- 🔹 KATEGORIE TITEL -->
   <h2>{{ titel }}</h2>
 
-  <!-- 🔥 NEU: KATEGORIE TEXT -->
+  <!-- 🔥 KATEGORIE TEXT -->
   {% set text = kategorie_beschreibungen.get(titel) %}
   {% if text %}
     <div class="category-text">
@@ -82,8 +81,22 @@
 
   <!-- 🔹 PRODUKTE -->
   <div class="book-list">
+
     {% for produkt in liste %}
       <div class="book">
+
+        <!-- 🔥 BILD LOGIK -->
+        {% if produkt.bilder and produkt.bilder|length > 0 %}
+
+          {% if produkt.bilder[0].startswith('http') %}
+            {% set src = produkt.bilder[0] %}
+          {% else %}
+            {% set src = url_for('static', filename=produkt.bilder[0]) %}
+          {% endif %}
+
+        {% else %}
+          {% set src = url_for('static', filename='images/default.jpg') %}
+        {% endif %}
 
         <!-- SEO JSON -->
         <script type="application/ld+json">
@@ -91,28 +104,23 @@
           "@context": "https://schema.org",
           "@type": "Product",
           "name": "{{ produkt.name }}",
-          "image": "{{ url_for('static', filename=produkt.bilder[0], _external=True) }}",
+          "image": "{{ src }}",
           "offers": {
             "@type": "Offer",
             "price": "{{ produkt.preis }}",
             "priceCurrency": "EUR",
-            "url": "{{ url_for('produkt_detail', produkt_id=produkt.id, slug=produkt.slug if produkt.slug else produkt.name|lower|replace(' ', '-'), _external=True) }}"
+            "url": "{{ url_for(
+              'produkt_detail',
+              produkt_id=produkt.id,
+              slug=produkt.slug if produkt.slug else produkt.name|lower|replace(' ', '-'),
+              _external=True
+            ) }}"
           }
         }
         </script>
 
-        <!-- Bild -->
+        <!-- 🔹 PRODUKTBILD -->
         <div class="image-wrapper">
-
-          {% if produkt.bilder and produkt.bilder|length > 0 %}
-            {% if produkt.bilder[0].startswith('http') %}
-              {% set src = produkt.bilder[0] %}
-            {% else %}
-              {% set src = url_for('static', filename=produkt.bilder[0]) %}
-            {% endif %}
-          {% else %}
-            {% set src = url_for('static', filename='images/default.jpg') %}
-          {% endif %}
 
           <a href="{{ url_for('produkt_detail', produkt_id=produkt.id, slug=produkt.slug) }}">
             <img src="{{ src }}" alt="{{ produkt.name }}" loading="lazy">
@@ -121,14 +129,22 @@
         </div>
 
         <h3>{{ produkt.name }}</h3>
+
         <p>{{ produkt.preis }} €</p>
 
-        <button onclick="addToCart('{{ produkt.name }}', {{ produkt.preis }}, '{{ url_for('static', filename=produkt.bilder[0]) }}', '{{ produkt.ean }}')">
+        <!-- 🔹 WARENKORB -->
+        <button onclick="addToCart(
+          '{{ produkt.name }}',
+          {{ produkt.preis }},
+          '{{ src }}',
+          '{{ produkt.ean }}'
+        )">
           In den Warenkorb
         </button>
 
       </div>
     {% endfor %}
+
   </div>
 
 </div>
@@ -141,23 +157,48 @@
 </div>
 
 <!-- 🔹 NEWSLETTER -->
+<section class="newsletter-section" id="newsletter">
 
+  <h3>
+    <a href="#newsletter">
+      Melden Sie sich zu unserem Newsletter an!
+    </a>
+  </h3>
 
+  <br>
 
- <section class="newsletter-section" id="newsletter">
-      <h3 ><a href="#newsletter">Melden Sie sich zu unserem Newsletter an!</a></h3> <br>
-      <p>Erhalten Sie exklusive Neuigkeiten und Angebote rund um unsere Bilderbücher.</p>
-     <form action="{{ url_for('newsletter') }}" method="POST">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required /><br> 
-        <label for="consent" class="dsgvo-text">
-    * Mit der Anmeldung bestätigen Sie, dass Sie die<a href="/datenschutz"> Datenschutzerklärung</a> gelesen haben und die <a href="/agb">AGBs</a> akzeptieren.
-  
+  <p>
+    Erhalten Sie exklusive Neuigkeiten und Angebote rund um unsere Bilderbücher.
+  </p>
+
+  <form action="{{ url_for('newsletter') }}" method="POST">
+
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <input
+      type="email"
+      name="email"
+      placeholder="Ihre E-Mail-Adresse"
+      required
+    />
+
+    <br>
+
+    <label for="consent" class="dsgvo-text">
+      * Mit der Anmeldung bestätigen Sie, dass Sie die
+      <a href="/datenschutz">Datenschutzerklärung</a>
+      gelesen haben und die
+      <a href="/agb">AGBs</a>
+      akzeptieren.
     </label>
-        <button type="submit">Anmelden</button>
-  </a>
-      </form>
-    </section>
+
+    <button type="submit">
+      Anmelden
+    </button>
+
+  </form>
+
+</section>
 
 </main>
 
@@ -165,17 +206,22 @@
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 
-<!-- 🔥 NEU: Toggle Script -->
+<!-- 🔥 Toggle Script -->
 <script>
 document.querySelectorAll(".toggle-text").forEach(btn => {
+
   btn.addEventListener("click", () => {
+
     const parent = btn.parentElement;
+
     parent.classList.toggle("open");
 
     btn.textContent = parent.classList.contains("open")
       ? "weniger anzeigen"
       : "mehr lesen";
+
   });
+
 });
 </script>
 
