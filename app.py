@@ -485,9 +485,9 @@ def lade_produkt_von_api(ean):
             isbn = attr(attrs, "ISBN_13")
 
             if isbn:
-                bild_url = (
-                    f"https://covers.openlibrary.org/b/isbn/{isbn}-L.jpg"
-                )
+               bild_url = (
+    f"https://covers.openlibrary.org/b/isbn/{isbn}-L.jpg?default=false"
+)
 
         produkt = {
 
