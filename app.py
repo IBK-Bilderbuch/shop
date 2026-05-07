@@ -530,6 +530,41 @@ def lade_produkt_von_api(ean):
         logger.exception("Fehler beim Laden von CONTENT API")
         return None
 
+
+# -----------------------------
+# MOVEMENT API
+# -----------------------------
+
+def lade_bestand_von_api(ean):
+
+    if not check_auth():
+        return None
+
+    try:
+
+        res = buchbutler_request("MOVEMENT", ean)
+
+        if not res:
+            return None
+
+        return {
+
+            "bestand": to_int(res.get("bestand")),
+
+            "preis": to_float(
+                res.get("vk_brutto")
+            ),
+
+            "handling_zeit": res.get("handling_zeit"),
+
+            "erfuellungsrate": res.get("erfuellungsrate")
+
+        }
+
+    except Exception:
+        logger.exception("Fehler beim Laden von MOVEMENT API")
+        return None
+
 # -----------------------------
 # Bestellung an Buchbutler senden 
 # -----------------------------
