@@ -753,25 +753,7 @@
   "leseprobe_url": "https://www.book2look.com//book/WjLI79HvFc&euid=0&ruid=0&refererpath=www.moritzverlag.de&isbnformat=hardcover&bookisbn=9783895654640&dct=0&biblettype=double&clickedby=lk&bibloc=0"
 },
 
-  {
-  "id": 34,
-  "name": "Und jetzt sei fröhlich, Knochenmann",
-  "ean": "9783948743307",
  
-  "beschreibung": "Die Urgroßmutter des Mädchens ist alt und möchte tanzen – aber der Tod lässt auf sich warten. Also macht sich das Mädchen auf die Suche nach ihm. Auf ihrer Reise trifft sie ungewöhnliche Gefährten und lernt, dass der Tod ganz anders sein kann als erwartet. Eine philosophische Geschichte über Tod und Abschied mit farbenprächtigen, detailreichen Bildern, die an den mexikanischen Día de Muertos erinnern.",  
-
-  "bilder": [
-   "images/knochenmann/knochenmann.jpg",
-   "images/knochenmann/knochenmann2.jpg",
-   "images/knochenmann/knochenmann3.jpg",
-   "images/knochenmann/knochenmann4.jpg",
-   "images/knochenmann/knochenmann5.jpg",
-   "images/knochenmann/knochenmann6.jpg"
-  ],
-  "kategorie": "Wichtige Fragen",
- 
-  "leseprobe_url": "https://www.book2look.com/book/9783948743307(buchpalastmuenchen.de)"
-},
 
 {
   "id": 35,
@@ -1091,7 +1073,54 @@
     "images/grossstaedte/sasek.webp"
   ],   
   "kategorie": "Große Städte, große Zeichner"
-}
+},
+
+     {
+  "id": 55,
+  "name": "Ente, Tod und Tulpe",
+  "ean": "9783038762027",
+  "beschreibung":  "Irgendwann stellt jedes Kind die Frage nach dem Tod. Ganz unbefangen. Alle Eltern wissen das und haben selten eine unbefangene Antwort parat. In Wolf Erlbruchs 'Ente, Tod und Tulpe' ist der Tod ein leichtfüßiger Begleiter, schon immer da, man merkt's nur nicht. Schon länger hatte die Ente so ein Gefühl: 'Wer bist du - und was schleichst du hinter mir her?' 'Schön, dass du mich endlich bemerkst', sagte der Tod. 'Ich bin der Tod.' Die Ente erschrak. Das konnte man ihr nicht übel nehmen. 'Und jetzt kommst du mich holen?' 'Ich bin schon in deiner Nähe, so lange du lebst - nur für den Fall.' 'Für den Fall?' fragte die Ente. 'Na, falls dir etwas zustößt. Ein schlimmer Schnupfen, ein Unfall, man weiß nie.' Man weiß nie - aber man weiß, dass in Wolf Erlbruchs poetischen Bildern und Geschichten die großen Fragen einfache Antworten finden: für Kleine und Große.",
+     "bilder": [
+    "images/lebensende/entetod.webp"
+  ],   
+  "kategorie": "Lebensende",
+ "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-461-8",
+
+},
+
+     {
+  "id": 56,
+  "name": "Schwellenangst",
+  "ean": "9783038762027",
+  "beschreibung": "Können wir anders und offen über den Tod und das Sterben sprechen? Wie können wir mit Schmerz umgehen und in Trauer füreinander da sein? Was passiert mit einem Körper, wenn er gerade stirbt, und warum ist die Redewendung 'im Tod sind alle gleich' ein so großes Missverständnis? n\n\In diesem außergewöhnlich illustrierten Buch schaffen Luisa Stömer und Eva Wünsch einen neuen Zugang in ein für viele schweres, tabuisiertes Thema: Obwohl das Sterben und der Tod zu den fundamentalsten menschlichen Erfahrungen gehören, haben wir beides heute weitgehend aus unserem alltäglichen Leben verdrängt – gestorben wird zu oft allein und in der Trauer werden wir auf uns selbst zurückgeworfen. 'Schwellenangst' leistet einen wichtigen Beitrag dazu, wie ein Gespräch über die Endlichkeit gelingen kann. Die Autorinnen sensibilisieren für die verschiedenen Bereiche, die mit dem Tod in Verbindung stehen: von biologischen Prozessen des Sterbens, der Auflösung eines Körpers, bürokratischen Hürden und Schlupflöchern über Trauer, die sich allen Phasenmodellen entzieht, und Wachstumsschmerzen bis hin zu unkonventionellen Bestattungen und gesellschaftlichen Ungleichheiten, die über den Tod hinausreichen. Der Tod ist und bleibt beunruhigend, aber die Beschäftigung damit sorgt für Orientierung, schärft die Wahrnehmung füreinander und lässt uns neu bewerten, was wirklich wichtig ist.",
+     "bilder": [
+    "images/lebensende/schwellenangst.webp"
+  ],   
+  "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-95614-606-0",
+  "kategorie": "Lebensende"
+},
+
+ {
+  "id": 57,
+  "name": "Und jetzt sei fröhlich, Knochenmann",
+  "ean": "9783948743307",
+ 
+  "beschreibung": "Die Urgroßmutter des Mädchens ist alt und möchte tanzen – aber der Tod lässt auf sich warten. Also macht sich das Mädchen auf die Suche nach ihm. Auf ihrer Reise trifft sie ungewöhnliche Gefährten und lernt, dass der Tod ganz anders sein kann als erwartet. Eine philosophische Geschichte über Tod und Abschied mit farbenprächtigen, detailreichen Bildern, die an den mexikanischen Día de Muertos erinnern.",  
+
+  "bilder": [
+   "images/knochenmann/knochenmann.jpg",
+   "images/knochenmann/knochenmann2.jpg",
+   "images/knochenmann/knochenmann3.jpg",
+   "images/knochenmann/knochenmann4.jpg",
+   "images/knochenmann/knochenmann5.jpg",
+   "images/knochenmann/knochenmann6.jpg"
+  ],
+  "kategorie": "Lebensende",
+ 
+  "leseprobe_url": "https://www.book2look.com/book/9783948743307(buchpalastmuenchen.de)"
+ }
+
+    
   
 
   
