@@ -471,54 +471,26 @@ def lade_produkt_von_api(ean):
 
         attrs = res.get("Artikelattribute") or {}
 
-        # 🔥 Bild suchen
-        bild_url = (
-            res.get("cover_url")
-            or res.get("bild_url")
-            or attr(attrs, "Cover")
-            or attr(attrs, "Bild")
-        )
-
-        # 🔥 OpenLibrary Fallback
-        if not bild_url:
-
-            isbn = attr(attrs, "ISBN_13")
-
-            if isbn:
-               bild_url = (
-    f"https://covers.openlibrary.org/b/isbn/{isbn}-L.jpg?default=false"
-)
+        # 🔥 Bild (nur BuchButler Image API)
+        bild_url = f"https://api.buchbutler.de/image/{ean}"
 
         produkt = {
-
             "id": to_int(res.get("pim_artikel_id")),
-
             "ean": ean,
-
             "name": res.get("bezeichnung"),
-
             "autor": attr(attrs, "Autor"),
-
             "illustrator": attr(attrs, "Illustrator"),
-
             "preis": to_float(res.get("vk_brutto")),
-
             "isbn": attr(attrs, "ISBN_13"),
-
             "seiten": attr(attrs, "Seiten"),
-
             "format": attr(attrs, "Buchtyp"),
-
             "sprache": attr(attrs, "Sprache"),
-
             "verlag": attr(attrs, "Verlag"),
-
             "erscheinungsjahr": attr(attrs, "Erscheinungsjahr"),
-
             "erscheinungsdatum": attr(attrs, "Erscheinungsdatum"),
 
             # 🔥 Bilder
-            "bilder": [bild_url] if bild_url else [],
+            "bilder": [bild_url],
 
             "extra": attrs
         }
