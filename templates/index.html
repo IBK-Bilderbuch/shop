@@ -86,17 +86,19 @@
       <div class="book">
 
         <!-- 🔥 BILD LOGIK -->
-        {% if produkt.bilder and produkt.bilder|length > 0 %}
+        {% if produkt.bilder and produkt.bilder|length > 0 and produkt.bilder[0] %}
 
-          {% if produkt.bilder[0].startswith('http') %}
-            {% set src = produkt.bilder[0] %}
-          {% else %}
-            {% set src = url_for('static', filename=produkt.bilder[0]) %}
-          {% endif %}
+  {% set bild = produkt.bilder[0] %}
 
-        {% else %}
-          {% set src = url_for('static', filename='images/default.jpg') %}
-        {% endif %}
+  {% if bild.startswith('http') %}
+    {% set src = bild %}
+  {% else %}
+    {% set src = url_for('static', filename=bild) %}
+  {% endif %}
+
+{% else %}
+  {% set src = url_for('static', filename='images/default.jpg') %}
+{% endif %}
 
         <!-- SEO JSON -->
         <script type="application/ld+json">
