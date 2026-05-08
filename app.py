@@ -172,9 +172,7 @@ def gutschein():
         flash("Ungültiger Betrag", "error")
         return redirect("/gutschein")
 
-    if betrag < 5:
-        flash("Mindestbetrag 5€", "error")
-        return redirect("/gutschein")
+
 
     # 👉 direkt Checkout starten (NICHT Warenkorb)
     session["checkout_gutschein"] = betrag
