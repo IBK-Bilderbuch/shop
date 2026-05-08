@@ -9,47 +9,88 @@
     <option value="100">100 €</option>
 </select>
 
-<div id="paypal-button-container"></div>
+        <!-- PayPal Button -->
+        <div id="paypal-button-container" style="margin-top:1em;"></div>
 
-<script src="https://www.paypal.com/sdk/js?client-id=DEIN_CLIENT_ID&currency=EUR"></script>
 
+{% include 'footer.html' %}
+
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR&disable-funding=sepa,sofort,giropay,bancontact,eps,ideal"></script>
 <script>
-function getBetrag() {
-    return document.getElementById("gutschein-betrag").value;
+  
+const form = document.getElementById('checkout-form');
+const privacyCheckbox = document.getElementById('privacy-checkbox');
+const requiredFields = form.querySelectorAll('input[required]');
+
+function allFieldsFilled() {
+  return Array.from(requiredFields).every(f => f.value.trim() !== '') && privacyCheckbox.checked;
 }
 
 paypal.Buttons({
 
-    createOrder: function () {
-        const betrag = getBetrag();
+  onClick: function(data, actions) {
 
-        return fetch("/create-paypal-order", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                is_gutschein: true,
-                betrag: betrag
-            })
-        })
-        .then(res => res.json())
-        .then(data => data.id);
-    },
-
-    onApprove: function (data) {
-        return fetch(`/capture-paypal-order/${data.orderID}`, {
-            method: "POST"
-        })
-        .then(res => res.json())
-        .then(result => {
-            if (result.status === "success") {
-                window.location.href = "/danke";
-            } else {
-                alert("Zahlung fehlgeschlagen");
-            }
-        });
+    if (!form.reportValidity()) {
+      form.querySelector(":invalid")?.focus();
+      return actions.reject();
     }
 
-}).render("#paypal-button-container");
+    return actions.resolve();
+  },
+
+  onInit: function(data, actions) {
+    actions.disable();
+
+    function validate() {
+      if (allFieldsFilled()) actions.enable();
+      else actions.disable();
+    }
+
+    requiredFields.forEach(f => f.addEventListener('input', validate));
+    privacyCheckbox.addEventListener('change', validate);
+  },
+
+  createOrder: function(data, actions) {
+
+    const formData = new FormData(form);
+
+    return fetch("/checkout", {
+        method: "POST",
+        body: formData
+    })
+    .then(() => fetch("/create-paypal-order", { method: "POST" }))
+    .then(res => res.json())
+    .then(data => data.id);
+  },
+  
+  onApprove: function(data, actions) {
+    const orderID = data.orderID || data.orderId;
+    return fetch("/capture-paypal-order/" + orderID, { method: "POST" })
+      .then(res => res.json())
+      .then(res => {
+        if(res.status === 'success') {
+          localStorage.removeItem("cart");
+          fetch("/sync-cart", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify([])
+          });
+          window.location.href = "/bestelldanke";
+        } else {
+          alert("Fehler bei PayPal-Zahlung.");
+        }
+      });
+  },
+
+  onError: function(err) {
+    console.error("PayPal Fehler:", err);
+    alert("PayPal-Zahlung konnte nicht gestartet werden.");
+  }
+
+}).render('#paypal-button-container');
 </script>
+<script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
