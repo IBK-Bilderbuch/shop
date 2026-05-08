@@ -302,6 +302,16 @@ def create_paypal_order():
 
     order_data = response.json()
     return jsonify({"id": order_data["id"]})
+    order_data = response.json()
+
+    if "id" not in order_data:
+        logger.error(f"PayPal Fehler: {order_data}")
+        return jsonify({
+            "error": "PayPal order creation failed",
+            "details": order_data
+        }), 400
+
+    return jsonify({"id": order_data["id"]})
 
 
 
