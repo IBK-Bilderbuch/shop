@@ -1464,7 +1464,7 @@ def index():
         "Jacominus Gainsborough", "Große Städte, große Zeichner", "Mut oder Angst?!",
         "Klassiker", "Monstergeschichten",
         "Wichtige Fragen", "Weihnachten",
-        "KInder und Gefühle", "Dazugehören", "Gedanken zum Lebensende"
+        "Kinder und Gefühle", "Dazugehören", "Gedanken zum Lebensende"
     ]
 
     kategorie_beschreibungen = {
