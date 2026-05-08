@@ -38,7 +38,7 @@ class Gutschein(db.Model):
     empfaenger_name = db.Column(db.String(255))
 
     # Für Bestellung
-    bestellung_id = db.Column(db.Integer, db.ForeignKey("bestellung.id"))
+    bestellung_id = db.Column(db.Integer, db.ForeignKey("bestellungen.id"))
 
     def ist_gueltig(self):
         if not self.aktiv:
