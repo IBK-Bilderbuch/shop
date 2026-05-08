@@ -11,14 +11,46 @@ db = SQLAlchemy()
 
 
 class Gutschein(db.Model):
+    __tablename__ = "gutscheine"
+
     id = db.Column(db.Integer, primary_key=True)
 
-    code = db.Column(db.String(50), unique=True)
-    wert = db.Column(db.Float)
+    code = db.Column(db.String(50), unique=True, nullable=False)
 
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id")) 
-    eingelöst = db.Column(db.Boolean, default=False)
+    # Ursprünglicher Wert
+    wert = db.Column(db.Float, nullable=False)
 
+    # Noch verfügbares Guthaben
+    restwert = db.Column(db.Float, nullable=False)
+
+    aktiv = db.Column(db.Boolean, default=True)
+
+    erstellt_am = db.Column(db.DateTime, default=datetime.utcnow)
+
+    # Optional Ablaufdatum
+    gueltig_bis = db.Column(db.DateTime, nullable=True)
+
+    # Käufer
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    # Optional Empfänger
+    empfaenger_email = db.Column(db.String(255))
+    empfaenger_name = db.Column(db.String(255))
+
+    # Für Bestellung
+    bestellung_id = db.Column(db.Integer, db.ForeignKey("bestellung.id"))
+
+    def ist_gueltig(self):
+        if not self.aktiv:
+            return False
+
+        if self.gueltig_bis and datetime.utcnow() > self.gueltig_bis:
+            return False
+
+        if self.restwert <= 0:
+            return False
+
+        return True
 # ----------------------
 # Newsletter
 # ----------------------
