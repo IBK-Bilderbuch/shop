@@ -1,22 +1,55 @@
-<form method="POST" action="/gutschein">
-   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<h1>Geschenkgutschein</h1>
 
+<label>Betrag</label>
 
-    <h1>Geschenkgutschein</h1>
+<select id="gutschein-betrag">
+    <option value="10">10 €</option>
+    <option value="25">25 €</option>
+    <option value="50">50 €</option>
+    <option value="100">100 €</option>
+</select>
 
-    <label>Betrag</label>
+<div id="paypal-button-container"></div>
 
-    <select name="betrag">
-               <option value="0.01"> 0.01 €</option>
+<script src="https://www.paypal.com/sdk/js?client-id=DEIN_CLIENT_ID&currency=EUR"></script>
 
-        <option value="10">10 €</option>
-        <option value="25">25 €</option>
-        <option value="50">50 €</option>
-        <option value="100">100 €</option>
-    </select>
+<script>
+function getBetrag() {
+    return document.getElementById("gutschein-betrag").value;
+}
 
-    <button type="submit">
-        Gutschein kaufen
-    </button>
+paypal.Buttons({
 
-</form>
+    createOrder: function () {
+        const betrag = getBetrag();
+
+        return fetch("/create-paypal-order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                is_gutschein: true,
+                betrag: betrag
+            })
+        })
+        .then(res => res.json())
+        .then(data => data.id);
+    },
+
+    onApprove: function (data) {
+        return fetch(`/capture-paypal-order/${data.orderID}`, {
+            method: "POST"
+        })
+        .then(res => res.json())
+        .then(result => {
+            if (result.status === "success") {
+                window.location.href = "/danke";
+            } else {
+                alert("Zahlung fehlgeschlagen");
+            }
+        });
+    }
+
+}).render("#paypal-button-container");
+</script>
