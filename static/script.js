@@ -173,3 +173,29 @@ function toggleMenu() {
   document.body.classList.toggle("menu-open");
   menu.classList.toggle("active");
 }
+
+
+document
+.getElementById("apply-gutschein")
+.addEventListener("click", async () => {
+
+    const code =
+        document.getElementById("gutschein-code").value;
+
+    const response = await fetch("/apply-gutschein", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ code })
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+        alert(`-${data.rabatt} € eingelöst`);
+        location.reload();
+    } else {
+        alert(data.message);
+    }
+});
