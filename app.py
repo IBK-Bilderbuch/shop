@@ -288,36 +288,17 @@ def paypal_access_token():
 
 
 
-
 @app.route("/create-paypal-order", methods=["POST"])
 @csrf.exempt
 def create_paypal_order():
+    cart_items = get_cart()
+    total = calculate_total(cart_items)
 
-    data = request.get_json() or {}
+    if not cart_items or total <= 0:
+        return jsonify({"error": "Warenkorb leer"}), 400
 
-    is_gutschein = data.get("is_gutschein", False)
-    betrag = float(data.get("betrag", 0))
-
-    # -----------------------------
-    # TOTAL BERECHNUNG
-    # -----------------------------
-    if is_gutschein:
-        total = betrag
-    else:
-        cart_items = get_cart()
-        total = calculate_total(cart_items)
-
-        if not cart_items or total <= 0:
-            return jsonify({"error": "Warenkorb leer"}), 400
-
-    # -----------------------------
-    # PAYPAL TOKEN
-    # -----------------------------
     access_token = paypal_access_token()
 
-    # -----------------------------
-    # ORDER ERSTELLEN
-    # -----------------------------
     response = requests.post(
         f"{PAYPAL_BASE}/v2/checkout/orders",
         headers={
@@ -336,10 +317,9 @@ def create_paypal_order():
     )
 
     order_data = response.json()
+    return jsonify({"id": order_data["id"]})
+    order_data = response.json()
 
-    # -----------------------------
-    # FEHLER CHECK
-    # -----------------------------
     if "id" not in order_data:
         logger.error(f"PayPal Fehler: {order_data}")
         return jsonify({
@@ -348,6 +328,7 @@ def create_paypal_order():
         }), 400
 
     return jsonify({"id": order_data["id"]})
+
 
 
 
