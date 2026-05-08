@@ -1,4 +1,6 @@
-<form method="POST">
+<form method="POST" action="/gutschein-kaufen>
+   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
 
     <h1>Geschenkgutschein</h1>
 
