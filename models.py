@@ -51,6 +51,18 @@ class Gutschein(db.Model):
             return False
 
         return True
+
+
+class GutscheinEinloesung(db.Model):
+    __tablename__ = "gutschein_einloesungen"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    gutschein_id = db.Column(db.Integer, db.ForeignKey("gutscheine.id"))
+    bestellung_id = db.Column(db.Integer, db.ForeignKey("bestellungen.id"))
+
+    betrag = db.Column(db.Float, nullable=False)
+    erstellt_am = db.Column(db.DateTime, default=datetime.utcnow)
 # ----------------------
 # Newsletter
 # ----------------------
