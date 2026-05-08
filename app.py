@@ -112,6 +112,31 @@ BUCHBUTLER_VERKAUFSKANAL_ID = os.getenv("BUCHBUTLER_VERKAUFSKANAL_ID", "1")
 BASE_URL = "https://api.buchbutler.de"
 
 
+
+
+@app.route("/login", methods=["GET", "POST"])
+@csrf.exempt
+def login():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        user = User.query.filter_by(email=email).first()
+
+        if not user or not user.check_password(password):
+            flash("Login fehlgeschlagen", "error")
+            return redirect("/login")
+
+        session["user_id"] = user.id
+        return redirect("/")
+
+    return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    session.pop("user_id", None)
+    return redirect("/")
 # =====================================================
 # Gutschein
 # =====================================================
