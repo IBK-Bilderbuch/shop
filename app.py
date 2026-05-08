@@ -288,8 +288,7 @@ def paypal_access_token():
 
 
 
-@app.route("/create-paypal-order", methods=["POST"])
-@csrf.exempt
+
 @app.route("/create-paypal-order", methods=["POST"])
 @csrf.exempt
 def create_paypal_order():
