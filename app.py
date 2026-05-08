@@ -144,6 +144,11 @@ def logout():
 
 
 
+
+
+# GUTSCHEIN CODE GENERATOR
+# =====================================================
+
 def generate_gutschein_code(length=12):
     alphabet = string.ascii_uppercase + string.digits
 
@@ -151,17 +156,23 @@ def generate_gutschein_code(length=12):
         code = ''.join(secrets.choice(alphabet) for _ in range(length))
 
         exists = Gutschein.query.filter_by(code=code).first()
-
         if not exists:
             return code
 
+
+# GUTSCHEIN PRODUKT (IM WARENKORB KAUFEN)
+# =====================================================
 
 @app.route("/gutschein", methods=["GET", "POST"])
 def gutschein():
 
     if request.method == "POST":
 
-        betrag = float(request.form.get("betrag"))
+        try:
+            betrag = float(request.form.get("betrag", 0))
+        except ValueError:
+            flash("Ungültiger Betrag", "error")
+            return redirect("/gutschein")
 
         if betrag < 5:
             flash("Mindestbetrag 5€", "error")
@@ -178,21 +189,21 @@ def gutschein():
 
         cart = get_cart()
         cart.append(gutschein_item)
-
         save_cart(cart)
 
         return redirect("/cart")
 
     return render_template("gutschein.html")
 
-def get_gutschein():
-    return session.get("gutschein")
+
+# GUTSCHEIN ANWENDEN (CHECKOUT / CART)
+# =====================================================
 
 @app.route("/apply-gutschein", methods=["POST"])
 @csrf.exempt
 def apply_gutschein():
 
-    code = request.json.get("code", "").strip().upper()
+    code = (request.json.get("code") or "").strip().upper()
 
     gutschein = Gutschein.query.filter_by(code=code).first()
 
@@ -205,10 +216,15 @@ def apply_gutschein():
     if not gutschein.ist_gueltig():
         return jsonify({
             "success": False,
-            "message": "Gutschein ungültig"
+            "message": "Gutschein ungültig oder abgelaufen"
         })
 
-    total = calculate_total(get_cart())
+    cart = get_cart()
+
+    total = sum(
+        item["price"] * item["quantity"]
+        for item in cart
+    )
 
     rabatt = min(total, gutschein.restwert)
 
@@ -225,19 +241,36 @@ def apply_gutschein():
     })
 
 
+# TOTAL BERECHNUNG (OHNE GUTSCHEIN!)
+# =====================================================
+
 def calculate_total(cart):
 
-    total = sum(
+    return sum(
         item["price"] * item["quantity"]
         for item in cart
     )
 
-    gutschein = session.get("gutschein")
 
-    if gutschein:
-        total -= gutschein["betrag"]
+# OPTIONAL: GUTSCHEIN AUS SESSION HOLEN
+# =====================================================
 
-    return max(total, 0)
+def get_gutschein():
+    return session.get("gutschein")
+
+
+# =====================================================
+# PRODUKTE LADEN
+# =====================================================
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+json_path = os.path.join(basedir, "produkte.json")
+
+if os.path.exists(json_path):
+    with open(json_path, encoding="utf-8") as f:
+        produkte = json.load(f)
+else:
+    produkte = []
 
 
 
