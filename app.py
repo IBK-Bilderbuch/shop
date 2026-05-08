@@ -124,104 +124,6 @@ else:
     produkte = []
 
 
-# =====================================================
-# LOGIN
-# =====================================================
-
-
-@app.route("/register", methods=["GET", "POST"])
-def register():
-    if request.method == "POST":
-        email = request.form.get("email")
-        password = request.form.get("password")
-
-        if User.query.filter_by(email=email).first():
-            flash("E-Mail existiert bereits", "error")
-            return redirect("/register")
-
-        user = User(email=email)
-        user.set_password(password)
-
-        db.session.add(user)
-        db.session.commit()
-
-        session["user_id"] = user.id
-
-        return redirect("/")
-
-    return render_template("register.html")
-
-
-
-@app.route("/login", methods=["GET", "POST"])
-@csrf.exempt
-def login():
-    if request.method == "POST":
-        email = request.form.get("email")
-        password = request.form.get("password")
-
-        user = User.query.filter_by(email=email).first()
-
-        if not user or not user.check_password(password):
-            flash("Login fehlgeschlagen", "error")
-            return redirect("/login")
-
-        session["user_id"] = user.id
-        return redirect("/")
-
-    return render_template("login.html")
-
-
-@app.route("/logout")
-def logout():
-    session.pop("user_id", None)
-    return redirect("/")
-
-
-
-
-
-@app.context_processor
-def inject_user():
-    user = None
-    if "user_id" in session:
-        user = User.query.get(session["user_id"])
-    return dict(current_user=user)
-
-
-@app.route("/meine-gutscheine")
-def meine_gutscheine():
-    if "user_id" not in session:
-        return redirect("/login")
-
-    gutscheine = Gutschein.query.filter_by(user_id=session["user_id"]).all()
-
-    return render_template("gutscheine.html", gutscheine=gutscheine)
-
-
-def update_user_punkte_und_gutschein(user, cart_items):
-    """Fügt Punkte hinzu und vergibt ggf. Gutschein"""
-    punkte = int(calculate_total(cart_items))
-    user.punkte += punkte
-
-    # 🎁 Gutschein bei 100 Punkten
-    if user.punkte >= 100:
-        code = str(uuid.uuid4())[:8]
-        gutschein = Gutschein(
-            code=code,
-            wert=10,  # z.B. 10€
-            user_id=user.id
-        )
-        user.punkte -= 100
-        db.session.add(gutschein)
-
-        send_email(
-            subject="Dein Gutschein 🎁",
-            body=f"Dein Code: {code}",
-            recipient=user.email
-        )
-
-    db.session.commit()
 
 # =====================================================
 # PAYPAL
@@ -385,71 +287,7 @@ def paypal_webhook():
     return "", 200
 
 
-# =====================================================
-# HILFSFUNKTIONEN
-# =====================================================
 
-def get_cart():
-    return session.get("cart", [])
-
-def save_cart(cart):
-    session["cart"] = cart
-    session.modified = True
-
-def calculate_total(cart):
-    return sum(item["price"] * item["quantity"] for item in cart)
-
-
-def check_auth():
-    if not BUCHBUTLER_USER or not BUCHBUTLER_PASSWORD:
-        logger.error("Buchbutler Zugangsdaten fehlen")
-        return False
-    return True
-
-
-def to_float(value):
-    """Konvertiert API Preis sicher"""
-    if not value:
-        return 0.0
-    try:
-        return float(str(value).replace(",", "."))
-    except ValueError:
-        return 0.0
-
-
-def to_int(value):
-    """Konvertiert Zahlen sicher"""
-    if not value:
-        return 0
-    try:
-        return int(value)
-    except ValueError:
-        return 0
-
-
-def attr(attrs, key):
-    """Greift sicher auf Artikelattribute zu"""
-    return (attrs.get(key) or {}).get("Wert", "")
-
-def buchbutler_request(endpoint, ean):
-    """Allgemeine Request Funktion"""
-    url = f"{BASE_URL}/{endpoint}/"
-
-    params = {
-        "username": BUCHBUTLER_USER,
-        "passwort": BUCHBUTLER_PASSWORD,
-        "ean": ean
-    }
-
-    response = requests.get(url, params=params, timeout=10)
-    response.raise_for_status()
-
-    data = response.json()
-
-    if not data or "response" not in data:
-        return None
-
-    return data["response"]
 # -----------------------------
 # CONTENT API
 # -----------------------------
@@ -996,6 +834,72 @@ def checkout():
         total=total
     )
 
+# =====================================================
+# HILFSFUNKTIONEN CART
+# =====================================================
+
+def get_cart():
+    return session.get("cart", [])
+
+def save_cart(cart):
+    session["cart"] = cart
+    session.modified = True
+
+def calculate_total(cart):
+    return sum(item["price"] * item["quantity"] for item in cart)
+
+
+def check_auth():
+    if not BUCHBUTLER_USER or not BUCHBUTLER_PASSWORD:
+        logger.error("Buchbutler Zugangsdaten fehlen")
+        return False
+    return True
+
+
+def to_float(value):
+    """Konvertiert API Preis sicher"""
+    if not value:
+        return 0.0
+    try:
+        return float(str(value).replace(",", "."))
+    except ValueError:
+        return 0.0
+
+
+def to_int(value):
+    """Konvertiert Zahlen sicher"""
+    if not value:
+        return 0
+    try:
+        return int(value)
+    except ValueError:
+        return 0
+
+
+def attr(attrs, key):
+    """Greift sicher auf Artikelattribute zu"""
+    return (attrs.get(key) or {}).get("Wert", "")
+
+def buchbutler_request(endpoint, ean):
+    """Allgemeine Request Funktion"""
+    url = f"{BASE_URL}/{endpoint}/"
+
+    params = {
+        "username": BUCHBUTLER_USER,
+        "passwort": BUCHBUTLER_PASSWORD,
+        "ean": ean
+    }
+
+    response = requests.get(url, params=params, timeout=10)
+    response.raise_for_status()
+
+    data = response.json()
+
+    if not data or "response" not in data:
+        return None
+
+    return data["response"]
+
 # ============================
 # KONTAKT
 # ============================
@@ -1318,7 +1222,10 @@ def index():
         kategorie_beschreibungen=kategorie_beschreibungen,
         user_email=session.get("user_email")
     )
+    
 
+
+    
 # =====================================================
 # START (RENDER READY)
 # =====================================================
