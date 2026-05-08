@@ -163,37 +163,23 @@ def generate_gutschein_code(length=12):
 # GUTSCHEIN PRODUKT (IM WARENKORB KAUFEN)
 # =====================================================
 
-@app.route("/gutschein", methods=["GET", "POST"])
+@app.route("/gutschein", methods=["POST"])
 def gutschein():
 
-    if request.method == "POST":
+    try:
+        betrag = float(request.form.get("betrag", 0))
+    except ValueError:
+        flash("Ungültiger Betrag", "error")
+        return redirect("/gutschein")
 
-        try:
-            betrag = float(request.form.get("betrag", 0))
-        except ValueError:
-            flash("Ungültiger Betrag", "error")
-            return redirect("/gutschein")
+    if betrag < 5:
+        flash("Mindestbetrag 5€", "error")
+        return redirect("/gutschein")
 
-        if betrag < 5:
-            flash("Mindestbetrag 5€", "error")
-            return redirect("/gutschein")
+    # 👉 direkt Checkout starten (NICHT Warenkorb)
+    session["checkout_gutschein"] = betrag
 
-        gutschein_item = {
-            "id": f"gutschein-{uuid.uuid4()}",
-            "title": f"Gutschein {betrag:.2f}€",
-            "price": betrag,
-            "quantity": 1,
-            "ean": None,
-            "is_gutschein": True
-        }
-
-        cart = get_cart()
-        cart.append(gutschein_item)
-        save_cart(cart)
-
-        return redirect("/cart")
-
-    return render_template("gutschein.html")
+    return redirect("/checkout")
 
 
 # GUTSCHEIN ANWENDEN (CHECKOUT / CART)
