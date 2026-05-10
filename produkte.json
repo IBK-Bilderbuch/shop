@@ -1188,15 +1188,15 @@
   
   
    {
-  "id":
-  "name":
-  "ean":
-  "beschreibung": 
+  "id":"",
+  "name":"",
+  "ean":0,
+  "beschreibung": "",
   "bilder": [
     "images/"
       ],
-  "kategorie": 
-   "leseprobe_url": 
+  "kategorie": "",
+   "leseprobe_url": ""
 
    }
 
