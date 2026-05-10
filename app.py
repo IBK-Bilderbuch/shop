@@ -1488,7 +1488,7 @@ def index():
 
     kategorienamen = [
         "Jacominus Gainsborough", "Große Städte, große Zeichner", "Mut oder Angst?!",
-        "Klassiker", "Monstergeschichten",
+        "Klassiker", "Monstergeschichten", "Zahlen und Buchstaben"
         "Wichtige Fragen", "Weihnachten",
         "Kinder und Gefühle", "Dazugehören", "Gedanken zum Lebensende"
     ]
