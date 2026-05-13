@@ -620,6 +620,7 @@ def lade_produkt_von_api(ean):
             "verlag": attr(attrs, "Verlag"),
             "erscheinungsjahr": attr(attrs, "Erscheinungsjahr"),
             "erscheinungsdatum": attr(attrs, "Erscheinungsdatum"),
+            "beschreibung": attr(attrs, "text_text"),
 
             # 🔥 Bilder
             "bilder": [bild_url],
