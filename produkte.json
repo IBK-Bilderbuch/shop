@@ -1128,7 +1128,7 @@
 
     {
   "id":,
-  "ean":"",
+  "ean":"0",
   "bilder": [
     "images/"
       ],
@@ -1139,7 +1139,7 @@
    {
   "id":,
   "name":"",
-  "ean":,
+  "ean":"",
   "beschreibung": "",
   "bilder": [
     "images/"
