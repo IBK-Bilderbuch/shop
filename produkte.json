@@ -1139,7 +1139,7 @@
    {
   "id":,
   "name":"",
-  "ean":"",
+  "ean":"0",
   "beschreibung": "",
   "bilder": [
     "images/"
