@@ -1125,8 +1125,15 @@
   "kategorie": "Wichtige Fragen",
   "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=9322941228&ean=9783957281852"
    },
-  
-  
+
+    {
+  "id":"63",
+  "ean":9783791373607,
+
+  "kategorie": "Wichtige Fragen"
+
+   },
+
    {
   "id":"",
   "name":"",
@@ -1139,6 +1146,9 @@
    "leseprobe_url": ""
 
    }
+  
+ 
+
 
 
   
