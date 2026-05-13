@@ -1127,15 +1127,17 @@
    },
 
     {
-  "id":63,
-  "ean":"9783791373607",
-
+  "id":,
+  "ean":"",
+  "bilder": [
+    "images/"
+      ],
   "kategorie": "Wichtige Fragen"
 
    },
 
    {
-  "id":"",
+  "id":,
   "name":"",
   "ean":0,
   "beschreibung": "",
