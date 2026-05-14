@@ -857,8 +857,24 @@
   "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=9322941228&ean=9783957281852"
    },
 
-    {
+  {
   "id":63,
+    "name":"Das ist mein Papa!",
+  "ean":"9783907114162",
+  "bilder": [
+    "images/weristmeinpapa/weristmeinpapacover.webp",
+    "images/weristmeinpapa/weristmeinpapa.webp",
+    "images/weristmeinpapa/weristmeinpapa1.webp",
+    "images/weristmeinpapa/weristmeinpapa2.webp",
+    "images/weristmeinpapa/weristmeinpapa3.webp",
+
+      ],
+  "kategorie": "Dazugegören"
+
+   },
+
+    {
+  "id":64,
   "ean":"0",
   "bilder": [
     "images/"
@@ -866,9 +882,8 @@
   "kategorie": ""
 
    },
-
    {
-  "id":64,
+  "id":65,
   "name":"",
   "ean":"0",
   "beschreibung": "",
