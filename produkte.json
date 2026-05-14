@@ -874,6 +874,33 @@
 
    },
 
+  {
+  "id":66,
+    "name":"... 6, 7, 8 Gute Nacht",
+  "ean":"9783902373915",
+  "bilder": [
+    "images/zahlenundbuchschtaben/gutenacht.webp"
+      ],
+    "beschreibung": "Wenn Elefanten wie Schmetterlinge in die Lüfte steigen und das Wildschwein Margareth im Rüschenrock spazieren geht Wenn wilde, freie Seejungfrauen sich Donald Duck anschauen und Fischer-Fritz mit Einrad-Fischen um die Wette schwimmt Dann sind wir dort, wo Schlüsselbein und Schlüsselblume Freunde sind, an einem ganz besonderen Ort. nEs gibt viele Arten, Gute Nacht zu sagen. Mit Michael Rohers phantasievollen Bildern und witzigen Reimen macht das Schlafengehen Spaß. Die liebevoll detaillierten Zeichnungen laden wunderbar zum Weiterträumen ein zum Erfinden, Verdrehen und Staunen im eigenen, warmen Zwergennest.nAb 4 Jahren.",
+    
+  "kategorie": "Zahlen und Buchstaben"
+
+   },
+
+   {
+  "id":67,
+  "name":"Zugvögel",
+  "ean":"9783854521631",
+  "bilder": [
+    "images/"
+      ],
+    "beschreibung": "Im Frühling sind sie angekommen, im Herbst müssen Lukas neue Freunde Oleg, Madame Petrova und Paulinchen weiterziehen, sie sind ja schließlich Zugvögel. Doch sie wollen bleiben, wollen den Winter sehen und in die Schule gehen. Aber wo sollen sie bloß hin? Wovon sollen sie leben? Zum Glück gibt es die gute Frau Lorenz, die ein großes Herz hat und ein großes Nest für alle, die nicht wissen, wohin. Bei ihr sind die drei Freunde gut aufgehoben. In wunderschönen, feinsinnigen und zugleich kräftigen Bildern erzählt das Ausnahmetalent Michael Roher seine neue Geschichte: vom Sesshaftwerden einer Familie unter erschwerten Bedingungen, ein Plädoyer für Toleranz und Liebe, eine Würdigung von Menschlichkeit und Hilfsbereitschaft.",
+
+  "kategorie": ""
+
+   },
+
+
     {
   "id":64,
   "ean":"0",
