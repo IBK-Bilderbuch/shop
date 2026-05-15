@@ -997,6 +997,19 @@
   "kategorie": "Klassiker"
 
    },
+
+  {
+  "id":76,
+  "name":"Kluge Frauen sind gefährlich",
+  "ean":"9783941683730",
+  "beschreibung": "Von Jane Austen bis Katharina die Große: Über 125 Aphorismen von 35 scharfzüngigen wie humorvollen Frauen aus Kultur, Wissenschaft und Politik sind in diesem Geschenkbuch versammelt, illustriert von dem preisgekrönten Künstler Mehrdad Zaeri.",
+  "bilder": [
+    "images/klugefrauen/klugefrauen.webp"
+      ],
+  "kategorie": "Wichtige Fragen"
+
+   }
+  
   
 
     {
