@@ -953,7 +953,11 @@ def slugify(text):
     return text.replace(" ", "-")
 
 for p in produkte:
-    p["slug"] = slugify(p.get("name", "produkt"))
+    if not p.get("slug"):
+        p["slug"] = slugify(p.get("name", "produkt"))
+
+with open("produkte.json", "w", encoding="utf-8") as f:
+    json.dump(produkte, f, ensure_ascii=False, indent=2)
     
 @app.route('/produkt/<int:produkt_id>/<slug>')
 def produkt_detail(produkt_id, slug):
