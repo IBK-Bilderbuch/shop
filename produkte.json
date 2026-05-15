@@ -892,13 +892,67 @@
   "name":"Zugvögel",
   "ean":"9783854521631",
   "bilder": [
-    "images/"
+    "images/roeher/zugvoegel.webp"
       ],
     "beschreibung": "Im Frühling sind sie angekommen, im Herbst müssen Lukas neue Freunde Oleg, Madame Petrova und Paulinchen weiterziehen, sie sind ja schließlich Zugvögel. Doch sie wollen bleiben, wollen den Winter sehen und in die Schule gehen. Aber wo sollen sie bloß hin? Wovon sollen sie leben? Zum Glück gibt es die gute Frau Lorenz, die ein großes Herz hat und ein großes Nest für alle, die nicht wissen, wohin. Bei ihr sind die drei Freunde gut aufgehoben. In wunderschönen, feinsinnigen und zugleich kräftigen Bildern erzählt das Ausnahmetalent Michael Roher seine neue Geschichte: vom Sesshaftwerden einer Familie unter erschwerten Bedingungen, ein Plädoyer für Toleranz und Liebe, eine Würdigung von Menschlichkeit und Hilfsbereitschaft.",
 
-  "kategorie": ""
+  "kategorie": "Dazugehören"
 
    },
+
+   {
+  "id":68,
+  "name":"Wer stahl dem Wal sein Abendmahl?",
+  "ean":"9783902844293",
+  "beschreibung": "Als Kinderbuchautor und -illustrator ist Michael Roher vielen schon längst ein Begriff: Der Shooting Star aus Niederösterreich hat sich in kurzer Zeit mit seinen Büchern gleichermaßen in die Herzen von Kindern wie Erwachsenen geschrieben und gezeichnet. Nun zeigt Roher eine weitere Facette seines Könnens, die absurden Texte in Wer stahl dem Wal sein Abendmahl? richten sich in erster Linie an ein eher erwachsenes Publikum: Als hätten Morgenstern, Ringelnatz und Paul Flora sich zusammengetan, sprüht es hier nur so vor Wortlust und Zeichenfreude: Auszählreime, Kinderlieder, ein kurzes Märchen, flotte Zweizeiler, aber auch eine Frosch-Ballade, gereimte Listen, ein Inserat, Tuschezeichnungen und Collagen: nichts, was Roher
+nicht machen kann. Und dabei schert er sich vordergründig wenig um Sinnfragen oder literarische Traditionen, sondern lässt seinem liebenswürdigen und scharfsinnigen Sprach- und Zeichenwitz einfach
+freien Lauf. Besser geht es gar nicht.",
+  "bilder": [
+    "images/roeher/derwal.webp"
+      ],
+   "leseprobe_url": "https://blickinsbuch.net/go.php?id=9322941228&ean=9783902844293",
+   "kategorie": "Wortlust und Zeichenfreude"
+
+   },
+
+   {
+  "id":69,
+  "name":"Der Fluss",
+  "ean":"9783702658960",
+  "beschreibung": "Wo fängt alles an, wo hört es auf? Eine Frage, die nicht nur Kinder immer wieder beschäftigt. Poesie in Text und Bild - in wenigen Sätzen umreißt der Autor den Lauf des Lebens mit Höhen und Tiefen. Denn das Leben ist ein Fluss, ein ständiges 'im Fluss sein' und der Mensch steht neugierig und staunend vor all dem, was möglich ist und entstehen kann.",
+  "bilder": [
+    "images/roeher/derfluss.webp"
+      ],
+  "kategorie": "Wichtige Fragen",
+   "leseprobe_pdf": "derfluss.pdf"
+   },
+
+   {
+  "id":70,
+  "name":"Soriso",
+  "ean":"9783902844552",
+  "beschreibung": "Mit 'Sorriso' ist Michael Roher an jenem Ort angelangt, der sowieso, für ihn aber ganz besonders, eine eigene Welt bedeutet: dem Zirkus! Und wer Roher und seine Bücher schon kennt, der ahnt bereits ein ganz normaler Zirkus ist der Zirkus Sorriso natürlich nicht: da gibt es Mädchen mit Giraffenbeinen, da steigt schon mal ein ulkiges Gnu aus einem Koffer, ein Herr jongliert verwegen mit Kloputzbesen und Kettensägen und ein graues Luftschiff gibt es auch. Zu dem Ganzen spielt ein Clownorchester, dessen Dirigent (im richtigen Moment) einen Furz fahren lässt (in C-Moll). \n\n Fröhlich reimt und zeichnet sich Roher durch eine magische Zirkuswelt, in der alles Unmögliche möglich scheint, oder besser: in der das Unmögliche das ganz Normale ist. Ein Buch wie ein richtiger Hochseilakt. Netz gibt es keines im Zirkus Sorriso, aber treue LeserInnen wissen natürlich längst, dass Michael Roher fliegen kann. Deshalb ein Tusch und dann: Manege frei! (Applaus!)",
+
+  "bilder": [
+    "images/roeher/soriso.webp"
+      ],
+  "kategorie": "Wortlust und Zeichenfreude",
+   "leseprobe_url": "https://blickinsbuch.net/go.php?id=9322941228&ean=9783902844552"
+
+   },
+
+   {
+  "id":71,
+  "name":"Fridolin Franse frisiert",
+  "ean":"9783854521525",
+  "beschreibung": "In der Frisierstube Fridolin Franse steht nur ein kleiner Schemel. Und Fridolin. Den bittet eine Frau mit langen Haaren um eine Fantasiefrisur, und die soll sie auch bekommen! Zehn Schritte braucht es vom glatten Haar zur gewünschten Frisur: Kämmen, waschen, shampoonieren, spülen, schneiden, färben, einwirken lassen, auswaschen, eindrehen und föhnen. Doch das eigentliche Geschehen ist in dem nicht enden wollenden Haar zu bestaunen, das von der einen zur nächsten Seite reicht. Dort wimmelt es nur so von zahllosen liebevollen Details und lustigen kleinen Szenen. In seinem beeindruckenden Erstlingswerk schafft Michael Roher auf wenigen Seiten ganze Welten, die sich um das Thema Frisörbesuch und weit darüber hinaus kringeln und kräuseln. Die schwarz-weißen Tuschearbeiten, kombiniert mit bunten Collagen des Haarkünstlers Fridolin, lassen jede einzelne Seite zu einem Abenteuer werden, auf das sich nicht nur die Kleinen begeistert einlassen werden.",
+    "bilder": [
+    "images/roeher/fridolin.webp"
+      ],
+  "kategorie": "Wortlust und Zeichenfreude"
+   },
+  
+  
 
 
     {
