@@ -49,9 +49,9 @@
     "ean": "9783702659394",
     "beschreibung": "Gänse, Esel, Hasen … oft werden Tiere herangezogen, um Menschen mit negativen Eigenschaften zu beschreiben. Das finden die Hasen ungerecht – und sie wollen etwas ändern. Deshalb treffen sie sich zu einer großen Vollversammlung im internationalen Hasenhauptquartier.\n\nDie Hasen beschließen: Kinder sollen nicht länger „Angsthasen“ genannt werden! Das ist ein völlig falsches Bild von Hasen. Denn Hasen sind klug, geschickt, einfühlsam und gewitzt. Und ihre Schnelligkeit kommt nicht von Angst, sondern von Mut und Verstand.\n\nAls dies geklärt ist, liegt der nächste Schritt auf der Hand: Kinder, die so flink, clever und tapfer wie Hasen sind, sollen ab sofort den stolzen Titel „Muthase“ tragen.",
     "bilder": [
-      "images/angsthase/Angsthasecover.jpg",
-      "images/angsthase/Angsthase4.jpg",
-      "images/angsthase/Angsthase6.jpg"
+      "images/angsthase/Angsthasecover.webp",
+      "images/angsthase/Angsthase4.webp",
+      "images/angsthase/Angsthase6.webp"
     ],
   "kategorie": "Mut oder Angst?!",
   "leseprobe_pdf": "Angsthase.pdf"
@@ -63,7 +63,7 @@
     "beschreibung": "Eine schmale Hängebrücke spannt sich über den Fluss, so eng, dass niemand nebeneinander gehen kann. Eines Tages begegnen sich dort der Bär und der Riese genau in der Mitte. Keiner von beiden ist bereit, zurückzuweichen. Doch wie sollen sie nun weiterkommen? Die ersten Versuche führen zu keiner Lösung – immer wäre einer benachteiligt. Schließlich kommt dem Riesen ein Einfall: Anstatt gegeneinander anzukämpfen, könnten sie kooperieren. So fassen sie sich fest, bewegen sich behutsam Schritt für Schritt umeinander herum und schaffen es gemeinsam.",
     "leseprobe_pdf": "Die Bruecke.pdf",
     "bilder": [
-      "images/bruecke/dieBruecke.jpg"
+      "images/bruecke/dieBruecke.webp"
     ],
       "kategorie": "Wichtige Fragen"
   },
@@ -76,8 +76,8 @@
      
     "leseprobe_pdf": "DerPupu.pdf",
     "bilder": [
-      "images/pupu/pupu.jpg",
-      "images/pupu/Pupu2.jpg"
+      "images/pupu/pupu.webp",
+      "images/pupu/Pupu2.webp"
     ],
      "kategorie": "Wichtige Fragen"
   },
@@ -89,8 +89,8 @@
     
     "leseprobe_pdf": "dierabenrosa.pdf",
     "bilder": [
-      "images/rabenrosa/dierabenrosa.jpg",
-      "images/rabenrosa/dierabenrosa1.jpg"
+      "images/rabenrosa/dierabenrosa.webp",
+      "images/rabenrosa/dierabenrosa1.webp"
     ],
   "kategorie": "Dazugehören"
   },
@@ -102,12 +102,12 @@
   "beschreibung": "Frau Leo schlief immer in einem Baum. Und wenn sie nicht schlief, fuhr sie ihren Bus. Jeden Tag beförderte sie Tiere von A nach B – das war eine schöne Arbeit. Bis eines Tages ein kleines dunkles Auto an ihrem Bus vorbei raste und alle Passagiere so begeistert waren, dass sie auch ein kleines Auto haben wollten. Damit gerät Frau Leos Job und ihr Zuhause in Gefahr, doch sie findet eine neue, sensationelle Idee. Ein bezauberndes Vorlesebuch mit liebenswerter Protagonistin und humorvollen Details.",
  
   "bilder": [
-    "images/leolegtlos/leolegtlos.jpg",
-    "images/leolegtlos/leolegtlos2.jpg",
-    "images/leolegtlos/leolegtlos3.jpg",
-    "images/leolegtlos/leolegtlos4.jpg",
-    "images/leolegtlos/leolegtlos5.jpg",
-    "images/leolegtlos/leolegtlos6.jpg"
+    "images/leolegtlos/leolegtlos.webp",
+    "images/leolegtlos/leolegtlos2.webp",
+    "images/leolegtlos/leolegtlos3.webp",
+    "images/leolegtlos/leolegtlos4.webp",
+    "images/leolegtlos/leolegtlos5.webp",
+    "images/leolegtlos/leolegtlos6.webp"
   ],
   "kategorie": "Mut oder Angst?!"
 },
@@ -121,8 +121,8 @@
     
     "leseprobe_pdf": "Monstergeburtstag.pdf",
     "bilder": [
-      "images/monster/Monstergeburtstag.jpg",
-      "images/monster/Monstergeburtstag1.jpg"
+      "images/monster/Monstergeburtstag.webp",
+      "images/monster/Monstergeburtstag1.webp"
     ],
      "kategorie": "Monstergeschichten"
   },
@@ -133,7 +133,7 @@
     "ean": "9783257011616",
     "beschreibung": "Maurice Sendaks Kinderbuchklassiker: Die Geschichte vom wilden Max, der von seiner Mutter ohne Essen ins Bett geschickt wird und darauf das Reich der wilden Kerle erobert.\n\nMaurice Sendak, geboren 1928 in New York als Kind polnisch-jüdischer Einwanderer, revolutionierte mit Büchern wie ›Wo die wilden Kerle wohnen‹, ›Die Nachtküche‹ und ›Higgelti Piggelti Pop!‹ die Kinderliteratur. Sendak wurde u.a. mit der Caldecott-Medal, dem internationalen Hans-Christian-Andersen-Preis und dem Astrid-Lindgren-Gedächtnis-Preis ausgezeichnet. Spike Jonzes Verfilmung von ›Wo die wilden Kerle wohnen‹ (Drehbuch: Spike Jonze und Dave Eggers) war 2009 ein großer Kinoerfolg. Maurice Sendak starb 2012 in Danbury, Connecticut.",
     "bilder": [
-      "images/wildekerle/wildeKerle.jpg"
+      "images/wildekerle/wildeKerle.webp"
     ],
      "kategorie": "Klassiker"
   },
@@ -147,7 +147,7 @@
     "beschreibung": "Ein poetisches Bilderbuch über das Unsichtbare: Was Farbe hat der Wind? Ein kleines Kind stellt große Fragen und erlebt die Welt mit allen Sinnen.",
    
     "bilder": [
-      "images/wind/windcolor.jpg"
+      "images/wind/windcolor.webp"
     ],
     "kategorie": "Wichtige Fragen"
   },
@@ -159,14 +159,14 @@
     
     "beschreibung": "Gefühls-Monster bändigen: ein humorvolles Bilderbuch über Emotionen. Der Große Hunger, das Schüchtern oder der Schreck – diese und andere monstermäßigen Emotionen begegnen Kindern jeden Tag und machen ihnen manchmal das Leben schwer. Deswegen hat Catarina Knüvener Gefühle und Situationen aus dem Kinderalltag als lustige Monster visualisiert. So erfahren kleine Leser mehr über ihre Gefühlswelt und lernen, was man tun kann, wenn der Wüterich im Sechseck hüpft, einen die Schadenfreude überkommt oder sich die lilablauen Schimmelsporen der schlechten Laune verteilen.\n\nMit vielen Tipps gegen schlechte Laune, Wut, Traurigkeit & Co.\nInklusive Ausmalseiten für eigene kreative Kritzel-Monster.\nVorlesebuch mit Illustrationen für Kinder ab 5 Jahren.\nThematische Unterstützung für Kita & Grundschule.",
     "bilder": [
-      "images/monsterich/Monster-Ich-min.jpg",
-       "images/monsterich/monsterich.jpg",
-      "images/monsterich/monsterich1.jpg",
-      "images/monsterich/monsterich2.jpg",
-      "images/monsterich/monsterich5.jpg",
-      "images/monsterich/monsterich6.jpg",
-      "images/monsterich/monsterich7.jpg",
-      "images/monsterich/monsterich4.jpg"
+      "images/monsterich/Monster-Ich-min.webp",
+       "images/monsterich/monsterich.webp",
+      "images/monsterich/monsterich1.webp",
+      "images/monsterich/monsterich2.webp",
+      "images/monsterich/monsterich5.webp",
+      "images/monsterich/monsterich6.webp",
+      "images/monsterich/monsterich7.webp",
+      "images/monsterich/monsterich4.webp"
     ],
     "kategorie": "Monstergeschichten"
   },
@@ -180,11 +180,11 @@
   "beschreibung": "Emotions-Monster bändigen: ein humorvolles Bilderbuch über Gefühle. Das Donnerwetter, die Eifersucht und der Nachtschreck – diese und andere monstermäßigen Emotionen begegnen uns jeden Tag und machen uns das Leben schwer. Catarina Knüvener hat unangenehme Gefühle und typische Situationen aus dem Kinderalltag als lustige Monster visualisiert. So erfahren kleine Leser spielerisch mehr über ihre Gefühlswelt und lernen, was man tun kann, wenn der Bock sich schimpfend auf dem Boden wälzt, das Geheul immer lauter wird oder wenn zwei Zornickel gegeneinander kämpfen. \n\n* Gefühle aus dem Alltag kennenlernen\n* 15 emotionale Monster auf jeweils einer Doppelseite\n* Mit vielen Tipps gegen Eifersucht, Zorn, Angst & Co.\n* Inklusive Ausmalseiten für eigene kreative Kritzel-Monster\n* Vorlesebuch mit altersgerechten Illustrationen für Kinder ab 5 Jahren\n* Thematische Unterstützung für Kita & Grundschule",
  
   "bilder": [
-    "images/monsterbesuch/monsterbesuch.jpg",
-    "images/monsterbesuch/monsterbesuch1.jpg",
-    "images/monsterbesuch/monsterbesuch2.jpg",
-    "images/monsterbesuch/monsterbesuch3.jpg",
-    "images/monsterbesuch/monsterbesuch4.jpg"
+    "images/monsterbesuch/monsterbesuch.webp",
+    "images/monsterbesuch/monsterbesuch1.webp",
+    "images/monsterbesuch/monsterbesuch2.webp",
+    "images/monsterbesuch/monsterbesuch3.webp",
+    "images/monsterbesuch/monsterbesuch4.webp"
   ],
   "kategorie": "Monstergeschichten"
  
