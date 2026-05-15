@@ -49,14 +49,19 @@ def build_sitemap_xml():
         ET.SubElement(url, "priority").text = priority
 
     # ---- Produkte
+
+
     products = load_products()
     for p in products:
-        slug = p.get("slug") or p.get("id")
+
+        prod_id = p.get("id")
+
+        slug = p.get("slug")
         if not slug:
             continue
 
         url = ET.SubElement(urlset, "url")
-        ET.SubElement(url, "loc").text = f"{BASE_URL}/produkt/{slug}"
+        ET.SubElement(url, "loc").text = f"{BASE_URL}/produkt/{prod_id}/{slug}"
         ET.SubElement(url, "changefreq").text = "monthly"
         ET.SubElement(url, "priority").text = "0.8"
         ET.SubElement(url, "lastmod").text = today
