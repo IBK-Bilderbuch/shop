@@ -37,6 +37,10 @@ import secrets
 import string
 
 
+from sitemap_generator import build_sitemap_xml
+import xml.etree.ElementTree as ET
+from flask import Response
+
 # =====================================================
 # CONFIG
 # =====================================================
@@ -779,6 +783,16 @@ def buchbutler_orderresponse(collectkey):
 # =====================================================
 # ROUTES
 # =====================================================
+
+# sitemap.xml
+
+@app.route("/sitemap.xml")
+def sitemap():
+    xml_element = build_sitemap_xml()
+
+    xml_str = ET.tostring(xml_element, encoding="utf-8", method="xml")
+
+    return Response(xml_str, mimetype="application/xml")
 
 # Admin Test
 @app.route("/admin-test")
