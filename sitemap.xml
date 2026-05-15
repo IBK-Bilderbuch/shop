@@ -1,0 +1,69 @@
+```xml id="sitemap1"
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- STARTSEITE -->
+  <url>
+    <loc>https://www.ibk-bilderbuch.de/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- HAUPTSEITEN -->
+  <url>
+    <loc>https://www.ibk-bilderbuch.de/suche</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.ibk-bilderbuch.de/kontakt</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- SHOP / PRODUKTE -->
+  <url>
+    <loc>https://www.ibk-bilderbuch.de/produkt</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- RECHTLICHES -->
+  <url>
+    <loc>https://www.ibk-bilderbuch.de/impressum</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.ibk-bilderbuch.de/datenschutz</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.ibk-bilderbuch.de/agb</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.ibk-bilderbuch.de/widerruf</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- SHOPPING / FUNKTION (optional indexieren!) -->
+  <url>
+    <loc>https://www.ibk-bilderbuch.de/cart</loc>
+    <changefreq>never</changefreq>
+    <priority>0.1</priority>
+  </url>
+
+  <!-- WICHTIG: DANKESSEITEN NICHT IN INDEX -->
+  <!-- bewusst ausgelassen -->
+
+</urlset>
+```
