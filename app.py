@@ -171,6 +171,7 @@ def generate_gutschein_code(length=12):
 
 @app.route("/gutschein", methods=["GET", "POST"])
 def gutschein():
+
     if request.method == "GET":
         return render_template("gutschein.html")
 
@@ -180,8 +181,19 @@ def gutschein():
         flash("Ungültiger Betrag", "error")
         return redirect("/gutschein")
 
-    session["checkout_gutschein"] = betrag
-    return redirect("/checkout")
+    cart = [{
+        "id": 999999,
+        "title": f"Gutschein {betrag:.2f} €",
+        "price": betrag,
+        "quantity": 1,
+        "is_gutschein": True
+    }]
+
+    session["cart"] = cart
+    session.modified = True
+
+    return jsonify({"success": True})
+
 
 # GUTSCHEIN ANWENDEN (CHECKOUT / CART)
 # =====================================================
@@ -320,8 +332,6 @@ def create_paypal_order():
         },
     )
 
-    order_data = response.json()
-    return jsonify({"id": order_data["id"]})
     order_data = response.json()
 
     if "id" not in order_data:
