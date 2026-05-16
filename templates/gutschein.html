@@ -1,59 +1,169 @@
-<h1>Geschenkgutschein</h1>
+{% include 'header.html' %}
 
-<label>Betrag</label>
+<div class="container">
 
-<select id="gutschein-betrag">
-    <option value="10">10 €</option>
-    <option value="25">25 €</option>
-    <option value="50">50 €</option>
-    <option value="100">100 €</option>
-</select>
+    <h1>Geschenkgutschein</h1>
 
-<div id="paypal-button-container" style="margin-top:1em;"></div>
+    <p>
+        Verschenke einen digitalen Gutschein für den Shop.
+        Der Gutscheincode wird nach erfolgreicher Zahlung
+        automatisch per E-Mail verschickt.
+    </p>
 
+    <div class="gutschein-box">
+
+        <!-- Betrag -->
+        <label for="gutschein-betrag">
+            Gutscheinbetrag
+        </label>
+
+        <select id="gutschein-betrag" class="input-field">
+            
+            <option value="10">0.01 €</option>
+            <option value="25">25 €</option>
+            <option value="50">50 €</option>
+            <option value="100">100 €</option>
+        </select>
+
+        <!-- E-Mail -->
+        <label for="email" style="margin-top:20px;">
+            E-Mail-Adresse
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            class="input-field"
+            placeholder="name@email.de"
+            required
+        >
+
+        <p style="font-size:14px; opacity:0.8; margin-top:8px;">
+            Der Gutscheincode wird nach erfolgreicher
+            Zahlung an diese E-Mail-Adresse gesendet.
+        </p>
+
+        <!-- PayPal -->
+        <div id="paypal-button-container"
+             style="margin-top:30px;">
+        </div>
+
+    </div>
+
+</div>
+
+{% include 'footer.html' %}
+
+<!-- PayPal SDK -->
 <script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR"></script>
 
 <script>
+
 paypal.Buttons({
 
     createOrder: function(data, actions) {
 
-        const betrag = document.getElementById("gutschein-betrag").value;
+        const betrag = document.getElementById(
+            "gutschein-betrag"
+        ).value;
 
+        const email = document.getElementById(
+            "email"
+        ).value.trim();
+
+        // Email prüfen
+        if (!email) {
+            alert("Bitte E-Mail-Adresse eingeben.");
+            return;
+        }
+
+        // Gutschein vorbereiten
         return fetch("/gutschein", {
+
             method: "POST",
+
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
+                "Content-Type":
+                    "application/x-www-form-urlencoded"
             },
-            body: "betrag=" + betrag
+
+            body: new URLSearchParams({
+                betrag: betrag,
+                email: email
+            })
+
         })
-        .then(() => fetch("/create-paypal-order", {
-            method: "POST"
-        }))
+
+        .then(res => {
+
+            if (!res.ok) {
+                throw new Error(
+                    "Gutschein konnte nicht erstellt werden"
+                );
+            }
+
+            // PayPal Order erstellen
+            return fetch("/create-paypal-order", {
+                method: "POST"
+            });
+
+        })
+
         .then(res => res.json())
-        .then(data => data.id);
+
+        .then(data => {
+
+            if (!data.id) {
+                throw new Error(
+                    "PayPal Order fehlgeschlagen"
+                );
+            }
+
+            return data.id;
+        });
     },
 
     onApprove: function(data, actions) {
 
-        return fetch("/capture-paypal-order/" + data.orderID, {
-            method: "POST"
-        })
+        return fetch(
+            "/capture-paypal-order/" + data.orderID,
+            {
+                method: "POST"
+            }
+        )
+
         .then(res => res.json())
+
         .then(data => {
 
-            if(data.status === "success") {
-                window.location.href = "/bestelldanke";
+            if (data.status === "success") {
+
+                window.location.href =
+                    "/bestelldanke";
+
             } else {
-                alert("Fehler bei der Zahlung");
+
+                console.error(data);
+
+                alert(
+                    "Fehler bei der Zahlung."
+                );
             }
         });
     },
 
     onError: function(err) {
-        console.error(err);
-        alert("PayPal Fehler");
+
+        console.error(
+            "PayPal Fehler:",
+            err
+        );
+
+        alert(
+            "PayPal-Zahlung konnte nicht gestartet werden."
+        );
     }
 
 }).render('#paypal-button-container');
+
 </script>
