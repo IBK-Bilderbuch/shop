@@ -1526,10 +1526,10 @@ def newsletteranmeldung():
 def index():
 
     kategorienamen = [
-        "Jacominus Gainsborough", "Große Städte, große Zeichner", "Mut oder Angst?!",
-        "Klassiker", "Monstergeschichten", "Zahlen und Buchstaben",
+        "Wortlust und Zeichenfreude", "Jacominus Gainsborough", "Zahlen und Buchstaben", "Große Städte, große Zeichner", "Mut oder Angst?!",
+        "Klassiker", "Gedanken zum Lebensende", "Monstergeschichten", 
         "Wichtige Fragen", "Weihnachten",
-        "Kinder und Gefühle", "Dazugehören", "Gedanken zum Lebensende", "Wortlust und Zeichenfreude"
+        "Kinder und Gefühle", "Dazugehören"
     ]
 
     kategorie_beschreibungen = {
