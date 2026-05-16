@@ -170,6 +170,7 @@ def generate_gutschein_code(length=12):
 
 
 @app.route("/gutschein", methods=["GET", "POST"])
+@csrf.exempt
 def gutschein():
 
     if request.method == "GET":
