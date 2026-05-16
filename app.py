@@ -177,43 +177,33 @@ def gutschein():
         return render_template("gutschein.html")
 
     try:
-        betrag = float(
-            request.form.get("betrag", 0)
-        )
+        betrag = float(request.form.get("betrag", 0))
 
     except ValueError:
-
-        return jsonify({
-            "error": "Ungültiger Betrag"
-        }), 400
+        flash("Ungültiger Betrag", "error")
+        return redirect("/gutschein")
 
     email = request.form.get("email")
 
     if not email:
+        flash("Bitte Email eingeben", "error")
+        return redirect("/gutschein")
 
-        return jsonify({
-            "error": "E-Mail fehlt"
-        }), 400
-
-    # Email speichern
+    # WICHTIG
     session["checkout_email"] = email
 
-    # Gutschein als Cart Item
-    cart = [{
+    # Gutschein als Warenkorbprodukt
+    session["cart"] = [{
         "id": 999999,
-        "title": f"Gutschein {betrag:.2f} €",
+        "title": "Geschenkgutschein",
         "price": betrag,
         "quantity": 1,
         "is_gutschein": True
     }]
 
-    session["cart"] = cart
     session.modified = True
 
-    return jsonify({
-        "success": True
-    })
-
+    return jsonify({"success": True})
 
 # GUTSCHEIN ANWENDEN (CHECKOUT / CART)
 # =====================================================
