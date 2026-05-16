@@ -1004,10 +1004,41 @@
   "ean":"9783941683730",
   "beschreibung": "Von Jane Austen bis Katharina die Große: Über 125 Aphorismen von 35 scharfzüngigen wie humorvollen Frauen aus Kultur, Wissenschaft und Politik sind in diesem Geschenkbuch versammelt, illustriert von dem preisgekrönten Künstler Mehrdad Zaeri.",
   "bilder": [
-    "images/zaeri/klugefrauen.webp"
+    "images/zaeri/klugefrauen.webp",
+    "images/zaeri/klugefrauen1.webp",
+    "images/zaeri/klugefrauen2.webp",
+    "images/zaeri/klugefrauen3.webp",
+    "images/zaeri/klugefrauen4.webp"
       ],
   "kategorie": "Wichtige Fragen"
 
+   },
+
+   {
+  "id":77,
+  "name":"Das Traumbuch",
+  "ean":"9783458195368",
+  "beschreibung": "Träume gehören zu den ersten Zeugnissen menschlichen Erzählens. Bereits in einer der frühesten literarischen Überlieferungen, dem Gilgamesch-Epos, wird von einem lebensentscheidenden Traum berichtet. Die altnordische Lieder-Edda verzeichnet »Balders Träume«, im Alten Testament sind berühmte Visionen wie Jakobs Traum von der Engelsleiter bildhaft beschrieben. Die Anthologie bietet ein breites Spektrum dieser Träume von Homer und Platon bis Ingeborg Bachmann und Mascha Kaléko: Träume im Wachzustand, Angstzustände, Wunschträume, Prophetien. Vom Körper gelöst, wird die menschliche Seele beim Träumen zum »Theater, Schauspieler, Zuschauer zugleich« (Joseph Addison). Mit den poetischen Illustrationen von Mehrdad Zaeri in diesem Buch setzt sich das wunderbare Schauspiel fort: »Es ist ein Traum! Ich will ihn weiter träumen« (Friedrich Nietzsche).",
+  "bilder": [
+    "images/zaeri/dastraumbuch.webp",
+    "images/zaeri/dastraumbuch1.webp",
+    "images/zaeri/dastraumbuch2.webp",
+    "images/zaeri/dastraumbuch3.webp",
+    "images/zaeri/dastraumbuch4.webp"
+
+      ],
+  "kategorie": "Wortlust und Zeichenfreude"
+   },
+
+  {
+  "id":78,
+  "name":"Die Geburt",
+  "ean":"9783960382867",
+  "beschreibung": "Ein heller Stern am Himmel, ein ärmlicher Stall, Ochs und Esel und in der Krippe das Kind, in Windeln gewickelt, davon erzählt die Bibel. In Rafik Schamis Geschichte geschieht des Weihnachtswunder von Bethlehem im Hier und Jetzt. Unter einer Brücke in einem Auto. Die junge Studentin Mariam bekommt in einer eiskalten Winternacht ihr erstes Kind. Yusuf, ein Cousin ihres Mannes, läuft überstürzt los, um Hilfe zu holen. Und kehrt zurück mit einer Schar ganz ungewohnter Könige und Hirten: eine Eritreerin, eine Vietnamesin, eine blonde Rumänin und ein Nigerianer. Dazu deren Familien und das, was sie an Gaben tragen können und haben: Tücher, Decken und ärmliche Reserven aus der Küche. Eine herzerwärmende Geschichte, die zeigt, was nötig ist, damit Weihnachten werden kann: Nicht Planung und Kommerz, sondern Liebe, Vertrauen und ein bisschen Wunder.",
+  "bilder": [
+    "images/zaeri/diegeburt.webp"
+      ],
+  "kategorie": "Weihnachten"
    },
 
     {
