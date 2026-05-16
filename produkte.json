@@ -334,7 +334,7 @@
   "beschreibung": "Was Liebe ist, ist schwer zu sagen. Nur soviel scheint klar: irgendwas mit Küssen und so. Zwei, die sich lieben jedenfalls ist ein kleines Buch für alle, die sich ihre Gedanken machen über die Liebe. Darüber, wer wen küssen will und darf und sogar soll. Über das Davor und das Danach. Das Sehnen, das Finden, Genießen und Abschied nehmen.",
  
   "bilder": [
-    "images/zweilieben/zweilieben.jpg"
+    "images/zweilieben/zweilieben.webp"
   ],
   "kategorie": "Kinder und Gefühle"
 },
@@ -347,7 +347,7 @@
   "beschreibung": "Wer sein Herz in die Hand nimmt und das Zaudern überwindet, auf den wartet echtes Hochgefühl! Wolf Erlbruch hat diesen speziellen Moment in hinreißenden Bildern eingefangen. Arne Rautenberg hat sich von ihnen inspirieren lassen zu vergnüglichen Gedichten. Gedichte zu Bildern von Wolf Erlbruch.",
 
   "bilder": [
-    "images/mutwasgutes/mutwasgutes.jpg"
+    "images/mutwasgutes/mutwasgutes.webp"
   ],
   "kategorie": "Mut oder Angst?!"
 },
@@ -360,7 +360,7 @@
   "beschreibung": "24 Weihnachtsgedichte – Ein Sack voller Gedichte von Arne Rautenberg! Was drin ist, möchtet ihr wissen? Alles, was das Herz zum Fest begehrt: Kerzen, Lieder, Leckereien. Wichtel, Wünsche, Tannenbaum. Vom hohoho bis pipapo. Es fehlt also nichts, doch hat der Dichter alles einen Tick anders aufgehängt und arrangiert. So flicht er das Lametta ins Haar von Marietta. Er rettet die Weihnachtsgans, nennt sie erst Hans und tauft sie dann ganz schnell auf den Namen Isabell. Aus dem Weihnachtsmann macht er ein Weihnachtsmännchen, aus dessen großer Hand ein Händchen und aus dem Sack ein Säckchen mit winzigen Päckchen. Oft lustig und ungestüm, manchmal leise und besinnlich runden sich Rautenbergs Verse mit Katrin Stangls Illustrationen – in Weihnachtsrot und Blau und voller schöner Einfälle!",  
 
   "bilder": [
-    "images/vierkerzen/vierkerzen.jpg"
+    "images/vierkerzen/vierkerzen.webp"
   ],
   "kategorie": "Weihnachten"
 },
@@ -385,7 +385,7 @@
   "beschreibung": "Auf die große Frage „Warum bin ich auf der Welt?“ weiß Wolf Erlbruch selbst keine Antwort – also lässt er andere antworten. Vater, Mutter, Tiere und andere Figuren geben jeweils ihre persönliche Sichtweise, humorvoll, nachdenklich und überraschend. In wenigen Worten und einfachen Bildern widmet sich das Buch dem Sinn des Lebens aus ganz unterschiedlichen Perspektiven, regt zum Staunen und Gespräch an und lässt am Ende Raum für eigene Antworten.",
   
   "bilder": [
-    "images/diegroßenfragen/diegroßenfragen.jpg"
+    "images/diegroßenfragen/diegroßenfragen.webp"
 ],
   "kategorie": "Wichtige Fragen",
   "auszeichnungen": [
@@ -403,9 +403,9 @@
     "beschreibung": "Wie viele andere Kinder hat auch Anna manchmal abends im Dunkeln Angst, wenn sie allein in ihrem Bett liegt. Doch sie ist nicht wirklich allein – sie ruft ihre Fantasiefreunde zu sich: den riesengroßen Riesen, der niemals müde wird, die 33 tapferen Ritter, die in kleinen Nussschalen leben, die Glückskatze, deren Schnurren alle beruhigt, den Wasserfall, der ihr Gesicht sanft erfrischt – und noch viele mehr.\n\nMit ihrer Hilfe fühlt sich Anna plötzlich sicher und merkt: Die Angst ist verschwunden. Bald schläft sie ein – und mit ihr ihre Freunde. Nur einer bleibt wach: der große Riese, der die ganze Nacht über sie wacht.",
    
     "bilder": [
-      "images/wennannaangsthat/wennannaangsthat.jpg",
-      "images/wennannaangsthat/wennannaangsthat1.jpg",
-      "images/wennannaangsthat/wennannaangsthat2.jpg"
+      "images/wennannaangsthat/wennannaangsthat.webp",
+      "images/wennannaangsthat/wennannaangsthat1.webp",
+      "images/wennannaangsthat/wennannaangsthat2.webp"
     ],
   "kategorie": "Mut oder Angst?!"
   },
@@ -418,13 +418,13 @@
   "beschreibung": "Die berühmte Weihnachtsgeschichte über Clara und ihren Nussknacker: Am Weihnachtsabend schenkt ihr der geheimnisvolle Drosselmeyer einen Holz-Nussknacker, der in der folgenden Nacht lebendig wird. Gemeinsam mit ihm und seinen Soldaten kämpft sie gegen den Mäusekönig und erlebt ein zauberhaftes Abenteuer voller Fantasie und Wunder – ein Klassiker der Weihnachts- und Kindermärchenliteratur.",
   
   "bilder": [
-    "images/nussknacker/nussknacker.jpg",
-    "images/nussknacker/nussknacker1.jpg",
-    "images/nussknacker/nussknacker2.jpg",
-    "images/nussknacker/nussknacker3.jpg",
-    "images/nussknacker/nussknacker4.jpg",
-    "images/nussknacker/nussknacker5.jpg",
-    "images/nussknacker/nussknacker6.jpg"
+    "images/nussknacker/nussknacker.webp",
+    "images/nussknacker/nussknacker1.webp",
+    "images/nussknacker/nussknacker2.webp",
+    "images/nussknacker/nussknacker3.webp",
+    "images/nussknacker/nussknacker4.webp",
+    "images/nussknacker/nussknacker5.webp",
+    "images/nussknacker/nussknacker6.webp"
   ],
   "kategorie": "Klassiker",
   "leseprobe_url": "https://www.book2look.com/book/uZR7FghOdm"
@@ -438,10 +438,10 @@
   "beschreibung": "Der kleine Häwelmann kann nicht einschlafen. Er möchte, dass seine Mutter ihn in seinem Bettchen herumschiebt, doch sie schläft schon. Da verwandelt er sein Bett in ein Traumschiff, sein Nachthemd wird zum Segel, und der Mond schickt einen Lichtstrahl durch das Fenster hinaus in die Nacht. Eine fantastische Reise beginnt, die ihn durch die Stadt, den Wald und bis zu den Sternen führt – ein Klassiker der Kinderliteratur mit magischen Bildern.",
   
   "bilder": [
-    "images/haewelmann/haewelmann.jpg",
-    "images/haewelmann/haewelmann1.jpg",
-    "images/haewelmann/haewelmann2.jpg",
-    "images/haewelmann/haewelmann3.jpg"
+    "images/haewelmann/haewelmann.webp",
+    "images/haewelmann/haewelmann1.webp",
+    "images/haewelmann/haewelmann2.webp",
+    "images/haewelmann/haewelmann3.webp"
   ],
   "kategorie": "Klassiker",
   "leseprobe_url": "https://www.book2look.com/book/agb6hWl8UV"
