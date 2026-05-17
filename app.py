@@ -246,7 +246,8 @@ def apply_gutschein():
 
     return jsonify({
         "success": True,
-        "rabatt": rabatt
+        "rabatt": rabatt,
+        "new_total": max(total - rabatt, 0)
     })
 
 
@@ -260,7 +261,14 @@ def calculate_total(cart):
         for item in cart
     )
 
-    gutschein_wert = session.get("gutschein_wert", 0)
+    gutschein = session.get("gutschein")
+
+    gutschein_wert = 0
+
+    if gutschein:
+        gutschein_wert = float(
+            gutschein.get("betrag", 0)
+        )
 
     return max(total - gutschein_wert, 0)
 
