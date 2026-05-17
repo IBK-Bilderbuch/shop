@@ -193,9 +193,16 @@ document
     const data = await response.json();
 
     if (data.success) {
-        alert(`-${data.rabatt} € eingelöst`);
-        location.reload();
+
+    alert(`-${data.rabatt} € eingelöst`);
+
+    document.getElementById("total-price")
+        .textContent = data.new_total.toFixed(2);
+
     } else {
+
         alert(data.message);
+
     }
+
 });
