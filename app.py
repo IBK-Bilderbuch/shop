@@ -255,10 +255,14 @@ def apply_gutschein():
 
 def calculate_total(cart):
 
-    return sum(
+    total = sum(
         item["price"] * item["quantity"]
         for item in cart
     )
+
+    gutschein_wert = session.get("gutschein_wert", 0)
+
+    return max(total - gutschein_wert, 0)
 
 
 # OPTIONAL: GUTSCHEIN AUS SESSION HOLEN
