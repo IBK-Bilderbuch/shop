@@ -1041,6 +1041,60 @@
   "kategorie": "Weihnachten"
    },
 
+  {
+  "id":79,
+  "name":"Smon Smon",
+  "ean":"9783314104152",
+  "beschreibung": "Sonja Danowski hat eine fantastische Welt geschaffen, in der Zusammenhalt und Freundschaft das Leben lebenswert machen. Sie erzählt vom freundlichen Smon Smon, das auf dem geheimnisvollen Planeten Gon Gon lebt. Einem zauberhaften Ort, an dem jedoch auch Gefahren lauern. Aber auch in der Not kann sich das Smon Smon auf seine Freunde verlassen. Und am Ende findet es sogar das Glück.",
+  "bilder": [
+    "images/smon.webp"
+      ],
+  "kategorie": "Dazugehören",
+   "leseprobe_url": "https://www.book2look.com/book/lOqKEJS9SU"
+
+   },
+
+  {
+  "id":80,
+  "name":"My Little One",
+  "ean":"9781939810663",
+  "beschreibung": "Winner of the 2016 Bologna Ragazzi Award, My Little One is a series of sparse and rhythmic images drawn in simple grey pencil, measuring like a metronome the boundless love between mother and son. A mother, welcoming her tiny son into the world, tells him the story of their lives, whispering to him as she swings him gently around. With each successive page, he grows while she shrinks, until she is being held by the man he has become. Albertine's weightless strokes and billowing bodies recall the flitting procession of a flipbook or an ephermeral notebook sketch. She choreographs the peculiar dance of aging, of the way our bodies fold, lean, tuck into one another as we grow old. Filled with poetry and questioning, Germano whittles his words down - each precise line reminds us of the pithy goodness of childhood. An eloquent portrait of life's waxing and waning, My Little One is a moving celebration of constant, unconditional love.",
+  "bilder": [
+    "images/mylittleone.webp"
+      ],
+  "kategorie": "Dazugehören"
+   },
+  
+{
+  "id":81,
+  "name":"The Art of Jesús Cisneros – Drawing from Memory (Contemporary Illustration Masters)",
+  "ean":"9788419220738",
+  "beschreibung": "Der Autor des Buches Miguel Ángel Pérez Arteaga is a graphic designer and cofounder of the design studio Batidora de Ideas. He is the author and illustrator of children's books published in Spain, Mexico and Brazil. His books include Graphic Designers on Creative Processes, Illustrators on Creative Process, Isidro Ferrer: About Nothing and The Art of Jesús Cisneros, all published by Hoaki Books. He participated in the exhibitions 'Ready to Read - Book Design from Spain', a selection of the best books published in Spain, and 'Ilustrísimos: An Overview of Children and Young Adults' Illustration in Spain' at the Bologna Fair. He has held numerous solo and group painting, photography and illustration exhibitions. \n\n Jesús Cisneros is a celebrated international illustrator whose work is characterised by its economy of elements, simple, almost minimalist strokes, and a limited selection of colours to breathe life into highly evocative drawings. This book filled with vibrant images presents Cisneros's creative processes as the artist shares insights about inspiration, improvisation, personal style, and artistic evolution. The author includes an illuminating interview woven throughout the text and gives glimpse into Cisneros's personal notebooks, showcasing the research and exploration that underpins his magical scenes. From experimental workshops conducted with young people worldwide to commissioned works and his own expressive and introspective pieces illustrating poetry and prose, children's books and theatre scenery, the breadth of Cisneros's art unfolds before readers' eyes. The reader accompanies the artist as he wields brushes worn with time, dipping them into jars of paint and sketching on squares of vegetable paper. We witness the subtle interplay of pale pinks merged with pearl greys and the vigorous intensity of explosive carmine reds kissed by African browns. Cisneros's palette dances with indescribable colours, a testament to the hypnotic alchemy of his chosen paints. With a visually mesmerizing collection of his works, the book celebrates the wide range and intensity of Cisneros's artistry and how sensibility and technique combine in his illustrations, proving that great stories can be told with very little.",
+  
+  "bilder": [
+    "images/illustratoren/artofjesus.webp"
+      ],
+  "kategorie": "Bücher über Illustratoren und Illustrationskunst"
+   },
+
+
+  
+ {
+  "id":82,
+  "name":"  Illustration.100 Wege einen Vogel malen",
+  "ean":"9783874398336",
+  "beschreibung": "Felix Scheinberger hat Ihnen Mut zum Skizzenbuch gemacht und die Welt der Wasserfarbe erschlossen. Er kennt das Illustratorenleben aus eigener Erfahrung. Im Rahmen seiner Lehre erfährt er, welche Fragen, Ängste und Probleme sich am Anfang der Laufbahn auftun und durch sein Engagement in der Illustratoren Organisation kennt er die Alltagssorgen derer, die von Ihrer kreativen Arbeit leben wollen - und müssen.Was liegt da näher, als ein Buch, in dem es nicht darum geht, Ihnen eine spezielle Illustrationstechnik en detail zu erschließen, sondern darum, Überblick zu geben: Über alle Techniken und ihre Erfolgsgeheimnisse. Und wertvolle Tipps zum Überleben als Illustrator/in inklusive Kalkulationsgrundlagen.(Fast) Alles, was Sie über Illustration wissen sollten in einem Buch. 'Haste mal nen Vogel?' fragte er die besten Illustrator/innen im In- und Ausland. Und sie flogen ihm zu. In unterschiedlichsten Stilen und Techniken zeigen sie die Vielfalt der Möglichkeiten. Und begleiten Sie durch über 100 Kapitel zu allen Facetten des Lebens als Illustrator/in. Hundert Wege einen Vogel zu malen ist also einerseits eingelöstes Versprechen.Andererseits Ermutigung, Ihren eigenen Weg zu suchen. Und mit Unterstützung dieses Buches auch zu finden!",
+  "bilder": [
+    "images/illustratoren/100vogelwege.webp",
+    "images/illustratoren/100vogelwege1.webp",
+    "images/illustratoren/100vogelwege2.webp",
+    "images/illustratoren/100vogelwege3.webp",
+    "images/illustratoren/100vogelwege4.webp",
+    "images/illustratoren/100vogelwege5.webp"      ],
+  "kategorie": "Bücher über Illustratoren und Illustrationskunst"
+   },
+
+  
     {
   "id":64,
   "ean":"0",
@@ -1050,7 +1104,8 @@
   "kategorie": ""
 
    },
-   {
+
+  {
   "id":65,
   "name":"",
   "ean":"0",
