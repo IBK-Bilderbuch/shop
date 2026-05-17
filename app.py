@@ -332,8 +332,17 @@ def create_paypal_order():
     cart_items = get_cart()
     total = calculate_total(cart_items)
 
-    if not cart_items or total <= 0:
+    if not cart_items:
         return jsonify({"error": "Warenkorb leer"}), 400
+
+    # WICHTIG:
+    # Wenn Gutschein alles bezahlt hat
+    # dann KEIN PayPal starten
+    if total <= 0:
+
+        return jsonify({
+            "free_checkout": True
+        })
 
     access_token = paypal_access_token()
 
