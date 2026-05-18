@@ -82,7 +82,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 50px;
+  padding: 35px 50px;
   flex-wrap: wrap;
   box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
 }
@@ -96,14 +96,14 @@ header {
 }
 
 .logo {
-  height: 90px;
+  height: 100px;
   width: auto;
   transition: height 0.3s ease;
   display: block;
   object-fit: contain;
   position: absolute;
-  op:10%;     /* mittig in Navbar */
-  ransform: translateY(20%); /* nach unten rausziehen */
+  top:10%;     /* mittig in Navbar */
+  transform: translateY(20%); /* nach unten rausziehen */
   z-index: 10;           /* Logo über Nav-Links */
 }
 
