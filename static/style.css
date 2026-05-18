@@ -98,11 +98,11 @@ header {
 .logo {
   height: 110px;
   width: auto;
-  ransition: height 0.3s ease;
+  transition: height 0.3s ease;
   display: block;
   object-fit: contain;
   position: absolute;
-  op:10%;     /* mittig in Navbar */
+  top:10%;     /* mittig in Navbar */
   transform: translateY(20%); /* nach unten rausziehen */
   z-index: 10;           /* Logo über Nav-Links */
 }
