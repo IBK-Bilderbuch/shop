@@ -1577,7 +1577,26 @@ def index():
     )
     
 
+@app.route("/cron/sync-preise")
+def cron_sync_preise():
 
+    secret = request.args.get("key")
+
+    if secret != os.getenv("CRON_SECRET"):
+        abort(403)
+
+    alle_produkte = Produkt.query.all()
+
+    for produkt in alle_produkte:
+
+        movement = lade_bestand_von_api(produkt.ean)
+
+        if movement:
+            produkt.preis = movement.get("preis")
+
+    db.session.commit()
+
+    return "OK"
     
 # =====================================================
 # START (RENDER READY)
