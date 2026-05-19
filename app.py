@@ -1581,13 +1581,13 @@ def index():
 def cron_sync_preise():
 
     secret = request.args.get("key")
-
     if secret != os.getenv("CRON_SECRET"):
         abort(403)
 
-    alle_produkte = Produkt.query.all()
+    alle_db_produkte = Produkt.query.all()
 
-    for produkt in alle_produkte:
+    # DB updaten
+    for produkt in alle_db_produkte:
         movement = lade_bestand_von_api(produkt.ean)
 
         if movement:
@@ -1595,13 +1595,14 @@ def cron_sync_preise():
 
     db.session.commit()
 
-    # 🔥 WICHTIG: JSON ebenfalls aktualisieren
+    # JSON updaten (nur Preis!)
     global produkte
 
     for p in produkte:
-        db_produkt = next((x for x in alle_produkte if x.id == p.get("id")), None)
-        if db_produkt:
-            p["preis"] = db_produkt.preis
+        db_obj = next((x for x in alle_db_produkte if x.id == p.get("id")), None)
+
+        if db_obj:
+            p["preis"] = db_obj.preis
 
     with open("produkte.json", "w", encoding="utf-8") as f:
         json.dump(produkte, f, ensure_ascii=False, indent=2)
