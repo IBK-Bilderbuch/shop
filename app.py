@@ -24,7 +24,7 @@ from flask_limiter.util import get_remote_address
 
 # Modelle importieren
 from models import db, Bestellung, BestellPosition, NewsletterSubscriber,  Gutschein
-from app.models import Produkt
+from models import Produkt
 
 
 from datetime import timedelta
