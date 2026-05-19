@@ -1588,13 +1588,23 @@ def cron_sync_preise():
     alle_produkte = Produkt.query.all()
 
     for produkt in alle_produkte:
-
         movement = lade_bestand_von_api(produkt.ean)
 
         if movement:
             produkt.preis = movement.get("preis")
 
     db.session.commit()
+
+    # 🔥 WICHTIG: JSON ebenfalls aktualisieren
+    global produkte
+
+    for p in produkte:
+        db_produkt = next((x for x in alle_produkte if x.id == p.get("id")), None)
+        if db_produkt:
+            p["preis"] = db_produkt.preis
+
+    with open("produkte.json", "w", encoding="utf-8") as f:
+        json.dump(produkte, f, ensure_ascii=False, indent=2)
 
     return "OK"
     
