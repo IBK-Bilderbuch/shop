@@ -23,8 +23,8 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
 # Modelle importieren
-from models import db, Bestellung, BestellPosition, NewsletterSubscriber,  Gutschein, Produkt
-
+from models import db, Bestellung, BestellPosition, NewsletterSubscriber,  Gutschein
+from app.models import Produkt
 
 
 from datetime import timedelta
