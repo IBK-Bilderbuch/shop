@@ -1577,41 +1577,7 @@ def index():
     )
     
 
-@app.route("/cron/sync-preise")
-def cron_sync_preise():
 
-    secret = request.args.get("key")
-    if secret != os.getenv("CRON_SECRET"):
-        abort(403)
-
-    global produkte
-
-    updated = 0
-    failed = 0
-
-    for p in produkte:
-
-        try:
-
-            ean = p.get("ean")
-
-            if not ean:
-                continue
-
-            movement = lade_bestand_von_api(ean)
-
-            if movement:
-                p["preis"] = movement.get("preis", 0)
-                updated += 1
-
-        except Exception as e:
-            print("FEHLER:", e)
-            failed += 1
-
-    with open("produkte.json", "w", encoding="utf-8") as f:
-        json.dump(produkte, f, ensure_ascii=False, indent=2)
-
-    return f"OK | updated={updated} failed={failed}"
 
     
 # =====================================================
