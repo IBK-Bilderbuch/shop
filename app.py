@@ -1584,30 +1584,25 @@ def cron_sync_preise():
     if secret != os.getenv("CRON_SECRET"):
         abort(403)
 
-    alle_db_produkte = Produkt.query.all()
-
-    # DB updaten
-    for produkt in alle_db_produkte:
-        movement = lade_bestand_von_api(produkt.ean)
-
-        if movement:
-            produkt.preis = movement.get("preis")
-
-    db.session.commit()
-
-    # JSON updaten (nur Preis!)
     global produkte
 
     for p in produkte:
-        db_obj = next((x for x in alle_db_produkte if x.id == p.get("id")), None)
 
-        if db_obj:
-            p["preis"] = db_obj.preis
+        ean = p.get("ean")
+
+        if not ean:
+            continue
+
+        movement = lade_bestand_von_api(ean)
+
+        if movement:
+            p["preis"] = movement.get("preis", 0)
 
     with open("produkte.json", "w", encoding="utf-8") as f:
         json.dump(produkte, f, ensure_ascii=False, indent=2)
 
     return "OK"
+
     
 # =====================================================
 # START (RENDER READY)
