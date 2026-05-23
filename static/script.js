@@ -15,6 +15,18 @@ document.querySelectorAll(".toggle-text").forEach(btn => {
 });
 
 
+document.querySelectorAll(".dropdown-toggle").forEach(btn => {
+
+  btn.addEventListener("click", () => {
+
+    const dropdown = btn.closest(".dropdown");
+
+    dropdown.classList.toggle("open");
+
+  });
+
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
