@@ -42,7 +42,7 @@
   </nav>-->
 
 
-  <nav id="navbar">
+<nav id="navbar">
 
   <!-- Hamburger -->
   <div class="menu-toggle" onclick="toggleMenu()">
@@ -51,20 +51,66 @@
 
   <!-- Dropdown Menu -->
   <ul class="nav-links" id="nav-links">
-   <li class="close-btn" onclick="toggleMenu()">✕</li>
-    <li>
-      <a href="{{ url_for('index') }}#Jacominus_Gainsborough">Bücher</a>
+
+    <li class="close-btn" onclick="toggleMenu()">✕</li>
+
+    <li class="dropdown">
+
+      <a href="{{ url_for('index') }}#Jacominus_Gainsborough"
+         onclick="toggleDropdown(event)">
+        Bücher ▾
+      </a>
+
+      <ul class="dropdown-menu">
+
+        <li><strong>Nach Sprachen</strong></li>
+
+        <li>
+          <a href="/kategorie/deutsch">
+            Deutsch
+          </a>
+        </li>
+
+        <li>
+          <a href="/kategorie/englisch">
+            Englisch
+          </a>
+        </li>
+
+        <li><strong>Nach Themen</strong></li>
+
+        <li>
+          <a href="/kategorie/freundschaft">
+            Freundschaft
+          </a>
+        </li>
+
+        <li>
+          <a href="/kategorie/gefuehle">
+            Gefühle
+          </a>
+        </li>
+
+      </ul>
+
     </li>
+
     <li>
       <a href="{{ url_for('suche') }}">Suche 🔍 </a>
     </li>
+
     <li class="cart">
-      <a href="{{ url_for('cart') }}"> Warenkorb 🛒 <span id="cart-count">0</span></a>
+      <a href="{{ url_for('cart') }}">
+        Warenkorb 🛒 <span id="cart-count">0</span>
+      </a>
     </li>
+
     <li class="widerruf">
-      <a href="{{ url_for('widerruf') }}"> Widerrufsformular und Rücksendung </a>
+      <a href="{{ url_for('widerruf') }}">
+        Widerrufsformular und Rücksendung
+      </a>
     </li>
-  
+
   </ul>
 
 </nav>
