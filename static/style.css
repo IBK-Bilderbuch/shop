@@ -835,13 +835,13 @@ body.menu-open::before {
 
 
 
-
-
-
-.submenu {
+.dropdown-menu {
   display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.submenu.active {
+.dropdown.open .dropdown-menu {
   display: block;
 }
