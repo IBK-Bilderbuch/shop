@@ -30,17 +30,9 @@
     <h3>Suchergebnisse für "{{ query }}":</h3>
 
     {% if ergebnisse %}
-      <div class="search-book-list">
-        {% for produkt in ergebnisse %}
-          <div class="book">
-            <img src="{{ url_for('static', filename=produkt.bilder[0]) }}" alt="{{ produkt.name }}">
-            <h3>{{ produkt.name }}</h3>
-            <p>{{ produkt.preis }} €</p>
-            <a href="{{ url_for('produkt_detail', produkt_id=produkt.id, slug=produkt.slug) }}">Mehr erfahren</a>
 
-          </div>
-        {% endfor %}
-      </div>
+        {% include 'produkte_liste.html' %}
+
     {% else %}
       <p>Keine Ergebnisse gefunden.</p>
     {% endif %}
