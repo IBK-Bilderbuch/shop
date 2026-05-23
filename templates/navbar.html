@@ -7,7 +7,6 @@
     </a>
   </div>
 
-<!--
 
 
   <nav id="navbar">
@@ -33,55 +32,6 @@
   
   </ul>
 
-</nav> -->
-
-
-  <nav id="navbar">
-
-  <!-- Hamburger -->
-  <div class="menu-toggle" onclick="toggleMenu()">
-    <i class="fas fa-bars"></i>
-  </div>
-
-  <!-- Dropdown Menu -->
-  <ul class="nav-links" id="nav-links">
-    
-    <li class="close-btn" onclick="toggleMenu()">✕</li>
-
-    <li>
-      <a href="{{ url_for('index') }}#Jacominus_Gainsborough">Bücher</a>
-    </li>
-
-    <li>
-      <a href="{{ url_for('suche') }}">Suche 🔍</a>
-    </li>
-
-    <!-- Nach Sprachen -->
-    <li>
-      <a href="#" onclick="toggleSubmenu(this)">Nach Sprachen ▾</a>
-
-      <ul class="submenu">
-        <li><a href="{{ url_for('suche', kategorie='Deutsch') }}">Deutsch</a></li>
-        <li><a href="{{ url_for('suche', kategorie='Englisch') }}">Englisch</a></li>
-      </ul>
-    </li>
-
-   
-    <li class="cart">
-      <a href="{{ url_for('cart') }}">
-        Warenkorb 🛒 <span id="cart-count">0</span>
-      </a>
-    </li>
-
-    <li class="widerruf">
-      <a href="{{ url_for('widerruf') }}">
-        Widerrufsformular und Rücksendung
-      </a>
-    </li>
-
-  </ul>
-
-</nav>
-
+</nav> 
   
 </header>
