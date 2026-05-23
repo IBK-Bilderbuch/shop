@@ -1,3 +1,19 @@
+document.querySelectorAll(".toggle-text").forEach(btn => {
+
+  btn.addEventListener("click", () => {
+
+    const parent = btn.parentElement;
+
+    parent.classList.toggle("open");
+
+    btn.textContent = parent.classList.contains("open")
+      ? "weniger anzeigen"
+      : "mehr lesen";
+
+  });
+
+});
+
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.nav-links a').forEach(link => {
