@@ -647,8 +647,7 @@ def lade_produkt_von_api(ean):
             return None
 
         attrs = res.get("Artikelattribute") or {}
-        import json
-        print(json.dumps(attrs, indent=2, ensure_ascii=False))
+      
 
         # 🔥 Bild (nur BuchButler Image API)
         bild_url = f"https://api.buchbutler.de/image/{ean}"
@@ -669,10 +668,7 @@ def lade_produkt_von_api(ean):
             "erscheinungsdatum": attr(attrs, "Erscheinungsdatum"),
             "beschreibung": res.get("text_text"),
             "alter_von": attr(attrs, "Altersempfehlung_von"),
-            "alter_bis": attr(attrs, "Altersempfehlung_bis"),
-            "laenge": clean_mm(attr(attrs, "Laenge")),
-            "breite": clean_mm(attr(attrs, "Breite")),
-            "hoehe": clean_mm(attr(attrs, "Hoehe")),
+            "alter_bis": attr(attrs, "Altersempfehlung_bis")
 
 
             # 🔥 Bilder
