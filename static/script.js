@@ -1,18 +1,4 @@
-document.querySelectorAll(".toggle-text").forEach(btn => {
 
-  btn.addEventListener("click", () => {
-
-    const parent = btn.parentElement;
-
-    parent.classList.toggle("open");
-
-    btn.textContent = parent.classList.contains("open")
-      ? "weniger anzeigen"
-      : "mehr lesen";
-
-  });
-
-});
 
 
 document.querySelectorAll(".dropdown-toggle").forEach(btn => {
