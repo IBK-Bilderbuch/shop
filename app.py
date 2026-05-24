@@ -666,6 +666,7 @@ def lade_produkt_von_api(ean):
             "erscheinungsjahr": attr(attrs, "Erscheinungsjahr"),
             "erscheinungsdatum": attr(attrs, "Erscheinungsdatum"),
             "beschreibung": res.get("text_text"),
+            "alter": attr(attrs, "alter_von"),
 
             # 🔥 Bilder
             "bilder": [bild_url],
