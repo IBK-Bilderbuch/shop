@@ -670,6 +670,9 @@ def lade_produkt_von_api(ean):
             "beschreibung": res.get("text_text"),
             "alter_von": attr(attrs, "Altersempfehlung_von"),
             "alter_bis": attr(attrs, "Altersempfehlung_bis"),
+            "laenge": clean_mm(attr(attrs, "Laenge")),
+            "breite": clean_mm(attr(attrs, "Breite")),
+            "hoehe": clean_mm(attr(attrs, "Hoehe")),
 
 
             # 🔥 Bilder
