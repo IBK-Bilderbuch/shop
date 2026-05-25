@@ -1,9 +1,10 @@
 
-
-
 document.querySelectorAll(".dropdown-toggle").forEach(btn => {
 
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", (e) => {
+
+    e.preventDefault();
+    e.stopPropagation();
 
     const dropdown = btn.closest(".dropdown");
 
@@ -12,6 +13,7 @@ document.querySelectorAll(".dropdown-toggle").forEach(btn => {
   });
 
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.nav-links a').forEach(link => {
