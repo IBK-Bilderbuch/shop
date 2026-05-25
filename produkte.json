@@ -6,7 +6,7 @@
     "bilder": [
       "images/jacominus/jacominus.jpg"
     ],
-    "kategorie":[ "Jacominus Gainsborough", "Englisch" ]
+    "kategorie":[ "Jacominus Gainsborough", "Deutschsprachige Bücher" ]
   },
   
   {
@@ -17,7 +17,7 @@
     "bilder": [
       "images/punkt/punkt-12(1).jpg"
     ],
-    "kategorie": "Jacominus Gainsborough"
+    "kategorie":[ "Jacominus Gainsborough", "Deutschsprachige Bücher" ]
   },
 
   
@@ -29,7 +29,7 @@
     "bilder": [
       "images/winzsekunde/eine-winzig-kleine-sekunde_cover.jpg"
     ],
-    "kategorie": "Jacominus Gainsborough"
+    "kategorie":[ "Jacominus Gainsborough", "Deutschsprachige Bücher" ]
   },
   
    {
@@ -40,7 +40,7 @@
     "bilder": [
       "images/wbaresache/eine-wunderbare-sache_cover.jpg"
     ],
-    "kategorie": "Jacominus Gainsborough"
+    "kategorie":[ "Jacominus Gainsborough", "Deutschsprachige Bücher" ]
   },
 
   {
@@ -53,7 +53,7 @@
       "images/angsthase/Angsthase4.webp",
       "images/angsthase/Angsthase6.webp"
     ],
-  "kategorie": "Mut oder Angst?!",
+  "kategorie": ["Mut oder Angst?!", "Deutschsprachige Bücher" ],
   "leseprobe_pdf": "Angsthase.pdf"
   },
     {
@@ -65,7 +65,7 @@
     "bilder": [
       "images/bruecke/dieBruecke.webp"
     ],
-      "kategorie": "Wichtige Fragen"
+      "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher" ]
   },
   
    {
@@ -79,7 +79,7 @@
       "images/pupu/pupu.webp",
       "images/pupu/Pupu2.webp"
     ],
-     "kategorie": "Wichtige Fragen"
+     "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ]
   },
   {
     "id": 8,
@@ -92,7 +92,7 @@
       "images/rabenrosa/dierabenrosa.webp",
       "images/rabenrosa/dierabenrosa1.webp"
     ],
-  "kategorie": "Dazugehören"
+  "kategorie":[ "Dazugehören", "Deutschsprachige Bücher" ]
   },
   
   {
@@ -109,7 +109,7 @@
     "images/leolegtlos/leolegtlos5.webp",
     "images/leolegtlos/leolegtlos6.webp"
   ],
-  "kategorie": "Mut oder Angst?!"
+  "kategorie":[ "Mut oder Angst?!", "Deutschsprachige Bücher" ]
 },
   
    {
@@ -124,7 +124,7 @@
       "images/monster/Monstergeburtstag.webp",
       "images/monster/Monstergeburtstag1.webp"
     ],
-     "kategorie": "Monstergeschichten"
+     "kategorie": ["Monstergeschichten", "Deutschsprachige Bücher" ]
   },
 
    {
@@ -135,7 +135,7 @@
     "bilder": [
       "images/wildekerle/wildeKerle.webp"
     ],
-     "kategorie": "Klassiker"
+     "kategorie":[ "Klassiker", "Deutschsprachige Bücher" ]
   },
   
  
@@ -149,7 +149,7 @@
     "bilder": [
       "images/wind/windcolor.webp"
     ],
-    "kategorie": "Wichtige Fragen"
+    "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ]
   },
  
   {
@@ -168,7 +168,7 @@
       "images/monsterich/monsterich7.webp",
       "images/monsterich/monsterich4.webp"
     ],
-    "kategorie": "Monstergeschichten"
+    "kategorie": ["Monstergeschichten", "Deutschsprachige Bücher" ]
   },
 
   
@@ -186,7 +186,7 @@
     "images/monsterbesuch/monsterbesuch3.webp",
     "images/monsterbesuch/monsterbesuch4.webp"
   ],
-  "kategorie": "Monstergeschichten"
+  "kategorie":[ "Monstergeschichten", "Deutschsprachige Bücher" ]
  
 },
    {
@@ -204,7 +204,7 @@
     "images/weihnachten/IGEL5.webp",
     "images/weihnachten/IGEL6.webp"
   ],
-  "kategorie": "Weihnachten"
+  "kategorie":[ "Weihnachten", "Deutschsprachige Bücher" ]
  
 },
 
@@ -218,7 +218,7 @@
   "bilder": [
     "images/wuetend/wuetend.webp"
   ],
-  "kategorie": "Kinder und Gefühle"
+  "kategorie":[ "Kinder und Gefühle", "Deutschsprachige Bücher" ]
 },
   
 
@@ -232,7 +232,7 @@
   "bilder": [
     "images/mutig/mutig.webp"
   ],
-  "kategorie": "Kinder und Gefühle"
+  "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher" ]
 },
 
 
@@ -244,7 +244,7 @@
   "bilder": [
     "images/einsam/einsam.webp"
   ],
-  "kategorie": "Kinder und Gefühle"
+  "kategorie":[ "Kinder und Gefühle", "Deutschsprachige Bücher" ]
 },
   
 
@@ -257,7 +257,7 @@
   "bilder": [
     "images/schaukel/schaukel.webp"
   ],
-  "kategorie": "Kinder und Gefühle"
+  "kategorie":[ "Kinder und Gefühle", "Deutschsprachige Bücher" ]
  
 },
 
@@ -270,7 +270,7 @@
   "bilder": [
     "images/anonldlady/anoldlady.webp"
     ],
-  "kategorie": "Klassiker"
+  "kategorie": ["Klassiker","Englischsprachige Bücher" ]
 },
 
 
@@ -282,7 +282,7 @@
   "bilder": [
      "images/hungrygoat/hungrygoat.webp"
   ],
-  "kategorie": "Klassiker"
+  "kategorie": ["Klassiker", "Englischsprachige Bücher" ]
 },
   
 
@@ -295,7 +295,7 @@
   "bilder": [
     "images/monstermilch/monstermilch.webp"
   ],
-  "kategorie": "Monstergeschichten"
+  "kategorie":[ "Monstergeschichten", "Deutschsprachige Bücher" ]
 },
   
 
@@ -310,7 +310,7 @@
     "images/unsichtbar/unsichtbar2.webp",
     "images/unsichtbar/unsichtbar3.webp"
   ],
-  "kategorie": "Kinder und Gefühle"
+  "kategorie":[ "Kinder und Gefühle", "Deutschsprachige Bücher" ]
 },
 
 {
@@ -323,7 +323,7 @@
   "bilder": [
     "images/handschuhe/Handschuhe.webp"
   ],
-  "kategorie": "Dazugehören"
+  "kategorie": ["Dazugehören", "Deutschsprachige Bücher" ]
 },
  
 
@@ -336,7 +336,7 @@
   "bilder": [
     "images/zweilieben/zweilieben.webp"
   ],
-  "kategorie": "Kinder und Gefühle"
+  "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher" ]
 },
 
 
@@ -349,7 +349,7 @@
   "bilder": [
     "images/mutwasgutes/mutwasgutes.webp"
   ],
-  "kategorie": "Mut oder Angst?!"
+  "kategorie":[ "Mut oder Angst?!", "Deutschsprachige Bücher" ]
 },
 
 
@@ -362,7 +362,7 @@
   "bilder": [
     "images/vierkerzen/vierkerzen.webp"
   ],
-  "kategorie": "Weihnachten"
+  "kategorie":[ "Weihnachten", "Deutschsprachige Bücher" ]
 },
 
 {
@@ -374,7 +374,7 @@
   "bilder": [
     "images/advent/advent.webp"
   ],
-  "kategorie": "Weihnachten"
+  "kategorie": ["Weihnachten", "Deutschsprachige Bücher" ]
 },
 
 {
@@ -387,7 +387,7 @@
   "bilder": [
     "images/diegroßenfragen/diegroßenfragen.webp"
 ],
-  "kategorie": "Wichtige Fragen",
+  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ],
   "auszeichnungen": [
     "Bologna Ragazzi Award 2004 – Kategorie Fiction",
     "Nominiert Deutscher Jugendliteraturpreis 2005 – Kategorie Bilderbuch"
@@ -407,7 +407,7 @@
       "images/wennannaangsthat/wennannaangsthat1.webp",
       "images/wennannaangsthat/wennannaangsthat2.webp"
     ],
-  "kategorie": "Mut oder Angst?!"
+  "kategorie":[ "Mut oder Angst?!", "Deutschsprachige Bücher" ]
   },
 
 
@@ -426,7 +426,7 @@
     "images/nussknacker/nussknacker5.webp",
     "images/nussknacker/nussknacker6.webp"
   ],
-  "kategorie": "Klassiker",
+  "kategorie":[ "Klassiker", "Deutschsprachige Bücher" ],
   "leseprobe_url": "https://www.book2look.com/book/uZR7FghOdm"
 },
 
@@ -443,7 +443,7 @@
     "images/haewelmann/haewelmann2.webp",
     "images/haewelmann/haewelmann3.webp"
   ],
-  "kategorie": "Klassiker",
+  "kategorie":[ "Klassiker", "Deutschsprachige Bücher" ],
   "leseprobe_url": "https://www.book2look.com/book/agb6hWl8UV"
 
 },
@@ -466,7 +466,7 @@
     "images/dervogelinmir/dervogelinmir6.webp",
     "images/dervogelinmir/dervogelinmir7.webp"
   ],
-  "kategorie": "Wichtige Fragen",
+  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ],
   "leseprobe_url": "https://www.book2look.com//book/WjLI79HvFc&euid=0&ruid=0&refererpath=www.moritzverlag.de&isbnformat=hardcover&bookisbn=9783895654640&dct=0&biblettype=double&clickedby=lk&bibloc=0"
 },
 
@@ -486,7 +486,7 @@
     "images/galgenlieder/galgenlieder4.webp",
     "images/galgenlieder/galgenlieder5.webp"
   ],
-  "kategorie": "Klassiker",
+  "kategorie": ["Klassiker", "Deutschsprachige Bücher" ],
   "leseprobe_url": "https://www.book2look.com/book/osuBL4pubX"
   
 },
@@ -499,7 +499,7 @@
   "bilder": [
     "images/pinocchio/pinocchio.webp"
   ],
-  "kategorie": "Klassiker"
+  "kategorie": ["Klassiker", "Deutschsprachige Bücher" ],
 },
 
  
@@ -514,7 +514,8 @@
   "bilder": [
     "images/lupo/lupo.webp"
   ],
-  "kategorie": "Dazugehören"
+ 
+  "kategorie":["Dazugehören", "Deutschsprachige Bücher" ],
 },
   
   
@@ -530,7 +531,7 @@
     "images/heutebinich/heutebinich.webp",
     "images/heutebinich/heutebinich1.webp"
   ],
-  "kategorie": "Kinder und Gefühle",
+  "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher" ],
 
   "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=3709063013&ean=9783905945300"
 },
@@ -549,7 +550,7 @@
     "images/ueberraschung/ueberraschung3.webp",
     "images/ueberraschung/ueberraschung4.webp"
   ],
-  "kategorie": "Kinder und Gefühle"
+  "kategorie":[ "Kinder und Gefühle", "Deutschsprachige Bücher" ]
   
 },
 
@@ -562,7 +563,7 @@
   "bilder": [
     "images/bear/bear.webp"
   ],
-  "kategorie": "Wichtige Fragen"
+  "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher" ]
 },
  
 
@@ -574,7 +575,7 @@
     "bilder": [
     "images/farbeeulestift/farbeeulestift.webp"
   ],
-  "kategorie": "Wichtige Fragen",
+  "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher" ],
   "leseprobe_pdf": "farbeeulestift.pdf"
 
 },
@@ -588,7 +589,7 @@
     "bilder": [
     "images/waswennichmichentziehe/waswennichmichentziehe.webp"
   ],
-  "kategorie": "Wichtige Fragen",
+  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ],
   "leseprobe_pdf": "waswennichmichentziehe.pdf"
 
 }, 
@@ -605,7 +606,7 @@
     "images/eisbären/eisbären2.webp",
     "images/eisbären/eisbären3.webp"
   ],
-  "kategorie": "Wichtige Fragen",
+  "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher" ],
   "leseprobe_pdf": "eisbären.pdf"
 
 },
@@ -621,7 +622,7 @@
     "images/weitrausschwimmen/weitrausschwimmen2.webp",
     "images/weitrausschwimmen/weitrausschwimmen3.webp"
   ],
-  "kategorie": "Wichtige Fragen",
+  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ],
   "leseprobe_pdf": "weitrausschwimmen.pdf"
 
 }, 
@@ -636,7 +637,7 @@
     "images/dongiovanni/dongiovanni2.webp",
     "images/dongiovanni/dongiovanni3.webp"
   ],
-  "kategorie": "Wichtige Fragen",
+  "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher" ],
   "leseprobe_pdf": "dongiovanni.pdf"
 }, 
   {
@@ -649,7 +650,7 @@
     "images/madeleine/madeleine1.webp",
     "images/madeleine/madeleine2.webp"
   ],
-  "kategorie": "Wichtige Fragen",
+  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ],
   "leseprobe_pdf": "madeleine.pdf"
 },
 
@@ -664,7 +665,7 @@
     "images/huebsch/huebsch2.webp",
     "images/huebsch/huebsch3.webp"
    ],
-  "kategorie": "Dazugehören",
+  "kategorie": ["Dazugehören", "Deutschsprachige Bücher" ],
   "leseprobe_pdf": "huebsch.pdf"
   },
 
@@ -680,7 +681,7 @@
     "images/einmalkatzesein/einmalkatzesein3.webp",
     "images/einmalkatzesein/einmalkatzesein4.webp"
   ],
- "kategorie": "Kinder und Gefühle"
+ "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher" ]
 },
   {
   "id": 50,
@@ -697,7 +698,7 @@
     "images/bobtheartist/bobtheartist6.webp",
     "images/bobtheartist/bobtheartist7.webp"
   ],
- "kategorie": "Bob der Künstler"
+ "kategorie": ["Bob der Künstler", "Deutschsprachige Bücher" ]
 },
 
    {
@@ -710,7 +711,7 @@
  
   ],
  "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-95614-032-7",
- "kategorie": "Große Städte, große Zeichner"
+ "kategorie":[ "Große Städte, große Zeichner", "Deutschsprachige Bücher" ]
 },
 
      {
@@ -722,7 +723,7 @@
     "images/grossstaedte/newyork.webp"
   ],
  "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-979-8",
- "kategorie": "Große Städte, große Zeichner"
+ "kategorie": ["Große Städte, große Zeichner", "Deutschsprachige Bücher" ]
 },
      {
   "id": 53,
@@ -734,7 +735,7 @@
     "images/grossstaedte/rom.webp"
   ],
  "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-943-9",
- "kategorie": "Große Städte, große Zeichner"
+ "kategorie": ["Große Städte, große Zeichner", "Deutschsprachige Bücher" ]
 },
      {
   "id": 54,
@@ -744,7 +745,7 @@
        "bilder": [
     "images/grossstaedte/sasek.webp"
   ],   
-  "kategorie": "Bücher über Illustratoren und Illustrationskunst"
+  "kategorie": ["Bücher über Illustratoren und Illustrationskunst", "Deutschsprachige Bücher" ]
 },
 
      {
@@ -755,7 +756,7 @@
      "bilder": [
     "images/lebensende/entetod.webp"
   ],   
-  "kategorie": "Gedanken zum Lebensende",
+  "kategorie": ["Gedanken zum Lebensende", "Deutschsprachige Bücher" ],
  "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-461-8"
 
 },
@@ -769,7 +770,7 @@
     "images/lebensende/schwellenangst.webp"
   ],   
   "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-95614-606-0",
-  "kategorie": "Gedanken zum Lebensende"
+  "kategorie":[ "Gedanken zum Lebensende", "Deutschsprachige Bücher" ]
 },
 
  {
@@ -787,7 +788,7 @@
    "images/knochenmann/knochenmann5.webp",
    "images/knochenmann/knochenmann6.webp"
   ],
-  "kategorie": "Gedanken zum Lebensende",
+  "kategorie": ["Gedanken zum Lebensende", "Deutschsprachige Bücher" ],
  
   "leseprobe_url": "https://www.book2look.com/book/9783948743307(buchpalastmuenchen.de)"
  },
@@ -801,7 +802,7 @@
   "bilder": [
     "images/zahlenundbuchschtaben/alphabetics.webp"
    ],
-  "kategorie": "Zahlen und Buchstaben",
+  "kategorie": ["Zahlen und Buchstaben", "Englischsprachige Bücher" ],
  "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783899557282"
   },
 
@@ -814,7 +815,7 @@
   "bilder": [
     "images/zahlenundbuchschtaben/alphabetakrobaten.webp"
    ],
-  "kategorie": "Zahlen und Buchstaben",
+  "kategorie": ["Zahlen und Buchstaben", "Deutschsprachige Bücher" ],
  "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783899557435"
   },
 
@@ -827,7 +828,7 @@
   "bilder": [
     "images/zahlenundbuchschtaben/ichkannnichteinschlafen.webp"
    ],
-  "kategorie": "Zahlen und Buchstaben",
+  "kategorie": ["Zahlen und Buchstaben", "Deutschsprachige Bücher" ],
  "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783967047400"
   },
 
@@ -840,7 +841,7 @@
   "bilder": [
     "images/zahlenundbuchschtaben/icantsleep.webp"
    ],
-  "kategorie": "Zahlen und Buchstaben",
+  "kategorie": ["Zahlen und Buchstaben", "Englischsprachige Bücher" ],
  "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9781787413917"
   
    },
@@ -854,7 +855,7 @@
   "bilder": [
     "images/zaeri/marthasreise.webp"
       ],
-  "kategorie": "Wichtige Fragen",
+  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ],
   "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=9322941228&ean=9783957281852"
    },
 
@@ -871,7 +872,7 @@
       ],
     "beschreibung": "In diesem farbenfrohen Pappbuch, der Bestseller-Illustratorin Mies van Hout, werden Kleinkinder aufgefordert, die Frage 'Welches Jungtier gehört zu welchem Papa?' zu beantworten. Dazu sollen sie zu den abgebildeten Kindern den richtigen Papa finden. Die vier möglichen Väter sehen alle unterschiedlich aus, ähneln aber alle stark dem Kind. Man muss ganz genau hinsehen, um die richtige Lösung auf der nächsten Doppelseite zu finden. Ein wunderschönes Suchbilderbuch zum gemeinsamen Entdecken und Schmunzeln.\n\nMies van Hout wurde 1962 geboren und studierte an der Kunstakademie in Groningen Grafikdesign. Seit 1989 arbeitet sie als freie Illustratorin und Grafikdesignerin und hat inzwischen über 100 Bilderbücher illustriert. Ihr gelingt es, mit einfachen Mitteln und doch sehr überzeugend auf ungewöhnliche Weise Gefühle in Figuren und Bilder umzuwandeln. Sie hält uns mit ihren Bilderbüchern immer wieder einen Spiegel vor: Monster sind Freunde, Fische haben Stimmungen und ein Oktopus sucht Hilfe. Die Illustrationen von Mies van Hout sind von großer Farbtiefe und Brillanz. Sie visualisieren Emotionen auf einzigartige Weise, lassen den Betrachter die eigene Gefühlswelt aus der Distanz sehen und öffnen so auch neue Wege, darüber zu sprechen.",
     
-  "kategorie": "Dazugehören"
+  "kategorie": ["Dazugehören", "Deutschsprachige Bücher" ]
 
    },
 
@@ -884,7 +885,7 @@
       ],
   "beschreibung": "Wenn Elefanten wie Schmetterlinge in die Lüfte steigen und das Wildschwein Margareth im Rüschenrock spazieren geht Wenn wilde, freie Seejungfrauen sich Donald Duck anschauen und Fischer-Fritz mit Einrad-Fischen um die Wette schwimmt Dann sind wir dort, wo Schlüsselbein und Schlüsselblume Freunde sind, an einem ganz besonderen Ort. nEs gibt viele Arten, Gute Nacht zu sagen. Mit Michael Rohers phantasievollen Bildern und witzigen Reimen macht das Schlafengehen Spaß. Die liebevoll detaillierten Zeichnungen laden wunderbar zum Weiterträumen ein zum Erfinden, Verdrehen und Staunen im eigenen, warmen Zwergennest.nAb 4 Jahren.",
   "leseprobe_url": "https://blickinsbuch.net/go.php?id=9322941228&ean=9783902373915",
-  "kategorie": "Zahlen und Buchstaben"
+  "kategorie": ["Zahlen und Buchstaben", "Deutschsprachige Bücher" ]
 
    },
 
@@ -897,7 +898,7 @@
       ],
   "beschreibung": "Im Frühling sind sie angekommen, im Herbst müssen Lukas neue Freunde Oleg, Madame Petrova und Paulinchen weiterziehen, sie sind ja schließlich Zugvögel. Doch sie wollen bleiben, wollen den Winter sehen und in die Schule gehen. Aber wo sollen sie bloß hin? Wovon sollen sie leben? Zum Glück gibt es die gute Frau Lorenz, die ein großes Herz hat und ein großes Nest für alle, die nicht wissen, wohin. Bei ihr sind die drei Freunde gut aufgehoben. In wunderschönen, feinsinnigen und zugleich kräftigen Bildern erzählt das Ausnahmetalent Michael Roher seine neue Geschichte: vom Sesshaftwerden einer Familie unter erschwerten Bedingungen, ein Plädoyer für Toleranz und Liebe, eine Würdigung von Menschlichkeit und Hilfsbereitschaft.",
 
-  "kategorie": "Dazugehören"
+  "kategorie": ["Dazugehören", "Deutschsprachige Bücher" ]
 
    },
 
@@ -910,7 +911,7 @@
     "images/roeher/derwal.webp"
       ],
    "leseprobe_url": "https://blickinsbuch.net/go.php?id=9322941228&ean=9783902844293",
-   "kategorie": "Wortlust und Zeichenfreude"
+   "kategorie": ["Wortlust und Zeichenfreude", "Deutschsprachige Bücher" ]
 
    },
 
@@ -922,7 +923,7 @@
   "bilder": [
     "images/roeher/derfluss.webp"
       ],
-  "kategorie": "Wichtige Fragen",
+  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ],
   "leseprobe_pdf": "derfluss.pdf"
    },
 
@@ -935,7 +936,7 @@
   "bilder": [
     "images/roeher/soriso.webp"
       ],
-  "kategorie": "Wortlust und Zeichenfreude",
+  "kategorie": ["Wortlust und Zeichenfreude", "Deutschsprachige Bücher" ],
   "leseprobe_url": "https://blickinsbuch.net/go.php?id=9322941228&ean=9783902844552"
 
    },
@@ -948,7 +949,7 @@
     "bilder": [
     "images/roeher/fridolin.webp"
       ],
-  "kategorie": "Wortlust und Zeichenfreude"
+  "kategorie": ["Wortlust und Zeichenfreude", "Deutschsprachige Bücher" ]
    },
 
    {
@@ -959,7 +960,7 @@
   "bilder": [
     "images/miesvanhout/freunde.webp"
       ],
-  "kategorie": "Dazugehören",
+  "kategorie": ["Dazugehören", "Deutschsprachige Bücher" ],
    "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783905945362"
 
    },
@@ -972,7 +973,7 @@
   "bilder": [
     "images/miesvanhout/friends.webp"
       ],
-  "kategorie": "Dazugehören"
+  "kategorie":[ "Dazugehören", "Englischsprachige Bücher" ]
    },
 
    {
@@ -983,7 +984,7 @@
   "bilder": [
     "images/miesvanhout/thisismydady.webp"
       ],
-  "kategorie": "Dazugehören"
+  "kategorie": ["Dazugehören", "Englischsprachige Bücher" ]
    },
 
   {
@@ -994,7 +995,7 @@
   "bilder": [
     "images/katzenmalendejunge/katzenmalendejunge.webp"
       ],
-  "kategorie": "Klassiker"
+  "kategorie": ["Klassiker", "Deutschsprachige Bücher" ]
 
    },
 
@@ -1010,7 +1011,7 @@
     "images/zaeri/klugefrauen3.webp",
     "images/zaeri/klugefrauen4.webp"
       ],
-  "kategorie": "Wichtige Fragen"
+  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ]
 
    },
 
@@ -1027,7 +1028,7 @@
     "images/zaeri/dastraumbuch4.webp"
 
       ],
-  "kategorie": "Wortlust und Zeichenfreude"
+  "kategorie": ["Wortlust und Zeichenfreude", "Deutschsprachige Bücher" ]
    },
 
   {
@@ -1038,7 +1039,7 @@
   "bilder": [
     "images/zaeri/diegeburt.webp"
       ],
-  "kategorie": "Weihnachten"
+  "kategorie": ["Weihnachten", "Deutschsprachige Bücher" ]
    },
 
   {
@@ -1049,7 +1050,7 @@
   "bilder": [
     "images/smonsmon.webp"
       ],
-  "kategorie": "Dazugehören",
+  "kategorie": ["Dazugehören", "Deutschsprachige Bücher" ],
    "leseprobe_url": "https://www.book2look.com/book/lOqKEJS9SU"
 
    },
@@ -1062,7 +1063,7 @@
   "bilder": [
     "images/mylittleone.webp"
       ],
-  "kategorie": "Dazugehören"
+  "kategorie": ["Dazugehören", "Englischsprachige Bücher" ]
    },
   
 {
@@ -1074,7 +1075,8 @@
   "bilder": [
     "images/illustratoren/artofjesus.webp"
       ],
-  "kategorie": "Bücher über Illustratoren und Illustrationskunst"
+  "kategorie": ["Bücher über Illustratoren und Illustrationskunst","Deutschsprachige Bücher" ]
+   },
    },
 
 
@@ -1091,7 +1093,7 @@
     "images/illustratoren/100vogelwege3.webp",
     "images/illustratoren/100vogelwege4.webp",
     "images/illustratoren/100vogelwege5.webp"      ],
-  "kategorie": "Bücher über Illustratoren und Illustrationskunst"
+  "kategorie": ["Bücher über Illustratoren und Illustrationskunst", "Deutschsprachige Bücher" ]
    },
 
   {
@@ -1102,7 +1104,7 @@
   "bilder": [
     "images/roeher/jaguarzebra.webp"
       ],
-  "kategorie": "Zahlen und Buchstaben"
+  "kategorie": ["Zahlen und Buchstaben", "Deutschsprachige Bücher" ]
    },
 
   
