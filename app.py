@@ -1591,10 +1591,19 @@ def index():
             "lang": "Wer sein Herz in die Hand nimmt und das Zaudern überwindet, auf den wartet ein ganz besonderes Hochgefühl – mal leise, mal kraftvoll, aber immer spürbar. Davon erzählen diese Bücher auf ganz unterschiedliche Weise.\nDa sind die poetischen Bilder und Gedichte, die genau diesen Moment einfangen, in dem aus Zögern plötzlich Mut wird. Da ist Anna, die ihre Angst nicht einfach wegschiebt, sondern ihr mit Fantasie, Freundschaft und liebevoller Unterstützung begegnet – mit Riesen, Rittern und vielen anderen Begleitern durch die Nacht.\nUnd da ist der Blickwechsel: Was, wenn Angst ganz anders verstanden wird? Wenn aus dem „Angsthasen“ ein „Muthase“ wird – und plötzlich Mut, Klugheit und Sensibilität sichtbar werden, wo vorher vorschnell bewertet wurde?\nNicht zuletzt erzählen die Geschichten auch davon, wie man mit Veränderungen umgeht, neue Wege findet und den eigenen Platz behauptet – manchmal leise, manchmal überraschend.\n\nBücher für Kinder, ja – aber eigentlich für alle, die sich erinnern möchten, wie sich Mut anfühlt."
     }
 }
+   
+
     kategorien = [
-        (k, [p for p in produkte if p.get("kategorie") == k])
-        for k in kategorienamen
-    ]
+    (k, [p for p in produkte if k in p.get("kategorie", [])])
+    for k in kategorienamen
+]
+
+# leere Kategorien entfernen
+kategorien = [
+    (titel, liste)
+    for titel, liste in kategorien
+    if liste
+]
 
     return render_template(
         "index.html",
