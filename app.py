@@ -1594,16 +1594,16 @@ def index():
    
 
     kategorien = [
-    (k, [p for p in produkte if k in p.get("kategorie", [])])
-    for k in kategorienamen
-]
+        (k, [p for p in produkte if k in p.get("kategorie", [])])
+        for k in kategorienamen
+    ]
 
-# leere Kategorien entfernen
-kategorien = [
-    (titel, liste)
-    for titel, liste in kategorien
-    if liste
-]
+    # leere Kategorien entfernen
+    kategorien = [
+        (titel, liste)
+        for titel, liste in kategorien
+        if liste
+    ]
 
     return render_template(
         "index.html",
