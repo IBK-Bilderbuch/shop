@@ -842,6 +842,9 @@ body.menu-open::before {
   margin: 0;
 }
 
-.dropdown.open .dropdown-menu {
+
+
+
+.dropdown.open > .dropdown-menu {
   display: block;
 }
