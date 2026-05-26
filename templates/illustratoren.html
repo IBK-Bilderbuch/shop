@@ -60,44 +60,7 @@ body {
    HEADER
 ========================================================= */
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
-  padding: 20px 40px;
-
-  background: white;
-
-  position: sticky;
-  top: 0;
-
-  z-index: 1000;
-
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-.logo {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  color: var(--color-secondary);
-}
-
-nav a {
-  margin-left: 30px;
-
-  color: var(--color-secondary);
-
-  text-decoration: none;
-
-  font-size: 1rem;
-
-  transition: 0.3s ease;
-}
-
-nav a:hover {
-  color: var(--color-primary);
-}
 
 /* =========================================================
    PAGE TITLE
@@ -199,7 +162,7 @@ nav a:hover {
 
   object-fit: cover;
 
-  border-radius: 50% / 40%;
+  border-radius: 50% / 50%;
 
   border: 8px solid white;
 
@@ -250,14 +213,7 @@ nav a:hover {
   margin-bottom: 30px;
 }
 
-.skills {
-  display: flex;
-  flex-wrap: wrap;
 
-  gap: 10px;
-
-  margin-bottom: 30px;
-}
 
 .skills span {
 
@@ -278,11 +234,9 @@ nav a:hover {
 
   padding: 14px 28px;
 
-  background: var(--color-primary);
 
   color: white;
 
-  border-radius: 999px;
 
   text-decoration: none;
 
@@ -297,22 +251,6 @@ nav a:hover {
    FOOTER
 ========================================================= */
 
-footer {
-
-  margin-top: 100px;
-
-  padding: 40px 20px;
-
-  text-align: center;
-
-  background: #ebebe3;
-
-  color: #444;
-
-  font-family: var(--font-heading);
-
-  font-size: 1.1rem;
-}
 
 /* =========================================================
    MOBILE
@@ -371,22 +309,7 @@ footer {
 
 <body>
 
-<!-- ======================================================
-     HEADER
-======================================================= -->
 
-<header>
-
-  <div class="logo">Illustration</div>
-
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Bücher</a>
-    <a href="#">Illustratorinnen</a>
-    <a href="#">Kontakt</a>
-  </nav>
-
-</header>
 
 <!-- ======================================================
      PAGE TITLE
@@ -394,18 +317,17 @@ footer {
 
 <section class="page-title">
 
-  <h1>Unsere Illustratorinnen</h1>
-
-  <p>
-    Künstlerinnen mit einzigartigen Bildwelten,
-    poetischen Figuren und einer Liebe zum visuellen Erzählen.
-  </p>
+  <h1> IllustratorInnen</h1>
 
 </section>
 
 <!-- ======================================================
      CARD 1
 ======================================================= -->
+
+<body>
+
+{% include 'navbar.html' %}
 
 <section class="illustrator-card">
 
@@ -415,7 +337,7 @@ footer {
 
   <div class="illustrator-content">
 
-    <h2>Anna Winter</h2>
+    <h2>Helga Bansch</h2>
 
     <p class="role">
       Illustratorin & Bilderbuchkünstlerin
@@ -428,15 +350,9 @@ footer {
       mit modernen Farbkompositionen.
     </p>
 
-    <div class="skills">
-      <span>Aquarell</span>
-      <span>Character Design</span>
-      <span>Kinderbuch</span>
-      <span>Editorial</span>
-    </div>
-
+  
     <a href="#" class="portfolio-link">
-      Portfolio ansehen
+      Zu den Büchern von Helga Bansch
     </a>
 
   </div>
@@ -449,9 +365,7 @@ footer {
 
 
 
-<body>
 
-{% include 'navbar.html' %}
 
 <section class="illustrator-card">
 
