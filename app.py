@@ -995,7 +995,7 @@ def suche():
     return render_template(
         "suche.html",
         query=query,
-        ergebnisse=ergebnisse
+        produkte=ergebnisse
     )
 
 
