@@ -677,7 +677,7 @@ def lade_produkt_von_api(ean):
             # 🔥 Gewicht
 
 
-   
+            "gewicht": attr(attrs, "Gewicht"),
 
 
             # 🔥 Bilder
