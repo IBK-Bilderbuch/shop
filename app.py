@@ -989,6 +989,7 @@ def suche():
         ergebnisse=ergebnisse
     )
 
+
 @app.route("/kategorie/<name>")
 def kategorie(name):
 
@@ -996,51 +997,21 @@ def kategorie(name):
 
     for produkt in produkte:
 
-        # -----------------------------
-        # JSON Kategorien
-        # -----------------------------
         kategorien = produkt.get("kategorie", [])
 
-        if name.lower() in [k.lower() for k in kategorien]:
+        kategorien_lower = [
+            k.lower() for k in kategorien
+        ]
+
+        if name.lower() in kategorien_lower:
             ergebnisse.append(produkt)
-            continue
-
-        # -----------------------------
-        # ALTER FILTER ÜBER API
-        # -----------------------------
-        ean = produkt.get("ean")
-
-        if not ean:
-            continue
-
-        api_produkt = cached_lade_produkt_von_api(ean)
-
-        if not api_produkt:
-            continue
-
-        alter_von = str(
-            api_produkt.get("alter_von", "")
-        ).strip()
-
-        # URL → API Mapping
-        alter_mapping = {
-            "ab-3": "3",
-            "ab-4": "4",
-            "ab-5": "5",
-            "ab-6": "6",
-            "ab-7": "7"
-        }
-
-        if name in alter_mapping:
-
-            if alter_von == alter_mapping[name]:
-                ergebnisse.append(api_produkt)
 
     return render_template(
         "kategorie.html",
         produkte=ergebnisse,
         titel=name
     )
+
 # Produkt Detail
 
   
