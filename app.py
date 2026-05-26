@@ -1573,7 +1573,9 @@ def newsletterbesteatigung():
 def newsletteranmeldung():
     return render_template("newsletteranmeldung.html", user_email=session.get("user_email"))
 
-
+@app.route("/illustratoren")
+def illustratoren():
+    return render_template("illustratoren.html", user_email=session.get("user_email"))
     
 # ============================
 # INDEX HAUPTSEITE
