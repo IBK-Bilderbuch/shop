@@ -992,89 +992,55 @@ def suche():
 @app.route("/kategorie/<name>")
 def kategorie(name):
 
-    alter = request.args.get("alter")
-
     ergebnisse = []
 
     for produkt in produkte:
 
-        produkt_kategorien = produkt.get(
-            "kategorie",
-            []
-        )
+        # -----------------------------
+        # JSON Kategorien
+        # -----------------------------
+        kategorien = produkt.get("kategorie", [])
 
-        # Falls alter String statt Liste
-        if isinstance(produkt_kategorien, str):
-            produkt_kategorien = [produkt_kategorien]
-
-        kategorien_lower = [
-            k.lower()
-            for k in produkt_kategorien
-        ]
-
-        # Kategorie prüfen
-        if name.lower() not in kategorien_lower:
+        if name.lower() in [k.lower() for k in kategorien]:
+            ergebnisse.append(produkt)
             continue
 
-        # -----------------------------------
-        # API DATEN ergänzen
-        # -----------------------------------
-
+        # -----------------------------
+        # ALTER FILTER ÜBER API
+        # -----------------------------
         ean = produkt.get("ean")
 
-        if ean:
+        if not ean:
+            continue
 
-            try:
+        api_produkt = cached_lade_produkt_von_api(ean)
 
-                api = cached_lade_produkt_von_api(ean)
+        if not api_produkt:
+            continue
 
-                if api:
+        alter_von = str(
+            api_produkt.get("alter_von", "")
+        ).strip()
 
-                    # Nur fehlende Felder ergänzen
-                    for key, value in api.items():
+        # URL → API Mapping
+        alter_mapping = {
+            "ab-3": "3",
+            "ab-4": "4",
+            "ab-5": "5",
+            "ab-6": "6",
+            "ab-7": "7"
+        }
 
-                        if not produkt.get(key):
-                            produkt[key] = value
+        if name in alter_mapping:
 
-            except Exception:
-                logger.exception(
-                    f"API Fehler bei {ean}"
-                )
-
-        # -----------------------------------
-        # Altersfilter
-        # -----------------------------------
-
-        if alter:
-
-            try:
-
-                alter_int = int(alter)
-
-                alter_von = int(
-                    produkt.get("alter_von") or 0
-                )
-
-                alter_bis = int(
-                    produkt.get("alter_bis") or 99
-                )
-
-                if not (
-                    alter_von <= alter_int <= alter_bis
-                ):
-                    continue
-
-            except Exception:
-                pass
-
-        ergebnisse.append(produkt)
+            if alter_von == alter_mapping[name]:
+                ergebnisse.append(api_produkt)
 
     return render_template(
         "kategorie.html",
         produkte=ergebnisse,
         titel=name
     )
-
 # Produkt Detail
 
   
