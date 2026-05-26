@@ -670,9 +670,9 @@ def lade_produkt_von_api(ean):
             "alter_von": attr(attrs, "Altersempfehlung_von"),
             "alter_bis": attr(attrs, "Altersempfehlung_bis"),          
             # 🔥 Maße
-            "laenge": clean_mm(attr(attrs, "Laenge")),
-            "breite": clean_mm(attr(attrs, "Breite")),
-            "hoehe": clean_mm(attr(attrs, "Hoehe")),
+            "laenge": attr(attrs, "Laenge"),
+            "breite": attr(attrs, "Breite"),
+            "hoehe": attr(attrs, "Hoehe"),
 
             # 🔥 Gewicht
 
