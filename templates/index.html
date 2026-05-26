@@ -132,8 +132,7 @@
 
         <h3>{{ produkt.name }}</h3>
 
-        <p>{{ produkt.preis }} €</p>
-
+        <p>{{ "%.2f"|format(produkt.preis)|replace(".", ",") }} €</p>
         <!-- 🔹 WARENKORB -->
         <button onclick="addToCart(
           '{{ produkt.name }}',
