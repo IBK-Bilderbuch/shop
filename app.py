@@ -992,25 +992,88 @@ def suche():
 @app.route("/kategorie/<name>")
 def kategorie(name):
 
+    alter = request.args.get("alter")
+
     ergebnisse = []
 
     for produkt in produkte:
 
-        kategorien = produkt.get("kategorie", [])
+        produkt_kategorien = produkt.get(
+            "kategorie",
+            []
+        )
+
+        # Falls alter String statt Liste
+        if isinstance(produkt_kategorien, str):
+            produkt_kategorien = [produkt_kategorien]
 
         kategorien_lower = [
-            k.lower() for k in kategorien
+            k.lower()
+            for k in produkt_kategorien
         ]
 
-        if name.lower() in kategorien_lower:
-            ergebnisse.append(produkt)
+        # Kategorie prüfen
+        if name.lower() not in kategorien_lower:
+            continue
+
+        # -----------------------------------
+        # API DATEN ergänzen
+        # -----------------------------------
+
+        ean = produkt.get("ean")
+
+        if ean:
+
+            try:
+
+                api = cached_lade_produkt_von_api(ean)
+
+                if api:
+
+                    # Nur fehlende Felder ergänzen
+                    for key, value in api.items():
+
+                        if not produkt.get(key):
+                            produkt[key] = value
+
+            except Exception:
+                logger.exception(
+                    f"API Fehler bei {ean}"
+                )
+
+        # -----------------------------------
+        # Altersfilter
+        # -----------------------------------
+
+        if alter:
+
+            try:
+
+                alter_int = int(alter)
+
+                alter_von = int(
+                    produkt.get("alter_von") or 0
+                )
+
+                alter_bis = int(
+                    produkt.get("alter_bis") or 99
+                )
+
+                if not (
+                    alter_von <= alter_int <= alter_bis
+                ):
+                    continue
+
+            except Exception:
+                pass
+
+        ergebnisse.append(produkt)
 
     return render_template(
         "kategorie.html",
         produkte=ergebnisse,
         titel=name
     )
-
 
 # Produkt Detail
 
