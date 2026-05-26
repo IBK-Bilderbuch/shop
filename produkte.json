@@ -1106,6 +1106,23 @@
   "kategorie": ["Zahlen und Buchstaben", "Deutschsprachige Bücher" ]
    },
 
+  { 
+
+  "id":84, 
+
+  "name":"Wir sind alle nett - von A bis Z", 
+  "ean":"9783702659141", 
+  "beschreibung": "Ein ABC-Buch voller Witz, Fantasie und Sprachspaß! \n\n Mit frechen Reimen, verdrehten Einfällen und jeder Menge Augenzwinkern laden Heinz Janisch und Helga Bansch Kinder dazu ein, spielerisch in die Welt der Buchstaben einzutauchen. \n\n Kritiker:innen und Literaturstimmen sind begeistert: Mal wird das Buch als „herrliche Anarchie“ gefeiert, mal als fantasievoller Türöffner zum Lesenlernen. Besonders gelobt werden die schwungvollen Reime, der mitreißende Rhythmus und die quirligen Illustrationen, die Kinder sofort zum Mitsprechen, Weiterreimen und Lachen animieren. \n\n Ob vor dem Schuleintritt, beim gemeinsamen Vorlesen oder für erste eigene Leseabenteuer – dieses außergewöhnliche ABC-Buch macht Lust auf Sprache, auf Bücher und auf die Freude am Entdecken.\n\n Ein schelmisch-kluges Vergnügen von A bis Z – lehrreich, lustig und voller Fantasie.", 
+  "bilder": [ 
+    "images/wirsindallenet/wirsindallenet.webp",
+    "images/wirsindallenet/wirsindallenet1.webp",
+    "images/wirsindallenet/wirsindallenet2.webp",
+    "images/wirsindallenet/wirsindallenet3.webp"
+      ], 
+  "kategorie": ["Zahlen und Buchstaben", "Deutschsprachige Bücher", "ab 3 Jahren" ], 
+  "leseprobe_pdf": "Wir sind alle nett – von A bis Z.pdf"
+   },
+
   
     {
   "id":64,
