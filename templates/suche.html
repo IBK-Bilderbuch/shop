@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Impressum | I B K - Buchhandlung für Illustration und Bilderbücher</title>
-
-  <link rel="icon" type="image/x-icon" href="static/ficon.png">
+  <title> Suche | I B K - Buchhandlung für Illustration und Bilderbücher</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='ficon.png') }}">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   
 </head>
@@ -33,9 +30,17 @@
     <h3>Suchergebnisse für "{{ query }}":</h3>
 
     {% if ergebnisse %}
+      <div class="search-book-list">
+        {% for produkt in ergebnisse %}
+          <div class="book">
+            <img src="{{ url_for('static', filename=produkt.bilder[0]) }}" alt="{{ produkt.name }}">
+            <h3>{{ produkt.name }}</h3>
+            <p>{{ produkt.preis }} €</p>
+            <a href="{{ url_for('produkt_detail', produkt_id=produkt.id, slug=produkt.slug) }}">Mehr erfahren</a>
 
-        {% include 'produkte_liste.html' %}
-
+          </div>
+        {% endfor %}
+      </div>
     {% else %}
       <p>Keine Ergebnisse gefunden.</p>
     {% endif %}
@@ -45,5 +50,3 @@
 {% include 'footer.html' %}
 
 </html>
-
-
