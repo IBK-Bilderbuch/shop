@@ -782,6 +782,8 @@ button[type="submit"]:hover {
 /* Sichtbar wenn aktiv */
 .nav-links.active {
   display: block;
+   eight: 100vh;
+   overflow-y: auto;
 }
 
 /* Links Styling */
