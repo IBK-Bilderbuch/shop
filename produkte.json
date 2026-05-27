@@ -310,7 +310,7 @@
     "images/unsichtbar/unsichtbar2.webp",
     "images/unsichtbar/unsichtbar3.webp"
   ],
-  "kategorie":[ "Kinder und Gefühle", "Deutschsprachige Bücher" ]
+  "kategorie":[ "Kinder und Gefühle", "Deutschsprachige Bücher", "Sydney Smith" ]
 },
 
 {
@@ -323,7 +323,7 @@
   "bilder": [
     "images/handschuhe/Handschuhe.webp"
   ],
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Sydney Smith" ]
+  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Natalia Shaloshvili" ]
 },
  
 
@@ -362,7 +362,7 @@
   "bilder": [
     "images/vierkerzen/vierkerzen.webp"
   ],
-  "kategorie":[ "Weihnachten", "Deutschsprachige Bücher" ]
+  "kategorie":[ "Weihnachten", "Deutschsprachige Bücher", "Katrin Stangl" ]
 },
 
 {
@@ -589,7 +589,7 @@
     "bilder": [
     "images/waswennichmichentziehe/waswennichmichentziehe.webp"
   ],
-  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ],
+  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher", "Nicole Vögeli" ],
   "leseprobe_pdf": "waswennichmichentziehe.pdf"
 
 }, 
@@ -606,7 +606,7 @@
     "images/eisbären/eisbären2.webp",
     "images/eisbären/eisbären3.webp"
   ],
-  "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher" ],
+  "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher", "Karen Minden" ],
   "leseprobe_pdf": "eisbären.pdf"
 
 },
@@ -622,7 +622,7 @@
     "images/weitrausschwimmen/weitrausschwimmen2.webp",
     "images/weitrausschwimmen/weitrausschwimmen3.webp"
   ],
-  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ],
+  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher", "Ånsken Eckert" ],
   "leseprobe_pdf": "weitrausschwimmen.pdf"
 
 }, 
@@ -637,20 +637,20 @@
     "images/dongiovanni/dongiovanni2.webp",
     "images/dongiovanni/dongiovanni3.webp"
   ],
-  "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher" ],
+  "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher", "Anni von Bergen" ],
   "leseprobe_pdf": "dongiovanni.pdf"
 }, 
   {
   "id": 47,
   "name":"Madeleine und der Angler",
   "ean": "9783702659684",
-  "beschreibung": "Wenn Tante Charlotte in die große Kirche geht, nimmt sie Madeleine mit. Während die Tante in der Kapelle sitzt, schaut sich das Mädchen alles genau an und dann treffen sich die beiden wieder. An diesem Tag lässt Tante Charlotte auf sich warten. Madeleine spaziert hinaus ins Freie und zum Fluss hinunter, weil das Sonnenlicht so schön am Wasser glitzert und dort die Angler sitzen.Sie erfüllt sich einen lang gehegten Herzenswunsch und traut sich zu fragen, ob sie auch einmal eine Angel ins Wasser halten darf. Das genießt sie sehr, bis ein Junge sie in ein Gespräch verwickelt: Ob sie ihm den gefangenen Fisch schenken würde? Und ob sie den Fisch auch selbst töten könne? Daran hatte Madeleine noch gar nicht gedacht ... Sie gibt die Angel lieber wieder zurück und ist froh, als Tante Charlotte sie findet.<br>Mira Lobe wurde am 17. September 1913 in Görlitz in Schlesien geboren. Dass sie Talent zum Schreiben hatte, zeigte sich schon an ihren Schulaufsätzen. Sie wollte studieren und Journalistin werden, was ihr als Jüdin im nationalsozialistischen Deutschland verwehrt wurde. Daher lernte sie Maschinenstrickerin an der Berliner Modeschule. 1936 flüchtete sie nach Palästina. Dort heiratete sie den Schauspieler Friedrich Lobe, mit dem sie zwei Kinder hatte. Ab 1950 lebte sie in Wien, wo sie am 6. Februar 1995 starb. Mira Lobe hat fast 100 Kinder- und Jugendbücher geschrieben, für viele von ihnen hat sie Preise und Auszeichnungen erhalten. Zu ihren bekanntesten Werken gehören Das kleine Ich bin ich (1972), Valerie und die Gute-Nacht-Schaukel (1981), Die Geggis (1985) und Die Omama im Apfelbaum (1965).Sabine Rufener wurde 1972 in Bern in der Schweiz geboren. Schon als Kind schrieb und illustrierte sie leidenschaftlich gerne Geschichten. Nach dem Gymnasium besuchte sie unter anderem eine Fotoschule, arbeitete im Theater und gründete eine Familie, bevor sie schließlich Illustration an der Schule für Kunst und Design Zürich SKDZ studierte. Sie experimentiert gerne mit verschiedensten Drucktechniken, Collage, Frottage, aber auch mit Farbstiften und Tusche. Ihr erstes Bilderbuch wurde für den Serafina-Preis für Illustration nominiert. Sabine Rufener lebt als freie Illustratorin mit ihrer Familie und ihren Hühnern in Basel.",
+  "beschreibung": "Wenn Tante Charlotte in die große Kirche geht, nimmt sie Madeleine mit. Während die Tante in der Kapelle sitzt, schaut sich das Mädchen alles genau an und dann treffen sich die beiden wieder. An diesem Tag lässt Tante Charlotte auf sich warten. Madeleine spaziert hinaus ins Freie und zum Fluss hinunter, weil das Sonnenlicht so schön am Wasser glitzert und dort die Angler sitzen.Sie erfüllt sich einen lang gehegten Herzenswunsch und traut sich zu fragen, ob sie auch einmal eine Angel ins Wasser halten darf. Das genießt sie sehr, bis ein Junge sie in ein Gespräch verwickelt: Ob sie ihm den gefangenen Fisch schenken würde? Und ob sie den Fisch auch selbst töten könne? Daran hatte Madeleine noch gar nicht gedacht ... Sie gibt die Angel lieber wieder zurück und ist froh, als Tante Charlotte sie findet.  \n\n Mira Lobe wurde am 17. September 1913 in Görlitz in Schlesien geboren. Dass sie Talent zum Schreiben hatte, zeigte sich schon an ihren Schulaufsätzen. Sie wollte studieren und Journalistin werden, was ihr als Jüdin im nationalsozialistischen Deutschland verwehrt wurde. Daher lernte sie Maschinenstrickerin an der Berliner Modeschule. 1936 flüchtete sie nach Palästina. Dort heiratete sie den Schauspieler Friedrich Lobe, mit dem sie zwei Kinder hatte. Ab 1950 lebte sie in Wien, wo sie am 6. Februar 1995 starb. Mira Lobe hat fast 100 Kinder- und Jugendbücher geschrieben, für viele von ihnen hat sie Preise und Auszeichnungen erhalten. Zu ihren bekanntesten Werken gehören Das kleine Ich bin ich (1972), Valerie und die Gute-Nacht-Schaukel (1981), Die Geggis (1985) und Die Omama im Apfelbaum (1965). \n\n Sabine Rufener wurde 1972 in Bern in der Schweiz geboren. Schon als Kind schrieb und illustrierte sie leidenschaftlich gerne Geschichten. Nach dem Gymnasium besuchte sie unter anderem eine Fotoschule, arbeitete im Theater und gründete eine Familie, bevor sie schließlich Illustration an der Schule für Kunst und Design Zürich SKDZ studierte. Sie experimentiert gerne mit verschiedensten Drucktechniken, Collage, Frottage, aber auch mit Farbstiften und Tusche. Ihr erstes Bilderbuch wurde für den Serafina-Preis für Illustration nominiert. Sabine Rufener lebt als freie Illustratorin mit ihrer Familie und ihren Hühnern in Basel.",
   "bilder": [
     "images/madeleine/madeleine.webp",
     "images/madeleine/madeleine1.webp",
     "images/madeleine/madeleine2.webp"
   ],
-  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ],
+  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher", "Sabine Rufener" ],
   "leseprobe_pdf": "madeleine.pdf"
 },
 
@@ -665,7 +665,7 @@
     "images/huebsch/huebsch2.webp",
     "images/huebsch/huebsch3.webp"
    ],
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher" ],
+  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Canizales"  ],
   "leseprobe_pdf": "huebsch.pdf"
   },
 
@@ -745,7 +745,7 @@
        "bilder": [
     "images/grossstaedte/sasek.webp"
   ],   
-  "kategorie": ["Bücher über Illustratoren und Illustrationskunst", "Deutschsprachige Bücher" ]
+  "kategorie": ["Bücher über Illustratoren und Illustrationskunst", "Deutschsprachige Bücher","Miroslav Šašek" ]
 },
 
      {
@@ -756,7 +756,7 @@
      "bilder": [
     "images/lebensende/entetod.webp"
   ],   
-  "kategorie": ["Gedanken zum Lebensende", "Deutschsprachige Bücher" ],
+  "kategorie": ["Gedanken zum Lebensende", "Deutschsprachige Bücher", "Wolf Erlbruch" ],
  "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-461-8"
 
 },
@@ -872,7 +872,7 @@
       ],
     "beschreibung": "In diesem farbenfrohen Pappbuch, der Bestseller-Illustratorin Mies van Hout, werden Kleinkinder aufgefordert, die Frage 'Welches Jungtier gehört zu welchem Papa?' zu beantworten. Dazu sollen sie zu den abgebildeten Kindern den richtigen Papa finden. Die vier möglichen Väter sehen alle unterschiedlich aus, ähneln aber alle stark dem Kind. Man muss ganz genau hinsehen, um die richtige Lösung auf der nächsten Doppelseite zu finden. Ein wunderschönes Suchbilderbuch zum gemeinsamen Entdecken und Schmunzeln.\n\nMies van Hout wurde 1962 geboren und studierte an der Kunstakademie in Groningen Grafikdesign. Seit 1989 arbeitet sie als freie Illustratorin und Grafikdesignerin und hat inzwischen über 100 Bilderbücher illustriert. Ihr gelingt es, mit einfachen Mitteln und doch sehr überzeugend auf ungewöhnliche Weise Gefühle in Figuren und Bilder umzuwandeln. Sie hält uns mit ihren Bilderbüchern immer wieder einen Spiegel vor: Monster sind Freunde, Fische haben Stimmungen und ein Oktopus sucht Hilfe. Die Illustrationen von Mies van Hout sind von großer Farbtiefe und Brillanz. Sie visualisieren Emotionen auf einzigartige Weise, lassen den Betrachter die eigene Gefühlswelt aus der Distanz sehen und öffnen so auch neue Wege, darüber zu sprechen.",
     
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher" ]
+  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Mies van Hout"]
 
    },
 
@@ -898,7 +898,7 @@
       ],
   "beschreibung": "Im Frühling sind sie angekommen, im Herbst müssen Lukas neue Freunde Oleg, Madame Petrova und Paulinchen weiterziehen, sie sind ja schließlich Zugvögel. Doch sie wollen bleiben, wollen den Winter sehen und in die Schule gehen. Aber wo sollen sie bloß hin? Wovon sollen sie leben? Zum Glück gibt es die gute Frau Lorenz, die ein großes Herz hat und ein großes Nest für alle, die nicht wissen, wohin. Bei ihr sind die drei Freunde gut aufgehoben. In wunderschönen, feinsinnigen und zugleich kräftigen Bildern erzählt das Ausnahmetalent Michael Roher seine neue Geschichte: vom Sesshaftwerden einer Familie unter erschwerten Bedingungen, ein Plädoyer für Toleranz und Liebe, eine Würdigung von Menschlichkeit und Hilfsbereitschaft.",
 
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher" ]
+  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Michael Roher" ]
 
    },
 
@@ -949,7 +949,7 @@
     "bilder": [
     "images/roeher/fridolin.webp"
       ],
-  "kategorie": ["Wortlust und Zeichenfreude", "Deutschsprachige Bücher" ]
+  "kategorie": ["Wortlust und Zeichenfreude", "Deutschsprachige Bücher",  "Michael Roher" ]
    },
 
    {
@@ -984,7 +984,7 @@
   "bilder": [
     "images/miesvanhout/thisismydady.webp"
       ],
-  "kategorie": ["Dazugehören", "Englischsprachige Bücher" ]
+  "kategorie": ["Dazugehören", "Englischsprachige Bücher", "Mies van Hout"]
    },
 
   {
@@ -1011,7 +1011,7 @@
     "images/zaeri/klugefrauen3.webp",
     "images/zaeri/klugefrauen4.webp"
       ],
-  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher" ]
+  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher",  "Mehrdad Zaeri"  ]
 
    },
 
@@ -1028,7 +1028,7 @@
     "images/zaeri/dastraumbuch4.webp"
 
       ],
-  "kategorie": ["Wortlust und Zeichenfreude", "Deutschsprachige Bücher" ]
+  "kategorie": ["Wortlust und Zeichenfreude", "Deutschsprachige Bücher",  "Mehrdad Zaeri" ]
    },
 
   {
@@ -1039,7 +1039,7 @@
   "bilder": [
     "images/zaeri/diegeburt.webp"
       ],
-  "kategorie": ["Weihnachten", "Deutschsprachige Bücher" ]
+  "kategorie": ["Weihnachten", "Deutschsprachige Bücher",  "Mehrdad Zaeri"  ]
    },
 
   {
