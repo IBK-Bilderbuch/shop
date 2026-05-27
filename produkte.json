@@ -1125,7 +1125,7 @@
 
 
    {
-  "id":65,
+  "id":85,
   "name":"Der Wal im Garten",
   "ean":"9783948743000",
   "beschreibung": "Der Garten, in dem diese Geschichte spielt, ist groß und wild. Es ist ein sehr alter Garten. Riesige Bäume und seltsame Blumen wachsen hier; es gibt winzige Käfer und große Spinnen, wilde Katzen und freche Vögel. In der Mitte des Gartens steht ein altes, kleines Haus. In diesem Haus lebt Lille mit ihrer Oma. Und dann, eines Morgens, liegt da ein riesiger Wal. Ausgerechnet auf Lilles Fahrrad! Und schlechte Laune hat er auch noch ...In Sabine Rufeners Bilderbuchdebüt lernen das Mädchen und der Wal nach und nach miteinander auszukommen. Bis die Sehnsucht nach dem Meer immer größer und der Wal immer kleiner wird.",
@@ -1140,7 +1140,29 @@
   "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "ab 5 Jahren", "Sabine Rufener"],
    "leseprobe_url": "https://www.book2look.com/book/DwejKoDYHF"
 
-   }
+   },
+
+
+   {
+  "id":86,
+  "name":"Emma und der traurige Hund",
+  "ean":"9783948743352",
+  "beschreibung": "Der große struppige Hund, den Emma am Rand der Wiese trifft, ist traurig. So traurig, dass er keinen Sinn mehr im Leben sieht. Da kann Emma nicht tatenlos zusehen! Das Mädchen beschließt, dem Hund gute Gründe zu bringen, warum das Leben lebenswert ist - jeden Tag aufs Neue. Natürlich ist der Hund mit Emmas Vorschlägen nie zufrie-den, aber großzügig, wie er ist, gibt er ihr immer wieder eine neue Chance, den einen wirklich guten Grund zu finden. Es entwickelt sich ein Gespräch zwischen zwei ungleichen Charakteren über den Sinn des Lebens, über Freundschaft und nicht zuletzt über Erdbeereis.Manchmal ist man versucht, die ganz großen Fragen zu stellen, aber manchmal hilft es auch ein-fach, die Perspektive zu wechseln. In diesem Fall muss der Hund buchstäblich eine andere Brille aufsetzen, um die Welt mit neuen Augen zu sehen. Unscharf ist sie irgendwie schöner, findet er. Das ist erstmal genug.",
+
+  "bilder": [
+    "images/emmaundhund/emmaundhund.webp",
+    "images/emmaundhund/emmaundhund1.webp",
+    "images/emmaundhund/emmaundhund2.webp",
+    "images/emmaundhund/emmaundhund3.webp",
+    "images/emmaundhund/emmaundhund4.webp",
+    "images/emmaundhund/emmaundhund5.webp",
+    "images/emmaundhund/emmaundhund6.webp"
+    ],
+  "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher", "ab 5 Jahren", "Sabine Rufener"],
+   "leseprobe_url": "https://www.book2look.de/book/hsgkkwt8Q3"
+
+   },
+  
 
   
     {
