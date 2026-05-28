@@ -132,14 +132,17 @@
 
         <h3>{{ produkt.name }}</h3>
 
-        <p>{{ produkt.preis }} </p>
+        <p>{{ produkt.preis }} €</p>
+
         <!-- 🔹 WARENKORB -->
-       <button onclick="addToCart(
-  '{{ produkt.name }}',
-  {{ produkt.preis | replace(',', '.') | replace(' €', '') | replace('€', '') | float }},
-  '{{ url_for('static', filename=produkt.bilder[0]) }}',
-  '{{ produkt.ean }}'
-)">In den Warenkorb 🛒</button>
+        <button onclick="addToCart(
+          '{{ produkt.name }}',
+          {{ produkt.preis }},
+          '{{ src }}',
+          '{{ produkt.ean }}'
+        )">
+          In den Warenkorb
+        </button>
 
       </div>
     {% endfor %}
