@@ -716,7 +716,7 @@ def lade_bestand_von_api(ean):
 
         return {
             "bestand": to_int(res.get("Bestand")),
-            "preis": str(res.get("Preis")).replace(".", ",").strip() + " €",
+            "preis": to_float(res.get("Preis")),
             "erfuellungsrate": res.get("Erfuellungsrate"),
             "handling_zeit": res.get("Handling_Zeit_in_Werktagen")
 
