@@ -63,7 +63,7 @@
         <p class="author"> {{ produkt.autor }}</p>
         <p class="illustrator"> {{ produkt.illustrator }}</p>
 
-        <p class="price">{{ produkt.preis }}</p>
+        <p class="price">{{ "%.2f"|format(produkt.preis) }} €</p>
          
       
 
@@ -113,7 +113,7 @@
 
   <p><strong>Maße:</strong>
     {% if produkt.laenge and produkt.breite and produkt.hoehe %}
-      {{ produkt.laenge }} × {{ produkt.breite }} × {{ produkt.hoehe }}
+      {{ produkt.laenge }} × {{ produkt.breite }} × {{ produkt.hoehe }} mm
     {% else %}
       –
     {% endif %}
