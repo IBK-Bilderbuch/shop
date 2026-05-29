@@ -1233,6 +1233,32 @@
    },
    {
   "id":91,
+  "name":"Der Totenkopf",
+  "ean":"9783314106576",
+  "beschreibung": "",
+  "bilder": [
+    "images/"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Jon klassen" ]
+   "leseprobe_url": ""
+
+   },
+
+  {
+  "id":92,
+  "name":"",
+  "ean":"0",
+  "beschreibung": "",
+  "bilder": [
+    "images/"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Jon klassen" ]
+   "leseprobe_url": ""
+
+   },
+
+  {
+  "id":93,
   "name":"",
   "ean":"0",
   "beschreibung": "",
