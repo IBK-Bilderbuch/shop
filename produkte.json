@@ -1199,7 +1199,8 @@
   "id":89,
   "name":"Kreis",
   "ean":"0",
-  "beschreibung": "",
+  "beschreibung": "Kreis mag Geschichten. Am liebsten sitzt er still da und hört zu. Doch eines Tages beginnt er zu zweifeln: Ist eine Geschichte noch dieselbe, wenn man sie weitererzählt? Und wem gehört sie eigentlich?\n\n Mit wenigen Worten und großer Klarheit erzählen Mac Barnett und Jon Klassen eine ruhige, feinsinnige Geschichte über Zuhören, Erzählen und Vertrauen. Die reduzierten Formen und warmen Farben lassen viel Raum für Zwischentöne — leise komisch, klug und überraschend tief.\n\n Wie auch Dreieck und Quadrat lebt dieses Bilderbuch von seiner stillen Atmosphäre und den Gedanken, die noch lange nach der letzten Seite bleiben.",
+     
   "bilder": [
     "images/klassen/kreis.webp",
     "images/klassen/kreis1.webp",
@@ -1218,7 +1219,7 @@
   "id":90,
   "name":"Quadrat",
   "ean":"9783314104961",
-  "beschreibung": "",
+  "beschreibung": "Quadrat liebt Ordnung. Seine Tage folgen festen Wegen, seine Steine liegen ordentlich gestapelt, und alles hat seinen Platz. Doch als Kreis ihn um einen Gefallen bittet, gerät seine ruhige Welt langsam aus dem Gleichgewicht. \n\n Mit reduzierten Formen, sanften Farben und viel feinem Humor erzählen Jon Klassen und Mac Barnett eine stille Geschichte über Freundschaft, Erwartungen und den Mut, etwas Neues zu versuchen. Wie schon die anderen Bücher der Reihe lebt auch dieses Bilderbuch von dem, was unausgesprochen bleibt — leicht erzählt und voller Tiefe.",
   "bilder": [
     "images/klassen/quadrat.webp",
     "images/klassen/quadrat1.webp",
