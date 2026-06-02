@@ -30,3 +30,5 @@ Flask-WTF==1.2.1
 flask-limiter
 
 paypal-checkout-serversdk
+
+pypdf==4.3.1
