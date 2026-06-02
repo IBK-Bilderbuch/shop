@@ -207,6 +207,11 @@
 
 </div>
 
+{% include 'footer.html' %}
+
+</body>
+
+
 <!-- PayPal SDK -->
 <script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR&disable-funding=sepa,sofort,giropay,bancontact,eps,ideal"></script>
 
@@ -272,8 +277,5 @@ paypal.Buttons({
     }
 }).render('#paypal-button-container');
 </script>
-{% include 'footer.html' %}
-
-</body>
 
 </html>
