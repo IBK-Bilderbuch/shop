@@ -1,14 +1,20 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geschenkgutschein | I B K - Buchhandlung für Illustration und Bilderbücher</title>
+  <title> Gutschein | I B K - Buchhandlung für Illustration und Bilderbücher </title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='ficon.png') }}">
+  <meta name="description" content="Details zum Buch '{{ produkt.name }}'. Jetzt entdecken und bestellen.">
 
-  <link rel="icon" type="image/x-icon" href="static/ficon.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='product.css') }}" />
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
 
 
 <style>
@@ -140,7 +146,6 @@
   }
 </style>
 </head>
-{% include 'navbar.html' %}
 
 <body>
 
@@ -259,8 +264,8 @@ paypal.Buttons({
     }
 }).render('#paypal-button-container');
 </script>
+{% include 'footer.html' %}
 
 </body>
-{% include 'footer.html' %}
 
 </html>
