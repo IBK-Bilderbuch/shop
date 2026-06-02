@@ -41,6 +41,10 @@ from sitemap_generator import build_sitemap_xml
 import xml.etree.ElementTree as ET
 from flask import Response
 
+
+from gutschein_pdf import send_gutschein_email
+
+
 # =====================================================
 # CONFIG
 # =====================================================
@@ -500,19 +504,14 @@ def capture_paypal_order(order_id):
 
                 try:
 
-                    send_email(
-                        subject="Dein Gutschein",
+
+                    send_gutschein_email(
                         recipient=session.get("checkout_email"),
-                        html=f"""
-                            <h2>Dein Gutschein</h2>
-
-                            <p>Code:</p>
-
-                            <h1>{code}</h1>
-
-                            <p>Wert: {item["price"]:.2f} €</p>
-                        """
+                        code=code,
+                        betrag=item["price"],
                     )
+
+                   
 
                 except Exception:
                     logger.exception(
