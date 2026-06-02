@@ -160,10 +160,18 @@
 </header>
 <div class="container">
 
-  <!-- LINKS: Bild -->
+<div class="carousel">
+  <img class="carousel-image active" src="{{ url_for('static', filename='istatic/mages/gutschein1.webp') }}" alt="Geschenkgutschein">
+  <img class="carousel-image" src="{{ url_for('static', filename='static/images/gutschein.webp') }}" alt="Geschenkgutschein">
+  <img class="carousel-image" src="{{ url_for('static', filename='static/images/gutschein2.webp') }}" alt="Geschenkgutschein">
+  
+  <button class="product-prev">❮</button>
+  <button class="product-next">❯</button>
+</div>
+  <!-- LINKS: Bild 
 <div class="gutschein-image">
   <img src="static/images/gutschein.webp" alt="Geschenkgutschein">
-</div>
+</div> -->
   <!-- RECHTS: Formular -->
   <div class="gutschein-form">
     <h1>Geschenkgutschein</h1>
