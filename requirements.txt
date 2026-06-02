@@ -32,3 +32,7 @@ flask-limiter
 paypal-checkout-serversdk
 
 pypdf==4.3.1
+
+
+reportlab==4.2.5
+Pillow==10.4.0
