@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geschenkgutschein | I B K - Buchhandlung für Illustration und Bilderbücher</title>
+
+  <link rel="icon" type="image/x-icon" href="static/ficon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f7f7f7;
+    color: #333;
+    padding: 3rem 1rem;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 2.5rem;
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+
+  /* ---- LINKE SEITE: Bild ---- */
+  .gutschein-image {
+    flex: 0 0 340px;
+    height: 380px;
+    background: #e8e8e8;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 14px;
+    overflow: hidden;
+  }
+
+  .gutschein-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* ---- RECHTE SEITE: Formular ---- */
+  .gutschein-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gutschein-form h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 30px;
+    font-weight: 400;
+    color: #1e2d4a;
+    margin-bottom: 0.4rem;
+  }
+
+  .gutschein-form > p {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .price {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 22px;
+    color: #1e2d4a;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .gutschein-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gutschein-box label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e2d4a;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    border: 1px solid #d1d9e0;
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  select.input-field {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  .input-field:focus {
+    border-color: #3b7fc4;
+    box-shadow: 0 0 0 3px rgba(59,127,196,0.12);
+  }
+
+  .hint {
+    font-size: 13px !important;
+    color: #3b7fc4 !important;
+    margin-top: 6px !important;
+    line-height: 1.5 !important;
+  }
+
+  #paypal-button-container {
+    margin-top: 28px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- LINKS: Bild -->
+<div class="gutschein-image">
+  <img src="images/gutschein.webp" alt="Geschenkgutschein">
+</div>
+  <!-- RECHTS: Formular -->
+  <div class="gutschein-form">
+    <h1>Geschenkgutschein</h1>
+    <p>
+      Verschenke einen digitalen Gutschein für den Shop.
+      Der Gutscheincode wird nach erfolgreicher Zahlung
+      automatisch per E-Mail verschickt.
+    </p>
+
+    <div class="price" id="preis-anzeige">50,00 €</div>
+
+    <div class="gutschein-box">
+      <!-- Betrag -->
+      <label for="gutschein-betrag">Gutscheinbetrag</label>
+      <select id="gutschein-betrag" class="input-field" onchange="updatePreis(this.value)">
+        <option value="0.01">0.01 €</option>
+        <option value="25">25 €</option>
+        <option value="50" selected>50 €</option>
+        <option value="100">100 €</option>
+      </select>
+
+      <!-- E-Mail -->
+      <label for="email" style="margin-top:20px;">E-Mail-Adresse</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        class="input-field"
+        placeholder="deine@email.de"
+        required
+      >
+
+      <p class="hint" style="font-size:14px; opacity:0.8; margin-top:8px;">
+        Der Gutscheincode wird nach erfolgreicher
+        Zahlung an diese E-Mail-Adresse gesendet.
+      </p>
+
+      <!-- PayPal -->
+      <div id="paypal-button-container" style="margin-top:30px;"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR&disable-funding=sepa,sofort,giropay,bancontact,eps,ideal"></script>
+
+<script>
+  
+function updatePreis(val) {
+  const num = parseFloat(val);
+  document.getElementById('preis-anzeige').textContent =
+    num.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+}
+
+paypal.Buttons({
+    createOrder: function(data, actions) {
+        const betrag = document.getElementById(
+            "gutschein-betrag"
+        ).value;
+        const email = document.getElementById(
+            "email"
+        ).value.trim();
+        if (!email) {
+            alert("Bitte E-Mail-Adresse eingeben.");
+            return;
+        }
+        return fetch("/gutschein", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({
+                betrag: betrag,
+                email: email
+            })
+        })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error("Gutschein konnte nicht erstellt werden");
+            }
+            return fetch("/create-paypal-order", { method: "POST" });
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (!data.id) {
+                throw new Error("PayPal Order fehlgeschlagen");
+            }
+            return data.id;
+        });
+    },
+    onApprove: function(data, actions) {
+        return fetch("/capture-paypal-order/" + data.orderID, { method: "POST" })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === "success") {
+                window.location.href = "/bestelldanke";
+            } else {
+                console.error(data);
+                alert("Fehler bei der Zahlung.");
+            }
+        });
+    },
+    onError: function(err) {
+        console.error("PayPal Fehler:", err);
+        alert("PayPal-Zahlung konnte nicht gestartet werden.");
+    }
+}).render('#paypal-button-container');
+</script>
+
+</body>
+</html>
