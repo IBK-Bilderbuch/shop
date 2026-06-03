@@ -1586,8 +1586,8 @@ def index():
     kategorienamen = [
        "Jacominus Gainsborough", "Wortlust und Zeichenfreude",  "Zahlen und Buchstaben", "Große Städte, große Zeichner", "Mut oder Angst?!", 
          "Schlaues Mitraten", "Klassiker", "Gedanken zum Lebensende", "Monstergeschichten", 
-        "Wichtige Fragen", 
-        "Kinder und Gefühle", "Dazugehören", "Weihnachten", "Bücher über Illustratoren und Illustrationskunst"
+        "Wichtige Fragen", "Kunst und Identität", 
+        "Kinder und Gefühle",  "Dazugehören", "Weihnachten", "Bücher über Illustratoren und Illustrationskunst"
     ]
 
     kategorie_beschreibungen = {
