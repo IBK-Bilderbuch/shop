@@ -3,385 +3,312 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Impressum | I B K - Buchhandlung für Illustration und Bilderbücher</title>
+  <title>IllustratorInnen | IBK</title>
 
-  <link rel="icon" type="image/x-icon" href="static/ficon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <style>
+
+    /* =========================================================
+       ROOT VARIABLES
+    ========================================================= */
+
+    :root {
+      --color-primary:    #7393B3;
+      --color-secondary:  #0c4d77;
+      --color-bg:         #f8f7f4;
+      --color-card:       #ffffff;
+      --color-accent:     #dbe6ef;
+      --color-text:       #2f2f2f;
+      --color-soft-text:  #888;
+      --font-heading:     'Cormorant', serif;
+      --font-body:        'Jost', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      min-height: 100vh;
+    }
+
+    /* =========================================================
+       PLACEHOLDER NAVBAR (remove when using real navbar.html)
+    ========================================================= */
+
+  
+    /* =========================================================
+       PAGE TITLE
+    ========================================================= */
+
+    .page-header {
+      padding: 72px 60px 48px;
+      max-width: 1300px;
+      margin: 0 auto;
+      border-bottom: 1px solid #e8e4de;
+    }
+
+    .page-header h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 400;
+      color: var(--color-secondary);
+      letter-spacing: 0.01em;
+      line-height: 1;
+    }
+
+    .page-header p {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-soft-text);
+    }
+
+    /* =========================================================
+       ILLUSTRATOR CARD
+    ========================================================= */
+
+    .illustrator-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 72px;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 72px 60px;
+      border-bottom: 1px solid #e8e4de;
+      transition: background 0.3s;
+    }
+
+    .illustrator-card:last-of-type {
+      border-bottom: none;
+    }
+
+    /* =========================================================
+       IMAGE
+    ========================================================= */
+
+    .illustrator-image {
+      flex: 0 0 340px;
+      width: 340px;
+    }
+
+    .illustrator-image img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      outline: 1px solid rgba(115,147,179,0.18);
+      outline-offset: 6px;
+    }
+
+    /* =========================================================
+       CONTENT
+    ========================================================= */
+
+    .illustrator-content {
+      flex: 1;
+      padding-top: 6px;
+    }
+
+    .role {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 14px;
+    }
+
+    .illustrator-content h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      font-weight: 500;
+      color: var(--color-secondary);
+      line-height: 1.08;
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+    }
+
+    .bio {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #444;
+      margin-bottom: 36px;
+      max-width: 640px;
+    }
+
+    /* =========================================================
+       BUTTON  — matching screenshot style:
+       rounded corners, muted blue, subtle border, no fill flash
+    ========================================================= */
+
+    .portfolio-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 24px;
+      border-radius: 6px;
+      background: var(--color-secondary);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid var(--color-secondary);
+      transition: background 0.22s, color 0.22s, border-color 0.22s;
+      cursor: pointer;
+    }
+
+    .portfolio-link:hover {
+      background: transparent;
+      color: var(--color-secondary);
+    }
+
+    .portfolio-link i {
+      font-size: 0.7rem;
+      opacity: 0.75;
+    }
+
+  
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 900px) {
+      .navbar { padding: 18px 24px; }
+      .page-header { padding: 48px 24px 32px; }
+
+      .illustrator-card {
+        flex-direction: column;
+        padding: 48px 24px;
+        gap: 36px;
+      }
+
+      .illustrator-image {
+        flex: none;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+
+      .illustrator-content h2 { font-size: 2.2rem; }
+      .bio { font-size: 0.9rem; }
+    }
+
+  </style>
 </head>
-
-
-<style>
-
-/* =========================================================
-   ROOT VARIABLES
-========================================================= */
-
-:root {
-  --color-primary: #7393B3;
-  --color-secondary: #0c4d77;
-
-  --color-bg: #f8f7f4;
-  --color-card: #ffffff;
-  --color-accent: #dbe6ef;
-
-  --color-text: #2f2f2f;
-  --color-soft-text: #666;
-
-  --font-heading: 'Cormorant', serif;
-  --font-body: 'Segoe UI', sans-serif;
-}
-
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* =========================================================
-   BODY
-========================================================= */
-
-body {
-  background: var(--color-bg);
-  color: var(--color-text);
-
-  font-family: var(--font-body);
-
-  min-height: 100vh;
-}
-
-
-
-/* =========================================================
-   ILLUSTRATOR CARD
-========================================================= */
-
-.illustrator-card {
-
-  display: flex;
-  align-items: center;
-
-  gap: 60px;
-
-  max-width: 1300px;
-
-  margin: 60px auto;
-
-  padding: 60px;
-
-
-
-  position: relative;
-
-  overflow: hidden;
-
-}
-
-/* Decorative circle */
-
-.llustrator-card::before {
-  content: "";
-
-  position: absolute;
-
-  width: 350px;
-  height: 350px;
-
-  background: var(--color-accent);
-
-  border-radius: 50%;
-
-  top: -140px;
-  left: -140px;
-
-  opacity: 0.6;
-}
-
-/* =========================================================
-   IMAGE
-========================================================= */
-
-.illustrator-image {
-  width: 420px;
-  height: 420px;
-  flex: 0 0 420px;
-}
-
-.illustrator-image img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  border-radius: 50%;
-
-  border: 8px solid white;
-
-  box-shadow:
-    0 10px 25px rgba(0,0,0,0.12);
-
-  display: block;
-}
-
-/* =========================================================
-   CONTENT
-========================================================= */
-
-.illustrator-content {
-  flex: 1;
-
-  position: relative;
-  z-index: 2;
-}
-
-
-
-.role {
-  color: var(--color-primary);
-
-  text-transform: uppercase;
-
-  letter-spacing: 1px;
-
-  margin-bottom: 25px;
-
-  font-size: 1rem;
-}
-
-.bio {
-  font-family: var(--font-heading);
-
-  font-size: 1.1rem;
-
-  line-height: 1.5;
-
-  margin-bottom: 30px;
-}
-
-
-
-
-.portfolio-link {
-
-  display: inline-block;
-  padding: 14px 28px;
-  background: var(--color-secondary)
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 900px) {
-
-  .illustrator-card {
-
-    flex-direction: column;
-
-    text-align: center;
-
-    padding: 40px 25px;
-
-    gap: 40px;
-  }
-
-  .illustrator-image {
-    flex: none;
-  }
-
-  .illustrator-image img {
-
-    width: 230px;
-    height: 230px;
-  }
-
-  .illustrator-content h2 {
-    font-size: 2.4rem;
-  }
-
-  .bio {
-    font-size: 1rem;
-  }
-
-  .skills {
-    justify-content: center;
-  }
-
-  .page-title h1 {
-    font-size: 3rem;
-  }
-
-  header {
-    padding: 20px;
-  }
-
-  nav a {
-    margin-left: 15px;
-  }
-}
-
-</style>
-</head>
-
 <body>
 
 
-
-<!-- ======================================================
-     PAGE TITLE
-======================================================= -->
 {% include 'navbar.html' %}
 
-<div class="rechtliches">
-
-  <h1> IllustratorInnen</h1>
-
-</div>
-
-<!-- ======================================================
-     CARD 1
-======================================================= -->
-
-<section class="illustrator-card">
-
-  <div class="illustrator-image">
-    <img src="{{ url_for('static', filename='images/illustratoren/graboff.webp') }}" alt="Illustratorin">
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <p>Entdecken Sie</p>
+    <h1>IllustratorInnen</h1>
   </div>
-
-  <div class="illustrator-content">
-
-    <h2>Abner Graboff</h2>
-
-    <p class="role">
-      USA, RUssland
-    </p>
-
-    <p class="bio">
-      
-      Abner Graboff war ein amerikanischer Illustrator und Grafikdesigner, Sohn russischer Einwanderer,
-      die in New Jersey eine kleine Wäscherei führten. 
-      Nach der Schule erhielt er ein Stipendium für die Parsons School of Design in New York. <br><br>
-      Graboffs Arbeiten entstanden vor allem in den 1950er- und 60er-Jahren. 
-      Bekannt wurde er durch seine unverwechselbaren Kinderbuchillustrationen, die mit reduzierten Formen, 
-      lebendigen Farben und einer außergewöhnlichen Klarheit arbeiteten. 
-      Sein erstes Kinderbuch The Sun Looks Down wurde 1954 von der New York Times als eines der bestillustrierten Kinderbücher ausgezeichnet. 
-      <br><br> Neben Kinderbüchern entwarf Graboff auch Schallplattencover, gestaltete Arbeiten 
-      für frühes Fernsehen und illustrierte Musik- und Kochbücher. Seine Bildwelten verbinden grafische Strenge mit Leichtigkeit und Humor 
-      — immer modern, nie laut. Bis heute wirken seine Kompositionen erstaunlich frisch und zeitlos.
-
-
-    <a href="{{ url_for('kategorie', name='Abner Graboff') }}" class="portfolio-link">
-      Zu den Büchern von Abner Graboff
-    </a>
-
-  </div>
-
-</section>
-
-
 
   <!-- ======================================================
-     CARD 2
-======================================================= -->
+       CARD 1 — Abner Graboff
+  ======================================================= -->
+  <section class="illustrator-card">
+    <div class="illustrator-image">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" alt="Abner Graboff">
+    </div>
+    <div class="illustrator-content">
+      <h2>Abner Graboff</h2>
+      <p class="role">USA &nbsp;·&nbsp; Russland</p>
 
-  
-<section class="illustrator-card">
+      <p class="bio">
+        Abner Graboff war ein amerikanischer Illustrator und Grafikdesigner, Sohn russischer Einwanderer,
+        die in New Jersey eine kleine Wäscherei führten.
+        Nach der Schule erhielt er ein Stipendium für die Parsons School of Design in New York.<br><br>
+        Graboffs Arbeiten entstanden vor allem in den 1950er- und 60er-Jahren.
+        Bekannt wurde er durch seine unverwechselbaren Kinderbuchillustrationen, die mit reduzierten Formen,
+        lebendigen Farben und einer außergewöhnlichen Klarheit arbeiteten.
+        Sein erstes Kinderbuch <em>The Sun Looks Down</em> wurde 1954 von der <em>New York Times</em> als eines der bestillustrierten
+        Kinderbücher ausgezeichnet.<br><br>
+        Neben Kinderbüchern entwarf Graboff auch Schallplattencover und illustrierte Musik- und Kochbücher.
+        Seine Bildwelten verbinden grafische Strenge mit Leichtigkeit und Humor — immer modern, nie laut.
+      </p>
+      <a href="#" class="portfolio-link">
+        Zu den Büchern <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
 
-  <div class="illustrator-image">
-    <img src="{{ url_for('static', filename='images/illustratoren/helgabansch.webp') }}" alt="Illustratorin">
-  </div>
+  <!-- ======================================================
+       CARD 2 — Helga Bansch
+  ======================================================= -->
+  <section class="illustrator-card">
+    <div class="illustrator-image">
+      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop" alt="Helga Bansch">
+    </div>
+    <div class="illustrator-content">
+      <h2>Helga Bansch</h2>
+      <p class="role">Österreich</p>
+      
+      <p class="bio">
+        Helga Bansch zählt zu den bedeutendsten österreichischen Illustratorinnen und Autorinnen im Bereich Kinder- und Bilderbuch.
+        Geboren in Leoben in der Steiermark, arbeitete sie zunächst 25 Jahre lang als Volksschullehrerin,
+        bevor sie sich ab 2003 ganz der freien Kunst und Illustration widmete.<br><br>
+        Ihre Illustrationen sind poetisch und voller feiner Details. Sie kombiniert Collage, Malerei und Zeichnung
+        zu atmosphärischen Bildwelten, die Kinder ebenso ansprechen wie Erwachsene.<br><br>
+        International wurde ihre Arbeit in Bologna, Sarmede, Bratislava, New York und Sharjah gezeigt.
+        2024 erhielt sie den Österreichischen Kunstpreis für Kinder- und Jugendliteratur.
+        Ihre Werke wurden außerdem für den H.C. Andersen Preis nominiert.
+      </p>
+      <a href="#" class="portfolio-link">
+        Zu den Büchern <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
 
-  <div class="illustrator-content">
+  <!-- ======================================================
+       CARD 3 — Jon Klassen
+  ======================================================= -->
+  <section class="illustrator-card">
+    <div class="illustrator-image">
+      <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=800&auto=format&fit=crop" alt="Jon Klassen">
+    </div>
+    <div class="illustrator-content">
+      <h2>Jon Klassen</h2>
+     <p class="role">Kanada</p>
 
-    <h2>Helga Bansch</h2>
+      <p class="bio">
+        Jon Klassen gehört zu den prägenden Stimmen des zeitgenössischen Kinderbuchs.
+        Seine Illustrationen sind reduziert, still und präzise — oft mit gedeckten Farben, viel Raum und einem feinen Gespür
+        für Timing und Spannung. Besonders bekannt wurde er durch seine „Hat"-Trilogie,
+        deren lakonischer Humor und subtile Erzählweise Kinder wie Erwachsene gleichermaßen ansprechen.<br><br>
+        Geboren 1981 in Winnipeg, studierte er Animation am Sheridan College und arbeitete für Animationsfilme
+        wie <em>Coraline</em> und <em>Kung Fu Panda</em>. <em>This Is Not My Hat</em> wurde sowohl mit der Caldecott Medal
+        als auch der Kate Greenaway Medal ausgezeichnet — eine seltene Doppelwürdigung.
+        2026 erhielt er den Astrid Lindgren Memorial Award.<br><br>
+        Seine Werke verbinden Minimalismus mit feinem Humor und einer ungewöhnlichen erzählerischen Tiefe —
+        ruhig, klar und oft ein wenig melancholisch.
+      </p>
+      <a href="#" class="portfolio-link">
+        Zu den Büchern <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
 
-    <p class="role">
-      Österreich
-    </p>
-
-    <p class="bio">
-Helga Bansch zählt zu den bedeutendsten österreichischen Illustratorinnen und Autorinnen im Bereich Kinder- und Bilderbuch. Geboren in Leoben in der Steiermark, arbeitete sie zunächst 25 Jahre lang als Volksschullehrerin, bevor sie sich ab 2003 ganz der freien Kunst und Illustration widmete. Heute lebt und arbeitet sie in Wien und in der Südsteiermark. 
-
-Ihre Illustrationen sind poetisch und voller feiner Details. Helga Bansch kombiniert unterschiedliche Techniken wie Collage, Malerei und Zeichnung zu atmosphärischen Bildwelten, die Kinder ebenso ansprechen wie Erwachsene.  
-
-International wurde ihre Arbeit in zahlreichen Ausstellungen gezeigt — unter anderem in Bologna, Sarmede, Bratislava, New York und Sharjah. Für ihre Bücher und Illustrationen erhielt sie viele bedeutende Auszeichnungen, darunter den Österreichischen Kinder- und Jugendbuchpreis, den Outstanding Artist Award sowie 2024 den Österreichischen Kunstpreis für Kinder- und Jugendliteratur. Ihre Werke wurden außerdem für den H.C. Andersen Preis nominiert. 
-    </p>
-
-
-    <a href="{{ url_for('kategorie', name='Helga Bansch') }}" class="portfolio-link">
-      Zu den Büchern von Helga Bansch
-    </a>
-
-  </div>
-
-</section>
-
-<!-- ======================================================
-     CARD 3
-======================================================= -->
-
-
-
-
-
-<section class="illustrator-card">
-
-  <div class="illustrator-image">
-    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop" alt="Illustratorin">
-  </div>
-
-  <div class="illustrator-content">
-
-    <h2>Jon KLassen</h2>
-
-    <p class="role">
-      Kanada
-    </p>
-
-    <p class="bio">
-      Jon Klassen gehört zu den prägenden Stimmen des zeitgenössischen Kinderbuchs. 
-      Seine Illustrationen sind reduziert, still und präzise — oft mit gedeckten Farben, viel Raum und einem feinen Gespür
-      für Timing und Spannung. Besonders bekannt wurde er durch seine „Hat“-Trilogie, 
-      deren lakonischer Humor und subtile Erzählweise Kinder wie Erwachsene gleichermaßen ansprechen. 
-      Mit kleinsten Veränderungen in Blicken, Haltung oder Komposition erzeugt Klassen ganze Geschichten zwischen den Zeilen. <br><br>
-
-      Geboren 1981 in Winnipeg, Kanada, studierte er Animation am Sheridan College und arbeitete zunächst für Animationsfilme
-      wie *Coraline* und *Kung Fu Panda*. Seit den 2010er-Jahren veröffentlichte er zahlreiche preisgekrönte Bilderbücher, 
-      darunter *This Is Not My Hat*, das sowohl mit der Caldecott Medal als auch der Kate Greenaway Medal ausgezeichnet wurde — 
-      eine seltene Doppelwürdigung. 2026 erhielt er zudem den Astrid Lindgren Memorial Award, 
-      einen der bedeutendsten internationalen Preise für Kinderliteratur.<br><br>
-
-      Neben eigenen Büchern arbeitet Klassen regelmäßig mit Autor:innen wie Mac Barnett zusammen.
-      Seine Werke verbinden Minimalismus mit feinem Humor und einer ungewöhnlichen erzählerischen Tiefe — ruhig, 
-      klar und oft ein wenig melancholisch.
-    </p>
-
-    
-
-    <a href="#" class="portfolio-link">
-         zu den Büchern von Jon Klassen
-    </a>
-
-  </div>
-
-</section>
 
 {% include 'footer.html' %}
 
+
+
 </body>
 </html>
-
