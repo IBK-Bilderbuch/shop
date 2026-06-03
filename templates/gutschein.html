@@ -168,6 +168,40 @@
   #paypal-button-container {
     margin-top: 28px;
   }
+
+@media (max-width: 640px) {
+  .container {
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .carousel {
+    flex: none;
+    width: 100%;
+    height: 260px;
+    border-radius: 0;
+  }
+
+  .gutschein-form {
+    padding: 20px 16px 40px;
+  }
+
+  .input-field {
+    font-size: 16px; /* verhindert iOS-Zoom */
+    padding: 13px 14px;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+}
+
+  
 </style>
 </head>
 
