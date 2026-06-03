@@ -1236,42 +1236,80 @@
   "id":91,
   "name":"Der Totenkopf",
   "an":"9783314106576",
-  "beschreibung": "",
+  "beschreibung": "Otilla verirrt sich im Wald und findet Zuflucht in einem verlassenen Herrenhaus. Dort begegnet sie einem einsamen Totenkopf, mit dem sie sich anfreundet. Als dieser ihr von einem kopflosen Gerippe erzählt, das ihn Nacht für Nacht verfolgt, beschließt Otilla zu helfen. Mit Mut, Einfallsreichtum und Herz stellt sie sich der unheimlichen Bedrohung entgegen. Jon Klassen erzählt ein altes Tiroler Volksmärchen auf seine ganz eigene Weise – atmosphärisch, spannend und zugleich überraschend warmherzig. Die Geschichte verbindet Grusel mit Freundschaft und zeigt, dass Mut nicht bedeutet, keine Angst zu haben, sondern trotz der Angst das Richtige zu tun.",
   "bilder": [
-    "images/"
+    "images/klassen/dertotenkopf.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "on klassen" ],
-   "leseprobe_url": ""
+  "kategorie": ["Mut oder Angst?!", "Deutschsprachige Bücher", "Jon klassen" ],
+   "leseprobe_url": "https://www.book2look.com/book/2HEpZsFoFP"
 
    },
     {
   "id":92,
-  "name":"",
-  "ean":"0",
-  "beschreibung": "",
+  "name":"Wo ist mein Hut",
+  "ean":"9783314101175",
+  "beschreibung": "Der Bär vermisst seinen Hut und macht sich auf die Suche. Freundlich erkundigt er sich bei jedem Tier, dem er begegnet, ob es seinen Hut gesehen hat. Doch alle schütteln den Kopf und behaupten, nichts zu wissen. Enttäuscht will der Bär die Suche bereits aufgeben, als ein Hirsch ihm eine entscheidende Frage stellt. Da erinnert er sich plötzlich, wo er seinen Hut zuletzt gesehen hat – und wer ihn trägt. Sofort macht er sich auf den Weg, um ihn zurückzuholen. Am Ende ist der Hut wieder beim Bären. Der Hase hingegen ist verschwunden. Was passiert ist? Der Bär sagt nur, dass er davon nichts weiß ... Eine herrlich trockene und überraschend komische Geschichte über Hartnäckigkeit, Gerechtigkeit und einen verschwundenen Hut.",
   "bilder": [
-    "images/"
+    "images/klassen/woistmeinhut.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "on klassen" ],
-   "leseprobe_url": ""
+  "kategorie": ["Schlaues Mitraten", "Deutschsprachige Bücher", "Jon klassen" ],
+   "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=F9j7a2vhTH"
 
    },
 
   {
   "id":93,
-  "name":"",
-  "ean":"0",
-  "beschreibung": "",
+  "name":"Der Wolf, die Ente & die Maus",
+  "ean":"9783314104404",
+  "beschreibung": "Als eine Maus von einem Wolf verschlungen wird, rechnet sie mit dem Schlimmsten. Doch im Bauch des Wolfes erwartet sie eine Überraschung: Dort lebt bereits eine Ente, die es sich erstaunlich gemütlich gemacht hat. Gemeinsam genießen die beiden das Leben an einem Ort, den niemand freiwillig wählen würde, und entdecken ungeahnte Vorteile ihrer ungewöhnlichen Lage. \n\nAls ein Jäger den Wolf bedroht, müssen Maus und Ente handeln. Mit Einfallsreichtum und Mut setzen sie alles daran, ihr außergewöhnliches Zuhause zu schützen.\n\n Diese originelle Geschichte von Mac Barnett erzählt mit viel Humor von Perspektivwechseln, Freundschaft und der Kunst, selbst in unerwarteten Situationen das Beste zu finden. Die charakteristischen Illustrationen von Jon Klassen verleihen der Erzählung zusätzlichen Witz und Charme.",
   "bilder": [
-    "images/"
+    "images/klassen/wolfentemaus.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "on klassen" ],
-   "leseprobe_url": ""
+  "kategorie": ["Mut oder Angst?!", "Deutschsprachige Bücher", "Jon klassen" ],
+   "leseprobe_url": "https://www.book2look.com/book/OWYJzRfKsz"
+
+   },
+
+   {
+  "id":94,
+  "name":"Das ist nicht mein Hut",
+  "ean":"9783314101700",
+  "beschreibung": "Ein kleiner Fisch ist stolz auf seinen neuesten Fang: Er hat einem großen Fisch dessen Hut gestohlen und ist überzeugt, ungeschoren davonzukommen. Selbstbewusst erzählt er, warum sein Plan perfekt ist und weshalb ihn niemand erwischen wird. Doch während er spricht, zeigen die Bilder eine ganz andere Geschichte.\n\nDer große Fisch bemerkt den Diebstahl und nimmt die Verfolgung auf. So entwickelt sich ein spannendes Katz-und-Maus-Spiel unter Wasser, bei dem Text und Illustrationen auf humorvolle Weise miteinander konkurrieren.",
+     "bilder": [
+    "images/klassen/dasistnichtmeinhut.webp",
+    "images/klassen/dasistnichtmeinhut1.webp"
+      ],
+  "kategorie": ["Schlaues Mitraten", "Deutschsprachige Bücher", "Jon klassen" ],
+   "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=ZjoRgrQsFb"
+
+   },
+   {
+  "id":95,
+  "name":"Der Wolf, die Ente & die Maus",
+  "ean":"9783314104404",
+  "beschreibung": "Als eine Maus von einem Wolf verschlungen wird, rechnet sie mit dem Schlimmsten. Doch im Bauch des Wolfes erwartet sie eine Überraschung: Dort lebt bereits eine Ente, die es sich erstaunlich gemütlich gemacht hat. Gemeinsam genießen die beiden das Leben an einem Ort, den niemand freiwillig wählen würde, und entdecken ungeahnte Vorteile ihrer ungewöhnlichen Lage. \n\nAls ein Jäger den Wolf bedroht, müssen Maus und Ente handeln. Mit Einfallsreichtum und Mut setzen sie alles daran, ihr außergewöhnliches Zuhause zu schützen.\n\n Diese originelle Geschichte von Mac Barnett erzählt mit viel Humor von Perspektivwechseln, Freundschaft und der Kunst, selbst in unerwarteten Situationen das Beste zu finden. Die charakteristischen Illustrationen von Jon Klassen verleihen der Erzählung zusätzlichen Witz und Charme.",
+  "bilder": [
+    "images/klassen/wolfentemaus.webp"
+      ],
+  "kategorie": [ "Deutschsprachige Bücher", "on klassen" ],
+   "leseprobe_url": "https://www.book2look.com/book/OWYJzRfKsz"
+
+   },
+   {
+  "id":96,
+  "name":"Der Wolf, die Ente & die Maus",
+  "ean":"9783314104404",
+  "beschreibung": "Als eine Maus von einem Wolf verschlungen wird, rechnet sie mit dem Schlimmsten. Doch im Bauch des Wolfes erwartet sie eine Überraschung: Dort lebt bereits eine Ente, die es sich erstaunlich gemütlich gemacht hat. Gemeinsam genießen die beiden das Leben an einem Ort, den niemand freiwillig wählen würde, und entdecken ungeahnte Vorteile ihrer ungewöhnlichen Lage. \n\nAls ein Jäger den Wolf bedroht, müssen Maus und Ente handeln. Mit Einfallsreichtum und Mut setzen sie alles daran, ihr außergewöhnliches Zuhause zu schützen.\n\n Diese originelle Geschichte von Mac Barnett erzählt mit viel Humor von Perspektivwechseln, Freundschaft und der Kunst, selbst in unerwarteten Situationen das Beste zu finden. Die charakteristischen Illustrationen von Jon Klassen verleihen der Erzählung zusätzlichen Witz und Charme.",
+  "bilder": [
+    "images/klassen/wolfentemaus.webp"
+      ],
+  "kategorie": [ "Deutschsprachige Bücher", "Jon klassen" ],
+   "leseprobe_url": "https://www.book2look.com/book/OWYJzRfKsz"
 
    },
   
   {
-  "id":94,
+  "id":97,
   "name":"Leo hat schlechte Laune",
   "ean":"9783968260440",
   "beschreibung": "Ein Bilderbuch wie eine warme Umarmung für trübe Tage und starke Gefühle \n\nLeo ist heute einfach nicht gut drauf. Obwohl Mama viele schöne Vorschläge macht, hat er auf nichts Lust – weder auf einen Ausflug in den Park noch auf einen Besuch im Schwimmbad oder im Kino. Ob es etwas gibt, das seine schlechte Laune vertreiben kann? \n\n Mit viel Feingefühl und einem liebevollen Augenzwinkern erzählt Natalia Shaloshvili von schwierigen Tagen und großen Emotionen. Die Geschichte zeigt Kindern, dass schlechte Laune und starke Gefühle zum Leben dazugehören – und dass kein Gefühl für immer bleibt. Ein tröstliches Buch, das Mut macht und Geborgenheit schenkt.",
