@@ -1584,10 +1584,10 @@ def illustratoren():
 def index():
 
     kategorienamen = [
-        "Wortlust und Zeichenfreude", "Jacominus Gainsborough", "Zahlen und Buchstaben", "Große Städte, große Zeichner", "Mut oder Angst?!",
-        "Klassiker", "Gedanken zum Lebensende", "Monstergeschichten", 
-        "Wichtige Fragen", "Weihnachten",
-        "Kinder und Gefühle", "Dazugehören", "Bücher über Illustratoren und Illustrationskunst"
+       "Jacominus Gainsborough", "Wortlust und Zeichenfreude",  "Zahlen und Buchstaben", "Große Städte, große Zeichner", "Mut oder Angst?!", 
+         "Schlaues Mitraten", "Klassiker", "Gedanken zum Lebensende", "Monstergeschichten", 
+        "Wichtige Fragen", 
+        "Kinder und Gefühle", "Dazugehören", "Weihnachten", "Bücher über Illustratoren und Illustrationskunst"
     ]
 
     kategorie_beschreibungen = {
