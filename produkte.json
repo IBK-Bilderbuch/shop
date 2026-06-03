@@ -1285,14 +1285,13 @@
    },
    {
   "id":95,
-  "name":"Der Wolf, die Ente & die Maus",
-  "ean":"9783314104404",
-  "beschreibung": "Als eine Maus von einem Wolf verschlungen wird, rechnet sie mit dem Schlimmsten. Doch im Bauch des Wolfes erwartet sie eine Überraschung: Dort lebt bereits eine Ente, die es sich erstaunlich gemütlich gemacht hat. Gemeinsam genießen die beiden das Leben an einem Ort, den niemand freiwillig wählen würde, und entdecken ungeahnte Vorteile ihrer ungewöhnlichen Lage. \n\nAls ein Jäger den Wolf bedroht, müssen Maus und Ente handeln. Mit Einfallsreichtum und Mut setzen sie alles daran, ihr außergewöhnliches Zuhause zu schützen.\n\n Diese originelle Geschichte von Mac Barnett erzählt mit viel Humor von Perspektivwechseln, Freundschaft und der Kunst, selbst in unerwarteten Situationen das Beste zu finden. Die charakteristischen Illustrationen von Jon Klassen verleihen der Erzählung zusätzlichen Witz und Charme.",
-  "bilder": [
-    "images/klassen/wolfentemaus.webp"
+  "name": "I Want My Hat Back",
+  "ean":"9781406338539",
+  "beschreibung": "In his bestselling debut picture book, the multiple award-winning Jon Klassen, illustrator of This Is Not My Hat and Sam and Dave Dig a Hole, tells the story of a bear who's hat has gone. And he wants it back. Patiently and politely, he asks the animals he comes across, one by one, whether they have seen it. Each animal says no (some more elaborately than others). But just as it he begins to lose hope, lying flat on his back in despair, a deer comes by and asks a rather obvious question that suddenly sparks the bear's memory and renews his search with a vengeance... Told completely in dialogue, this quirky, hilarious, read-aloud tale plays out in sly illustrations brimming with visual humour and winks at the reader who will be thrilled to be in on the joke.",
+     "bilder": [
+    "images/klassen/iwantmyhatback.webp"
       ],
-  "kategorie": [ "Deutschsprachige Bücher", "on klassen" ],
-   "leseprobe_url": "https://www.book2look.com/book/OWYJzRfKsz"
+  "kategorie": [ "Schlaues Mitraten", "Englischsprachige Bücher", "Jon klassen" ]
 
    },
    {
@@ -1303,7 +1302,7 @@
   "bilder": [
     "images/klassen/wolfentemaus.webp"
       ],
-  "kategorie": [ "Deutschsprachige Bücher", "Jon klassen" ],
+  "kategorie": [ "eutschsprachige Bücher", "on klassen" ],
    "leseprobe_url": "https://www.book2look.com/book/OWYJzRfKsz"
 
    },
