@@ -1244,8 +1244,7 @@
    "leseprobe_url": ""
 
    },
-
-  {
+    {
   "id":92,
   "name":"",
   "ean":"0",
@@ -1271,7 +1270,17 @@
 
    },
   
-
+  {
+  "id":94,
+  "name":"Leo hat schlechte Laune",
+  "ean":"9783968260440",
+  "beschreibung": "Ein Bilderbuch wie eine warme Umarmung für trübe Tage und starke Gefühle \n\nLeo ist heute einfach nicht gut drauf. Obwohl Mama viele schöne Vorschläge macht, hat er auf nichts Lust – weder auf einen Ausflug in den Park noch auf einen Besuch im Schwimmbad oder im Kino. Ob es etwas gibt, das seine schlechte Laune vertreiben kann? \n\n Mit viel Feingefühl und einem liebevollen Augenzwinkern erzählt Natalia Shaloshvili von schwierigen Tagen und großen Emotionen. Die Geschichte zeigt Kindern, dass schlechte Laune und starke Gefühle zum Leben dazugehören – und dass kein Gefühl für immer bleibt. Ein tröstliches Buch, das Mut macht und Geborgenheit schenkt.",
+  "bilder": [
+    "images/leoschlechtelaune.webp"
+      ],
+  "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher", " Natalia Shaloshvili" ],
+   "leseprobe_url": "https://blickinsbuch.net/go.php?id=9322941228&ean=9783968260440"
+   },
   
     {
   "id":64,
