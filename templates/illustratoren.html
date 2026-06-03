@@ -78,15 +78,15 @@
     ========================================================= */
 
     .illustrator-card {
-      display: flex;
-      align-items: flex-start;
-      gap: 72px;
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 72px 60px;
-      border-bottom: 1px solid #e8e4de;
-      transition: background 0.3s;
-    }
+  display: flex;
+  align-items: center;  /* ← das war flex-start */
+  gap: 72px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 72px 60px;
+  border-bottom: 1px solid #e8e4de;
+  transition: background 0.3s;
+}
 
     .illustrator-card:last-of-type {
       border-bottom: none;
@@ -137,6 +137,7 @@
       line-height: 1.08;
       margin-bottom: 28px;
       letter-spacing: 0.01em;
+      align: left;
     }
 
     .bio {
