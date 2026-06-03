@@ -454,8 +454,7 @@
   "name": "Der Vogel in mir fliegt, wohin er will",
   "ean": "9783895654640",
  
-  "beschreibung": "Berta wächst zu Beginn des 20. Jahrhunderts im ländlichen Norden Schwedens auf. Alles in ihr sträubt sich gegen ein vorherbestimmtes Leben auf dem Bauernhof. Frei will sie sein wie ein Vogel und studieren, was sie liebt: die Malerei. Doch ihr Vater ist dagegen und ihre Mutter, die sie versteht und unterstützt, stirbt. Berta fühlt tief in sich eine starke Kraft, die sie handeln lässt. ‚Der Vogel in mir fliegt, wohin er will‘ ist ein Buch über Trauer, Sehnsucht, Kompromisslosigkeit und die Kraft der Fantasie, die alles verändern kann – basierend auf dem Leben der schwedischen Malerin Berta Hansson.:contentReference[oaicite:0]{index=0}",
- 
+  "beschreibung": "Berta wächst zu Beginn des 20. Jahrhunderts im ländlichen Norden Schwedens auf. Alles in ihr sträubt sich gegen ein vorherbestimmtes Leben auf dem Bauernhof. Frei will sie sein wie ein Vogel und studieren, was sie liebt: die Malerei. Doch ihr Vater ist dagegen und ihre Mutter, die sie versteht und unterstützt, stirbt. Berta fühlt tief in sich eine starke Kraft, die sie handeln lässt. ‚Der Vogel in mir fliegt, wohin er will‘ ist ein Buch über Trauer, Sehnsucht, Kompromisslosigkeit und die Kraft der Fantasie, die alles verändern kann – basierend auf dem Leben der schwedischen Malerin Berta Hansson.",
   "bilder": [
     "images/dervogelinmir/dervogelinmir.webp",
     "images/dervogelinmir/dervogelinmir1.webp",
@@ -466,7 +465,7 @@
     "images/dervogelinmir/dervogelinmir6.webp",
     "images/dervogelinmir/dervogelinmir7.webp"
   ],
-  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher", "Sara Lundberg" ],
+  "kategorie": ["Kunst und Identität", "Deutschsprachige Bücher", "Sara Lundberg" ],
   "leseprobe_url": "https://www.book2look.com//book/WjLI79HvFc&euid=0&ruid=0&refererpath=www.moritzverlag.de&isbnformat=hardcover&bookisbn=9783895654640&dct=0&biblettype=double&clickedby=lk&bibloc=0"
 },
 
@@ -575,7 +574,7 @@
     "bilder": [
     "images/farbeeulestift/farbeeulestift.webp"
   ],
-  "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher", "Renate Habinger" ],
+  "kategorie":[ "Kunst und Identität", "Deutschsprachige Bücher", "Renate Habinger" ],
   "leseprobe_pdf": "farbeeulestift.pdf"
 
 },
@@ -689,16 +688,9 @@
   "ean": "9781780677712",
   "beschreibung": "Bob the bird is just like all his friends, apart from his skinny legs. When Bob is teased, he decides to try and change himself to fit in. But little does he know where all his efforts will lead him... \nAn affirming picture book for age 3+ about the power of art and of being confident enough to be yourself. \n\nAuthor of the best-selling Let's Make Some Great Art series, Marion Deuchars has a globally recognisable illustration style. Her hand-lettering and illustrations have been used on advertising campaigns from Samsung to HP, and her books have won six awards for design and illustration. She is a member of the Alliance Graphique Internationale.",
   "bilder": [
-    "images/bobtheartist/bobtheartist.webp",
-    "images/bobtheartist/bobtheartist1.webp",
-    "images/bobtheartist/bobtheartist2.webp",
-    "images/bobtheartist/bobtheartist3.webp",
-    "images/bobtheartist/bobtheartist4.webp",
-    "images/bobtheartist/bobtheartist5.webp",
-    "images/bobtheartist/bobtheartist6.webp",
-    "images/bobtheartist/bobtheartist7.webp"
+    "images/bobtheartist/bobtheartist.webp"
   ],
- "kategorie": ["Bob der Künstler", "Deutschsprachige Bücher" ]
+ "kategorie": ["Kunst und Identität", "Bob der Künstler", "Englischsprachige Bücher" ]
 },
 
    {
