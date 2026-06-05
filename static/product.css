@@ -70,19 +70,18 @@ header a {
 
 /* =========================================================
    FOOTER
-========================================================= */
 footer {
   background-color: #ebebe3;
   padding: 25px 10px;
   text-align: center;
   color: #333;
   font-family: var(--font-heading);
-  margin-top: auto; /* schiebt Footer nach unten */
+  margin-top: auto; 
   font-size: 16px;
 }
 
 footer a {
-  color: inherit; /* bleibt neutral, Icons können extra gestylt werden */
+  color: inherit; 
 }
 
 .social-icons i {
@@ -90,6 +89,9 @@ footer a {
   font-size: 2em;
   margin: 5px;
 }
+
+========================================================= */
+
 
 /* =========================================================
    BOOK DETAIL LAYOUT
