@@ -340,13 +340,13 @@ button.next { right: 10px; }
 }
 
 @media (max-width: 1024px) {
-  .book-list .search-book-list {
+  .book-list, .search-book-list {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  .book-list .search-book-list {
+  .book-list, .search-book-list {
     grid-template-columns: repeat(2, 1fr);
     margin: 2px;
   }
@@ -359,7 +359,7 @@ button.next { right: 10px; }
     box-sizing: border-box;
   }
 
-  .book {
+  .book{
     border-radius: 2px;
     padding: 1px;
   }
