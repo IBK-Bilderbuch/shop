@@ -1296,7 +1296,7 @@
   "bilder": [
     "images/leoschlechtelaune.webp"
       ],
-  "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher", " Natalia Shaloshvili" ],
+  "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher", "Natalia Shaloshvili" ],
    "leseprobe_url": "https://blickinsbuch.net/go.php?id=9322941228&ean=9783968260440"
    },
 
@@ -1310,13 +1310,13 @@
   "bilder": [
     "images/zwerger/leonceundlena.webp"
       ],
-  "kategorie": [ "Deutschsprachige Bücher", " Lisbeth Zwerger"],
+  "kategorie": [ "Deutschsprachige Bücher", "Lisbeth Zwerger"],
    "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=Y2GlwQLXiL"
    },
 
   
   {
-  "id":101,
+  "id":105,
   "name":"Geschichten aus der Bibel",
   "ean":"9783314103018",
   "beschreibung": "Von der Erschaffung der Welt, der Geburt Jesu, den Wundern Gottes berichtet die Bibel. Heinz Janisch erzählt die wichtigsten und bekanntesten Geschichten aus der Bibel in wunderbar feinsinnigem Ton. Ihm geht es um den Kern der Geschichten. Wer schon mit der Bibel vertraut ist, findet durch die Bilder von Lisbeth Zwerger ungewöhnliche Perspektiven. Wem die biblischen Texte bisher fremd waren, der wird ihre Faszination erfahren.",
@@ -1336,7 +1336,7 @@
   "ean":"9783314105449",
   "beschreibung": "Scrooge ist ein alter Geizkragen. Und er hasst Weihnachten. Ausgerechnet am Heiligen Abend bekommt Scrooge unerwartet Besuch, und zwar von drei Geistern. Einer von ihnen ist sein verstorbener Geschäftspartner und einziger Freund Marley. Marley macht Scrooge unmissverständlich klar, dass es höchste Zeit ist, ein besserer Mensch zu werden. Beunruhigt von so viel Ratschlägen aus dem Jenseits, beginnt Scrooge sich tatsächlich zu wandeln. Zum großen Erstaunen seiner Mitmenschen. Der beliebte Weihnachtsklassiker von Charles Dickens begeistert seit Generationen Groß und Klein. Lisbeth Zwerger hat für diese Neuausgabe ihren Klassiker aus dem Jahr 1988 um einige neue Motive erweitert. Entstanden ist ein Prachtband für die ganze Familie. • Charles Dickens Weihnachtsgeschichte wundervolll illustriert von Lisbeth Zwerger • Ein echter Weihnachtsklassiker für die ganze Familie • Hochwertiger Halbleinenband perfekt geeignet als schönes Weihnachtsgeschenk.",
   "bilder": [
-    "images/zwerger/einweihnachtsmärchen.webp"
+    "images/zwerger/einweihnachtsmaerchen.webp"
       ],
   "kategorie": ["Deutschsprachige Bücher", "Lisbeth Zwerger" ],
    "leseprobe_url": "https://www.book2look.com/book/zbDdsheoQ4"
@@ -1350,7 +1350,7 @@
   "ean":"9783865661593",
   "beschreibung": "Die Märchen der Brüder Grimm inspirierten die mehrfach international ausgezeichnete Illustratorin Lisbeth Zwerger zu einem neuen Sammelband. Ihre Bilder sind lebendig, farbenfroh und scheinen doch aus einer anderen Welt zu kommen. Das Märchenbuch zeigt klassische und weniger bekannte Märchen der Brüder Grimm in einem neuen künstlerischen Gewand.",
   "bilder": [
-    "images/zwerger/grimmmärchen.webp"
+    "images/zwerger/grimmmaerchen.webp"
       ],
   "kategorie": ["Klassiker", "Deutschsprachige Bücher", "Lisbeth Zwerger" ]
     
