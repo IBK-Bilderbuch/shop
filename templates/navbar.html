@@ -51,20 +51,20 @@
 
 
 
-  <!--  <li class="dropdown">
+   <li class="dropdown">
 
       <a href="#" class="dropdown-toggle">
         nach Sprachen <span>&#9662;</span>
       </a>
 
       <ul class="dropdown-menu">
-        <li><a href="{{ url_for('kategorie', name='Deutschsprachige Bücher') }}">Deutschsprachige Bücher</a></li>
-        <li><a href="{{ url_for('kategorie', name='Englischsprachige Bücher') }}">Englischsprachige Bücher</a></li>
+        <li><a href="{{ url_for('kategorie', kategorietype='Sprachen', name='Deutschsprachige-Buecher') }}">Deutschsprachige Bücher</a></li>
+        <li><a href="{{ url_for('kategorie', kategorietype='Sprachen', name='Englischsprachige-Buecher') }}">Englischsprachige Bücher</a></li>
       </ul>
 
     </li>
 
-    <!-- <li class="dropdown">
+<!--     <li class="dropdown">
 
       <a href="#" class="dropdown-toggle">
         nach Themen <span>&#9662;</span>
