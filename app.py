@@ -998,25 +998,19 @@ def suche():
     )
 
 
-@app.route("/Illustratorinnen/<name>")
-@app.route("/Sprachen/<name>")
-@app.route("/Themen/<name>")
-@app.route("/kategorie/<name>")  # Alte URLs weiter funktionsfähig lassen
-def kategorie(name):
+@app.route("/<kategorietype>/<name>")
+def kategorie(kategorietype, name):
     name = name.replace('-', ' ')
     ergebnisse = []
     for produkt in produkte:
         kategorien = produkt.get("kategorie", [])
-        kategorien_lower = [
-            k.lower() for k in kategorien
-        ]
+        kategorien_lower = [k.lower() for k in kategorien]
         if name.lower() in kategorien_lower:
             ergebnisse.append(produkt)
-    return render_template(
-        "kategorie.html",
-        produkte=ergebnisse,
-        titel=name
-    )
+    return render_template("kategorie.html", produkte=ergebnisse, titel=name)
+
+
+
 # Produkt Detail
 
   
