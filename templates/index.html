@@ -225,6 +225,19 @@ document.querySelectorAll(".toggle-text").forEach(btn => {
   });
 
 });
+
+
+  window.addEventListener('DOMContentLoaded', () => {
+  const target = document.querySelector(window.location.hash);
+  if (!target) return;
+
+  document.querySelectorAll('.hidden-category').forEach(cat => {
+    cat.classList.remove('hidden-category');
+  });
+
+  setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 50);
+});
+  
 </script>
 
 </body>
