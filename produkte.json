@@ -6,7 +6,7 @@
     "bilder": [
       "images/jacominus/jacominus.jpg"
     ],
-    "kategorie":[ "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
+    "kategorie":["Philosophisches Bilderbuch", "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
   },
   
   {
@@ -17,7 +17,7 @@
     "bilder": [
       "images/punkt/punkt-12(1).jpg"
     ],
-    "kategorie":[ "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
+    "kategorie":[ ["Philosophisches Bilderbuch","Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
   },
 
   
@@ -29,7 +29,7 @@
     "bilder": [
       "images/winzsekunde/eine-winzig-kleine-sekunde_cover.jpg"
     ],
-    "kategorie":[ "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
+    "kategorie":[ ["Philosophisches Bilderbuch", "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
   },
   
    {
@@ -40,7 +40,7 @@
     "bilder": [
       "images/wbaresache/eine-wunderbare-sache_cover.jpg"
     ],
-    "kategorie":[ "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
+    "kategorie":[ ["Philosophisches Bilderbuch", "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
   },
 
   {
@@ -53,7 +53,7 @@
       "images/angsthase/Angsthase4.webp",
       "images/angsthase/Angsthase6.webp"
     ],
-  "kategorie": ["Mut oder Angst?!", "Deutschsprachige Bücher", "Helga Bansch" ],
+  "kategorie": ["Angst", "Mut oder Angst?!", "Deutschsprachige Bücher", "Helga Bansch" ],
   "leseprobe_pdf": "Angsthase.pdf"
   },
     {
@@ -109,7 +109,7 @@
     "images/leolegtlos/leolegtlos5.webp",
     "images/leolegtlos/leolegtlos6.webp"
   ],
-  "kategorie":[ "Mut oder Angst?!", "Deutschsprachige Bücher", "Natalia Shaloshvili" ]
+  "kategorie":["Angst", "Mut oder Angst?!", "Deutschsprachige Bücher", "Natalia Shaloshvili" ]
 },
   
    {
@@ -124,7 +124,7 @@
       "images/monster/Monstergeburtstag.webp",
       "images/monster/Monstergeburtstag1.webp"
     ],
-     "kategorie": ["Monstergeschichten", "Deutschsprachige Bücher", "Helga Bansch" ]
+     "kategorie": ["Feiertage", "Monstergeschichten", "Deutschsprachige Bücher", "Helga Bansch" ]
   },
 
    {
@@ -168,7 +168,7 @@
       "images/monsterich/monsterich7.webp",
       "images/monsterich/monsterich4.webp"
     ],
-    "kategorie": ["Monstergeschichten", "Deutschsprachige Bücher", "Catarina Knüvener" ]
+    "kategorie": ["Gefühle", "Monstergeschichten", "Deutschsprachige Bücher", "Catarina Knüvener" ]
   },
 
   
@@ -186,7 +186,7 @@
     "images/monsterbesuch/monsterbesuch3.webp",
     "images/monsterbesuch/monsterbesuch4.webp"
   ],
-  "kategorie":[ "Monstergeschichten", "Deutschsprachige Bücher", "Catarina Knüvener" ]
+  "kategorie":[ "Gefühle", "Monstergeschichten", "Deutschsprachige Bücher", "Catarina Knüvener" ]
  
 },
    {
@@ -204,7 +204,7 @@
     "images/weihnachten/IGEL5.webp",
     "images/weihnachten/IGEL6.webp"
   ],
-  "kategorie":[ "Weihnachten", "Deutschsprachige Bücher", "Britta Teckentrup" ]
+  "kategorie":[ "Feiertage", "Weihnachten", "Deutschsprachige Bücher", "Britta Teckentrup" ]
  
 },
 
@@ -218,7 +218,7 @@
   "bilder": [
     "images/wuetend/wuetend.webp"
   ],
-  "kategorie":[ "Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
+  "kategorie":[ "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
 },
   
 
@@ -232,7 +232,7 @@
   "bilder": [
     "images/mutig/mutig.webp"
   ],
-  "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
+  "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
 },
 
 
@@ -244,7 +244,7 @@
   "bilder": [
     "images/einsam/einsam.webp"
   ],
-  "kategorie":[ "Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
+  "kategorie":[ "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
 },
   
 
@@ -257,7 +257,7 @@
   "bilder": [
     "images/schaukel/schaukel.webp"
   ],
-  "kategorie":[ "Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
+  "kategorie":[ "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
  
 },
 
@@ -295,7 +295,7 @@
   "bilder": [
     "images/monstermilch/monstermilch.webp"
   ],
-  "kategorie":[ "Monstergeschichten", "Deutschsprachige Bücher", "Vincent Boudgourd" ]
+  "kategorie":[ "Angst", "Monstergeschichten", "Deutschsprachige Bücher", "Vincent Boudgourd" ]
 },
   
 
@@ -310,7 +310,7 @@
     "images/unsichtbar/unsichtbar2.webp",
     "images/unsichtbar/unsichtbar3.webp"
   ],
-  "kategorie":[ "Kinder und Gefühle", "Deutschsprachige Bücher", "Sydney Smith" ]
+  "kategorie":[ "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Sydney Smith" ]
 },
 
 {
@@ -336,7 +336,7 @@
   "bilder": [
     "images/zweilieben/zweilieben.webp"
   ],
-  "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher", "Wolf Erlbruch" ]
+  "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Wolf Erlbruch" ]
 },
 
 
@@ -349,7 +349,7 @@
   "bilder": [
     "images/mutwasgutes/mutwasgutes.webp"
   ],
-  "kategorie":[ "Mut oder Angst?!", "Deutschsprachige Bücher", "Wolf Erlbruch" ]
+  "kategorie":[ "Angst", "Gefühle", "Mut oder Angst?!", "Deutschsprachige Bücher", "Wolf Erlbruch" ]
 },
 
 
@@ -362,14 +362,14 @@
   "bilder": [
     "images/vierkerzen/vierkerzen.webp"
   ],
-  "kategorie":[ "Weihnachten", "Deutschsprachige Bücher", "Katrin Stangl" ]
+  "kategorie":["Feiertage", "Weihnachten", "Deutschsprachige Bücher", "Katrin Stangl" ]
 },
 
 {
   "id": 28,
   "name": "Wolf Erlbruchs Adventskalender - Schöne Bescherung",
   "ean": "9783779506386",
-  "beschreibung": "Zwei zappelige Katzenkinder, denen das geduldige Singen vor der Bescherung sichtlich schwerfällt, während ihre Eltern davon nicht genug bekommen – dieses Bild gehört zu den schönsten Motiven aus Wolf Erlbruchs Kinderzimmerkalendern. Jetzt kommt es als Adventskalender zu neuen Ehren: Hinter 24 Klapptürchen verbergen sich ausgesuchte Motive aus dem Werk des Künstlers – täglich eine feine Überraschung auf dem Weg zum Weihnachtsfest.",
+  "beschreibung":"Feiertage", "Kalender", "Zwei zappelige Katzenkinder, denen das geduldige Singen vor der Bescherung sichtlich schwerfällt, während ihre Eltern davon nicht genug bekommen – dieses Bild gehört zu den schönsten Motiven aus Wolf Erlbruchs Kinderzimmerkalendern. Jetzt kommt es als Adventskalender zu neuen Ehren: Hinter 24 Klapptürchen verbergen sich ausgesuchte Motive aus dem Werk des Künstlers – täglich eine feine Überraschung auf dem Weg zum Weihnachtsfest.",
   
   "bilder": [
     "images/advent/advent.webp"
@@ -407,7 +407,7 @@
       "images/wennannaangsthat/wennannaangsthat1.webp",
       "images/wennannaangsthat/wennannaangsthat2.webp"
     ],
-  "kategorie":[ "Mut oder Angst?!", "Deutschsprachige Bücher", "Helga Bansch" ]
+  "kategorie":[ "Angst", "Gefühle", "Mut oder Angst?!", "Deutschsprachige Bücher", "Helga Bansch" ]
   },
 
 
@@ -465,7 +465,7 @@
     "images/dervogelinmir/dervogelinmir6.webp",
     "images/dervogelinmir/dervogelinmir7.webp"
   ],
-  "kategorie": ["Kunst und Identität", "Deutschsprachige Bücher", "Sara Lundberg" ],
+  "kategorie": ["Künstlerdasein", "Kunst und Identität", "Deutschsprachige Bücher", "Sara Lundberg" ],
   "leseprobe_url": "https://www.book2look.com//book/WjLI79HvFc&euid=0&ruid=0&refererpath=www.moritzverlag.de&isbnformat=hardcover&bookisbn=9783895654640&dct=0&biblettype=double&clickedby=lk&bibloc=0"
 },
 
@@ -530,7 +530,7 @@
     "images/heutebinich/heutebinich.webp",
     "images/heutebinich/heutebinich1.webp"
   ],
-  "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ],
+  "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ],
 
   "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=3709063013&ean=9783905945300"
 },
@@ -549,7 +549,7 @@
     "images/ueberraschung/ueberraschung3.webp",
     "images/ueberraschung/ueberraschung4.webp"
   ],
-  "kategorie":[ "Kinder und Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ]
+  "kategorie":[ "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ]
   
 },
 
@@ -562,7 +562,7 @@
   "bilder": [
     "images/bear/bear.webp"
   ],
-  "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher", "Natalia Shaloshvili" ]
+  "kategorie":[ "Gefühle", "Wichtige Fragen", "Deutschsprachige Bücher", "Natalia Shaloshvili" ]
 },
  
 
@@ -574,7 +574,7 @@
     "bilder": [
     "images/farbeeulestift/farbeeulestift.webp"
   ],
-  "kategorie":[ "Kunst und Identität", "Deutschsprachige Bücher", "Renate Habinger" ],
+  "kategorie":["Künstlerdasein",  "Kunst und Identität", "Deutschsprachige Bücher", "Renate Habinger" ],
   "leseprobe_pdf": "farbeeulestift.pdf"
 
 },
@@ -680,7 +680,7 @@
     "images/einmalkatzesein/einmalkatzesein3.webp",
     "images/einmalkatzesein/einmalkatzesein4.webp"
   ],
- "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ]
+ "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ]
 },
   {
   "id": 50,
@@ -690,7 +690,7 @@
   "bilder": [
     "images/bobtheartist/bobtheartist.webp"
   ],
- "kategorie": ["Kunst und Identität", "Bob der Künstler", "Englischsprachige Bücher" ]
+ "kategorie": ["Künstlerdasein", "Kunst und Identität", "Bob der Künstler", "Englischsprachige Bücher" ]
 },
 
    {
@@ -703,7 +703,7 @@
  
   ],
  "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-95614-032-7",
- "kategorie":[ "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
+ "kategorie":[ "Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
 },
 
      {
@@ -715,7 +715,7 @@
     "images/grossstaedte/newyork.webp"
   ],
  "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-979-8",
- "kategorie": ["Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
+ "kategorie": ["Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
 },
      {
   "id": 53,
@@ -727,7 +727,7 @@
     "images/grossstaedte/rom.webp"
   ],
  "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-943-9",
- "kategorie": ["Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
+ "kategorie": ["Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
 },
      {
   "id": 54,
@@ -737,7 +737,7 @@
        "bilder": [
     "images/grossstaedte/sasek.webp"
   ],   
-  "kategorie": ["Bücher über Illustratoren und Illustrationskunst", "Deutschsprachige Bücher","Miroslav Šašek" ]
+  "kategorie": ["Künstlerdasein", "Bücher über Illustratoren und Illustrationskunst", "Deutschsprachige Bücher","Miroslav Šašek" ]
 },
 
      {
@@ -847,7 +847,7 @@
   "bilder": [
     "images/zaeri/marthasreise.webp"
       ],
-  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher", "Mehrdad Zaeri" ],
+  "kategorie": ["Gefühle", "Wichtige Fragen", "Deutschsprachige Bücher", "Mehrdad Zaeri" ],
   "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=9322941228&ean=9783957281852"
    },
 
@@ -1031,7 +1031,7 @@
   "bilder": [
     "images/zaeri/diegeburt.webp"
       ],
-  "kategorie": ["Weihnachten", "Deutschsprachige Bücher",  "Mehrdad Zaeri"  ]
+  "kategorie": ["Feiertage", "Weihnachten", "Deutschsprachige Bücher",  "Mehrdad Zaeri"  ]
    },
 
   {
@@ -1067,14 +1067,14 @@
   "bilder": [
     "images/illustratoren/artofjesus.webp"
       ],
-  "kategorie": ["Bücher über Illustratoren und Illustrationskunst","Englischsprachige Bücher" ]
+  "kategorie": ["Künstlerdasein", "Bücher über Illustratoren und Illustrationskunst","Englischsprachige Bücher" ]
    },
   
 
   
  {
   "id":82,
-  "name":"  Illustration.100 Wege einen Vogel malen",
+  "name":"Illustration.100 Wege einen Vogel malen",
   "ean":"9783874398336",
   "beschreibung": "Felix Scheinberger hat Ihnen Mut zum Skizzenbuch gemacht und die Welt der Wasserfarbe erschlossen. Er kennt das Illustratorenleben aus eigener Erfahrung. Im Rahmen seiner Lehre erfährt er, welche Fragen, Ängste und Probleme sich am Anfang der Laufbahn auftun und durch sein Engagement in der Illustratoren Organisation kennt er die Alltagssorgen derer, die von Ihrer kreativen Arbeit leben wollen - und müssen.Was liegt da näher, als ein Buch, in dem es nicht darum geht, Ihnen eine spezielle Illustrationstechnik en detail zu erschließen, sondern darum, Überblick zu geben: Über alle Techniken und ihre Erfolgsgeheimnisse. Und wertvolle Tipps zum Überleben als Illustrator/in inklusive Kalkulationsgrundlagen.(Fast) Alles, was Sie über Illustration wissen sollten in einem Buch. 'Haste mal nen Vogel?' fragte er die besten Illustrator/innen im In- und Ausland. Und sie flogen ihm zu. In unterschiedlichsten Stilen und Techniken zeigen sie die Vielfalt der Möglichkeiten. Und begleiten Sie durch über 100 Kapitel zu allen Facetten des Lebens als Illustrator/in. Hundert Wege einen Vogel zu malen ist also einerseits eingelöstes Versprechen.Andererseits Ermutigung, Ihren eigenen Weg zu suchen. Und mit Unterstützung dieses Buches auch zu finden!",
   "bilder": [
@@ -1150,7 +1150,7 @@
     "images/emmaundhund/emmaundhund5.webp",
     "images/emmaundhund/emmaundhund6.webp"
     ],
-  "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher", "ab 5 Jahren", "Sabine Rufener"],
+  "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "ab 5 Jahren", "Sabine Rufener"],
    "leseprobe_url": "https://www.book2look.de/book/hsgkkwt8Q3"
 
    },
@@ -1232,7 +1232,7 @@
   "bilder": [
     "images/klassen/dertotenkopf.webp"
       ],
-  "kategorie": ["Mut oder Angst?!", "Deutschsprachige Bücher", "Jon klassen" ],
+  "kategorie": ["Angst", "Mut oder Angst?!", "Deutschsprachige Bücher", "Jon klassen" ],
    "leseprobe_url": "https://www.book2look.com/book/2HEpZsFoFP"
 
    },
@@ -1296,7 +1296,7 @@
   "bilder": [
     "images/leoschlechtelaune.webp"
       ],
-  "kategorie": ["Kinder und Gefühle", "Deutschsprachige Bücher", "Natalia Shaloshvili" ],
+  "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Natalia Shaloshvili" ],
    "leseprobe_url": "https://blickinsbuch.net/go.php?id=9322941228&ean=9783968260440"
    },
 
@@ -1310,7 +1310,7 @@
   "bilder": [
     "images/zwerger/leonceundlena.webp"
       ],
-  "kategorie": [ "Deutschsprachige Bücher", "Lisbeth Zwerger"],
+  "kategorie": ["Klassiker",  "Deutschsprachige Bücher", "Lisbeth Zwerger"],
    "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=Y2GlwQLXiL"
    },
 
@@ -1338,7 +1338,7 @@
   "bilder": [
     "images/zwerger/einweihnachtsmaerchen.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Lisbeth Zwerger" ],
+  "kategorie": ["Klassiker", "Deutschsprachige Bücher", "Lisbeth Zwerger" ],
    "leseprobe_url": "https://www.book2look.com/book/zbDdsheoQ4"
    },
 
