@@ -29,14 +29,15 @@
 
     <div class="carousel-slide">
       <img src="{{ url_for('static', filename='images/Angsthase.jpg') }}" class="carousel-image">
-      <button class="slide-btn" onclick="window.location.href='{{ url_for('index') }}#Mut_oder_Angst'">
+      <button class="slide-btn" onclick="window.location.href='{{ url_for('kategorie', kategorietype='Themen', name='Mut-und-Angst') }}'">                <li><a href="{{ url_for('kategorie', kategorietype='Themen', name='Mut-und-Angst') }}">Mut und Angst</a></li>
+
         Zu den Büchern
       </button>
     </div>
 
     <div class="carousel-slide active">
       <img src="{{ url_for('static', filename='images/klassiker11.jpg') }}" class="carousel-image">
-      <button class="slide-btn" onclick="window.location.href='{{ url_for('index') }}#Klassiker'">
+      <button class="slide-btn" onclick="window.location.href='{{ url_for('kategorie', kategorietype='Themen', name='Klassiker') }}'">
         Zu den Büchern
       </button>
     </div>
@@ -227,17 +228,7 @@ document.querySelectorAll(".toggle-text").forEach(btn => {
 });
 
 
-  window.addEventListener('DOMContentLoaded', () => {
-  const target = document.querySelector(window.location.hash);
-  if (!target) return;
-
-  document.querySelectorAll('.hidden-category').forEach(cat => {
-    cat.classList.remove('hidden-category');
-  });
-
-  setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 50);
-});
-  
+ 
 </script>
 
 </body>
