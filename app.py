@@ -299,18 +299,7 @@ else:
 
 
 
-# =====================================================
-# PRODUKTE LADEN
-# =====================================================
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-json_path = os.path.join(basedir, "produkte.json")
-
-if os.path.exists(json_path):
-    with open(json_path, encoding="utf-8") as f:
-        produkte = json.load(f)
-else:
-    produkte = []
 
 
 
