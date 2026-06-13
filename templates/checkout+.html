@@ -1,0 +1,189 @@
+<!-- checkout.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+<title>Bezahlung | I B K - Buchhandlung für Illustration und Bilderbücher</title>
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='ficon.png') }}">
+<style>
+.payment-details { margin-top: 1em; }
+.hidden { display: none; }
+</style>
+</head>
+<body>
+{% include 'navbar.html' %}
+
+<section class="form">
+  <h2>Bezahlung</h2>
+
+  <div class="checkout-layout">
+    <!-- Warenkorb -->
+    <div class="checkout-cart">
+      <h3>Ihre Bestellung</h3>
+      {% include 'cart_component.html' %}
+    </div>
+
+    <!-- Checkout Formular -->
+    <div class="checkout-form">
+      <!-- FIX 1: action="/checkout" ergänzt -->
+      <form id="checkout-form" method="POST" action="/checkout">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <h3>Lieferdaten</h3><br><br>
+
+        <!-- Kundendaten -->
+        <div class="half-container">
+          <label><input type="text" name="vorname" required placeholder="Vorname"></label>
+          <label><input type="text" name="nachname" required placeholder="Nachname"></label>
+        </div>
+        <label><input type="email" name="email" required placeholder="E-Mail"></label>
+        <div class="half-container">
+          <label><input type="text" name="strasse" required placeholder="Straße"></label>
+          <label><input type="text" name="hausnummer" required placeholder="Hausnummer"></label>
+        </div>
+        <div class="drittel-container">
+          <label class="drittel"><input type="text" name="plz" required placeholder="Postleitzahl"></label>
+          <label class="drittel"><input type="text" name="stadt" required placeholder="Stadt"></label>
+          <label class="drittel">
+            <select name="land" required>
+              <option value="" disabled selected>Land wählen</option>
+              <option value="Deutschland">Deutschland</option>
+            </select>
+          </label>
+        </div>
+        <label><input type="text" name="telefon" placeholder="Telefonnummer (optional)"></label>
+
+        <div class="gutschein-box">
+          <input type="text" id="gutschein-code" placeholder="Gutscheincode">
+          <button type="button" id="apply-gutschein" style="margin: 10px 0">
+            Code einlösen
+          </button>
+        </div>
+
+        <!-- Datenschutz -->
+        <label class="privacy-consent">
+          <input type="checkbox" name="privacy" id="privacy-checkbox" required>
+          Ich habe die <a href="{{ url_for('datenschutz') }}" target="_blank">Datenschutzerklärung</a> gelesen und stimme ihr zu.
+        </label>
+
+        <!-- Zahlart wählen -->
+        <div class="zahlart-auswahl">
+          <label class="zahlart-option">
+            <input type="radio" name="zahlart" value="paypal" checked
+                   onchange="toggleZahlart(this.value)">
+            <span>PayPal</span>
+          </label>
+          <label class="zahlart-option">
+            <input type="radio" name="zahlart" value="rechnung"
+                   onchange="toggleZahlart(this.value)">
+            <span>Kauf auf Rechnung</span>
+          </label>
+        </div>
+
+        <!-- PayPal Button -->
+        <div id="paypal-button-container" style="margin-top:1em;"></div>
+
+        <!-- FIX 2: Doppelklick-Schutz ergänzt -->
+        <button id="rechnung-btn" type="submit" style="display:none;"
+                onclick="this.disabled=true; this.innerText='Wird verarbeitet…';">
+          Jetzt kaufen – auf Rechnung
+        </button>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+{% include 'footer.html' %}
+
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR&disable-funding=sepa,sofort,giropay,bancontact,eps,ideal"></script>
+<script>
+
+const form = document.getElementById('checkout-form');
+const privacyCheckbox = document.getElementById('privacy-checkbox');
+const requiredFields = form.querySelectorAll('input[required]');
+
+function allFieldsFilled() {
+  return Array.from(requiredFields).every(f => {
+    if (f.type === 'checkbox') return f.checked;
+    return f.value.trim() !== '';
+  });
+}
+
+paypal.Buttons({
+
+  onClick: function(data, actions) {
+    if (!form.reportValidity()) {
+      form.querySelector(":invalid")?.focus();
+      return actions.reject();
+    }
+    return actions.resolve();
+  },
+
+  onInit: function(data, actions) {
+    actions.disable();
+
+    function validate() {
+      if (allFieldsFilled()) actions.enable();
+      else actions.disable();
+    }
+
+    requiredFields.forEach(f => f.addEventListener('input', validate));
+    privacyCheckbox.addEventListener('change', validate);
+  },
+
+  createOrder: function(data, actions) {
+    const formData = new FormData(form);
+    return fetch("/checkout", {
+        method: "POST",
+        body: formData
+    })
+    .then(() => fetch("/create-paypal-order", { method: "POST" }))
+    .then(res => res.json())
+    .then(data => data.id);
+  },
+
+  onApprove: function(data, actions) {
+    const orderID = data.orderID || data.orderId;
+    return fetch("/capture-paypal-order/" + orderID, { method: "POST" })
+      .then(res => res.json())
+      .then(res => {
+        if (res.status === 'success') {
+          localStorage.removeItem("cart");
+          fetch("/sync-cart", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify([])
+          });
+          window.location.href = "/bestelldanke";
+        } else {
+          alert("Fehler bei PayPal-Zahlung.");
+        }
+      });
+  },
+
+  onError: function(err) {
+    console.error("PayPal Fehler:", err);
+    alert("PayPal-Zahlung konnte nicht gestartet werden.");
+  }
+
+}).render('#paypal-button-container');
+
+
+// FIX 3: toggleZahlart — PayPal-Container korrekt ein-/ausblenden
+function toggleZahlart(val) {
+  document.getElementById("paypal-button-container").style.display =
+    val === "paypal" ? "block" : "none";
+  document.getElementById("rechnung-btn").style.display =
+    val === "rechnung" ? "block" : "none";
+}
+
+</script>
+<script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
