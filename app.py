@@ -726,7 +726,11 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
     collectkey = str(uuid.uuid4())
     bestellung.collectkey = collectkey
     db.session.commit()
+    # PayPal = bereits bezahlt → Vorkasse (1)
+    # Rechnung = Buchbutler rechnet ab → Rechnung (2)
+    mol_zahlart_id = 1 if bestellung.paymentmethod == "paypal" else 2
 
+    
     payload = {
         "username": BUCHBUTLER_USER,
         "passwort": BUCHBUTLER_PASSWORD,
@@ -734,7 +738,7 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
         "auftrag_kopf": {
             "mol_kunde_id": int(BUCHBUTLER_MOL_KUNDE_ID),
             "rechnungsadresse_id": int(BUCHBUTLER_RECHNUNGSADRESSE_ID),
-            "mol_zahlart_id": 2,  # PayPal
+            "mol_zahlart_id": mol_zahlart_id,  # ← dynamisch
             "bestelldatum": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "bestellreferenz": f"IBK-{bestellung.id}",
             "seite": "ibk-bilderbuch.de",
@@ -1203,6 +1207,102 @@ def checkout():
         total=total
     )
 
+
+@app.route("/checkouttest", methods=["GET", "POST"])
+def checkouttest():
+    cart_items = get_cart()
+    total = calculate_total(cart_items)
+
+    if request.method == "POST":
+        email = request.form.get("email")
+        zahlart = request.form.get("zahlart", "paypal")  # ← NEU
+
+        if not email or not cart_items:
+            flash("Bitte gültige Daten eingeben.", "error")
+            return redirect(url_for("checkout"))
+
+        # Session speichern
+        session["checkout_email"] = email
+        session["checkout_vorname"] = request.form.get("vorname")
+        session["checkout_nachname"] = request.form.get("nachname")
+        session["checkout_strasse"] = request.form.get("strasse")
+        session["checkout_hausnummer"] = request.form.get("hausnummer")
+        session["checkout_plz"] = request.form.get("plz")
+        session["checkout_stadt"] = request.form.get("stadt")
+        session["checkout_land"] = request.form.get("land")
+        session["checkout_telefon"] = request.form.get("telefon")
+        session["checkout_zahlart"] = zahlart  # ← NEU
+
+        # ── RECHNUNG: sofort Bestellung anlegen ──────────────────
+        if zahlart == "rechnung":
+            bestellung = Bestellung(
+                email=email,
+                vorname=session.get("checkout_vorname"),
+                nachname=session.get("checkout_nachname"),
+                strasse=session.get("checkout_strasse"),
+                hausnummer=session.get("checkout_hausnummer"),
+                plz=session.get("checkout_plz"),
+                stadt=session.get("checkout_stadt"),
+                land=session.get("checkout_land"),
+                telefon=session.get("checkout_telefon"),
+                paymentmethod="rechnung"
+            )
+            db.session.add(bestellung)
+            db.session.flush()
+
+            for item in cart_items:
+                db.session.add(BestellPosition(
+                    bestellung_id=bestellung.id,
+                    bezeichnung=item["title"],
+                    menge=item["quantity"],
+                    preis=item["price"]
+                ))
+
+            # Gutschein anwenden
+            gutschein_session = session.get("gutschein")
+            if gutschein_session:
+                gutschein = Gutschein.query.filter_by(
+                    code=gutschein_session["code"]
+                ).first()
+                if gutschein and gutschein.ist_gueltig():
+                    gutschein.restwert -= float(gutschein_session["betrag"])
+                    if gutschein.restwert <= 0:
+                        gutschein.restwert = 0
+                        gutschein.aktiv = False
+
+            db.session.commit()
+
+            # An Buchbutler senden (mol_zahlart_id=2 = Rechnung)
+            buch_items = [i for i in cart_items if not i.get("is_gutschein")]
+            if buch_items:
+                try:
+                    sende_bestellung_an_buchbutler(bestellung, buch_items)
+                except Exception:
+                    logger.exception("BuchButler Rechnung fehlgeschlagen")
+
+            # Bestätigungsmail
+            try:
+                send_email(
+                    subject="Deine Bestellung bei ibk-bilderbuch.de",
+                    recipient=email,
+                    html=f"<p>Vielen Dank für deine Bestellung #{bestellung.id}!<br>Zahlungsart: Rechnung</p>"
+                )
+            except Exception:
+                logger.exception("Bestätigungsmail fehlgeschlagen")
+
+            session.pop("cart", None)
+            session.pop("gutschein", None)
+
+            return redirect(url_for("bestelldanke"))
+
+        # ── PAYPAL: nur Session speichern, JS übernimmt ──────────
+        # render_template unten zeigt PayPal-Button
+
+    return render_template(
+        "checkouttest.html",
+        cart_items=cart_items,
+        total=total
+    )
 # =====================================================
 # HILFSFUNKTIONEN CART
 # =====================================================
