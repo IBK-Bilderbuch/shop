@@ -1356,8 +1356,93 @@
     
     },
 
+ {
+  "id":104,
+  "name":"Welt der Bilder: Von der Höhlenmalerei bis zum Screen",
+  "ean":"9783944874494",
+  "beschreibung": "Zwei Kenner diskutieren - David Hockney und Martin Gayford im GesprächZum ersten Mal wird die Geschichte der Bilder im Ganzen erzählt: Von der Höhlenmalerei über Giotto, van Eyck und Warhol bis zu digitalen Bildern. Der weltberühmte Künstler David Hockney und der in seinem Fach ebenso bekannte Kunstkritiker Martin Gayford haben sich jeder auf seine Weise ein Leben lang intensiv mit Bildern beschäftigt. Eine geschickte Auswahl an Bildbeispielen aller Epochen und das vielseitige Werk David Hockeys selbst illustrieren die Thesen der Autoren. Ihre Gespräche über die Geschichte des Bildermachens bewegen den Leser - jung wie alt - und bringen Licht in die Frage, was Bilder für uns bedeuten und wie wir uns mit ihnen die Welt erschließen.",
+   
+  "bilder": [
+    "images/hockney/weltderbilder.webp"
+      ],
+  "kategorie": ["David Hockney", "Bücher über Illustratoren und Illustrationskunst"]
+ },
+   
+  {
+  "id":105,
+  "name":"Die Welt der Bilder",
+  "ean":"9783038761440",
+  "beschreibung":"Von Höhlenmalerei bis Videokunst: Ein kunterbuntes Kunstgeschichte-Buch für Kinder. Wie lange mussten die Ur-Menschen wilde Tiere beobachten, um sie an Höhlenwände zu malen? Was macht das Lächeln der Mona Lisa so außergewöhnlich? Warum üben Bilder schon immer eine Faszination auf uns Menschen aus?In diesem illustrierten Kindersachbuch spricht der Künstler David Hockney mit dem Kunstkritiker und Autor Martin Gayford über Kunst im Wandel der Zeit. Im kurzweiligen Gespräch beantworten die beiden viele Fragen: Was ist Kunst? Was bedeutet sie für uns? In einfacher, klarer und dennoch kompetenter Sprache stellen sie Kunstwerke aus verschiedenen Epochen vor, erklären technische Details und geben spannende Einblicke in die Welt der Malerei, Fotografie und bewegten Bilder. Die Illustrationen von Rose Blake untermalen die Erzählungen der Autoren und verleihen dem Text eine zusätzliche Dimension. - Kunstgeschichte für Kinder leicht verständlich präsentiert: Ausgezeichnet als innovativstes Buch mit dem New Horizons Award 2019\n\n Rose Blake ist eine preisgekrönte Illustratorin aus London. Sie ist auch Malerin. Rose illustriert Bücher, Zeitschriften, Zeitungen und Kunstgalerien. Als sie 11 Jahre alt war, fuhr sie mit ihren Eltern in den Urlaub nach LA und besuchte David Hockney zu Hause. Seitdem gehört sie zu seinen größten Fans.",
+    
+  "bilder": [
+    "images/hockney/dieweltderbilder.webp"
+      ],
+  "kategorie": ["David Hockney", "Bücher über Illustratoren und Illustrationskunst","Rose Blake"]
 
-  
+   },
+
+    {
+  "id":106,
+  "name":"A History of Pictures for Children",
+  "ean":"9780500651414",
+  "beschreibung":"A journey through art history for children from the cave walls to the images now made attainable to the masses through phone camera filters, told through conversations between artist David Hockney and author Martin Gayford. Based on bestselling book for adults 'A History Of Pictures'".    
+  "bilder": [
+    "images/hockney/historyofpictures.webp"
+      ],
+  "kategorie": ["David Hockney", "Bücher über Illustratoren und Illustrationskunst", "Rose Blake"]
+
+   },
+    {
+  "id":107,
+  "name":"David Hockney - Eine Biografie in Bildern",
+  "ean":"9783038762966",
+  "beschreibung":"Dieses Buch zeigt David Hockneys außergewöhnliches Leben in einem einzigartigen Graphic Novel-Format.Diese charmante Biografie zeichnet das fesselnde Leben von David Hockney nach: Von seiner Kindheit in Bradford, seinen Anfängen als Künstler, über seine Zeit im sonnigen Los Angeles, bis hin zu seiner triumphalen Rückkehr nach Großbritannien.Eine Hommage an Hockneys eigene iPad-ZeichnungenInspiriert von Hockneys Botschaft "Der Frühling kann nicht abgesagt werden", erschafft der Autor Simon Elliott eine farbenfrohe, zum Nachdenken anregende und fröhliche Graphic Novel Geschichte über einen der beliebtesten Künstler der Welt.",
+
+  "bilder": [
+    "images/hockney/einebilderbiographie.webp"
+      ],
+  "kategorie": ["David Hockney", "Bücher über Illustratoren und Illustrationskunst"]
+
+   },
+
+    {
+  "id":108,
+  "name":"David Hockney Der letzte Maler",
+  "ean":"9783038762782",
+  "beschreibung":"Die biografische Graphic Novel zu einem der bekanntesten und erfolgreichsten Maler der GegenwartDavid Hockneys Arbeit ist stark von seinem persönlichen Leben beeinflusst. Von diesem reichen und spannenden Leben wollte der Künstler aus seiner eigenen Perspektive, mit seinen eigenen Emotionen und mit seinen Bildern erzählen.David Hockneys Leben und Werk werden in dieser Graphic Novel von einem imaginären Museumswärter in der Tate Britain in London in den Tagen vor der Eröffnung seiner großen Retrospektive erzählt.Eine farbenfroh illustrierte Graphic Novel, die auch für Kunsteinsteiger geeignet ist.",
+      
+  "bilder": [
+    "images/hockney/derletztemaler.webp"
+      ],
+  "kategorie": ["David Hockney", "Bücher über Illustratoren und Illustrationskunst"]
+
+   },
+     {
+  "id":109,
+  "name":"David Hockney und wie er die Welt sieht",
+  "ean":"9783791377575",
+  "beschreibung":"Große Gedanken – Große Kunst – Kleines schönes Buch David Hockney ist eine Ikone der zeitgenössischen Kunstwelt. Seine farbprächtigen Werke, aber auch er selbst als Person mit seiner unverkennbaren Brille und seinen hochinteressanten Gedanken zur Kunst und zum Leben überhaupt faszinieren viele Menschen weltweit.Dieses überaus schön gestaltete und Lebensmut ausstrahlende Büchlein versammelt Zitate von Hockney selbst und bettet diese in seine Farb- und Bildwelt ein. Sein langjähriger Weggefährte und erfolgreiche Autor Martin Gayford stellt diese Zitatsammlung zusammen und bereichert sie mit Beiträgen aus jüngeren Gesprächen mit dem Künstler.Ein perfektes Mitbringsel für alle, die Kunst und schöne Bücher lieben.",
+       
+  "bilder": [
+    "images/hockney/wieerdieweltsieht.webp"
+      ],
+  "kategorie": ["David Hockney", "Bücher über Illustratoren und Illustrationskunst"]
+
+   },
+     {
+  "id":110,
+  "name":"Six Fairy Tales from the Brothers Grimm with Illustrations by David Hockney",
+  "ean":"9781907533242",
+  "beschreibung":"Reprinted for the first time since its original publication in 1969, David Hockney's illustrations for the tales of the Brothers Grimm are like no other version. Although inspired by earlier illustrators of the tales, including Arthur Rackham and Edmund Dulac, Hockney's extraordinary etchings reimagine these strange and supernatural stories for a modern audience, capturing their distinctive atmosphere in a style that is recognizably the artist's own. Hockney's book brings together some well-known tales, such as Rapunzel and Rumpelstiltskin, with others that are less familiar, like Old Rinkrank. Informed by great art of the past, attuned to idiosyncrasies of character and incident, and fresh in execution and content, his illustrations invite us to read each story as if for the first time.",
+
+  "bilder": [
+    "images/hockney/grimmtaleshockney.webp"
+      ],
+  "kategorie": ["David Hockney", "Bücher über Illustratoren und Illustrationskunst", "Klassiker"]
+
+   },
+
+
 
     {
   "id":64,
