@@ -465,7 +465,7 @@
     "images/dervogelinmir/dervogelinmir6.webp",
     "images/dervogelinmir/dervogelinmir7.webp"
   ],
-  "kategorie": ["Künstlerdasein", "Kunst und Identität", "Deutschsprachige Bücher", "Sara Lundberg" ],
+  "kategorie": [ "Kunst und Künstlerdasein", "Deutschsprachige Bücher", "Sara Lundberg" ],
   "leseprobe_url": "https://www.book2look.com//book/WjLI79HvFc&euid=0&ruid=0&refererpath=www.moritzverlag.de&isbnformat=hardcover&bookisbn=9783895654640&dct=0&biblettype=double&clickedby=lk&bibloc=0"
 },
 
@@ -574,7 +574,7 @@
     "bilder": [
     "images/farbeeulestift/farbeeulestift.webp"
   ],
-  "kategorie":["Künstlerdasein",  "Kunst und Identität", "Deutschsprachige Bücher", "Renate Habinger" ],
+  "kategorie":["Kunst und Künstlerdasein", "Deutschsprachige Bücher", "Renate Habinger" ],
   "leseprobe_pdf": "farbeeulestift.pdf"
 
 },
@@ -690,7 +690,7 @@
   "bilder": [
     "images/bobtheartist/bobtheartist.webp"
   ],
- "kategorie": ["Künstlerdasein", "Kunst und Identität", "Bob der Künstler", "Englischsprachige Bücher" ]
+ "kategorie": [ "Kunst und Künstlerdasein", "Bob der Künstler", "Englischsprachige Bücher" ]
 },
 
    {
@@ -1365,7 +1365,7 @@
   "bilder": [
     "images/hockney/weltderbilder.webp"
       ],
-  "kategorie": ["David Hockney", "Bücher über Illustratoren und Illustrationskunst"]
+  "kategorie": ["David Hockney", "Kunst und Künstlerdasein"]
  },
    
   {
@@ -1377,7 +1377,7 @@
   "bilder": [
     "images/hockney/dieweltderbilder.webp"
       ],
-  "kategorie": ["David Hockney", "Bücher über Illustratoren und Illustrationskunst","Rose Blake"]
+  "kategorie": ["David Hockney", "Kunst und Künstlerdasein", "Rose Blake"]
 
    },
 
@@ -1389,7 +1389,7 @@
   "bilder": [
     "images/hockney/historyofpictures.webp"
       ],
-  "kategorie": ["David Hockney", "Bücher über Illustratoren und Illustrationskunst", "Rose Blake"]
+  "kategorie": ["David Hockney","Kunst und Künstlerdasein", "Rose Blake"]
 
    },
     {
@@ -1401,7 +1401,7 @@
   "bilder": [
     "images/hockney/einebilderbiographie.webp"
       ],
-  "kategorie": ["David Hockney", "Bücher über Illustratoren und Illustrationskunst"]
+  "kategorie": ["David Hockney", "Kunst und Künstlerdasein"]
 
    },
 
@@ -1414,7 +1414,7 @@
   "bilder": [
     "images/hockney/derletztemaler.webp"
       ],
-  "kategorie": ["David Hockney", "Bücher über Illustratoren und Illustrationskunst"]
+  "kategorie": ["David Hockney","Kunst und Künstlerdasein"]
 
    },
      {
@@ -1426,7 +1426,7 @@
   "bilder": [
     "images/hockney/wieerdieweltsieht.webp"
       ],
-  "kategorie": ["David Hockney", "Bücher über Illustratoren und Illustrationskunst"]
+  "kategorie": ["Kunst und Künstlerdasein", "David Hockney"]
 
    },
      {
