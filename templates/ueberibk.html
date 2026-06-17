@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Über I B K | I B K - Buchhandlung für Illustration und Bilderbücher</title>
+
+  <link rel="icon" type="image/x-icon" href="static/ficon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+
+<div class="rechtliches">
+  <h1>Über I B K</h1>
+
+  <p style="font-size: 1.3rem; margin-top: 80px">
+    I B K - Buchhandlung für Illustration und Bilderbücher <br>
+    Meller Bogen 14<br>
+    13403 Berlin<br>
+    Deutschland<br><br>
+
+    Vertreten durch:<br>
+    Ani Antonyan<br>
+    Telefon: +49 179 1538512<br>
+    E-Mail: kontakt@ibk-bilderbuch.de<br><br>
+
+    Wirtschafts-Identifikationsnummer: DE461274477 <br>
+    Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:Ani Antonyan
+ 
+ 
+  </p>
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+</html>
