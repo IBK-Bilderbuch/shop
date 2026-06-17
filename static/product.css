@@ -137,8 +137,8 @@ footer a {
 
 .carousel-image.active {
   display: block;
-max-height: 60vh;
-  width: auto;
+  width: 100%;
+  height: auto;
   margin: 0 auto;
   object-fit: contain;
 }
