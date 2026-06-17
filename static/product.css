@@ -365,6 +365,12 @@ label[for="quantity"] {
      
   }
 
+   .book-info {
+    margin-top: 5px;
+    padding-top: 5px;
+  
+  }
+
   .rechtliches h2 { font-size: 1.8rem; }
   .rechtliches h3 { font-size: 1.2rem; }
   .rechtliches p  { font-size: 1.1rem; line-height: 1.4; }
