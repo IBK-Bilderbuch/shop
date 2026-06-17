@@ -1659,6 +1659,11 @@ def illustratoren():
 @app.route("/ueberibk")
 def ueberibk():
     return render_template("ueberibk.html", user_email=session.get("user_email"))
+
+    
+@app.route("/uberibk")
+def uberibk():
+    return render_template("uberibk.html", user_email=session.get("user_email"))
     
 # ============================
 # INDEX HAUPTSEITE
