@@ -74,45 +74,43 @@ function addToCart(title, price, image, ean) {
 // -----------------------------
 // Carousel-Slider
 // -----------------------------
-let currentSlide = 0;
-const slides = document.querySelectorAll(".carousel-slide");
-const nextBtn = document.querySelector(".next");
-const prevBtn = document.querySelector(".prev");
-
-function showSlide(index) {
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".carousel-slide");
   if (!slides.length) return;
 
-  if (index < 0) index = slides.length - 1;
-  if (index >= slides.length) index = 0;
+  let currentSlide = 0;
+  const nextBtn = document.querySelector(".next");
+  const prevBtn = document.querySelector(".prev");
 
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
-  });
+  function showSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+    currentSlide = index;
+  }
 
-  currentSlide = index;
-}
+  let slideInterval = setInterval(() => showSlide(currentSlide + 1), 4000);
+  function resetInterval() {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(() => showSlide(currentSlide + 1), 4000);
+  }
 
-let slideInterval = setInterval(() => showSlide(currentSlide + 1), 4000);
+  if (nextBtn) nextBtn.addEventListener("click", () => { showSlide(currentSlide + 1); resetInterval(); });
+  if (prevBtn) prevBtn.addEventListener("click", () => { showSlide(currentSlide - 1); resetInterval(); });
 
-function resetInterval() {
-  clearInterval(slideInterval);
-  slideInterval = setInterval(() => showSlide(currentSlide + 1), 4000);
-}
-
-if (nextBtn) nextBtn.addEventListener("click", () => { showSlide(currentSlide + 1); resetInterval(); });
-if (prevBtn) prevBtn.addEventListener("click", () => { showSlide(currentSlide - 1); resetInterval(); });
-
-showSlide(currentSlide);
+  showSlide(0);
+});
 
 // -----------------------------
 // Produktbilder-Slider (Produktseite)
 // -----------------------------
 document.addEventListener("DOMContentLoaded", () => {
   const productImages = document.querySelectorAll(".carousel-image");
+   if (!productImages.length) return; // ← diese Zeile hinzufügen
+
   const prevBtn = document.querySelector(".product-prev");
   const nextBtn = document.querySelector(".product-next");
 
-  if (productImages.length === 0) return;
 
   let currentIndex = 0;
 
