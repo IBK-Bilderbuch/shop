@@ -1655,6 +1655,10 @@ def newsletteranmeldung():
 @app.route("/illustratoren")
 def illustratoren():
     return render_template("illustratoren.html", user_email=session.get("user_email"))
+
+@app.route("/ueberibk")
+def ueberibk():
+    return render_template("ueberibk.html", user_email=session.get("user_email"))
     
 # ============================
 # INDEX HAUPTSEITE
