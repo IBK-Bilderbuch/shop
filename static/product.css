@@ -370,14 +370,7 @@ label[for="quantity"] {
 
  
 
-    .book-cover {
-    max-height: 45vh;
-  }
   
-  .carousel-image {
-    max-height: 45vh;
-    object-fit: contain;
-  }
 
   .rechtliches h2 { font-size: 1.8rem; }
   .rechtliches h3 { font-size: 1.2rem; }
