@@ -328,6 +328,9 @@ label[for="quantity"] {
 /* =========================================================
    MEDIA QUERIES
 ========================================================= */
+
+
+
 @media (max-width: 768px) {
 
   header a {
@@ -365,10 +368,15 @@ label[for="quantity"] {
      
   }
 
-   .book-info {
-    margin-top: 5px;
-    padding-top: 5px;
+ 
+
+    .book-cover {
+    max-height: 45vh;
+  }
   
+  .carousel-image {
+    max-height: 45vh;
+    object-fit: contain;
   }
 
   .rechtliches h2 { font-size: 1.8rem; }
