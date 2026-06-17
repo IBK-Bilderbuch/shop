@@ -137,8 +137,11 @@ footer a {
 
 .carousel-image.active {
   display: block;
+max-height: 60vh;
+  width: auto;
+  margin: 0 auto;
+  object-fit: contain;
 }
-
 .product-prev,
 .product-next {
   position: absolute;
