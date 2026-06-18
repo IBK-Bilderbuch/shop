@@ -1441,6 +1441,52 @@
   "kategorie": ["David Hockney",  "Klassiker"]
 
    },
+   {
+  "id": 111,
+  "name": "Alle Wetter!",
+  "ean": "9783942787529",
+  "beschreibung": "Sanftes Frühlingserwachen, gleißende Sommertage, tobende Stürme und klirrende Kälte Erstaunlich, dass es noch kein Buch über das Wetter gibt, das mehr enthält als bloße Naturkunde, wo doch das Wetter uns alle bewegt, unsere Stimmung prägt und unsere Garderobe bestimmt. Britta Tecken trup hat diese Lücke geschlossen mit einem Buch voller Bilder, das Information und Emotion verbindet, und mit lyrischen Texten, die zeigen, welchen Reichtum an Wetterbeschreibungen unsere Sprache besitzt. Regen bringt Segen, aber schön ist es auch, dass es nach jedem Regen Sonnenschein gibt. Es ist warm oder kalt, feucht oder trocken, hell oder dunkel, je nach Jahreszeit und Wetterlage. Es gibt Landwetter und Großstadtwetter, Seewetter und Gebirgswetter. Eis bedeckt im Winter ganze Seen, aber auch im Sommer gibt es Eis, nicht nur beim Eismann, sondern auch in Form von dicken Hagelkörnern. Unwetter ist nicht das Gegenteil von Wetter, sondern viele Wetter auf einmal: Regen und Sturm und Blitz und Donner; und Sonnenschein bedeutet nicht nur Helligkeit und Wärme, sondern auch blühende Blumen und summende Insekten. Kurz: Immer leben wir mit dem Wetter, das Wetter lässt die Natur gedeihen oder vernichtet sie, und mit dem Wetter hebt sich und sinkt unsere Stimmung. Und über nichts tauschen wir uns lieber aus als über das Wetter.",
+     
+  "bilder": [
+    "images/teckentrup/allewetter.webp",
+    "images/teckentrup/allewetter1.webp",
+    "images/teckentrup/allewetter2.webp",
+    "images/teckentrup/allewetter3.webp"
+
+  ],
+  "kategorie":[ "Wichtige Fragen",  "Deutschsprachige Bücher", "Britta Teckentrup" ],
+  "leseprobe_url": "https://www.book2look.com/book/QEAsbYMyds"
+ 
+},
+     {
+  "id": 112,
+  "name": "Worauf wartest du?",
+  "ean": "9783946593096",
+  "beschreibung": "Fragen über Fragen Wie wird mein Leben? Werde ich glücklich sein? Bist du stolz auf mich? Wo bist du? Warum habe ich Angst? Warum kann ich das nicht? Wenn ich fliege, werde ich dann fallen? Wie groß ist das Weltall? Wartest du auf mich? Bleiben wir zusammen? Soll ich das versuchen? Kluge Kinder stellen kluge Fragen. Mal völlig überraschende Fragen, mal Fragen, die sich jeder schon einmal gestellt hat. Britta Teckentrup gibt keine Antworten auf die Fragen, die sie gesammelt hat, sondern unterstreicht mit ihren Bildern die Bedeutung, ja, Ungeheuerlichkeit der Fragen. Etwa, wenn sie eine Person zeigt, die wie manche Figuren von Caspar David Friedrich vor einer endlosen Weite stehen. Alles ist möglich, heißt das. ", 
+  "bilder": [
+    "images/teckentrup/woraufwartestdu.webp",
+    "images/teckentrup/woraufwartestdu1.webp",
+    "images/teckentrup/woraufwartestdu2.webp",
+    "images/teckentrup/woraufwartestdu3.webp",
+    "images/teckentrup/woraufwartestdu4.webp",
+    "images/teckentrup/woraufwartestdu5.webp",
+    "images/teckentrup/woraufwartestdu6.webp"
+
+  ],
+  "kategorie":[ "Wichtige Fragen",  "Deutschsprachige Bücher", "Britta Teckentrup" ]
+  "leseprobe_url": "https://www.book2look.com/book/x7MbQazZBI"
+},
+     {
+  "id": 113,
+  "name": "",
+  "ean": "",
+  "beschreibung": " ", 
+  "bilder": [
+    "images"
+  ],
+  "kategorie":[ "Feiertage",  "Deutschsprachige Bücher", "Britta Teckentrup" ]
+ 
+},
 
 
 
