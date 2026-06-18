@@ -1476,16 +1476,16 @@
   "kategorie":[ "Wichtige Fragen",  "Deutschsprachige Bücher", "Britta Teckentrup" ],
   "leseprobe_url": "https://www.book2look.com/book/x7MbQazZBI"
 },
-     {
+    
+  {
   "id": 113,
   "name": "Mein großes Kritzel-Schnipsel-Buch: 150 Bilder zum Ausmalen und Ausschneiden",
   "ean": "9783473556625",
   "beschreibung": "In diesem fantasievollen Mal- und Mitmachbuch finden Kinder zahlreiche lustige Bildmotive zum Ausschneiden, Aus- und Weitermalen: Da werden Eierköpfen lustige Gesichter verpasst, die Zähne des Zahnarztes schwarz angemalt und furchteinflößende Ungeheuer zum Leben erweckt. Kurze Sätze geben Anregungen, wie die Bilder fortgesetzt oder bearbeitet werden können. So werde kleine Künstler aktiv. ",
-       
   "bilder": [
     "images/boudgourd/kritzel.webp"
   ],
-  "kategorie":[  "Deutschsprachige Bücher", "Vincent Boudgourd", "Selber Malen"]
+  "kategorie":[  "Deutschsprachige Bücher", "Vincent Boudgourd"]
  
 },
 {
@@ -1493,41 +1493,12 @@
   "name": "Herr Zipfel",
   "ean": "9783939435457",
   "beschreibung": "Herr Zipfel ist ein großer Alleskönner! Dieses humorvolle Bilderbuch führt in die wunderbaren Fähigkeiten des Multi-Talents ein und lässt Kinder und Eltern wissend schmunzeln. \n\n Der Verlag behauptet, dass es sich bei Herrn Zipfel um ein Kinderbuch handelt (ab 4 Jahre), richtig interessant werden die Geschichten aber erst für Erwachsene.",
-  
   "bilder": [
     "images/boudgourd/herrzipfel.webp"
   ],
   "kategorie":[  "Deutschsprachige Bücher", "Vincent Boudgourd"]
  
-},
-
-
-    {
-  "id":,
-  "ean":"0",
-  "bilder": [
-    "images/"
-      ],
-  "kategorie": ""
-
-   },
-
-  {
-  "id":65,
-  "name":"",
-  "ean":"0",
-  "beschreibung": "",
-  "bilder": [
-    "images/"
-      ],
-  "kategorie": "",
-   "leseprobe_url": ""
-
-   }
-  
- 
-
-
+}
 
   
 ]
