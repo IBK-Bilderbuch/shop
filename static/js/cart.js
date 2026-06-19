@@ -154,11 +154,7 @@ function setupCheckoutButton(buttonId = "checkout-btn") {
   }
 }
 
-// --- Automatisch beim Laden der Seite ---
-window.addEventListener('DOMContentLoaded', () => {
-  loadCart();
-  setupCheckoutButton();
-});
+
 
 // --- Optional: global verfügbar machen ---
 window.loadCart = loadCart;
