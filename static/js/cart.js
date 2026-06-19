@@ -163,3 +163,37 @@ window.addEventListener('DOMContentLoaded', () => {
 // --- Optional: global verfügbar machen ---
 window.loadCart = loadCart;
 window.setupCheckoutButton = setupCheckoutButton;
+
+
+
+function setupGutscheinButton() {
+  const btn = document.getElementById('apply-gutschein');
+  if (!btn) return;
+
+  btn.addEventListener('click', async () => {
+    const code = document.getElementById('gutschein-code').value.trim();
+    if (!code) { alert("Bitte Code eingeben."); return; }
+
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    const res = await fetch('/apply-gutschein', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code, cart })
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      alert(`✅ Rabatt: ${data.rabatt.toFixed(2)} € | Gesamt: ${data.new_total.toFixed(2)} €`);
+    } else {
+      alert(data.message || "Ungültiger Code.");
+    }
+  });
+}
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  loadCart();
+  setupCheckoutButton();
+  setupGutscheinButton(); // ← neu
+});
