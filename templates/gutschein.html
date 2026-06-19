@@ -232,9 +232,10 @@
   <div class="gutschein-form">
     <h1>Geschenkgutschein</h1>
     <p>
-      Verschenke einen digitalen Gutschein für den Shop.
-      Der Gutscheincode wird nach erfolgreicher Zahlung
-      automatisch per E-Mail verschickt.
+      Sie erhalten Ihren Gutschein digital per E-Mail. 
+      In der Nachricht finden Sie den Gutscheincode für den Online-Shop und eine PDF-Vorlage wie auf dem Bild zum Ausdrucken und Verschenken.
+      
+      <em>Tipp: Schauen Sie auch kurz in Ihrem Spam-Ordner vorbei, falls die Mail nicht gleich da ist!</em>
     </p>
 
     <div class="price" id="preis-anzeige">50,00 €</div>
@@ -251,6 +252,10 @@
 
       <!-- E-Mail -->
       <label for="email" style="margin-top:20px;">E-Mail-Adresse</label>
+      <p class="hint" style="font-size:14px; opacity:0.8; margin-top:8px;">
+        Der Gutscheincode und die PDF-Vorlage werden nach erfolgreicher
+        Zahlung an diese E-Mail-Adresse gesendet.
+      </p>
       <input
         type="email"
         name="email"
@@ -260,10 +265,7 @@
         required
       >
 
-      <p class="hint" style="font-size:14px; opacity:0.8; margin-top:8px;">
-        Der Gutscheincode wird nach erfolgreicher
-        Zahlung an diese E-Mail-Adresse gesendet.
-      </p>
+      
 
       <!-- PayPal -->
       <div id="paypal-button-container" style="margin-top:30px;"></div>
