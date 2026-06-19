@@ -215,37 +215,36 @@ def gutschein():
 @app.route("/apply-gutschein", methods=["POST"])
 @csrf.exempt
 def apply_gutschein():
-
-    code = (request.json.get("code") or "").strip().upper()
-
+    body = request.json
+    code = (body.get("code") or "").strip().upper()
+    
     gutschein = Gutschein.query.filter_by(code=code).first()
 
     if not gutschein:
-        return jsonify({
-            "success": False,
-            "message": "Ungültiger Code"
-        })
+        return jsonify({"success": False, "message": "Ungültiger Code"})
 
     if not gutschein.ist_gueltig():
-        return jsonify({
-            "success": False,
-            "message": "Gutschein ungültig oder abgelaufen"
-        })
+        return jsonify({"success": False, "message": "Gutschein ungültig oder abgelaufen"})
 
-    cart = get_cart()
+    # ← Cart aus Request nehmen, nicht aus Session!
+    cart = body.get("cart") or get_cart()
 
     total = sum(
-        item["price"] * item["quantity"]
+        item["price"] * item.get("quantity", 1)
         for item in cart
     )
 
     rabatt = min(total, gutschein.restwert)
 
+    # Cart auch gleich in Session speichern (sync)
+    if body.get("cart"):
+        session["cart"] = body["cart"]
+        session.modified = True
+
     session["gutschein"] = {
         "code": gutschein.code,
         "betrag": rabatt
     }
-
     session.modified = True
 
     return jsonify({
