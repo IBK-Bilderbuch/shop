@@ -1500,6 +1500,18 @@
   ],
   "kategorie":[  "Deutschsprachige Bücher", "Vincent Boudgourd"]
  
+},
+
+  {
+  "id": 100,
+  "name": "Testbuch",
+  "preis": 0.01,
+  "beschreibung": "Herr Zipfel ist ein großer Alleskönner! Dieses humorvolle Bilderbuch führt in die wunderbaren Fähigkeiten des Multi-Talents ein und lässt Kinder und Eltern wissend schmunzeln. \n\n Der Verlag behauptet, dass es sich bei Herrn Zipfel um ein Kinderbuch handelt (ab 4 Jahre), richtig interessant werden die Geschichten aber erst für Erwachsene.",
+  "bilder": [
+    "images/boudgourd/herrzipfel.webp"
+  ],
+  "kategorie":[ ]
+ 
 }
 
   
