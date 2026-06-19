@@ -1316,7 +1316,7 @@
 
   
   {
-  "id":105,
+  "id":99,
   "name":"Geschichten aus der Bibel",
   "ean":"9783314103018",
   "beschreibung": "Von der Erschaffung der Welt, der Geburt Jesu, den Wundern Gottes berichtet die Bibel. Heinz Janisch erzählt die wichtigsten und bekanntesten Geschichten aus der Bibel in wunderbar feinsinnigem Ton. Ihm geht es um den Kern der Geschichten. Wer schon mit der Bibel vertraut ist, findet durch die Bilder von Lisbeth Zwerger ungewöhnliche Perspektiven. Wem die biblischen Texte bisher fremd waren, der wird ihre Faszination erfahren.",
@@ -1441,6 +1441,7 @@
   "kategorie": ["David Hockney",  "Klassiker"]
 
    },
+  
    {
   "id": 111,
   "name": "Alle Wetter!",
@@ -1458,6 +1459,7 @@
   "leseprobe_url": "https://www.book2look.com/book/QEAsbYMyds"
  
 },
+  
      {
   "id": 112,
   "name": "Worauf wartest du?",
