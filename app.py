@@ -149,7 +149,15 @@ def logout():
 # Gutschein
 # =====================================================
 
-
+@app.route("/admin/gutscheine")
+def admin_gutscheine():
+    if not session.get("admin"):
+        abort(403)
+    alle = Gutschein.query.all()
+    return "<br>".join(
+        f"{g.code} | Wert: {g.wert}€ | Rest: {g.restwert}€ | Aktiv: {g.aktiv}"
+        for g in alle
+    ) or "Keine Gutscheine in der Datenbank"
 
 
 
