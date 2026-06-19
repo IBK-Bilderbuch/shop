@@ -182,6 +182,33 @@ function toggleZahlart(val) {
     val === "rechnung" ? "block" : "none";
 }
 
+document.getElementById('apply-gutschein').addEventListener('click', async () => {
+  const code = document.getElementById('gutschein-code').value.trim();
+  
+  if (!code) {
+    alert("Bitte einen Gutscheincode eingeben.");
+    return;
+  }
+
+  // Cart aus localStorage holen (wie in meinem Fix erklärt)
+  const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+  const res = await fetch('/apply-gutschein', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ code, cart })
+  });
+
+  const data = await res.json();
+
+  if (data.success) {
+    alert(`Gutschein eingelöst! Rabatt: ${data.rabatt.toFixed(2)} €. Neuer Gesamtbetrag: ${data.new_total.toFixed(2)} €`);
+  } else {
+    alert(data.message || "Ungültiger Gutscheincode.");
+  }
+});
+
+  
 </script>
 <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
