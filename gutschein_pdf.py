@@ -80,7 +80,7 @@ def _make_overlay(code: str, betrag: float, use_cormorant: bool) -> bytes:
     c.setFillColor(BETRAG_COLOR)
     font = 'CormorantGaramond' if use_cormorant else 'Helvetica'
     c.setFont(font, BETRAG_SIZE)
-    c.drawRightString(BETRAG_X_RIGHT, BETRAG_Y, f"{betrag:.0f}")
+    c.drawRightString(BETRAG_X_RIGHT, BETRAG_Y, f"{betrag:g}")
 
     # Code überdecken
     x0, y0, x1, y1 = COVER_CODE
