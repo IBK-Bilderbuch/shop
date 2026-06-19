@@ -20,19 +20,32 @@ logger = logging.getLogger(__name__)
 PAGE_H = 842.25
 PAGE_W = 595.5
 
-ROSA_BG      = HexColor("#F9EEF1")
-BETRAG_X_RIGHT = 312.0
-BETRAG_Y       = PAGE_H - 447.6
-BETRAG_SIZE    = 36.0
-BETRAG_COLOR   = HexColor("#2C2C2C")
+# Hintergrundfarbe zum Überdecken (cremeweiß passend zum Template)
+BG_COLOR = HexColor("#FAF5F6")
 
-COVER_BETRAG = (265.0, PAGE_H - 458.0, 312.0, PAGE_H - 412.0)
+# --- BETRAG ---
+# € liegt bei x0=341.2, top=410.5, bottom=452.0
+# Betrag soll rechtsbündig direkt links vom € stehen
+# ReportLab Y = PAGE_H - top
+BETRAG_X_RIGHT  = 338.0            # direkt links vom €
+BETRAG_Y        = PAGE_H - 441.0   # vertikal zentriert zum €
+BETRAG_SIZE     = 36.0
+BETRAG_COLOR    = HexColor("#2C2C2C")
 
-CODE_X    = 216.0
-CODE_Y    = PAGE_H - 507.0
-CODE_SIZE = 18.0
+# Abdeckfläche für Betrag: zwischen "GUTSCHEIN IM WERT VON" (x1=253.7) und € (x0=341.2)
+# top=404.6, bottom=452.0 → in ReportLab: y0=PAGE_H-452, y1=PAGE_H-404
+COVER_BETRAG = (255.0, PAGE_H - 452.0, 340.0, PAGE_H - 404.0)
+
+# --- CODE ---
+# '76nKGRzpF9' liegt bei x0=244.6, top=484.4, bottom=502.4
+# ReportLab Y = PAGE_H - bottom
+CODE_X     = 244.6
+CODE_Y     = PAGE_H - 502.4
+CODE_SIZE  = 18.0
 CODE_COLOR = HexColor("#1A1A1A")
-COVER_CODE = (170.0, PAGE_H - 510.0, 400.0, PAGE_H - 486.0)
+
+# Abdeckfläche für Code
+COVER_CODE = (240.0, PAGE_H - 505.0, 420.0, PAGE_H - 481.0)
 
 
 def _register_cormorant(template_path: str):
@@ -60,10 +73,10 @@ def _make_overlay(code: str, betrag: float, use_cormorant: bool) -> bytes:
 
     # Betrag-Platzhalter überdecken
     x0, y0, x1, y1 = COVER_BETRAG
-    c.setFillColor(ROSA_BG)
-    c.rect(x0, y0, x1-x0, y1-y0, fill=1, stroke=0)
+    c.setFillColor(BG_COLOR)
+    c.rect(x0, y0, x1 - x0, y1 - y0, fill=1, stroke=0)
 
-    # Betrag einzeichnen
+    # Betrag einzeichnen (kein €, da € bereits im Template steht)
     c.setFillColor(BETRAG_COLOR)
     font = 'CormorantGaramond' if use_cormorant else 'Helvetica'
     c.setFont(font, BETRAG_SIZE)
@@ -71,8 +84,8 @@ def _make_overlay(code: str, betrag: float, use_cormorant: bool) -> bytes:
 
     # Code überdecken
     x0, y0, x1, y1 = COVER_CODE
-    c.setFillColor(ROSA_BG)
-    c.rect(x0, y0, x1-x0, y1-y0, fill=1, stroke=0)
+    c.setFillColor(BG_COLOR)
+    c.rect(x0, y0, x1 - x0, y1 - y0, fill=1, stroke=0)
 
     # Code einzeichnen
     c.setFillColor(CODE_COLOR)
