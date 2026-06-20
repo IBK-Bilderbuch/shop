@@ -305,10 +305,10 @@
   "ean": "9783848901760",
   "beschreibung": "Allein in der großen Stadt zu sein, ist manchmal unheimlich. Besonders, wenn man klein ist und alles um einen herum so laut und riesengroß. Da ist es gut, wenn es jemanden gibt, der die besten Geheimverstecke kennt, zum Beispiel unterm Haselstrauch oder hoch oben im Walnussbaum. (Ausgezeichnet mit dem Deutschen Jugendliteraturpreis 2021 in der Kategorie Bilderbuch.)",
   "bilder": [
-    "images/unsichtbar/unsichtbar.webp",
-    "images/unsichtbar/unsichtbar1.webp",
-    "images/unsichtbar/unsichtbar2.webp",
-    "images/unsichtbar/unsichtbar3.webp"
+    "images/ssmith/unsichtbar.webp",
+    "images/ssmith/unsichtbar1.webp",
+    "images/ssmith/unsichtbar2.webp",
+    "images/ssmith/unsichtbar3.webp"
   ],
   "kategorie":[ "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Sydney Smith" ]
 },
@@ -1501,6 +1501,32 @@
   "kategorie":[  "Deutschsprachige Bücher", "Vincent Boudgourd"]
  
 },
+
+  {
+  "id": 115,
+  "name": "Erinnerst du dich?",
+  "ean": "9783848901760",
+  "beschreibung": "Mutter und Sohn teilen ihre Erinnerungen. Einige davon sind heiter und friedlich, wie ein gemeinsames Picknick mit dem Vater, andere wiederum spannend und ein wenig abenteuerlich – etwa der Sturz vom Fahrrad in einen weichen Heuhaufen oder ein heftiges Gewitter mit Stromausfall. Nun sind sie allein zu zweit, und das Haus, in dem all diese Momente entstanden sind, liegt weit entfernt. Doch vielleicht wird auch dieser Augenblick eines Tages zu einer wertvollen Erinnerung werden – zugleich traurig und schön, ein Abschied und ein Neubeginn, die ineinander übergehen.",
+  "bilder": [
+    "images/ssmith/erinnerstdudich.webp",
+    "images/ssmith/erinnerstdudich1.webp",
+    "images/ssmith/erinnerstdudich2.webp",
+    "images/ssmith/erinnerstdudich3.webp"
+  ],
+  "kategorie":[ "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Sydney Smith" ]
+},
+
+  {
+  "id": 116,
+  "name": "Small in the City",
+  "ean": "9781406392982",
+  "beschreibung": "I know what it's like to be small in the city...Being small can be overwhelming in a city. People don't see you. The loud sounds of the sirens and cyclists can be scary. And the streets are so busy it can make your brain feel like there's too much stuff in it. But if you know where to find good hiding places, warm dryer vents that blow out hot steam that smells like summer, music to listen to or friends to say hi to, there can be comfort in the city, too. We follow our little protagonist, who knows all about what its like to be small in the city, as he gives his best advice for surviving there. As we turn the pages, Sydney Smith's masterful storytelling allows us to glimpse exactly who this advice is for, leading us to a powerful, heart-rending realization...",
+  "bilder": [
+    "images/ssmith/smallinthecity.webp"
+  ],
+  "kategorie":[ "Gefühle", "Kinder und Gefühle", "Englischsprachige Bücher", "Sydney Smith" ]
+},
+
 
   {
   "id": 100,
