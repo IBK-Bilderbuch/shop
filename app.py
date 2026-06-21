@@ -89,8 +89,9 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-
-
+# ← NEU: Bilder beim Start konvertieren
+from optimize import walk_and_optimize
+walk_and_optimize("static/images")
 
 
 
