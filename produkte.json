@@ -1527,7 +1527,42 @@
   "kategorie":[ "Gefühle", "Kinder und Gefühle", "Englischsprachige Bücher", "Sydney Smith" ]
 },
 
+   {
+  "id":117,
+  "name":"Die Tage, bevor Jaron kam",
+  "ean":"9783959392259",
+  "beschreibung": "Es ist Jarons dritter Geburtstag  und er freut sich über seine Geschenke. Besonders gern hört er jedoch zu, wenn seine Schwester Mara aus ihrem Tagebuch vorliest. Darin erinnert sie sich an die Zeit vor seiner Geburt, an die Vorfreude auf sein Kommen und an ihre erste Begegnung. \n\n In diesem Geschwisterbuch erzählt Sonja Danowski im romantisch-realistischen Stil von der Vorfreude auf die Ankunft eines neuen Familienmitglieds. Eine einfühlsame Geschichte über Liebe, Dankbarkeit und das Zusammenwachsen einer Familie.",
+     
+  "bilder": [
+    "images/SonjaDanowski/dietagebevorjarokam.webp",
+    "images/SonjaDanowski/dietagebevorjarokam1.webp",
+    "images/SonjaDanowski/dietagebevorjarokam2.webp",
+    "images/SonjaDanowski/dietagebevorjarokam3.webp",
+    "images/SonjaDanowski/dietagebevorjarokam4.webp",
+    "images/SonjaDanowski/dietagebevorjarokam5.webp",
+    "images/SonjaDanowski/dietagebevorjarokam6.webp"
+      ],
+  "kategorie": [ "Deutschsprachige Bücher", "Sonja Danowski" ]
+   },
 
+   {
+  "id":118,
+  "name":"Nachts im Traum",
+  "ean":"9783959392105",
+  "beschreibung": "Wie gemütlich es ist\nin meinem Bett zu liegen,\n>weich und warm.\n\nEine Begleitung für Kinder in ihre nächtlichen Traumwelten. Kurze, an Haikus erinnernde Texte erzählen von fantasievollen Abenteuern – unter Wasser, im Schnee oder in magischen Spielen – und verbinden Alltägliches mit traumhaften Bildern.\n\nEine poetische Geschichte über Fantasie, Träume und die Kraft der Vorstellung. Die abschließende Frage 'Und was träumst du heute Nacht?' lädt dazu ein, die eigene Traumwelt zu entdecken.",
+
+     
+  "bilder": [
+    "images/SonjaDanowski/nachtsimtraum.webp",
+    "images/SonjaDanowski/nachtsimtraum1.webp",
+    "images/SonjaDanowski/nachtsimtraum2.webp",
+    "images/SonjaDanowski/nachtsimtraum3.webp",
+    "images/SonjaDanowski/nachtsimtraum4.webp"
+      ],
+  "kategorie": [ "Deutschsprachige Bücher", "Sonja Danowski" ]
+   },
+
+  
   {
   "id": 100,
   "name": "Testbuch",
