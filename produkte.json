@@ -1577,6 +1577,18 @@
     "kategorie": ["Wichtige Fragen", "Englischsprachige Bücher", "Anne Herbauts" ]
   },
 
+  {
+  "id":120,
+  "name":"TWild Things are Happening The Art of Maurice Sendak",
+  "ean":"9781636810522",
+  "beschreibung": "The most comprehensive survey of the work of Maurice Sendak, the most celebrated picture book artist of all timewith previously unpublished archival materials.",  
+  "bilder": [
+    "images/illustratoren/sendrak.webp"
+      ],
+  "kategorie": ["Künstlerdasein", "Bücher über Illustratoren und Illustrationskunst","Englischsprachige Bücher" ]
+   },
+  
+
   
   {
   "id": 100,
