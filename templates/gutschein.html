@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -6,9 +9,12 @@
   <title> Gutschein | I B K - Buchhandlung für Illustration und Bilderbücher </title>
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='ficon.png') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='product.css') }}" />
   <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+
 
 <style>
   * {
@@ -24,6 +30,9 @@
     padding: 0;
   }
 
+  /* ALT - gibt es noch nicht, einfach hinzufügen */
+
+/* NEU */
 .carousel {
   flex: 0 0 340px;
   position: relative;
@@ -52,8 +61,10 @@
     display: flex;
     gap: 3rem;
     align-items: flex-start;
+
   }
 
+  /* ---- LINKE SEITE: Bild ---- */
   .gutschein-image {
     flex: 0 0 340px;
     height: 480px;
@@ -74,6 +85,7 @@
     border-radius: 8px;
   }
 
+  /* ---- RECHTE SEITE: Formular ---- */
   .gutschein-form {
     flex: 1;
     display: flex;
@@ -131,6 +143,14 @@
     transition: border-color 0.15s;
   }
 
+  select.input-field {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
   .input-field:focus {
     border-color: #3b7fc4;
     box-shadow: 0 0 0 3px rgba(59,127,196,0.12);
@@ -168,7 +188,7 @@
   }
 
   .input-field {
-    font-size: 16px;
+    font-size: 16px; /* verhindert iOS-Zoom */
     padding: 13px 14px;
   }
 
@@ -178,54 +198,57 @@
     z-index: 10;
   }
 }
+
+  
 </style>
 </head>
 
 <body>
 <header>
     <a href="{{ url_for('index') }}" class="back-link">← Zurück zur Übersicht</a>
+
     <ul class="nav-links" id="nav-links">
       <li class="cart">
         <a href="{{ url_for('cart') }}">🛒 <span id="cart-count">0</span></a>
       </li>
     </ul>
 </header>
-
 <div class="container">
 
-  <div class="carousel">
+<div class="carousel">
     <img class="carousel-image" src="{{ url_for('static', filename='images/gutschein.webp') }}" alt="Geschenkgutschein">
-    <img class="carousel-image active" src="{{ url_for('static', filename='images/gutschein1.webp') }}" alt="Geschenkgutschein">
+  <img class="carousel-image active" src="{{ url_for('static', filename='images/gutschein1.webp') }}" alt="Geschenkgutschein">
     <img class="carousel-image" src="{{ url_for('static', filename='images/gutschein2.webp') }}" alt="Geschenkgutschein">
-    <button class="product-prev">❮</button>
-    <button class="product-next">❯</button>
-  </div>
 
+  
+  <button class="product-prev">❮</button>
+  <button class="product-next">❯</button>
+</div>
+  <!-- LINKS: Bild 
+<div class="gutschein-image">
+  <img src="static/images/gutschein.webp" alt="Geschenkgutschein">
+</div> -->
+  <!-- RECHTS: Formular -->
   <div class="gutschein-form">
     <h1>Geschenkgutschein</h1>
     <p>
       Sie erhalten Ihren Gutschein digital per E-Mail. 
       In der Nachricht finden Sie den Gutscheincode für den Online-Shop und eine PDF-Vorlage wie auf dem Bild zum Ausdrucken und Verschenken.<br>
+      
       <em>Tipp: Bitte prüfen Sie auch Ihren Spam-Ordner, falls die Mail nicht gleich da ist!</em>
     </p>
 
     <div class="price" id="preis-anzeige">50,00 €</div>
 
     <div class="gutschein-box">
-
       <!-- Betrag -->
       <label for="gutschein-betrag">Gutscheinbetrag</label>
-      <input
-        type="number"
-        id="gutschein-betrag"
-        class="input-field"
-        min="20"
-        step="1"
-        value="50"
-        placeholder="Mindestbetrag: 20 €"
-        oninput="updatePreis(this.value)"
-      >
-      <p class="hint">Mindestbetrag: 20 €</p>
+      <select id="gutschein-betrag" class="input-field" onchange="updatePreis(this.value)">
+        <option value="0.01">0.01 €</option>
+        <option value="25">25 €</option>
+        <option value="50" selected>50 €</option>
+        <option value="100">100 €</option>
+      </select>
 
       <!-- E-Mail -->
       <label for="email" style="margin-top:20px;">E-Mail-Adresse</label>
@@ -242,6 +265,8 @@
         required
       >
 
+      
+
       <!-- PayPal -->
       <div id="paypal-button-container" style="margin-top:30px;"></div>
     </div>
@@ -253,38 +278,30 @@
 
 </body>
 
+
 <!-- PayPal SDK -->
 <script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR&disable-funding=sepa,sofort,giropay,bancontact,eps,ideal"></script>
 
 <script>
-
+  
 function updatePreis(val) {
   const num = parseFloat(val);
-  const anzeige = document.getElementById('preis-anzeige');
-  if (!num || num < 20) {
-    anzeige.textContent = '–';
-    anzeige.style.color = '#c0392b';
-  } else {
-    anzeige.style.color = '';
-    anzeige.textContent =
-      num.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
-  }
+  document.getElementById('preis-anzeige').textContent =
+    num.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
 }
 
 paypal.Buttons({
     createOrder: function(data, actions) {
-        const betrag = parseFloat(document.getElementById("gutschein-betrag").value);
-        const email = document.getElementById("email").value.trim();
-
+        const betrag = document.getElementById(
+            "gutschein-betrag"
+        ).value;
+        const email = document.getElementById(
+            "email"
+        ).value.trim();
         if (!email) {
             alert("Bitte E-Mail-Adresse eingeben.");
             return;
         }
-        if (!betrag || betrag < 20) {
-            alert("Bitte einen Gutscheinbetrag von mindestens 20 € eingeben.");
-            return;
-        }
-
         return fetch("/gutschein", {
             method: "POST",
             headers: {
@@ -326,7 +343,6 @@ paypal.Buttons({
         alert("PayPal-Zahlung konnte nicht gestartet werden.");
     }
 }).render('#paypal-button-container');
-
 </script>
 
 </html>
