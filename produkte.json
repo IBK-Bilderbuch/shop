@@ -138,19 +138,20 @@
      "kategorie":[ "Klassiker", "Deutschsprachige Bücher", "Maurice Sendak" ]
   },
   
- 
-  {
+   {
     "id": 12,
-    "ean": "9781592702213",
-    "name": "What Color Is the Wind",
-  
-    "beschreibung": "Ein poetisches Bilderbuch über das Unsichtbare: Was Farbe hat der Wind? Ein kleines Kind stellt große Fragen und erlebt die Welt mit allen Sinnen.",
-   
-    "bilder": [
-      "images/wind/windcolor.webp"
+    "name": "Where The Wild Things Are, w. Audio-CD",
+    "ean": "9781782955030",
+    "beschreibung": "One night Max puts on his wolf suit and makes mischief of one kind and another, so his mother calls him 'Wild Thing' and sends him to bed without his supper. That night a forest begins to grow in Max's room and an ocean rushes by with a boat to take Max to the place where the wild things are.This best-selling classic now comes with an audio CD read by Tom Hollander.",
+"bilder": [
+      "images/wildekerle/wildeKerleengl.webp"
     ],
-    "kategorie": ["Wichtige Fragen", "Englischsprachige Bücher", "Anne Herbauts" ]
+     "kategorie":[ "Klassiker", "Englischsprachige Bücher", "Maurice Sendak" ]
   },
+  
+  
+ 
+
  
   {
     "id": 13,
@@ -1562,6 +1563,19 @@
       ],
   "kategorie": [ "Deutschsprachige Bücher", "Sonja Danowski" ]
    },
+
+    {
+    "id": 119,
+    "ean": "9781592702213",
+    "name": "What Color Is the Wind",
+  
+    "beschreibung": "Ein poetisches Bilderbuch über das Unsichtbare: Was Farbe hat der Wind? Ein kleines Kind stellt große Fragen und erlebt die Welt mit allen Sinnen.",
+   
+    "bilder": [
+      "images/wind/windcolor.webp"
+    ],
+    "kategorie": ["Wichtige Fragen", "Englischsprachige Bücher", "Anne Herbauts" ]
+  },
 
   
   {
