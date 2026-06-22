@@ -306,10 +306,10 @@ button.next { right: 10px; }
   }
 
   .slide-btn {
-    font-size: 8px;
+    font-size: 12px;
     padding: 10px 23px;
     bottom: 40px;
-    left: 80%;
+    left: 75%;
   }
 
   button.prev,
