@@ -92,7 +92,7 @@
       "images/rabenrosa/dierabenrosa.webp",
       "images/rabenrosa/dierabenrosa1.webp"
     ],
-  "kategorie":[ "Dazugehören", "Deutschsprachige Bücher", "Helga Bansch" ]
+  "kategorie":[ "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Helga Bansch" ]
   },
   
   {
@@ -324,7 +324,7 @@
   "bilder": [
     "images/handschuhe/Handschuhe.webp"
   ],
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Natalia Shaloshvili" ]
+  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Natalia Shaloshvili" ]
 },
  
 
@@ -515,7 +515,7 @@
     "images/lupo/lupo.webp"
   ],
  
-  "kategorie":["Dazugehören", "Deutschsprachige Bücher", "Catherine Rayner" ]
+  "kategorie":["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Catherine Rayner" ]
 },
   
   
@@ -660,12 +660,12 @@
   "ean": "9783702659479",
   "beschreibung": "Die Hexe ist sehr aufgeregt, weil sie ein Rendezvous mit dem Oger hat. Lange überlegt sie, welches Kleid sie anziehen soll, um richtig hübsch zu sein. Auf dem Weg zum Treffpunkt begegnet sie nacheinander dem Eichhörnchen, dem Kaninchen, dem Fuchs und der Maus. Jedes der Tiere bemängelt etwas an der Hexe und sie zaubert sich Schritt für Schritt ein anderes Aussehen. Als sie schließlich beim Oger ankommt, ist sie so verändert, dass er sie gar nicht erkennt und sie davonjagt.Die Hexe sieht sich im Spiegel und ist entsetzt: Sie ist ja gar nicht mehr sie selbst! Schnell zaubert sie wieder alles zurück und lädt den Oger zum Abendessen ein. Bekanntlich sind Hexen aber nicht zimperlich und so rächt sie sich fürchterlich an ihren Ratgebern.<br><br> Canizales wurde in Kolumbien geboren. Er studierte Kunst in seiner Heimatstadt Cali besuchte nach seinem Abschluss den Master-Studiengang für Animation an der Universität der Balearen. Seitdem lebt Canizales in Palma de Mallorca, wo er sich ausschließlich seiner großen Leidenschaft widmet: der Illustration.",
   "bilder": [
-    "images/huebsch/huebsch.webp",
-    "images/huebsch/huebsch1.webp",
-    "images/huebsch/huebsch2.webp",
-    "images/huebsch/huebsch3.webp"
+    "images/canizales/huebsch.webp",
+    "images/canizales/huebsch1.webp",
+    "images/canizales/huebsch2.webp",
+    "images/canizales/huebsch3.webp"
    ],
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Canizales"  ],
+  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Canizales"  ],
   "leseprobe_pdf": "huebsch.pdf"
   },
 
@@ -745,7 +745,8 @@
   "id": 55,
   "name":"Ente, Tod und Tulpe (Geschenkausgabe)",
   "ean": "9783888974618",
-  "beschreibung":  "Irgendwann stellt jedes Kind die Frage nach dem Tod. Ganz unbefangen. Alle Eltern wissen das und haben selten eine unbefangene Antwort parat. In Wolf Erlbruchs 'Ente, Tod und Tulpe' ist der Tod ein leichtfüßiger Begleiter, schon immer da, man merkt's nur nicht. Schon länger hatte die Ente so ein Gefühl: 'Wer bist du - und was schleichst du hinter mir her?' 'Schön, dass du mich endlich bemerkst', sagte der Tod. 'Ich bin der Tod.' Die Ente erschrak. Das konnte man ihr nicht übel nehmen. 'Und jetzt kommst du mich holen?' 'Ich bin schon in deiner Nähe, so lange du lebst - nur für den Fall.' 'Für den Fall?' fragte die Ente. 'Na, falls dir etwas zustößt. Ein schlimmer Schnupfen, ein Unfall, man weiß nie.' Man weiß nie - aber man weiß, dass in Wolf Erlbruchs poetischen Bildern und Geschichten die großen Fragen einfache Antworten finden: für Kleine und Große. \n\n Ein meisterhaftes und ein unendlich tröstliches Buch, das in den verschiedensten Regalen seinen Platz finden könne. Das Buch wurde im deutschsprachigen Raum bislang über 50.000mal verkauft und in sechzehn Sprachen übersetzt. Nun erscheint Ente, Tod und Tulpe in handlichem Format und edler Ausstattung, für alle, die es nicht ins Regal stellen, sondern immer in der Tasche dabei haben wollen.",    "bilder": [
+  "beschreibung":  "Irgendwann stellt jedes Kind die Frage nach dem Tod. Ganz unbefangen. Alle Eltern wissen das und haben selten eine unbefangene Antwort parat. In Wolf Erlbruchs 'Ente, Tod und Tulpe' ist der Tod ein leichtfüßiger Begleiter, schon immer da, man merkt's nur nicht. Schon länger hatte die Ente so ein Gefühl: 'Wer bist du - und was schleichst du hinter mir her?' 'Schön, dass du mich endlich bemerkst', sagte der Tod. 'Ich bin der Tod.' Die Ente erschrak. Das konnte man ihr nicht übel nehmen. 'Und jetzt kommst du mich holen?' 'Ich bin schon in deiner Nähe, so lange du lebst - nur für den Fall.' 'Für den Fall?' fragte die Ente. 'Na, falls dir etwas zustößt. Ein schlimmer Schnupfen, ein Unfall, man weiß nie.' Man weiß nie - aber man weiß, dass in Wolf Erlbruchs poetischen Bildern und Geschichten die großen Fragen einfache Antworten finden: für Kleine und Große. \n\n Ein meisterhaftes und ein unendlich tröstliches Buch, das in den verschiedensten Regalen seinen Platz finden könne. Das Buch wurde im deutschsprachigen Raum bislang über 50.000mal verkauft und in sechzehn Sprachen übersetzt. Nun erscheint Ente, Tod und Tulpe in handlichem Format und edler Ausstattung, für alle, die es nicht ins Regal stellen, sondern immer in der Tasche dabei haben wollen.",   
+  "bilder": [
     "images/lebensende/entetod.webp"
   ],   
   "kategorie": ["Gedanken zum Lebensende", "Deutschsprachige Bücher", "Wolf Erlbruch" ],
@@ -864,7 +865,7 @@
       ],
     "beschreibung": "In diesem farbenfrohen Pappbuch, der Bestseller-Illustratorin Mies van Hout, werden Kleinkinder aufgefordert, die Frage 'Welches Jungtier gehört zu welchem Papa?' zu beantworten. Dazu sollen sie zu den abgebildeten Kindern den richtigen Papa finden. Die vier möglichen Väter sehen alle unterschiedlich aus, ähneln aber alle stark dem Kind. Man muss ganz genau hinsehen, um die richtige Lösung auf der nächsten Doppelseite zu finden. Ein wunderschönes Suchbilderbuch zum gemeinsamen Entdecken und Schmunzeln.\n\nMies van Hout wurde 1962 geboren und studierte an der Kunstakademie in Groningen Grafikdesign. Seit 1989 arbeitet sie als freie Illustratorin und Grafikdesignerin und hat inzwischen über 100 Bilderbücher illustriert. Ihr gelingt es, mit einfachen Mitteln und doch sehr überzeugend auf ungewöhnliche Weise Gefühle in Figuren und Bilder umzuwandeln. Sie hält uns mit ihren Bilderbüchern immer wieder einen Spiegel vor: Monster sind Freunde, Fische haben Stimmungen und ein Oktopus sucht Hilfe. Die Illustrationen von Mies van Hout sind von großer Farbtiefe und Brillanz. Sie visualisieren Emotionen auf einzigartige Weise, lassen den Betrachter die eigene Gefühlswelt aus der Distanz sehen und öffnen so auch neue Wege, darüber zu sprechen.",
     
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Mies van Hout"]
+  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Mies van Hout"]
 
    },
 
@@ -890,7 +891,7 @@
       ],
   "beschreibung": "Im Frühling sind sie angekommen, im Herbst müssen Lukas neue Freunde Oleg, Madame Petrova und Paulinchen weiterziehen, sie sind ja schließlich Zugvögel. Doch sie wollen bleiben, wollen den Winter sehen und in die Schule gehen. Aber wo sollen sie bloß hin? Wovon sollen sie leben? Zum Glück gibt es die gute Frau Lorenz, die ein großes Herz hat und ein großes Nest für alle, die nicht wissen, wohin. Bei ihr sind die drei Freunde gut aufgehoben. In wunderschönen, feinsinnigen und zugleich kräftigen Bildern erzählt das Ausnahmetalent Michael Roher seine neue Geschichte: vom Sesshaftwerden einer Familie unter erschwerten Bedingungen, ein Plädoyer für Toleranz und Liebe, eine Würdigung von Menschlichkeit und Hilfsbereitschaft.",
 
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Michael Roher" ]
+  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Michael Roher" ]
 
    },
 
@@ -952,7 +953,7 @@
   "bilder": [
     "images/miesvanhout/freunde.webp"
       ],
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Mies van Hout"],
+  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Mies van Hout"],
    "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783905945362"
 
    },
@@ -965,7 +966,7 @@
   "bilder": [
     "images/miesvanhout/friends.webp"
       ],
-  "kategorie":[ "Dazugehören", "Englischsprachige Bücher", "Mies van Hout" ]
+  "kategorie":[ "Dazugehören und Anderssein", "Englischsprachige Bücher", "Mies van Hout" ]
    },
 
    {
@@ -976,7 +977,7 @@
   "bilder": [
     "images/miesvanhout/thisismydady.webp"
       ],
-  "kategorie": ["Dazugehören", "Englischsprachige Bücher", "Mies van Hout"]
+  "kategorie": ["Dazugehören und Anderssein", "Englischsprachige Bücher", "Mies van Hout"]
    },
 
   {
@@ -1042,7 +1043,7 @@
   "bilder": [
     "images/SonjaDanowski/smonsmon.webp"
       ],
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Sonja Danowski" ],
+  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Sonja Danowski" ],
    "leseprobe_url": "https://www.book2look.com/book/lOqKEJS9SU"
 
    },
@@ -1055,7 +1056,7 @@
   "bilder": [
     "images/mylittleone.webp"
       ],
-  "kategorie": ["Dazugehören", "Englischsprachige Bücher", "Albertine" ]
+  "kategorie": ["Dazugehören und Anderssein", "Englischsprachige Bücher", "Albertine" ]
    },
   
 {
@@ -1129,7 +1130,7 @@
     "images/derwalimgarten/derwalimgarten3.webp",
     "images/derwalimgarten/derwalimgarten4.webp"
       ],
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "ab 5 Jahren", "Sabine Rufener"],
+  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "ab 5 Jahren", "Sabine Rufener"],
    "leseprobe_url": "https://www.book2look.com/book/DwejKoDYHF"
 
    },
@@ -1586,6 +1587,7 @@
       ],
   "kategorie": ["Künstlerdasein", "Bücher über Illustratoren und Illustrationskunst","Englischsprachige Bücher", "Maurice Sendak"]
    },
+  
     {
   "id": 121,
   "name":"Ente, Tod und Tulpe",
@@ -1599,6 +1601,30 @@
 
 },
 
+   {
+  "id": 122,
+  "name":"The Page Above",
+  "ean": "9788417028572",
+  "beschreibung": "The lion on the page above is very satisfied with the pleasant life he has there. On the other hand, the animals on the page below are not so happy. All of them must attend to the lion’s whims, including carrying his weight as he walks. What will happen if we turn the book upside down and the page above becomes the page below? Things are going to change for all the characters. A very original book with a great sense of humour. Laughter for little ones, and subtle irony for grown-ups. Up. Down. A book that encourages you to turn it and play with space. A simple story that shows us that it is possible to change things; you can even turn them around. A story that encourages us to put ourselves in other people’s shoes in order to understand them.",
+  "bilder": [
+    "images/canizales/thepageabove.webp"
+   ],
+  "kategorie": ["Wichtige Fragen", "Englischsprachige Bücher", "Canizales"]
+   },
+
+
+    {
+  "id": 123,
+  "name":"Seltsam",
+  "ean": "9783949276347",
+  "beschreibung": "Eine freches Bilderbuch über das Einzigartige in uns allen\n\nClemens ist der einzig Normale im Ort. Nicht so wie Gustav mit seinem langen Hals oder Ella mit ihrem komischen Rüssel. Für Clemens steht eins fest: Arbeit bekommt nur, wer normal ist.\n\n Wie gut, dass in der großen Villa Personal gesucht wird! Doch als dort ein seltsames Tier nach dem anderen einen Job bekommt, wundert sich Clemens sehr. Plötzlich erkennt er, dass anders sein einzigartig macht! \n\n Ein fantastisch-buntes Bilderbuch des weltweit erfolgreichen spanischen Künstlers Canizales über die kleinen und großen Besonderheiten in uns und darüber, wie schön es ist, anders zu sein - eine wichtige Botschaft, die in keinem Kinderzimmer fehlen sollte!",  "bilder": [
+    "images/canizales/seltsam.webp",
+    "images/canizales/seltsam1.webp",
+    "images/canizales/seltsam2.webp",
+    "images/canizales/seltsam3.webp"
+  ],
+  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Canizales"]
+   },
   
   {
   "id": 100,
