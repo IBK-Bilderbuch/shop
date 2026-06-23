@@ -744,9 +744,8 @@
      {
   "id": 55,
   "name":"Ente, Tod und Tulpe",
-  "ean": "9783888976575",
-  "beschreibung":  "Irgendwann stellt jedes Kind die Frage nach dem Tod. Ganz unbefangen. Alle Eltern wissen das und haben selten eine unbefangene Antwort parat. In Wolf Erlbruchs 'Ente, Tod und Tulpe' ist der Tod ein leichtfüßiger Begleiter, schon immer da, man merkt's nur nicht. Schon länger hatte die Ente so ein Gefühl: 'Wer bist du - und was schleichst du hinter mir her?' 'Schön, dass du mich endlich bemerkst', sagte der Tod. 'Ich bin der Tod.' Die Ente erschrak. Das konnte man ihr nicht übel nehmen. 'Und jetzt kommst du mich holen?' 'Ich bin schon in deiner Nähe, so lange du lebst - nur für den Fall.' 'Für den Fall?' fragte die Ente. 'Na, falls dir etwas zustößt. Ein schlimmer Schnupfen, ein Unfall, man weiß nie.' Man weiß nie - aber man weiß, dass in Wolf Erlbruchs poetischen Bildern und Geschichten die großen Fragen einfache Antworten finden: für Kleine und Große.",
-     "bilder": [
+  "ean": "9783888974618",
+  "beschreibung":  "Irgendwann stellt jedes Kind die Frage nach dem Tod. Ganz unbefangen. Alle Eltern wissen das und haben selten eine unbefangene Antwort parat. In Wolf Erlbruchs 'Ente, Tod und Tulpe' ist der Tod ein leichtfüßiger Begleiter, schon immer da, man merkt's nur nicht. Schon länger hatte die Ente so ein Gefühl: 'Wer bist du - und was schleichst du hinter mir her?' 'Schön, dass du mich endlich bemerkst', sagte der Tod. 'Ich bin der Tod.' Die Ente erschrak. Das konnte man ihr nicht übel nehmen. 'Und jetzt kommst du mich holen?' 'Ich bin schon in deiner Nähe, so lange du lebst - nur für den Fall.' 'Für den Fall?' fragte die Ente. 'Na, falls dir etwas zustößt. Ein schlimmer Schnupfen, ein Unfall, man weiß nie.' Man weiß nie - aber man weiß, dass in Wolf Erlbruchs poetischen Bildern und Geschichten die großen Fragen einfache Antworten finden: für Kleine und Große. \n\n Ein meisterhaftes und ein unendlich tröstliches Buch, das in den verschiedensten Regalen seinen Platz finden könne. Das Buch wurde im deutschsprachigen Raum bislang über 50.000mal verkauft und in sechzehn Sprachen übersetzt. Nun erscheint Ente, Tod und Tulpe in handlichem Format und edler Ausstattung, für alle, die es nicht ins Regal stellen, sondern immer in der Tasche dabei haben wollen.",    "bilder": [
     "images/lebensende/entetod.webp"
   ],   
   "kategorie": ["Gedanken zum Lebensende", "Deutschsprachige Bücher", "Wolf Erlbruch" ],
@@ -1587,7 +1586,18 @@
       ],
   "kategorie": ["Künstlerdasein", "Bücher über Illustratoren und Illustrationskunst","Englischsprachige Bücher", "Maurice Sendak"]
    },
-  
+    {
+  "id": 121,
+  "name":"Ente, Tod und Tulpe",
+  "ean": "9783888974618",
+  "beschreibung":  "Irgendwann stellt jedes Kind die Frage nach dem Tod. Ganz unbefangen. Alle Eltern wissen das und haben selten eine unbefangene Antwort parat. In Wolf Erlbruchs 'Ente, Tod und Tulpe' ist der Tod ein leichtfüßiger Begleiter, schon immer da, man merkt's nur nicht. Schon länger hatte die Ente so ein Gefühl: 'Wer bist du - und was schleichst du hinter mir her?' 'Schön, dass du mich endlich bemerkst', sagte der Tod. 'Ich bin der Tod.' Die Ente erschrak. Das konnte man ihr nicht übel nehmen. 'Und jetzt kommst du mich holen?' 'Ich bin schon in deiner Nähe, so lange du lebst - nur für den Fall.' 'Für den Fall?' fragte die Ente. 'Na, falls dir etwas zustößt. Ein schlimmer Schnupfen, ein Unfall, man weiß nie.' Man weiß nie - aber man weiß, dass in Wolf Erlbruchs poetischen Bildern und Geschichten die großen Fragen einfache Antworten finden: für Kleine und Große.",
+     "bilder": [
+    "images/lebensende/entetodorig.webp"
+  ],   
+  "kategorie": ["Gedanken zum Lebensende", "Deutschsprachige Bücher", "Wolf Erlbruch" ],
+ "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-461-8"
+
+},
 
   
   {
