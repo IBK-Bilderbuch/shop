@@ -1684,7 +1684,7 @@ def index():
        "Jacominus Gainsborough", "Wortlust und Zeichenfreude",  "Zahlen und Buchstaben", "Große Städte, große Zeichner", "Mut oder Angst?!", 
          "Schlaues Mitraten", "Klassiker", "Gedanken zum Lebensende", "Monstergeschichten", 
         "Wichtige Fragen",  "Kunst und Künstlerdasein",
-        "Kinder und Gefühle",  "Dazugehören", "Weihnachten", "Bücher über Illustratoren und Illustrationskunst"
+        "Kinder und Gefühle",  "Dazugehören und Anderssein", "Weihnachten", "Bücher über Illustratoren und Illustrationskunst"
     ]
 
     kategorie_beschreibungen = {
