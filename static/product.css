@@ -387,9 +387,8 @@ label[for="quantity"] {
 
 
 .verwandte-themen {
-  margin: 40px auto;
+  margin: 0px auto;
   max-width: 1500px;
-  padding: 0 20px;
 }
 
 .verwandte-themen h3 {
