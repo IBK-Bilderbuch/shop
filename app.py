@@ -1682,7 +1682,7 @@ def uberibk():
 def index():
 
     kategorienamen = [
-       "Jacominus Gainsborough", "Wortlust und Zeichenfreude",  "Zahlen und Buchstaben", "Große Städte, große Zeichner", "Mut oder Angst?!", 
+       "Jacominus Gainsborough", "Wortlust und Zeichenfreude",  "Zahlen und Alphabet", "Große Städte, große Zeichner", "Mut oder Angst?!", 
          "Schlaues Mitraten", "Klassiker", "Gedanken zum Lebensende", "Monstergeschichten", 
         "Wichtige Fragen",  "Kunst und Künstlerdasein",
         "Kinder und Gefühle",  "Dazugehören und Anderssein","Familie und Freunde", "Weihnachten",  "Bücher über Illustratoren und Illustrationskunst"
