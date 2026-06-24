@@ -387,11 +387,9 @@ label[for="quantity"] {
 
 
 .verwandte-themen {
-  margin: 40px;
-  max-width: 1200px;
+  margin: 40px auto;
+  max-width: 1500px;
   padding: 0 20px;
-  justify-content: flex-end;  /* ← das reicht */
-
 }
 
 .verwandte-themen h3 {
