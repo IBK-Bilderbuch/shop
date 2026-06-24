@@ -138,11 +138,8 @@
     
     <div class="book-description">
        {{ produkt.beschreibung | replace('\n', '<br>') | safe }}
-    </div>
 
-
-    
-
+      
 {% if produkt.kategorie %}
 <section class="verwandte-themen">
   <h3>Entdecken Sie mehr</h3>
@@ -154,6 +151,12 @@
     {% endfor %}
   </div>
 </section>
+      
+    </div>
+
+
+    
+
 {% endif %}
 
 
