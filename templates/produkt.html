@@ -140,21 +140,20 @@
        {{ produkt.beschreibung | replace('\n', '<br>') | safe }}
     </div>
 
+
+    
+
 {% if produkt.kategorie %}
-    <section class="verwandte-themen">
-          <h3>Mehr entdecken</h3>
-             <div class="themen-buttons">
-                 {% for kat in produkt.kategorie %}
-                 <a href="/kategorie/{{ kat | slugify }}" class="themen-btn">
-                  {% if kat == produkt.autor or kat == produkt.illustrator %}
-                      Mehr von {{ kat }}
-                          {% else %}
-                      Mehr über {{ kat }}
-                   {% endif %}
-                 </a>
-                {% endfor %}
-             </div>
-   </section>
+<section class="verwandte-themen">
+  <h3>Entdecken Sie mehr</h3>
+  <div class="themen-buttons">
+    {% for kat in produkt.kategorie %}
+      <a href="/kategorie/{{ kat | slugify }}" class="themen-btn">
+        {{ kat }}
+      </a>
+    {% endfor %}
+  </div>
+</section>
 {% endif %}
 
 
