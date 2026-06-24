@@ -396,7 +396,7 @@ label[for="quantity"] {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #888;
-  margin-bottom: 14px;
+  margin: 14px;
 }
 
 .themen-buttons {
