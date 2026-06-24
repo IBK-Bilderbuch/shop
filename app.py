@@ -1017,7 +1017,10 @@ def kategorie(kategorietype, name):
   
 def slugify(text):
     text = text.lower()
-    text = re.sub(r'[^a-z0-9äöüß ]', '', text)
+    text = text.replace('ä','ae').replace('ö','oe').replace('ü','ue').replace('ß','ss')
+    text = text.replace('é','e').replace('è','e').replace('ê','e')
+    text = text.replace('à','a').replace('â','a').replace('ï','i')
+    text = re.sub(r'[^a-z0-9 ]', '', text)
     return text.replace(" ", "-")
 
 for p in produkte:
@@ -1026,7 +1029,9 @@ for p in produkte:
 
 with open("produkte.json", "w", encoding="utf-8") as f:
     json.dump(produkte, f, ensure_ascii=False, indent=2)
-    
+
+app.template_filter('slugify')(slugify)
+
 @app.route('/produkt/<int:produkt_id>/<slug>')
 def produkt_detail(produkt_id, slug):
 
