@@ -390,6 +390,8 @@ label[for="quantity"] {
   margin: 40px;
   max-width: 1200px;
   padding: 0 20px;
+  justify-content: flex-end;  /* ← das reicht */
+
 }
 
 .verwandte-themen h3 {
