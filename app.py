@@ -1014,13 +1014,9 @@ def kategorie(kategorietype, name):
 
 # Produkt Detail
 
-  
 def slugify(text):
     text = text.lower()
-    text = text.replace('ä','ae').replace('ö','oe').replace('ü','ue').replace('ß','ss')
-    text = text.replace('é','e').replace('è','e').replace('ê','e')
-    text = text.replace('à','a').replace('â','a').replace('ï','i')
-    text = re.sub(r'[^a-z0-9 ]', '', text)
+    text = re.sub(r'[^a-z0-9äöüß ]', '', text)
     return text.replace(" ", "-")
 
 for p in produkte:
