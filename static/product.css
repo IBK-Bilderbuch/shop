@@ -379,3 +379,46 @@ label[for="quantity"] {
   .rechtliches h3 { font-size: 1.2rem; }
   .rechtliches p  { font-size: 1.1rem; line-height: 1.4; }
 }
+
+
+
+
+
+
+
+.verwandte-themen {
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.verwandte-themen h3 {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 14px;
+}
+
+.themen-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.themen-btn {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.themen-btn:hover {
+  background: #333;
+  color: #fff;
+  border-color: #333;
+}
