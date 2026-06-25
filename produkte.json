@@ -283,7 +283,7 @@
   "bilder": [
      "images/hungrygoat/hungrygoat.webp"
   ],
-  "kategorie": ["Klassiker", "Englischsprachige Bücher", "Abner Graboff" ]
+  "kategorie": ["Englischsprachige Bücher", "Abner Graboff" ]
 },
   
 
@@ -1167,7 +1167,7 @@
   "bilder": [
     "images/anonldlady/whatcat.webp"
       ],
-  "kategorie": ["Klassiker", "Englischsprachige Bücher", "Abner Graboff" ]
+  "kategorie": [ "Englischsprachige Bücher", "Abner Graboff" ]
    },
 
 
