@@ -1665,7 +1665,7 @@
   "beschreibung": "Back in print at last! A dazzling new edition of Mies van Hout's beloved art book of emotional literacy",  
   "bilder": [
     "images/heutebinich/happy.webp"  ],
-  "kategorie": ["Gefühle", "Kinder und Gefühle", "Englischsprachige Bücher", "Mies van Hout" ]
+  "kategorie": ["Gefühle",  "Englischsprachige Bücher", "Mies van Hout" ]
   
   },
 
@@ -1685,7 +1685,7 @@
     "images/heutebinich/heutebinich4.webp"
 
   ],
-  "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ],
+  "kategorie": ["Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ],
 
   "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=3709063013&ean=9783905945300"
 },
