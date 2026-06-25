@@ -1708,6 +1708,24 @@
   "leseprobe_url": "https://www.book2look.de/book/CTkpY5fYYB"
 },
 
+     {
+  "id": 129,
+  "name": "OH NEIN!",
+  "ean": "9783948743468",
+  "beschreibung":"Oh, nein – mit dem Fuß auf ein Legosteinchen getreten. Aua!\nEin Buch im Regen vergessen? Doof!\nKaugummi mit Zahnspange? Geht gar nicht!\n\nEs gibt nun mal Dinge, die passen einfach nicht zusammen – Paulina Rauh schafft es trotzdem, diese Widersprüche in Ihren bunten Illustrationen kongenial zu verbinden.\n\n Illustratorin:\n’Dinge, die nicht gut zusammenpassen – die Idee zu diesem simplen, aber genauso lustigen Konzept kam mir durch das Aufhängen zweier Malereien, die sich beide anzuschauen schienen: eine freche Katze und eine fragile Blumenvase. Den Witz des Aufeinandertreffens der jeweiligen Paare wollte ich mit reduzierten und plakativen Illustrationen unterstreichen. Dazu habe ich eine Vielzahl an bunten Tonpapieren gescannt und digital collagiert. Alle meine Skizzen entstehen analog auf Papier, welche ich dann meistens 1:1 ins Digitale übertragen habe, um so die Direktheit und Dynamik der Vorzeichnung beizubehalten.’ \nNominiert für die Serafina 2025",
+  "bilder": [
+    "images/ohnein/ohnein.webp",
+    "images/ohnein/ohnein1.webp",
+    "images/ohnein/ohnein2.webp",
+    "images/ohnein/ohnein3.webp",
+    "images/ohnein/ohnein4.webp",
+    "images/ohnein/ohnein5.webp"
+
+  ],
+  "kategorie":[ "Dazugehören und Anderssein",  "Deutschsprachige Bücher", "Paulina Rauh" ],
+  "leseprobe_url": "https://www.book2look.com/book/978-3-948743-46-8"
+},
+
 
 
    {
@@ -1725,7 +1743,40 @@
   "kategorie":[ "Angst", "Mut oder Angst?!", "Deutschsprachige Bücher", "Mirjam Zels" ],
   "leseprobe_url": "https://www.book2look.de/book/oHa9zsB6kZ"
 },
-    
+     {
+  "id": 131,
+  "name": "Das Wunder der Flunder",
+  "ean": "9783948743451",
+  "beschreibung":"Moritz schreibt ‘Schule’ klein und ‘blau’ groß, denn so hat er beides von seinem Lieblingsplatz im Baum aus gesehen. Im Kunstunterricht malt er Blumen, die aus den Linien zum Ausmalen herauswachsen, denn er weiß, dass sie zum Licht wollen. Alles falsch, sagen die Lehrerinnen. Zum Glück gibt es in der Schule noch Lana, die Moritz beim Schnürsenkel binden hilft und seine beste Freundin wird. Und die kleine Flunder, die in ihrem engen Aquarium nicht tanzen kann. Als Moritz die Flunder im Sachkundeunterricht ganz genau zeichnen soll, geschieht sogar ein Wunder …\n\n Daniela Leidigs Bilderbuch nimmt die Perspektive eines Kindes ein, dem es schwerfällt, sich an die Erwartungen der Erwachsenen und des Schulsystems anzupassen. In verträumten Bildern und kurzen Sätzen erzählt sie davon, mithilfe von Kreativität einen eigenen Weg über scheinbar starre Grenzen hinweg zu finden.\n\nDaniela Leidig ‘Als mein Sohn eingeschult wurde, malte er ein großes Plakat vom Alphabet: 26 Tiere schauten verschmitzt auf mich runter, ihre Augen wuchsen alle auf der einen Gesichtshälfte. Bei der Flunder war das sogar vollkommen richtig … Das Alphabet und viele Buntstiftkritzeleien meiner Kinder schmuggeln sich unverblümt in meine Aquarelle. Details und collagenartige Ausschnitte von fotografierten Oberflächen und Bildern ergänze ich digital. Vor allem die Lineaturen von Schulheften tauchen immer wieder auf und werden von den zufälligen Verläufen und wilden Kritzeleien überrascht. Hier trifft etwas sehr Verspieltes auf feste Strukturen.’",
+       
+  "bilder": [
+    "images/flunderwunder/flunderwunder.webp",
+    "images/flunderwunder/flunderwunder1.webp",
+    "images/flunderwunder/flunderwunder2.webp",
+    "images/flunderwunder/flunderwunder3.webp",
+    "images/flunderwunder/flunderwunder4.webp",
+    "images/flunderwunder/flunderwunder5.webp"
+
+  ],
+  "kategorie":[ "Dazugehören und Anderssein",  "Deutschsprachige Bücher", "Daniela Leidig" ],
+  "leseprobe_url": "https://www.book2look.com/book/OEEja7FB9r"
+     },
+
+
+   {
+  "id": 132,
+  "name": "Wolf Erlbruchs große Postkartenedition",
+  "ean": "4260192781309",
+  "beschreibung":"Anlässlich des 75. Geburtstages von Wolf Erlbruch am 30. Juni 2023 erschien die große Postkartenedition mit den 30 beliebtesten Motiven seiner berühmten Kinderzimmerkalender - zum Herauslösen und Verschicken an nette Leute.",
+       
+  "bilder": [
+    "images/wepostkarte/wepostkarte.webp",
+    "images/wepostkarte/wepostkarte1.webp"
+  ],
+  "kategorie":[ "Familie und Freunde",  "Deutschsprachige Bücher", "Wolf Erlbruch" ]
+   
+   },
+  
   
   {
   "id": 100,
