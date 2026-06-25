@@ -529,7 +529,10 @@
   
   "bilder": [
     "images/heutebinich/heutebinich.webp",
-    "images/heutebinich/heutebinich1.webp"
+    "images/heutebinich/heutebinich1.webp",
+     "images/heutebinich/heutebinich2.webp",
+    "images/heutebinich/heutebinich3.webp",
+    "images/heutebinich/heutebinich4.webp"
   ],
   "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ],
 
@@ -1654,6 +1657,40 @@
   "kategorie": ["Zahlen und Alphabet", "Deutschsprachige Bücher", "Jonas Tjäder & Maja Knochenhauer"],
  "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783751204408"
   },
+
+
+  {
+  "id": 126,
+  "name": "Happy",
+  "ean": "9781772782875",
+
+  "beschreibung": "Back in print at last! A dazzling new edition of Mies van Hout's beloved art book of emotional literacy",  
+  "bilder": [
+    "images/heutebinich/happy.webp"  ],
+  "kategorie": ["Gefühle", "Kinder und Gefühle", "Englischsprachige Bücher", "Mies van Hout" ]
+  
+  },
+
+
+  {
+  "id": 127,
+  "name": "Heute bin ich (Miniausgabe)",
+  "ean": "9783905945522",
+
+  "beschreibung": "Ein besonderes Buch zu Emotionen. Jetzt auch als Miniausgabe!\n\n Heute bin ich zufrieden. Und du? Bist du neugierig? Gelangweilt? Zornig? In diesem liebevoll illustrierten Bilderbuch drückt jeder Fisch ein anderes Gefühl aus – mal ist es eine schöne, mal eine verwirrende Stimmung, manchmal eine heftige Empfindung, manchmal eine ganz zarte. Das Buch nimmt mit auf eine Reise durch die Welt der Gefühle, regt an, über Empfindungen zu reden, sie zu benennen und besser zu verstehen. Auf jeder Doppelseite wird ein Gefühl visuell dargestellt. Für Kinder ab etwa 3 Jahren geeignet.",
+  
+  "bilder": [
+    "images/heutebinich/heutebinich.webp",
+    "images/heutebinich/heutebinich1.webp",
+    "images/heutebinich/heutebinich2.webp",
+    "images/heutebinich/heutebinich3.webp",
+    "images/heutebinich/heutebinich4.webp"
+
+  ],
+  "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ],
+
+  "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=3709063013&ean=9783905945300"
+},
 
   
   {
