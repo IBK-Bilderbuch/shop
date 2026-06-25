@@ -333,7 +333,6 @@
   "name": "Zwei die sich lieben",
   "ean": "9783779503712",
   "beschreibung": "Was Liebe ist, ist schwer zu sagen. Nur soviel scheint klar: irgendwas mit Küssen und so. Zwei, die sich lieben jedenfalls ist ein kleines Buch für alle, die sich ihre Gedanken machen über die Liebe. Darüber, wer wen küssen will und darf und sogar soll. Über das Davor und das Danach. Das Sehnen, das Finden, Genießen und Abschied nehmen.",
- 
   "bilder": [
     "images/zweilieben/zweilieben.webp"
   ],
@@ -1709,19 +1708,7 @@
   "leseprobe_url": "https://www.book2look.de/book/CTkpY5fYYB"
 },
 
-  {
-  "id": 129,
-  "name": "Lieblingspulli",
-  "ean": "9783948743338",
-  "beschreibung": "In ihrem ersten eigenen Bilderbuchwerk erzählt Pauline Pete in wenigen Worten und großartigen Bildern von einer besonderen Beziehung eines Mädchens zu seiner Großmutter. Die beiden unternehmen gemeinsam eine Heißluftballonfahrt, gehen ins Museum und in die Stadt bummeln. Doch auch wenn das Mädchen allein unterwegs ist, denkt sie an ihre Oma, wenn sie den selbstgestrickten Pulli trägt. Er steht für die enge und glückliche Bindung der beiden und spendet ihr Trost, als ein schwieriger Abschied ansteht. Der Lieblingspulli wird gemeinsam mit all den schönen Kindheitserinnerungen viele Jahre bis ins Erwachsenenalter liebevoll von ihr aufbewahrt, bis sie ihn eines Tages weitergibt, auf dass ihr Sohn darin dieselbe Geborgenheit spüren und seine eigenen Erinnerungen und Abenteuer sammeln kann.\n\n Illustratorin 'Das Buch ist mit einer Mischtechnik aus Tusche, Buntstift, Gouache und Aquarellfarbe entstanden. Die Materialen ermöglichen es mir, unterschiedliche Strukturen, Muster und Flächen herzustellen. Als zentrales Element des Buches stand von Anfang an der Pulli. Dieser ist mit besonders deckenden und leuchtenden Gouachefarben gemalt. Darüber habe ich eine feine Struktur mit Buntstift gelegt, um ein Gefühl von Wolle zu erzeugen.'\n\nempfohlen von der Deutschen Akademie für Kinder- und Jugendliteratur als Liebe-Buchtipp im März 2024 unter dem Siegel 'Fit für die Zukunft'\nauf der Shortlist  2024 der Stiftung Buchkunst\n'Lieblingspulli' ist unter den 66 Finalisten des Golden Pinwheel 2024\nAusgewählt für The Braw Amazing Bookshelf 2025\n3. Preis beim 25. Troisdorfer Bilderbuchpreis",
-  
-  "bilder": [
-    "images/pulli/pulli.webp",
-   
-  ],
-  "kategorie":[ "Familie und Freunde",  "Deutschsprachige Bücher", "Pauline Pete" ],
-  "leseprobe_url": "https://www.book2look.de/book/CTkpY5fYYB"
-},
+
 
    {
   "id": 130,
