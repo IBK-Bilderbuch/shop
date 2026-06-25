@@ -186,7 +186,7 @@ function toggleInfoDetails() {
 document.addEventListener("DOMContentLoaded", function () {
 
   const allBooks = Array.from(document.querySelectorAll(".book"));
-  const booksPerPage = 9; // Bücher pro Seite – anpassen nach Wunsch
+  const booksPerPage = 8; // Bücher pro Seite – anpassen nach Wunsch
   let currentPage = 1;
 
   // Alle Kategorien ausblenden (nur Bücher paginieren)
