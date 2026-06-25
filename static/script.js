@@ -151,7 +151,7 @@ function toggleInfoDetails() {
   box.classList.toggle('info-open');
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+/* document.addEventListener("DOMContentLoaded", function () {
 
   const categories = document.querySelectorAll(".category");
   const button = document.getElementById("showMoreBtn");
@@ -181,8 +181,62 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+*/
 
+document.addEventListener("DOMContentLoaded", function () {
 
+  const allBooks = Array.from(document.querySelectorAll(".book"));
+  const booksPerPage = 9; // Bücher pro Seite – anpassen nach Wunsch
+  let currentPage = 1;
+
+  // Alle Kategorien ausblenden (nur Bücher paginieren)
+  document.querySelectorAll(".category").forEach(cat => {
+    cat.style.display = "none";
+  });
+
+  function getTotalPages() {
+    return Math.ceil(allBooks.length / booksPerPage);
+  }
+
+  function showPage(page) {
+    currentPage = page;
+    const start = (page - 1) * booksPerPage;
+    const end = start + booksPerPage;
+
+    // Alle Bücher verstecken
+    allBooks.forEach((book, i) => {
+      book.style.display = (i >= start && i < end) ? "block" : "none";
+    });
+
+    // Kategorien nur anzeigen, wenn mindestens ein sichtbares Buch darin ist
+    document.querySelectorAll(".category").forEach(cat => {
+      const visibleBooks = cat.querySelectorAll(".book");
+      const anyVisible = Array.from(visibleBooks).some(b => b.style.display !== "none");
+      cat.style.display = anyVisible ? "block" : "none";
+    });
+
+    renderPagination();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function renderPagination() {
+    const total = getTotalPages();
+    const container = document.getElementById("pagination");
+    container.innerHTML = "";
+
+    for (let i = 1; i <= total; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      btn.style.margin = "4px";
+      btn.style.fontWeight = (i === currentPage) ? "bold" : "normal";
+      btn.style.border = (i === currentPage) ? "2px solid black" : "";
+      btn.addEventListener("click", () => showPage(i));
+      container.appendChild(btn);
+    }
+  }
+
+  showPage(1);
+});
 function toggleMenu() {
   const menu = document.getElementById("nav-links");
   document.body.classList.toggle("menu-open");
