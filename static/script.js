@@ -224,15 +224,3 @@ document
 });
 
 
-document.querySelectorAll(".book-list").forEach(list => {
-  const count = list.querySelectorAll(".book").length;
-  let cols;
-
-  if (count <= 2) cols = count;
-  else if (count <= 4) cols = 2;
-  else if (count % 4 === 0) cols = 4;
-  else if (count % 3 === 0) cols = 3;
-  else cols = 4; // z.B. 11 → 4+4+3
-  
-  list.style.gridTemplateColumns = `repeat(${cols}, minmax(150px, 220px))`;
-});
