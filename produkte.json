@@ -709,8 +709,40 @@
  "kategorie":[ "Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
 },
 
+    
      {
   "id": 52,
+  "name":"Reisen mit der Eisenbahn; Die schönsten Zugreisen aus aller Welt",
+  "ean": "9783899558449",
+  "beschreibung": "Eine faszinierende Entdeckungsreise für Jung und Alt, die die besondere Faszination des Bahnreisens lebendig werden lässt. Lernen Sie außergewöhnliche Züge wie den Shinkansen kennen und entdecken Sie einige der beeindruckendsten, mutigsten und bedeutendsten Bahnstrecken der Welt. Von Australien bis Wales erzählt jede Route ihre eigene Geschichte.\n\nBegleiten Sie eine Reise rund um den Globus und erfahren Sie mehr über die Menschen, die diese Eisenbahnen geplant, gebaut und betrieben haben. Entdecken Sie, wie die Strecken entstanden sind, welche technischen Herausforderungen sie mit sich brachten und welchen Einfluss sie bis heute auf Geschichte, Kultur und das Leben der Menschen ausüben.",
+   "bilder": [
+  "images/grossstaedte/reisenmitdereisenbahn.webp"
+  ],
+ "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783899558449",
+ "kategorie": ["Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Ryan Johnson" ]
+},
+
+   {
+  "id": 53,
+  "name":"Berühmte Reiserouten",
+  "ean": "9783967047653",
+  "beschreibung": "Eine spannende Entdeckungsreise entlang legendärer Wege zu Land und zu Wasser – von der Vergangenheit bis in die Gegenwart.\n\nReisen bedeutet weit mehr als das Zurücklegen von Entfernungen: Es steht für Abenteuer, Neugier, Aufbruch und Hoffnung. Dieses Buch führt zu einigen der bekanntesten und ältesten Reiserouten der Menschheitsgeschichte, die über Jahrhunderte hinweg von unzähligen Menschen genutzt wurden und bis heute faszinieren.\n\nOb die Seidenstraße, die Strecke der Transsibirischen Eisenbahn, der Jakobsweg oder der Inka-Pfad – jede Route erzählt ihre eigene Geschichte und eröffnet Einblicke in unterschiedliche Kulturen und Epochen. Eine abwechslungsreiche Reise durch die Jahrhunderte, die Geschichte und Abenteuer auf einzigartige Weise miteinander verbindet.",
+     
+  "bilder": [
+    "images/grossstaedte/beruehmtereisetouren.webp",
+    "images/grossstaedte/beruehmtereisetouren1.webp",
+    "images/grossstaedte/beruehmtereisetouren2.webp",
+    "images/grossstaedte/beruehmtereisetouren3.webp",
+    "images/grossstaedte/beruehmtereisetouren4.webp",
+    "images/grossstaedte/beruehmtereisetouren5.webp",
+    "images/grossstaedte/beruehmtereisetouren6.webp"
+
+  ],   
+  "kategorie": ["Reisen", "Deutschsprachige Bücher", "SAM G. C." ]
+},
+
+   {
+  "id": 54,
   "name":"New York",
   "ean": "9783888979798",
   "beschreibung": "'New York' lebt von Saseks besonderem Talent, den Charme und das Lebensgefühl einer Stadt mit Witz und Wärme aufs Papier zu bannen. Ursprünglich 1960 erschienen, ist der Band eine liebevolle Faksimile-Ausgabe des Originals, erweitert durch einen Anhang mit Informationen und Daten über das New York von heute.",
@@ -720,28 +752,9 @@
  "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-979-8",
  "kategorie": ["Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
 },
-     {
-  "id": 53,
-  "name":"Rom",
-  "ean": "9783888979439",
-  "beschreibung":
-"Alle Wege führen nach Rom, aber dieses Buch ist zweifellos eine der vergnüglichsten Arten, in der legendären Stadt unterwegs zu sein. Ursprünglich 1960 erschienen, ist Rom eine liebevolle Faksimile-Ausgabe des Originals, erweitert durch einen Anhang mit Informationen und Daten über das heutige Rom. \n\n Mit dem großen Miroslav Sasek in die 'Ewige Stadt': Von den Spuren der Antike Forum Romanum, Pantheon, Kolosseum, die Kaiser bis ins bunte Leben im Rom der Sechzigerjahre mit seinen Baristas und fröhlich auf der Vespa vorbei knatternden Einwohnern. Sasek stattet den römischsten Römern in Trastevere einen Besuch ab, aber natürlich auch dem Petersdom, der Fontana di Trevi bei Nacht und der überfüllten Sixtinischen Kapelle. Er stellt Theologiestudenten aus aller Herren Länder vor und elegante Carabinieri, begeisterte Spaghetti-Esser und missmutige Weinhändler. Wir sehen weiße Wäsche, die vor einem knallblauen Himmel trocknet, Palmen auf Dachterrassen, Orangen in Hinterhöfen und Pyramiden aus Chiantiflaschen ... Alle Wege führen nach Rom, aber dieses Buch ist zweifellos eine der vergnüglichsten Arten, in der legendären Stadt unterwegs zu sein. Ursprünglich 1960 erschienen, ist Rom eine liebevolle Faksimile-Ausgabe des Originals, erweitert durch einen Anhang mit Informationen und Daten über das heutige Rom.",
-     "bilder": [
-    "images/grossstaedte/rom.webp"
-  ],
- "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-943-9",
- "kategorie": ["Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
-},
-     {
-  "id": 54,
-  "name":"Miroslav Sasek - Zeichner der Welt (Bibliothek der Illustratoren)",
-  "ean": "9783038762027",
-  "beschreibung": "Eine wundervoll nostalgische und künstlerische Biographie des genialen Illustrators Eine durchgehend illustrierte Biographie über den großen tschechischen Kinderbuchautor, Zeichner, Geschichtenerzähler und Reisenden Miroslav Sasek. Miroslav Sasek »This is-Reiseführer« über München, Paris, Rom, London, Venedig und Rund um die Welt haben Menschen weltweit über Jahrzehnte begeistert - Kinder und Erwachsene gleichermaßen. Von 1959 bis 1974 bereiste er 18 Länder und Städte der Welt, und wollte vor allem jungen Lesern in seinen Büchern ein Gefühl für die Stadt und das jeweilige Land zu vermitteln, in einer Zeit, in der es noch kein Internet gab. Seine typischen Bleistift- und Waschillustrationen beschreiben den dortigen Alltag der Menschen und ihre Kultur. Seine Illustrationen sind spielerisch anekdotisch und von zeitgemäßem grafischem Flair durchdrungen. Die Fähigkeit ihres Schöpfers, mit einem sanften, sehr menschlichen Auge und einer sofort erkennbaren grafischen Sprache in das Leben von Menschen und Orten zu blicken, hat im späten 20. Und frühen 21. Jahrhundert einen bedeutenden Einfluss auf die grafische Kunst und viele andere Bereiche der kommerziellen visuellen Kunst ausgeübt, wie der Autor Martin Salisbury im Vorwort über den Illustrator Miroslav Sasek schreibt.",
-       "bilder": [
-    "images/grossstaedte/sasek.webp"
-  ],   
-  "kategorie": ["Künstlerdasein", "Bücher über Illustratoren und Illustrationskunst", "Deutschsprachige Bücher","Miroslav Šašek" ]
-},
+
+
+    
 
      {
   "id": 55,
@@ -1793,7 +1806,30 @@
   "kategorie":[ "Familie und Freunde",  "Deutschsprachige Bücher", "Wolf Erlbruch" ]
    
    },
+
+   {
+  "id": 133,
+  "name":"Rom",
+  "ean": "9783888979439",
+  "beschreibung":
+"Alle Wege führen nach Rom, aber dieses Buch ist zweifellos eine der vergnüglichsten Arten, in der legendären Stadt unterwegs zu sein. Ursprünglich 1960 erschienen, ist Rom eine liebevolle Faksimile-Ausgabe des Originals, erweitert durch einen Anhang mit Informationen und Daten über das heutige Rom. \n\n Mit dem großen Miroslav Sasek in die 'Ewige Stadt': Von den Spuren der Antike Forum Romanum, Pantheon, Kolosseum, die Kaiser bis ins bunte Leben im Rom der Sechzigerjahre mit seinen Baristas und fröhlich auf der Vespa vorbei knatternden Einwohnern. Sasek stattet den römischsten Römern in Trastevere einen Besuch ab, aber natürlich auch dem Petersdom, der Fontana di Trevi bei Nacht und der überfüllten Sixtinischen Kapelle. Er stellt Theologiestudenten aus aller Herren Länder vor und elegante Carabinieri, begeisterte Spaghetti-Esser und missmutige Weinhändler. Wir sehen weiße Wäsche, die vor einem knallblauen Himmel trocknet, Palmen auf Dachterrassen, Orangen in Hinterhöfen und Pyramiden aus Chiantiflaschen ... Alle Wege führen nach Rom, aber dieses Buch ist zweifellos eine der vergnüglichsten Arten, in der legendären Stadt unterwegs zu sein. Ursprünglich 1960 erschienen, ist Rom eine liebevolle Faksimile-Ausgabe des Originals, erweitert durch einen Anhang mit Informationen und Daten über das heutige Rom.",
+     "bilder": [
+    "images/grossstaedte/rom.webp"
+  ],
+ "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-943-9",
+ "kategorie": ["Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
+},
   
+     {
+  "id": 1344,
+  "name":"Miroslav Sasek - Zeichner der Welt (Bibliothek der Illustratoren)",
+  "ean": "9783038762027",
+  "beschreibung": "Eine wundervoll nostalgische und künstlerische Biographie des genialen Illustrators Eine durchgehend illustrierte Biographie über den großen tschechischen Kinderbuchautor, Zeichner, Geschichtenerzähler und Reisenden Miroslav Sasek. Miroslav Sasek »This is-Reiseführer« über München, Paris, Rom, London, Venedig und Rund um die Welt haben Menschen weltweit über Jahrzehnte begeistert - Kinder und Erwachsene gleichermaßen. Von 1959 bis 1974 bereiste er 18 Länder und Städte der Welt, und wollte vor allem jungen Lesern in seinen Büchern ein Gefühl für die Stadt und das jeweilige Land zu vermitteln, in einer Zeit, in der es noch kein Internet gab. Seine typischen Bleistift- und Waschillustrationen beschreiben den dortigen Alltag der Menschen und ihre Kultur. Seine Illustrationen sind spielerisch anekdotisch und von zeitgemäßem grafischem Flair durchdrungen. Die Fähigkeit ihres Schöpfers, mit einem sanften, sehr menschlichen Auge und einer sofort erkennbaren grafischen Sprache in das Leben von Menschen und Orten zu blicken, hat im späten 20. Und frühen 21. Jahrhundert einen bedeutenden Einfluss auf die grafische Kunst und viele andere Bereiche der kommerziellen visuellen Kunst ausgeübt, wie der Autor Martin Salisbury im Vorwort über den Illustrator Miroslav Sasek schreibt.",
+       "bilder": [
+    "images/grossstaedte/sasek.webp"
+  ],   
+  "kategorie": ["Künstlerdasein", "Bücher über Illustratoren und Illustrationskunst", "Deutschsprachige Bücher","Miroslav Šašek" ]
+},
   
   {
   "id": 100,
