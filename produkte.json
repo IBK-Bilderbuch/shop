@@ -1280,6 +1280,23 @@
    },
    {
   "id":95,
+  "name": "Labyrinthe",
+  "ean":"9783702659103",
+  "beschreibung": "Kunst, die Menschen jeden Alters begeistert – kreativ, unterhaltsam und anspruchsvoll zugleich. In diesem besonderen Buch präsentiert der französische Illustrator sechzehn großformatige Labyrinthe mit verschiedenen Schwierigkeitsstufen. Die liebevoll gestalteten und abwechslungsreichen Illustrationen machen jedes Rätsel zu einem einzigartigen Erlebnis. Wer einmal nicht weiterkommt, findet die Lösungen am Ende des Buches.\n\n'grafische Kunstwerke' – Peter Mayr, Der Standard\n'feiert das Labyrinth als Kunstform und Ereignis' – Wolfgang Paterno, Profil\n'beflügelt die Fantasie und fördert die Konzentration' – Christina Repolust, Salzburger Familien-Journal\n'Das textlose Labyrinthe-Wimmelbuch reiht sich bildgewaltig in die Labyrinthtradition ein' – Peter Rinnerthaler, STUBE\n'eine Augenweide – bunt, wild, aus verschiedenen Perspektiven zu betrachten und alle sehr kunstvoll' – Silvia Kaeser, Querlesen\n'Ein tolles Bilderbuch, das die Konzentration der Kinder spielerisch fördert' – ORF.at\n'Abstrakte, architektonische, comicartige und geometrische Gestaltungselemente machen dieses Buch zu einem besonderen Erlebnis' – Christa Öhlinger, Das Kinderbuchhaus\n'Detailverliebt und anregend' – Jule Pfeiffer-Spiekermann, Pinselfisch\n'Guignards wunderschön angelegte Labyrinthe in verschiedenen Schwierigkeitsgraden fördern Neugier und Konzentrationsfähigkeit der Kinder' – Nicola Bardola, Börsenblatt\n'ein Spiel-, Sach- und Bilderbuch, das im ungeordnet-geordneten Raum-Chaos kleine Geschichten zu verstecken weiß' – Bundeskanzleramt Österreich, Annotation zur Aufnahme in die Kollektion des Österreichischen Kinder- und Jugendbuchpreises\n\n 'grafische Kunstwerke' – Peter Mayr, Der Standard\n'feiert das Labyrinth als Kunstform und Ereignis' – Wolfgang Paterno, Profil\n'beflügelt die Fantasie und fördert die Konzentration' – Christina Repolust, Salzburger Familien-Journal\n'Das textlose Labyrinthe-Wimmelbuch reiht sich bildgewaltig in die Labyrinthtradition ein' – Peter Rinnerthaler, STUBE\n'eine Augenweide – bunt, wild, aus verschiedenen Perspektiven zu betrachten und alle sehr kunstvoll' – Silvia Kaeser, Querlesen\n'Ein tolles Bilderbuch, das die Konzentration der Kinder spielerisch fördert' – ORF.at\n'Abstrakte, architektonische, comicartige und geometrische Gestaltungselemente machen dieses Buch zu einem besonderen Erlebnis' – Christa Öhlinger, Das Kinderbuchhaus\n'Detailverliebt und anregend' – Jule Pfeiffer-Spiekermann, Pinselfisch\n'Guignards wunderschön angelegte Labyrinthe in verschiedenen Schwierigkeitsgraden fördern Neugier und Konzentrationsfähigkeit der Kinder' – Nicola Bardola, Börsenblatt\n'ein Spiel-, Sach- und Bilderbuch, das im ungeordnet-geordneten Raum-Chaos kleine Geschichten zu verstecken weiß' – Bundeskanzleramt Österreich, Annotation zur Aufnahme in die Kollektion des Österreichischen Kinder- und Jugendbuchpreises",
+  "bilder": [
+    "images/labyrinthe/labyrinthe.webp",
+    "images/labyrinthe/labyrinthe1.webp",
+    "images/labyrinthe/labyrinthe2.webp",
+    "images/labyrinthe/labyrinthe3.webp"
+      ],
+  "kategorie": [ "Schlaues Mitraten", "Deutschsprachige Bücher", "Théo Guignard" ],
+  "leseprobe_pdf": "labyrinthe.pdf"
+
+
+   },
+
+   {
+  "id":96,
   "name": "I Want My Hat Back",
   "ean":"9781406338539",
   "beschreibung": "In his bestselling debut picture book, the multiple award-winning Jon Klassen, illustrator of This Is Not My Hat and Sam and Dave Dig a Hole, tells the story of a bear who's hat has gone. And he wants it back. Patiently and politely, he asks the animals he comes across, one by one, whether they have seen it. Each animal says no (some more elaborately than others). But just as it he begins to lose hope, lying flat on his back in despair, a deer comes by and asks a rather obvious question that suddenly sparks the bear's memory and renews his search with a vengeance... Told completely in dialogue, this quirky, hilarious, read-aloud tale plays out in sly illustrations brimming with visual humour and winks at the reader who will be thrilled to be in on the joke.",
@@ -1770,8 +1787,8 @@
   "beschreibung":"Anlässlich des 75. Geburtstages von Wolf Erlbruch am 30. Juni 2023 erschien die große Postkartenedition mit den 30 beliebtesten Motiven seiner berühmten Kinderzimmerkalender - zum Herauslösen und Verschicken an nette Leute.",
        
   "bilder": [
-    "images/wepostkarte/wepostkarte.webp",
-    "images/wepostkarte/wepostkarte1.webp"
+    "images/wepostkartefreunde/freunde.webp",
+    "images/wepostkartefreunde/freunde1.webp"
   ],
   "kategorie":[ "Familie und Freunde",  "Deutschsprachige Bücher", "Wolf Erlbruch" ]
    
