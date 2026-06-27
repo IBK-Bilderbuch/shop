@@ -696,22 +696,11 @@
  "kategorie": [ "Kunst und Künstlerdasein", "Bob der Künstler", "Englischsprachige Bücher" ]
 },
 
-   {
-  "id": 51,
-  "name":"Venedig",
-  "ean": "9783956140327",
-  "beschreibung": "Mit Miroslav Sasek unterwegs in der »Serenissima«: Wir fahren mit der Gondel durch den Canale Grande, bewundern bei strahlendblauem Himmel den Dogenpalast und viele prachtvolle Palazzi, durchstreifen die zahllosen Gassen und Kanäle, spazieren über die Rialtobrücke und erleben die Stadt bei »acqua alta«. Wir begegnen Postkartenverkäufern und Marktleuten, Gondolieri und natürlich den von Tauben umflatterten Touristen auf dem Markusplatz &#8230; »Alle Städte sind gleich, nur Venedig ist ein bissl anders«, wusste schon Friedrich Torbergs Tante Jolesch. Der große Miroslav Sasek liebte Venedig - und mit welcher Begeisterung er durch diese fast unwirklich schöne Stadt spazierte, spiegelt sich auf jeder Seite dieses Buches.",
-  "bilder": [
-    "images/grossstaedte/venedig.webp"
- 
-  ],
- "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-95614-032-7",
- "kategorie":[ "Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
-},
+
 
     
      {
-  "id": 52,
+  "id": 51,
   "name":"Reisen mit der Eisenbahn; Die schönsten Zugreisen aus aller Welt",
   "ean": "9783899558449",
   "beschreibung": "Eine faszinierende Entdeckungsreise für Jung und Alt, die die besondere Faszination des Bahnreisens lebendig werden lässt. Lernen Sie außergewöhnliche Züge wie den Shinkansen kennen und entdecken Sie einige der beeindruckendsten, mutigsten und bedeutendsten Bahnstrecken der Welt. Von Australien bis Wales erzählt jede Route ihre eigene Geschichte.\n\nBegleiten Sie eine Reise rund um den Globus und erfahren Sie mehr über die Menschen, die diese Eisenbahnen geplant, gebaut und betrieben haben. Entdecken Sie, wie die Strecken entstanden sind, welche technischen Herausforderungen sie mit sich brachten und welchen Einfluss sie bis heute auf Geschichte, Kultur und das Leben der Menschen ausüben.",
@@ -723,7 +712,7 @@
 },
 
    {
-  "id": 53,
+  "id": 52,
   "name":"Berühmte Reiserouten",
   "ean": "9783967047653",
   "beschreibung": "Eine spannende Entdeckungsreise entlang legendärer Wege zu Land und zu Wasser – von der Vergangenheit bis in die Gegenwart.\n\nReisen bedeutet weit mehr als das Zurücklegen von Entfernungen: Es steht für Abenteuer, Neugier, Aufbruch und Hoffnung. Dieses Buch führt zu einigen der bekanntesten und ältesten Reiserouten der Menschheitsgeschichte, die über Jahrhunderte hinweg von unzähligen Menschen genutzt wurden und bis heute faszinieren.\n\nOb die Seidenstraße, die Strecke der Transsibirischen Eisenbahn, der Jakobsweg oder der Inka-Pfad – jede Route erzählt ihre eigene Geschichte und eröffnet Einblicke in unterschiedliche Kulturen und Epochen. Eine abwechslungsreiche Reise durch die Jahrhunderte, die Geschichte und Abenteuer auf einzigartige Weise miteinander verbindet.",
@@ -741,16 +730,34 @@
   "kategorie": ["Reisen", "Deutschsprachige Bücher", "SAM G. C." ]
 },
 
+    {
+  "id": 53,
+  "name":"Auf dem Weg",
+  "ean": "9783702659899",
+  "beschreibung":"Mit nur wenigen Worten erzählt dieses Bilderbuch von einer kleinen Maus, die sich auf eine außergewöhnliche Reise begibt. Auf ihrem Weg begegnet sie geheimnisvollen Landschaften, farbenfrohen Naturereignissen und spannenden Herausforderungen. Neugierig und mutig entdeckt sie die Welt und meistert jedes Abenteuer, das ihr begegnet. Doch so schön das Unterwegssein auch ist – am Ende wartet das größte Glück: das Ankommen.",
+    
+  "bilder": [
+    "images/grossstaedte/aufdemweg.webp",
+    "images/grossstaedte/aufdemweg1.webp",
+    "images/grossstaedte/aufdemweg2.webp",
+    "images/grossstaedte/aufdemweg3.webp",
+    "images/grossstaedte/aufdemweg4.webp"
+],
+ "leseprobe_pdf": "aufdemweg.pdf",
+ "kategorie": ["Reisen",  "Deutschsprachige Bücher", "Helga Bansch" ]
+},
    {
   "id": 54,
-  "name":"New York",
-  "ean": "9783888979798",
-  "beschreibung": "'New York' lebt von Saseks besonderem Talent, den Charme und das Lebensgefühl einer Stadt mit Witz und Wärme aufs Papier zu bannen. Ursprünglich 1960 erschienen, ist der Band eine liebevolle Faksimile-Ausgabe des Originals, erweitert durch einen Anhang mit Informationen und Daten über das New York von heute.",
-       "bilder": [
-    "images/grossstaedte/newyork.webp"
-  ],
- "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-979-8",
- "kategorie": ["Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
+  "name":"Bis zum Horizont",
+  "ean": "9783899558395",
+  "beschreibung": "Eine poetische Bilderbuchreise über Neugier, Fantasie und die Freude am Entdecken. Da ein Mädchen, das sich fragt, was sich hinter dem Horizont verbirgt – jener geheimnisvollen Linie, die Himmel und Erde miteinander verbindet und doch stets in der Ferne bleibt.\n\nMit großer Vorstellungskraft begibt sie sich auf die Suche nach dem Unbekannten und zeigt, dass jeder neue Blickwinkel ungeahnte Möglichkeiten eröffnet. Das Buch lädt dazu ein, die Welt mit offenen Augen zu betrachten und zu erkennen, dass Herausforderungen und Grenzen oft davon abhängen, aus welcher Perspektive wir sie sehen.\n\n Die Illustratorin Carolina Celas lebt in Lissabon und arbeitet als freie Autorin für verschiedene Medien. Voller Humor und Liebe zum Detail lässt sie in ihren Geschichten Fiktion und Realität ineinanderfließen und nimmt ihr Leser mit ins Reich des Fantastischen und Surrealen. Die Illustratorin Carolina Celas lebt in Lissabon und arbeitet als freie Autorin für verschiedene Medien. Voller Humor und Liebe zum Detail lässt sie in ihren Geschichten Fiktion und Realität ineinanderfließen und nimmt ihr Leser mit ins Reich des Fantastischen und Surrealen.",
+   "bilder": [
+    "images/grossstaedte/biszumhorizont.webp",
+    "images/grossstaedte/biszumhorizont1.webp",
+    "images/grossstaedte/biszumhorizont2.webp",
+    "images/grossstaedte/biszumhorizont3.webp"
+],
+ "kategorie": ["Reisen", "Deutschsprachige Bücher"]
 },
 
 
@@ -1807,37 +1814,11 @@
    
    },
 
-   {
-  "id": 133,
-  "name":"Rom",
-  "ean": "9783888979439",
-  "beschreibung":
-"Alle Wege führen nach Rom, aber dieses Buch ist zweifellos eine der vergnüglichsten Arten, in der legendären Stadt unterwegs zu sein. Ursprünglich 1960 erschienen, ist Rom eine liebevolle Faksimile-Ausgabe des Originals, erweitert durch einen Anhang mit Informationen und Daten über das heutige Rom. \n\n Mit dem großen Miroslav Sasek in die 'Ewige Stadt': Von den Spuren der Antike Forum Romanum, Pantheon, Kolosseum, die Kaiser bis ins bunte Leben im Rom der Sechzigerjahre mit seinen Baristas und fröhlich auf der Vespa vorbei knatternden Einwohnern. Sasek stattet den römischsten Römern in Trastevere einen Besuch ab, aber natürlich auch dem Petersdom, der Fontana di Trevi bei Nacht und der überfüllten Sixtinischen Kapelle. Er stellt Theologiestudenten aus aller Herren Länder vor und elegante Carabinieri, begeisterte Spaghetti-Esser und missmutige Weinhändler. Wir sehen weiße Wäsche, die vor einem knallblauen Himmel trocknet, Palmen auf Dachterrassen, Orangen in Hinterhöfen und Pyramiden aus Chiantiflaschen ... Alle Wege führen nach Rom, aber dieses Buch ist zweifellos eine der vergnüglichsten Arten, in der legendären Stadt unterwegs zu sein. Ursprünglich 1960 erschienen, ist Rom eine liebevolle Faksimile-Ausgabe des Originals, erweitert durch einen Anhang mit Informationen und Daten über das heutige Rom.",
-     "bilder": [
-    "images/grossstaedte/rom.webp"
-  ],
- "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-943-9",
- "kategorie": ["Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
-},
-  {
-  "id": 134,
-  "name":"Auf dem Weg",
-  "ean": "9783702659899",
-  "beschreibung":"Mit nur wenigen Worten erzählt dieses Bilderbuch von einer kleinen Maus, die sich auf eine außergewöhnliche Reise begibt. Auf ihrem Weg begegnet sie geheimnisvollen Landschaften, farbenfrohen Naturereignissen und spannenden Herausforderungen. Neugierig und mutig entdeckt sie die Welt und meistert jedes Abenteuer, das ihr begegnet. Doch so schön das Unterwegssein auch ist – am Ende wartet das größte Glück: das Ankommen.",
-    
-  "bilder": [
-    "images/grossstaedte/aufdemweg.webp",
-    "images/grossstaedte/aufdemweg1.webp",
-    "images/grossstaedte/aufdemweg2.webp",
-    "images/grossstaedte/aufdemweg3.webp",
-    "images/grossstaedte/aufdemweg4.webp"
-],
- "leseprobe_pdf": "aufdemweg.pdf",
- "kategorie": ["Reisen",  "Deutschsprachige Bücher", "Helga Bansch" ]
-},
+
+
 
   {
-  "id": 135,
+  "id": 133,
   "name":"Auf geht's nach Italien!",
   "ean": "9783899558333",
   "beschreibung": "Italien begeistert mit seiner reichen Kultur, beeindruckenden Geschichte und weltberühmten Küche. Dieses Buch nimmt Kinder mit auf eine spannende Entdeckungsreise durch das Land von Pizza, Pasta und Gelato. Vom Kolosseum in Rom bis zum bunten Karneval in Venedig gibt es viel zu erleben und zu entdecken.\n\nWarum stammt die Pizza ursprünglich aus Neapel? Welche Geschichten verbergen sich hinter Pompeji? Und was macht italienisches Eis so besonders? Spielerisch lernen junge Leserinnen und Leser die Traditionen, Sehenswürdigkeiten und kulinarischen Besonderheiten Italiens kennen.\n\nNeben ersten italienischen Redewendungen für den nächsten Urlaub erfahren sie mehr über bedeutende Persönlichkeiten, mutige Helden und geniale Erfinder der italienischen Geschichte. Von den Dolomiten im Norden bis zum Ätna auf Sizilien lädt dieses Buch dazu ein, die vielfältige Kultur, Geografie und Lebensart Italiens kennenzulernen.\n\nMONIKA UTNIK-STRUGALA ist Journalistin für Lifestyle und Design und hat Romanistik studiert. Ihre Leidenschaft gehört dem italienischen Design und der Kunst des Trecento.ANNA LADECKA ist Malerin und Kinder- buchillustratorin, deren Arbeiten in Einzel- wie Gruppenausstellungen in Polen und im Ausland gezeigt wurden.",
@@ -1846,21 +1827,52 @@
     "images/grossstaedte/aufgehtsnachitalien.webp"
   ],
  "kategorie": ["Reisen", "Deutschsprachige Bücher" ]
-}, {
-  "id": 136,
-  "name":"Bis zum Horizont",
-  "ean": "9783899558395",
-  "beschreibung": "Eine poetische Bilderbuchreise über Neugier, Fantasie und die Freude am Entdecken. Da ein Mädchen, das sich fragt, was sich hinter dem Horizont verbirgt – jener geheimnisvollen Linie, die Himmel und Erde miteinander verbindet und doch stets in der Ferne bleibt.\n\nMit großer Vorstellungskraft begibt sie sich auf die Suche nach dem Unbekannten und zeigt, dass jeder neue Blickwinkel ungeahnte Möglichkeiten eröffnet. Das Buch lädt dazu ein, die Welt mit offenen Augen zu betrachten und zu erkennen, dass Herausforderungen und Grenzen oft davon abhängen, aus welcher Perspektive wir sie sehen.\n\n Die Illustratorin Carolina Celas lebt in Lissabon und arbeitet als freie Autorin für verschiedene Medien. Voller Humor und Liebe zum Detail lässt sie in ihren Geschichten Fiktion und Realität ineinanderfließen und nimmt ihr Leser mit ins Reich des Fantastischen und Surrealen. Die Illustratorin Carolina Celas lebt in Lissabon und arbeitet als freie Autorin für verschiedene Medien. Voller Humor und Liebe zum Detail lässt sie in ihren Geschichten Fiktion und Realität ineinanderfließen und nimmt ihr Leser mit ins Reich des Fantastischen und Surrealen.",
-    
-    
-   "bilder": [
-    "images/grossstaedte/biszumhorizont.webp",
-    "images/grossstaedte/biszumhorizont1.webp",
-    "images/grossstaedte/biszumhorizont2.webp",
-    "images/grossstaedte/biszumhorizont3.webp"
-],
- "kategorie": ["Reisen", "Deutschsprachige Bücher"]
 },
+  
+  
+{
+  "id": 134,
+  "name":"Rom",
+  "ean": "9783888979439",
+  "beschreibung":"Alle Wege führen nach Rom, aber dieses Buch ist zweifellos eine der vergnüglichsten Arten, in der legendären Stadt unterwegs zu sein. Ursprünglich 1960 erschienen, ist Rom eine liebevolle Faksimile-Ausgabe des Originals, erweitert durch einen Anhang mit Informationen und Daten über das heutige Rom. \n\n Mit dem großen Miroslav Sasek in die 'Ewige Stadt': Von den Spuren der Antike Forum Romanum, Pantheon, Kolosseum, die Kaiser bis ins bunte Leben im Rom der Sechzigerjahre mit seinen Baristas und fröhlich auf der Vespa vorbei knatternden Einwohnern. Sasek stattet den römischsten Römern in Trastevere einen Besuch ab, aber natürlich auch dem Petersdom, der Fontana di Trevi bei Nacht und der überfüllten Sixtinischen Kapelle. Er stellt Theologiestudenten aus aller Herren Länder vor und elegante Carabinieri, begeisterte Spaghetti-Esser und missmutige Weinhändler. Wir sehen weiße Wäsche, die vor einem knallblauen Himmel trocknet, Palmen auf Dachterrassen, Orangen in Hinterhöfen und Pyramiden aus Chiantiflaschen ... Alle Wege führen nach Rom, aber dieses Buch ist zweifellos eine der vergnüglichsten Arten, in der legendären Stadt unterwegs zu sein. Ursprünglich 1960 erschienen, ist Rom eine liebevolle Faksimile-Ausgabe des Originals, erweitert durch einen Anhang mit Informationen und Daten über das heutige Rom.",
+     "bilder": [
+    "images/grossstaedte/rom.webp"
+  ],
+ "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-943-9",
+ "kategorie": ["Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
+},
+  
+ 
+    
+     {
+  "id": 135,
+  "name":"Venedig",
+  "ean": "9783956140327",
+  "beschreibung": "Mit Miroslav Sasek unterwegs in der »Serenissima«: Wir fahren mit der Gondel durch den Canale Grande, bewundern bei strahlendblauem Himmel den Dogenpalast und viele prachtvolle Palazzi, durchstreifen die zahllosen Gassen und Kanäle, spazieren über die Rialtobrücke und erleben die Stadt bei »acqua alta«. Wir begegnen Postkartenverkäufern und Marktleuten, Gondolieri und natürlich den von Tauben umflatterten Touristen auf dem Markusplatz &#8230; »Alle Städte sind gleich, nur Venedig ist ein bissl anders«, wusste schon Friedrich Torbergs Tante Jolesch. Der große Miroslav Sasek liebte Venedig - und mit welcher Begeisterung er durch diese fast unwirklich schöne Stadt spazierte, spiegelt sich auf jeder Seite dieses Buches.",
+  "bilder": [
+    "images/grossstaedte/venedig.webp"
+ 
+  ],
+ "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-95614-032-7",
+ "kategorie":[ "Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
+},
+
+
+   {
+  "id": 136,
+  "name":"New York",
+  "ean": "9783888979798",
+  "beschreibung": "'New York' lebt von Saseks besonderem Talent, den Charme und das Lebensgefühl einer Stadt mit Witz und Wärme aufs Papier zu bannen. Ursprünglich 1960 erschienen, ist der Band eine liebevolle Faksimile-Ausgabe des Originals, erweitert durch einen Anhang mit Informationen und Daten über das New York von heute.",
+       "bilder": [
+    "images/grossstaedte/newyork.webp"
+  ],
+ "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-979-8",
+ "kategorie": ["Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
+},
+
+
+
+
      {
   "id": 137,
   "name":"Miroslav Sasek - Zeichner der Welt (Bibliothek der Illustratoren)",
