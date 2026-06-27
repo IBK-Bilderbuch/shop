@@ -1875,13 +1875,26 @@
 
      {
   "id": 137,
+  "name":"Über das Marionettentheater",
+  "ean": "9783942795777",
+  "beschreibung": "Sind Marionetten geeigneter, um natürliche Grazie in ihre Bewegungen einzubauen? Beschädigt die menschliche Reflexion diese Fähigkeit? Hat der Mensch seine Unschuld verloren und kann nie wieder die ideale Anmut erreichen?\n\nDie essayistische Erzählung von Heinrich von Kleist, die 1810 in den Berliner Abendblättern erschien, bietet ein rekapitulierendes Gespräch des Erzählers und des Tänzers C. über Anmut, Reflexion und welche Rolle dabei die An- oder Abwesenheit des Bewusstseins spielt. Durch ihr Gespräch und den Austausch von Anekdoten versuchen sie zu einer Lösung zu gelangen.\n\nHanna Jung setzt den Klassiker in ihrem Bilderbuchdebüt phantasievoll in Szene und ermöglicht durch ihre Illustrationen einen neuen Blickwinkel auf das Werk.",
+  "bilder": [
+    "images/grossstaedte/sasek.webp"
+  ],   
+  "kategorie": ["Kunst und Künstlerdasein", "Deutschsprachige Bücher", "Hanna Jung" ],
+  "leseprobe_url": "https://www.book2look.com/book/iSS7keEJms"
+},
+
+
+      {
+  "id": 138,
   "name":"Miroslav Sasek - Zeichner der Welt (Bibliothek der Illustratoren)",
   "ean": "9783038762027",
   "beschreibung": "Eine wundervoll nostalgische und künstlerische Biographie des genialen Illustrators Eine durchgehend illustrierte Biographie über den großen tschechischen Kinderbuchautor, Zeichner, Geschichtenerzähler und Reisenden Miroslav Sasek. Miroslav Sasek »This is-Reiseführer« über München, Paris, Rom, London, Venedig und Rund um die Welt haben Menschen weltweit über Jahrzehnte begeistert - Kinder und Erwachsene gleichermaßen. Von 1959 bis 1974 bereiste er 18 Länder und Städte der Welt, und wollte vor allem jungen Lesern in seinen Büchern ein Gefühl für die Stadt und das jeweilige Land zu vermitteln, in einer Zeit, in der es noch kein Internet gab. Seine typischen Bleistift- und Waschillustrationen beschreiben den dortigen Alltag der Menschen und ihre Kultur. Seine Illustrationen sind spielerisch anekdotisch und von zeitgemäßem grafischem Flair durchdrungen. Die Fähigkeit ihres Schöpfers, mit einem sanften, sehr menschlichen Auge und einer sofort erkennbaren grafischen Sprache in das Leben von Menschen und Orten zu blicken, hat im späten 20. Und frühen 21. Jahrhundert einen bedeutenden Einfluss auf die grafische Kunst und viele andere Bereiche der kommerziellen visuellen Kunst ausgeübt, wie der Autor Martin Salisbury im Vorwort über den Illustrator Miroslav Sasek schreibt.",
        "bilder": [
     "images/grossstaedte/sasek.webp"
   ],   
-  "kategorie": ["Künstlerdasein", "Bücher über Illustratoren und Illustrationskunst", "Deutschsprachige Bücher","Miroslav Šašek" ]
+  "kategorie": ["Künstlerdasein", "Bücher über Illustratoren und Illustrationskunst", "Deutschsprachige Bücher","Miroslav Šašek"]
 },
   
   {
