@@ -1819,9 +1819,50 @@
  "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-943-9",
  "kategorie": ["Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Miroslav Šašek" ]
 },
-  
+  {
+  "id": 134,
+  "name":"Auf dem Weg",
+  "ean": "9783702659899",
+  "beschreibung":"Mit nur wenigen Worten erzählt dieses Bilderbuch von einer kleinen Maus, die sich auf eine außergewöhnliche Reise begibt. Auf ihrem Weg begegnet sie geheimnisvollen Landschaften, farbenfrohen Naturereignissen und spannenden Herausforderungen. Neugierig und mutig entdeckt sie die Welt und meistert jedes Abenteuer, das ihr begegnet. Doch so schön das Unterwegssein auch ist – am Ende wartet das größte Glück: das Ankommen.",
+    
+  "bilder": [
+    "images/grossstaedte/aufdemweg.webp",
+    "images/grossstaedte/aufdemweg1.webp",
+    "images/grossstaedte/aufdemweg2.webp",
+    "images/grossstaedte/aufdemweg3.webp",
+    "images/grossstaedte/aufdemweg4.webp"
+],
+ "leseprobe_pdf": "aufdemweg.pdf",
+ "kategorie": ["Reisen",  "Deutschsprachige Bücher", "Helga Bansch" ]
+},
+
+  {
+  "id": 135,
+  "name":"Auf geht's nach Italien!",
+  "ean": "9783899558333",
+  "beschreibung": "Italien begeistert mit seiner reichen Kultur, beeindruckenden Geschichte und weltberühmten Küche. Dieses Buch nimmt Kinder mit auf eine spannende Entdeckungsreise durch das Land von Pizza, Pasta und Gelato. Vom Kolosseum in Rom bis zum bunten Karneval in Venedig gibt es viel zu erleben und zu entdecken.\n\nWarum stammt die Pizza ursprünglich aus Neapel? Welche Geschichten verbergen sich hinter Pompeji? Und was macht italienisches Eis so besonders? Spielerisch lernen junge Leserinnen und Leser die Traditionen, Sehenswürdigkeiten und kulinarischen Besonderheiten Italiens kennen.\n\nNeben ersten italienischen Redewendungen für den nächsten Urlaub erfahren sie mehr über bedeutende Persönlichkeiten, mutige Helden und geniale Erfinder der italienischen Geschichte. Von den Dolomiten im Norden bis zum Ätna auf Sizilien lädt dieses Buch dazu ein, die vielfältige Kultur, Geografie und Lebensart Italiens kennenzulernen.\n\nMONIKA UTNIK-STRUGALA ist Journalistin für Lifestyle und Design und hat Romanistik studiert. Ihre Leidenschaft gehört dem italienischen Design und der Kunst des Trecento.ANNA LADECKA ist Malerin und Kinder- buchillustratorin, deren Arbeiten in Einzel- wie Gruppenausstellungen in Polen und im Ausland gezeigt wurden.",
+    
+    "bilder": [
+    "images/grossstaedte/aufgehtsnachitalien.webp"
+  ],
+ "kategorie": ["Reisen", "Deutschsprachige Bücher" ]
+}, {
+  "id": 136,
+  "name":"Bis zum Horizont",
+  "ean": "9783899558395",
+  "beschreibung": "Eine poetische Bilderbuchreise über Neugier, Fantasie und die Freude am Entdecken. Da ein Mädchen, das sich fragt, was sich hinter dem Horizont verbirgt – jener geheimnisvollen Linie, die Himmel und Erde miteinander verbindet und doch stets in der Ferne bleibt.\n\nMit großer Vorstellungskraft begibt sie sich auf die Suche nach dem Unbekannten und zeigt, dass jeder neue Blickwinkel ungeahnte Möglichkeiten eröffnet. Das Buch lädt dazu ein, die Welt mit offenen Augen zu betrachten und zu erkennen, dass Herausforderungen und Grenzen oft davon abhängen, aus welcher Perspektive wir sie sehen.\n\n Die Illustratorin Carolina Celas lebt in Lissabon und arbeitet als freie Autorin für verschiedene Medien. Voller Humor und Liebe zum Detail lässt sie in ihren Geschichten Fiktion und Realität ineinanderfließen und nimmt ihr Leser mit ins Reich des Fantastischen und Surrealen. Die Illustratorin Carolina Celas lebt in Lissabon und arbeitet als freie Autorin für verschiedene Medien. Voller Humor und Liebe zum Detail lässt sie in ihren Geschichten Fiktion und Realität ineinanderfließen und nimmt ihr Leser mit ins Reich des Fantastischen und Surrealen.",
+    
+    
+   "bilder": [
+    "images/grossstaedte/biszumhorizont.webp",
+    "images/grossstaedte/biszumhorizont1.webp",
+    "images/grossstaedte/biszumhorizont2.webp",
+    "images/grossstaedte/biszumhorizont3.webp"
+],
+ "kategorie": ["Reisen", "Deutschsprachige Bücher"]
+},
      {
-  "id": 1344,
+  "id": 137,
   "name":"Miroslav Sasek - Zeichner der Welt (Bibliothek der Illustratoren)",
   "ean": "9783038762027",
   "beschreibung": "Eine wundervoll nostalgische und künstlerische Biographie des genialen Illustrators Eine durchgehend illustrierte Biographie über den großen tschechischen Kinderbuchautor, Zeichner, Geschichtenerzähler und Reisenden Miroslav Sasek. Miroslav Sasek »This is-Reiseführer« über München, Paris, Rom, London, Venedig und Rund um die Welt haben Menschen weltweit über Jahrzehnte begeistert - Kinder und Erwachsene gleichermaßen. Von 1959 bis 1974 bereiste er 18 Länder und Städte der Welt, und wollte vor allem jungen Lesern in seinen Büchern ein Gefühl für die Stadt und das jeweilige Land zu vermitteln, in einer Zeit, in der es noch kein Internet gab. Seine typischen Bleistift- und Waschillustrationen beschreiben den dortigen Alltag der Menschen und ihre Kultur. Seine Illustrationen sind spielerisch anekdotisch und von zeitgemäßem grafischem Flair durchdrungen. Die Fähigkeit ihres Schöpfers, mit einem sanften, sehr menschlichen Auge und einer sofort erkennbaren grafischen Sprache in das Leben von Menschen und Orten zu blicken, hat im späten 20. Und frühen 21. Jahrhundert einen bedeutenden Einfluss auf die grafische Kunst und viele andere Bereiche der kommerziellen visuellen Kunst ausgeübt, wie der Autor Martin Salisbury im Vorwort über den Illustrator Miroslav Sasek schreibt.",
