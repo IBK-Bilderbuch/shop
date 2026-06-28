@@ -1429,7 +1429,7 @@
   "bilder": [
     "images/hockney/historyofpictures.webp"
       ],
-  "kategorie": ["David Hockney","unst und Künstlerdasein", "Rose Blake"]
+  "kategorie": ["David Hockney","Kunst und Künstlerdasein","Englischsprachige Bücher", "Rose Blake"]
 
    },
     {
@@ -1881,7 +1881,7 @@
   "bilder": [
     "images/kunst/ueberdasmarionetttentheater.webp"
   ],   
-  "kategorie": ["Kunst und ünstlerdasein", "Deutschsprachige Bücher", "Hanna Jung" ],
+  "kategorie": ["Kunst und Künstlerdasein", "Deutschsprachige Bücher", "Hanna Jung" ],
   "leseprobe_url": "https://www.book2look.com/book/iSS7keEJms"
 },
 
@@ -1896,6 +1896,33 @@
   ],   
   "kategorie": ["Künstlerdasein", "Bücher über Illustratoren und Illustrationskunst", "Deutschsprachige Bücher", "Miroslav Šašek"]
 },
+
+    {
+  "id": 139,
+  "name":"The Cat and the Bird – A Children`s Book Inspired by Paul Klee",
+  "ean": "9783791370996",
+  "beschreibung": "A treasured painting by Paul Klee is the basis for this whimsical tale about a cat and a bird, and about the themes of freedom and friendship. A cat lives in a house filled with toys, but everyday she dreams of being free like the bird she watches through the window. Finally with the bird's help, she is able to escape and dance on the roofs of the city by moonlight. This lovely story unfolds in a series of playful, brilliantly colored illustrations based on the artist Paul Klee's work. Influenced by the artist's bright palette and use of shapes and line, the book culminates in a dazzling reproduction of Klee's Cat and Bird. Accompanied by information about the artist and this iconic painting, the book invites appreciation of the unfettered joyfulness that makes Klee one of the most universally loved artists of all time.",
+"bilder": [
+    "images/kunst/thecatantthebird.webp"
+  ],   
+  "kategorie": ["Kunst und Künstlerdasein", "Englischsprachige Bücher", "" ]
+    },
+
+    {
+  "id": 140,
+  "name":"Ein Museum nur für mich",
+  "ean": "9783791372983",
+  "beschreibung": "Was ist eigentlich ein Museum? Ein Gebäude voller alter Dinge aus der ganzen Welt? Ein Garten mit exotischen Pflanzen? Ein Haus, an dessen Wänden viele, viele Bilder hängen? Ein kleines Mädchen besucht die unterschiedlichsten Arten von Museen, steht staunend vor gefiederten Pflanzen und riesigen Käfern, träumt davon, wer die antiken Töpfe und Tassen einst in Händen gehalten hat, und bewundert moderne Gemälde, bei denen jedem Besucher ein anderes gefällt. Aber ihr Lieblingsmuseum hat sie zu Hause immer um sich: ihre eigenen Dinge. Die frischen Illustrationen von Emma Lewis und der anregende Mitmachteil führen Kinder spielerisch an Museen und Sammlungen heran.",
+"bilder": [
+    "images/kunst/einmuseumfürmich.webp",
+    "images/kunst/einmuseumfürmich1.webp",
+    "images/kunst/einmuseumfürmich2.webp",
+    "images/kunst/einmuseumfürmich3.webp",
+    "images/kunst/einmuseumfürmich4.webp"
+  ],   
+  "kategorie": ["Kunst und Künstlerdasein", "Englischsprachige Bücher", "" ]
+},
+
   
   {
   "id": 100,
