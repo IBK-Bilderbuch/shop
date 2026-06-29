@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ workshop.titel }} – Admin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+{% include 'navbar.html' %}
+
+<section class="form">
+  <a href="/admin/workshops">← Zurück</a>
+  <h2>{{ workshop.titel }}</h2>
+  <p>Preis: {{ "%.2f"|format(workshop.preis) }} € | 
+     Öffentliche Seite: <a href="/workshop/{{ workshop.id }}" target="_blank">ansehen</a>
+  </p>
+
+  <hr style="margin:2rem 0;">
+  <h3>Neuen Termin hinzufügen</h3>
+
+  <form method="POST" action="/admin/workshop/{{ workshop.id }}/slot/neu">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <label>Datum & Uhrzeit<br>
+      <input type="datetime-local" name="datum" required class="input-field">
+    </label><br><br>
+
+    <label>Anzahl Plätze<br>
+      <input type="number" name="plaetze" value="10" min="1" required class="input-field">
+    </label><br><br>
+
+    <button type="submit" style="padding:10px 24px; background:#1e2d4a; color:white; border:none; border-radius:6px; cursor:pointer;">
+      Termin freigeben
+    </button>
+  </form>
+
+  <hr style="margin:2rem 0;">
+  <h3>Termine</h3>
+
+  {% if workshop.slots %}
+    {% for slot in workshop.slots %}
+    <div style="border:1px solid #ddd; border-radius:8px; padding:1rem; margin:1rem 0;">
+      <strong>{{ slot.datum.strftime('%d.%m.%Y %H:%M') }} Uhr</strong><br>
+      Plätze: {{ slot.plaetze_frei }} / {{ slot.plaetze_gesamt }} frei |
+      Status: {{ "✅ Aktiv" if slot.aktiv else "❌ Deaktiviert" }}<br><br>
+
+      <strong>Buchungen ({{ slot.buchungen|length }}):</strong>
+      {% if slot.buchungen %}
+        <ul>
+          {% for b in slot.buchungen %}
+          <li>{{ b.name }} — {{ b.email }} ({{ b.erstellt_am.strftime('%d.%m.%Y') }})</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>Noch keine Buchungen.</p>
+      {% endif %}
+
+      {% if slot.aktiv %}
+      <form method="POST" action="/admin/slot/{{ slot.id }}/deaktivieren" style="margin-top:0.5rem;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit" style="padding:6px 14px; background:#c0392b; color:white; border:none; border-radius:4px; cursor:pointer;">
+          Termin deaktivieren
+        </button>
+      </form>
+      {% endif %}
+    </div>
+    {% endfor %}
+  {% else %}
+    <p>Noch keine Termine angelegt.</p>
+  {% endif %}
+
+</section>
+
+{% include 'footer.html' %}
+</body>
+</html>
