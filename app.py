@@ -1062,8 +1062,7 @@ def produkt_detail(produkt_id, slug):
         return render_template("produkt.html", produkt=produkt)
     # ─────────────────────────────────────────────────────────────
 
-    if not ean:
-        abort(404)
+   
 
     produkt = cached_lade_produkt_von_api(ean)
 
@@ -1112,12 +1111,6 @@ def add_to_cart():
     # ─────────────────────────────────────────────────────────────
 
 
-    # ✅ Preis + Bestand laden
-    if produkt.get("ean"):
-        movement = lade_bestand_von_api(produkt["ean"])
-        if movement:
-            produkt.update(movement)
-
     cart = get_cart()
 
     found = False
@@ -1135,7 +1128,7 @@ def add_to_cart():
             "title": produkt["name"],
             "price": produkt.get("preis", 0),
             "quantity": 1,
-            "ean": produkt["ean"]
+            "ean": produkt.get("ean", "")  # ← sicher
         })
         
 
@@ -1335,6 +1328,69 @@ def checkouttest():
         cart_items=cart_items,
         total=total
     )
+
+
+@app.route("/free-checkout", methods=["POST"])
+@csrf.exempt
+def free_checkout():
+    cart_items = get_cart()
+
+    if not cart_items:
+        return jsonify({"status": "error", "message": "Warenkorb leer"}), 400
+
+    bestellung = Bestellung(
+        email=session.get("checkout_email"),
+        vorname=session.get("checkout_vorname"),
+        nachname=session.get("checkout_nachname"),
+        strasse=session.get("checkout_strasse"),
+        hausnummer=session.get("checkout_hausnummer"),
+        plz=session.get("checkout_plz"),
+        stadt=session.get("checkout_stadt"),
+        land=session.get("checkout_land"),
+        telefon=session.get("checkout_telefon"),
+        paymentmethod="gutschein"
+    )
+    db.session.add(bestellung)
+    db.session.flush()
+
+    # Gutschein abbuchen
+    gutschein_session = session.get("gutschein")
+    if gutschein_session:
+        gutschein = Gutschein.query.filter_by(
+            code=gutschein_session["code"]
+        ).first()
+        if gutschein and gutschein.ist_gueltig():
+            gutschein.restwert -= float(gutschein_session["betrag"])
+            if gutschein.restwert <= 0:
+                gutschein.restwert = 0
+                gutschein.aktiv = False
+
+    # Positionen speichern
+    for item in cart_items:
+        db.session.add(BestellPosition(
+            bestellung_id=bestellung.id,
+            bezeichnung=item["title"],
+            menge=item["quantity"],
+            preis=item["price"]
+        ))
+
+    db.session.commit()
+
+    # Bücher an BuchButler
+    buch_items = [
+        item for item in cart_items
+        if not item.get("is_gutschein") and item.get("ean")
+    ]
+    if buch_items:
+        try:
+            sende_bestellung_an_buchbutler(bestellung, buch_items)
+        except Exception:
+            logger.exception("BuchButler free-checkout fehlgeschlagen")
+
+    session.pop("cart", None)
+    session.pop("gutschein", None)
+
+    return jsonify({"status": "success"})
 # =====================================================
 # HILFSFUNKTIONEN CART
 # =====================================================
