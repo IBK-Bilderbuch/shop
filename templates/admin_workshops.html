@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin – Workshops</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+{% include 'navbar.html' %}
+
+<section class="form">
+  <h2>Workshops</h2>
+  <a href="/admin/workshop/neu" style="display:inline-block; margin-bottom:1rem; padding:10px 20px; background:#1e2d4a; color:white; border-radius:6px; text-decoration:none;">
+    + Neuer Workshop
+  </a>
+
+  {% if workshops %}
+    <table style="width:100%; border-collapse:collapse;">
+      <tr style="background:#f5f5f5;">
+        <th style="padding:10px; text-align:left;">Titel</th>
+        <th>Preis</th>
+        <th>Aktiv</th>
+        <th>Slots</th>
+        <th></th>
+      </tr>
+      {% for w in workshops %}
+      <tr style="border-bottom:1px solid #eee;">
+        <td style="padding:10px;">{{ w.titel }}</td>
+        <td style="padding:10px;">{{ "%.2f"|format(w.preis) }} €</td>
+        <td style="padding:10px;">{{ "✅" if w.aktiv else "❌" }}</td>
+        <td style="padding:10px;">{{ w.slots|length }}</td>
+        <td style="padding:10px;">
+          <a href="/admin/workshop/{{ w.id }}">Bearbeiten</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>Noch keine Workshops angelegt.</p>
+  {% endif %}
+</section>
+
+{% include 'footer.html' %}
+</body>
+</html>
