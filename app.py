@@ -521,14 +521,14 @@ def capture_paypal_order(order_id):
 
         db.session.commit()
 
-        # -----------------------------------
+       # -----------------------------------
         # Nur echte Bücher an BuchButler
-        # senden
+        # senden (kein Gutschein, kein Offline-Produkt)
         # -----------------------------------
 
         buch_items = [
             item for item in cart_items
-            if not item.get("is_gutschein")
+            if not item.get("is_gutschein") and item.get("ean")
         ]
 
         if buch_items:
@@ -543,7 +543,6 @@ def capture_paypal_order(order_id):
                 logger.exception(
                     "BuchButler Bestellung fehlgeschlagen"
                 )
-
         # -----------------------------------
         # Session aufräumen
         # -----------------------------------
@@ -1052,6 +1051,17 @@ def produkt_detail(produkt_id, slug):
 
     ean = lokale_daten.get("ean")
 
+
+       # ── NEU: Offline-Produkt (kein EAN) ──────────────────────────
+    if not ean:
+        produkt = lokale_daten.copy()
+        produkt.setdefault("bestand", "n/a")
+        produkt.setdefault("preis", lokale_daten.get("preis", 0))
+        produkt.setdefault("handling_zeit", "n/a")
+        produkt.setdefault("erfuellungsrate", "n/a")
+        return render_template("produkt.html", produkt=produkt)
+    # ─────────────────────────────────────────────────────────────
+
     if not ean:
         abort(404)
 
@@ -1090,6 +1100,17 @@ def add_to_cart():
 
     # ✅ WICHTIG: Kopie machen (kein globales Update!)
     produkt = produkt.copy()
+
+
+    
+    # ── NEU: nur API-Aufruf wenn EAN vorhanden ───────────────────
+    if produkt.get("ean"):
+        movement = lade_bestand_von_api(produkt["ean"])
+        if movement:
+            produkt.update(movement)
+    # preis bleibt sonst aus JSON (lokale_daten["preis"])
+    # ─────────────────────────────────────────────────────────────
+
 
     # ✅ Preis + Bestand laden
     if produkt.get("ean"):
@@ -1281,8 +1302,10 @@ def checkouttest():
 
             db.session.commit()
 
+       
+
             # An Buchbutler senden (mol_zahlart_id=2 = Rechnung)
-            buch_items = [i for i in cart_items if not i.get("is_gutschein")]
+            buch_items = [i for i in cart_items if not i.get("is_gutschein") and i.get("ean")]
             if buch_items:
                 try:
                     sende_bestellung_an_buchbutler(bestellung, buch_items)
