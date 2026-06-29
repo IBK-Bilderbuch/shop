@@ -204,6 +204,8 @@ def gutschein():
 
     # WICHTIG
     session["checkout_email"] = email
+    session.pop("gutschein", None)  # ← NEU: alten Gutschein löschen
+
 
     # Gutschein als Warenkorbprodukt
     session["cart"] = [{
