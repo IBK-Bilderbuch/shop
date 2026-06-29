@@ -76,6 +76,11 @@
 
         <!-- PayPal Button -->
         <div id="paypal-button-container" style="margin-top:1em;"></div>
+
+        <!-- NEU: Gratis-Button wenn Gutschein alles deckt -->
+        <button id="free-checkout-btn" style="display:none; margin-top:1em;" type="button">
+             Bestellung abschließen
+        </button>
       </form>
     </div>
   </div>
@@ -157,6 +162,33 @@ paypal.Buttons({
   }
 
 }).render('#paypal-button-container');
+
+
+
+document.getElementById('free-checkout-btn').addEventListener('click', async () => {
+    const formData = new FormData(form);
+
+    // Erst Kundendaten speichern
+    await fetch("/checkout", {
+        method: "POST",
+        body: formData
+    });
+
+    const res = await fetch("/free-checkout", { method: "POST" });
+    const data = await res.json();
+
+    if (data.status === "success") {
+        localStorage.removeItem("cart");
+        fetch("/sync-cart", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify([])
+        });
+        window.location.href = "/bestelldanke";
+    } else {
+        alert("Fehler bei der Bestellung.");
+    }
+});
 </script>
 <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
