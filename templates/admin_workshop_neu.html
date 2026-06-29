@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Neuer Workshop</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+{% include 'navbar.html' %}
+
+<section class="form">
+  <h2>Neuer Workshop</h2>
+
+  <form method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <label>Titel<br>
+      <input type="text" name="titel" required class="input-field">
+    </label><br><br>
+
+    <label>Beschreibung<br>
+      <textarea name="beschreibung" rows="6" class="input-field"></textarea>
+    </label><br><br>
+
+    <label>Bild (Pfad z.B. images/workshop.webp)<br>
+      <input type="text" name="bild" class="input-field">
+    </label><br><br>
+
+    <label>Preis (€)<br>
+      <input type="number" name="preis" step="0.01" min="0" required class="input-field">
+    </label><br><br>
+
+    <button type="submit" style="padding:10px 24px; background:#1e2d4a; color:white; border:none; border-radius:6px; cursor:pointer;">
+      Workshop anlegen
+    </button>
+  </form>
+</section>
+
+{% include 'footer.html' %}
+</body>
+</html>
