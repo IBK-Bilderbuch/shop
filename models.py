@@ -185,3 +185,57 @@ class Produkt(db.Model):
 
     def __repr__(self):
         return f"<Produkt {self.name}>"
+
+
+# ----------------------
+# Workshop Modelle
+# ----------------------
+
+class Workshop(db.Model):
+    __tablename__ = "workshops"
+
+    id = db.Column(db.Integer, primary_key=True)
+    titel = db.Column(db.String(255), nullable=False)
+    beschreibung = db.Column(db.Text)
+    bild = db.Column(db.String(500))
+    preis = db.Column(db.Float, nullable=False)
+    aktiv = db.Column(db.Boolean, default=True)
+    erstellt_am = db.Column(db.DateTime, default=datetime.utcnow)
+
+    slots = db.relationship(
+        "WorkshopSlot",
+        backref="workshop",
+        cascade="all, delete-orphan",
+        order_by="WorkshopSlot.datum"
+    )
+
+
+class WorkshopSlot(db.Model):
+    __tablename__ = "workshop_slots"
+
+    id = db.Column(db.Integer, primary_key=True)
+    workshop_id = db.Column(db.Integer, db.ForeignKey("workshops.id"))
+    datum = db.Column(db.DateTime, nullable=False)
+    plaetze_gesamt = db.Column(db.Integer, default=10)
+    plaetze_frei = db.Column(db.Integer, default=10)
+    aktiv = db.Column(db.Boolean, default=True)
+
+    buchungen = db.relationship(
+        "WorkshopBuchung",
+        backref="slot",
+        cascade="all, delete-orphan"
+    )
+
+    def ist_buchbar(self):
+        return self.aktiv and self.plaetze_frei > 0 and self.datum > datetime.utcnow()
+
+
+class WorkshopBuchung(db.Model):
+    __tablename__ = "workshop_buchungen"
+
+    id = db.Column(db.Integer, primary_key=True)
+    slot_id = db.Column(db.Integer, db.ForeignKey("workshop_slots.id"))
+    name = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), nullable=False)
+    paypal_order_id = db.Column(db.String(100))
+    erstellt_am = db.Column(db.DateTime, default=datetime.utcnow)
