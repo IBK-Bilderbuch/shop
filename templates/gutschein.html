@@ -1,247 +1,195 @@
-
-
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Gutschein | I B K - Buchhandlung für Illustration und Bilderbücher </title>
+  <title>Gutschein | I B K - Buchhandlung für Illustration und Bilderbücher</title>
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='ficon.png') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='product.css') }}" />
   <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f7f7f7;
+      color: #333;
+      padding: 0;
+    }
 
-<style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+    .carousel {
+      flex: 0 0 340px;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+    }
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: #f7f7f7;
-    color: #333;
-    padding: 0;
-  }
+    .carousel-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+      border-radius: 8px;
+    }
 
-  /* ALT - gibt es noch nicht, einfach hinzufügen */
+    .carousel-image.active { display: block; }
 
-/* NEU */
-.carousel {
-  flex: 0 0 340px;
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-}
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 2.5rem;
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+    }
 
-.carousel-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: none;
-  border-radius: 8px;
-}
+    .gutschein-form {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
 
-.carousel-image.active {
-  display: block;
-}
+    .gutschein-form h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 30px;
+      font-weight: 400;
+      color: #1e2d4a;
+      margin-bottom: 0.4rem;
+    }
 
-  .container {
-    max-width: 900px;
-    margin: 2rem auto;
-    background: #fff;
-    border-radius: 10px;
-    padding: 2.5rem;
-    display: flex;
-    gap: 3rem;
-    align-items: flex-start;
+    .gutschein-form > p {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
 
-  }
+    .price {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 22px;
+      color: #1e2d4a;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
 
-  /* ---- LINKE SEITE: Bild ---- */
-  .gutschein-image {
-    flex: 0 0 340px;
-    height: 480px;
-    background: #e8e8e8;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #aaa;
-    font-size: 14px;
-    overflow: hidden;
-  }
+    .gutschein-box {
+      display: flex;
+      flex-direction: column;
+    }
 
-  .gutschein-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-  }
+    .gutschein-box label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1e2d4a;
+      margin-bottom: 6px;
+      display: block;
+    }
 
-  /* ---- RECHTE SEITE: Formular ---- */
-  .gutschein-form {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
+    .input-field {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 14px;
+      border: 1px solid #d1d9e0;
+      border-radius: 6px;
+      background: #fff;
+      color: #333;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      transition: border-color 0.15s;
+    }
 
-  .gutschein-form h1 {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 30px;
-    font-weight: 400;
-    color: #1e2d4a;
-    margin-bottom: 0.4rem;
-  }
+    select.input-field {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
 
-  .gutschein-form > p {
-    font-size: 14px;
-    color: #888;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
+    .input-field:focus {
+      border-color: #3b7fc4;
+      box-shadow: 0 0 0 3px rgba(59,127,196,0.12);
+    }
 
-  .price {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 22px;
-    color: #1e2d4a;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.2rem;
-    border-bottom: 1px solid #e5e5e5;
-  }
+    .hint {
+      font-size: 13px !important;
+      color: #3b7fc4 !important;
+      margin-top: 6px !important;
+      line-height: 1.5 !important;
+    }
 
-  .gutschein-box {
-    display: flex;
-    flex-direction: column;
-  }
+    .privacy-consent {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
 
-  .gutschein-box label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #1e2d4a;
-    margin-bottom: 6px;
-    display: block;
-  }
+    .privacy-consent input { margin-top: 3px; }
+    .privacy-consent span { font-size: 13px; }
 
-  .input-field {
-    width: 100%;
-    padding: 10px 14px;
-    font-size: 14px;
-    border: 1px solid #d1d9e0;
-    border-radius: 6px;
-    background: #fff;
-    color: #333;
-    appearance: none;
-    -webkit-appearance: none;
-    outline: none;
-    transition: border-color 0.15s;
-  }
+    #paypal-button-container { margin-top: 28px; }
 
-  select.input-field {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 36px;
-    cursor: pointer;
-  }
-
-  .input-field:focus {
-    border-color: #3b7fc4;
-    box-shadow: 0 0 0 3px rgba(59,127,196,0.12);
-  }
-
-  .hint {
-    font-size: 13px !important;
-    color: #3b7fc4 !important;
-    margin-top: 6px !important;
-    line-height: 1.5 !important;
-  }
-
-  #paypal-button-container {
-    margin-top: 28px;
-  }
-
-@media (max-width: 640px) {
-  .container {
-    flex-direction: column;
-    padding: 10px;
-    gap: 0;
-    border-radius: 0;
-    margin: 0;
-  }
-
-  .carousel {
-    flex: none;
-    height: auto;
-    padding: 20px;
-    border-radius: 0;
-  }
-
-  .gutschein-form {
-    padding: 20px 16px 40px;
-  }
-
-  .input-field {
-    font-size: 16px; /* verhindert iOS-Zoom */
-    padding: 13px 14px;
-  }
-
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-}
-
-  
-</style>
+    @media (max-width: 640px) {
+      .container {
+        flex-direction: column;
+        padding: 10px;
+        gap: 0;
+        border-radius: 0;
+        margin: 0;
+      }
+      .carousel {
+        flex: none;
+        height: auto;
+        padding: 20px;
+        border-radius: 0;
+      }
+      .gutschein-form { padding: 20px 16px 40px; }
+      .input-field { font-size: 16px; padding: 13px 14px; }
+      header { position: sticky; top: 0; z-index: 10; }
+    }
+  </style>
 </head>
 
 <body>
 <header>
-    <a href="{{ url_for('index') }}" class="back-link">← Zurück zur Übersicht</a>
-
-    <ul class="nav-links" id="nav-links">
-      <li class="cart">
-        <a href="{{ url_for('cart') }}">🛒 <span id="cart-count">0</span></a>
-      </li>
-    </ul>
+  <a href="{{ url_for('index') }}" class="back-link">← Zurück zur Übersicht</a>
+  <ul class="nav-links" id="nav-links">
+    <li class="cart">
+      <a href="{{ url_for('cart') }}">🛒 <span id="cart-count">0</span></a>
+    </li>
+  </ul>
 </header>
+
 <div class="container">
 
-<div class="carousel">
+  <div class="carousel">
     <img class="carousel-image" src="{{ url_for('static', filename='images/gutschein.webp') }}" alt="Geschenkgutschein">
-  <img class="carousel-image active" src="{{ url_for('static', filename='images/gutschein1.webp') }}" alt="Geschenkgutschein">
+    <img class="carousel-image active" src="{{ url_for('static', filename='images/gutschein1.webp') }}" alt="Geschenkgutschein">
     <img class="carousel-image" src="{{ url_for('static', filename='images/gutschein2.webp') }}" alt="Geschenkgutschein">
+    <button class="product-prev">❮</button>
+    <button class="product-next">❯</button>
+  </div>
 
-  
-  <button class="product-prev">❮</button>
-  <button class="product-next">❯</button>
-</div>
-  <!-- LINKS: Bild 
-<div class="gutschein-image">
-  <img src="static/images/gutschein.webp" alt="Geschenkgutschein">
-</div> -->
-  <!-- RECHTS: Formular -->
   <div class="gutschein-form">
     <h1>Geschenkgutschein</h1>
     <p>
-      Sie erhalten Ihren Gutschein digital per E-Mail. 
+      Sie erhalten Ihren Gutschein digital per E-Mail.
       In der Nachricht finden Sie den Gutscheincode für den Online-Shop und eine PDF-Vorlage wie auf dem Bild zum Ausdrucken und Verschenken.<br>
-      
       <em>Tipp: Bitte prüfen Sie auch Ihren Spam-Ordner, falls die Mail nicht gleich da ist!</em>
     </p>
 
     <div class="price" id="preis-anzeige">-,00 €</div>
 
     <div class="gutschein-box">
-      <!-- Betrag -->
+
       <label for="gutschein-betrag">Gutscheinbetrag</label>
       <select id="gutschein-betrag" class="input-field" onchange="updatePreis(this.value)">
         <option value="20">20 €</option>
@@ -255,11 +203,8 @@
         <option value="80">80 €</option>
         <option value="90">90 €</option>
         <option value="100">100 €</option>
-
-
       </select>
 
-      <!-- E-Mail -->
       <label for="email" style="margin-top:20px;">E-Mail-Adresse</label>
       <p class="hint" style="font-size:14px; opacity:0.8; margin-top:8px;">
         Der Gutscheincode und die PDF-Vorlage werden nach erfolgreicher
@@ -267,17 +212,19 @@
       </p>
       <input
         type="email"
-        name="email"
         id="email"
         class="input-field"
         placeholder="Ihre E-Mail-Adresse"
         required
       >
 
-      
+      <label class="privacy-consent">
+        <input type="checkbox" id="privacy-checkbox" required>
+        <span>Ich habe die <a href="{{ url_for('datenschutz') }}" target="_blank">Datenschutzerklärung</a> gelesen und stimme ihr zu.</span>
+      </label>
 
-      <!-- PayPal -->
-      <div id="paypal-button-container" style="margin-top:30px;"></div>
+      <div id="paypal-button-container"></div>
+
     </div>
   </div>
 
@@ -285,14 +232,9 @@
 
 {% include 'footer.html' %}
 
-</body>
-
-
-<!-- PayPal SDK -->
 <script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR&disable-funding=sepa,sofort,giropay,bancontact,eps,ideal"></script>
 
 <script>
-  
 function updatePreis(val) {
   const num = parseFloat(val);
   document.getElementById('preis-anzeige').textContent =
@@ -300,58 +242,69 @@ function updatePreis(val) {
 }
 
 paypal.Buttons({
-    createOrder: function(data, actions) {
-        const betrag = document.getElementById(
-            "gutschein-betrag"
-        ).value;
-        const email = document.getElementById(
-            "email"
-        ).value.trim();
-        if (!email) {
-            alert("Bitte E-Mail-Adresse eingeben.");
-            return;
-        }
-        return fetch("/gutschein", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: new URLSearchParams({
-                betrag: betrag,
-                email: email
-            })
-        })
-        .then(res => {
-            if (!res.ok) {
-                throw new Error("Gutschein konnte nicht erstellt werden");
-            }
-            return fetch("/create-paypal-order", { method: "POST" });
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (!data.id) {
-                throw new Error("PayPal Order fehlgeschlagen");
-            }
-            return data.id;
-        });
-    },
-    onApprove: function(data, actions) {
-        return fetch("/capture-paypal-order/" + data.orderID, { method: "POST" })
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === "success") {
-                window.location.href = "/bestelldanke";
-            } else {
-                console.error(data);
-                alert("Fehler bei der Zahlung.");
-            }
-        });
-    },
-    onError: function(err) {
-        console.error("PayPal Fehler:", err);
-        alert("PayPal-Zahlung konnte nicht gestartet werden.");
+
+  onInit: function(data, actions) {
+    actions.disable();
+    const checkbox = document.getElementById('privacy-checkbox');
+    checkbox.addEventListener('change', function() {
+      if (checkbox.checked) actions.enable();
+      else actions.disable();
+    });
+  },
+
+  onClick: function(data, actions) {
+    const email = document.getElementById('email').value.trim();
+    const checkbox = document.getElementById('privacy-checkbox');
+    if (!email) {
+      alert("Bitte E-Mail-Adresse eingeben.");
+      return actions.reject();
     }
+    if (!checkbox.checked) {
+      alert("Bitte Datenschutzerklärung bestätigen.");
+      return actions.reject();
+    }
+    return actions.resolve();
+  },
+
+  createOrder: function(data, actions) {
+    const betrag = document.getElementById("gutschein-betrag").value;
+    const email = document.getElementById("email").value.trim();
+
+    return fetch("/gutschein", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ betrag: betrag, email: email })
+    })
+    .then(res => {
+      if (!res.ok) throw new Error("Gutschein konnte nicht erstellt werden");
+      return fetch("/create-paypal-order", { method: "POST" });
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (!data.id) throw new Error("PayPal Order fehlgeschlagen");
+      return data.id;
+    });
+  },
+
+  onApprove: function(data, actions) {
+    return fetch("/capture-paypal-order/" + data.orderID, { method: "POST" })
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === "success") {
+        window.location.href = "/bestelldanke";
+      } else {
+        alert("Fehler bei der Zahlung.");
+      }
+    });
+  },
+
+  onError: function(err) {
+    console.error("PayPal Fehler:", err);
+    alert("PayPal-Zahlung konnte nicht gestartet werden.");
+  }
+
 }).render('#paypal-button-container');
 </script>
 
+</body>
 </html>
