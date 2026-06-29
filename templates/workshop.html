@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ workshop.titel }} | IBK</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='product.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='ficon.png') }}">
+</head>
+<body>
+{% include 'navbar.html' %}
+
+<section class="produkt-detail">
+  <div class="produkt-layout">
+
+    <div class="produkt-bilder">
+      {% if workshop.bild %}
+        <img src="{{ url_for('static', filename=workshop.bild) }}" alt="{{ workshop.titel }}">
+      {% endif %}
+    </div>
+
+    <div class="produkt-info">
+      <h1>{{ workshop.titel }}</h1>
+      <p class="preis">{{ "%.2f"|format(workshop.preis) }} €</p>
+      <p>{{ workshop.beschreibung }}</p>
+
+      <hr style="margin: 2rem 0;">
+      <h3>Verfügbare Termine</h3>
+
+      {% if slots %}
+        {% for slot in slots %}
+        <div class="slot-box" style="border:1px solid #ddd; border-radius:8px; padding:1rem; margin:1rem 0;">
+          <strong>{{ slot.datum.strftime('%d.%m.%Y') }}</strong>
+          um {{ slot.datum.strftime('%H:%M') }} Uhr<br>
+          <small>Noch {{ slot.plaetze_frei }} von {{ slot.plaetze_gesamt }} Plätzen frei</small>
+
+          <div style="margin-top:1rem;">
+            <input type="text" id="name-{{ slot.id }}" placeholder="Ihr Name" class="input-field" style="margin-bottom:0.5rem;">
+            <input type="email" id="email-{{ slot.id }}" placeholder="Ihre E-Mail" class="input-field" style="margin-bottom:0.5rem;">
+            <div id="paypal-button-{{ slot.id }}"></div>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <p>Aktuell sind keine Termine verfügbar.</p>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+{% include 'footer.html' %}
+
+<script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR"></script>
+<script>
+{% for slot in slots %}
+paypal.Buttons({
+  createOrder: function() {
+    const name = document.getElementById('name-{{ slot.id }}').value.trim();
+    const email = document.getElementById('email-{{ slot.id }}').value.trim();
+
+    if (!name || !email) {
+      alert("Bitte Name und E-Mail eingeben.");
+      return Promise.reject();
+    }
+
+    return fetch('/workshop/{{ slot.id }}/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.error) throw new Error(data.error);
+      return data.id;
+    });
+  },
+
+  onApprove: function(data) {
+    return fetch('/workshop/capture/' + data.orderID, { method: 'POST' })
+    .then(res => res.json())
+    .then(res => {
+      if (res.status === 'success') {
+        window.location.href = '/bestelldanke';
+      } else {
+        alert('Fehler bei der Buchung.');
+      }
+    });
+  },
+
+  onError: function(err) {
+    console.error(err);
+    alert('PayPal-Zahlung fehlgeschlagen.');
+  }
+
+}).render('#paypal-button-{{ slot.id }}');
+{% endfor %}
+</script>
+</body>
+</html>
