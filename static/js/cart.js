@@ -1,11 +1,10 @@
-
 // cart.js
 
 // --- Globale Funktion zum Laden des Warenkorbs ---
 function loadCart(containerId = "cart-items", totalId = "total-price") {
   const container = document.getElementById(containerId);
   const totalPriceEl = document.getElementById(totalId);
-  if (!container) return; // Container existiert nicht → nichts tun
+  if (!container) return;
 
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   container.innerHTML = '';
@@ -27,19 +26,15 @@ function loadCart(containerId = "cart-items", totalId = "total-price") {
     const div = document.createElement('div');
     div.className = 'cart-item';
 
-    // Bild
     const img = document.createElement('img');
     img.src = item.image;
     img.alt = item.title;
 
-    // Info-Container
     const info = document.createElement('div');
 
-    // Titel
     const title = document.createElement('strong');
     title.textContent = item.title;
 
-    // Menge
     const qtyControls = document.createElement('span');
     qtyControls.className = 'quantity-controls';
 
@@ -60,18 +55,15 @@ function loadCart(containerId = "cart-items", totalId = "total-price") {
     qtyControls.appendChild(qtyText);
     qtyControls.appendChild(increaseBtn);
 
-    // Gesamtpreis pro Item
     const priceSpan = document.createElement('span');
     priceSpan.className = 'total-price';
     priceSpan.textContent = `${itemTotal.toFixed(2)} €`;
 
-    // Entfernen-Button
     const removeBtn = document.createElement('button');
     removeBtn.className = 'remove-btn';
     removeBtn.textContent = '×';
     removeBtn.addEventListener('click', () => removeFromCart(item.ean, containerId, totalId));
 
-    // Alles zusammenfügen
     info.appendChild(title);
     info.appendChild(qtyControls);
     info.appendChild(priceSpan);
@@ -86,6 +78,15 @@ function loadCart(containerId = "cart-items", totalId = "total-price") {
   if (totalPriceEl) totalPriceEl.textContent = total.toFixed(2);
 }
 
+// --- Hilfsfunktion: Cart mit Server synchronisieren ---
+function syncCartWithServer(cart) {
+  fetch("/sync-cart", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(cart)
+  });
+}
+
 // --- Menge erhöhen ---
 function increaseQuantity(ean, containerId = "cart-items", totalId = "total-price") {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -95,6 +96,7 @@ function increaseQuantity(ean, containerId = "cart-items", totalId = "total-pric
     localStorage.setItem('cart', JSON.stringify(cart));
     loadCart(containerId, totalId);
     updateCartCountIfPossible();
+    syncCartWithServer(cart); // ← NEU
   }
 }
 
@@ -114,6 +116,7 @@ function decreaseQuantity(ean, containerId = "cart-items", totalId = "total-pric
   localStorage.setItem('cart', JSON.stringify(cart));
   loadCart(containerId, totalId);
   updateCartCountIfPossible();
+  syncCartWithServer(cart); // ← NEU
 }
 
 // --- Item entfernen ---
@@ -123,6 +126,7 @@ function removeFromCart(ean, containerId = "cart-items", totalId = "total-price"
   localStorage.setItem('cart', JSON.stringify(cart));
   loadCart(containerId, totalId);
   updateCartCountIfPossible();
+  syncCartWithServer(cart); // ← NEU
 }
 
 // --- Optional: Mini-Cart Count im Elternfenster aktualisieren ---
@@ -138,14 +142,11 @@ function setupCheckoutButton(buttonId = "checkout-btn") {
 
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', async () => {
-
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
       await fetch("/sync-cart", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(cart)
       });
 
@@ -154,14 +155,11 @@ function setupCheckoutButton(buttonId = "checkout-btn") {
   }
 }
 
-
-
 // --- Optional: global verfügbar machen ---
 window.loadCart = loadCart;
 window.setupCheckoutButton = setupCheckoutButton;
 
-
-
+// --- Gutschein Button ---
 function setupGutscheinButton() {
   const btn = document.getElementById('apply-gutschein');
   if (!btn) return;
@@ -197,9 +195,8 @@ function setupGutscheinButton() {
   });
 }
 
-
 window.addEventListener('DOMContentLoaded', () => {
   loadCart();
   setupCheckoutButton();
-  setupGutscheinButton(); // ← neu
+  setupGutscheinButton();
 });
