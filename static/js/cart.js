@@ -181,6 +181,16 @@ function setupGutscheinButton() {
     const data = await res.json();
     if (data.success) {
       alert(`✅ Rabatt: ${data.rabatt.toFixed(2)} € | Gesamt: ${data.new_total.toFixed(2)} €`);
+
+      const totalEl = document.getElementById('total-price');
+      if (totalEl) totalEl.textContent = data.new_total.toFixed(2);
+
+      if (data.new_total <= 0) {
+        document.getElementById('paypal-button-container').style.display = 'none';
+        const freeBtn = document.getElementById('free-checkout-btn');
+        if (freeBtn) freeBtn.style.display = 'block';
+      }
+
     } else {
       alert(data.message || "Ungültiger Code.");
     }
