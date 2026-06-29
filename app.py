@@ -23,7 +23,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
 # Modelle importieren
-from models import db, Bestellung, BestellPosition, NewsletterSubscriber,  Gutschein
+from models import db, Bestellung, BestellPosition, NewsletterSubscriber,  Gutschein, Workshop, WorkshopSlot, WorkshopBuchung
 from models import Produkt
 
 
@@ -1457,6 +1457,210 @@ def buchbutler_request(endpoint, ean):
         return None
 
     return data["response"]
+
+
+
+# =====================================================
+# WORKSHOP
+# =====================================================
+
+
+# Öffentliche Workshop-Seite
+@app.route("/workshop/<int:workshop_id>")
+def workshop_detail(workshop_id):
+    workshop = Workshop.query.get_or_404(workshop_id)
+    slots = [s for s in workshop.slots if s.ist_buchbar()]
+    return render_template("workshop.html", workshop=workshop, slots=slots)
+
+
+# Workshop buchen — PayPal Order erstellen
+@app.route("/workshop/<int:slot_id>/create-order", methods=["POST"])
+@csrf.exempt
+def workshop_create_order(slot_id):
+    slot = WorkshopSlot.query.get_or_404(slot_id)
+
+    if not slot.ist_buchbar():
+        return jsonify({"error": "Slot nicht mehr buchbar"}), 400
+
+    access_token = paypal_access_token()
+
+    response = requests.post(
+        f"{PAYPAL_BASE}/v2/checkout/orders",
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {access_token}",
+        },
+        json={
+            "intent": "CAPTURE",
+            "purchase_units": [{
+                "amount": {
+                    "currency_code": "EUR",
+                    "value": f"{slot.workshop.preis:.2f}"
+                }
+            }]
+        }
+    )
+
+    order_data = response.json()
+
+    if "id" not in order_data:
+        return jsonify({"error": "PayPal Fehler", "details": order_data}), 400
+
+    # Slot-ID in Session merken
+    session["workshop_slot_id"] = slot_id
+    session["workshop_name"] = request.json.get("name")
+    session["workshop_email"] = request.json.get("email")
+
+    return jsonify({"id": order_data["id"]})
+
+
+# Workshop buchen — PayPal Capture
+@app.route("/workshop/capture/<order_id>", methods=["POST"])
+@csrf.exempt
+def workshop_capture(order_id):
+    try:
+        access_token = paypal_access_token()
+
+        response = requests.post(
+            f"{PAYPAL_BASE}/v2/checkout/orders/{order_id}/capture",
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {access_token}",
+            }
+        )
+
+        data = response.json()
+
+        if data.get("status") != "COMPLETED":
+            return jsonify({"status": "error", "message": "Zahlung nicht abgeschlossen"}), 400
+
+        slot_id = session.get("workshop_slot_id")
+        name = session.get("workshop_name")
+        email = session.get("workshop_email")
+
+        if not slot_id or not email:
+            return jsonify({"status": "error", "message": "Session abgelaufen"}), 400
+
+        slot = WorkshopSlot.query.get_or_404(slot_id)
+
+        if not slot.ist_buchbar():
+            return jsonify({"status": "error", "message": "Slot nicht mehr verfügbar"}), 400
+
+        # Buchung speichern
+        buchung = WorkshopBuchung(
+            slot_id=slot_id,
+            name=name,
+            email=email,
+            paypal_order_id=order_id
+        )
+        db.session.add(buchung)
+
+        # Platz abziehen
+        slot.plaetze_frei -= 1
+
+        db.session.commit()
+
+        # Bestätigungsmail
+        try:
+            send_email(
+                subject=f"Buchungsbestätigung: {slot.workshop.titel}",
+                recipient=email,
+                html=f"""
+                <p>Hallo {name},</p>
+                <p>deine Buchung für <strong>{slot.workshop.titel}</strong> am
+                <strong>{slot.datum.strftime('%d.%m.%Y %H:%M')} Uhr</strong>
+                ist bestätigt!</p>
+                <p>Wir freuen uns auf dich.</p>
+                """
+            )
+        except Exception:
+            logger.exception("Workshop Bestätigungsmail fehlgeschlagen")
+
+        # Session aufräumen
+        session.pop("workshop_slot_id", None)
+        session.pop("workshop_name", None)
+        session.pop("workshop_email", None)
+
+        return jsonify({"status": "success"})
+
+    except Exception as e:
+        logger.exception("Workshop Capture Fehler")
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
+# ── ADMIN ──────────────────────────────────────────
+
+@app.route("/admin/workshops")
+def admin_workshops():
+    if not session.get("admin"):
+        abort(403)
+    workshops = Workshop.query.order_by(Workshop.erstellt_am.desc()).all()
+    return render_template("admin_workshops.html", workshops=workshops)
+
+
+@app.route("/admin/workshop/neu", methods=["GET", "POST"])
+@csrf.exempt
+def admin_workshop_neu():
+    if not session.get("admin"):
+        abort(403)
+
+    if request.method == "POST":
+        workshop = Workshop(
+            titel=request.form.get("titel"),
+            beschreibung=request.form.get("beschreibung"),
+            bild=request.form.get("bild"),
+            preis=float(request.form.get("preis", 0)),
+            aktiv=True
+        )
+        db.session.add(workshop)
+        db.session.commit()
+        return redirect(f"/admin/workshop/{workshop.id}")
+
+    return render_template("admin_workshop_neu.html")
+
+
+@app.route("/admin/workshop/<int:workshop_id>")
+def admin_workshop_detail(workshop_id):
+    if not session.get("admin"):
+        abort(403)
+    workshop = Workshop.query.get_or_404(workshop_id)
+    return render_template("admin_workshop_detail.html", workshop=workshop)
+
+
+@app.route("/admin/workshop/<int:workshop_id>/slot/neu", methods=["POST"])
+@csrf.exempt
+def admin_slot_neu(workshop_id):
+    if not session.get("admin"):
+        abort(403)
+
+    from datetime import datetime
+    datum_str = request.form.get("datum")
+    plaetze = int(request.form.get("plaetze", 10))
+
+    datum = datetime.strptime(datum_str, "%Y-%m-%dT%H:%M")
+
+    slot = WorkshopSlot(
+        workshop_id=workshop_id,
+        datum=datum,
+        plaetze_gesamt=plaetze,
+        plaetze_frei=plaetze,
+        aktiv=True
+    )
+    db.session.add(slot)
+    db.session.commit()
+
+    return redirect(f"/admin/workshop/{workshop_id}")
+
+
+@app.route("/admin/slot/<int:slot_id>/deaktivieren", methods=["POST"])
+@csrf.exempt
+def admin_slot_deaktivieren(slot_id):
+    if not session.get("admin"):
+        abort(403)
+    slot = WorkshopSlot.query.get_or_404(slot_id)
+    slot.aktiv = False
+    db.session.commit()
+    return redirect(f"/admin/workshop/{slot.workshop_id}")
 
 # ============================
 # KONTAKT
