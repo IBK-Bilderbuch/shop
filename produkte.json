@@ -1118,7 +1118,7 @@
   "bilder": [
     "images/roeher/jaguarzebra.webp"
       ],
-  "kategorie": ["wortlust und zeichenfreude", "Deutschsprachige Bücher", "Michael Roher" ]
+  "kategorie": ["Wortlust und Zeichenfreude", "Deutschsprachige Bücher", "Michael Roher" ]
    },
 
   { 
@@ -1959,7 +1959,7 @@
  "bilder": [
     "images/roeher/flaniernundweltspaziern.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Elisabeth Steinkellner", "Wortlust und Zeichenfreunde"]
+  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Elisabeth Steinkellner", "Wortlust und Zeichenfreude"]
    },
 
   {
@@ -2037,7 +2037,7 @@
     "images/roeher/zufuss7.webp"
 
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Wortlust und Zeichenfreunde"]
+  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Wortlust und Zeichenfreude"]
    },
 
   
@@ -2055,7 +2055,7 @@
     "images/roeher/meineweltisteingedicht4.webp",
     "images/roeher/meineweltisteingedicht5.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Martina Walther", "Wortlust und Zeichenfreunde"],
+  "kategorie": ["Deutschsprachige Bücher", "Martina Walther", "Wortlust und Zeichenfreude"],
   "leseprobe_pdf": "meineweltisteingedicht.pdf"
    },
 
