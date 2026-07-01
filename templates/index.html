@@ -10,6 +10,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "IBK Bilderbücher",
+  "description": "Ausgewählte Bilderbücher und Illustrationskunst",
+  "url": "{{ request.url }}"
+}
+</script>
 </head>
 
 <body>
@@ -71,6 +82,25 @@
   <!-- 🔹 KATEGORIE TITEL -->
   <h2>{{ titel }}</h2>
 
+   <!-- 🔥 ITEMLIST SCHEMA PRO KATEGORIE -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "{{ titel }}",
+    "numberOfItems": {{ liste|length }},
+    "itemListElement": [
+      {% for produkt in liste %}
+      {
+        "@type": "ListItem",
+        "position": {{ loop.index }},
+        "url": "{{ url_for('produkt_detail', produkt_id=produkt.id, slug=produkt.slug, _external=True) }}"
+      }{{ "," if not loop.last }}
+      {% endfor %}
+    ]
+  }
+  </script>
+
   <!-- 🔥 KATEGORIE TEXT -->
   {% set text = kategorie_beschreibungen.get(titel) %}
   {% if text %}
@@ -124,8 +154,8 @@
             "url": "{{ url_for(
               'produkt_detail',
               produkt_id=produkt.id,
-              slug=produkt.slug if produkt.slug else produkt.name|lower|replace(' ', '-'),
-              _external=True
+            slug=(produkt.slug if produkt.slug else produkt.name|lower|replace(' ', '-')),
+          _external=True
             ) }}"
           }
         }
