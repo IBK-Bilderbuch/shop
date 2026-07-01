@@ -608,7 +608,7 @@
     "images/eisbären/eisbären2.webp",
     "images/eisbären/eisbären3.webp"
   ],
-  "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher", "Karen Minden" ],
+  "kategorie":[ "18+", "Wichtige Fragen", "Deutschsprachige Bücher", "Karen Minden" ],
   "leseprobe_pdf": "eisbären.pdf"
 
 },
@@ -624,7 +624,7 @@
     "images/weitrausschwimmen/weitrausschwimmen2.webp",
     "images/weitrausschwimmen/weitrausschwimmen3.webp"
   ],
-  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher", "Ånsken Eckert" ],
+  "kategorie": ["18+", "Wichtige Fragen", "Deutschsprachige Bücher", "Ånsken Eckert" ],
   "leseprobe_pdf": "weitrausschwimmen.pdf"
 
 }, 
@@ -639,7 +639,7 @@
     "images/dongiovanni/dongiovanni2.webp",
     "images/dongiovanni/dongiovanni3.webp"
   ],
-  "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher", "Anni von Bergen" ],
+  "kategorie":["18+", "Wichtige Fragen", "Deutschsprachige Bücher", "Anni von Bergen" ],
   "leseprobe_pdf": "dongiovanni.pdf"
 }, 
   {
@@ -785,7 +785,7 @@
     "images/lebensende/schwellenangst.webp"
   ],   
   "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-95614-606-0",
-  "kategorie":[ "Gedanken zum Lebensende", "Deutschsprachige Bücher", "Luisa Stömer und Eva Wünsch" ]
+  "kategorie":[ "18+", "Gedanken zum Lebensende", "Deutschsprachige Bücher", "Luisa Stömer und Eva Wünsch" ]
 },
 
  {
@@ -1026,7 +1026,7 @@
     "images/zaeri/klugefrauen3.webp",
     "images/zaeri/klugefrauen4.webp"
       ],
-  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher",  "Mehrdad Zaeri"  ]
+  "kategorie": [  "18+", "Wichtige Fragen", "Deutschsprachige Bücher",  "Mehrdad Zaeri"  ]
 
    },
 
@@ -1054,7 +1054,7 @@
   "bilder": [
     "images/zaeri/diegeburt.webp"
       ],
-  "kategorie": ["Feiertage", "Weihnachten", "Deutschsprachige Bücher",  "Mehrdad Zaeri"  ]
+  "kategorie": [ "18+", "Feiertage", "Weihnachten", "Deutschsprachige Bücher",  "Mehrdad Zaeri"  ]
    },
 
   {
@@ -1090,7 +1090,7 @@
   "bilder": [
     "images/illustratoren/artofjesus.webp"
       ],
-  "kategorie": ["Künstlerdasein", "Bücher über Illustratoren und Illustrationskunst","Englischsprachige Bücher" ]
+  "kategorie": ["18+","Künstlerdasein", "Bücher über Illustratoren und Illustrationskunst","Englischsprachige Bücher" ]
    },
   
 
@@ -1107,7 +1107,7 @@
     "images/illustratoren/100vogelwege3.webp",
     "images/illustratoren/100vogelwege4.webp",
     "images/illustratoren/100vogelwege5.webp"      ],
-  "kategorie": ["Bücher über Illustratoren und Illustrationskunst", "Deutschsprachige Bücher" ]
+  "kategorie": [ "18+", "Bücher über Illustratoren und Illustrationskunst", "Deutschsprachige Bücher" ]
    },
 
   {
@@ -1417,7 +1417,7 @@
   "bilder": [
     "images/hockney/dieweltderbilder.webp"
       ],
-  "kategorie": ["David Hockney", "Kunst und Künstlerdasein", "Rose Blake"]
+  "kategorie": ["18+","David Hockney", "Kunst und Künstlerdasein", "Rose Blake"]
 
    },
 
