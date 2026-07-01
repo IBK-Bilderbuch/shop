@@ -1,15 +1,41 @@
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ workshop.titel }} | IBK</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='product.css') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ workshop.titel }} | I B K - Buchhandlung für Illustration und Bilderbücher </title>
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='ficon.png') }}">
+  <meta name="description" content="Details zum Workshop '{{ workshop.titel }}'. Jetzt entdecken und buchen.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='product.css') }}" />
+
+  
+
+
 </head>
 <body>
-{% include 'navbar.html' %}
+  
+<header>
+    <a href="{{ url_for('index') }}" class="back-link">← Zurück zur Übersicht</a>
+
+</header>
+
+
+
+
+
+
+  
 
 <section class="produkt-detail">
   <div class="produkt-layout">
@@ -50,7 +76,6 @@
   </div>
 </section>
 
-{% include 'footer.html' %}
 
 <script src="https://www.paypal.com/sdk/js?client-id={{ config.PAYPAL_CLIENT_ID }}&currency=EUR"></script>
 <script>
@@ -97,5 +122,8 @@ paypal.Buttons({
 }).render('#paypal-button-{{ slot.id }}');
 {% endfor %}
 </script>
+
+{% include 'footer.html' %}
+
 </body>
 </html>
