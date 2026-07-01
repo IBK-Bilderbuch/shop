@@ -1118,7 +1118,7 @@
   "bilder": [
     "images/roeher/jaguarzebra.webp"
       ],
-  "kategorie": ["Zahlen und Alphabet", "Deutschsprachige Bücher", "Michael Roher" ]
+  "kategorie": ["wortlust und zeichenfreude", "Deutschsprachige Bücher", "Michael Roher" ]
    },
 
   { 
@@ -1922,7 +1922,58 @@
   ],   
   "kategorie": ["Kunst und Künstlerdasein", "Englischsprachige Bücher", "" ]
 },
+ {
+  "id":141,
+  "name":"Heupferdchen, hüpf! Das farbenprächtige Pappbilderbuch zum Thema Beeilen, Trödeln und Geduld-Haben",
+  "ean":"9783702241902",
+  "beschreibung": "Das große Heupferd möchte noch schnell ein paar Erledigungen machen, damit für das Abendessen alles zu-hause ist – aber mit schnell ist nichts. Denn für das kleine Heupferd gibt´s unterwegs allerhand zu entdecken. Da blitzt die Sonne durch die Wolken, zwitschern die Vögel ein besonderes Lied, sind zahlreiche Schätze für die Hosentasche zu finden und von hoch oben auf der Leiter sieht die Welt bestimmt ganz anders aus ...\n\n Nach ihrem erfolgreichen Pappbilderbuchdebüt nun das zweite Pappbilderbuch des renommierten österreichischen Künstler:innenpaars: wunderbar melodisch gereimt, liebevoll farbkräftig in Szene gesetzt. Ideal zum gemeinsamen Schmunzeln, Lachen und Reden.",
+"bilder": [
+    "images/roeher/huepf.webp",
+    "images/roeher/huepf1.webp",
+    "images/roeher/huepf2.webp",
+    "images/roeher/huepf3.webp"
 
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Elisabeth Steinkellner", "Wortlust und Zeichenfreunde" ]
+   },
+
+   {
+  "id":142,
+  "name":"Die Kürbiskatze kocht Kirschkompott: Ein tierisch-kulinarisches ABC-Buch",
+  "ean":"9783702235611",
+  "beschreibung": "Seit zehn Jahren isst das Zitronenzebra zur Zwischenmahlzeit Zuckerwatte. Und nie Zahnweh! Zzz ...Man nehme heimische und exotische Tiere, bekannte Speisen (wenn auch teilweise in eigenwilliger Mischung), das sprachspielerische Talent von Elisabeth Steinkellner und das illustratorische Können von Michael Roher, rühre alles gut durch – und dann hat man ein ABC-Buch auf dem Tisch liegen, das man, einmal hineingeschnuppert, nicht so schnell wieder aus der Hand legen mag. Denn da gilt es nicht nur die Frage zu klären, ob erbsengrüne Esel Erdbeereis eigentlich mit Estragon essen, sondern auch zu überlegen, woran ein Dromedar wohl dauernd denkt (nämlich an Dattel-Desserts) oder worauf Sahneschnecken stehen (auf Sommersalat, hätte man wohl nicht gedacht).Mit einer Mischung aus Collage und feinen Tuschestrichen setzt Michael Roher die wunderbar fantasiereichen Stabreime von Elisabeth Steinkellner in seinen Bildern um, und erschafft dabei Figuren, die man sofort kennenlernen möchte.",
+    
+ "bilder": [
+    "images/roeher/kuerbiskatze.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Elisabeth Steinkellner", "Zahlen und Alphabet"]
+   },
+
+
+   {
+  "id":143,
+  "name":"Vom Flaniern und Weltspaziern: Reime und Sprachspiele",
+  "ean":"9783702237417",
+  "beschreibung": "Ein großer grüner Autobus fuhr über eine Haselnuss ...Proviant einpacken, bequeme Schuhe anziehen, den Rucksack schultern und sich sofort auf den Weg machen wollen – dieser Wunsch stellt sich unweigerlich ein, hat man auch nur in die ersten Seiten dieser neuen Gedichtsammlung hineingeschnuppert. Mit einem bunten Mix aus verschiedensten Lyrikformen, die vom klassischen Endreimgedichten über Aufzählreime, Listen, Lautgedichten bis hin zu Alliterationen, Vokal- und Bildgedichten reichen, führt dieses Buch seine Leserinnen und Leser durch die lauten und leisen Winkeln einer Stadt, wecken die Sehnsucht nach Meeresrauschen und Salz auf der Haut, nach fremden Gerüchen und wirbeligen Bazaren, nach Sternschnuppennächten und dem Abenteuer – im Großen wie im Kleinen. Und wie nach einer langen Reise kehrt man am Ende dieses Buches zufrieden wieder zurück, voll mit Bildern und Gedanken, wunderbaren Erinnerungen und Eindrücken. Einmal mehr beweisen Elisabeth Steinkellner und Michael Roher wie stilsicher sie sich in den unterschiedlichsten Genres bewegen können, machen Texte zu Bilder und Bilder zu Texten, kreieren in der Kombination neue Bedeutungen, stellen aber zuweilen auch nur nebeneinander – und finden dabei sowohl für Nachdenklich-Ruhiges als auch für Lustig-Absurdes einen Platz.",
+
+ "bilder": [
+    "images/roeher/flaniernundweltspaziern.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Elisabeth Steinkellner", "Wortlust und Zeichenfreunde"]
+   },
+
+  {
+  "id":143,
+  "name":"Vom Flaniern und Weltspaziern: Reime und Sprachspiele",
+  "ean":"9783702237417",
+  "beschreibung": "Ein großer grüner Autobus fuhr über eine Haselnuss ...Proviant einpacken, bequeme Schuhe anziehen, den Rucksack schultern und sich sofort auf den Weg machen wollen – dieser Wunsch stellt sich unweigerlich ein, hat man auch nur in die ersten Seiten dieser neuen Gedichtsammlung hineingeschnuppert. Mit einem bunten Mix aus verschiedensten Lyrikformen, die vom klassischen Endreimgedichten über Aufzählreime, Listen, Lautgedichten bis hin zu Alliterationen, Vokal- und Bildgedichten reichen, führt dieses Buch seine Leserinnen und Leser durch die lauten und leisen Winkeln einer Stadt, wecken die Sehnsucht nach Meeresrauschen und Salz auf der Haut, nach fremden Gerüchen und wirbeligen Bazaren, nach Sternschnuppennächten und dem Abenteuer – im Großen wie im Kleinen. Und wie nach einer langen Reise kehrt man am Ende dieses Buches zufrieden wieder zurück, voll mit Bildern und Gedanken, wunderbaren Erinnerungen und Eindrücken. Einmal mehr beweisen Elisabeth Steinkellner und Michael Roher wie stilsicher sie sich in den unterschiedlichsten Genres bewegen können, machen Texte zu Bilder und Bilder zu Texten, kreieren in der Kombination neue Bedeutungen, stellen aber zuweilen auch nur nebeneinander – und finden dabei sowohl für Nachdenklich-Ruhiges als auch für Lustig-Absurdes einen Platz.",
+
+ "bilder": [
+    "images/roeher/flaniernundweltspaziern.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Elisabeth Steinkellner", "Wortlust und Zeichenfreunde"]
+   },
+  
   
   {
   "id": 100,
