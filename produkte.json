@@ -1963,17 +1963,102 @@
    },
 
   {
-  "id":143,
-  "name":"Vom Flaniern und Weltspaziern: Reime und Sprachspiele",
-  "ean":"9783702237417",
-  "beschreibung": "Ein großer grüner Autobus fuhr über eine Haselnuss ...Proviant einpacken, bequeme Schuhe anziehen, den Rucksack schultern und sich sofort auf den Weg machen wollen – dieser Wunsch stellt sich unweigerlich ein, hat man auch nur in die ersten Seiten dieser neuen Gedichtsammlung hineingeschnuppert. Mit einem bunten Mix aus verschiedensten Lyrikformen, die vom klassischen Endreimgedichten über Aufzählreime, Listen, Lautgedichten bis hin zu Alliterationen, Vokal- und Bildgedichten reichen, führt dieses Buch seine Leserinnen und Leser durch die lauten und leisen Winkeln einer Stadt, wecken die Sehnsucht nach Meeresrauschen und Salz auf der Haut, nach fremden Gerüchen und wirbeligen Bazaren, nach Sternschnuppennächten und dem Abenteuer – im Großen wie im Kleinen. Und wie nach einer langen Reise kehrt man am Ende dieses Buches zufrieden wieder zurück, voll mit Bildern und Gedanken, wunderbaren Erinnerungen und Eindrücken. Einmal mehr beweisen Elisabeth Steinkellner und Michael Roher wie stilsicher sie sich in den unterschiedlichsten Genres bewegen können, machen Texte zu Bilder und Bilder zu Texten, kreieren in der Kombination neue Bedeutungen, stellen aber zuweilen auch nur nebeneinander – und finden dabei sowohl für Nachdenklich-Ruhiges als auch für Lustig-Absurdes einen Platz.",
-
+  "id":144,
+  "name":"Pepe und Lolo",
+  "ean":"9783854521761",
+  "beschreibung": "Lolo trägt am liebsten knallgrüne Kleider, entlockt ihrer Geige leidenschaftlich gern schiefe Töne und kümmert sich nicht darum, wenn andere über ihre schrägen Ideen den Kopf schütteln. Bei Pepe ist das anders. Wenn ihn jemand schief anschaut, weil er auf der Straße hockt und mit Schnecken spricht, wird er sofort klatschmohnrot und schämt sich. Als Pepe und Lolo sich eines Tages zufällig begegnen, entspinnt sich eine vorsichtige Freundschaft zwischen den beiden. Aber Pepe fällt es schwer, aus seinem Schneckenhaus auszubrechen und daran zu glauben, dass jemand ihn so mag, wie er ist.\n\n Eine Geschichte über den Mut, den es braucht, um zu sich selbst zu stehen und zu denen, die man mag.",
  "bilder": [
-    "images/roeher/flaniernundweltspaziern.webp"
+    "images/roeher/pepeundlolo.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Elisabeth Steinkellner", "Wortlust und Zeichenfreunde"]
+  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Elisabeth Steinkellner", "Familie und Freunde"]
    },
+
+    {
+  "id":145,
+  "name":"Papilios Welt",
+  "ean":"9783854521709",
+  "beschreibung": "Der Frühling ist da! Papilio breitet die Arme aus und wartet auf den Wind, der ihn durch die Straßen trägt. Komm mit!, ruft Papilio dem Mann mit dem Dackel, dem Mädchen mit den Sommersprossen, der Seiltänzerin und der Barfußgeherin zu. Alle folgen ihm und hören zu, wenn Papilio von seiner Welt erzählt. \n\n In Papilios Welt leben alle dort, wo sie sich zu Hause fühlen, kochen alle, was ihnen schmeckt, haben alle Zeit, ihre Lieblingsbeschäftigung zu genießen und gehen alle, wohin ihr Herz sie führt.\n\n Verrückte Ideen? Das Mädchen mit den Sommersprossen möchte es versuchen. Gemeinsam mit Papilio wartet es auf den Wind.",
+      
+  "bilder": [
+    "images/roeher/papiloswelt.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Elisabeth Steinkellner", "Dazugehören und Anderssein"]
+   },
+
+   {
+  "id":146,
+  "name":"Die neue Omi",
+  "ean":"9783702658267",
+  "beschreibung": "Finis Omi hat sich verändert. Früher hat sie sich über Finis Haare aufgeregt, mit ihr im Park die Enten gefüttert, ist viel gereist und war eine gute Köchin. Jetzt bewundert sie Finis Frisur, isst die harten Brotkrümel lieber selbst, und verreisen kann sie auch nicht mehr. Als die Omi alle Herdplatten aufdreht, um sich die Hände zu wärmen, sagt Mama, dass ab nun alle ein Auge auf die Omi haben müssen. Auch Fini, aber die nimmt das nicht ganz so ernst, wie sie sollte. Als Mama von einem kurzen Besuch bei der Nachbarin zurückkommt, liegt die Omi unterm Tisch und schläft. Mama schimpft und Fini versteht nicht, warum die Omi nicht auf sich selbst aufpassen kann. Am nächsten Morgen bringt Mama Agatha mit, eine Frau, die sich täglich einige Stunden um die Omi kümmern wird. Und Fini kann ihre neue Omi endlich genießen, ohne Angst haben zu müssen, dass etwas schief läuft.",
+  "bilder": [
+    "images/roeher/dieneueomi.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Elisabeth Steinkellner",  "Familie und Freunde"]
+   },
+
+   {
+  "id":147,
+  "name":"Oma, Huhn und Kümmelfritz",
+  "ean":"9783702658434",
+  "beschreibung": "Das Huhn und der Kümmelfritz sind allerbeste Freunde und ein gutes Team. Wenn dem Kümmelfritz die blöden Ideen ausgehen, kann man sicher sein, dass dem Huhn noch was einfällt. Es hat eine große Klappe, und bevor es zu kurz kommt, denkt es sicherheitshalber einmal an seinen eigenen Vorteil. So manövriert es sich manchmal in unangenehme Situationen und muss dann ziemlich rudern, damit es wieder herauskommt. Der Kümmelfritz, die Woniafka Oma und die Maya sind aber sehr nett und lieben das Huhn. Drum helfen sie ihm oft aus der Patsche. Und das Huhn ist so ungemein großzügig, dass es sich helfen lässt.",
+  "bilder": [
+    "images/roeher/omahuhn.webp",
+    "images/roeher/omahuhn1.webp",
+    "images/roeher/omahuhn2.webp",
+    "images/roeher/omahuhn3.webp"
+],
+  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Familie und Freunde"]
+   },
+
+  {
+  "id":148,
+  "name":"Zu verschenken",
+  "ean":"9783854521594",
+  "beschreibung": "Ein Bürgermeister in der Unterhose, ein Bär als Haustier und ein riesengroßes Tausch- und Schenk-Fest. Wo es so etwas gibt? Das kann in jeder Stadt vorkommen, in der Familie Josef einmal zu Besuch gewesen ist. Denn Mama Josef, Papa Josef, Josefine Josef und Josef Josef fahren in ihrem Hausrad von Stadt zu Stadt, im Gepäck eine großartige Idee: Wer etwas hat, das er nicht mehr benötigt, kann es an eine Person weiterschenken, die es brauchen kann! Aber gute Absichten wecken oftmals das Misstrauen anderer Menschen. Alles gratis? Das kann nicht mit rechten Dingen zugehen. Andererseits war da nicht etwas, das man schon länger loswerden wollte? Und was hat denn der Herr Nachbar da Hübsches? Michael Roher, eine der großen Entdeckungen der Bilderbuchszene, erzählt eine wunderbare Geschichte über die Überwindung von Misstrauen und das große Glück der Freigiebigkeit.",
+"bilder": [
+    "images/roeher/zuverschenken.webp"
+],
+  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Familie und Freunde"]
+   },
+
+  {
+  "id":149,
+  "name":"Zu Fuß",
+  "ean":"9783903422773",
+  "beschreibung": "Das hier ist Herr Mandelmus. Herr Mandelmus geht nie zu Fuß. So stellt Michael Roher den Protagonisten seines neuen Bilderbuchs vor. Herr Mandelmus ist ein wohlbeleibter und fröhlicher Geselle, aber er tut keinen Schritt zu viel. Motorroller, Auto, Lieferservice, das sind seine Fortbewegungsmittel, sogar der Dackel wird mittels Drohne Gassi geschickt. Doch eines Tages ruft Herr Mandelmus: Ich gehe heut zu Fuß! Und siehe da: Er entdeckt eine für ihn ganz neue Welt!",
+ "bilder": [
+    "images/roeher/zufuss.webp",
+    "images/roeher/zufuss1.webp",
+    "images/roeher/zufuss2.webp",
+    "images/roeher/zufuss3.webp",
+    "images/roeher/zufuss4.webp",
+    "images/roeher/zufuss5.webp",
+    "images/roeher/zufuss6.webp",
+    "images/roeher/zufuss7.webp"
+
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Wortlust und Zeichenfreunde"]
+   },
+
   
+   {
+  "id": 150,
+  "name":"Meine Welt ist ein Gedicht",
+  "ean":"9783948743529",
+  "beschreibung": "Heike Nieder hat Kindern aus verschiedenen Ländern die gleichen Fragen gestellt und von ihren Antworten inspiriert Gedichte geschrieben. Die Antworten wie die Gedichte handeln von Abenteuern, Ängsten, Träumen, Wünschen oder dem ganz persönlichen Lieblingsduft. Sie sind oft witzig, manchmal nachdenklich, aber immer berührend ehrlich. \n\nMartina Walthers Illustrationen sind dabei ganz nah dran an den Kindern, die überall auf der Welt mal ähnliche, mal ganz unterschiedliche Sichten aufs Leben haben.",
+     
+ "bilder": [
+    "images/roeher/meineweltisteingedicht.webp",
+    "images/roeher/meineweltisteingedicht1.webp",
+    "images/roeher/meineweltisteingedicht2.webp",
+    "images/roeher/meineweltisteingedicht3.webp",
+    "images/roeher/meineweltisteingedicht4.webp",
+    "images/roeher/meineweltisteingedicht5.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Martina Walther", "Wortlust und Zeichenfreunde"],
+  "leseprobe_pdf": "meineweltisteingedicht.pdf"
+   },
+
   
   {
   "id": 100,
