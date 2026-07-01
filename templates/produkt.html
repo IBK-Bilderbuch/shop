@@ -4,9 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ produkt.name }} von {{ produkt.autor }}, {{ produkt.illustrator }} | I B K - Buchhandlung für Illustration und Bilderbücher </title>
+ <title> {{ produkt.name }}
+      {% if produkt.autor %} von {{ produkt.autor }}{% endif %}
+      {% if produkt.illustrator %}, illustriert von {{ produkt.illustrator }}{% endif %} | IBK Bilderbuch
+</title>
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='ficon.png') }}">
-  <meta name="description" content="{{ produkt.name }} von {{ produkt.autor }}, {{ produkt.illustrator }}. {{ produkt.beschreibung[:120]|striptags }}...">
+<meta name="description"
+content="{{ produkt.name }}
+{% if produkt.autor %} von {{ produkt.autor }}{% endif %}
+{% if produkt.illustrator %}, illustriert von {{ produkt.illustrator }}{% endif %}.
+{{ (produkt.beschreibung or '')[:140]|striptags|replace('\n',' ') }}...">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 
@@ -15,7 +23,35 @@
   <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 
   
+<script type="application/ld+json">
+{{ {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": produkt.name,
+    "author": {
+        "@type": "Person",
+        "name": produkt.autor
+    } if produkt.autor else None,
 
+    "illustrator": {
+        "@type": "Person",
+        "name": produkt.illustrator
+    } if produkt.illustrator else None,
+
+    "isbn": produkt.isbn,
+    "numberOfPages": produkt.seiten,
+    "inLanguage": produkt.sprache,
+
+    "publisher": {
+        "@type": "Organization",
+        "name": produkt.verlag
+    } if produkt.verlag else None,
+
+    "datePublished": produkt.erscheinungsjahr,
+    "description": produkt.beschreibung,
+    "image": produkt.bilder[0] if produkt.bilder else None
+} | tojson }}
+</script>
 
 </head>
 <body>
@@ -49,7 +85,7 @@
         {% for bild in produkt.bilder %}
           <img class="carousel-image {% if loop.index0 == 0 %}active{% endif %}"
           {% if bild.startswith('http') %}src="{{ bild }}"{% else %}src="{{ url_for('static', filename=bild) }}"{% endif %}
-            alt="{{ produkt.name }}">
+            alt="{{ produkt.name }}{% if produkt.autor %} von {{ produkt.autor }}{% endif %}">
           {% endfor %}
 
 
