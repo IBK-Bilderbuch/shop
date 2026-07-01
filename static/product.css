@@ -421,3 +421,149 @@ label[for="quantity"] {
   color: #fff;
   border-color: #333;
 }
+
+
+
+/* =========================================================
+   WORKSHOP DETAIL LAYOUT
+   (spiegelt .book-detail / .book-container / .book-cover / .book-info)
+========================================================= */
+.produkt-detail {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.produkt-layout {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* =========================================================
+   WORKSHOP BILD
+   (spiegelt .book-cover)
+========================================================= */
+.produkt-bilder {
+  flex: 1 1 300px;
+  max-width: 400px;
+  position: relative;
+}
+
+.produkt-bilder img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+}
+
+/* =========================================================
+   WORKSHOP INFO
+   (spiegelt .book-info)
+========================================================= */
+.produkt-info {
+  flex: 1 1 300px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.produkt-info h1 {
+  font-family: var(--font-heading);
+  color: var(--color-secondary);
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.produkt-info .preis {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.produkt-info > p:not(.preis) {
+  font-size: 1.3rem;
+  font-family: var(--font-heading);
+  line-height: 1.6;
+}
+
+.produkt-info h3 {
+  font-family: var(--font-heading);
+  color: var(--color-secondary);
+  font-size: 1.6rem;
+  margin-top: 10px;
+}
+
+.produkt-info hr {
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+/* =========================================================
+   TERMIN-SLOTS
+   (ersetzt Inline-Styles im slot-box Markup)
+========================================================= */
+.slot-box {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-family: var(--font-heading);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.slot-box strong {
+  color: var(--color-secondary);
+  font-size: 1.2rem;
+}
+
+.slot-box small {
+  display: block;
+  margin-top: 4px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.slot-box .slot-form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.input-field {
+  padding: 8px 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-family: var(--font-body);
+}
+
+.input-field:focus {
+  border-color: var(--color-primary);
+}
+
+/* =========================================================
+   MEDIA QUERIES – Workshop
+========================================================= */
+@media (max-width: 768px) {
+  .produkt-layout {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .produkt-info h1 {
+    font-size: 2rem;
+  }
+
+  .produkt-info .preis {
+    font-size: 1.3rem;
+  }
+
+  .slot-box {
+    padding: 0.8rem;
+  }
+}
