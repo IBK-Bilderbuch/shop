@@ -44,6 +44,8 @@ from flask import Response
 
 from gutschein_pdf import send_gutschein_email
 
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 # =====================================================
 # CONFIG
