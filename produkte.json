@@ -283,7 +283,7 @@
   "bilder": [
      "images/hungrygoat/hungrygoat.webp"
   ],
-  "kategorie": ["Englischsprachige Bücher", "Abner Graboff" ]
+  "kategorie": ["Klassiker", "Englischsprachige Bücher", "Abner Graboff" ]
 },
   
 
@@ -890,7 +890,34 @@
   "kategorie": ["Familie und Freunde", "Deutschsprachige Bücher", "Mies van Hout"]
 
    },
+{
+  "id": 64,
+  "name": "Rotkäppchen",
+  "ean": "9783314000317",
+ 
+  "beschreibung": "Ein Märchenklassiker neu illustriert von Bernadette Watts. \n Geboren am 13. Mai 1942 in Northampton, England. Bernadette, mit richtigem Namen Bernadette Watts, studierte Illustration und Kunst an der Maidstone College of Art in Kent. Bevor sie 1968 freischaffende Illustratorin wurde, bereiste sie zahlreiche Länder - und sammelte vielseitige Eindrücke, die in ihrem illustrativen Werk zum Ausdruck kommen. Bernadette illustriert seit vielen Jahren Märchen für den NordSüd Verlag, so zum Beispiel fast alle Märchen der Brüder Grimm und von H.C. Andersen, 'Schuster Martin' oder 'Stadtmaus und Landmaus'.",
+  "bilder": [
+    "images/klassiker/rotkaeppchen.webp"
+  ],
+  "kategorie": ["ab4", "Klassiker", "Deutschsprachige Bücher", "Bernadette Watts" ]
+},
 
+  {
+  "id": 65,
+  "name": "Hänsel und Gretel",
+  "ean": "9783715209272",
+ 
+  "beschreibung": "Was wäre die Kinderliteratur ohne ihre klassischen Märchen? Vielleicht war es genau dieser Gedanke, der Stephen King und Maurice Sendak dazu bewegte, sich Hänsel und Gretel neu anzunehmen. Mit eindrucksvollen Illustrationen, die unverkennbar an Wo die wilden Kerle wohnen erinnern, verleiht Sendak den beiden Geschwistern eine ganz eigene Präsenz, vor allem aber der Hexe...",
+  "bilder": [
+    "images/klassiker/haenselundgretel.webp"
+  ],
+  "kategorie": ["ab4", "Klassiker", "Deutschsprachige Bücher",  "Maurice Sendak"]
+},
+
+ 
+
+
+  
   {
   "id":66,
     "name":"... 6, 7, 8 Gute Nacht",
@@ -1187,7 +1214,7 @@
   "bilder": [
     "images/anonldlady/whatcat.webp"
       ],
-  "kategorie": [ "Englischsprachige Bücher", "Abner Graboff" ]
+  "kategorie": [ "Klassiker", "Englischsprachige Bücher", "Abner Graboff" ]
    },
 
 
