@@ -6,7 +6,7 @@
     "bilder": [
       "images/jacominus/jacominus.jpg"
     ],
-    "kategorie":["Philosophisches Bilderbuch", "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
+    "kategorie":["ab6", "Philosophisches Bilderbuch", "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
   },
   
   {
@@ -17,7 +17,7 @@
     "bilder": [
       "images/punkt/punkt-12(1).jpg"
     ],
-    "kategorie":["Philosophisches Bilderbuch","Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
+    "kategorie":["ab6", "Philosophisches Bilderbuch","Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
   },
 
   
@@ -29,7 +29,7 @@
     "bilder": [
       "images/winzsekunde/eine-winzig-kleine-sekunde_cover.jpg"
     ],
-    "kategorie":["Philosophisches Bilderbuch", "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
+    "kategorie":["ab5", "Philosophisches Bilderbuch", "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
   },
   
    {
@@ -40,7 +40,7 @@
     "bilder": [
       "images/wbaresache/eine-wunderbare-sache_cover.jpg"
     ],
-    "kategorie":["Philosophisches Bilderbuch", "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
+    "kategorie":["ab", "Philosophisches Bilderbuch", "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
   },
 
   {
@@ -53,7 +53,7 @@
       "images/angsthase/Angsthase4.webp",
       "images/angsthase/Angsthase6.webp"
     ],
-  "kategorie": ["Angst", "Mut oder Angst?!", "Deutschsprachige Bücher", "Helga Bansch" ],
+  "kategorie": ["ab4", "Angst", "Mut oder Angst?!", "Deutschsprachige Bücher", "Helga Bansch" ],
   "leseprobe_pdf": "Angsthase.pdf"
   },
     {
@@ -65,7 +65,7 @@
     "bilder": [
       "images/bruecke/dieBruecke.webp"
     ],
-      "kategorie":[ "Wichtige Fragen", "Deutschsprachige Bücher", "Helga Bansch" ]
+      "kategorie":[ "ab3","Wichtige Fragen", "Deutschsprachige Bücher", "Helga Bansch" ]
   },
   
    {
@@ -92,7 +92,7 @@
       "images/rabenrosa/dierabenrosa.webp",
       "images/rabenrosa/dierabenrosa1.webp"
     ],
-  "kategorie":[ "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Helga Bansch" ]
+  "kategorie":[ "ab3", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Helga Bansch" ]
   },
   
   {
@@ -109,7 +109,7 @@
     "images/leolegtlos/leolegtlos5.webp",
     "images/leolegtlos/leolegtlos6.webp"
   ],
-  "kategorie":["Angst", "Mut oder Angst?!", "Deutschsprachige Bücher", "Natalia Shaloshvili" ]
+  "kategorie":["ab4", "Angst", "Mut oder Angst?!", "Deutschsprachige Bücher", "Natalia Shaloshvili" ]
 },
   
    {
