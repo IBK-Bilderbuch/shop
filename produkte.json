@@ -205,7 +205,7 @@
     "images/weihnachten/IGEL5.webp",
     "images/weihnachten/IGEL6.webp"
   ],
-  "kategorie":[ "Feiertage", "Weihnachten", "Deutschsprachige Bücher", "Britta Teckentrup" ]
+  "kategorie":["ab3", "Feiertage", "Weihnachten", "Deutschsprachige Bücher", "Britta Teckentrup" ]
  
 },
 
@@ -219,7 +219,7 @@
   "bilder": [
     "images/wuetend/wuetend.webp"
   ],
-  "kategorie":[ "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
+  "kategorie":[ "ab4", "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
 },
   
 
@@ -233,7 +233,7 @@
   "bilder": [
     "images/mutig/mutig.webp"
   ],
-  "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
+  "kategorie": ["ab4", "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
 },
 
 
@@ -245,7 +245,7 @@
   "bilder": [
     "images/einsam/einsam.webp"
   ],
-  "kategorie":[ "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
+  "kategorie":[ "ab4", "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Britta Teckentrup" ]
 },
   
 
@@ -258,7 +258,7 @@
   "bilder": [
     "images/schaukel/schaukel.webp"
   ],
-  "kategorie":[ "Gefühle", "Wichtige Fragen", "Deutschsprachige Bücher", "Britta Teckentrup" ]
+  "kategorie":[ "ab5", "Gefühle", "Wichtige Fragen", "Deutschsprachige Bücher", "Britta Teckentrup" ]
  
 },
 
@@ -271,7 +271,7 @@
   "bilder": [
     "images/anonldlady/anoldlady.webp"
     ],
-  "kategorie": ["Klassiker","Englischsprachige Bücher", "Abner Graboff"]
+  "kategorie": ["ab3", "Klassiker","Englischsprachige Bücher", "Abner Graboff"]
 },
 
 
