@@ -30,6 +30,17 @@
       <input type="number" name="preis" step="0.01" min="0" required class="input-field">
     </label><br><br>
 
+
+    <!-- Diese eine Zeile in dein bestehendes admin_workshop_neu.html Formular einfügen,
+     z.B. direkt vor dem Submit-Button: -->
+
+<label for="verwalter_passwort">Passwort für die Verwaltung dieses Workshops:</label>
+<input type="password" id="verwalter_passwort" name="verwalter_passwort" class="input-field"
+       placeholder="Wird nur der anlegenden Person mitgeteilt">
+
+<!-- Kein "required" -- falls leer gelassen, kann nur der Superadmin
+     (also du) diesen Workshop später bearbeiten. -->
+
     <button type="submit" style="padding:10px 24px; background:#1e2d4a; color:white; border:none; border-radius:6px; cursor:pointer;">
       Workshop anlegen
     </button>
