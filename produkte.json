@@ -79,7 +79,7 @@
       "images/pupu/pupu.webp",
       "images/pupu/Pupu2.webp"
     ],
-     "kategorie": [ "Deutschsprachige Bücher", "Helga Bansch" ]
+     "kategorie": [ "ab3", "Deutschsprachige Bücher", "Helga Bansch" ]
   },
   {
     "id": 8,
@@ -124,7 +124,7 @@
       "images/monster/Monstergeburtstag.webp",
       "images/monster/Monstergeburtstag1.webp"
     ],
-     "kategorie": ["Feiertage", "Monstergeschichten", "Deutschsprachige Bücher", "Helga Bansch" ]
+     "kategorie": ["ab3", "Feiertage", "Monstergeschichten", "Deutschsprachige Bücher", "Helga Bansch" ]
   },
 
    {
@@ -135,7 +135,7 @@
     "bilder": [
       "images/wildekerle/wildeKerle.webp"
     ],
-     "kategorie":[ "Klassiker", "Deutschsprachige Bücher", "Maurice Sendak" ]
+     "kategorie":[ "ab4", "Klassiker", "Deutschsprachige Bücher", "Maurice Sendak" ]
   },
   
    {
@@ -146,7 +146,7 @@
 "bilder": [
       "images/wildekerle/wildeKerleengl.webp"
     ],
-     "kategorie":[ "Klassiker", "Englischsprachige Bücher", "Maurice Sendak" ]
+     "kategorie":[ "ab2", "Klassiker", "Englischsprachige Bücher", "Maurice Sendak" ]
   },
   
   
@@ -169,7 +169,7 @@
       "images/monsterich/monsterich7.webp",
       "images/monsterich/monsterich4.webp"
     ],
-    "kategorie": ["Gefühle", "Monstergeschichten", "Deutschsprachige Bücher", "Catarina Knüvener" ]
+    "kategorie": ["ab5", "Gefühle", "Monstergeschichten", "Deutschsprachige Bücher", "Catarina Knüvener" ]
   },
 
   
@@ -187,7 +187,7 @@
     "images/monsterbesuch/monsterbesuch3.webp",
     "images/monsterbesuch/monsterbesuch4.webp"
   ],
-  "kategorie":[ "Gefühle", "Monstergeschichten", "Deutschsprachige Bücher", "Catarina Knüvener" ]
+  "kategorie":[ "ab2", "Gefühle", "Monstergeschichten", "Deutschsprachige Bücher", "Catarina Knüvener" ]
  
 },
    {
