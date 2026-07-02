@@ -111,6 +111,12 @@ header {
   display: none;
 }
 
+.mtitel {
+   margin-left:380px; 
+   font-family: 'Geneva'; 
+   font-weight:100;
+   font-size: 28px;
+}
 
 /* iPad / Tablets */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -146,7 +152,11 @@ header {
   .nav-links li a {
     font-size: 20px;
   }
-   
+   .mtitel {
+      margin: auto
+       font-size: 20px;
+
+   }
 
 }
 
