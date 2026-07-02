@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop-Zugang | IBK</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='product.css') }}">
+</head>
+<body>
+  <div style="max-width:400px; margin:80px auto; padding:0 20px;">
+    <h1 style="font-family: var(--font-heading); color: var(--color-secondary);">
+      Zugang zu "{{ workshop.titel }}"
+    </h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p style="color: red;">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" style="display:flex; flex-direction:column; gap:12px;">
+      <input type="password" name="verwalter_passwort" placeholder="Workshop-Passwort" class="input-field" required>
+      <button type="submit">Zugang freischalten</button>
+    </form>
+  </div>
+</body>
+</html>
