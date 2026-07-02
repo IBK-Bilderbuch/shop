@@ -243,3 +243,4 @@ class WorkshopBuchung(db.Model):
 
 
     verwalter_passwort_hash = db.Column(db.String(255), nullable=True)
+    slug = db.Column(db.String(255), unique=True, nullable=True)
