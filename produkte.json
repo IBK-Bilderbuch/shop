@@ -426,7 +426,7 @@
     "images/nussknacker/nussknacker5.webp",
     "images/nussknacker/nussknacker6.webp"
   ],
-  "kategorie":[ "Klassiker", "Deutschsprachige Bücher", "Lisbeth Zwerger" ],
+  "kategorie":[  "ab4",    "Klassiker", "Deutschsprachige Bücher", "Lisbeth Zwerger" ],
   "leseprobe_url": "https://www.book2look.com/book/uZR7FghOdm"
 },
 
@@ -485,7 +485,7 @@
     "images/galgenlieder/galgenlieder4.webp",
     "images/galgenlieder/galgenlieder5.webp"
   ],
-  "kategorie": ["Klassiker", "Deutschsprachige Bücher", "Lisbeth Zwerger" ],
+  "kategorie": [  "ab4", "Klassiker", "Deutschsprachige Bücher", "Lisbeth Zwerger" ],
   "leseprobe_url": "https://www.book2look.com/book/osuBL4pubX"
   
 },
@@ -552,7 +552,7 @@
     "images/ueberraschung/ueberraschung3.webp",
     "images/ueberraschung/ueberraschung4.webp"
   ],
-  "kategorie":[ "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ]
+  "kategorie":[    "ab3",  "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ]
   
 },
 
@@ -577,7 +577,7 @@
     "bilder": [
     "images/farbeeulestift/farbeeulestift.webp"
   ],
-  "kategorie":["Kunst und Künstlerdasein", "Deutschsprachige Bücher", "Renate Habinger" ],
+  "kategorie":[    "ab4",    "Kunst und Künstlerdasein", "Deutschsprachige Bücher", "Renate Habinger" ],
   "leseprobe_pdf": "farbeeulestift.pdf"
 
 },
@@ -591,7 +591,7 @@
     "bilder": [
     "images/waswennichmichentziehe/waswennichmichentziehe.webp"
   ],
-  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher", "Nicole Vögeli" ],
+  "kategorie": ["Für Erwachsene", "Wichtige Fragen", "Deutschsprachige Bücher", "Nicole Vögeli" ],
   "leseprobe_pdf": "waswennichmichentziehe.pdf"
 
 }, 
@@ -652,7 +652,7 @@
     "images/madeleine/madeleine1.webp",
     "images/madeleine/madeleine2.webp"
   ],
-  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher", "Sabine Rufener" ],
+  "kategorie": [ "ab5",   "Wichtige Fragen", "Deutschsprachige Bücher", "Sabine Rufener" ],
   "leseprobe_pdf": "madeleine.pdf"
 },
 
@@ -667,7 +667,7 @@
     "images/canizales/huebsch2.webp",
     "images/canizales/huebsch3.webp"
    ],
-  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Canizales"  ],
+  "kategorie": [   "ab4", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Canizales"  ],
   "leseprobe_pdf": "huebsch.pdf"
   },
 
@@ -683,7 +683,7 @@
     "images/einmalkatzesein/einmalkatzesein3.webp",
     "images/einmalkatzesein/einmalkatzesein4.webp"
   ],
- "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ]
+ "kategorie": [  "ab3", "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Mies van Hout" ]
 },
   {
   "id": 50,
@@ -693,7 +693,7 @@
   "bilder": [
     "images/bobtheartist/bobtheartist.webp"
   ],
- "kategorie": [ "Kunst und Künstlerdasein", "Bob der Künstler", "Englischsprachige Bücher" ]
+ "kategorie": [  "ab3",  "Kunst und Künstlerdasein", "Bob der Künstler", "Englischsprachige Bücher" ]
 },
 
 
@@ -708,7 +708,7 @@
   "images/grossstaedte/reisenmitdereisenbahn.webp"
   ],
  "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783899558449",
- "kategorie": ["Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Ryan Johnson" ]
+ "kategorie": [  "ab8", "Reisen", "Große Städte, große Zeichner", "Deutschsprachige Bücher", "Ryan Johnson" ]
 },
 
    {
@@ -727,7 +727,7 @@
     "images/grossstaedte/beruehmtereisetouren6.webp"
 
   ],   
-  "kategorie": ["Reisen", "Deutschsprachige Bücher", "SAM G. C." ]
+  "kategorie": [  "ab7", "Reisen", "Deutschsprachige Bücher", "SAM G. C." ]
 },
 
     {
@@ -744,7 +744,7 @@
     "images/grossstaedte/aufdemweg4.webp"
 ],
  "leseprobe_pdf": "aufdemweg.pdf",
- "kategorie": ["Reisen",  "Deutschsprachige Bücher", "Helga Bansch" ]
+ "kategorie": [    "ab3",   "Reisen",  "Deutschsprachige Bücher", "Helga Bansch" ]
 },
    {
   "id": 54,
@@ -757,7 +757,7 @@
     "images/grossstaedte/biszumhorizont2.webp",
     "images/grossstaedte/biszumhorizont3.webp"
 ],
- "kategorie": ["Reisen", "Deutschsprachige Bücher"]
+ "kategorie": [      "ab4",  "Reisen", "Deutschsprachige Bücher"]
 },
 
 
@@ -771,7 +771,7 @@
   "bilder": [
     "images/lebensende/entetod.webp"
   ],   
-  "kategorie": ["Gedanken zum Lebensende", "Deutschsprachige Bücher", "Wolf Erlbruch" ],
+  "kategorie": [  "ab5",  "Gedanken zum Lebensende", "Deutschsprachige Bücher", "Wolf Erlbruch" ],
  "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=978-3-88897-461-8"
 
 },
@@ -803,7 +803,7 @@
    "images/knochenmann/knochenmann5.webp",
    "images/knochenmann/knochenmann6.webp"
   ],
-  "kategorie": ["Gedanken zum Lebensende", "Deutschsprachige Bücher", "Ca Rose" ],
+  "kategorie": [    "ab3",    "Gedanken zum Lebensende", "Deutschsprachige Bücher", "Ca Rose" ],
  
   "leseprobe_url": "https://www.book2look.com/book/9783948743307(buchpalastmuenchen.de)"
  },
