@@ -1460,12 +1460,16 @@ def buchbutler_request(endpoint, ean):
 
 
 
+# Oben bei den Imports in app.py ergänzen (falls noch nicht vorhanden):
+# from werkzeug.security import generate_password_hash, check_password_hash
+
+
 # =====================================================
 # WORKSHOP
 # =====================================================
 
 
-# Öffentliche Workshop-Seite
+# Öffentliche Workshop-Seite (bleibt unverändert, ID-basiert)
 @app.route("/workshop/<int:workshop_id>")
 def workshop_detail(workshop_id):
     workshop = Workshop.query.get_or_404(workshop_id)
@@ -1590,6 +1594,27 @@ def workshop_capture(order_id):
 
 # ── ADMIN ──────────────────────────────────────────
 
+
+# Hilfsfunktion: eindeutigen Slug aus dem Titel erzeugen
+def erzeuge_eindeutigen_workshop_slug(titel):
+    basis_slug = slugify(titel)
+    slug = basis_slug
+    zaehler = 2
+
+    while Workshop.query.filter_by(slug=slug).first():
+        slug = f"{basis_slug}-{zaehler}"
+        zaehler += 1
+
+    return slug
+
+
+# Hilfsfunktion: darf die aktuelle Person diesen Workshop bearbeiten?
+# (Superadmin ODER hat sich mit dem Workshop-Passwort für genau diesen
+#  Workshop freigeschaltet)
+def workshop_zugriff_ok(workshop_id):
+    return session.get("admin") or session.get(f"ws_zugriff_{workshop_id}")
+
+
 @app.route("/admin/workshops")
 def admin_workshops():
     if not session.get("admin"):
@@ -1605,33 +1630,62 @@ def admin_workshop_neu():
         abort(403)
 
     if request.method == "POST":
+        titel = request.form.get("titel")
+        verwalter_passwort = request.form.get("verwalter_passwort")
+
         workshop = Workshop(
-            titel=request.form.get("titel"),
+            titel=titel,
             beschreibung=request.form.get("beschreibung"),
             bild=request.form.get("bild"),
             preis=float(request.form.get("preis", 0)),
-            aktiv=True
+            aktiv=True,
+            slug=erzeuge_eindeutigen_workshop_slug(titel)
         )
+
+        if verwalter_passwort:
+            workshop.verwalter_passwort_hash = generate_password_hash(verwalter_passwort)
+
         db.session.add(workshop)
         db.session.commit()
-        return redirect(f"/admin/workshop/{workshop.id}")
+
+        return redirect(f"/admin/workshop/{workshop.slug}")
 
     return render_template("admin_workshop_neu.html")
 
 
-@app.route("/admin/workshop/<int:workshop_id>")
-def admin_workshop_detail(workshop_id):
-    if not session.get("admin"):
-        abort(403)
-    workshop = Workshop.query.get_or_404(workshop_id)
+@app.route("/admin/workshop/<slug>", methods=["GET", "POST"])
+@csrf.exempt
+def admin_workshop_detail(slug):
+    workshop = Workshop.query.filter_by(slug=slug).first_or_404()
+
+    ist_superadmin = session.get("admin")
+    schon_freigeschaltet = session.get(f"ws_zugriff_{workshop.id}")
+
+    if not ist_superadmin and not schon_freigeschaltet:
+
+        if request.method == "POST":
+            eingabe = request.form.get("verwalter_passwort", "")
+
+            if workshop.verwalter_passwort_hash and check_password_hash(
+                workshop.verwalter_passwort_hash, eingabe
+            ):
+                session[f"ws_zugriff_{workshop.id}"] = True
+            else:
+                flash("Falsches Passwort.", "error")
+                return render_template("workshop_passwort_abfrage.html", workshop=workshop)
+        else:
+            return render_template("workshop_passwort_abfrage.html", workshop=workshop)
+
     return render_template("admin_workshop_detail.html", workshop=workshop)
 
 
 @app.route("/admin/workshop/<int:workshop_id>/slot/neu", methods=["POST"])
 @csrf.exempt
 def admin_slot_neu(workshop_id):
-    if not session.get("admin"):
+    if not workshop_zugriff_ok(workshop_id):
         abort(403)
+
+    workshop = Workshop.query.get_or_404(workshop_id)
 
     from datetime import datetime
     datum_str = request.form.get("datum")
@@ -1649,19 +1703,20 @@ def admin_slot_neu(workshop_id):
     db.session.add(slot)
     db.session.commit()
 
-    return redirect(f"/admin/workshop/{workshop_id}")
+    return redirect(f"/admin/workshop/{workshop.slug}")
 
 
 @app.route("/admin/slot/<int:slot_id>/deaktivieren", methods=["POST"])
 @csrf.exempt
 def admin_slot_deaktivieren(slot_id):
-    if not session.get("admin"):
-        abort(403)
     slot = WorkshopSlot.query.get_or_404(slot_id)
+
+    if not workshop_zugriff_ok(slot.workshop_id):
+        abort(403)
+
     slot.aktiv = False
     db.session.commit()
-    return redirect(f"/admin/workshop/{slot.workshop_id}")
-
+    return redirect(f"/admin/workshop/{slot.workshop.slug}")
 # ============================
 # KONTAKT
 # ============================
