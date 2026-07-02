@@ -202,6 +202,9 @@ class Workshop(db.Model):
     aktiv = db.Column(db.Boolean, default=True)
     erstellt_am = db.Column(db.DateTime, default=datetime.utcnow)
 
+    slug = db.Column(db.String(255), unique=True, nullable=True)
+    verwalter_passwort_hash = db.Column(db.String(255), nullable=True)
+
     slots = db.relationship(
         "WorkshopSlot",
         backref="workshop",
@@ -239,8 +242,3 @@ class WorkshopBuchung(db.Model):
     email = db.Column(db.String(255), nullable=False)
     paypal_order_id = db.Column(db.String(100))
     erstellt_am = db.Column(db.DateTime, default=datetime.utcnow)
-
-
-
-    verwalter_passwort_hash = db.Column(db.String(255), nullable=True)
-    slug = db.Column(db.String(255), unique=True, nullable=True)
