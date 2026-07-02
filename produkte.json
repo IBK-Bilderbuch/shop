@@ -283,7 +283,7 @@
   "bilder": [
      "images/hungrygoat/hungrygoat.webp"
   ],
-  "kategorie": ["Klassiker", "Englischsprachige Bücher", "Abner Graboff" ]
+  "kategorie": ["ab3", "Klassiker", "Englischsprachige Bücher", "Abner Graboff" ]
 },
   
 
@@ -296,7 +296,7 @@
   "bilder": [
     "images/monstermilch/monstermilch.webp"
   ],
-  "kategorie":[ "Mut oder Angst?!", "Angst", "Monstergeschichten", "Deutschsprachige Bücher", "Vincent Boudgourd" ]
+  "kategorie":[ "ab3", "Mut oder Angst?!", "Angst", "Monstergeschichten", "Deutschsprachige Bücher", "Vincent Boudgourd" ]
 },
   
 
@@ -311,7 +311,7 @@
     "images/ssmith/unsichtbar2.webp",
     "images/ssmith/unsichtbar3.webp"
   ],
-  "kategorie":[ "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Sydney Smith" ]
+  "kategorie":[  "ab4", "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Sydney Smith" ]
 },
 
 {
@@ -324,7 +324,7 @@
   "bilder": [
     "images/handschuhe/Handschuhe.webp"
   ],
-  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Natalia Shaloshvili" ]
+  "kategorie": [  "ab4", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Natalia Shaloshvili" ]
 },
  
 
@@ -336,7 +336,7 @@
   "bilder": [
     "images/zweilieben/zweilieben.webp"
   ],
-  "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Wolf Erlbruch" ]
+  "kategorie": [  "ab6", "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Wolf Erlbruch" ]
 },
 
 
@@ -349,7 +349,7 @@
   "bilder": [
     "images/mutwasgutes/mutwasgutes.webp"
   ],
-  "kategorie":[ "Angst", "Gefühle", "Mut oder Angst?!", "Deutschsprachige Bücher", "Wolf Erlbruch" ]
+  "kategorie":[ "ab4", "Angst", "Gefühle", "Mut oder Angst?!", "Deutschsprachige Bücher", "Wolf Erlbruch" ]
 },
 
 
@@ -362,7 +362,7 @@
   "bilder": [
     "images/vierkerzen/vierkerzen.webp"
   ],
-  "kategorie":["Feiertage", "Weihnachten", "Deutschsprachige Bücher", "Katrin Stangl" ]
+  "kategorie":[  "ab5", "Feiertage", "Weihnachten", "Deutschsprachige Bücher", "Katrin Stangl" ]
 },
 
 {
@@ -374,7 +374,7 @@
   "bilder": [
     "images/advent/advent.webp"
   ],
-  "kategorie": ["Feiertage", "Kalender", "Weihnachten", "Deutschsprachige Bücher", "Wolf Erlbruch"  ]
+  "kategorie": [   "ab3", "Feiertage", "Kalender", "Weihnachten", "Deutschsprachige Bücher", "Wolf Erlbruch"  ]
 },
 
 {
@@ -387,7 +387,7 @@
   "bilder": [
     "images/diegroßenfragen/diegroßenfragen.webp"
 ],
-  "kategorie": ["Wichtige Fragen", "Deutschsprachige Bücher", "Wolf Erlbruch" ],
+  "kategorie": [  "ab3",   "Wichtige Fragen", "Deutschsprachige Bücher", "Wolf Erlbruch" ],
   "auszeichnungen": [
     "Bologna Ragazzi Award 2004 – Kategorie Fiction",
     "Nominiert Deutscher Jugendliteraturpreis 2005 – Kategorie Bilderbuch"
@@ -407,7 +407,7 @@
       "images/wennannaangsthat/wennannaangsthat1.webp",
       "images/wennannaangsthat/wennannaangsthat2.webp"
     ],
-  "kategorie":[ "Angst", "Gefühle", "Mut oder Angst?!", "Deutschsprachige Bücher", "Helga Bansch" ]
+  "kategorie":[ "ab3",  "Angst", "Gefühle", "Mut oder Angst?!", "Deutschsprachige Bücher", "Helga Bansch" ]
   },
 
 
