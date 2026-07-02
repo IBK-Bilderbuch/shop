@@ -30,7 +30,7 @@
         <td style="padding:10px;">{{ "✅" if w.aktiv else "❌" }}</td>
         <td style="padding:10px;">{{ w.slots|length }}</td>
         <td style="padding:10px;">
-          <a href="/admin/workshop/{{ w.id }}">Bearbeiten</a>
+           <a href="/admin/workshop/{{ w.slug }}">Bearbeiten</a>
         </td>
       </tr>
       {% endfor %}
