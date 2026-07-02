@@ -239,3 +239,7 @@ class WorkshopBuchung(db.Model):
     email = db.Column(db.String(255), nullable=False)
     paypal_order_id = db.Column(db.String(100))
     erstellt_am = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+
+    verwalter_passwort_hash = db.Column(db.String(255), nullable=True)
