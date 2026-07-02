@@ -70,6 +70,8 @@
 
 <!-- 🔹 MAIN -->
 <main>
+    <h1 style=" text-align: center; margin-left:340px; font-family: 'Geneva', sans-serif;margin: 40px auto 20px auto;font-size: 28px;" > AUSGEWÄHLTE BILDERBÜCHER UND ILLUSTRATIONEN </h1>
+
 
 {% set visiblePerClick = 3 %}
 
@@ -78,7 +80,6 @@
 <div 
   id="{{ titel|replace(' ', '_')|replace('?', '')|replace('!', '')|replace('ä','ae')|replace('ö','oe')|replace('ü','ue') }}"
   class="category {% if loop.index > visiblePerClick %}hidden-category{% endif %}">
-  <h1 style=" text-align: center; font-family: 'Geneva', sans-serif;margin: 40px auto 20px auto;font-size: 28px;" > AUSGEWÄHLTE BILDERBÜCHER UND ILLUSTRATIONEN </h1>
 
   <!-- 🔹 KATEGORIE TITEL -->
   <h2>{{ titel }}</h2>
