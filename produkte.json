@@ -498,7 +498,7 @@
   "bilder": [
     "images/pinocchio/pinocchio.webp"
   ],
-  "kategorie": "kinder",  "ab5",  ["Klassiker", "Deutschsprachige Bücher" ]
+  "kategorie": ["kinder",  "ab5",  "Klassiker", "Deutschsprachige Bücher" ]
 },
 
  
