@@ -1217,26 +1217,25 @@
   "kategorie": ["kinder",  "ab1",  "Klassiker", "Englischsprachige Bücher", "Abner Graboff" ]
    },
 
-
-   {
+{
   "id":88,
-  "name":"Dreieck",
-  "ean":"9783314104954",
-  "beschreibung": "Dreieck spielt seinem Freund Quadrat einen kleinen Streich. Zunächst scheint alles gelungen — doch bald entsteht ein leiser Strudel aus Fragen, Überraschung und Unsicherheit. \n\nMit einfachen Formen, klaren Farben und großer Ruhe erschafft Jon Klassen Bildwelten voller Atmosphäre. Mac Barnett erzählt dazu mit wenigen Worten Geschichten, die zugleich leicht, klug und humorvoll sind. Drei kleine Erzählungen über Freundschaft, Wahrnehmung und das, was zwischen den Zeilen liegt — für Kinder und Erwachsene gleichermaßen.\n\nGemeinsam haben Barnett und Klassen bereits mehrere preisgekrönte Bücher veröffentlicht, darunter Sam & Dave graben ein Loch und Der Wolf, die Ente & die Maus. Beide leben in Kalifornien, wenn auch nicht in derselben Stadt. Jon ist Kanadier, Mac nicht.",
-     
-  "bilder": [
-    "images/klassen/dreieck.webp",
-    "images/klassen/dreieck1.webp",
-    "images/klassen/dreieck2.webp",
-    "images/klassen/dreieck3.webp",
-    "images/klassen/dreieck4.webp",
-    "images/klassen/dreieck5.webp",
-    "images/klassen/dreieck6.webp"     
-  ],
-  "kategorie": ["kinder",  "ab5", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Jon klassen" ],
-   "leseprobe_url": "https://www.book2look.com/book/kIFnZfpEtg"
+  "name":"Wolkentiere und Quadrat",
+  "ean":"9783948743277",
+  "beschreibung": "Tiere, Pflanzen, Gesichter … Wolken können sich verformen, wie es ihnen gefällt. Weich und bauschig sehen sie aus, schweben am Himmel und nehmen sich leicht. Doch nicht allen genügt dieses stereotypische Dasein. Eine besonders eigensinnige Wolke experimentiert für ihr Leben gern. Ihr Formenreichtum scheint endlos: Von Tannenbaum bis Gugelhupf über Fantasietiere und geometrische Formen. Als quadratische Wolke zieht sie sogar die Aufmerksamkeit der Menschen auf sich. Doch trotz ihres abwechslungsreichen Lebens verspürt sie eine unerklärliche Sehnsucht. Bis der Wind sie eines Tages in eine unbekannte Gegend trägt, wo unsere Wolke plötzlich eine neue Art der Verwandlung erfährt … Und das Ende wird zu einem neuen Anfang. \n\n Anna Gusella erzählt eine kleine Geschichte in großen Bildern. Poetisch, leicht und humorvoll entführt sie die Betrachter in eine Welt voller Phantasie, Weite und Glück. \n\n- unter den 100 Outstanding Picturebooks 2024 \n\n",
 
+ "bilder": [
+    "images/wolkentiere/wolkentiere.webp",
+    "images/wolkentiere/wolkentiere1.webp",
+    "images/wolkentiere/wolkentiere2.webp",
+    "images/wolkentiere/wolkentiere3.webp",
+    "images/wolkentiere/wolkentiere4.webp",
+    "images/wolkentiere/wolkentiere5.webp",
+    "images/wolkentiere/wolkentiere6.webp"
+],
+  "kategorie": [ "kinder",  "ab6", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Anna Gusella"],
+   "leseprobe_url": "https://www.book2look.com/book/KGA6MvoG4w&clickedby=ctlg&lid=UAYaeLEEZN"
    },
+   
    {
   "id":89,
   "name":"Kreis",
@@ -1397,21 +1396,22 @@
 
   {
   "id":100,
-  "name":"Wolkentiere und Quadrat",
-  "ean":"9783948743277",
-  "beschreibung": "Tiere, Pflanzen, Gesichter … Wolken können sich verformen, wie es ihnen gefällt. Weich und bauschig sehen sie aus, schweben am Himmel und nehmen sich leicht. Doch nicht allen genügt dieses stereotypische Dasein. Eine besonders eigensinnige Wolke experimentiert für ihr Leben gern. Ihr Formenreichtum scheint endlos: Von Tannenbaum bis Gugelhupf über Fantasietiere und geometrische Formen. Als quadratische Wolke zieht sie sogar die Aufmerksamkeit der Menschen auf sich. Doch trotz ihres abwechslungsreichen Lebens verspürt sie eine unerklärliche Sehnsucht. Bis der Wind sie eines Tages in eine unbekannte Gegend trägt, wo unsere Wolke plötzlich eine neue Art der Verwandlung erfährt … Und das Ende wird zu einem neuen Anfang. \n\n Anna Gusella erzählt eine kleine Geschichte in großen Bildern. Poetisch, leicht und humorvoll entführt sie die Betrachter in eine Welt voller Phantasie, Weite und Glück. \n\n- unter den 100 Outstanding Picturebooks 2024 \n\n",
+  "name":"Dreieck",
+  "ean":"9783314104954",
+  "beschreibung": "Dreieck spielt seinem Freund Quadrat einen kleinen Streich. Zunächst scheint alles gelungen — doch bald entsteht ein leiser Strudel aus Fragen, Überraschung und Unsicherheit. \n\nMit einfachen Formen, klaren Farben und großer Ruhe erschafft Jon Klassen Bildwelten voller Atmosphäre. Mac Barnett erzählt dazu mit wenigen Worten Geschichten, die zugleich leicht, klug und humorvoll sind. Drei kleine Erzählungen über Freundschaft, Wahrnehmung und das, was zwischen den Zeilen liegt — für Kinder und Erwachsene gleichermaßen.\n\nGemeinsam haben Barnett und Klassen bereits mehrere preisgekrönte Bücher veröffentlicht, darunter Sam & Dave graben ein Loch und Der Wolf, die Ente & die Maus. Beide leben in Kalifornien, wenn auch nicht in derselben Stadt. Jon ist Kanadier, Mac nicht.",
+     
+  "bilder": [
+    "images/klassen/dreieck.webp",
+    "images/klassen/dreieck1.webp",
+    "images/klassen/dreieck2.webp",
+    "images/klassen/dreieck3.webp",
+    "images/klassen/dreieck4.webp",
+    "images/klassen/dreieck5.webp",
+    "images/klassen/dreieck6.webp"     
+  ],
+  "kategorie": ["kinder",  "ab5", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Jon klassen" ],
+   "leseprobe_url": "https://www.book2look.com/book/kIFnZfpEtg"
 
- "bilder": [
-    "images/wolkentiere/wolkentiere.webp",
-    "images/wolkentiere/wolkentiere1.webp",
-    "images/wolkentiere/wolkentiere2.webp",
-    "images/wolkentiere/wolkentiere3.webp",
-    "images/wolkentiere/wolkentiere4.webp",
-    "images/wolkentiere/wolkentiere5.webp",
-    "images/wolkentiere/wolkentiere6.webp"
-],
-  "kategorie": [ "kinder",  "ab6", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Anna Gusella"],
-   "leseprobe_url": "https://www.book2look.com/book/KGA6MvoG4w&clickedby=ctlg&lid=UAYaeLEEZN"
    },
 
   
