@@ -1026,7 +1026,7 @@
   "bilder": [
     "images/miesvanhout/thisismydady.webp"
       ],
-  "kategorie": ["Familie und Freunde", "Englischsprachige Bücher", "Mies van Hout"]
+  "kategorie": ["kinder",  "ab1", "Familie und Freunde", "Englischsprachige Bücher", "Mies van Hout"]
    },
 
   {
@@ -1037,7 +1037,7 @@
   "bilder": [
     "images/katzenmalendejunge/katzenmalendejunge.webp"
       ],
-  "kategorie": ["Klassiker", "Deutschsprachige Bücher", "Anita Kreituse" ]
+  "kategorie": ["kinder",  "ab5", "Klassiker", "Deutschsprachige Bücher", "Anita Kreituse" ]
 
    },
 
@@ -1070,7 +1070,7 @@
     "images/zaeri/dastraumbuch4.webp"
 
       ],
-  "kategorie": ["Wortlust und Zeichenfreude", "Deutschsprachige Bücher",  "Mehrdad Zaeri" ]
+  "kategorie": [ "Für Erwachsene", "Wortlust und Zeichenfreude", "Deutschsprachige Bücher",  "Mehrdad Zaeri" ]
    },
 
   {
@@ -1081,7 +1081,7 @@
   "bilder": [
     "images/zaeri/diegeburt.webp"
       ],
-  "kategorie": [ "Für Erwachsene", "Feiertage", "Weihnachten", "Deutschsprachige Bücher",  "Mehrdad Zaeri"  ]
+  "kategorie": ["Für Erwachsene", "Feiertage", "Weihnachten", "Deutschsprachige Bücher",  "Mehrdad Zaeri"  ]
    },
 
   {
@@ -1092,7 +1092,7 @@
   "bilder": [
     "images/SonjaDanowski/smonsmon.webp"
       ],
-  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Sonja Danowski" ],
+  "kategorie": ["kinder",  "ab4", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Sonja Danowski" ],
    "leseprobe_url": "https://www.book2look.com/book/lOqKEJS9SU"
 
    },
@@ -1105,7 +1105,7 @@
   "bilder": [
     "images/mylittleone.webp"
       ],
-  "kategorie": ["Familie und Freunde", "Englischsprachige Bücher", "Albertine" ]
+  "kategorie": ["kinder",  "ab4","Familie und Freunde", "Englischsprachige Bücher", "Albertine" ]
    },
   
 {
@@ -1145,7 +1145,7 @@
   "bilder": [
     "images/roeher/jaguarzebra.webp"
       ],
-  "kategorie": ["Wortlust und Zeichenfreude", "Deutschsprachige Bücher", "Michael Roher" ]
+  "kategorie": ["kinder",  "ab4", "Wortlust und Zeichenfreude", "Deutschsprachige Bücher", "Michael Roher" ]
    },
 
   { 
@@ -1161,7 +1161,7 @@
     "images/zahlenundbuchschtaben/wirsindallenet/wirsindallenet2.webp",
     "images/zahlenundbuchschtaben/wirsindallenet/wirsindallenet3.webp"
       ], 
-  "kategorie": ["Zahlen und Alphabet", "Deutschsprachige Bücher", "ab 3 Jahren", "Helga Bansch" ], 
+  "kategorie": ["kinder",  "ab4", "Zahlen und Alphabet", "Deutschsprachige Bücher", "ab 3 Jahren", "Helga Bansch" ], 
   "leseprobe_pdf": "Wir sind alle nett – von A bis Z.pdf"
    },
 
@@ -1179,7 +1179,7 @@
     "images/derwalimgarten/derwalimgarten3.webp",
     "images/derwalimgarten/derwalimgarten4.webp"
       ],
-  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "ab 5 Jahren", "Sabine Rufener"],
+  "kategorie": ["kinder",  "ab3", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "ab 5 Jahren", "Sabine Rufener"],
    "leseprobe_url": "https://www.book2look.com/book/DwejKoDYHF"
 
    },
@@ -1200,7 +1200,7 @@
     "images/emmaundhund/emmaundhund5.webp",
     "images/emmaundhund/emmaundhund6.webp"
     ],
-  "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "ab 5 Jahren", "Sabine Rufener"],
+  "kategorie": ["kinder",  "ab3", "Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "ab 5 Jahren", "Sabine Rufener"],
    "leseprobe_url": "https://www.book2look.de/book/hsgkkwt8Q3"
 
    },
@@ -1214,7 +1214,7 @@
   "bilder": [
     "images/anonldlady/whatcat.webp"
       ],
-  "kategorie": [ "Klassiker", "Englischsprachige Bücher", "Abner Graboff" ]
+  "kategorie": ["kinder",  "ab1",  "Klassiker", "Englischsprachige Bücher", "Abner Graboff" ]
    },
 
 
@@ -1233,7 +1233,7 @@
     "images/klassen/dreieck5.webp",
     "images/klassen/dreieck6.webp"     
   ],
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Jon klassen" ],
+  "kategorie": ["kinder",  "ab5", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Jon klassen" ],
    "leseprobe_url": "https://www.book2look.com/book/kIFnZfpEtg"
 
    },
@@ -1253,7 +1253,7 @@
 
 
       ],
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Jon klassen" ],
+  "kategorie": ["kinder",  "ab5", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Jon klassen" ],
    "leseprobe_url": "https://www.book2look.com/book/Knb3KMhQ8w&clickedBy=wall&wallid=jypevthvri&referurl=nord-sued.com"
 
    },
@@ -1269,7 +1269,7 @@
     "images/klassen/quadrat3.webp",
     "images/klassen/quadrat4.webp"
       ],
-  "kategorie": ["Dazugehören", "Deutschsprachige Bücher", "Jon klassen" ],
+  "kategorie": ["kinder",  "ab5", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Jon klassen" ],
    "leseprobe_url": "https://www.book2look.com/book/MmvHgelbEH&clickedBy=wall&wallid=jypevthvri&referurl=nord-sued.com"
 
    },
@@ -1282,7 +1282,7 @@
   "bilder": [
     "images/klassen/dertotenkopf.webp"
       ],
-  "kategorie": ["Angst", "Mut oder Angst?!", "Deutschsprachige Bücher", "Jon klassen" ],
+  "kategorie": ["kinder",  "ab6", "Angst", "Mut oder Angst?!", "Deutschsprachige Bücher", "Jon klassen" ],
    "leseprobe_url": "https://www.book2look.com/book/2HEpZsFoFP"
 
    },
@@ -1294,7 +1294,7 @@
   "bilder": [
     "images/klassen/woistmeinhut.webp"
       ],
-  "kategorie": ["Schlaues Mitraten", "Deutschsprachige Bücher", "Jon klassen" ],
+  "kategorie": ["kinder",  "ab4", "Schlaues Mitraten", "Deutschsprachige Bücher", "Jon klassen" ],
    "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=F9j7a2vhTH"
 
    },
@@ -1307,7 +1307,7 @@
   "bilder": [
     "images/klassen/wolfentemaus.webp"
       ],
-  "kategorie": ["Mut oder Angst?!", "Deutschsprachige Bücher", "Jon klassen" ],
+  "kategorie": ["kinder",  "ab5", "Mut oder Angst?!", "Deutschsprachige Bücher", "Jon klassen" ],
    "leseprobe_url": "https://www.book2look.com/book/OWYJzRfKsz"
 
    },
@@ -1321,7 +1321,7 @@
     "images/klassen/dasistnichtmeinhut.webp",
     "images/klassen/dasistnichtmeinhut1.webp"
       ],
-  "kategorie": ["Schlaues Mitraten", "Deutschsprachige Bücher", "Jon klassen" ],
+  "kategorie": ["kinder",  "ab4", "Schlaues Mitraten", "Deutschsprachige Bücher", "Jon klassen" ],
    "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=ZjoRgrQsFb"
 
    },
@@ -1336,7 +1336,7 @@
     "images/labyrinthe/labyrinthe2.webp",
     "images/labyrinthe/labyrinthe3.webp"
       ],
-  "kategorie": [ "Schlaues Mitraten", "Deutschsprachige Bücher", "Théo Guignard" ],
+  "kategorie": [ "kinder",  "ab5", "Schlaues Mitraten", "Deutschsprachige Bücher", "Théo Guignard" ],
   "leseprobe_pdf": "labyrinthe.pdf"
 
 
@@ -1350,7 +1350,7 @@
      "bilder": [
     "images/klassen/iwantmyhatback.webp"
       ],
-  "kategorie": [ "Schlaues Mitraten", "Englischsprachige Bücher", "Jon klassen" ]
+  "kategorie": [ "kinder",  "ab3", "Schlaues Mitraten", "Englischsprachige Bücher", "Jon klassen" ]
 
    },
  
@@ -1363,7 +1363,7 @@
   "bilder": [
     "images/leoschlechtelaune.webp"
       ],
-  "kategorie": ["Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Natalia Shaloshvili" ],
+  "kategorie": ["kinder",  "ab3","Gefühle", "Kinder und Gefühle", "Deutschsprachige Bücher", "Natalia Shaloshvili" ],
    "leseprobe_url": "https://blickinsbuch.net/go.php?id=9322941228&ean=9783968260440"
    },
 
@@ -1377,7 +1377,7 @@
   "bilder": [
     "images/zwerger/leonceundlena.webp"
       ],
-  "kategorie": ["Klassiker",  "Deutschsprachige Bücher", "Lisbeth Zwerger"],
+  "kategorie": ["kinder",  "ab7", "Klassiker",  "Deutschsprachige Bücher", "Lisbeth Zwerger"],
    "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=Y2GlwQLXiL"
    },
 
@@ -1391,7 +1391,7 @@
  "bilder": [
     "images/zwerger/bibelgeschichten.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Lisbeth Zwerger"],
+  "kategorie": [ "kinder",  "ab6", "lassiker", "Deutschsprachige Bücher", "Lisbeth Zwerger"],
    "leseprobe_url": "https://www.book2look.com/book/lBR6zz8uhK"
    },
 
@@ -1405,7 +1405,7 @@
   "bilder": [
     "images/zwerger/einweihnachtsmaerchen.webp"
       ],
-  "kategorie": ["Klassiker", "Deutschsprachige Bücher", "Lisbeth Zwerger" ],
+  "kategorie": ["kinder",  "ab3", "Klassiker", "Deutschsprachige Bücher", "Lisbeth Zwerger" ],
    "leseprobe_url": "https://www.book2look.com/book/zbDdsheoQ4"
    },
 
@@ -1419,7 +1419,7 @@
   "bilder": [
     "images/zwerger/grimmmaerchen.webp"
       ],
-  "kategorie": ["Klassiker", "Deutschsprachige Bücher", "Lisbeth Zwerger" ]
+  "kategorie": ["kinder",  "ab3", "Klassiker", "Deutschsprachige Bücher", "Lisbeth Zwerger" ]
     
     },
 
@@ -1432,7 +1432,7 @@
   "bilder": [
     "images/hockney/weltderbilder.webp"
       ],
-  "kategorie": ["David Hockney", "Kunst und Künstlerdasein"]
+  "kategorie": [ "Für Erwachsene", "David Hockney", "Kunst und Künstlerdasein"]
  },
    
   {
@@ -1444,7 +1444,7 @@
   "bilder": [
     "images/hockney/dieweltderbilder.webp"
       ],
-  "kategorie": ["Für-Erwachsene","David Hockney", "Kunst und Künstlerdasein", "Rose Blake"]
+  "kategorie": ["kinder",  "ab8", "David Hockney", "Kunst und Künstlerdasein", "Rose Blake"]
 
    },
 
@@ -1456,7 +1456,7 @@
   "bilder": [
     "images/hockney/historyofpictures.webp"
       ],
-  "kategorie": ["David Hockney","Kunst und Künstlerdasein","Englischsprachige Bücher", "Rose Blake"]
+  "kategorie": ["kinder",  "ab8", "David Hockney","Kunst und Künstlerdasein","Englischsprachige Bücher", "Rose Blake"]
 
    },
     {
@@ -1468,7 +1468,7 @@
   "bilder": [
     "images/hockney/einebilderbiographie.webp"
       ],
-  "kategorie": ["David Hockney", "Kunst und Künstlerdasein"]
+  "kategorie": ["kinder",  "ab8", "David Hockney", "Kunst und Künstlerdasein"]
 
    },
 
@@ -1481,7 +1481,7 @@
   "bilder": [
     "images/hockney/derletztemaler.webp"
       ],
-  "kategorie": ["David Hockney","Kunst und Künstlerdasein"]
+  "kategorie": ["kinder",  "ab8", "David Hockney","Kunst und Künstlerdasein"]
 
    },
      {
@@ -1493,7 +1493,7 @@
   "bilder": [
     "images/hockney/wieerdieweltsieht.webp"
       ],
-  "kategorie": ["Kunst und Künstlerdasein", "David Hockney"]
+  "kategorie": ["kinder",  "ab8", "Kunst und Künstlerdasein", "David Hockney"]
 
    },
      {
