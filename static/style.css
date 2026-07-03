@@ -113,8 +113,8 @@ header {
 
 .mtitel {
    margin-left:380px; 
-   font-family: 'Geneva'; 
-   font-weight:200;
+   font-family: 'Geneva', 'Segoe UI', Helvetica, Arial, sans-serif;
+   font-weight: 200;
    font-size: 28px;
 }
 
