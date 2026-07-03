@@ -1471,10 +1471,18 @@ def buchbutler_request(endpoint, ean):
 # =====================================================
 
 
-# Öffentliche Workshop-Seite (bleibt unverändert, ID-basiert)
-@app.route("/workshop/<int:workshop_id>")
-def workshop_detail(workshop_id):
-    workshop = Workshop.query.get_or_404(workshop_id)
+
+
+@app.route("/workshop/<workshop_ref>")
+def workshop_detail(workshop_ref):
+
+    # Falls jemand noch eine alte Zahlen-URL aufruft (z.B. /workshop/1),
+    # automatisch auf die neue, lesbare Slug-URL weiterleiten
+    if workshop_ref.isdigit():
+        workshop = Workshop.query.get_or_404(int(workshop_ref))
+        return redirect(url_for("workshop_detail", workshop_ref=workshop.slug), code=301)
+
+    workshop = Workshop.query.filter_by(slug=workshop_ref).first_or_404()
     slots = [s for s in workshop.slots if s.ist_buchbar()]
     return render_template("workshop.html", workshop=workshop, slots=slots)
 
