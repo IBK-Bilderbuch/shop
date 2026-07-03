@@ -1395,6 +1395,24 @@
    "leseprobe_url": "https://www.book2look.com/book/lBR6zz8uhK"
    },
 
+  {
+  "id":100,
+  "name":"Wolkentiere und Quadrat",
+  "ean":"9783948743277",
+  "beschreibung": "Tiere, Pflanzen, Gesichter … Wolken können sich verformen, wie es ihnen gefällt. Weich und bauschig sehen sie aus, schweben am Himmel und nehmen sich leicht. Doch nicht allen genügt dieses stereotypische Dasein. Eine besonders eigensinnige Wolke experimentiert für ihr Leben gern. Ihr Formenreichtum scheint endlos: Von Tannenbaum bis Gugelhupf über Fantasietiere und geometrische Formen. Als quadratische Wolke zieht sie sogar die Aufmerksamkeit der Menschen auf sich. Doch trotz ihres abwechslungsreichen Lebens verspürt sie eine unerklärliche Sehnsucht. Bis der Wind sie eines Tages in eine unbekannte Gegend trägt, wo unsere Wolke plötzlich eine neue Art der Verwandlung erfährt … Und das Ende wird zu einem neuen Anfang. \n\n Anna Gusella erzählt eine kleine Geschichte in großen Bildern. Poetisch, leicht und humorvoll entführt sie die Betrachter in eine Welt voller Phantasie, Weite und Glück. \n\n- unter den 100 Outstanding Picturebooks 2024 \n\n",
+
+ "bilder": [
+    "images/wolkentiere/wolkentiere.webp",
+    "images/wolkentiere/wolkentiere1.webp",
+    "images/wolkentiere/wolkentiere2.webp",
+    "images/wolkentiere/wolkentiere3.webp",
+    "images/wolkentiere/wolkentiere4.webp",
+    "images/wolkentiere/wolkentiere5.webp",
+    "images/wolkentiere/wolkentiere6.webp"
+],
+  "kategorie": [ "kinder",  "ab6", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Anna Gusella"],
+   "leseprobe_url": "https://www.book2look.com/book/KGA6MvoG4w&clickedby=ctlg&lid=UAYaeLEEZN"
+   },
 
   
   {
@@ -2085,6 +2103,7 @@
   "kategorie": ["Deutschsprachige Bücher", "Martina Walther", "Wortlust und Zeichenfreude"],
   "leseprobe_pdf": "meineweltisteingedicht.pdf"
    },
+
 
   
   {
