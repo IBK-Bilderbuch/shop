@@ -96,7 +96,7 @@ header {
 }
 
 .logo {
-  height: 90px;
+  height: 85px;
   width: auto;
   transition: height 0.3s ease;
   display: block;
