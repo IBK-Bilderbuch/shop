@@ -2105,6 +2105,37 @@
    },
 
 
+   {
+  "id": 151,
+  "name":"Wildmohnfrau",
+  "ean":"9783948743253",
+  "beschreibung": "Als Mias Mutter eines Morgens die Zeitung aufschlägt, stößt sie auf eine Kontaktanzeige, die das Leben ihrer kleinen Familie auf den Kopf stellen wird. Ohne zu zögern, beschließt sie, den Vater ihres Kindes zu verlassen und sich mit ihrer fünfjährigen Tochter auf den Weg ins Ungewisse zu machen. Was für die lebenshungrige Mutter nach Verheißung und Abenteuer klingt, bedeutet für das Kind vor allem eines: den schmerzhaften Verlust seiner Wurzeln. Immer wieder muss sich Mia an ganz neue Umgebungen anpassen und Vertrautes und Liebgewonnenes zurücklassen; doch neben vielen Ängsten und tiefer Einsamkeit erlebt das Mädchen auch immer wieder Momente flüchtigen Glücks.\n\nDie Autorin Sarah Knausenberger hat jedem Kapitel ihres Romans einen kurzen pflanzenkundlichen Exkurs vorangestellt. So verwebt sie allgemeine wissenschaftliche Erkenntnisse über das Wachstum von Pflanzen mit der individuellen Geschichte eines jungen Mädchens, das unter widrigen äußeren Bedingungen viel zu schnell erwachsen werden muss. Und dem es doch gelingt, dem Leben ein kleines bisschen Verlässlichkeit abzuringen und schließlich seine innere Heimat zu finden. Auf die botanischen Betrachtungen abgestimmt enthält das Buch 14 kleine, in Collagen eingebettete Tuschezeichnungen der Illustratorin Elke Ehninger sowie weitere ganzseitige Collagen, in denen sich die Stimmungen des Buches und dessen vielschichtige Thematik widerspiegeln.\n\n-Nominiert für den Korbinian Paul Maar-Preis 2023.",
+  "bilder": [
+    "images/Wildmohnfrau/Wildmohnfrau.webp"
+      ],
+  "kategorie": ["Für Erwachsene", "Deutschsprachige Bücher", "Elke Ehninger & Sarah Knausenberger", "Wichtige Fragen"],
+  "leseprobe_url": "https://www.book2look.de/book/TMZPgs7dNc"
+   },
+
+
+
+   {
+  "id": 152,
+  "name":"In den Taschen des schönen Herrn Tag",
+  "ean":"9783903422407",
+  "beschreibung": "Wenn der schöne Herr Tag müde wird, dann erwacht Frau Nacht und langsam wird es überall dunkel. Schnell steckt Herr Tag noch verschiedene Dinge ein, die von ihm übrig geblieben sind: einen Fisch, der seinen Heimweg nicht gefunden hat, den letzten Sonnenstrahl, der nicht mehr wärmte und noch allerlei andere Sachen. Und als er schließlich fertig ist, greift er in seine andere Tasche. Franz Suess hat mit seinem Bilderbuch In den Taschen des schönen Herrn Tag ein Einschlaf- und Trostbuch geschrieben, zum immer wieder (vor)Lesen. Ruhige, kontemplative Bilder lassen den vergangenen Tag noch einmal an uns vorüberziehen, lassen uns sehen, dass Dinge nie ganz verlorengehen. Und dass es immer wieder einen neuen Tag geben wird. ",
+   "bilder": [
+    "images/luftschacht/herrtag.webp",
+    "images/luftschacht/herrtag1.webp",
+    "images/luftschacht/herrtag2.webp",
+    "images/luftschacht/herrtag3.webp"
+      ],
+  "kategorie": [""ab3", "Deutschsprachige Bücher", "Franz Suess", "Wichtige Fragen"]
+   },
+
+
+  
+
   
   {
   "id": 100,
