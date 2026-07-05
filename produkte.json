@@ -567,7 +567,19 @@
   ],
   "kategorie":["kinder",  "ab4",   "Gefühle", "Wichtige Fragen", "Deutschsprachige Bücher", "Natalia Shaloshvili" ]
 },
- 
+
+
+  {
+  "id": 41,
+  "name": "Herr Unverwechselbar",
+  "ean": "9783311400097",
+  "beschreibung": "Er hat ein markantes Gesicht. Wer ihm auf der Straße begegnet, erinnert sich an ihn. Darum nennen die Leute ihn Herr Unverwechselbar. Herrn Unverwechselbar gefällt sein Gesicht. Zufrieden ist er, um nicht zu sagen selbstverliebt. Er mag es, sich zu fotografieren, fotografiert zu werden und Fotos von sich mit der Welt zu teilen. Bis er eines Tages vor dem Spiegel steht und sich nicht mehr erkennt. Verblasst sind die leuchtenden Augen, das Kinn verliert an Kontur. Je mehr Bilder er von sich macht, desto nichtssagender werden seine Züge. Um sich vor dem Verschwinden zu retten, begibt sich der Mann auf die Suche nach einem neuen Gesicht - und zahlt dafür einen hohen Preis. \n\n Ein Bilder- und Geschenkbuch für jedes Alter . Unverwechselbar im Ton, zauberhaft illustriert: das zweite gemeinsame Buch von Olga Tokarczuk und Joanna Concejo nach »Die verlorene Seele« . Eine Parabel über Selbstdarstellung, den Wunsch nach Anerkennung und die Gefahr, sein Gesicht und damit sich selbst zu verlieren.",
+    
+  "bilder": [
+    "images/Concejo/herrunverwechselbar.webp"
+  ],
+  "kategorie":[ "ab6", "Gefühle", "Wichtige Fragen", "Deutschsprachige Bücher", "Joanna Concejo" ]
+},
 
   {
   "id": 42,
@@ -1413,6 +1425,19 @@
    "leseprobe_url": "https://www.book2look.com/book/kIFnZfpEtg"
 
    },
+
+   {
+  "id": 101,
+  "name": "Die verlorene Seele",
+  "ean": "9783311400011",
+  "beschreibung": "Ein Mann arbeitet viel und sehr schnell. Da hat seine Seele Mühe, ihm zu folgen, und geht verloren. Ihm bleibt nichts anderes übrig, als auf den Rat seiner Ärztin zu hören: Er muss warten - warten, bis seine Seele wieder bei ihm ist, ihn eingeholt hat. Und das kann eine Weile dauern. Olga Tokarczuk erzählt eine berührende Geschichte über die Kraft der Geduld und der Erinnerung - und über unseren Umgang mit uns selbst. Wie mit einer zweiten Stimme wird der Text von Joanna Concejos geheimnisvollen Bildern untermalt - ein eigenes Universum, das Träume und Phantasien weckt. Die verlorene Seele erhielt u.a. den Bologna Ragazzi Award, den Preis des Internationalen Kuratoriums für das Jugendbuch (IBBY) und steht auf der Empfehlungsliste der Internationalen Jugendbibliothek (The White Ravens).",
+     
+  "bilder": [
+    "images/Concejo/verloreneseele.webp"
+  ],
+  "kategorie":[ "ab5", "Gefühle", "Wichtige Fragen", "Deutschsprachige Bücher", "Joanna Concejo" ]
+},
+
 
   
   {
