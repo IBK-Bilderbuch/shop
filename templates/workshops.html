@@ -21,13 +21,15 @@
     {% for workshop in workshops %}
       <div class="book">
         <div class="image-wrapper">
-          <a href="{{ url_for('workshop_detail', workshop_id=workshop.id, slug=workshop.slug) }}">
-            <img src="{{ url_for('static', filename=workshop.bild) }}" alt="{{ workshop.titel }}" loading="lazy">
+          <a href="{{ url_for('workshop_detail', workshop_ref=workshop.slug) }}">
+            {% if workshop.bild %}
+              <img src="{{ url_for('static', filename=workshop.bild) }}" alt="{{ workshop.titel }}" loading="lazy">
+            {% endif %}
           </a>
         </div>
         <h3>{{ workshop.titel }}</h3>
         <p>{{ "%.2f"|format(workshop.preis) }} €</p>
-        <a href="{{ url_for('workshop_detail', workshop_id=workshop.id, slug=workshop.slug) }}">
+        <a href="{{ url_for('workshop_detail', workshop_ref=workshop.slug) }}">
           <button>Details & Termine</button>
         </a>
       </div>
