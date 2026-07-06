@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workshops | I B K - Buchhandlung für Illustration und Bilderbücher</title>
+  <meta name="description" content="Entdecke unsere Illustrations-Workshops und buche direkt deinen Termin.">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='ficon.png') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+<main>
+  <h1 class="mtitel">UNSERE WORKSHOPS</h1>
+
+  <div class="book-list">
+    {% for workshop in workshops %}
+      <div class="book">
+        <div class="image-wrapper">
+          <a href="{{ url_for('workshop_detail', workshop_id=workshop.id, slug=workshop.slug) }}">
+            <img src="{{ url_for('static', filename=workshop.bild) }}" alt="{{ workshop.titel }}" loading="lazy">
+          </a>
+        </div>
+        <h3>{{ workshop.titel }}</h3>
+        <p>{{ "%.2f"|format(workshop.preis) }} €</p>
+        <a href="{{ url_for('workshop_detail', workshop_id=workshop.id, slug=workshop.slug) }}">
+          <button>Details & Termine</button>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</main>
+
+{% include 'footer.html' %}
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<style>
+  /* Nur für diese Seite: Workshop-Bilder rund statt quadratisch */
+  .image-wrapper img {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+</style>
+
+</body>
+</html>
