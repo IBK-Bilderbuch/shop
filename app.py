@@ -1727,6 +1727,12 @@ def admin_slot_deaktivieren(slot_id):
     slot.aktiv = False
     db.session.commit()
     return redirect(f"/admin/workshop/{slot.workshop.slug}")
+
+
+@app.route("/workshops")
+def workshops_overview():
+    workshops = Workshop.query.filter_by(aktiv=True).order_by(Workshop.erstellt_am.desc()).all()
+    return render_template("workshops.html", workshops=workshops)
 # ============================
 # KONTAKT
 # ============================
