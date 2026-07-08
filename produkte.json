@@ -2169,7 +2169,18 @@
    },
 
 
-  
+   {
+  "id":153,
+  "name":"Brüder",
+  "ean":"9783910549081",
+  "beschreibung": "Bruder sein… ein Leben lang\n\n Sie sind keine Freunde, auch keine Spielgefährten, sie sind nicht Nachbarsjungen und keine Cousins. Arùn und Rey sind Brüder und so unterschiedlich, dass es immer wieder Leute gibt, die das nicht glauben wollen. Aber selbst wenn der eine klettert, während der andere zuschaut, und der eine tanzt, während der andere zeichnet, wachen sie immer übereinander. Ist es das, was es bedeutet, Brüder zu sein?\n\nEin Buch, das wie kein anderes ein Gefühl von Zugehörigkeit, Vertrauen und Halt vermittelt. Besonders auch für Kinder, die nicht (immer) mit ihren Geschwistern zusammenleben können.\n\nEin eindringliches und leicht zugängliches Bilderbuch über ein universelles Thema, das Kinder, Brüder, Schwestern und Familien gleichermaßen in den Bann zieht, denn die Beziehung zwischen Geschwistern ist eine der tiefsten im menschlichen Leben.",
+     
+
+"bilder": [
+    "images/brueder/brueder.webp"
+],
+  "kategorie": ["Deutschsprachige Bücher", "Hua Ling Xu", "Familie und Freunde", "ab5"]
+   },
 
   
   {
