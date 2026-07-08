@@ -2191,7 +2191,7 @@
   "bilder": [
     "images/kunst/einmuseumnurfuermich.webp"
   ],
-  "kategorie":[ ]
+  "kategorie":[ "Künstlerbedarf" ]
  
 },
 
@@ -2206,7 +2206,7 @@
   ],
   "kategorie":[ "Künstlerbedarf" ]
  
-},
+}
 
   
 ]
