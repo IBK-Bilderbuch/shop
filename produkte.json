@@ -453,9 +453,9 @@
   "id": 33,
   "name": "Der Vogel in mir fliegt, wohin er will",
   "ean": "9783895654640",
- 
-  "beschreibung": "Berta wächst zu Beginn des 20. Jahrhunderts im ländlichen Norden Schwedens auf. Alles in ihr sträubt sich gegen ein vorherbestimmtes Leben auf dem Bauernhof. Frei will sie sein wie ein Vogel und studieren, was sie liebt: die Malerei. Doch ihr Vater ist dagegen und ihre Mutter, die sie versteht und unterstützt, stirbt. Berta fühlt tief in sich eine starke Kraft, die sie handeln lässt. ‚Der Vogel in mir fliegt, wohin er will‘ ist ein Buch über Trauer, Sehnsucht, Kompromisslosigkeit und die Kraft der Fantasie, die alles verändern kann – basierend auf dem Leben der schwedischen Malerin Berta Hansson.",
-  "bilder": [
+   "beschreibung": "Berta wächst zu Beginn des 20. Jahrhunderts im ländlichen Norden Schwedens auf. Alles in ihr sträubt sich gegen ein vorherbestimmtes Leben auf dem Bauernhof. Frei will sie sein wie ein Vogel und studieren, was sie liebt: die Malerei. Doch ihr Vater ist dagegen und ihre Mutter, die sie versteht und unterstützt, stirbt. Berta fühlt tief in sich eine starke Kraft, die sie handeln lässt. ‚Der Vogel in mir fliegt, wohin er will‘ ist ein Buch über Trauer, Sehnsucht, Kompromisslosigkeit und die Kraft der Fantasie, die alles verändern kann – basierend auf dem Leben der schwedischen Malerin Berta Hansson.",
+
+"bilder": [
     "images/dervogelinmir/dervogelinmir.webp",
     "images/dervogelinmir/dervogelinmir1.webp",
     "images/dervogelinmir/dervogelinmir2.webp",
@@ -468,6 +468,16 @@
   "kategorie": ["kinder",  "ab10",   "Kunst und Künstlerdasein", "Deutschsprachige Bücher", "Sara Lundberg" ],
   "leseprobe_url": "https://www.book2look.com//book/WjLI79HvFc&euid=0&ruid=0&refererpath=www.moritzverlag.de&isbnformat=hardcover&bookisbn=9783895654640&dct=0&biblettype=double&clickedby=lk&bibloc=0"
 },
+  {
+  "id": 34,
+  "name": "The Summer of Diving",
+  "ean": "9781644211342",
+   "beschreibung": "Zoe’s dad isn’t home. She still sees him in photographs, laughing and playing tennis, but for now she can only visit him in a building where everyone looks sad and the walls are an ugly pink color. Some days Zoe’s dad is too sad to see her, but she goes to the hospital anyway. While waiting she meets Sabina who invites her to swim across the world. Zoe’s not sure it’s possible, but Sabina tells her, “A girl can do everything she wants.” Even though Sabina sometimes dives deep into her own thoughts, the two of them swim around the world many times that summer, until eventually Zoe’s dad is ready to come home.\n\nThe Summer of Diving is a book full of imagination and hope with a tender child’s-eye understanding of the world. Stridsberg’s story and Lundberg’s lush and colorful paintings reflect and validate a child’s feelings of loss and longing for closeness when a parent’s joy for living temporarily fades.",
+  "bilder": [
+    "images/dervogelinmir/thesummerofdiving.webp",
+  ],
+  "kategorie": ["kinder",  "ab5",   "Familie und Freunde", "Englischsprachige Bücher", "Sara Lundberg" ]
+  },
 
  
 
