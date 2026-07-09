@@ -2250,7 +2250,7 @@
    {
   "id": 501,
   "name": "Papier Aquarellpostkarten",
-  "preis": 12.00,
+  "preis": 11.99,
   "ean":"4011367105952",
   "beschreibung": "Das Set enthält 30 Postkarten aus hochwertigem 230 g/m² 105 x 148 mm Aquarellpapier mit abgerundeten Ecken und einem aufgedruckten Adressfeld auf der Rückseite.Verpackt sind sie in einer stabilen Metallbox, die die Karten unterwegs zuverlässig schützt und sich hervorragend für Reisen oder das Arbeiten im Freien eignet.\n\nDas sanft strukturierte, naturweiße Papier bringt Farben besonders lebendig zur Geltung und bietet eine angenehme Oberfläche für Pinsel, Fineliner und andere Zeichen- und Malwerkzeuge. Es eignet sich sowohl für trockene als auch für nasse Maltechniken.\n\nDie dekorative Metallbox erscheint als limitierte Edition und ist nur erhältlich, solange der Vorrat reicht.",
     "bilder": [
@@ -2262,7 +2262,7 @@
   {
   "id": 502,
   "name": " Papier Mixed Media Universalblock, 36 x 48 cm, 310 g/m²",
-  "preis": 22.00,
+  "preis": 21.99,
   "ean":"4011367090968",
   "beschreibung": "Der Universalblock von Hahnemühle ist ein vielseitiges Künstlerpapier für unterschiedliche Maltechniken. Das naturweiße, feinkörnige Papier mit einem Flächengewicht von 310 g/m² eignet sich hervorragend für Aquarell, Gouache und Acrylfarben.Dank der Leimung in der Papiermasse nimmt das Papier Farben gleichmäßig auf und bleibt auch bei feuchten Techniken formstabil. Die vierseitige Verleimung verhindert ein starkes Wellen des Papiers während des Malens und ermöglicht ein sauberes Arbeiten. Nach dem Trocknen lassen sich die fertigen Werke einfach vom Block lösen. Der Block enthält 25 Blatt. Das säurefreie, lichtbeständige Papier überzeugt zudem durch seine hohe Alterungsbeständigkeit und eignet sich für langlebige Kunstwerke.",
   "bilder": [
@@ -2270,7 +2270,86 @@
   ],
   "kategorie":[ "Künstlerbedarf" ]
  
+},
+
+{
+  "id": 503,
+  "name": "da Vinci Pinselset CASANEO für Aquarell, 3er Set",
+  "preis": 23.99,
+  "ean":"4017505980788",
+  "beschreibung": "CASANEO Aquarellpinsel Set - 5598 No. 4 + 8, 5898 No. 8\nFarbentyp: Aquarell\nMalgrund: Papier\nAnwendung: Verwaschen\nHaare/Fasern: Synthetikfasern\nZwinge: sog. Silberzwinge\nStiel: Holz \nSubbrand: CASANEO",
+  
+  
+  
+  "bilder": [
+    "images/kuenstlerbedarf/pinselset.webp"
+  ],
+  "kategorie":[ "Künstlerbedarf" ]
+ 
+},
+
+
+  {
+  "id": 504,
+  "name": "Schmicke HORADAM® Aquarell Metallkasten, Reisekasten Jan Wellem, 6 x 5ml Retro II",
+  "preis": 46.99,
+  "ean":"4012380266064",
+  "beschreibung": "Reisekasten Jan Wellem\n\nMetallkasten in Retro-Optik mit 6 Farbtönen in 5-ml-Tuben. Mit historischem Jan-Wellem-Druck im Innendeckel sowie einer historischen Eule auf dem Außendeckel. Inklusive aller 3 Sondertöne: Solferino, Gummiguttae und Casslerbraun.\n\nHistorischer Hintergrund: Jan Wellem (Johann Wilhelm II. von der Pfalz, 16581716) machte Düsseldorf zu einem kulturellen Zentrum und war für seine Förderung von Kunst und Kultur bekannt. Vermutlich aus diesem Grund stand der kunstaffine Kurfürst Pate für den HORADAM Aquarell Reisekasten der 1930er Jahre. Nach historischem Vorbild neu aufgelegt, wird dieses Retroset durch die beiden Sonderaufdrucke zu einem echten Sammlerschatz.\n\nFeatures\n\nHORADAM Aquarell Retroset Jan Wellem mit 6 5 ml Tuben (Art.-Nr. 74 673 097)\nMetallkasten in Retro-Optik mit historischem Eulenaufdruck (außen) und Jan-Wellem-Aufdruck (innen)\nEnthält 6 5 ml Tuben HORADAM Aquarellfarben\nInklusive der 3 Sondertöne: Solferino, Gummiguttae, Casslerbraun\nFür harmonische und brillante Farbmischungen\nInklusive Begleitschreiben der damaligen Geschäftsleitung und Retro-Aquarelleinleger\n\nSchmincke stellt seit 1881 beste, feinste Künstlerfarben Made in Germany her. Das Sortiment beinhaltet Aquarellfarben, Acrylfarben, Ölfarben, Pastelle, Gouachefarben, Airbrushfarben und vieles mehr.",
+  
+  "bilder": [
+    "images/kuenstlerbedarf/hordamaquarel6.webp"
+  ],
+  "kategorie":[ "Künstlerbedarf" ]
+ 
+},
+   {
+  "id": 505,
+  "name": "Schmincke Akademie Aquarell, Metallkasten, 24 x 1/2 Näpfchen",
+  "preis": 73.99,
+  "ean":"4012380266064",
+  "beschreibung": "Stabiler Metallkasten, Vollsortiment mit 24 halben Näpfchen feiner Künstler-Aquarellfarbe (L x B x H 22,4 x 7,2 x 2,3 cm) Ein idealer Einstiegskasten in die Aquarellmalerei, die vielen brillanten Farbtöne eignen sich perfekt zum Mischen weiterer Farben.\n\nEnthaltene Farbtöne: 111 Deckweiß, 222 Hellgelb zitron, 224 Kadmiumgelbton, 225 Indischgelb,226 Neapelgelb, 330 Orange, 332 Kadmiumrotton, 333 Karmin, 336 Magenta, 440 Violett, 442 Indigo, 443 Ultramarin, 445 Preußischblau, 448 Cyan, 551 Brillantgrün, 552 Maigrün, 553 Permanentgrün, 554 Oliv gelbgrün, 660 Lichter Ocker, 664 Umbra gebrannt, 666 Englischrot, 665 Sepia, 770 Paynesgrau, 782 Schwarz",
+
+  "bilder": [
+    "images/kuenstlerbedarf/schminkeaquarell24.webp",
+    "images/kuenstlerbedarf/schminkeaquarell24_1.webp"
+  ],
+  "kategorie":[ "Künstlerbedarf" ]
+ 
+},
+
+  {
+  "id": 506,
+  "name": "Hahnemühle Bookmark Painting Set, 1 Block, 3 Aquarellfarben Schmincke, 1 Aquarellpinsel da Vinci",
+  "preis": 22.99,
+  "ean":"4011367121891",
+  "beschreibung": "Das Bookmark Painting Set kombiniert den Hahnemühle Lesezeichenblock, drei Schmincke Horadam Aquarellfarben (Lemon yellow, Cadmium red light und Helio Cerulean) und einen Da Vinci Aquarellpinsel. Es eignet sich perfekt für Anfänger.\nInhalt: 1 x Hahnemühle Lesezeichenblock, 3 x Aquarellfarben von Schmincke, 1 x Aquarellpinsel von da Vinci."
+    
+  
+  "bilder": [
+    "images/kuenstlerbedarf/bookmarkpaintingset.webp"
+  ],
+  "kategorie":[ "Künstlerbedarf" ]
+ 
+},
+
+    {
+  "id": 507,
+  "name": "Creativ Company Kreativ Mix Aquarell, sortierte Farben",
+  "preis": 19.99,
+  "ean":"5712854765688",
+  "beschreibung": "Mit dieser Creativity in a Box können Sie einzigartige und farbenfrohe Blumendesigns mit Aquarellfarben, Ölpastellfarben und Markern kreieren. Es enthält Materialien für zehn Kunstwerke und alle benötigten Anleitungen. Holen Sie sich einen Vorgeschmack auf den Frühling und gestalten Sie florale Aquarelle für Ihre Wände. Öffnen Sie einfach unsere Creativity in Box und entdecken Sie alle Farben. Beginnen Sie mit Aquarellfarben und experimentieren Sie mit der Transparenz der Farben, um schöne, fließende Übergänge zu schaffen. Als Nächstes fügen Sie mit Ölpastellfarben Tiefe und Textur hinzu, und zum Schluss betonen Sie die Details mit Markern für den perfekten letzten Schliff. Sie können schwarzes und weißes Aquarellpapier für Ihre Kreationen verwenden. Probieren Sie beide aus und sehen Sie, wie die verschiedenen Farben unterschiedlich wirken.",
+
+  
+  "bilder": [
+    "images/kuenstlerbedarf/aquarellcreativset.webp"
+  ],
+  "kategorie":[ "Künstlerbedarf" ]
+ 
 }
+
+
+  
+
 
 
 
