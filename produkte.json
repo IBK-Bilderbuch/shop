@@ -1991,7 +1991,7 @@
     "images/kunst/einmuseumnurfuermich3.webp",
     "images/kunst/einmuseumnurfuermich4.webp"
   ],   
-  "kategorie": ["Kunst und Künstlerdasein", "Englischsprachige Bücher", "" ]
+  "kategorie": ["Kunst und Künstlerdasein", "Deutschsprachige Bücher", "Emma Lewis", "ab4"]
 },
  {
   "id":141,
@@ -2184,7 +2184,33 @@
   "kategorie": ["Deutschsprachige Bücher", "Hua Ling Xu", "Familie und Freunde", "ab5"]
    },
 
-  
+   {
+  "id":154,
+  "name":"Das Nachtkind",
+  "ean":"9783702659905",
+  "beschreibung": "Eines Abends besucht das Nachtkind die Katze. Die freut sich sehr, denn sie hat Angst allein in der Dunkelheit. So wird der Besuch eine lieb gewonnene Gewohnheit, bis das Nachtkind entdeckt wird. Woher kommt es, und was will es hier? Erschrocken läuft es davon. Trotzdem finden die beiden wieder zueinander, gemeinsam ist es einfach schöner.\n\n Über den Autor \n Armin Kaster las als Junge Weltliteratur, die er nicht verstand, und wünschte sich dennoch Schriftsteller zu werden. Nach exotischen Ausflügen in den Groß- und Außenhandel sowie die Wirtschaftswissenschaft, bog er ab zur Pädagogik und danach zur Kunst. Jetzt arbeitet er als freier Autor und Künstler und lebt mit seiner Familie in Düsseldorf. Seit Jahren führt er literarisch-künstlerische Projekte mit Kindern und Jugendlichen im In- und Ausland durch. Dabei begeistern ihn vor allem die originellen Lebenswelten junger Menschen, die er am liebsten in Geschichten verwandelt.",
+     
+"bilder": [
+    "images/freundschaft/nachtkind.webp"
+],
+  "kategorie": ["Deutschsprachige Bücher",  "Familie und Freunde", "ab4", "Sabine Rufener", "Armin Kaster" ],
+  "leseprobe_pdf": "nachtkind.pdf"
+
+   },
+
+  {
+  "id":15,
+  "name":"Bleib noch eine Weile",
+  "ean":"9783702241483",
+  "beschreibung": "Wie leise muss es sein, wenn die Stille im Autobus mit in die Stadt fährt? Wie verabschiedet man sich von einem alten Haus – auch wenn es nur für ein paar Stunden ist? Und wie gesteht man als kleine Elfe einem Riesen, dass man ihn liebt?Diese 77 Kurz- und Kürzestgeschichten rund um einen kleinen und einen großen Riesen, um einen Kater, eine Elfe und einigen liebenswerten Figuren mehr zeigen, dass im Kleinen oft ganz Großes liegt und dass Großes zuweilen eigentlich ganz klein ist. Geschichten, die zum Träumen einladen, zum Genau-Hinschauen ebenso wie zum ab und zu Nicht-so-wichtig-Nehmen, die erinnern, dass Nachdenken und Grübeln gleich bedeutend sind wie Lachen und Schmunzeln. Wieder einmal braucht der bekannte Autor Heinz Janisch, Meister der Reduktion und Verknappung, nur wenige Worte, um ein ganzes Universum zum Klingen zu bringen. Mit ihren fein gepinselten, analogen Bildern fängt Illustratorin Stefanie Pichler all diese besonderen Erzählungen ein, lenkt den Blick auf Details oder gibt Anregungen zum eigenständigen Weiterfantasieren und -fabulieren.",
+
+  "bilder": [
+    "images/freundschaft/bleibnocheineweile.webp"
+  ],
+  "kategorie": ["Deutschsprachige Bücher",  "Familie und Freunde", "Stefanie Pichler", "Heinz Janisch", "ab5"],
+  "leseprobe_pdf": "bleibnocheineweile.pdf"
+   },
+
   {
   "id": 1000,
   "name": "Testbuch",
@@ -2196,6 +2222,29 @@
   "kategorie":[ "Künstlerbedarf" ]
  
 },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
     
    {
