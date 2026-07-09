@@ -2257,7 +2257,7 @@
     "bilder": [
     "images/kuenstlerbedarf/postkarteninmetalbox.webp"
   ],
-  "kategorie":[ "Künstlerbedarf" ]
+  "kategorie":[ "Künstlerbedarf", "Künstlerbedarf Aquarell" ]
  
 },
   {
@@ -2269,7 +2269,7 @@
   "bilder": [
     "images/kuenstlerbedarf/mixedmediapapier.webp"
   ],
-  "kategorie":[ "Künstlerbedarf" ]
+  "kategorie":[ "Künstlerbedarf", "Künstlerbedarf Aquarell" ]
  
 },
 
@@ -2285,7 +2285,7 @@
   "bilder": [
     "images/kuenstlerbedarf/pinselset.webp"
   ],
-  "kategorie":[ "Künstlerbedarf" ]
+  "kategorie":[ "Künstlerbedarf" , "Künstlerbedarf Aquarell"]
  
 },
 
@@ -2300,7 +2300,7 @@
   "bilder": [
     "images/kuenstlerbedarf/hordamaquarel6.webp"
   ],
-  "kategorie":[ "Künstlerbedarf" ]
+  "kategorie":[ "Künstlerbedarf", "Künstlerbedarf Aquarell" ]
  
 },
    {
@@ -2314,7 +2314,7 @@
     "images/kuenstlerbedarf/schminkeaquarell24.webp",
     "images/kuenstlerbedarf/schminkeaquarell24_1.webp"
   ],
-  "kategorie":[ "Künstlerbedarf" ]
+  "kategorie":[ "Künstlerbedarf", "Künstlerbedarf Aquarell" ]
  
 },
 
@@ -2327,7 +2327,7 @@
   "bilder": [
     "images/kuenstlerbedarf/bookmarkpaintingset.webp"
   ],
-  "kategorie":[ "Künstlerbedarf" ]
+  "kategorie":[ "Künstlerbedarf", "Künstlerbedarf Aquarell" ]
  
 },
 
@@ -2342,11 +2342,116 @@
   "bilder": [
     "images/kuenstlerbedarf/aquarellcreativset.webp"
   ],
-  "kategorie":[ "Künstlerbedarf" ]
+  "kategorie":[ "Künstlerbedarf", "Künstlerbedarf Aquarell" ]
+
+    },
+
+
+
+
+  
+
+
+
+
+
+
+
+      
+       {
+  "id": 511,
+  "name": "ACRYL Malpinsel 4er Set, da Vinci",
+  "preis": 24.49,
+  "ean":"4017505980115",
+  "beschreibung": "Farbentyp: Acryl, Textilfarben\nMalgrund: Karton, Stoff\nAnwendung: Bodypainting, Grundieren, Restaurieren, Textilmalerei\nHaare/Fasern: Synthetikfasern\nZwinge: sog. Silberzwinge\nStiel: Holz",
+         
+  "bilder": [
+    "images/kuenstlerbedarf/acrylpinselset.webp"
+  ],
+  "kategorie":[ "Künstlerbedarf", "Künstlerbedarf Acryl"]
+ 
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+    {
+  "id": 521,
+  "name": "Gouache-Malpinsel, 3er Set, da Vinci ",
+  "preis": 21.99,
+  "ean":"4017505219802",
+  "beschreibung": "COLINEO Gouache-Malpinselset - 5522 No. 2 + 6, 5822 No. 8\n\nFarbentyp: Gouache\nMalgrund: Leinwand, Papier\nAnwendung: Gouachemalerei\nHaare/Fasern: Synthetikfasern\nZwinge: sog. Silberzwinge\nStiel: Holz\nStiellänge: kurz",
+  
+  "bilder": [
+    "images/kuenstlerbedarf/gouachepinsel.webp"
+  ],
+  "kategorie":[ "Künstlerbedarf",  "Künstlerbedarf Gouache" ]
+ 
+},
+
+
+  
+    {
+  "id": 522,
+  "name": "Creativ Company Kreativ Set Gouache",
+  "preis": 22.99,
+  "ean":"5712854787154",
+  "beschreibung": "Mit unserer Creativity in a Box können Sie schöne, grafische Bilder mit fantastischer Gouachefarbe erstellen. Enthält Materialien für vier Bilder und alle benötigten Anleitungen. Schon immer gedacht, dass Kunst nur für Talentierte ist? Nichts könnte unwahrer sein und das beweisen wir mit diesem Kit. Erhalten Sie eine Einführung in die fantastische Welt der Gouache-Farbe, die ein bisschen wie eine All-in-One-Farbe ist. Es hat die Tiefe von Ölfarbe, die Flexibilität von Acryl und die Leichtigkeit von Wasserfarbe. Sie lernen, wie Sie Farben mit Schwarz und Weiß ändern und wunderschöne Verläufe und grafische Bilder erstellen, die so professionell aussehen, dass sie eingerahmt werden können.",
+
+  
+  "bilder": [
+    "images/kuenstlerbedarf/gouacheset4.webp"
+  ],
+  "kategorie":[ "Künstlerbedarf",  "Künstlerbedarf Gouache" ]
+ 
+},
+
+
+   {
+  "id": 523,
+  "name": "Creativ Company Kreativ Set Gouache",
+  "preis": 29.99,
+  "ean":"5712854787185",
+  "beschreibung": "Mit unserer Creativity in a Box lernen Sie den Umgang mit der beliebten Gouachefarbe, die bei vielen Künstlern sehr beliebt ist. Das Set enthält Materialien zum Anfertigen von sechs Bildern und alle benötigten Anleitungen. Genießen Sie jetzt unsere spannende Einführung in die Gouache eine Art von Farbe, die das Beste aus Acryl-, Wasser- und Ölfarben vereint. Sie erhalten drei Primärfarben: Rot, Gelb und Blau sowie Schwarz und Weiß bereit zum Mixen und Experimentieren. Im Verlauf des Kurses lernen Sie auch wichtige Techniken kennen, die Ihnen die unglaublichen Möglichkeiten der Farbe näherbringen. Und das Ergebnis? Sechs Bilder mit den schönsten Farbkombinationen.",
+
+  
+  "bilder": [
+    "images/kuenstlerbedarf/gouacheset6.webp"
+  ],
+  "kategorie":[ "Künstlerbedarf",  "Künstlerbedarf Gouache" ]
+ 
+},
+
+   {
+  "id": 524,
+  "name": "Lukas Studio Gouache Tempera Farben 6 x 20ml",
+  "preis": 11.99,
+  "ean":"4012991000446",
+  "beschreibung": "Farbe: brillant-grünblau, kadmiumgelb hell (imit.), mittelgrün, magenta, elfenbeinschwarz, deckweiß; Inhalt: 6 x 20 ml; 6 Farben; Tube; pastös.",
+  
+  "bilder": [
+    "images/kuenstlerbedarf/lucasgouache.webp",
+    "images/kuenstlerbedarf/lucasgouache1.webp"
+
+  ],
+  "kategorie":[ "Künstlerbedarf",  "Künstlerbedarf Gouache" ]
  
 }
 
 
+  
+   
   
 
 
