@@ -2447,7 +2447,23 @@
   ],
   "kategorie":[ "Künstlerbedarf",  "Künstlerbedarf Gouache" ]
  
+},
+
+
+   {
+  "id": 525,
+  "name": "Schmincke Akademie Gouache Kartonset, 12 x 20 ml",
+  "preis": 37.99,
+  "ean":"4012380266729",
+  "beschreibung": "AKADEMIE Gouache Kartonset mit 12 x 20 ml Tuben\n\nDieses Set bietet ein umfangreiches Grundsortiment für die Gouachemalerei. Die Farben überzeugen durch samtig-deckende, farbstarke Farbtöne und eine coloristisch sinnvolle Zusammenstellung, die sich ideal auch zum Mischen eignet. Geeignet zum Malen, Illustrieren sowie für farbige Untermalungen.\n\nFeatures:\n\nKartonset mit 12 Tuben à 20 ml\nUmfangreiches Grundsortiment für die Gouachemalerei\nSamtig-deckende, farbstarke Farbtöne\nColoristisch sinnvoll zusammengestellt, ideal zum Mischen\nGeeignet zum Malen, Illustrieren und für farbige Untermalungen\nSchmincke stellt seit 1881 beste, feinste Künstlerfarben Made in Germany her. Das Sortiment beinhaltet Aquarellfarben, Acrylfarben, Ölfarben, Pastelle, Gouachefarben, Airbrushfarben und vieles mehr.",
+     
+  "bilder": [
+    "images/kuenstlerbedarf/akademiegouache.webp"
+  ],
+  "kategorie":[ "Künstlerbedarf",  "Künstlerbedarf Gouache" ]
+ 
 }
+  
 
 
   
