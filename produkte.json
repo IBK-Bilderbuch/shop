@@ -2199,7 +2199,7 @@
    },
 
   {
-  "id":15,
+  "id":155,
   "name":"Bleib noch eine Weile",
   "ean":"9783702241483",
   "beschreibung": "Wie leise muss es sein, wenn die Stille im Autobus mit in die Stadt fährt? Wie verabschiedet man sich von einem alten Haus – auch wenn es nur für ein paar Stunden ist? Und wie gesteht man als kleine Elfe einem Riesen, dass man ihn liebt?Diese 77 Kurz- und Kürzestgeschichten rund um einen kleinen und einen großen Riesen, um einen Kater, eine Elfe und einigen liebenswerten Figuren mehr zeigen, dass im Kleinen oft ganz Großes liegt und dass Großes zuweilen eigentlich ganz klein ist. Geschichten, die zum Träumen einladen, zum Genau-Hinschauen ebenso wie zum ab und zu Nicht-so-wichtig-Nehmen, die erinnern, dass Nachdenken und Grübeln gleich bedeutend sind wie Lachen und Schmunzeln. Wieder einmal braucht der bekannte Autor Heinz Janisch, Meister der Reduktion und Verknappung, nur wenige Worte, um ein ganzes Universum zum Klingen zu bringen. Mit ihren fein gepinselten, analogen Bildern fängt Illustratorin Stefanie Pichler all diese besonderen Erzählungen ein, lenkt den Blick auf Details oder gibt Anregungen zum eigenständigen Weiterfantasieren und -fabulieren.",
@@ -2211,6 +2211,45 @@
   "leseprobe_pdf": "bleibnocheineweile.pdf"
    },
 
+
+   {
+  "id":156,
+  "name":"Was ich dir noch sagen möchte",
+  "ean":"9783964282484",
+  "beschreibung": "Es ist schwer, über den Tod zu sprechen, vor allem, wenn er einen geliebten Menschen mit sich nimmt. Ein kleiner Fuchs sitzt vor einem Blatt Papier und beschließt, zur Feder zu greifen, um seiner verstorbenen Großmutter zu schreiben. Diejenige, mit der er gerne die Natur betrachtete, Entdeckungen machte und große Abenteuer erlebte. Während er überall ihre Anwesenheit sucht, erweckt das Schreiben glückliche Erinnerungen, die seinen Schmerz und seine Trauer lindern können.",
+
+  "bilder": [
+    "images/lebensende/wasichdirnochsagenmoechte.webp"
+  ],
+  "kategorie": ["Gedanken zum Lebensende", "Deutschsprachige Bücher",  "Chiaki Okada",  "ab3"],
+  "leseprobe_url": "https://www.book2look.com/book/crzcMpfAEp"
+   },
+
+   {
+  "id":157,
+  "name":"Der Baum der Erinnerung",
+  "ean":"9783845801841",
+  "beschreibung": "Das Bilderbuch vermittelt einfühlsam Kindern ab 4 Jahren, aber auch Erwachsenen, dass der Tod eines geliebten Menschen keinen endgültigen Abschied bedeutet. Die zeitlose Botschaft wird durch die Perspektive von Waldtieren erzählt, deren Freund gestorben ist. Die ruhigen Illustrationen von Britta Teckentrup unterstreichen die poetische Geschichte.\n\nKann man Erinnerungen bewahren?\nDieses Buch gibt ganz behutsam eine Antwort. Als es für den Fuchs Zeit wird, Abschied zu nehmen, versammeln sich die Waldtiere, um sich an gemeinsame Erlebnisse zu erinnern - und zu trauern. Doch dann bemerken sie ein zartes Pflänzchen, das aus dem Boden sprießt und durch ihre Erinnerungen schließlich zu einem prächtigen Baum heranwächst: im Gedenken an ihren treuen Freund.",
+
+  "bilder": [
+    "images/lebensende/derbaumdererinnerung.webp"
+  ],
+  "kategorie": ["Gedanken zum Lebensende", "Deutschsprachige Bücher",  "Britta Teckentrup",  "ab4", ],
+  "leseprobe_url": "https://www.bic-media.com/widget/?isbn=9783845801841&iconType=rh5&iconTypeSecondary=rh5&layoutPopUp=doublepage&flipBook=yes&showExtraShopButton=no&buyButton=no"
+   },
+
+
+
+
+
+
+
+
+
+
+
+
+  
   {
   "id": 1000,
   "name": "Testbuch",
@@ -2366,11 +2405,30 @@
   "beschreibung": "Farbentyp: Acryl, Textilfarben\nMalgrund: Karton, Stoff\nAnwendung: Bodypainting, Grundieren, Restaurieren, Textilmalerei\nHaare/Fasern: Synthetikfasern\nZwinge: sog. Silberzwinge\nStiel: Holz",
          
   "bilder": [
-    "images/kuenstlerbedarf/acrylinselset.webp"
+    "images/kuenstlerbedarf/acrylpinselset.webp"
   ],
   "kategorie":[ "Künstlerbedarf", "Künstlerbedarf Acryl"]
  
 },
+
+  {
+  "id": 512,
+  "name": "Schmincke PRIMAcryl Professional Malkästen",
+  "preis": 53.49,
+  "ean":"4012380258960",
+  "beschreibung": "PRIMAcryl® Professional bietet höchste Farbqualität mit 90 Farbtönen und einem innovativen, mikroplastikfreien Bindemittel. 89 Farben sind frei von tierischen Inhaltsstoffen, viele Farbtöne wurden erweitert und optimiert. Alle Kadmiumfarben verfügen über kadmiumfreie, farbidentische Alternativen.\n\nBesonders hervorzuheben ist Titanweiß, das durch maximale Pigmentierung, Deckkraft und Ergiebigkeit überzeugt. PRIMAcryl® bietet ausschließlich 4- und 5-Sterne-Lichtechtheit sowie eine nahezu farbstabile Trocknung ohne Farbtonverschiebung. Tiegel und Flaschen bestehen aus recyceltem Kunststoff und leisten damit einen nachhaltigen Beitrag.\n\nDieses Set enthält 8 Tuben à 35 ml feinste Künstler-Acrylfarbe in den Farbtönen: 101 Titanweiß, 205 Zitronengelb, 326 Chinacridon Magenta, 343 Kadmiumrotton hell, 433 Ultramarinblau, 563 Phthalogrün bläulich, 679 Siena gebrannt, 797 Carbon Schwarz.",
+    
+  "bilder": [
+    "images/kuenstlerbedarf/schminckeacryl.webp",
+    "images/kuenstlerbedarf/schminckeacryl1.webp",
+    "images/kuenstlerbedarf/schminckeacryl2.webp"
+  ],
+  "kategorie":[ "Künstlerbedarf", "Künstlerbedarf Acryl"]
+ 
+},
+
+  
+
 
 
 
@@ -2394,7 +2452,7 @@
   "beschreibung": "COLINEO Gouache-Malpinselset - 5522 No. 2 + 6, 5822 No. 8\n\nFarbentyp: Gouache\nMalgrund: Leinwand, Papier\nAnwendung: Gouachemalerei\nHaare/Fasern: Synthetikfasern\nZwinge: sog. Silberzwinge\nStiel: Holz\nStiellänge: kurz",
   
   "bilder": [
-    "images/kuenstlerbedarf/gouacheinsel.webp"
+    "images/kuenstlerbedarf/gouachepinsel.webp"
   ],
   "kategorie":[ "Künstlerbedarf",  "Künstlerbedarf Gouache" ]
  
