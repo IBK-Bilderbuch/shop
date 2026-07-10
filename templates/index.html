@@ -227,6 +227,12 @@
       required
     />
 
+    <!-- 🔒 Honeypot-Feld gegen Spam-Bots — für Menschen unsichtbar, NICHT ausfüllen -->
+    <div style="position: absolute; left: -9999px; top: -9999px;" aria-hidden="true">
+      <label for="website">Website (bitte leer lassen)</label>
+      <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+    </div>
+
     <br>
 
     <label for="consent" class="dsgvo-text">
