@@ -1854,6 +1854,12 @@ def admin_newsletter():
 def newsletter():
     email = request.form.get("email")
 
+    # Honeypot-Check — Bots füllen dieses Feld aus, Menschen sehen es nicht
+    if request.form.get("website"):
+        logger.info(f"Newsletter Honeypot ausgelöst: IP={get_remote_address()}")
+        flash("Bitte bestätige deine Anmeldung per E-Mail.", "success")
+        return redirect("/newsletterbesteatigung")
+
     if not email:
         flash("Bitte gib eine gültige E-Mail-Adresse ein.", "error")
         return redirect("/")
