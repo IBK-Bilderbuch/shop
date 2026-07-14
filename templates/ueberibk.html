@@ -11,6 +11,217 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <script src="{{ url_for('static', filename='script.js') }}" defer></script>
   </head>
+<header>
+  <div>
+    <a href="{{ url_for('index') }}">
+      <img class="logo" src="{{ url_for('static', filename='ibk.png') }}" alt="Logo">
+    </a>
+  </div>
+
+  <nav id="navbar">
+
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <ul class="nav-links" id="nav-links">
+   <li class="close-btn" onclick="toggleMenu()">✕</li>
+
+   <li>
+      <a href="{{ url_for('ueberibk') }}">Über I B K </a>
+   </li>
+
+   <li class="dropdown">
+
+    <a href="#" class="dropdown-toggle">
+      Bücher <span>&#9662;</span>
+    </a>
+
+    <ul class="dropdown-menu">
+
+      <li class="dropdown">
+
+        <a href="#" class="dropdown-toggle">
+          nach Themen <span>&#9662;</span>
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a href="{{ url_for('kategorie', kategorietype='Themen', name='Kinder-und-Gefühle') }}">Gefühle</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Themen', name='Mut-oder-Angst?!') }}">Mut und Angst</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Themen', name='Dazugehören-und-Anderssein') }}">Dazugehören und Anderssein</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Themen', name='Kunst-und-Künstlerdasein') }}">Kunst und Künstlerdasein</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Themen', name='Zahlen-und-Alphabet') }}">Zahlen und Alphabet</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Themen', name='Familie-und-Freunde') }}">Familie und Freunde</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Themen', name='Gedanken-zum-Lebensende') }}">Lebensende</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Themen', name='Feiertage') }}">Feiertage</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Themen', name='Reisen') }}">Reisen</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Themen', name='Klassiker') }}">Klassiker</a></li>
+        </ul>
+
+      </li>
+
+      <li class="dropdown">
+
+        <a href="#" class="dropdown-toggle">
+          nach Sprachen <span>&#9662;</span>
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a href="{{ url_for('kategorie', kategorietype='Sprachen', name='Deutschsprachige-Bücher') }}">Deutschsprachige Bücher</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Sprachen', name='Englischsprachige-Bücher') }}">Englischsprachige Bücher</a></li>
+        </ul>
+
+      </li>
+
+      <li class="dropdown">
+
+        <a href="#" class="dropdown-toggle">
+          nach Illustratoren <span>&#9662;</span>
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Abner-Graboff') }}">Abner Graboff</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Albertine') }}">Albertine</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Anita-Kreituse') }}">Anita Kreituse</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Anne-Herbauts') }}">Anne Herbauts</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Anni-von-Bergen') }}">Anni von Bergen</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Britta-Teckentrup') }}">Britta Teckentrup</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Canizales') }}">Canizales</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Catarina-Knüvener') }}">Catarina Knüvener</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Catherine-Rayner') }}">Catherine Rayner</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='David-Ryski') }}">David Ryski</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Helga-Bansch') }}">Helga Bansch</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Jon-Klassen') }}">Jon Klassen</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Katrin-Stangl') }}">Katrin Stangl</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Lisbeth-Zwerger') }}">Lisbeth Zwerger</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Luisa-Stömer-und-Eva-Wünsch') }}">Luisa Stömer und Eva Wünsch</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Maurice-Sendak') }}">Maurice Sendak</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Mehrdad-Zaeri') }}">Mehrdad Zaeri</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Michael-Roher') }}">Michael Roher</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Mies-van-Hout') }}">Mies van Hout</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Miroslav-Šašek') }}">Miroslav Šašek</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Natalia-Shaloshvili') }}">Natalia Shaloshvili</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Renate-Habinger') }}">Renate Habinger</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Rébecca-Dautremer') }}">Rébecca Dautremer</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Sabine-Rufener') }}">Sabine Rufener</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Sara-Lundberg') }}">Sara Lundberg</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Sydney-Smith') }}">Sydney Smith</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Vincent-Boudgourd') }}">Vincent Boudgourd</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Wolf-Erlbruch') }}">Wolf Erlbruch</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Ximo-Abadía') }}">Ximo Abadía</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Sonja-Danowski') }}">Sonja Danowski</a></li>
+
+
+          <li class="dropdown">
+
+            <a href="#" class="dropdown-toggle">
+              Illustrations-Debüts <span>&#9662;</span>
+            </a>
+
+            <ul class="dropdown-menu">
+                      <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Ca-Rose') }}">Ca Rose</a></li>
+                      <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Clara-Thomasset') }}">Clara Thomasset</a></li> 
+                      <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Hanna-Jung') }}">Hanna Jung</a></li>
+                      <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Karen-Minden') }}">Karen Minden</a></li>
+                      <li><a href="{{ url_for('kategorie', kategorietype='Illustratoren', name='Ånsken-Eckert') }}">Ånsken Eckert</a></li>
+
+            </ul>
+
+          </li>
+
+
+          
+        </ul>
+
+      </li>
+
+      <li class="dropdown">
+
+        <a href="#" class="dropdown-toggle">
+          nach Alter <span>&#9662;</span>
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a href="{{ url_for('kategorie', kategorietype='Alter', name='Für-Erwachsene') }}">für Erwachsene</a></li>
+          <li><a href="{{ url_for('kategorie', kategorietype='Alter', name='kinder') }}">für Kinder</a></li>
+
+          <li class="dropdown">
+
+            <a href="#" class="dropdown-toggle">
+              für Kinder nach Alter <span>&#9662;</span>
+            </a>
+
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('kategorie', kategorietype='Alter', name='ab1') }}">ab 1 </a></li>
+              <li><a href="{{ url_for('kategorie', kategorietype='Alter', name='ab2') }}">ab 2 </a></li>
+              <li><a href="{{ url_for('kategorie', kategorietype='Alter', name='ab3') }}">ab 3 </a></li>
+              <li><a href="{{ url_for('kategorie', kategorietype='Alter', name='ab4') }}">ab 4 </a></li>
+              <li><a href="{{ url_for('kategorie', kategorietype='Alter', name='ab5') }}">ab 5 </a></li>
+              <li><a href="{{ url_for('kategorie', kategorietype='Alter', name='ab6') }}">ab 6 </a></li>
+              <li><a href="{{ url_for('kategorie', kategorietype='Alter', name='ab7') }}">ab 7 </a></li>
+              <li><a href="{{ url_for('kategorie', kategorietype='Alter', name='ab8') }}">ab 8 </a></li>
+            </ul>
+
+          </li>
+
+        </ul>
+
+      </li>
+
+    </ul>
+
+  </li>
+
+  <li>
+    <a href="{{ url_for('illustratoren') }}">Illustratoren</a>
+  </li>
+
+
+    
+
+  <li>
+
+            <a href="{{ url_for('kategorie', kategorietype='Künstlerbedarf', name='Künstlerbedarf') }}">
+              Künstlerbedarf 
+            </a>
+
+ </li>
+
+    
+
+  <li>
+    <a href="{{ url_for('gutschein') }}">Geschenkgutschein </a>
+  </li>
+
+  <li>
+    <a href="{{ url_for('suche') }}">Suche 🔍 </a>
+  </li>
+
+  <li class="cart">
+    <a href="{{ url_for('cart') }}"> Warenkorb 🛒 <span id="cart-count">0</span></a>
+  </li>
+
+  <li class="widerruf">
+    <a href="{{ url_for('widerruf') }}"> Widerrufsformular und Rücksendung </a>
+  </li>
+
+  </ul>
+
+</nav>
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VQ8FBXVQ3"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6VQ8FBXVQ3');
+</script>
+
+</header>
 
   <style>
 
