@@ -2266,7 +2266,61 @@
     },
 
 
+  
+    {
+  "id":161,
+  "name":"Schicke Hunde",
+  "ean":"9783314107504",
+  "beschreibung": "Das facettenreiche Leben der Vierbeiner. So haben wir Hunde noch nie kennengelernt!\n  Der Hund ist der schickste Begleiter des Menschen! Stimmt doch, oder? Ja, Hunde können sehr elegant und vornehm sein, aber natürlich sind die liebenswerten Vierbeiner facettenreich. Da wird auch mal im Matsch gebadet, aus der Toilette geschlabbert oder ein Schuh zerbissen. Na ja, man verzeiht den Fellnasen einiges. Tini Malina schafft mit minimalistischem Strich überraschende und witzige Szenen. Ihre Beobachtungen sind liebenswert, erfrischend und ultimativ allgemeingültig.",
 
+      "bilder": [
+    "images/neu/schickehunde.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Tini Malina", "ab4", "Neuerscheinungen" ],
+  "leseprobe_url": "https://www.book2look.com/book/WUbjlojDe3"
+    },
+
+   {
+  "id":162,
+  "name":"Deine Insel",
+  "ean":"9783314107641",
+  "beschreibung": "Eine Gute-Nacht-Geschichte für die Kleinsten! Das neue Pappbuch vom Preisträger des Astrid Lindgren Memorial Award.\n\n Stell dir deine Insel vor! Das ist deine Insel. Hier gibt es eine Palme, ein Zelt, ein Boot und einen Vogel, der zwar manchmal wegfliegt, aber immer wieder zurückkommt. Die Sonne geht unter, und auch du kannst deine Augen schließen und weiterträumen. Kein Wort, kein Bild ist zu viel in Jon Klassens Gute-Nacht-Geschichte. Es entsteht ein Wohlfühlort für die Kleinsten. Das Buch lässt sich wunderbar im sanften Rhythmus vorlesen und ist damit ein idealer Begleiter zur Schlafenszeit.",
+
+      "bilder": [
+    "images/neu/deineinsel.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Jon Klassen", "ab2", "Neuerscheinungen" ],
+  "leseprobe_url": "https://www.book2look.com/book/W4HaDLQ6RO"
+    },
+
+   {
+  "id":163,
+  "name":"Das Haus zieht aus",
+  "ean":"9783967047981",
+  "beschreibung": "Eine Geschichte vom Weggehen und Heimkommen. \n\n Das Haus zieht aus erzählt die Geschichte einer Häuserstraße, die genug vom Stadtleben hat. Eines Tages beschließen die Häuser kurzerhand, als Karawane in die weite Welt zu ziehen. Auf ihrer Reise begegnet jedes Haus einem Tier, das perfekt zu ihm passt, und bietet ihm ein neues Zuhause. So lichtet sich die Karawane Haus für Haus, bis nur noch eins übrig bleibt. Dieses letzte Haus musste erst die ganze Welt bereisen, um die alte Stadt als Lebensraum wieder schätzen zu können.",
+     
+      "bilder": [
+    "images/neu/dashausziehtaus.webp",
+    "images/neu/dashausziehtaus1.webp",
+        
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Pauline Pete", "ab4", "Neuerscheinungen" ]
+   },
+
+  
+   {
+  "id":164,
+  "name":"Rotkäppchen, der Wolf und die Zeichnerin",
+  "ean":"9783711740472",
+  "beschreibung": "Ein außergewöhnliches Bilderbuch darüber, wie ein Bilderbuch etsteht! \nDie Figuren in Zwiesprache mit ihrer Schöpferin: Rotkäppchen trifft im Wald auf den Wolf. So weit, so bekannt. Aber dem Rotkäppchen passt es nicht, dass es so klein ist. Also muss die Zeichnerin eingreifen: Rotkäppchen ist plötzlich riesig! Das gefällt dem Wolf natürlich nicht und er fordert ebenfalls eine Vergrößerung. Die beiden sprengen schon fast die Seite, da übernimmt die Zeichnerin das Kommando: Sie erzählt die Geschichte von Rotkäppchen, dem Wolf und der Großmutter ohne Bilder, nur mit Farben und legt gleichzeitig den Schaffensprozess eines Kunstwerks offen.\n\n Die AutorinnDelphine Bournay, 1974 geboren, wuchs mit zwei Schwestern auf, mit denen sie sich immerzu lustige Geschichten ausdachte. Heute schreibt und illustriert sie Bücher für Kinder, weil sie selber immer noch...",
+     
+      "bilder": [
+    "images/neu/rotkwolfzeichnerin.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Delphine Bournay", "ab4", "Neuerscheinungen" ],
+  "leseprobe_url": "http://flowpaper.com/flipbook/download-2354-bournay_rotkappchenfQDg/?wp-hosted=1"
+   },
+  
 
 
 
