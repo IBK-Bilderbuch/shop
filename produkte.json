@@ -604,7 +604,7 @@
     "bilder": [
     "images/waswennichmichentziehe/waswennichmichentziehe.webp"
   ],
-  "kategorie": ["Für Erwachsene", "Wichtige Fragen", "Deutschsprachige Bücher", "Nicole Vögeli" ],
+  "kategorie": ["Für Erwachsene", "Wichtige Fragen", "Deutschsprachige Bücher", "Nicole Vögeli", "Neuerscheinungen"],
   "leseprobe_pdf": "waswennichmichentziehe.pdf"
 
 }, 
@@ -637,7 +637,7 @@
     "images/weitrausschwimmen/weitrausschwimmen2.webp",
     "images/weitrausschwimmen/weitrausschwimmen3.webp"
   ],
-  "kategorie": ["Für Erwachsene", "Wichtige Fragen", "Deutschsprachige Bücher", "Ånsken Eckert" ],
+  "kategorie": ["Für Erwachsene", "Wichtige Fragen", "Deutschsprachige Bücher", "Ånsken Eckert", "Neuerscheinungen" ],
   "leseprobe_pdf": "weitrausschwimmen.pdf"
 
 }, 
@@ -2108,7 +2108,7 @@
     "images/roeher/zufuss7.webp"
 
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Wortlust und Zeichenfreude"]
+  "kategorie": ["Deutschsprachige Bücher", "Michael Roher", "Wortlust und Zeichenfreude", "Neuerscheinungen"]
    },
 
   
@@ -2126,7 +2126,7 @@
     "images/roeher/meineweltisteingedicht4.webp",
     "images/roeher/meineweltisteingedicht5.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Martina Walther", "Wortlust und Zeichenfreude"],
+  "kategorie": ["Deutschsprachige Bücher", "Martina Walther", "Wortlust und Zeichenfreude", "Neuerscheinungen"],
   "leseprobe_pdf": "meineweltisteingedicht.pdf"
    },
 
