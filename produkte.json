@@ -2320,14 +2320,81 @@
   "kategorie": ["Deutschsprachige Bücher", "Delphine Bournay", "ab4", "Neuerscheinungen" ],
   "leseprobe_url": "http://flowpaper.com/flipbook/download-2354-bournay_rotkappchenfQDg/?wp-hosted=1"
    },
+
+    {
+  "id":165,
+  "name":"Was brauchst du, kleine Katze?",
+  "ean":"9783522462648",
+  "beschreibung": "Was braucht eine kleine Katze, um glücklich zu sein? Zwei wache Augen, weiche Pfoten – und einen warmen Platz für stürmische Tage. In einfachen, poetischen Bildern wird erzählt, wie Geborgenheit entsteht: durch Freiheit, Schutz, Streicheleinheiten und das Gefühl, willkommen zu sein. Mit jeder Seite wächst die Zuneigung zur kleinen Katze – und zur Welt, die sie braucht. Ein Bilderbuch, das Kinder und Eltern dazu einlädt, über Nähe, Vertrauen und das Zuhause nachzudenken. Perfekt zum Vorlesen, Kuscheln und für alle, die Katzen lieben.",
+
+      "bilder": [
+    "images/neu/kleinekatze.webp",
+    "images/neu/kleinekatze1.webp",
+    "images/neu/kleinekatze2.webp",
+    "images/neu/kleinekatze3.webp"
+        
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Natalia Shaloshvili", "ab3", "Neuerscheinungen" ]
+    },
+
+
+{
+  "id":166,
+  "name":"Umami",
+  "ean":"9783480241118",
+  "beschreibung": "Tag für Tag immer nur kalten Fisch? Davon hat der kleine Pinguin Umami genug! Neugierig und voller Abenteuerlust verlässt er seine Heimat, um in der großen weiten Welt neue Gerichte zu entdecken. Auf seiner Reise begegnet er würzigen Suppen, süßem Gebäck, scharfen Klößchen und wunderbar sauren Gürkchen – und lernt, wie spannend und lecker Vielfalt auf dem Teller sein kann. Doch wird er es schaffen, auch seine Freunde zu Hause für die neuen Köstlichkeiten zu begeistern?\n\nDieses liebevoll illustrierte Bilderbuch macht Kindern Mut, Neues zu probieren, und lädt zum gemeinsamen Gespräch über Lieblingsessen und kulinarische Abenteuer ein. Besonders für Eltern mit wählerischen Essern ist „Umami“ eine wertvolle Unterstützung, um spielerisch Neugier und Offenheit am Esstisch zu fördern.",
+
+     
+ "bilder": [
+    "images/neu/umami.webp",
+    "images/neu/umami1.webp",
+    "images/neu/umami2.webp",
+    "images/neu/umami3.webp",
+    "images/neu/umami4.webp"
+],
+  "kategorie": ["Deutschsprachige Bücher", "Jacob Grant", "ab3", "Neuerscheinungen" ]
+},
+
   
 
 
+    {
+  "id":167,
+  "name":"Nachtgedanken",
+  "ean":"9783522307758",
+  "beschreibung": "Was passiert, wenn der Kopf nachts nicht stillsteht? Dieses poetische Kinderbuch begleitet ein Kind, das zwischen Sternen, Träumen und großen Fragen hin- und herwandert – zwischen Tod und Liebe, Freundschaft und dem Universum – und einem schlechten Gewissen. Es erzählt nah an der kindlichen Perspektive vom Gedankenkarussell, von Streit mit einer Freundin, vom Grübeln über Engel und all den Fragen, die nachts auftauchen – und davon, warum man manchmal nicht einschlafen kann. Einfühlsam zeigt die Geschichte, wie Kinder ganz intuitiv philosophieren und Fragen stellen. Perfekt für Eltern, die über Gewissen, Unendlichkeit und das, was wir fühlen, mit ihren Kindern ins Gespräch kommen wollen.",
+
+      "bilder": [
+    "images/neu/nachtgedanken.webp",
+    "images/neu/nachtgedanken1.webp",
+    "images/neu/nachtgedanken2.webp",
+    "images/neu/nachtgedanken3.webp",
+    "images/neu/nachtgedanken4.webp",
+    "images/neu/nachtgedanken5.webp",
+    "images/neu/nachtgedanken6.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Inger Tobiasen", "Stefan Pluschkat", "ab7", "Neuerscheinungen" ]
+    },
+  
+ {
+  "id":168,
+  "name":"Mit dem Sturm um die Wette rennen",
+  "ean":"9783848903344",
+  "beschreibung": "Bevor der Sturm über die Insel zieht, machen sich zwei Geschwister auf den Weg zum Meer. Sie erleben, wie sich der Himmel verdunkelt, der Wind stärker wird und die Wellen gegen die Felsen peitschen. Gemeinsam spüren sie die Kraft der Natur – und als der Regen einsetzt, laufen sie Hand in Hand zurück ins sichere Zuhause. Dort warten Wärme, Geborgenheit und das beruhigende Gefühl, zusammen alles überstehen zu können. Am nächsten Morgen ist die Welt wieder hell und freundlich – und das Abenteuer bleibt als Erinnerung. \n\nDieses Bilderbuch lädt Kinder und Eltern ein, die Schönheit und die Aufregung eines Sturms zu entdecken. Es stärkt das Bewusstsein für Natur, Zusammenhalt und Geborgenheit – perfekt für gemeinsame Vorlesezeit und zum Immer-wieder-Anschauen.",
+
+      "bilder": [
+    "images/neu/sturmwette.webp",
+    "images/neu/sturmwette1.webp",
+    "images/neu/sturmwette2.webp",
+    "images/neu/sturmwette3.webp",
+    "images/neu/sturmwette4.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Brian Floca", "Sydney Smith ", "ab4", "Neuerscheinungen", "Familie und Freunde" ]
+    },
 
 
 
-
-
+  
 
   
   {
