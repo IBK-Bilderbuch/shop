@@ -423,10 +423,8 @@ label[for="quantity"] {
 }
 
 
-
 /* =========================================================
    WORKSHOP DETAIL LAYOUT
-   (spiegelt .book-detail / .book-container / .book-cover / .book-info)
 ========================================================= */
 .produkt-detail {
   max-width: 1000px;
@@ -434,23 +432,18 @@ label[for="quantity"] {
   padding: 0 20px;
 }
 
-.produkt-layout {
+.produkt-top {
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-/* =========================================================
-   WORKSHOP BILD
-   (spiegelt .book-cover)
-========================================================= */
 .produkt-bilder {
   flex: 1 1 300px;
   max-width: 400px;
   position: relative;
 }
-
 .produkt-bilder img {
   width: 100%;
   height: auto;
@@ -459,10 +452,6 @@ label[for="quantity"] {
   object-fit: contain;
 }
 
-/* =========================================================
-   WORKSHOP INFO
-   (spiegelt .book-info)
-========================================================= */
 .produkt-info {
   flex: 1 1 300px;
   max-width: 500px;
@@ -470,41 +459,40 @@ label[for="quantity"] {
   flex-direction: column;
   gap: 15px;
 }
-
 .produkt-info h1 {
   font-family: var(--font-heading);
   color: var(--color-secondary);
   font-size: 2.4rem;
   margin-bottom: 10px;
 }
-
 .produkt-info .preis {
   font-size: 1.5rem;
   color: var(--color-primary);
 }
-
 .produkt-info > p:not(.preis) {
   font-size: 1.3rem;
   font-family: var(--font-heading);
   line-height: 1.6;
 }
 
-.produkt-info h3 {
+/* =========================================================
+   TERMINE – volle Breite unter dem Bild
+========================================================= */
+.produkt-termine {
+  width: 100%;
+}
+.produkt-termine h3 {
   font-family: var(--font-heading);
   color: var(--color-secondary);
   font-size: 1.6rem;
   margin-top: 10px;
+  margin-bottom: 15px;
 }
-
-.produkt-info hr {
+.produkt-detail hr {
   border: none;
   border-top: 1px solid #ddd;
 }
 
-/* =========================================================
-   TERMIN-SLOTS
-   (ersetzt Inline-Styles im slot-box Markup)
-========================================================= */
 .slot-box {
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -513,26 +501,23 @@ label[for="quantity"] {
   font-family: var(--font-heading);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
-
 .slot-box strong {
   color: var(--color-secondary);
   font-size: 1.2rem;
 }
-
 .slot-box small {
   display: block;
   margin-top: 4px;
   color: #666;
   font-size: 0.95rem;
 }
-
 .slot-box .slot-form {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  max-width: 400px;
 }
-
 .input-field {
   padding: 8px 10px;
   font-size: 1rem;
@@ -541,28 +526,42 @@ label[for="quantity"] {
   outline: none;
   font-family: var(--font-body);
 }
-
 .input-field:focus {
   border-color: var(--color-primary);
+}
+
+.btn-weiter {
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-family: var(--font-heading);
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-weiter:hover {
+  opacity: 0.85;
+}
+.paypal-container {
+  margin-top: 0.5rem;
 }
 
 /* =========================================================
    MEDIA QUERIES – Workshop
 ========================================================= */
 @media (max-width: 768px) {
-  .produkt-layout {
+  .produkt-top {
     flex-direction: column;
     gap: 20px;
   }
-
   .produkt-info h1 {
     font-size: 2rem;
   }
-
   .produkt-info .preis {
     font-size: 1.3rem;
   }
-
   .slot-box {
     padding: 0.8rem;
   }
