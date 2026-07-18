@@ -2395,7 +2395,34 @@
 
 
   
+ {
+  "id": 169,
+  "name":"Und wenn ich dann ankomme ...",
+  "ean": "9783702242275",
+  "beschreibung": "Zwei Geschichten, zwei Abschiede, zwei Ankünfte – zweimal Unsicherheit, Aufgeregtheit und Neugier. Und doch sind sie auch sehr unterschiedlich, diese beiden Geschichten, wird doch einmal die Heimat nur für eine kurze Zeit verlassen. Reise heißt die eine Devise, ein Abschiednehmen mit Ablaufdatum, denn trotz aller Aufregung bleibt der sichere Hafen zuhause. Endgültiger Abschied heißt die andere Devise, ein liebgewonnener Ort wird verlassen, ein neuer gesucht. Ein guter Neuanfang ist möglich, aber es gibt auch Trauer über das, was zurückgelassen werden muss. \nDramaturgisch außerordentlich durchdacht und sprachlich poetisch ausgefeilt erzählt Alexandra Holmes von diesen beiden Perspektiven. Stellt sie in Form eines Wendebilderbuchs gegenüber und verdeutlicht damit, welche Parallelen und Unterschiede diese beiden "Bewegungen" aufweisen. Gekonnt setzt Judith Vrba dies in ihren ausdrucksstarken Bildern um, die ebenso von beiden Seiten funktionieren, und das Ganze zu einem ganz besonderen Bilderbuchkunstwerk machen. Ein beeindruckender Anlass, einmal die Perspektive zu wechseln.",
+"bilder": [
+             "images/grossstaedte/undwennichdannankomme.webp",
+             "images/grossstaedte/undwennichdannankomme1.webp",
+             "images/grossstaedte/undwennichdannankomme2.webp",
+            "images/grossstaedte/undwennichdannankomme3.webp"
 
+  ],
+ "kategorie": ["Reisen",  "Deutschsprachige Bücher", "Judith Vrba", "Alexandra Holmes", "ab5"]
+},
+
+   {
+  "id": 170,
+  "name":"Ortswechsel Bukarest",
+  "ean": "9783948410889",
+  "beschreibung": "Das illustrierte Stadttagebuch mit Texten von Arinda Crăciun und Eva Ruth Wemme bietet einen neuen Blick auf die vielfältige europäische Metropole Bukarest und legt das Identitätsstiftende der Hauptstadt Rumäniens frei. Die Form bewegt sich zwischen Essay, tagebuchartigen Einträgen und Graphic Novel: Informative Texte über einzelne Stadtviertel, KünstlerInnen, die zeitgenössische Literaturszene, Stadtgeschichte, Architektur, Esskultur und queeres Leben wechseln sich ab mit persönlichen Erfahrungen und Beobachtungen der Autorinnen.",
+
+"bilder": [
+             "images/grossstaedte/ortswechselbucharest.webp"
+
+  ],
+ "kategorie": ["Reisen",  "Deutschsprachige Bücher", "ab10"]
+},
+  
   
   {
   "id": 1000,
