@@ -2381,7 +2381,7 @@
   "name":"Mit dem Sturm um die Wette rennen",
   "ean":"9783848903344",
   "beschreibung": "Bevor der Sturm über die Insel zieht, machen sich zwei Geschwister auf den Weg zum Meer. Sie erleben, wie sich der Himmel verdunkelt, der Wind stärker wird und die Wellen gegen die Felsen peitschen. Gemeinsam spüren sie die Kraft der Natur – und als der Regen einsetzt, laufen sie Hand in Hand zurück ins sichere Zuhause. Dort warten Wärme, Geborgenheit und das beruhigende Gefühl, zusammen alles überstehen zu können. Am nächsten Morgen ist die Welt wieder hell und freundlich – und das Abenteuer bleibt als Erinnerung. \n\nDieses Bilderbuch lädt Kinder und Eltern ein, die Schönheit und die Aufregung eines Sturms zu entdecken. Es stärkt das Bewusstsein für Natur, Zusammenhalt und Geborgenheit – perfekt für gemeinsame Vorlesezeit und zum Immer-wieder-Anschauen.",
-
+   
       "bilder": [
     "images/neu/sturmwette.webp",
     "images/neu/sturmwette1.webp",
@@ -2399,9 +2399,9 @@
   "id": 169,
   "name":"Und wenn ich dann ankomme ...",
   "ean": "9783702242275",
-  "beschreibung": "Zwei Geschichten, zwei Abschiede, zwei Ankünfte – zweimal Unsicherheit, Aufgeregtheit und Neugier. Und doch sind sie auch sehr unterschiedlich, diese beiden Geschichten, wird doch einmal die Heimat nur für eine kurze Zeit verlassen. Reise heißt die eine Devise, ein Abschiednehmen mit Ablaufdatum, denn trotz aller Aufregung bleibt der sichere Hafen zuhause. Endgültiger Abschied heißt die andere Devise, ein liebgewonnener Ort wird verlassen, ein neuer gesucht. Ein guter Neuanfang ist möglich, aber es gibt auch Trauer über das, was zurückgelassen werden muss. \nDramaturgisch außerordentlich durchdacht und sprachlich poetisch ausgefeilt erzählt Alexandra Holmes von diesen beiden Perspektiven. Stellt sie in Form eines Wendebilderbuchs gegenüber und verdeutlicht damit, welche Parallelen und Unterschiede diese beiden "Bewegungen" aufweisen. Gekonnt setzt Judith Vrba dies in ihren ausdrucksstarken Bildern um, die ebenso von beiden Seiten funktionieren, und das Ganze zu einem ganz besonderen Bilderbuchkunstwerk machen. Ein beeindruckender Anlass, einmal die Perspektive zu wechseln.",
-"bilder": [
-             "images/grossstaedte/undwennichdannankomme.webp",
+  "beschreibung": "Zwei Geschichten, zwei Abschiede, zwei Ankünfte – zweimal Unsicherheit, Aufgeregtheit und Neugier. Und doch sind sie auch sehr unterschiedlich, diese beiden Geschichten, wird doch einmal die Heimat nur für eine kurze Zeit verlassen. Reise heißt die eine Devise, ein Abschiednehmen mit Ablaufdatum, denn trotz aller Aufregung bleibt der sichere Hafen zuhause. Endgültiger Abschied heißt die andere Devise, ein liebgewonnener Ort wird verlassen, ein neuer gesucht. Ein guter Neuanfang ist möglich, aber es gibt auch Trauer über das, was zurückgelassen werden muss. \nDramaturgisch außerordentlich durchdacht und sprachlich poetisch ausgefeilt erzählt Alexandra Holmes von diesen beiden Perspektiven. Stellt sie in Form eines Wendebilderbuchs gegenüber und verdeutlicht damit, welche Parallelen und Unterschiede diese beiden 'Bewegungen' aufweisen. Gekonnt setzt Judith Vrba dies in ihren ausdrucksstarken Bildern um, die ebenso von beiden Seiten funktionieren, und das Ganze zu einem ganz besonderen Bilderbuchkunstwerk machen. Ein beeindruckender Anlass, einmal die Perspektive zu wechseln.", 
+   "bilder": [
+         "images/grossstaedte/undwennichdannankomme.webp",
              "images/grossstaedte/undwennichdannankomme1.webp",
              "images/grossstaedte/undwennichdannankomme2.webp",
             "images/grossstaedte/undwennichdannankomme3.webp"
@@ -2422,6 +2422,9 @@
   ],
  "kategorie": ["Reisen",  "Deutschsprachige Bücher", "ab10"]
 },
+
+
+
   
   
   {
