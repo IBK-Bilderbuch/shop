@@ -516,7 +516,7 @@ label[for="quantity"] {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  max-width: 400px;
+  max-width: 550px;
 }
 .input-field {
   padding: 8px 10px;
