@@ -2423,6 +2423,48 @@
  "kategorie": ["Reisen",  "Deutschsprachige Bücher", "ab10"]
 },
 
+    {
+  "id":171,
+  "name":"Leben, Sterben und Kaninchen",
+  "ean":"9783446283107",
+  "beschreibung": "Deutschlandfunk-Bestenliste Die besten 7\n\nÜber das Wunder, auf dieser Welt zu sein – das neue Kinderbuch der Jugendliteraturpreisträgerinnen Dita Zipfel und Rán Flygenring\n\nIst es nicht unglaublich, dass du jetzt gerade hier auf dieser Welt bist? Dass dafür uralte Atome zusammenkamen, um einen ganz einzigartigen Menschen zu formen? Wie fühlt es sich an, das Leben? Diese und viele weitere Fragen stellen sich die Jugendliteraturpreisträgerinnen Dita Zipfel und Rán Flygenring in ihrem neuen Kinderbuch. Zusammen mit ihnen denken wir über das nach, was uns ausmacht, und das, was uns verbindet. Übers Pfannkuchenbacken und Erbsenhassen, über die Großartigkeit des Lebens und die Rätselhaftigkeit des Todes. Warmherzig, ehrlich und humorvoll geht es um Anfänge und Enden, Freude und Trauer – und um ein Kaninchen namens Miss Marple. \n\nPressestimmen\n\n'Wie fühlt es sich an zu sterben? Und warum reden so viele Menschen so ungern über den Tod? Dita Zipfel denkt schreibend darüber nach und webt sehr Persönliches ein. Sie beginnt beim Leben, bei den winzigen Atomen, die alles verbinden, und führt dann durch Sterben, Tod und Trauer in all ihren Facetten, berührend-witzig illustriert von Ràn Flygenring. Am Schluss bleibt ein tröstliches Gefühl: Freude gibt es nicht ohne Traurigkeit, einen Anfang nicht ohne Ende.' Josefa Raschendorf; Die Zeit, 15.10.2025\n\n'Das Buch verharmlost den Tod nicht, sondern geht ehrlich mit all den offenen Fragen, mit Schmerz und Trauer um, will uns aber mit ihnen versöhnen. Und das gelingt dem Buch auf einfühlsame und charmante Weise.' Dina Netz, Eselsohr – Fachzeitschrift für Kinder- und Jugendmedien, November 2025",
+      
+  "bilder": [
+    "images/lebensende/sterbenundkaninchen.webp"
+  ],
+  "kategorie": ["Gedanken zum Lebensende", "Deutschsprachige Bücher",  "Rán Flygenring",  "ab5"],
+  "leseprobe_url": "https://www.bic-media.com/widget/?isbn=9783446283107&shopsFilter=hanser&template=hanser&showExtraDownloadButton=yes"
+   },
+
+   {
+  "id": 172,
+  "name":"Mirabelka",
+  "ean": "9783948410889",
+  "beschreibung": "Alles ist verschwunden: das Mietshaus von Herrn Friedman, die Karnevalskostümfabrik der Gebrüder Alfus, das Ghetto und seit kurzem auch das Mirabellenbäumchen. Was überlebt hat, ist die Erinnerung an die Menschen, die damals lebten – Dorka, Chaim, Maciek und andere.\n\n'Mirabelka' von Cezary Harasimowicz ist eine berührende literarische Zeitreise durch das jüdische Viertel Muranów in Warschau, erzählt aus der ungewöhnlichen Perspektive eines Mirabellenbaums. Die Geschichte begleitet mehrere Generationen (jüdischer) Bewohner:innen vom blühenden sozialen und wirtschaftlichen Leben der 1920er Jahre über die Schrecken des Ghettos im Zweiten Weltkrieg bis in die Gegenwart. Die Erinnerungen an Dorka, Chaim, Herrn Friedman und viele andere verweben sich mit der Geschichte des Warschauer Stadtteil Nalewki, einer Geschichte voller Hoffnung, Glauben und Liebe über mehrere Generationen hinweg.\n\nHarasimowicz lässt Vergangenheit und Gegenwart ineinanderfließen, erzählt von Liebe, Solidarität und dem Überleben von Erinnerungen in einem Viertel, das einst Zentrum jüdischen Lebens war.",
+  "bilder": [
+             "images/grossstaedte/mirabelka.webp"
+
+  ],
+  "kategorie": ["Reisen",  "Deutschsprachige Bücher", "Marta Kurczewska", "ab8"]
+  },
+
+  
+
+ {
+  "id": 173,
+  "name":"Sommer auf der Fahrradinsel",
+  "ean": "9783948722319",
+  "beschreibung": "Ein kleines Mädchen und die große Frage: Wie wäre eine Welt ohne Autos? \n In den Sommerferien fährt Zoé zu ihrer Cousine Louise. Louise lebt auf einer Insel, und zwar auf einer ganz besonderen: Es gibt dort keine Autos, sondern alle fahren mit dem Fahrrad - die beiden Mädchen erleben einen großartigen Sommer voller Abenteuer und Zoé lernt, unabhängig und frei zu sein. Zurück in der Stadt darf sie wegen der vielen Autos nicht mehr mit dem Rad fahren - zu gefährlich, sagen ihre Eltern. Doch Zoé findet: Alle sollten nur noch mit dem Fahrrad fahren. Sie beschließt, zur Insel zurückzukehren - und plötzlich nehmen die Dinge ihren Lauf ...Ein Buch für kleine und große Fahrrad-Fans ab 4 Jahren.Liebevoll erzählt und illustriert von Ariane Pinel.Aus dem Französischen von Nele Deutschmann.",
+
+  "bilder": [
+             "images/grossstaedte/sommeraufderfahrradinselcover.webp",
+              "images/grossstaedte/sommeraufderfahrradinsel.webp",
+             "images/grossstaedte/sommeraufderfahrradinsel1.webp",
+             "images/grossstaedte/sommeraufderfahrradinsel2.webp"
+
+  ],
+  "kategorie": ["Reisen",  "Deutschsprachige Bücher",  "Ariane Pinel", "ab4"]
+  },
 
 
   
