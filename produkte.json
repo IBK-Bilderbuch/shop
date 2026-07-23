@@ -2525,6 +2525,20 @@
   
   {
   "id": 181,
+  "name": "Jon Klassen's Hat Box",
+  "ean":"9780763666972",
+  "beschreibung": "Hold on to all of your hats at once for this special collection of Jon Klassen’s celebrated hat trilogy.\n\nThe bear’s hat is gone, and he wants it back. A fish has stolen a hat; will he get away with it? Two turtles have found one hat, but the hat looks good on both of them. . . . Jon Klassen’s deliciously deadpan hat tales continue to surprise and delight readers of all ages, and they are all now available in one impeccably designed boxed set along with a free frameable print. Included are:\nI Want My Hat Back\nThis Is Not My Hat\nWe Found a Hat"
+"bilder": [
+    "images/klassen/jklassenhatbox.webp"
+      ],
+  "kategorie": [ "kinder",  "ab4", "Shlaues Mitraten und Mitmachen", "Englischsprachige Bücher", "Jon Klassen"]
+   },
+
+
+  
+
+   {
+  "id": 182,
   "name": "Das Buch der Anfänge",
   "ean":"9783702243128",
   "beschreibung": "Ein geheimnisvolles Raumschiff schwebt über der Wiese, ein Baum läuft plötzlich davon, ein Haus beginnt zu sprechen, einfach so … Was passiert hier? Genau das zu beantworten ist beim Betrachten jedem und jeder selbst überlassen. 33 Anfänge, abwechselnd in Wort und Bild, warten hier darauf, weitererzählt zu werden. So lädt dieses Buch also ein, in andere Welten einzutauchen, ausgehend von einer Idee selbst zu bestimmen, wohin die Reise gehen könnte, welche Begegnungen, welche Erlebnisse stattfinden werden. Um dann vielleicht, ausgehend vom gleichen Anfang, das nächste Mal ganz woanders hinzuwandern … \n\nHeinz Janisch, dem selbst 'nichts zu klein ist, um Anfang einer Geschichte zu werden', führt uns hier liebevoll ins Abenteuer 'Erzählen'. Bietet dafür überraschende, vielversprechende, fantasievolle Ideen, macht die Türen weit auf, lässt frische Luft in unsere Hirne strömen und fordert uns charmant heraus.\n\n Michael Roher hat sich erlaubt, 16 dieser Anfänge rein im Bild darzustellen, kreiert fantastische Umgebungen, die man nur zu gern sofort betreten, und Personen, die man gerne näher kennenlernen möchte. Nimmt uns kunstvoll mit zum Lampenfieber auf die Bühne, zum mühsamen Balancieren im Sturm oder zum aufgeregten Kribbeln bei einem Fußballspiel. Ein Buch voller Geschichten, die nur darauf warten, erzählt zu werden.\n\nAuszeichnungen:\nAuf der Empfehlungsliste zum Katholischen Kinder- und Jugendbuchpreis 2026\nÖsterreichischer Kinder- und Jugendbuchpreis 2026\nBörsenblatt "Leselotsen" mit den besten Büchern für Kids & Teens\nORF-KIDS Bestenliste Juli 2025 - Platz 1\nTeil der „besten 7 Bücher für junge Leser“ des Deutschlandfunks im August 2025",
@@ -2532,10 +2546,37 @@
 "bilder": [
     "images/roeher/dasbuchderanfaenge.webp"
       ],
-  "kategorie": [ "kinder",  "ab5", "Schlaues Mitraten und Mitmachen", "Deutschsprachige Bücher", "Michael Roher", "Heinz Janisch" ],
+  "kategorie": [ "kinder",  "ab5", "Shlaues Mitraten und Mitmachen", "Deutschsprachige Bücher", "Michael Roher", "Heinz Janisch" ],
     "leseprobe_url": "https://www.book2look.com/book/9783702243128?biblettype=html5"
    },
 
+
+   {
+  "id": 183,
+  "name": "Aus heiterem Himmel",
+  "ean":"9783314105739",
+  "beschreibung": "»Hallo.«»Hallo.«»Was ist passiert?«»Nichts.«Doch der Schein trügt: Es passiert eine ganze Menge! Wir treffen auf Schildkröte und ihre Freunde, die sich über ganz alltägliche Dinge unterhalten. Aber über ihren Köpfen braut sich etwas Unheilvolles zusammen ...Erneut erzielt Jon Klassen mit reduzierten Mitteln eine große emotionale Wirkung. Eine Geschichte voller Komik und visueller Spannung, die gekonnt mit unseren Erwartungen spielt. Und woher kommt dieses ungute Gefühl, dass hier irgendetwas nicht stimmt?",
+
+     "bilder": [
+    "images/klassen/ausheiteremhimmel.webp"
+      ],
+     
+  "kategorie": [ "kinder",  "ab4", "Shlaues Mitraten und Mitmachen", "Deutschsprachige Bücher", "Jon Klassen"]
+   },
+
+
+  {
+  "id": 184,
+  "name": "This Is Not My Hat",
+  "ean":"9781536228052",
+  "beschreibung": "When a tiny fish shoots into view wearing a round blue topper (which happens to fit him perfectly), trouble could be following close behind. So it’s a good thing that enormous fish won’t wake up. And even if he does, it’s not like he’ll ever know what happened. . . . Visual humor swims to the fore as the best-selling Jon Klassen follows his breakout debut with another deadpan-funny tale.",
+
+     "bilder": [
+    "images/klassen/thisisnotmyhat.webp"
+      ],
+     
+  "kategorie": [ "kinder",  "ab4", "Shlaues Mitraten und Mitmachen", "Englischsprachige Bücher", "Jon Klassen"]
+   },
 
 
   
