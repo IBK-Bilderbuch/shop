@@ -1306,7 +1306,7 @@
   "bilder": [
     "images/klassen/woistmeinhut.webp"
       ],
-  "kategorie": ["kinder",  "ab4", "Schlaues Mitraten", "Deutschsprachige Bücher", "Jon klassen" ],
+  "kategorie": ["kinder",  "ab4", "Schlaues Mitraten und Mitmachen", "Deutschsprachige Bücher", "Jon klassen" ],
    "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=F9j7a2vhTH"
 
    },
@@ -1333,7 +1333,7 @@
     "images/klassen/dasistnichtmeinhut.webp",
     "images/klassen/dasistnichtmeinhut1.webp"
       ],
-  "kategorie": ["kinder",  "ab4", "Schlaues Mitraten", "Deutschsprachige Bücher", "Jon klassen" ],
+  "kategorie": ["kinder",  "ab4", "Schlaues Mitraten und Mitmachen", "Deutschsprachige Bücher", "Jon klassen" ],
    "leseprobe_url": "https://www.book2look.com/vBook.aspx?id=ZjoRgrQsFb"
 
    },
@@ -1348,7 +1348,7 @@
     "images/labyrinthe/labyrinthe2.webp",
     "images/labyrinthe/labyrinthe3.webp"
       ],
-  "kategorie": [ "kinder",  "ab5", "Schlaues Mitraten", "Deutschsprachige Bücher", "Théo Guignard" ],
+  "kategorie": [ "kinder",  "ab5", "Schlaues Mitraten und Mitmachen", "Deutschsprachige Bücher", "Théo Guignard" ],
   "leseprobe_pdf": "labyrinthe.pdf"
 
 
@@ -1362,7 +1362,7 @@
      "bilder": [
     "images/klassen/iwantmyhatback.webp"
       ],
-  "kategorie": [ "kinder",  "ab3", "Schlaues Mitraten", "Englischsprachige Bücher", "Jon klassen" ]
+  "kategorie": [ "kinder",  "ab3", "Schlaues Mitraten und Mitmachen", "Englischsprachige Bücher", "Jon klassen" ]
 
    },
  
@@ -2468,6 +2468,79 @@
 
 
   
+ {
+  "id": 177,
+  "name":"Das Ram-Tam-Tier",
+  "ean": "9783779508137",
+  "beschreibung": "Das Ram-Tam-Tier geht durch die Welt. Einfach so? Einfach so! Ein Pinguin schaut und staunt: Groß, haarig und blau ist das Ram-Tam-Tier. Sehr albern und sehr vergnügt. Es singt und grunzt und quakt und bellt. Nachts schläft es unterm Sternenzelt. Einfach so? Einfach so!\n\nJens Rassmus hat mit dem Ram-Tam-Tier ein herrlich lässiges Wesen erfunden, dessen unbändige Lebenslust selbst den skeptischen Pinguin mitreißt - und uns gleich mit. Einfach so? Cool, let`s go!",
+
+  "bilder": [
+             "images/neu/ramtamtier.webp"
+  ],
+  "kategorie": ["Neuerscheinungen",  "Deutschsprachige Bücher",  "Jens Rassmus", "ab3"],
+   "leseprobe_url": "https://www.book2look.com/embed/g1eelcyp27&euid=456018889&ruid=0&referurl=www.book2look.com&refererpath=admin.book2look.com"
+  },
+
+  {
+  "id": 178,
+  "name":"Sommer am Rand der Welt",
+  "ean": "9783779508199",
+  "beschreibung": "Am Rand eines Seebads, wo sich die schicken Hotels aneinanderreihen, liegt versteckt hinter Kiefern das Strandhotel Pia. Es hat seine glanzvollen Zeiten hinter sich und in diesem verregneten Sommer keine einzige Buchung mehr. Vom Personal sind nur die Köchin und der Buchhalter geblieben. Der sonst fröhlich-zupackende Hotelchef verkriecht sich deprimiert ins Bett.\n\nGanz anders seine Tochter Juno: Sie ist wild entschlossen, das Hotel vor der drohenden Schließung zu retten. Gäste müssen her! In zu großen, knallroten Gummistiefeln zieht Juno los und sammelt allerlei Menschen ein. Keine typischen Touristen, aber eine bunte Gemeinschaft, die das alte Hotel in einen neuen Ort verwandeln will - als plötzlich eine Frau vom Amt mit bedrohlichen Nachrichten auftaucht...\n\nJulia Willmann erzählt warmherzig und mit Humor von einer zupackenden 10-Jährigen, die das Glück beim Kragen packt und an ihrer großen Aufgabe über sich hinauswächst. Jens Rassmus begleitet die Geschichte mit einfühlsamen Illustrationen."
+ 
+  "bilder": [
+             "images/neu/sommeramrandderwelt.webp"
+  ],
+  "kategorie": ["Neuerscheinungen",  "Deutschsprachige Bücher", "Julia Willmann", "Jens Rassmus", "ab9"],
+   "leseprobe_url": "https://www.book2look.com/embed/edgsko88yh&euid=456017127&ruid=0&referurl=www.book2look.com&refererpath=admin.book2look.com"
+  },
+{
+  "id": 179,
+  "name":"Alle abgeholt!",
+  "ean": "9783779508151",
+  "beschreibung": "Alle Kinder lieben das Ritual am Ende des Kita-Tages: Laut verkünden sie, wer gerade abgeholt wird. 'Fritzi! Abgeholt!' Spannend ist das. Welches ist das nächste Kind: Rosa, Jojo oder Elif? Und vor allem: Wer kommt zum Abholen und mit welchem Fahrzeug?\n\nAuf den leuchtend bunten, wuseligen Seiten des Pappbilderbuchs von Sabine Kranz finden Kinder auch sonst alles wieder, was toll ist in der Kita. Denn gespielt, gelesen, getobt und gelacht wird bis zum letzten Moment. Bis es heißt: Alle abgeholt!",
+  
+ 
+  "bilder": [
+             "images/neu/alleabgeholt.webp"
+  ],
+  "kategorie": ["Neuerscheinungen",  "Deutschsprachige Bücher", "Sabine Kranz",  "ab2"],
+  "leseprobe_url": "https://www.book2look.com/embed/trjju36xnd&euid=456019305&ruid=0&referurl=www.book2look.com&refererpath=admin.book2look.com"
+  },
+
+  {
+  "id": 180,
+  "name":"Alle Aale",
+  "ean": "9783779508168",
+  "beschreibung": "Irre ist das Leben der Aale und so endet es auch: mit einer wilden Party in den Tiefen der Sargassosee. Schaum, Getümmel und Randale! Morgens liegen kleine Aale schlummernd in der Babyschale. Viel Zeit zum Spielen haben die Aalkinder nicht, sie müssen durch das tropische Salzmeer bis in die süßen Gewässer auf dem Kontinent. Tausende Kilometer weit. Nadia Budde liefert in Panels und auf ganzen Seiten lustige Schnappschüsse von der Reise: Stippvisite am Canale, Tauchmanöver in der Saale, Krabbenjagd im Algenwald, kurzer Wellnessaufenthalt ... Dann plötzlich, nach Jahrzehnten voller Abenteuer, setzt die Sehnsucht ein und zum großen Nachtfinale schwimmen wirklich alle Aale wieder zur Sargassosee. Was hier geschieht - wir wissen es!",
+
+ 
+  "bilder": [
+             "images/neu/alleaale.webp"
+  ],
+  "kategorie": ["Neuerscheinungen",  "Deutschsprachige Bücher", "Nadia Budde",  "ab4"],
+  "leseprobe_url": "https://www.book2look.com/embed/vjtfmlibgl&euid=456018443&ruid=0&referurl=www.book2look.com&refererpath=admin.book2look.com"
+  },
+
+
+  
+  {
+  "id": 181,
+  "name": "Das Buch der Anfänge",
+  "ean":"9783702243128",
+  "beschreibung": "Ein geheimnisvolles Raumschiff schwebt über der Wiese, ein Baum läuft plötzlich davon, ein Haus beginnt zu sprechen, einfach so … Was passiert hier? Genau das zu beantworten ist beim Betrachten jedem und jeder selbst überlassen. 33 Anfänge, abwechselnd in Wort und Bild, warten hier darauf, weitererzählt zu werden. So lädt dieses Buch also ein, in andere Welten einzutauchen, ausgehend von einer Idee selbst zu bestimmen, wohin die Reise gehen könnte, welche Begegnungen, welche Erlebnisse stattfinden werden. Um dann vielleicht, ausgehend vom gleichen Anfang, das nächste Mal ganz woanders hinzuwandern … \n\nHeinz Janisch, dem selbst 'nichts zu klein ist, um Anfang einer Geschichte zu werden', führt uns hier liebevoll ins Abenteuer 'Erzählen'. Bietet dafür überraschende, vielversprechende, fantasievolle Ideen, macht die Türen weit auf, lässt frische Luft in unsere Hirne strömen und fordert uns charmant heraus.\n\n Michael Roher hat sich erlaubt, 16 dieser Anfänge rein im Bild darzustellen, kreiert fantastische Umgebungen, die man nur zu gern sofort betreten, und Personen, die man gerne näher kennenlernen möchte. Nimmt uns kunstvoll mit zum Lampenfieber auf die Bühne, zum mühsamen Balancieren im Sturm oder zum aufgeregten Kribbeln bei einem Fußballspiel. Ein Buch voller Geschichten, die nur darauf warten, erzählt zu werden.\n\nAuszeichnungen:\nAuf der Empfehlungsliste zum Katholischen Kinder- und Jugendbuchpreis 2026\nÖsterreichischer Kinder- und Jugendbuchpreis 2026\nBörsenblatt "Leselotsen" mit den besten Büchern für Kids & Teens\nORF-KIDS Bestenliste Juli 2025 - Platz 1\nTeil der „besten 7 Bücher für junge Leser“ des Deutschlandfunks im August 2025",
+
+"bilder": [
+    "images/roeher/dasbuchderanfaenge.webp"
+      ],
+  "kategorie": [ "kinder",  "ab5", "Schlaues Mitraten und Mitmachen", "Deutschsprachige Bücher", "Michael Roher", "Heinz Janisch" ],
+    "leseprobe_url": "https://www.book2look.com/book/9783702243128?biblettype=html5"
+   },
+
+
+
+  
+  
+  
   
   {
   "id": 1000,
@@ -2647,7 +2720,6 @@
 },
 
   
-
 
 
 
