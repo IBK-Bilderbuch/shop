@@ -739,7 +739,7 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
     db.session.commit()
     # PayPal = bereits bezahlt → Vorkasse (1)
     # Rechnung = Buchbutler rechnet ab → Rechnung (2)
-    mol_zahlart_id = 1 if bestellung.paymentmethod == "paypal" else 2
+    mol_zahlart_id = 2 
 
     
     payload = {
