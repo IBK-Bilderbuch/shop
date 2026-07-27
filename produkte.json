@@ -1724,16 +1724,18 @@
 
     {
   "id": 123,
-  "name":"Seltsam",
-  "ean": "9783949276347",
-  "beschreibung": "Eine freches Bilderbuch über das Einzigartige in uns allen\n\nClemens ist der einzig Normale im Ort. Nicht so wie Gustav mit seinem langen Hals oder Ella mit ihrem komischen Rüssel. Für Clemens steht eins fest: Arbeit bekommt nur, wer normal ist.\n\n Wie gut, dass in der großen Villa Personal gesucht wird! Doch als dort ein seltsames Tier nach dem anderen einen Job bekommt, wundert sich Clemens sehr. Plötzlich erkennt er, dass anders sein einzigartig macht! \n\n Ein fantastisch-buntes Bilderbuch des weltweit erfolgreichen spanischen Künstlers Canizales über die kleinen und großen Besonderheiten in uns und darüber, wie schön es ist, anders zu sein - eine wichtige Botschaft, die in keinem Kinderzimmer fehlen sollte!",  "bilder": [
-    "images/canizales/seltsam.webp",
-    "images/canizales/seltsam1.webp",
-    "images/canizales/seltsam2.webp",
-    "images/canizales/seltsam3.webp"
+  "name":"Dreieck, Quadrat, Kreis, 3 Bde.",
+  "ean": "9783314105517",
+  "beschreibung": "Diese Bücher handeln von den drei Freunden Dreieck, Quadrat und Kreis. Dreieck möchte seinem Freund Quadrat einen fiesen Streich spielen. Der Streich scheint zu gelingen, aber ob das gut ausgeht? Quadrat versucht etwas zu schaffen, das so vollkommen ist wie sein Freund Kreis. Quadrat merkt aber bald, dass etwas Vollkommenes zu schaffen sehr schwierig ist. Kreis will mit seinem Freunden Quadrat und Dreieck Verstecken spielen. Doch Dreieck bricht eine Regel und gerät in Gefahr. Kann Kreis Dreieck retten? Und wo war Quadrat die ganze Zeit über? \n\nJon Klassen illustriert diese Geschichten mit einfachen Formen und luziden Farben, und Mac Barnett braucht nur wenige Worte, um einen Strudel von Fragen aufzuwerfen. Zusammen haben sie wieder einmal ein Meisterwerk - nein, drei Meisterwerke - voller Humor und tieferer Bedeutung geschaffen. Ein Spaß für Kinder und Erwachsene.",
+  "bilder": [
+    "images/klassen/dreickquadratkreis.webp"
   ],
-  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Canizales"]
+  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Jon Klassen", "ab4"]
    },
+
+
+
+  
 
    {
   "id": 124,
@@ -2577,7 +2579,20 @@
    },
 
 
-  
+   {
+  "id": 185,
+  "name":"Seltsam",
+  "ean": "9783949276347",
+  "beschreibung": "Eine freches Bilderbuch über das Einzigartige in uns allen\n\nClemens ist der einzig Normale im Ort. Nicht so wie Gustav mit seinem langen Hals oder Ella mit ihrem komischen Rüssel. Für Clemens steht eins fest: Arbeit bekommt nur, wer normal ist.\n\n Wie gut, dass in der großen Villa Personal gesucht wird! Doch als dort ein seltsames Tier nach dem anderen einen Job bekommt, wundert sich Clemens sehr. Plötzlich erkennt er, dass anders sein einzigartig macht! \n\n Ein fantastisch-buntes Bilderbuch des weltweit erfolgreichen spanischen Künstlers Canizales über die kleinen und großen Besonderheiten in uns und darüber, wie schön es ist, anders zu sein - eine wichtige Botschaft, die in keinem Kinderzimmer fehlen sollte!",  
+      
+  "bilder": [
+    "images/canizales/seltsam.webp",
+    "images/canizales/seltsam1.webp",
+    "images/canizales/seltsam2.webp",
+    "images/canizales/seltsam3.webp"
+  ],
+  "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Canizales"]
+   },
   
   
   
@@ -2758,6 +2773,8 @@
  
 },
 
+
+  
   
 
 
