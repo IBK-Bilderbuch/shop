@@ -2579,6 +2579,8 @@
    },
 
 
+
+
    {
   "id": 185,
   "name":"Seltsam",
@@ -2593,6 +2595,31 @@
   ],
   "kategorie": ["Dazugehören und Anderssein", "Deutschsprachige Bücher", "Canizales"]
    },
+
+  
+  {
+  "id": 186,
+  "name":"Die große Katzenverschwörung",
+  "ean": "9783737342247",
+  "beschreibung": "Sind die Menschen aus dem Haus, tanzen die Katzen auf den Tischen ... Als Chris ein paar Kätzchen findet und mit nach Hause nimmt, ahnt er nicht, was er sich damit einbrockt: Die kleinen Rabauken haben nämlich beschlossen, reich und berühmt zu werden. Sie starten durch als Holzfäller und zerlegen die Wohnzimmereinrichtung! Nicht gut, findet Chris. Macht nichts, finden die Kätzchen, denn es gibt ja noch viele andere tolle Berufe für Katzen: Künstler! Friseur! Regisseur! Chris erlebt ein blaues Katzenwunder nach dem anderen ... Ein Vorlesebuch für schnurrende Tiger, wilde Kätzchen und kluge Köpfe. Mit bunten, schön-schrägen Illustrationen in Szene gesetzt von Marta Kurczewska.",  "bilder": [
+             "images/grossstaedte/katzen.webp"
+
+  ],
+  "kategorie": ["Reisen",  "Deutschsprachige Bücher", "Marta Kurczewska", "ab8"]
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   
   
