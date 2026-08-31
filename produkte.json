@@ -2613,16 +2613,58 @@
 
 
 
+  {
+  "id": 187,
+  "name": "Bilderbuchbrunnen",
+  "ean": "9783314105029",
+ 
+  "beschreibung": "Binette Schroeder, eine Künstlerin zwischen Fantastik und Wirklichkeit. Sie zählt zu den Ikonen deutscher Illustrationskunst und ist dem NordSüd Verlag seit ihren Anfängen verbunden. Binette Schroeder ist eine Meisterin ihres Fachs und wurde mehrfach ausgezeichnet. Unter anderem mit dem Sonderpreis des Deutschen Jugendliteraturpreises. Zu ihrem 80. Geburtstag erscheint nun ein Sammelband mit allen Bilderbüchern für Kinder aus fünf Jahrzehnten. Eine Sammlung mit den schönsten und beliebtesten Bilderbüchern von Binette Schroeder. \n\n Lupinchen, Laura, der Froschkönig, Florian und Traktor Max, Ratatatam, Krokodil, Krokodil, zebby, Tuffa, Ritter Rüstig und Ritter rostig, Der Zauberling",
+ "bilder": [
+   "images/klassiker/binettebilderbuchbrunnen.webp",
+   "images/klassiker/binettebilderbuchbrunnen1.webp",
+   "images/klassiker/binettebilderbuchbrunnen2.webp",
+   "images/klassiker/binettebilderbuchbrunnen3.webp"
+  ],
+  "kategorie": ["kinder",  "ab5", "Klassiker", "Deutschsprachige Bücher",  "Binette Schroeder"],
+  "leseprobe_url": "https://www.book2look.com/book/3ksguvus53"
+},
+   {
+  "id": 188,
+  "name": "Lupinchen",
+  "ean": "9783314016004",
+ 
+  "beschreibung": "Die Puppe Lupinchen ist sehr einsam und sehr traurig. Um sie aufzuheitern, lädt ihr Freund Vogel Robert zwei seiner besten Freunde ein, den siebengescheiten Schachtelmann Herrn Klappaufundzu und Mister Humpty Dumpty, den scheuen Engländer in Eierform. Klappaufundzu schnippelt prahlerisch ein Haus aus Papier, in dem sie ein Fest feiern wollen. Als aber ein Sturm aufkommt und sie alle in Gefahr bringt, ist es der scheue Mister Humpty Dumpty, der als Retter in Aktion tritt. Lupinchen ist heute ein Klassiker der Kinderliteratur.",
 
+  "bilder": [
+   "images/klassiker/binettelupinchen.webp",
+   "images/klassiker/binettelupinchen1.webp",
+   "images/klassiker/binettelupinchen2.webp",
+   "images/klassiker/binettelupinchen3.webp"
+  ],
+  "kategorie": ["kinder",  "ab5", "Klassiker", "Deutschsprachige Bücher", "Familie und Freunde", "Binette Schroeder"],
+  "leseprobe_url": "https://www.book2look.com/book/MbYdHB6hU6"
+},
 
-
-
-
+  {
+  "id": 189,
+  "name": " Der Froschkönig",
+  "ean": "9783314200090",
+ 
+  "beschreibung": "Die Grimm’schen Kinder- und Hausmärchen beginnen mit dem Froschkönig. Er ist der fulminante Auftakt zu dieser weltberühmten Märchensammlung. Vielen gilt er auch als deren schönstes Märchen und jeder kennt es. Die Prinzessin will ihr Versprechen nicht halten. Sie will den Frosch, der ihr die goldene Kugel aus dem Brunnen holte, nicht von ihrem Tellerchen essen und nicht in ihrem Bettchen schlafen lassen. Im Gegenteil, sie packt den garstigen Wasserpatscher und wirft ihn an die Wand. Mit dem, was dann geschah dürfte sie nicht gerechnet haben. Der Frosch verwandelte sich in einen wunderschönen Prinzen und führte sie heim in sein Königreich. \n\nBinette Schroeders Illustrationen zum »Froschkönig« aus dem Jahr 1989, sind ein Höhepunkt ihres Schaffens.",
+  "bilder": [
+   "images/klassiker/binettefroschkoenig.webp",
+   "images/klassiker/binettefroschkoenig1.webp",
+   "images/klassiker/binettefroschkoenig2.webp",
+   "images/klassiker/binettefroschkoenig3.webp"
+  ],
+  "kategorie": ["kinder",  "ab4", "Klassiker", "Deutschsprachige Bücher",  "Binette Schroeder"],
+  "leseprobe_url": "https://www.book2look.com/book/cgkTHgWGAW"
+},
 
 
   
   
-  
+
   {
   "id": 1000,
   "name": "Testbuch",
