@@ -1,9 +1,16 @@
 
 
 [
-
- 
-
+ { "id": 195,
+    "name": "Der Tag der Wale",
+    "ean": "9783849701796",
+    "beschreibung": "'Du gehörst mir', sagt Fausto zur Blume, zum Schaf und zum Berg. Und sie alle unterwerfen sich ihm. Aber all diese Besitztümer reichen ihm noch immer nicht. Fausto besteigt ein Boot und fährt weit hinaus, um nun auch Herr des Meeres zu werden. Wird es ihm gelingen?\n\nIn dieser Fabel über Gier und Machtmissbrauch kombiniert Oliver Jeffers gekonnt spektakuläre Illustrationen mit kraftvoller Prosa. Er benutzt die handwerkliche Technik der Lithografie und die traditionelle Erzählform der Fabel, um die Herzen heutiger Lesender zu berühren. \n\n Ein dramaturgisches Meisterwerk.Silke Rabus, 1001 Buch\n\nDie Bildkompositionen sind derart auf das Wesentliche konzentriert, dass großzügige Weißräume entstehen, die eine hintersinnige Spannung erzeugen – und allein durch ihre Gestaltung eine Antwort geben auf die Frage: Wann ist es genug?\nAus der Begründung der Jury, Die schönsten deutschen Bücher",
+  "bilder": [
+      "images/wichtigefragen/dublikat.webp"
+    ],
+    "kategorie":["kinder", "ab5", "Wichtige Fragen", "Deutschsprachige Bücher", "Oliver Jeffers" ],
+    "leseprobe_url": "https://www.book2look.com/book/9AhMRtWeWK"
+  }, .......zu bearbeiten
 
   
   { "id": 194,
