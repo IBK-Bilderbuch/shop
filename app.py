@@ -713,11 +713,13 @@ def lade_bestand_von_api(ean):
                 return None
             res = res[0]
 
+     
         return {
             "bestand": to_int(res.get("Bestand")),
             "preis": to_float(res.get("Preis")),
             "erfuellungsrate": res.get("Erfuellungsrate"),
-            "handling_zeit": res.get("Handling_Zeit_in_Werktagen")
+            "handling_zeit": res.get("Handling_Zeit_in_Werktagen"),
+            "ausverkauft": ist_ausverkauft(res.get("Handling_Zeit_in_Werktagen"))
 
         }
 
@@ -969,8 +971,12 @@ def sync_buchbutler(index):
             produkt["name"] = api.get("name")
             produkt["autor"] = api.get("autor")
 
+       
+
         if movement:
             produkt["preis"] = movement.get("preis")
+            produkt["handling_zeit"] = movement.get("handling_zeit")
+            produkt["ausverkauft"] = movement.get("ausverkauft", False)
 
         # sofort speichern → kein RAM Wachstum
         with open(json_path, "w", encoding="utf-8") as f:
@@ -1079,10 +1085,12 @@ def produkt_detail(produkt_id, slug):
 
     produkt.update(lokale_daten)
 
+
     produkt.setdefault("bestand", "n/a")
     produkt.setdefault("preis", 0)
     produkt.setdefault("handling_zeit", "n/a")
     produkt.setdefault("erfuellungsrate", "n/a")
+    produkt.setdefault("ausverkauft", False)
 
     return render_template(
         "produkt.html",
@@ -1113,6 +1121,11 @@ def add_to_cart():
             produkt.update(movement)
     # preis bleibt sonst aus JSON (lokale_daten["preis"])
     # ─────────────────────────────────────────────────────────────
+
+
+    if produkt.get("ausverkauft"):
+        flash("Dieses Produkt ist leider ausverkauft.", "error")
+        return redirect(request.referrer or url_for("index"))
 
 
     cart = get_cart()
@@ -1439,6 +1452,14 @@ def to_int(value):
 def attr(attrs, key):
     """Greift sicher auf Artikelattribute zu"""
     return (attrs.get(key) or {}).get("Wert", "")
+
+
+def ist_ausverkauft(handling_zeit, schwelle=998):
+    """BuchButler liefert ab ~998 Werktage als Signal für 'nicht lieferbar'"""
+    try:
+        return int(handling_zeit) >= schwelle
+    except (TypeError, ValueError):
+        return False
 
 def buchbutler_request(endpoint, ean):
     """Allgemeine Request Funktion"""
