@@ -181,19 +181,24 @@
 
         </div>
 
+        
         <h3>{{ produkt.name }}</h3>
 
         <p>{{ produkt.preis }} €</p>
 
         <!-- 🔹 WARENKORB -->
-        <button onclick="addToCart(
-          '{{ produkt.name }}',
-          {{ produkt.preis }},
-          '{{ src }}',
-          '{{ produkt.ean }}'
-        )">
-          In den Warenkorb
-        </button>
+        {% if produkt.ausverkauft %}
+          <button class="btn-ausverkauft" disabled>Ausverkauft</button>
+        {% else %}
+          <button onclick="addToCart(
+            '{{ produkt.name }}',
+            {{ produkt.preis }},
+            '{{ src }}',
+            '{{ produkt.ean }}'
+          )">
+            In den Warenkorb
+          </button>
+        {% endif %}
 
       </div>
     {% endfor %}
