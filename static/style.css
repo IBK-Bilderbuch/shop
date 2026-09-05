@@ -24,6 +24,11 @@ main.page-content {
 /* =========================================
    3. BASE STYLES
 ========================================= */
+
+html {
+  zoom: 90%;
+}
+
 body {
   font-family: var(--font-body);
   color: #333;
@@ -84,7 +89,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 35px 150px;
+  padding: 35px 50px;
   flex-wrap: wrap;
   box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
 }
@@ -104,7 +109,6 @@ header {
   display: block;
   object-fit: contain;
   position: absolute;
-  margin-left: 110px;
    top:10%;     /* mittig in Navbar */
   transform: translateY(20%); /* nach unten rausziehen */
   z-index: 10;           /* Logo über Nav-Links */
@@ -198,7 +202,7 @@ footer a {
 main {
   padding: 50px 20px;
   background-color: transparent;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -209,8 +213,8 @@ main {
 .carousel {
   position: relative;
   z-index: 1;
-  max-width: 1000px;
-  width: 80%;
+  max-width: 1300px;
+  width: 100%;
   margin: 0 auto 50px;
   overflow: hidden;
 }
@@ -225,7 +229,7 @@ main {
 }
 
 .carousel-slide img {
-  width: 70%;
+  width: 80%;
   height: 600px;
   object-fit: cover;
 }
