@@ -84,7 +84,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 35px 50px;
+  padding: 35px 150px;
   flex-wrap: wrap;
   box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
 }
@@ -197,7 +197,7 @@ footer a {
 main {
   padding: 50px 20px;
   background-color: transparent;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -208,7 +208,7 @@ main {
 .carousel {
   position: relative;
   z-index: 1;
-  max-width: 1300px;
+  max-width: 1000px;
   width: 100%;
   margin: 0 auto 50px;
   overflow: hidden;
