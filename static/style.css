@@ -104,6 +104,7 @@ header {
   display: block;
   object-fit: contain;
   position: absolute;
+  margin-left: 110px;
    top:10%;     /* mittig in Navbar */
   transform: translateY(20%); /* nach unten rausziehen */
   z-index: 10;           /* Logo über Nav-Links */
@@ -209,7 +210,7 @@ main {
   position: relative;
   z-index: 1;
   max-width: 1000px;
-  width: 100%;
+  width: 80%;
   margin: 0 auto 50px;
   overflow: hidden;
 }
@@ -224,7 +225,7 @@ main {
 }
 
 .carousel-slide img {
-  width: 80%;
+  width: 70%;
   height: 600px;
   object-fit: cover;
 }
