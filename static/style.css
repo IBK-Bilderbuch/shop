@@ -339,6 +339,7 @@ button.next { right: 10px; }
 ========================================= */
 
 .book-list {
+  zoom: 90%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
