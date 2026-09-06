@@ -24,8 +24,6 @@ main.page-content {
 /* =========================================
    3. BASE STYLES
 ========================================= */
-
-
 body {
   font-family: var(--font-body);
   color: #333;
@@ -339,7 +337,6 @@ button.next { right: 10px; }
 ========================================= */
 
 .book-list {
-  zoom: 90%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
