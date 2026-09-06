@@ -1,8 +1,34 @@
 
 
 [
- 
 
+ { "id": 196,
+    "name": "Der Garten meiner Baba",
+    "ean": "9783848902248",
+    "beschreibung": "Ein Bilderbuch wie eine zärtliche Erinnerung. Für Kinder ab 4 Jahren und Erwachsene. \n Dieses Buch zeigt eindrücklich, wie wertvoll die Zeit ist, die man als Kind mit seiner Großmutter verbringen darf. Momente, die für immer bleiben: Die gemeinsame Zeit im Garten, die zahlreichen Besuche bei der Großmutter: Wie sie sich ein ums andere Mal im Dampf kochender Kartoffeln versteckt. Wie sie beim Essen kein Wort spricht und das warme Gefühl der Geborgenheit dennoch allgegenwärtig ist.",
+  
+    "bilder": [
+      "images/anderssein/dergartenmeinerbaba.webp",
+      "images/anderssein/dergartenmeinerbaba1.webp",
+      "images/anderssein/dergartenmeinerbaba2.webp",
+      "images/anderssein/dergartenmeinerbaba3.webp"
+],
+    "kategorie":["kinder", "ab4", "Familie und Freunde", "Deutschsprachige Bücher", "Sydney Smith", "Jordan Scott" ]
+  },
+ 
+  { "id": 195,
+    "name": "Ich bin wie der Fluss",
+    "ean": "9783848901975",
+    "beschreibung": "Außergewöhnliche Geschichte eines Jungen, der es schafft, sich aus seiner Isolation zu befreien - brillant illustriert. Für Kinder und Erwachsene. \n\n Ein Junge, der stottert. Er fühlt sich nicht in der Lage, so zu kommunizieren, wie er es möchte. Denn die Worte bleiben stecken. Seine Tage sind meist ganz still und in der Schule hofft er, dass er nichts sagen muss. Erst als sein Vater ihn mit zum Fluss nimmt und ihm vor Augen führt, dass seine Sprache wie das Wasser ist, sprudelnd, aufwühlend, wirbelnd, herabstürzend, findet er seine Stimme wieder. Und seinen Mut.",
+   
+    "bilder": [
+      "images/anderssein/ichbinwiederfluss.webp",
+      "images/anderssein/ichbinwiederfluss1.webp",
+      "images/anderssein/ichbinwiederfluss2.webp",
+      "images/anderssein/ichbinwiederfluss3.webp"
+],
+    "kategorie":["kinder", "ab5", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Sydney Smith", "Jordan Scott" ]
+  },
   
   { "id": 194,
     "name": "Boris und der Ruf des Wassers",
