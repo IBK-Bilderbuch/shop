@@ -338,10 +338,10 @@ button.next { right: 10px; }
 
 .book-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
-  max-width: 1000px;
-  margin-left: 240px;
+  max-width: 900px;
+  margin-left: 280px;
   padding: 50px 0;
 }
 .search-book-list {
