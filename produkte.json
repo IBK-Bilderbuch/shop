@@ -2,6 +2,32 @@
 
 [
 
+
+ { "id": 198,
+    "name": "How Does Santa Go Down the Chimney?",
+    "ean": "9781529517149",
+    "beschreibung": "A funny and magical Christmas story from iconic picture book creators Mac Barnett and Jon Klassen, perfect for gifting.\n\n The multi-award-winning duo of Mac Barnett and Jon Klassen tackle a perennial question: how does Santa go down the chimney?\n\nWhen Santa arrives at a child’s house on Christmas Eve, does he go down the chimney feetfirst or headfirst? What if he gets stuck? What if there’s no chimney? Maybe he slides under the door, as thin as a piece of paper? Or is it possible he pours himself through the tap? What happens once he’s inside?\n\nMac Barnett’s iconic talent for earnest deadpan humour and Jon Klassen’s irresistibly funny art honour this timeless question with answers both ridiculous and plausible, mounting in hilarity as the night continues. Channelling a child’s fanciful explanations, this latest collaboration by a bestselling team will find a secure spot among family Christmas traditions.\n",
+    
+    "bilder": [
+      "images/klassen/santachimney.webp"
+],
+    "kategorie":["kinder", "ab4", "Weihnachten", "Deutschsprachige Bücher", "Sydney Smith", "Mac Barnett", "Bernadette Ott" ]
+  },
+  
+{ "id": 197,
+    "name": "Ein Fest für den Weihnachtsmann",
+    "ean": "9783848902408",
+    "beschreibung": "Weihnachten durch die Augen seiner berühmtesten Figur erleben: Wie feiert der Weihnachtsmann eigentlich Weihnachten?\nJahr für Jahr bringt der Weihnachtsmann Freude in die Herzen der Menschen. Dieses Jahr wollen seine treuen Elfen ihm selbst die Magie von Weihnachten schenken! Gesagt, getan: Mit einem prächtigen Baum, köstlichen Leckereien, Geschichten und liebevoll ausgesuchten Geschenken bereiten sie ihm ein unvergessliches Fest – und der Weihnachtsmann erlebt Weihnachten aus einer ganz neuen Perspektive.  Eine besondere Weihnachtsgeschichte für Kinder ab 4 Jahren\n"  
+    "bilder": [
+      "images/ssmith/einfestfuerweihnachtsmann.webp",
+      "images/ssmith/einfestfuerweihnachtsmann1.webp",
+      "images/ssmith/einfestfuerweihnachtsmann2.webp",
+      "images/ssmith/einfestfuerweihnachtsmann3.webp"
+],
+    "kategorie":["kinder", "ab4", "Weihnachten", "Deutschsprachige Bücher", "Sydney Smith", "Mac Barnett", "Bernadette Ott" ]
+  },
+  
+  
  { "id": 196,
     "name": "Der Garten meiner Baba",
     "ean": "9783848902248",
