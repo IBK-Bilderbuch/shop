@@ -1,7 +1,21 @@
 
 
 [
- { "id": 198,
+
+ { "id": 199,
+    "name": "In der Schlange der Träume",
+    "ean": "9783957287113",
+    "beschreibung": "Eine Fluchtgeschichte voller Herz und Hoffnung\n\nMitten in der Nacht fliehen ein kleiner Junge und sein Vater vor den eisernen Schritten der Soldaten und den Bomben, die ihr Zuhause zerstören. Von da an müssen sie Mauern überwinden, das Meer überqueren, in kalten Zelten schlafen - und immer wieder warten. Darauf, dass aus ihren roten Stempeln blaue werden, damit sie endlich Unterschlupf in einem anderen Land finden. Um die Wartezeit zu verkürzen, träumen sie gemeinsam: von der Zukunft, von ihrem neuen Zuhause - und von ihrem alten.\n\nDieses Bilderbuch erklärt auf behutsame und kindgerechte Art und Weise was es bedeutet zu flüchten. Eine bewegende Geschichte, die das endlose Warten, das Bangen und das Hoffen von Flüchtenden ausdrucksstark für Kinder greifbar macht.\n\nRita Sineiro wurde in einer Vollmondnacht im Jahr des Drachen in Porto geboren. Bücher sind ihr Lieblingsort, Geschichten zu erzählen ist ihr Lieblingsspiel. Laia Domènech lebt direkt am Meer, in dem Dorf, in dem sie aufgewachsen ist. Sie beobachtet gern, wie die Menschen zum Hafen schlendern oder zum Fluss. Oft zeichnet sie am Wasser, und wenn sie Farben mischt, kann sie es zwar nicht sehen, aber weiter rauschen hören.\n",
+  
+    "bilder": [
+      "images/wichtigefragen/schlangedertraume.webp",
+      "images/wichtigefragen/schlangedertraume1.webp",
+      "images/wichtigefragen/schlangedertraume2.webp",
+      "images/wichtigefragen/schlangedertraume3.webp",
+      "images/wichtigefragen/schlangedertraume4.webp"
+],
+  
+ { "id": 199,
     "name": "In der Schlange der Träume",
     "ean": "9783957287113",
     "beschreibung": "Eine Fluchtgeschichte voller Herz und Hoffnung\n\nMitten in der Nacht fliehen ein kleiner Junge und sein Vater vor den eisernen Schritten der Soldaten und den Bomben, die ihr Zuhause zerstören. Von da an müssen sie Mauern überwinden, das Meer überqueren, in kalten Zelten schlafen - und immer wieder warten. Darauf, dass aus ihren roten Stempeln blaue werden, damit sie endlich Unterschlupf in einem anderen Land finden. Um die Wartezeit zu verkürzen, träumen sie gemeinsam: von der Zukunft, von ihrem neuen Zuhause - und von ihrem alten.\n\nDieses Bilderbuch erklärt auf behutsame und kindgerechte Art und Weise was es bedeutet zu flüchten. Eine bewegende Geschichte, die das endlose Warten, das Bangen und das Hoffen von Flüchtenden ausdrucksstark für Kinder greifbar macht.\n\nRita Sineiro wurde in einer Vollmondnacht im Jahr des Drachen in Porto geboren. Bücher sind ihr Lieblingsort, Geschichten zu erzählen ist ihr Lieblingsspiel. Laia Domènech lebt direkt am Meer, in dem Dorf, in dem sie aufgewachsen ist. Sie beobachtet gern, wie die Menschen zum Hafen schlendern oder zum Fluss. Oft zeichnet sie am Wasser, und wenn sie Farben mischt, kann sie es zwar nicht sehen, aber weiter rauschen hören.\n",
@@ -2485,7 +2499,7 @@
     "images/neu/umami3.webp",
     "images/neu/umami4.webp"
 ],
-  "kategorie": ["Deutschsprachige Bücher", "Jacob Grant", "ab3", "Neuerscheinungen" ]
+  "kategorie": ["Deutschsprachige Bücher", "Jacob Grant", "ab3" ]
 },
 
   
@@ -2636,7 +2650,7 @@
   "bilder": [
              "images/neu/alleabgeholt.webp"
   ],
-  "kategorie": ["Neuerscheinungen",  "Deutschsprachige Bücher", "Sabine Kranz",  "ab2"],
+  "kategorie": [  "Deutschsprachige Bücher", "Sabine Kranz",  "ab2"],
   "leseprobe_url": "https://www.book2look.com/embed/trjju36xnd&euid=456019305&ruid=0&referurl=www.book2look.com&refererpath=admin.book2look.com"
   },
 
