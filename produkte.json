@@ -2,6 +2,21 @@
 
 [
 
+   { "id": 202,
+    "name": "Das Lied des Engels",
+    "ean": "",
+    "beschreibung": "Was tun, wenn Weihnachten kurz vor der Tür steht und immer noch kein Baum im Haus ist? Oder der Wunschzettel lang ist, aber man »immer so mit dem Pfennig rechnen muss«? Und ob die Tiere draußen auch das Fest feiern können? Der Bestsellerautor Hans Fallada erinnert in seinen Erzählungen an die schönste Zeit des Jahres: »Dies Gefühl aufzuwachen und zu wissen: Heute ist wirklich Weihnachten. Wovon wir seit einem Vierteljahr geredet, auf was wir so lange schon gehofft hatten, nun war es wirklich da!« Und mit den wunderbaren Illustrationen von Ulrike Möltgen kann man sich die Geschichten zum Fest gemeinsam anschauen und lesen!\n\nHans Fallada (1893-1947) war ein deutscher Schriftsteller. Zu seinen bekanntesten Werken gehören Kleiner Mann - was nun? und Jeder stirbt für sich allein.\n\nHans Fallada (1893-1947) war ein deutscher Schriftsteller. Zu seinen bekanntesten Werken gehören Kleiner Mann - was nun? und Jeder stirbt für sich allein.\n\n",
+   
+    "bilder": [
+      "images/wichtigefragen/dergestohleneweihnachtsbaum.webp",
+      "images/wichtigefragen/dergestohleneweihnachtsbaum1.webp",
+      "images/wichtigefragen/dergestohleneweihnachtsbaum2.webp",
+      "images/wichtigefragen/dergestohleneweihnachtsbaum3.webp",
+      "images/wichtigefragen/dergestohleneweihnachtsbaum4.webp"
+],
+  "kategorie":["Für Erwachsene", "Weihnachten", "Feiertage", "Deutschsprachige Bücher",  "Ulrike Möltgen", "Hans Fallada" ]
+  }, 
+
   { "id": 201,
     "name": "Der gestohlene Weihnachtsbaum",
     "ean": "9783458205326",
