@@ -2,19 +2,37 @@
 
 [
 
- { "id": 199,
-    "name": "In der Schlange der Träume",
-    "ean": "9783957287113",
-    "beschreibung": "Eine Fluchtgeschichte voller Herz und Hoffnung\n\nMitten in der Nacht fliehen ein kleiner Junge und sein Vater vor den eisernen Schritten der Soldaten und den Bomben, die ihr Zuhause zerstören. Von da an müssen sie Mauern überwinden, das Meer überqueren, in kalten Zelten schlafen - und immer wieder warten. Darauf, dass aus ihren roten Stempeln blaue werden, damit sie endlich Unterschlupf in einem anderen Land finden. Um die Wartezeit zu verkürzen, träumen sie gemeinsam: von der Zukunft, von ihrem neuen Zuhause - und von ihrem alten.\n\nDieses Bilderbuch erklärt auf behutsame und kindgerechte Art und Weise was es bedeutet zu flüchten. Eine bewegende Geschichte, die das endlose Warten, das Bangen und das Hoffen von Flüchtenden ausdrucksstark für Kinder greifbar macht.\n\nRita Sineiro wurde in einer Vollmondnacht im Jahr des Drachen in Porto geboren. Bücher sind ihr Lieblingsort, Geschichten zu erzählen ist ihr Lieblingsspiel. Laia Domènech lebt direkt am Meer, in dem Dorf, in dem sie aufgewachsen ist. Sie beobachtet gern, wie die Menschen zum Hafen schlendern oder zum Fluss. Oft zeichnet sie am Wasser, und wenn sie Farben mischt, kann sie es zwar nicht sehen, aber weiter rauschen hören.\n",
+  { "id": 201,
+    "name": "Der gestohlene Weihnachtsbaum",
+    "ean": "9783458205326",
+    "beschreibung": "Was tun, wenn Weihnachten kurz vor der Tür steht und immer noch kein Baum im Haus ist? Oder der Wunschzettel lang ist, aber man »immer so mit dem Pfennig rechnen muss«? Und ob die Tiere draußen auch das Fest feiern können? Der Bestsellerautor Hans Fallada erinnert in seinen Erzählungen an die schönste Zeit des Jahres: »Dies Gefühl aufzuwachen und zu wissen: Heute ist wirklich Weihnachten. Wovon wir seit einem Vierteljahr geredet, auf was wir so lange schon gehofft hatten, nun war es wirklich da!« Und mit den wunderbaren Illustrationen von Ulrike Möltgen kann man sich die Geschichten zum Fest gemeinsam anschauen und lesen!\n\nHans Fallada (1893-1947) war ein deutscher Schriftsteller. Zu seinen bekanntesten Werken gehören Kleiner Mann - was nun? und Jeder stirbt für sich allein.\n\nHans Fallada (1893-1947) war ein deutscher Schriftsteller. Zu seinen bekanntesten Werken gehören Kleiner Mann - was nun? und Jeder stirbt für sich allein.\n\n",
+   
+    "bilder": [
+      "images/wichtigefragen/dergestohleneweihnachtsbaum.webp",
+      "images/wichtigefragen/dergestohleneweihnachtsbaum1.webp",
+      "images/wichtigefragen/dergestohleneweihnachtsbaum2.webp",
+      "images/wichtigefragen/dergestohleneweihnachtsbaum3.webp",
+      "images/wichtigefragen/dergestohleneweihnachtsbaum4.webp"
+],
+  "kategorie":["Für Erwachsene", "Weihnachten", "Feiertage", "Deutschsprachige Bücher",  "Ulrike Möltgen", "Hans Fallada" ]
+  }, 
+ 
+ { "id": 200,
+    "name": "Das Geschenk der Weisen",
+    "ean": "9783458194538",
+    "beschreibung": "O. Henry, eigentlich William Sydney Porter (1862 - 1910), gilt als Wegbereiter der modernen amerikanischen Kurzgeschichte. Das Geschenk der Weisen ist eine der weltweit beliebtesten Weihnachtsgeschichten. \n\n Della und Jim sind frisch verheiratet, lieben sich sehr, haben aber nur wenig Geld - und morgen ist Weihnachten! Della beschließt, ihre wunderschönen langen braunen Haare abschneiden zu lassen (sie bekommt von der Perückenmacherin 20 Dollar dafür), um Jim eine Uhrkette für seine Taschenuhr kaufen zu können. Jim seinerseits hat die Taschenuhr verkauft, um Della einen wunderschönes Set von Kämmen zu kaufen, deren Farbe genau zu ihren Haaren passt ... Ist es nicht wahre Liebe, wenn beide zum größten Opfer bereit sind?\n\n Ulrike Möltgen, 1973 in Wuppertal geboren, studierte Kommunikationsdesign bei Wolf Erlbruch. Sie lehrte als Dozentin an der Folkwang Universität der Künste in Essen, ihre Arbeiten wurden vielfach ausgezeichnet und in Ausstellungen gezeigt. Bekannt wurde Ulrike Möltgen durch Der Mondbär, zuletzt erschien von ihr in der Insel-Bücherei Der kleine Häwelmann und Das Geschenk der Weisen.\n\n",
   
     "bilder": [
-      "images/wichtigefragen/schlangedertraume.webp",
-      "images/wichtigefragen/schlangedertraume1.webp",
-      "images/wichtigefragen/schlangedertraume2.webp",
-      "images/wichtigefragen/schlangedertraume3.webp",
-      "images/wichtigefragen/schlangedertraume4.webp"
+      "images/wichtigefragen/geschenkderweisen.webp",
+      "images/wichtigefragen/geschenkderweisen1.webp",
+      "images/wichtigefragen/geschenkderweisen2.webp",
+      "images/wichtigefragen/geschenkderweisen3.webp",
+      "images/wichtigefragen/geschenkderweisen4.webp"
 ],
-  
+  "kategorie":["Für Erwachsene", "Weihnachten", "Feiertage", "Deutschsprachige Bücher",  "Ulrike Möltgen", "O. Henry" ]
+  },
+
+ 
  { "id": 199,
     "name": "In der Schlange der Träume",
     "ean": "9783957287113",
@@ -38,7 +56,7 @@
     "bilder": [
       "images/klassen/santachimney.webp"
 ],
-    "kategorie":["kinder", "ab4", "Weihnachten", "Englischsprachige Bücher",  "Mac Barnett",  "Jon Klassen" ]
+    "kategorie":["kinder", "ab4", "Weihnachten", "Feiertage", "Englischsprachige Bücher",  "Mac Barnett",  "Jon Klassen" ]
   },
   
 { "id": 197,
