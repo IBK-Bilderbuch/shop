@@ -1,10 +1,36 @@
 
 
 [
+{ "id": 205,
+    "name": "Ein Schnurrbart erobert die Welt",
+    "ean": "9783854521778",
+    "beschreibung": "Valentin spürt die Urlaubsstimmung in den kleinen Zehen, in jedem Härchen auf seinem Arm, endlich geht es los in die Ferien! Doch die sind erst mal ganz anders als gedacht: das Essen im Hotel ist grausig, das Meer viel zu salzig und die Tempelruinen sind furchtbar langweilig. Zum Glück gibt es da noch Áris, der am Strand Ferienglück an Touristen verkauft und mit seinem Vater in den griechischen Bergen Ziegen hütet. Endlich scheint das Urlaubsheldentum greifbar, mit Áris ist alles möglich! Doch dann ist der mit einem Mal verschwunden und Valentin erkennt, wie wichtig Freundschaft ist und dass sie manchmal ganz schön auf die Probe gestellt wird.",
+   
+    "bilder": [
+      "images/roeher/valentinderurlaubsheld.webp"
+],
+  "kategorie":["Kinder", "ab6", "Familie und Freunde", "Deutschsprachige Bücher",  "Michael Roher", "Sarah Michaela Orlovsky"]
+  }, 
+
+   
+ { "id": 204,
+    "name": "Ein Schnurrbart erobert die Welt",
+    "ean": "9783854521891",
+    "beschreibung": "Jojos Opa ist traurig und langweilig ist ihm auch ein bisschen. Jojo weiß schon bald, wie es Opa besser gehen könnte. Der interessiert sich seit Neuestem nämlich für Bärte, obwohl er selbst ja gar keinen hat! Opas Ziel ist es, zur Bartweltmeisterschaft zu fahren. Jojo und sein Opa machen sich also an die Arbeit, so ein Bart muss erst mal gut wachsen, dann gehegt und gepflegt werden ... als es endlich so weit ist, steigt die Spannung ganz enorm! Mit welchem Bart könnte Opa Erfolg haben? Und was passiert, wenn er wirklich gewinnt?",
+    
+    "bilder": [
+      "images/roeher/schnurrbart.webp"
+],
+  "kategorie":["Kinder", "ab6", "Familie und Freunde", "Deutschsprachige Bücher",  "Michael Roher", "Sarah Michaela Orlovsky"]
+  }, 
+
+
+   
    { "id": 203,
     "name": "Das rote Paket",
     "ean": "9783855815142",
     "beschreibung": "Man darf das rote Paket nicht öffnen, man darf es nur weiterschenken, sagt Oma zur kleinen Anna. Linda Wolfsgruber und Gino Alberti erzählen mit stimmungsvollen Bildern, wie das geheimnisvolle Paket das Leben im Dorf verändert.\n\n Linda Wolfsgruber, 1961 in Bruneck/Südtirol geboren, besuchte die Kunstschule in St. Ulrich - Gröden und die Scuola del Libro in Urbino. Sie lebt in Wien und arbeitet seit vielen Jahren als Illustratorin. Ihre Bilderbücher 'Die Prinzessin auf dem Kürbis' (Text: Heinz Janisch) und 'Warum der Hase lange Ohren hat'(Text Martin Auer) wurden mit dem Österreichischen Kinderbuchpreis ausgezeichnet. Zudem wurde Linda Wolfsgruber der Österreichische Förderungspreis für Kinder- und Jugendliteratur 2000 verliehen.\n",
+      
       
     "bilder": [
       "images/weihnachten/dasrotepaket.webp",
