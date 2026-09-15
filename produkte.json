@@ -1,6 +1,21 @@
 
 
 [
+   { "id": 203,
+    "name": "Das rote Paket",
+    "ean": "9783855815142",
+    "beschreibung": "Man darf das rote Paket nicht öffnen, man darf es nur weiterschenken, sagt Oma zur kleinen Anna. Linda Wolfsgruber und Gino Alberti erzählen mit stimmungsvollen Bildern, wie das geheimnisvolle Paket das Leben im Dorf verändert.\n\n Linda Wolfsgruber, 1961 in Bruneck/Südtirol geboren, besuchte die Kunstschule in St. Ulrich - Gröden und die Scuola del Libro in Urbino. Sie lebt in Wien und arbeitet seit vielen Jahren als Illustratorin. Ihre Bilderbücher 'Die Prinzessin auf dem Kürbis' (Text: Heinz Janisch) und 'Warum der Hase lange Ohren hat'(Text Martin Auer) wurden mit dem Österreichischen Kinderbuchpreis ausgezeichnet. Zudem wurde Linda Wolfsgruber der Österreichische Förderungspreis für Kinder- und Jugendliteratur 2000 verliehen.\n",
+      
+    "bilder": [
+      "images/weihnachten/dasrotepaket.webp",
+      "images/weihnachten/dasrotepaket1.webp",
+      "images/weihnachten/dasrotepaket2.webp",
+      "images/weihnachten/dasrotepaket3.webp",
+      "images/weihnachten/dasrotepaket4.webp",
+      "images/weihnachten/dasrotepaket5.webp"
+],
+  "kategorie":["Kinder", "ab3", "Weihnachten", "Feiertage", "Deutschsprachige Bücher",  "Linda Wolfsgruber" ]
+  }, 
 
    { "id": 202,
     "name": "Das Lied des Engels",
