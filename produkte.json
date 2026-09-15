@@ -179,7 +179,12 @@
     "ean": "9783458178385",
     "beschreibung": "Ein Leben in Bildern – das Stundenbuch des Jacominus Gainsborough\n\nJacominus Gainsborough träumt sich zum Mond, geht an Bord eines großen Schiffs, verliebt sich, verliert, erinnert – und findet wieder. Er lebt still und laut, voller Fragen, voller Augenblicke. Kein außergewöhnliches Leben. Und doch ein ganz besonderes.\n\nRébecca Dautremer erzählt in ihrem kunstvoll illustrierten Buch von den kostbaren Momenten des Daseins – von Aufbruch, Abschied, Nähe und Neubeginn. Mit feinem Gespür öffnet sie einen Raum für das, was uns alle bewegt: das Leben selbst.\n\nWas ein Stundenbuch ist?\nVielleicht ein stiller Begleiter.\nVielleicht die Summe vieler kleiner Augenblicke.\nVielleicht einfach: ein Leben.\n\nEin Blatt im Wind. Ein leiser Regen. Das Zurückweichen der Flut.\nEin Purzelbaum. Ein letzter Gruß am Kai. Ein Wiedersehen im Garten.\nEin Picknick im Gras. Kinderlachen. Ein neuer Schatten unter dem Mandelbaum.\n\nAll das.\nEin Leben.",
     "bilder": [
-      "images/jacominus/jacominus.jpg"
+      "images/jacominus/jacominus.webp",
+      "images/jacominus/jacominus1.webp",
+      "images/jacominus/jacominus2.webp",
+      "images/jacominus/jacominus3.webp",
+      "images/jacominus/jacominus4.webp",
+      "images/jacominus/jacominus5.webp"
     ],
     "kategorie":["kinder", "ab6", "Philosophisches Bilderbuch", "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
   },
@@ -202,7 +207,14 @@
     "ean": "9783458179917",
     "beschreibung": "Eine winzig kleine Sekunde.\n\nDas ist nicht viel, denkt ihr?\n\nAber manche kleinen Sekunden zählen mehr als alles sonst.\n\nFür Jacominus ganz gewiss, aber auch für die anderen, und es sind viele.\n\nEine winzig kleine Sekunde also für 1 oder 10 oder gar 100 Figuren auf einem Fresko, das größer ist als ihr, nein, das ist keine Kleinigkeit.",
     "bilder": [
-      "images/winzsekunde/eine-winzig-kleine-sekunde_cover.jpg"
+      "images/jacominus/sekunde.webp",
+      "images/jacominus/sekunde1.webp",
+      "images/jacominus/sekunde2.webp",
+      "images/jacominus/sekunde3.webp",
+      "images/jacominus/sekunde4.webp",
+      "images/jacominus/sekunde5.webp",
+      "images/jacominus/sekunde6.webp",
+      "images/jacominus/sekunde7.webp"
     ],
     "kategorie":["kinder", "ab5", "Philosophisches Bilderbuch", "Jacominus Gainsborough", "Deutschsprachige Bücher", "Rébecca Dautremer" ]
   },
