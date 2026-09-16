@@ -1,6 +1,31 @@
 
 
 [
+ {
+  "id":209,
+  "name":"Feuer Feuer Ungeheuer",
+  "ean":"9783903422698",
+  "beschreibung": "Eric & Edgar Schwarz haben dieses Märchen um die vier unterschiedlichen Brüder, das sich als Parabel einer Traumabewältigung lesen lässt, in Reimform geschrieben. Eric Schwarz hat die Geschichte im Stil von Scherenschnitten gestaltet (dabei mit analogen Cut-Outs gearbeitet) und damit ein zauberhaftes Schattentheater geschaffen. \n\n Im Wald tobt ein großes Feuer! Und nicht nur das: Das Feuer gebiert ein Ungeheuer! Bald schon dringt das Ungeheuer in das Haus der vier Brüder ein, die fürchten um ihr Leben. So unterschiedlich die vier Brüder sind, in so unterschiedliche Tiere verwandeln sie sich und jedes reagiert auf seine Art: Der Hase flüchtet, der Tiger kämpft, die Schildkröte sucht Schutz in ihrem Panzer, der Fuchs verhandelt mit dem Ungeheuer. Doch sie werden lernen müssen, dass sie nur gemeinsam gegen die Bedrohung bestehen können.\n\nEric & Edgar Schwarz haben dieses Märchen um die vier unterschiedlichen Brüder, das sich als Parabel einer Traumabewältigung lesen lässt, in Reimform geschrieben. Eric Schwarz hat die Geschichte im Stil von Scherenschnitten gestaltet (dabei mit analogen Cut-Outs gearbeitet) und damit ein zauberhaftes Schattentheater geschaffen.",  
+  "bilder": [
+    "images/neu/feuerfeuerunheheuer.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Neuerscheinungen", "ab3", "Mariachiara Di Giorgio" ],
+   "leseprone_pdf": "leseproben/feuerfeuer.pdf"
+   },
+
+   
+   {
+  "id":208,
+  "name":"Eines Nachts",
+  "ean":"9783314107559",
+  "beschreibung": "Eines Nachts entwischen zwei Geschwister ihrem Kindermädchen – und begegnen dabei der Schönheit der Nacht. Hand in Hand tanzen sie mit den Sternen, treffen Fuchs und Hase, lauschen der kraftvollen Stille der Dunkelheit. Die Nacht ist es, die sie schlussendlich auch wieder zurück nach Hause bringt, wo die beiden Kinder nach ihrem Abenteuer warmherzig empfangen werden.\n\nMariachiara Di Giorgio erzählt ohne Worte, nur mit der Kraft der Bilder von der Schönheit der Nacht. Angelehnt an »Hänsel und Gretel«, interpretiert sie das bekannte Märchen auf eigene, magische Weise. Eine schaurig schöne Begegnung mit der Dunkelheit.",     
+   "bilder": [
+    "images/neu/einesnachts.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Neuerscheinungen", "ab3", "Mariachiara Di Giorgio" ],
+  "leseprobe_url": "https://www.book2look.com/book/gL7aI1QTCZ"
+   },
+
 
 
    {
