@@ -1,6 +1,47 @@
 
 
 [
+
+
+   {
+  "id":208,
+  "name":"Eines Nachts",
+  "ean":"9783314107559",
+  "beschreibung": "Eines Nachts entwischen zwei Geschwister ihrem Kindermädchen – und begegnen dabei der Schönheit der Nacht. Hand in Hand tanzen sie mit den Sternen, treffen Fuchs und Hase, lauschen der kraftvollen Stille der Dunkelheit. Die Nacht ist es, die sie schlussendlich auch wieder zurück nach Hause bringt, wo die beiden Kinder nach ihrem Abenteuer warmherzig empfangen werden.\n\nMariachiara Di Giorgio erzählt ohne Worte, nur mit der Kraft der Bilder von der Schönheit der Nacht. Angelehnt an »Hänsel und Gretel«, interpretiert sie das bekannte Märchen auf eigene, magische Weise. Eine schaurig schöne Begegnung mit der Dunkelheit.",     
+   "bilder": [
+    "images/neu/einesnachts.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Neuerscheinungen", "ab3", "Mariachiara Di Giorgio" ],
+  "leseprobe_url": "https://www.book2look.com/book/gL7aI1QTCZ"
+   },
+
+    {
+  "id":207,
+  "name":"Ach! Noch wach?!",
+  "ean":"9783314107818",
+  "beschreibung": "Abends ist die ganze Murmeltier-Familie müde. Nur eines der Kinder kann noch nicht schlafen, weil es unbedingt die Dunkelheit anschauen will. Das sorgt für eine überraschende Bekanntschaft. Schließlich sind wieder alle Murmeltiere und Füchse dort, wo sie hingehören. Die jungen Murmeltiere kuscheln sich zusammen und schla…Ach! Noch wach?!\n\nWer aufmerksam durch die Welt geht, kann abends nicht sofort die Augen schließen. Vorher braucht es noch ein augenzwinkerndes Erlebnis. Das ist bei Murmeltieren nicht anders als in unserem Familienalltag. Aber wir haben glücklicherweise Bücher!\n\nDie muntere Gutenachtgeschichte vom Bestsellerduo Lorenz Pauli und Kathrin Schärer sorgt für kuschelige Gute-Nacht-Stimmung. Doch vor der letzten Seite schläft niemand ein. Versprochen!\n\n",   "bilder": [
+    "images/neu/nochwach.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Neuerscheinungen", "ab4", "Lorenz Pauli", "Kathrin Schärer" ],
+  "leseprobe_url": "https://www.book2look.com/book/d6kXzqwiUk"
+   },
+
+    
+{ "id": 206,
+    "name": "Tauchsommer",
+    "ean": "9783792003879",
+    "beschreibung": "Eines Tages ist Zoes Vater verschwunden. Sie erfährt, dass er krank geworden ist und für längere Zeit in eine psychiatrische Klinik muss. Sie besucht ihn mit ihrer Mutter, aber bald sagt er, dass er keine Besuche vertragen kann und allein sein muss. Zoe kommt trotzdem, und während sie darauf wartet, dass es ihrem Vater besser geht, lernt sie die Schwimmerin Sabina kennen, die ihre Freundin wird. Tauchsommer nimmt die Position eines Kindes ein und erzählt aus dieser Perspektive die Geschichte der verlorenen Lebensfreude des Vaters und der eigenen Sehnsucht nach Nähe. Gleichzeitig handelt der Text von der Kraft des Traums und der Fantasie. Die Themenwelten Depression und Mentale Gesundheit werden empathisch, angemessen und gleichzeitig mit Humor behandelt. \n\nSara Stridsberg ist eine gefeierte Autorin und Dramatikerin. Dyksommar (Tauchsommer) stand auf der Shortlist für den renommierten August-Preis. Sie erhielt den Literaturpreis des Nordischen Rates und war für den Man Booker Prize nominiert. Sara Lundberg wurde in den USA und in Stockholm ausgebildet. Sie ist sowohl als Illustratorin als auch als Autorin von Kinderbüchern angesehen und wurde für ihre Werke für den Literaturpreis des Nordischen Rates nominiert und hat mehrmals den August-Preis gewonnen. Lukas Dettwiler hat nordische Philologie studiert und lebt in der Schweiz.\n\n",
+    
+    "bilder": [
+      "images/dervogelinmir/tauchsommer.webp",
+      "images/dervogelinmir/tauchsommer1.webp",
+      "images/dervogelinmir/tauchsommer2.webp",
+      "images/dervogelinmir/tauchsommer3.webp"
+],
+  "kategorie":["Kinder", "ab5", "Familie und Freunde", "Deutschsprachige Bücher",  "Sara Stridsberg"]
+  }, 
+
+    
 { "id": 205,
     "name": "Valentin, der Urlaubsheld",
     "ean": "9783854521778",
