@@ -1,6 +1,22 @@
 
 
 [
+
+
+{ "id": 2001,
+    "name": "Ein Fest für den Weihnachtsmann (Gebraucht - sehr guter Zustand) ",
+    "preis": "10.99 statt 16.00",
+    "beschreibung": "Weihnachten durch die Augen seiner berühmtesten Figur erleben: Wie feiert der Weihnachtsmann eigentlich Weihnachten?\nJahr für Jahr bringt der Weihnachtsmann Freude in die Herzen der Menschen. Dieses Jahr wollen seine treuen Elfen ihm selbst die Magie von Weihnachten schenken! Gesagt, getan: Mit einem prächtigen Baum, köstlichen Leckereien, Geschichten und liebevoll ausgesuchten Geschenken bereiten sie ihm ein unvergessliches Fest – und der Weihnachtsmann erlebt Weihnachten aus einer ganz neuen Perspektive.  Eine besondere Weihnachtsgeschichte für Kinder ab 4 Jahren\n",  
+    "bilder": [
+      "images/ssmith/einfestfuerweihnachtsmann.webp",
+      "images/ssmith/einfestfuerweihnachtsmann1.webp",
+      "images/ssmith/einfestfuerweihnachtsmann2.webp",
+      "images/ssmith/einfestfuerweihnachtsmann3.webp"
+],
+    "kategorie":["kinder", "ab4", "Feiertage", "Deutschsprachige Bücher", "Sydney Smith", "Mac Barnett", "Bernadette Ott", "Gebrauchte Bücher"]
+  },
+
+  
   {
   "id":210,
   "name":"Was ich dir zur Taufe wünsche",
@@ -186,7 +202,7 @@
       "images/ssmith/einfestfuerweihnachtsmann2.webp",
       "images/ssmith/einfestfuerweihnachtsmann3.webp"
 ],
-    "kategorie":["kinder", "ab4", "Weihnachten", "Deutschsprachige Bücher", "Sydney Smith", "Mac Barnett", "Bernadette Ott"]
+    "kategorie":["kinder", "ab4", "Weihnachten","Feiertage", "Deutschsprachige Bücher", "Sydney Smith", "Mac Barnett", "Bernadette Ott"]
   },
   
   
