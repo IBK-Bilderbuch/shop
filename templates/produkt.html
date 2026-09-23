@@ -38,17 +38,17 @@ content="{{ produkt.name }}
         "name": produkt.illustrator
     } if produkt.illustrator else None,
 
-    "isbn": produkt.isbn,
-    "numberOfPages": produkt.seiten,
-    "inLanguage": produkt.sprache,
+    "isbn": produkt.isbn|default(None, true),
+    "numberOfPages": produkt.seiten|default(None, true),
+    "inLanguage": produkt.sprache|default(None, true),
 
     "publisher": {
         "@type": "Organization",
         "name": produkt.verlag
     } if produkt.verlag else None,
 
-    "datePublished": produkt.erscheinungsjahr,
-    "description": produkt.beschreibung,
+    "datePublished": produkt.erscheinungsjahr|default(None, true),
+    "description": produkt.beschreibung|default("", true),
     "image": produkt.bilder[0] if produkt.bilder else None
 } | tojson }}
 </script>
@@ -160,40 +160,54 @@ gtag('config', 'G-6VQ8FBXVQ3');
   </div>
 
   <div class="info-content" id="info-content">
-    <p><strong>ISBN:</strong> {{ produkt.isbn if produkt.isbn else "–" }}</p>
-    <p><strong>Seiten:</strong> {{ produkt.seiten if produkt.seiten else "–" }}</p>
-    <p><strong>Format:</strong> {{ produkt.format if produkt.format else "–" }}</p>
-    
-    <p><strong>Verlag:</strong> {{ produkt.verlag if produkt.verlag else "–" }}</p>
-    <p><strong>Sprache:</strong> {{ produkt.sprache if produkt.sprache else "–" }}</p>
-    <p><strong>Erscheinungsjahr:</strong> {{ produkt.erscheinungsjahr if produkt.erscheinungsjahr else "–" }}</p>
-    
-  <p><strong>Altersempfehlung:</strong>
+    {% if produkt.isbn %}
+      <p><strong>ISBN:</strong> {{ produkt.isbn }}</p>
+    {% endif %}
+
+    {% if produkt.seiten %}
+      <p><strong>Seiten:</strong> {{ produkt.seiten }}</p>
+    {% endif %}
+
+    {% if produkt.format %}
+      <p><strong>Format:</strong> {{ produkt.format }}</p>
+    {% endif %}
+
+    {% if produkt.verlag %}
+      <p><strong>Verlag:</strong> {{ produkt.verlag }}</p>
+    {% endif %}
+
+    {% if produkt.sprache %}
+      <p><strong>Sprache:</strong> {{ produkt.sprache }}</p>
+    {% endif %}
+
+    {% if produkt.erscheinungsjahr %}
+      <p><strong>Erscheinungsjahr:</strong> {{ produkt.erscheinungsjahr }}</p>
+    {% endif %}
+
     {% if produkt.alter_von and produkt.alter_bis %}
-      {{ produkt.alter_von }}–{{ produkt.alter_bis }} Jahre
-    {% else %}
-      –
+      <p><strong>Altersempfehlung:</strong> {{ produkt.alter_von }}–{{ produkt.alter_bis }} Jahre</p>
     {% endif %}
-  </p>
 
-  <p><strong>Maße:</strong>
     {% if produkt.laenge and produkt.breite and produkt.hoehe %}
-      {{ produkt.laenge }} × {{ produkt.breite }} × {{ produkt.hoehe }} mm
-    {% else %}
-      –
+      <p><strong>Maße:</strong> {{ produkt.laenge }} × {{ produkt.breite }} × {{ produkt.hoehe }} mm</p>
     {% endif %}
-  </p>
 
-  <p><strong>Gewicht:</strong> {{ produkt.gewicht if produkt.gewicht else "–" }} g</p>
+    {% if produkt.gewicht %}
+      <p><strong>Gewicht:</strong> {{ produkt.gewicht }} g</p>
+    {% endif %}
 
-  <p><strong>Bestand:</strong> {{ produkt.bestand if produkt.bestand else "–" }}</p>
+    {% if produkt.bestand %}
+      <p><strong>Bestand:</strong> {{ produkt.bestand }}</p>
+    {% endif %}
 
-  <p><strong>Lieferzeit:</strong> {{ produkt.handling_zeit }} Werktage</p>
+    {% if produkt.handling_zeit %}
+      <p><strong>Lieferzeit:</strong> {{ produkt.handling_zeit }} Werktage</p>
+    {% endif %}
 
-  <p><strong>Erfüllungsrate:</strong> {{ produkt.erfuellungsrate }} %</p>
-  
-
-  </div>
+    {% if produkt.erfuellungsrate %}
+      <p><strong>Erfüllungsrate:</strong> {{ produkt.erfuellungsrate }} %</p>
+    {% endif %}
+</div>
 </div>
 
       </div>
