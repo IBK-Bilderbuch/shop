@@ -121,7 +121,8 @@
   "name":"Milli Hasenfuß",
   "ean":"9783942795401",
   "beschreibung": "Milli Hasenfuß ist ein kleines, ängstliches Tierchen. Panisch und zitternd sucht das kleine Häschen Unterschlupf vor den großen Gefahren, die überall lauern. Milli versteckt sich im Wald, auf den Feldern und sogar in der großen, lauten Stadt. Sie scheint schon aufgegeben zu haben. Doch dann geschieht etwas Wunderbares und Milli muss sich nicht mehr verstecken.\n\nUlrike Möltgens farbintensive Collagen werden durch Michael Stavaričs poetische Worte zu einer lehrreichen und bezaubernden Geschichte zusammengefügt.\n\n",
-  "images/gebraucht/millihasenfuss.webp"
+  "bilder": [
+    "images/gebraucht/millihasenfuss.webp"
       ],
   "kategorie": ["Deutschsprachige Bücher", "ab6", "Mut oder Angst?!", "Ulrike Möltgen","Michael Stavarič" ],
   "leseprobe_url": "https://www.book2look.com/book/MaUoXUwp8R"
