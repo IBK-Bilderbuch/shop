@@ -3,6 +3,43 @@
 [
 
 
+{
+  "id": 2004,
+  "name": "Bilderbuchbrunnen (Gebraucht - sehr guter Zustand)",
+  "preis": "22.00",
+
+  "beschreibung": "Binette Schroeder, eine Künstlerin zwischen Fantastik und Wirklichkeit. Sie zählt zu den Ikonen deutscher Illustrationskunst und ist dem NordSüd Verlag seit ihren Anfängen verbunden. Binette Schroeder ist eine Meisterin ihres Fachs und wurde mehrfach ausgezeichnet. Unter anderem mit dem Sonderpreis des Deutschen Jugendliteraturpreises. Zu ihrem 80. Geburtstag erscheint nun ein Sammelband mit allen Bilderbüchern für Kinder aus fünf Jahrzehnten. Eine Sammlung mit den schönsten und beliebtesten Bilderbüchern von Binette Schroeder. \n\n Lupinchen, Laura, der Froschkönig, Florian und Traktor Max, Ratatatam, Krokodil, Krokodil, zebby, Tuffa, Ritter Rüstig und Ritter rostig, Der Zauberling",
+ "bilder": [
+   "images/klassiker/binettebilderbuchbrunnen.webp"
+  ],
+  "kategorie": ["kinder",  "ab5", "Klassiker", "Deutschsprachige Bücher",  "Binette Schroeder" , "Gebrauchte Bücher"],
+  "leseprobe_url": "https://www.book2look.com/book/ksEGMEyeGR"
+},
+
+{
+  "id": 2003,
+  "name":"Wildmohnfrau (Gebraucht - sehr guter Zustand)",
+   "preis": "15.00",
+  "beschreibung": "Als Mias Mutter eines Morgens die Zeitung aufschlägt, stößt sie auf eine Kontaktanzeige, die das Leben ihrer kleinen Familie auf den Kopf stellen wird. Ohne zu zögern, beschließt sie, den Vater ihres Kindes zu verlassen und sich mit ihrer fünfjährigen Tochter auf den Weg ins Ungewisse zu machen. Was für die lebenshungrige Mutter nach Verheißung und Abenteuer klingt, bedeutet für das Kind vor allem eines: den schmerzhaften Verlust seiner Wurzeln. Immer wieder muss sich Mia an ganz neue Umgebungen anpassen und Vertrautes und Liebgewonnenes zurücklassen; doch neben vielen Ängsten und tiefer Einsamkeit erlebt das Mädchen auch immer wieder Momente flüchtigen Glücks.\n\nDie Autorin Sarah Knausenberger hat jedem Kapitel ihres Romans einen kurzen pflanzenkundlichen Exkurs vorangestellt. So verwebt sie allgemeine wissenschaftliche Erkenntnisse über das Wachstum von Pflanzen mit der individuellen Geschichte eines jungen Mädchens, das unter widrigen äußeren Bedingungen viel zu schnell erwachsen werden muss. Und dem es doch gelingt, dem Leben ein kleines bisschen Verlässlichkeit abzuringen und schließlich seine innere Heimat zu finden. Auf die botanischen Betrachtungen abgestimmt enthält das Buch 14 kleine, in Collagen eingebettete Tuschezeichnungen der Illustratorin Elke Ehninger sowie weitere ganzseitige Collagen, in denen sich die Stimmungen des Buches und dessen vielschichtige Thematik widerspiegeln.\n\n-Nominiert für den Korbinian Paul Maar-Preis 2023.",
+  "bilder": [
+    "images/Wildmohnfrau/Wildmohnfrau.webp"
+      ],
+  "kategorie": ["Für Erwachsene", "Deutschsprachige Bücher", "Elke Ehninger & Sarah Knausenberger", "Wichtige Fragen", "Gebrauchte Bücher"],
+  "leseprobe_url": "https://www.book2look.de/book/TMZPgs7dNc"
+   },
+
+{
+  "id": 2002,
+  "name": "Die verlorene Seele (Gebraucht - sehr guter Zustand)",
+   "preis": "11.00",
+  "beschreibung": "Ein Mann arbeitet viel und sehr schnell. Da hat seine Seele Mühe, ihm zu folgen, und geht verloren. Ihm bleibt nichts anderes übrig, als auf den Rat seiner Ärztin zu hören: Er muss warten - warten, bis seine Seele wieder bei ihm ist, ihn eingeholt hat. Und das kann eine Weile dauern. Olga Tokarczuk erzählt eine berührende Geschichte über die Kraft der Geduld und der Erinnerung - und über unseren Umgang mit uns selbst. Wie mit einer zweiten Stimme wird der Text von Joanna Concejos geheimnisvollen Bildern untermalt - ein eigenes Universum, das Träume und Phantasien weckt. Die verlorene Seele erhielt u.a. den Bologna Ragazzi Award, den Preis des Internationalen Kuratoriums für das Jugendbuch (IBBY) und steht auf der Empfehlungsliste der Internationalen Jugendbibliothek (The White Ravens).",
+     
+  "bilder": [
+    "images/Concejo/verloreneseele.webp"
+  ],
+  "kategorie":[ "ab5", "Gefühle", "Wichtige Fragen", "Deutschsprachige Bücher", "Joanna Concejo", "Gebrauchte Bücher" ]
+},
+
 { "id": 2001,
     "name": "Ein Fest für den Weihnachtsmann (Gebraucht - sehr guter Zustand)",
     "preis": "10.99",
@@ -13,7 +50,7 @@
       "images/ssmith/einfestfuerweihnachtsmann2.webp",
       "images/ssmith/einfestfuerweihnachtsmann3.webp"
 ],
-    "kategorie":["kinder", "ab4", "Feiertage", "Deutschsprachige Bücher", "Sydney Smith", "Mac Barnett", "Bernadette Ott", "Gebrauchte Bücher"]
+    "kategorie":["kinder", "ab4", "Weihnachten", "Feiertage", "Deutschsprachige Bücher", "Sydney Smith", "Mac Barnett", "Bernadette Ott", "Gebrauchte Bücher"]
   },
 
   
