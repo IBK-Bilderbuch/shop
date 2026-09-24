@@ -6,10 +6,10 @@
   "name":"Vögel der Nacht (Gebraucht - sehr guter Zustand)",
   "preis": "15.00",
   "beschreibung": "Eine hinreißende Bordsteinschwalbe preist lispelnd ihre Liebesdienste an, ein depressiver Laufvogel rennt vor sich selbst und seinem Kummer davon, eine zum Platzen angespannte Nachtwachtel ergeht sich in grimmigen Tiraden und sehnt sich doch nur nach ein bisschen Anerkennung …\n\nSchonungslos, aber auch hintergründig, humorvoll und zart erzählt Katharina Günther-Keßler. Es sind die Geschichten von acht allzu menschlichen 'Vögeln der Nacht', ihren Abgründen, ihren Nöten und ihren Eitelkeiten.\n\nGemeinsam ist diesen schrägen Tieren vor allem eines: dass sie die Bühne der Großstadt erst nach Sonnenuntergang betreten, wo sie im Schutze der Dunkelheit und in den unerschöpflichen Räumen der Phantasiewelt ihre Geheimnisse und Sehnsüchte offenbaren.\n\n\n\nDie Gedichte und Prosatexte werden durch die poetischen Illustrationen des Bilderkünstlers Mehrdad Zaeri verstärkt.\n\n",
-
+  "bilder": [
   "images/gebraucht/voegeldernacht.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Erwachsene", "Wortlust und Zeichenfreude", "Mehrdad Zaeri", "Katharina Günther-Keßler" ],
+  "kategorie": ["Deutschsprachige Bücher", "Für Erwachsene", "Wortlust und Zeichenfreude", "Mehrdad Zaeri", "Katharina Günther-Keßler" ],
   "leseprobe_url": "https://www.book2look.com/book/gkUjjYhmIn"
    },
   
@@ -18,7 +18,8 @@
   "preis": "15.00",
   "name":"Milli Hasenfuß (Gebraucht - sehr guter Zustand)",
   "beschreibung": "Milli Hasenfuß ist ein kleines, ängstliches Tierchen. Panisch und zitternd sucht das kleine Häschen Unterschlupf vor den großen Gefahren, die überall lauern. Milli versteckt sich im Wald, auf den Feldern und sogar in der großen, lauten Stadt. Sie scheint schon aufgegeben zu haben. Doch dann geschieht etwas Wunderbares und Milli muss sich nicht mehr verstecken.\n\nUlrike Möltgens farbintensive Collagen werden durch Michael Stavaričs poetische Worte zu einer lehrreichen und bezaubernden Geschichte zusammengefügt.\n\n",
-  "images/gebraucht/millihasenfuss.webp"
+   "bilder": [
+     "images/gebraucht/millihasenfuss.webp"
       ],
   "kategorie": ["Deutschsprachige Bücher", "ab6", "Mut oder Angst?!", "Ulrike Möltgen","Michael Stavarič", "Gebrauchte Bücher" ],
   "leseprobe_url": "https://www.book2look.com/book/MaUoXUwp8R"
@@ -33,7 +34,7 @@
    "bilder": [
    "images/gebraucht/auclairdelanuit.webp"
   ],
-  "kategorie": ["kinder", "Erwachsene",  "ab5", "Französischsprachige Bücher",  "Joanna Concejo", "Janine Teisson", "Gebrauchte Bücher"],
+  "kategorie": ["kinder", "Für Erwachsene",  "ab5", "Französischsprachige Bücher",  "Joanna Concejo", "Janine Teisson", "Gebrauchte Bücher"],
 },
   
 {
