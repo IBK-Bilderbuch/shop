@@ -1,14 +1,25 @@
 
 
 [
+{
+  "id": 2005,
+  "name": "Au clair de la nuit : poèmes (Gebraucht - sehr guter Zustand)",
+  "preis": "7.00",
 
-
+  "beschreibung": "'Man sagt, der Mond sei voll, aber womit ist er voll?'\n\n'Au clair de la nuit' ist der zwanzigste Band der renommierten Gedichtsammlung „Pommes Pirates Papillons“, deren Gedichte mittlerweile in zahlreichen Lehrbüchern und Anthologien zu finden sind. Die Gedichte in „Im Licht der Nacht“ sind zart und humorvoll zugleich und kreisen alle um das Thema Mond. Sie werden von den wunderschönen Kompositionen Joanna Concejos begleitet. Jede Seite ist eine wahre Entdeckung.\n\nJanine Teisson schreibt für Kinder, Jugendliche und Erwachsene. Ihre Bücher, die unter anderem bei Syros und Actes Sud erschienen sind, wurden in zahlreiche Sprachen übersetzt. Obwohl sie hauptsächlich Romane verfasst, zeigt sie nun auch ihr Talent für Lyrik.\n\n",
+  
+   "bilder": [
+   "images/gebraucht/auclairdelanuit.webp"
+  ],
+  "kategorie": ["kinder", "Erwachsene",  "ab5", "Französischsprachige Bücher",  "Joanna Concejo", "Janine Teisson", "Gebrauchte Bücher"],
+},
+  
 {
   "id": 2004,
   "name": "Bilderbuchbrunnen (Gebraucht - sehr guter Zustand)",
   "preis": "22.00",
 
-  "beschreibung": "Binette Schroeder, eine Künstlerin zwischen Fantastik und Wirklichkeit. Sie zählt zu den Ikonen deutscher Illustrationskunst und ist dem NordSüd Verlag seit ihren Anfängen verbunden. Binette Schroeder ist eine Meisterin ihres Fachs und wurde mehrfach ausgezeichnet. Unter anderem mit dem Sonderpreis des Deutschen Jugendliteraturpreises. Zu ihrem 80. Geburtstag erscheint nun ein Sammelband mit allen Bilderbüchern für Kinder aus fünf Jahrzehnten. Eine Sammlung mit den schönsten und beliebtesten Bilderbüchern von Binette Schroeder. \n\n Lupinchen, Laura, der Froschkönig, Florian und Traktor Max, Ratatatam, Krokodil, Krokodil, zebby, Tuffa, Ritter Rüstig und Ritter rostig, Der Zauberling",
+  "beschreibung": "Binette Schroeder, eine Künstlerin zwischen Fantastik und Wirklichkeit. Sie zählt zu den Ikonen deutscher Illustrationskunst und ist dem NordSüd Verlag seit ihren Anfängen verbunden. Binette Schroeder ist eine Meisterin ihres Fachs und wurde mehrfach ausgezeichnet. Unter anderem mit dem Sonderpreis des Deutschen Jugendliteraturpreises. Zu ihrem 80. Geburtstag erscheint nun ein Sammelband mit allen Bilderbüchern für Kinder aus fünf Jahrzehnten. Eine Sammlung mit den schönsten und beliebtesten Bilderbüchern von Binette Schroeder. \n\n Lupinchen, Laura, der Froschkönig, Florian und Traktor Max, Ratatatam, Krokodil, Krokodil, zebby, Tuffa, Ritter Rüstig und Ritter rostig, Der Zauberling\n\n",
  "bilder": [
    "images/klassiker/binettebilderbuchbrunnen.webp"
   ],
