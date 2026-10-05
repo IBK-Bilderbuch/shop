@@ -1,4 +1,18 @@
 [
+   { "id": 2015,
+    "name": "Tauchsommer (Gebraucht - wie neu)",
+    "preis": "15.00",   
+    "beschreibung": "Eines Tages ist Zoes Vater verschwunden. Sie erfährt, dass er krank geworden ist und für längere Zeit in eine psychiatrische Klinik muss. Sie besucht ihn mit ihrer Mutter, aber bald sagt er, dass er keine Besuche vertragen kann und allein sein muss. Zoe kommt trotzdem, und während sie darauf wartet, dass es ihrem Vater besser geht, lernt sie die Schwimmerin Sabina kennen, die ihre Freundin wird. Tauchsommer nimmt die Position eines Kindes ein und erzählt aus dieser Perspektive die Geschichte der verlorenen Lebensfreude des Vaters und der eigenen Sehnsucht nach Nähe. Gleichzeitig handelt der Text von der Kraft des Traums und der Fantasie. Die Themenwelten Depression und Mentale Gesundheit werden empathisch, angemessen und gleichzeitig mit Humor behandelt. \n\nSara Stridsberg ist eine gefeierte Autorin und Dramatikerin. Dyksommar (Tauchsommer) stand auf der Shortlist für den renommierten August-Preis. Sie erhielt den Literaturpreis des Nordischen Rates und war für den Man Booker Prize nominiert. Sara Lundberg wurde in den USA und in Stockholm ausgebildet. Sie ist sowohl als Illustratorin als auch als Autorin von Kinderbüchern angesehen und wurde für ihre Werke für den Literaturpreis des Nordischen Rates nominiert und hat mehrmals den August-Preis gewonnen. Lukas Dettwiler hat nordische Philologie studiert und lebt in der Schweiz.\n\n",
+    
+    "bilder": [
+      "images/dervogelinmir/tauchsommer.webp",
+      "images/dervogelinmir/tauchsommer1.webp",
+      "images/dervogelinmir/tauchsommer2.webp",
+      "images/dervogelinmir/tauchsommer3.webp"
+],
+  "kategorie":["Kinder", "ab5", "Familie und Freunde", "Deutschsprachige Bücher",  "Sara Lundberg",  "Gebrauchte Bücher"]
+  }, 
+   
    {
   "id": 2014,
   "name":"Madeleine und der Angler (Gebraucht - sehr guter Zustand)",
@@ -370,7 +384,7 @@
       "images/dervogelinmir/tauchsommer2.webp",
       "images/dervogelinmir/tauchsommer3.webp"
 ],
-  "kategorie":["Kinder", "ab5", "Familie und Freunde", "Deutschsprachige Bücher",  "Sara Stridsberg"]
+  "kategorie":["Kinder", "ab5", "Familie und Freunde", "Deutschsprachige Bücher",  "Sara Lundberg"]
   }, 
 
     
