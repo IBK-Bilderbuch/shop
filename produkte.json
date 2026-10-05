@@ -186,6 +186,17 @@
   },
 
 
+{
+  "id": 219,
+  "name": "Der geheimnisvolle Koffer von Herrn Benjamin",
+  "ean":"9783314103827",
+  "beschreibung": "Herr Benjamin ist ein Philosoph mit ungewöhnlichen Ideen. Doch eines Tages entscheidet man in seinem Land, dass ungewöhnliche Ideen nicht erwünscht sind. Er muss fliehen und nimmt einen schweren Koffer mit auf seinen Weg. Niemand weiß, was in dem Koffer ist. Leider gelingt Herrn Benjamin die Flucht nicht. Er verschwindet spurlos und mit ihm der Koffer. Aber das Mysterium um den Koffer bleibt bestehen. Es muss etwas ganz Besonderes in ihm gewesen sein.Ein packendes Bilderbuchdebüt einer vielversprechenden Künstlerin zum Thema Flucht.\n\n",
+  "bilder": [
+    "images/anderssein/dergeheimnisvollekoffervonherrnbenjamin.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Dazugehören und Anderssein", "Flucht",  "ab4", "Pei-Yu Chang" ],
+  "leseprobe_url": "https://www.book2look.com/book/xpgVxzZGrx"
+},
 
 {
   "id": 218,
@@ -195,7 +206,7 @@
   "bilder": [
     "images/katrinschaerer/froehlichewinternacht.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",  "ab2", "Kathrin Schärer", "Lorenz Pauli" ],
+  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",  "ab2", "Kathrin Schaerer", "Lorenz Pauli" ],
   "leseprobe_url": "http://flowpaper.com/flipbook/download-8483-pauli-schaerer_winternacht_leseprobe/?wp-hosted=1"
 },
    
@@ -208,7 +219,7 @@
   "bilder": [
     "images/katrinschaerer/froehlichewinternacht.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",  "Neuerscheinungen", "ab2", "Kathrin Schärer", "Lorenz Pauli" ],
+  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",  "Neuerscheinungen", "ab2", "Kathrin Schaerer", "Lorenz Pauli" ],
 },
 
 
@@ -221,7 +232,7 @@
 "bilder": [
     "images/katrinschaerer/wieweihnachteltman.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage", "Neuerscheinungen",  "ab2", "Kathrin Schärer", "Lorenz Pauli" ]  
+  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage", "Neuerscheinungen",  "ab2", "Kathrin Schaerer", "Lorenz Pauli" ]  
 },
 
 {
@@ -232,7 +243,7 @@
 "bilder": [
     "images/katrinschaerer/wieweihnachteltman_pappbuch.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",  "ab1", "Pappbuch", "Kathrin Schärer", "Lorenz Pauli" ]  
+  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",  "ab1", "Pappbuch", "Kathrin Schaerer", "Lorenz Pauli" ]  
 },
    
 {
@@ -243,7 +254,7 @@
   "bilder": [
     "images/katrinschaerer/langeschlangestehen.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher",  "ab1", "Neuerscheinungen", "Kathrin Schärer" ]   
+  "kategorie": ["Deutschsprachige Bücher",  "ab1", "Neuerscheinungen", "Kathrin Schaerer" ]   
      "leseprobe_url": "https://flowpaper.com/flipbook/download-26833-0933_1_schaerer_schlange_leseprobe/?wp-hosted=1#page=1"
 
 },
@@ -256,7 +267,7 @@
   "bilder": [
     "images/katrinschaerer/nurnocheins.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "ab1", "Pappbuch", "Kathrin Schärer" ]   
+  "kategorie": ["Deutschsprachige Bücher", "ab1", "Pappbuch", "Kathrin Schaerer" ]   
 },
    
 
@@ -335,7 +346,7 @@
        "bilder": [
     "images/neu/nochwach.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Neuerscheinungen", "ab4", "Lorenz Pauli", "Kathrin Schärer" ],
+  "kategorie": ["Deutschsprachige Bücher", "Neuerscheinungen", "ab4", "Lorenz Pauli", "Kathrin Schaerer" ],
   "leseprobe_url": "https://www.book2look.com/book/d6kXzqwiUk"
    },
 
