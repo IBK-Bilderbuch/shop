@@ -1,5 +1,3 @@
-
-
 [
    {
   "id": 2014,
@@ -190,14 +188,40 @@
 
 
 {
+  "id": 218,
+  "name": "Fröhliche Winternacht",
+  "ean":"9783715208688",
+  "beschreibung": "Endlich schläft der Bär, vor dem sich alle in Acht nehmen müssen. Mutig – oder übermütig? – kuschelt sich die Maus ins warme Bärenfell. Der Specht, das Eichhörnchen und der Dachs folgen ihr. Auch ein fremder Gast ist willkommen. Bald feiern alle zusammen auf dem schlafenden Bären das schönste Fest. Es wird gesungen, getanzt, gegessen und erzählt. Alle lachen. Alle? Ja, alle. Auch der Bär lacht. So sehr, dass die ganze Gesellschaft durcheinanderpurzelt.\n\n",
+  "bilder": [
+    "images/katrinschaerer/froehlichewinternacht.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",  "ab2", "Kathrin Schärer", "Lorenz Pauli" ],
+  "leseprobe_url": "http://flowpaper.com/flipbook/download-8483-pauli-schaerer_winternacht_leseprobe/?wp-hosted=1"
+},
+   
+
+{
+  "id": 217,
+  "name": "Fröhliche Winternacht MINIAUSGABE",
+  "ean":"9783715209319",
+  "beschreibung": "Endlich schläft der Bär, vor dem sich alle in Acht nehmen müssen. Mutig – oder übermütig? – kuschelt sich die Maus ins warme Bärenfell. Der Specht, das Eichhörnchen und der Dachs folgen ihr. Auch ein fremder Gast ist willkommen. Bald feiern alle zusammen auf dem schlafenden Bären das schönste Fest. Es wird gesungen, getanzt, gegessen und erzählt. Alle lachen. Alle? Ja, alle. Auch der Bär lacht. So sehr, dass die ganze Gesellschaft durcheinanderpurzelt.\n\n",
+  "bilder": [
+    "images/katrinschaerer/froehlichewinternacht.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",  "Neuerscheinungen", "ab2", "Kathrin Schärer", "Lorenz Pauli" ],
+},
+
+
+   
+{
   "id": 216,
-  "name": "Wie weihnachtelt man? ",
+  "name": "Wie weihnachtelt man?",
   "ean":"9783737361057",
   "beschreibung": "Weihnachten ist, wenn mir alle ein Geschenk bringen. Das erklärt die Eule frech dem kleinen Hasen und der erzählt es genauso weiter. Bald basteln alle Tiere im Wald ein Geschenk für die Eule. Doch bevor es dann ans Verschenken geht, passieren kleine Missgeschicke und Überraschungen, so dass die Geschenke dort landen, wo sie dringend gebraucht werden. Eine witzige und gefühlvolle Geschichte über den wahren Sinn des Schenkens - immer und besonders zur Weihnachtszeit!\n\n",
 "bilder": [
     "images/katrinschaerer/wieweihnachteltman.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",  "ab2", "Kathrin Schärer", "Lorenz Pauli" ]  
+  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage", "Neuerscheinungen",  "ab2", "Kathrin Schärer", "Lorenz Pauli" ]  
 },
 
 {
