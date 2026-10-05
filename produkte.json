@@ -187,6 +187,55 @@
     "kategorie":["kinder", "ab4", "Weihnachten", "Feiertage", "Deutschsprachige Bücher", "Sydney Smith", "Mac Barnett", "Bernadette Ott", "Gebrauchte Bücher"]
   },
 
+
+
+{
+  "id": 216,
+  "name": "Wie weihnachtelt man? ",
+  "ean":"9783737361057",
+  "beschreibung": "Weihnachten ist, wenn mir alle ein Geschenk bringen. Das erklärt die Eule frech dem kleinen Hasen und der erzählt es genauso weiter. Bald basteln alle Tiere im Wald ein Geschenk für die Eule. Doch bevor es dann ans Verschenken geht, passieren kleine Missgeschicke und Überraschungen, so dass die Geschenke dort landen, wo sie dringend gebraucht werden. Eine witzige und gefühlvolle Geschichte über den wahren Sinn des Schenkens - immer und besonders zur Weihnachtszeit!\n\n",
+"bilder": [
+    "images/katrinschaerer/wieweihnachteltman.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",  "ab2", "Kathrin Schärer", "Lorenz Pauli" ]  
+},
+
+{
+  "id": 215,
+  "name": "Wie weihnachtelt man? - Pappbuch",
+  "ean":"9783737373418",
+  "beschreibung": "Weihnachten ist, wenn mir alle ein Geschenk bringen. Das erklärt die Eule frech dem kleinen Hasen und der erzählt es genauso weiter. Bald basteln alle Tiere im Wald ein Geschenk für die Eule. Doch bevor es dann ans Verschenken geht, passieren kleine Missgeschicke und Überraschungen, so dass die Geschenke dort landen, wo sie dringend gebraucht werden. Eine witzige und gefühlvolle Geschichte über den wahren Sinn des Schenkens - immer und besonders zur Weihnachtszeit!\n\n",
+"bilder": [
+    "images/katrinschaerer/wieweihnachteltman_pappbuch.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",  "ab1", "Pappbuch", "Kathrin Schärer", "Lorenz Pauli" ]  
+},
+   
+{
+  "id": 214,
+  "name": "Lange Schlange stehen",
+  "ean":"9783715209333",
+  "beschreibung": "Vor dem Eisstand wächst die Schlange. Wer braucht so lange, um sich für eine Eissorte zu entscheiden, während alle anderen warten? Worum zanken sich die Biber, sobald sie sich anstellen müssen? Und für wen ist die Warteschlange vor dem Klo zu lang? Im Schoko-Laden reiht sich die echte Schlange ein. Geduld ist nicht ihre Stärke, dafür hat sie einen gesunden Appetit. Sie reißt den Rachen auf und verschluckt kurzerhand die Warteschlange. Zum Glück weiß ein mutiger Mungo ganz genau, was jetzt zu tun ist!",
+  "bilder": [
+    "images/katrinschaerer/langeschlangestehen.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher",  "ab1", "Neuerscheinungen", "Kathrin Schärer" ]   
+     "leseprobe_url": "https://flowpaper.com/flipbook/download-26833-0933_1_schaerer_schlange_leseprobe/?wp-hosted=1#page=1"
+
+},
+   
+{
+  "id":213,
+  "name":"Nur noch eins",
+  "ean":"9783715207728",
+  "beschreibung": "Es wird Abend, und der kleine Bär muss noch viel erledigen:nur noch eine Perle auffädeln, nur noch einen Klotz auf den Turm setzen, nur noch eine Murmel versenken, nur noch die Ente parken. Denn erst wenn alles fertig ist, stimmt die Welt. Und zum Schluss, als der kleine Bär zufrieden im Bett liegt, kommt nur noch eins - ein Kuss!\n\n Kathrin Schärer führt uns fast ohne Worte und mit ruhigen, zugänglichen Bildern durch den Abend des Bären - nicht ohne die Rolle der Eltern augenzwinkernd aufzunehmen.\n\n Kathrin Schärer, geboren 1969 in Basel, studierte Zeichen- und Werklehrerin an der Hochschule für Gestaltung Basel. Sie unterrichtet an einer Sprachheilschule und arbeitet als Illustratorin. Wiederholt hat sie eigene Texte illustriert und in langjähriger Zusammenarbeit und mit großem Erfolg Geschichten von Lorenz Pauli. Für ihr Gesamtwerk war Kathrin Schärer für den Hans-Christian-Andersen-Preis 2012 und für den Astrid Lindgren Award 2014 nominiert. Bereits zweimal wurde Kathrin Schärer mit dem Schweizer Kinder- und Jugendmedienpreis ausgezeichnet: 2011 für Johanna im Zug (2009, Atlantis) und 2017 mit Rigo und Rosa (2016, Atlantis, Text von Lorenz Pauli).\n\n",
+  "bilder": [
+    "images/katrinschaerer/nurnocheins.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "ab1", "Pappbuch", "Kathrin Schärer" ]   
+},
+   
+
    {
   "id":212,
   "name":"Vögel der Nacht",
