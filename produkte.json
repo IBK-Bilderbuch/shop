@@ -236,7 +236,7 @@
   "bilder": [
     "images/katrinschaerer/froehlichewinternacht.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",  "Neuerscheinungen", "ab2", "Kathrin Schaerer", "Lorenz Pauli" ]
+  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",   "ab2", "Kathrin Schaerer", "Lorenz Pauli" ]
 },
 
 
@@ -249,7 +249,7 @@
 "bilder": [
     "images/katrinschaerer/wieweihnachteltman.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage", "Neuerscheinungen",  "ab2", "Kathrin Schaerer", "Lorenz Pauli" ]  
+  "kategorie": ["Deutschsprachige Bücher", "Weihnachten", "Feiertage",   "ab2", "Kathrin Schaerer", "Lorenz Pauli" ]  
 },
 
 {
@@ -271,7 +271,7 @@
   "bilder": [
     "images/katrinschaerer/langeschlangestehen.webp"
       ],
-  "kategorie": ["Deutschsprachige Bücher",  "ab1", "Neuerscheinungen", "Kathrin Schaerer" ],  
+  "kategorie": ["Deutschsprachige Bücher",  "ab1",  "Kathrin Schaerer" ],  
     "leseprobe_url": "https://flowpaper.com/flipbook/download-26833-0933_1_schaerer_schlange_leseprobe/?wp-hosted=1#page=1"
 
 },
