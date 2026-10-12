@@ -203,6 +203,54 @@
   },
 
 
+ {
+  "id": 223,
+  "name": "Yoga - Federleicht!",
+  "ean": "9783038762485",
+  "beschreibung": "Yoga mit Bob, dem Vogel: Humorvolle Anleitungen für die grundlegenden Übungen. \n\n Wer bisher noch kein Yoga praktiziert hat, wird es spätestens beim Blick in dieses Buch sofort beginnen wollen! Die Yoga-Übungen werden von Bob, dem liebevoll-witzig gezeichneten Vogel, vorgeführt. In ihrer gekonnten Abstraktion und mit der klaren Anleitung werden die Asanas so anschaulich präsentiert, dass auch Anfänger sofort loslegen können. Wer als praktizierender Yogi einfach nur frischen Antrieb braucht: hier ist er!- Das Yoga-Buch von der international bekannten Grafikerin Marion Deuchars- Gezeichnete Yoga-Anleitungen: Bob der Vogel macht´s vor!- Entspannung mit Yoga: Atmung, Dehnung, Achtsamkeit- Yoga-Positionen vom Lotussitz über die Vorwärtsbeuge bis zum Baum- Nützlich und inspirierend: Für Yoga-Anfänger wie auch für geübte Yogis jeden AltersDas Yoga-Buch für Körper, Geist und SeeleMarion Deuchars, Bestsellerautorin und Grafikerin, praktiziert selbst seit vielen Jahren Yoga. Diese Leidenschaft transportiert sie zusammen mit ihrem unverwechselbaren Zeichenstil – herausgekommen ist eine humorvolle Verführung zum Selbertun. Als Kompagnon für alle Übenden gibt es einen kleinen Vogel, mit dem es sich sofort identifizieren lässt. Und für den Fall, dass es jemandem nach der ersten Begeisterung nicht leichtfallen sollte weiterzumachen, hat sie spritzige Motivationen in Form netter Randbemerkungen eingebaut. Dieses unwiderstehlich charmante Buch ist ein wunderbares Geschenk für alle Yogis: Es zaubert ein Lächeln ins Gesicht!\n\n",
+    
+
+  "bilder": [
+    "images/bobtheartist/yogafederleicht.webp"
+  ],
+ "kategorie": ["kinder",   "ab3",  "Der gute Bob", "Deutschsprachige Bücher" ]
+},
+   
+
+   {
+  "id": 222,
+  "name": "Fitness - Federleicht!",
+  "ean": "9783038763215",
+  "beschreibung": "Fitness kann auch Spaß machen!Das perfekte Geschenk für alle, die sich lieber verzaubern als herumkommandieren lassen. In dieser charmanten Fortsetzung des Bestsellers 'Yoga - Federleicht' führt Marion Deuchars ihren beliebten Vogel Bob durch sein tägliches Workout.Von ganzheitlichen 10-Minuten-Workouts bis hin zu spezifischen Übungen, die sich auf verschiedene Körperteile konzentrieren, sorgen ihre schrulligen Charaktere und ihr charmanter Stil für eine humorvolle Note in diesem beliebten Genre.Verabschieden Sie sich von der Angst vor dem Training und meistern Sie die wichtigsten Schritte zur Fitness mit einem Lächeln auf den Lippen. Was dieser Vogel kann, kann jeder!\n\n",
+
+  "bilder": [
+    "images/bobtheartist/fitnessfederleicht.webp"
+  ],
+ "kategorie": ["kinder",   "ab3", "Der gute Bob", "Kunst und Künstlerdasein", "Deutschsprachige Bücher" ]
+},
+
+    {
+  "id": 221,
+  "name": "Eine Linie auf Reisen",
+  "ean": "9783038763567",
+  "beschreibung": "'Zeichnen ist die Kunst, Striche spazieren zu führen.' Paul Klee \n\n Was wäre, wenn Zeichnen so einfach wäre wie einen Bleistift in die Hand zu nehmen und über das Papier zu bewegen? Es würde Spaß machen wie ein Spiel und sich aufregend anfühlen wie eine Abenteuerreise! Marion Deuchars weiß wie keine andere, wie Kreativität geweckt und dabei Kunst geschaffen werden kann. Ob es darum geht, eine Linie mit Schluckauf zu zeichnen, ein visuelles Katz-und-Maus-Spiel zu spielen oder eine Linie durch ein Labyrinth aus belebten Straßen zu führen – Marion Deuchars hat überraschende Vorschläge, wie Zeichnen Spaß machen kann. Ohne sich Gedanken darüber machen zu müssen, was sie zeichnen sollen oder wie das Ergebnis aussehen könnte, können Kinder und Erwachsene den über hundert Anregungen folgen und sehen, wohin sie diese führen. Dank Deuchars` geschickter Anleitung ist jede Zeichnung ein Spiel, das zu einem Kunstwerk wird. Das Buch ist gespickt mit Deuchars´ eigenen wunderschönen Strichzeichnungen, die alle entstanden sind, indem sie einfach mit einer Linie auf Reisen ging.\n\n",
+  "bilder": [
+    "images/bobtheartist/einelinieaufreisen.webp"
+  ],
+ "kategorie": ["kinder",   "ab3",   "Kunst und Künstlerdasein", "Deutschsprachige Bücher" ]
+},
+
+   {
+  "id": 220,
+  "name": "Bob´s Blue Period",
+  "preis": "19.00",
+  "ean": "9781786270696",
+  "beschreibung": "Bob the bird loves to paint pictures with his best friend Bat. But one day Bat goes away and Bob is sad. He tries to paint, but everything he paints is blue! Can his friends help him to find his bright colours again?\n\n"
+ "bilder": [
+    "images/bobtheartist/bobblueperiod.webp"
+  ],
+ "kategorie": ["kinder",   "ab3", "Der gute Bob", "Kunst und Künstlerdasein", "Englischsprachige Bücher" ]
+},
 {
   "id": 219,
   "name": "Der geheimnisvolle Koffer von Herrn Benjamin",
@@ -1316,12 +1364,13 @@
   {
   "id": 50,
   "name": "Bob the Artist",
+  "preis": "15.00",
   "ean": "9781780677712",
   "beschreibung": "Bob the bird is just like all his friends, apart from his skinny legs. When Bob is teased, he decides to try and change himself to fit in. But little does he know where all his efforts will lead him... \nAn affirming picture book for age 3+ about the power of art and of being confident enough to be yourself. \n\nAuthor of the best-selling Let's Make Some Great Art series, Marion Deuchars has a globally recognisable illustration style. Her hand-lettering and illustrations have been used on advertising campaigns from Samsung to HP, and her books have won six awards for design and illustration. She is a member of the Alliance Graphique Internationale.\n\n",
   "bilder": [
     "images/bobtheartist/bobtheartist.webp"
   ],
- "kategorie": ["kinder",   "ab3",  "Kunst und Künstlerdasein", "Bob der Künstler", "Englischsprachige Bücher" ]
+ "kategorie": ["kinder",   "ab3", "Der gute Bob", "Kunst und Künstlerdasein",  "Englischsprachige Bücher" ]
 },
 
 
