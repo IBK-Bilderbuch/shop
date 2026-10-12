@@ -213,7 +213,8 @@
   "bilder": [
     "images/bobtheartist/yogafederleicht.webp"
   ],
- "kategorie": ["kinder",   "ab3",  "Der gute Bob", "Deutschsprachige Bücher" ]
+ "kategorie": ["kinder",   "ab3",  "Der gute Bob", "Deutschsprachige Bücher" ],
+ "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783038762485"
 },
    
 
@@ -227,6 +228,7 @@
     "images/bobtheartist/fitnessfederleicht.webp"
   ],
  "kategorie": ["kinder",   "ab3", "Der gute Bob", "Kunst und Künstlerdasein", "Deutschsprachige Bücher" ]
+ "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783038763215",
 },
 
     {
