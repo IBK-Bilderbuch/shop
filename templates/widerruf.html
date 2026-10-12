@@ -22,54 +22,19 @@
   {% include 'navbar.html' %}
 
   <section class="rechtliches">
-    <h1>Widerruf und Rücksendungen</h1><br>
+    
+    <h1>Versand, Umtausch und Widerrufsformular </h1><br>
     
 <div class="checkout-layout">
-  <div class="checkout-form" style="flex: 1;">
 
-    <h3>Widerrufsformular</h3><br>
 
-    <h4>
-      Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf
-      der folgenden Waren (*) / die Erbringung der folgenden Dienstleistung (*):
-    </h4>
-
-    <form action="/submitwiderruf" method="POST" class="kontakt-form">
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-
-      <label for="name"></label>
-      <input type="text" id="name" name="name" placeholder="Name" required>
-
-      <label for="email"></label>
-      <input type="email" id="email" name="email" placeholder="E-Mail" required>
-
-      <label for="anschrift"></label>
-      <input type="text" id="anschrift" name="anschrift" placeholder="Adresse" required>
-
-      <label for="datum"></label>
-      <input type="text" id="datum" name="datum" placeholder="Datum der Bestellung" required>
-
-      <label for="anzahl"></label>
-      <input type="text" id="anzahl" name="anzahl" placeholder="Anzahl der bestellten Waren" required>
-
-      <label for="warenbezeichnung"></label>
-      <input type="text" id="warenbezeichnung" name="warenbezeichnung" placeholder="Bezeichnung der Waren" required>
-
-      <label for="nachricht"></label>
-      <input type="text" id="nachricht" name="message" placeholder="Nachricht (optional)">
-
-      <button type="submit">Absenden</button>
-    </form>
-
+<div class="checkout-text" style="flex: 1">
+    <h3>Versand</h3>
   
-  </div>
+    Der Versand von Büchern und weiteren Artikeln ist für Sie komplett kostenlos. <br>
 
-     
-  
 
-  <div class="checkout-text" style="flex: 1">
-
-    <h3>Rücksendung</h3>
+    <h3>Umtausch</h3>
 
     <p>
       Auch bei uns kann es vorkommen, dass ein Artikel nicht Ihren Vorstellungen entspricht.
@@ -113,7 +78,52 @@
   Bitte halten Sie Ihre Bestellnummer bereit, damit wir Ihre Anfrage schnell und unkompliziert bearbeiten können.
 </p>
     
+</div>
+
+  
+  <div class="checkout-form" style="flex: 1;">
+
+    <h3>Widerrufsformular</h3><br>
+
+    <h4>
+      Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf
+      der folgenden Waren (*) / die Erbringung der folgenden Dienstleistung (*):
+    </h4>
+
+    <form action="/submitwiderruf" method="POST" class="kontakt-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+      <label for="name"></label>
+      <input type="text" id="name" name="name" placeholder="Name" required>
+
+      <label for="email"></label>
+      <input type="email" id="email" name="email" placeholder="E-Mail" required>
+
+      <label for="anschrift"></label>
+      <input type="text" id="anschrift" name="anschrift" placeholder="Adresse" required>
+
+      <label for="datum"></label>
+      <input type="text" id="datum" name="datum" placeholder="Datum der Bestellung" required>
+
+      <label for="anzahl"></label>
+      <input type="text" id="anzahl" name="anzahl" placeholder="Anzahl der bestellten Waren" required>
+
+      <label for="warenbezeichnung"></label>
+      <input type="text" id="warenbezeichnung" name="warenbezeichnung" placeholder="Bezeichnung der Waren" required>
+
+      <label for="nachricht"></label>
+      <input type="text" id="nachricht" name="message" placeholder="Nachricht (optional)">
+
+      <button type="submit">Absenden</button>
+    </form>
+
+  
   </div>
+
+     
+  
+
+ 
   </div>
 
   </section>
