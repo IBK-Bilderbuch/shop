@@ -202,7 +202,19 @@
     "kategorie":["kinder", "ab4", "Weihnachten", "Feiertage", "Deutschsprachige Bücher", "Sydney Smith", "Mac Barnett", "Bernadette Ott", "Gebrauchte Bücher"]
   },
 
+{ "id": 224,
+    "name": "Wie kommt der Weihnachtsmann durch den Schornstein?",
+    "ean": "9783968260495",
+    "beschreibung": "Wie kommt der Weihnachtsmann durch den Schornstein? Das weiß niemand. Aber in diesem Buch gibt es einige Ideen.\n\n Wenn der Weihnachtsmann an Heiligabend kommt, steigt er dann mit den Füßen oder mit dem Kopf durch den Schornstein? Was ist, wenn er stecken bleibt? Was ist, wenn es keinen Schornstein gibt? Vielleicht rutscht er unter der Tür hindurch, so dünn wie ein Stück Papier? Oder ist es möglich, dass er sich durch den Wasserhahn ergießt? Was passiert, wenn er einmal drinnen ist?\n\n Kindliche Fragen werden gestellt, die sowohl witzig als auch plausibel erscheinen.\n\n",
 
+    "bilder": [
+      "images/klassen/wiekommtderweihnachtsmanndurchdenschornstein.webp"
+],
+    "kategorie":["kinder", "ab4", "Weihnachten", "Feiertage", "Deutschsprachige Bücher",  "Mac Barnett",  "Jon Klassen" ]
+    "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783968260495"
+
+  },
+   
  {
   "id": 223,
   "name": "Yoga - Federleicht!",
