@@ -1,4 +1,34 @@
 [
+  
+  {
+  "id": 2019,
+  "name": "Der geheimnisvolle Koffer von Herrn Benjamin (Gebraucht - wie neu)",
+  "preis": "12.00",
+  "beschreibung": "Herr Benjamin ist ein Philosoph mit ungewöhnlichen Ideen. Doch eines Tages entscheidet man in seinem Land, dass ungewöhnliche Ideen nicht erwünscht sind. Er muss fliehen und nimmt einen schweren Koffer mit auf seinen Weg. Niemand weiß, was in dem Koffer ist. Leider gelingt Herrn Benjamin die Flucht nicht. Er verschwindet spurlos und mit ihm der Koffer. Aber das Mysterium um den Koffer bleibt bestehen. Es muss etwas ganz Besonderes in ihm gewesen sein.Ein packendes Bilderbuchdebüt einer vielversprechenden Künstlerin zum Thema Flucht.\n\n",
+  "bilder": [
+    "images/anderssein/dergeheimnisvollekoffervonherrnbenjamin.webp"
+      ],
+  "kategorie": ["Deutschsprachige Bücher", "Dazugehören und Anderssein", "Flucht",  "ab4", "Pei-Yu Chang",  "Gebrauchte Bücher" ],
+  "leseprobe_url": "https://www.book2look.com/book/xpgVxzZGrx"
+},
+
+  {
+  "id": 2018,
+  "name": "Fast wie Freunde (Gebraucht - wie neu)",
+  "preis": "19.00",
+  "beschreibung":"Die kleine Sophie lebt in einer nicht ungewöhnlichen Stadt. Die Nachbarn sagen sich freundlich 'Hallo', die Kinder spielen zusammen – alles scheint ganz in Ordnung zu sein und doch ist irgendetwas anders. Sophie fällt alles schwer, schwerer scheinbar als den anderen.\n\nDoch keiner schaut so genau hin, keinen scheint es wirklich zu interessieren, obwohl es vielen ähnlich geht.\nErst als Sophie eines Tages beschließt, dass es so nicht weiter gehen kann und sie sich ihren Dämonen stellt, wird aus dem kleinen Monster in ihr ein hilfreicher und schützender Begleiter. Sophie kann seine Existenz endlich akzeptieren und in dem Moment werden die beiden Fast wie Freunde.\n\nIn wunderschön melancholischen Bildern beschreibt Mirjam Zels Sophies Umgang mit der Angst und zeigt, dass dessen Beherrschung nur durch uns selbst  gelingen kann.\n\nGewinner der Serafina 2017\nGerman Design Award Winner 2018\n\n",
+  "bilder": [
+    "images/fastwiefreunde/fastwiefreunde.webp",
+    "images/fastwiefreunde/fastwiefreunde1.webp",
+    "images/fastwiefreunde/fastwiefreunde2.webp",
+    "images/fastwiefreunde/fastwiefreunde3.webp"
+
+  ],
+  "kategorie":[ "Angst", "Mut oder Angst?!", "Deutschsprachige Bücher", "Mirjam Zels",  "Gebrauchte Bücher" ],
+  "leseprobe_url": "https://www.book2look.de/book/oHa9zsB6kZ"
+},
+
+  
 {
   "id": 2017,
   "name": "Bob´s Blue Period (Gebraucht - wie neu)",
