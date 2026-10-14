@@ -1,4 +1,28 @@
 [
+{
+  "id": 2017,
+  "name": "Bob´s Blue Period (Gebraucht - wie neu)",
+  "preis": "15.00",
+  "beschreibung": "Bob the bird loves to paint pictures with his best friend Bat. But one day Bat goes away and Bob is sad. He tries to paint, but everything he paints is blue! Can his friends help him to find his bright colours again?\n\n",
+ "bilder": [
+    "images/bobtheartist/bobblueperiod.webp"
+  ],
+ "kategorie": ["kinder",   "ab3", "Bob der Künstler", "Kunst und Künstlerdasein", "Englischsprachige Bücher",  "Gebrauchte Bücher" ]
+},
+
+   
+  {
+  "id": 2016,
+  "name": "Bob the Artist (Gebraucht - wie neu)",
+  "preis": "12.00",
+  "beschreibung": "Bob the bird is just like all his friends, apart from his skinny legs. When Bob is teased, he decides to try and change himself to fit in. But little does he know where all his efforts will lead him... \nAn affirming picture book for age 3+ about the power of art and of being confident enough to be yourself. \n\nAuthor of the best-selling Let's Make Some Great Art series, Marion Deuchars has a globally recognisable illustration style. Her hand-lettering and illustrations have been used on advertising campaigns from Samsung to HP, and her books have won six awards for design and illustration. She is a member of the Alliance Graphique Internationale.\n\n",
+  "bilder": [
+    "images/bobtheartist/bobtheartist.webp"
+  ],
+ "kategorie": ["kinder",   "ab3", "Bob der Künstler", "Kunst und Künstlerdasein",  "Englischsprachige Bücher" ,  "Gebrauchte Bücher"]
+},
+   
+   
    { "id": 2015,
     "name": "Tauchsommer (Gebraucht - wie neu)",
     "preis": "15.00",   
@@ -202,7 +226,7 @@
     "kategorie":["kinder", "ab4", "Weihnachten", "Feiertage", "Deutschsprachige Bücher", "Sydney Smith", "Mac Barnett", "Bernadette Ott", "Gebrauchte Bücher"]
   },
 
-{ "id": 224,
+{  "id": 224,
     "name": "Wie kommt der Weihnachtsmann durch den Schornstein?",
     "ean": "9783968260495",
     "beschreibung": "Wie kommt der Weihnachtsmann durch den Schornstein? Das weiß niemand. Aber in diesem Buch gibt es einige Ideen.\n\n Wenn der Weihnachtsmann an Heiligabend kommt, steigt er dann mit den Füßen oder mit dem Kopf durch den Schornstein? Was ist, wenn er stecken bleibt? Was ist, wenn es keinen Schornstein gibt? Vielleicht rutscht er unter der Tür hindurch, so dünn wie ein Stück Papier? Oder ist es möglich, dass er sich durch den Wasserhahn ergießt? Was passiert, wenn er einmal drinnen ist?\n\n Kindliche Fragen werden gestellt, die sowohl witzig als auch plausibel erscheinen.\n\n",
@@ -225,7 +249,7 @@
   "bilder": [
     "images/bobtheartist/yogafederleicht.webp"
   ],
- "kategorie": ["kinder",   "ab3",  "Der gute Bob", "Deutschsprachige Bücher" ],
+ "kategorie": ["kinder",   "ab3",  "Bob der Künstler", "Deutschsprachige Bücher" ],
  "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783038762485"
 },
    
@@ -239,7 +263,7 @@
   "bilder": [
     "images/bobtheartist/fitnessfederleicht.webp"
   ],
- "kategorie": ["kinder",   "ab3", "Der gute Bob", "Kunst und Künstlerdasein", "Deutschsprachige Bücher" ],
+ "kategorie": ["kinder",   "ab3", "Bob der Künstler", "Kunst und Künstlerdasein", "Deutschsprachige Bücher" ],
  "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783038763215"
 },
 
@@ -258,12 +282,11 @@
   "id": 220,
   "name": "Bob´s Blue Period",
   "preis": "19.00",
-  "ean": "9781786270696",
   "beschreibung": "Bob the bird loves to paint pictures with his best friend Bat. But one day Bat goes away and Bob is sad. He tries to paint, but everything he paints is blue! Can his friends help him to find his bright colours again?\n\n",
  "bilder": [
     "images/bobtheartist/bobblueperiod.webp"
   ],
- "kategorie": ["kinder",   "ab3", "Der gute Bob", "Kunst und Künstlerdasein", "Englischsprachige Bücher" ]
+ "kategorie": ["kinder",   "ab3", "Bob der Künstler", "Kunst und Künstlerdasein", "Englischsprachige Bücher" ]
 },
 {
   "id": 219,
@@ -1378,13 +1401,13 @@
   {
   "id": 50,
   "name": "Bob the Artist",
-  "preis": "15.00",
+  "preis": "19.00",
   "ean": "9781780677712",
   "beschreibung": "Bob the bird is just like all his friends, apart from his skinny legs. When Bob is teased, he decides to try and change himself to fit in. But little does he know where all his efforts will lead him... \nAn affirming picture book for age 3+ about the power of art and of being confident enough to be yourself. \n\nAuthor of the best-selling Let's Make Some Great Art series, Marion Deuchars has a globally recognisable illustration style. Her hand-lettering and illustrations have been used on advertising campaigns from Samsung to HP, and her books have won six awards for design and illustration. She is a member of the Alliance Graphique Internationale.\n\n",
   "bilder": [
     "images/bobtheartist/bobtheartist.webp"
   ],
- "kategorie": ["kinder",   "ab3", "Der gute Bob", "Kunst und Künstlerdasein",  "Englischsprachige Bücher" ]
+ "kategorie": ["kinder",   "ab3", "Bob der Künstler", "Kunst und Künstlerdasein",  "Englischsprachige Bücher" ]
 },
 
 
