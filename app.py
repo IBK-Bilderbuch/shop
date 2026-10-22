@@ -1076,25 +1076,35 @@ def produkt_detail(produkt_id, slug):
 
    
 
+    
+
+
+    
+
     produkt = cached_lade_produkt_von_api(ean)
 
     if not produkt:
         abort(404)
-        
 
+    # CONTENT-Preis zuerst sichern
+    buchbutler_preis = produkt.get("preis")
 
+    # Bestand und Lieferdaten aktualisieren
     movement = lade_bestand_von_api(ean)
 
     if movement:
+        movement_preis = movement.get("preis")
         produkt.update(movement)
 
-    buchbutler_preis = produkt.get("preis")
+        if movement_preis not in (None, "", 0, 0.0):
+            buchbutler_preis = movement_preis
 
+    # Lokale Daten übernehmen
     produkt.update(lokale_daten)
 
+    # BuchButler-Preis als Ersatz verwenden
     if produkt.get("preis") in (None, ""):
         produkt["preis"] = buchbutler_preis
-
 
     
 
