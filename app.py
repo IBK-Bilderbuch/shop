@@ -1083,17 +1083,17 @@ def produkt_detail(produkt_id, slug):
         
 
 
-   movement = lade_bestand_von_api(ean)
+    movement = lade_bestand_von_api(ean)
 
-   if movement:
-       produkt.update(movement)
+    if movement:
+        produkt.update(movement)
 
-   buchbutler_preis = produkt.get("preis")
+    buchbutler_preis = produkt.get("preis")
 
-   produkt.update(lokale_daten)
+    produkt.update(lokale_daten)
 
-   if produkt.get("preis") in (None, ""):
-       produkt["preis"] = buchbutler_preis
+    if produkt.get("preis") in (None, ""):
+        produkt["preis"] = buchbutler_preis
 
 
     
