@@ -973,10 +973,12 @@ def sync_buchbutler(index):
 
        
 
+     
+
         if movement:
-            produkt["preis"] = movement.get("preis")
             produkt["handling_zeit"] = movement.get("handling_zeit")
             produkt["ausverkauft"] = movement.get("ausverkauft", False)
+            produkt["bestand"] = movement.get("bestand")
 
         # sofort speichern → kein RAM Wachstum
         with open(json_path, "w", encoding="utf-8") as f:
@@ -1078,12 +1080,23 @@ def produkt_detail(produkt_id, slug):
 
     if not produkt:
         abort(404)
+        
 
-    movement = lade_bestand_von_api(ean)
-    if movement:
-        produkt.update(movement)
 
-    produkt.update(lokale_daten)
+   movement = lade_bestand_von_api(ean)
+
+   if movement:
+       produkt.update(movement)
+
+   buchbutler_preis = produkt.get("preis")
+
+   produkt.update(lokale_daten)
+
+   if produkt.get("preis") in (None, ""):
+       produkt["preis"] = buchbutler_preis
+
+
+    
 
 
     produkt.setdefault("bestand", "n/a")
@@ -1096,6 +1109,8 @@ def produkt_detail(produkt_id, slug):
         "produkt.html",
         produkt=produkt
     )
+
+
 
 # ============================
 # CART ROUTES
@@ -1115,11 +1130,19 @@ def add_to_cart():
 
     
     # ── NEU: nur API-Aufruf wenn EAN vorhanden ───────────────────
+    
+    # Eigenen Preis vor dem API-Aufruf sichern
+    eigener_preis = produkt.get("preis")
+
     if produkt.get("ean"):
         movement = lade_bestand_von_api(produkt["ean"])
+
         if movement:
             produkt.update(movement)
-    # preis bleibt sonst aus JSON (lokale_daten["preis"])
+
+    # Eigenen Preis bevorzugen, sofern er eingetragen ist
+    if eigener_preis not in (None, ""):
+        produkt["preis"] = eigener_preis
     # ─────────────────────────────────────────────────────────────
 
 
