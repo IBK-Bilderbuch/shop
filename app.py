@@ -971,32 +971,12 @@ def sync_buchbutler(index):
             produkt["name"] = api.get("name")
             produkt["autor"] = api.get("autor")
 
+       
+
         if movement:
+            produkt["preis"] = movement.get("preis")
             produkt["handling_zeit"] = movement.get("handling_zeit")
             produkt["ausverkauft"] = movement.get("ausverkauft", False)
-            produkt["bestand"] = movement.get("bestand")
-
-        # ── PREIS über EAN synchronisieren ───────────────────────
-        # Eigene (manuell eingetragene) Preise bleiben unangetastet.
-        # Synchronisierte Preise werden mit "preis_quelle": "api"
-        # markiert und bei jedem Sync aktualisiert.
-        eigener_preis_gesetzt = (
-            preis_gueltig(produkt.get("preis"))
-            and produkt.get("preis_quelle") != "api"
-        )
-
-        if not eigener_preis_gesetzt:
-            neuer_preis = None
-
-            if movement and preis_gueltig(movement.get("preis")):
-                neuer_preis = movement.get("preis")
-            elif api and preis_gueltig(api.get("preis")):
-                neuer_preis = api.get("preis")
-
-            if neuer_preis is not None:
-                produkt["preis"] = neuer_preis
-                produkt["preis_quelle"] = "api"
-        # ─────────────────────────────────────────────────────────
 
         # sofort speichern → kein RAM Wachstum
         with open(json_path, "w", encoding="utf-8") as f:
@@ -1092,47 +1072,22 @@ def produkt_detail(produkt_id, slug):
         return render_template("produkt.html", produkt=produkt)
     # ─────────────────────────────────────────────────────────────
 
+   
+
     produkt = cached_lade_produkt_von_api(ean)
 
     if not produkt:
         abort(404)
 
-    # Achtung: gecachtes Dict nicht verändern → Kopie
-    produkt = dict(produkt)
-
-    # ── PREIS-LOGIK ──────────────────────────────────────────────
-    # Reihenfolge: 1. eigener Preis aus produkte.json
-    #              2. MOVEMENT-Preis (live)
-    #              3. CONTENT-Preis (vk_brutto)
-    content_preis = produkt.get("preis")
-
     movement = lade_bestand_von_api(ean)
-    movement_preis = None
-
     if movement:
-        movement = dict(movement)
-        movement_preis = movement.pop("preis", None)  # Preis separat behandeln
         produkt.update(movement)
 
-    # Lokale Daten übernehmen (überschreiben API-Daten)
     produkt.update(lokale_daten)
 
-    if not preis_gueltig(produkt.get("preis")):
-        if preis_gueltig(movement_preis):
-            produkt["preis"] = movement_preis
-        elif preis_gueltig(content_preis):
-            produkt["preis"] = content_preis
-        else:
-            produkt["preis"] = 0
-
-    logger.info(
-        "Preis %s: lokal=%r movement=%r content=%r -> %r",
-        ean, lokale_daten.get("preis"), movement_preis,
-        content_preis, produkt["preis"]
-    )
-    # ─────────────────────────────────────────────────────────────
 
     produkt.setdefault("bestand", "n/a")
+    produkt.setdefault("preis", 0)
     produkt.setdefault("handling_zeit", "n/a")
     produkt.setdefault("erfuellungsrate", "n/a")
     produkt.setdefault("ausverkauft", False)
@@ -1141,8 +1096,6 @@ def produkt_detail(produkt_id, slug):
         "produkt.html",
         produkt=produkt
     )
-
-
 
 # ============================
 # CART ROUTES
@@ -1159,35 +1112,14 @@ def add_to_cart():
     # ✅ WICHTIG: Kopie machen (kein globales Update!)
     produkt = produkt.copy()
 
-    # ── PREIS-LOGIK (gleiche Reihenfolge wie in produkt_detail) ──
-    # 1. eigener Preis aus produkte.json
-    # 2. MOVEMENT-Preis (live)
-    # 3. CONTENT-Preis (vk_brutto)
-    eigener_preis = produkt.get("preis")
-    api_preis = None
 
+    
+    # ── NEU: nur API-Aufruf wenn EAN vorhanden ───────────────────
     if produkt.get("ean"):
         movement = lade_bestand_von_api(produkt["ean"])
-
         if movement:
-            movement = dict(movement)
-            movement_preis = movement.pop("preis", None)
             produkt.update(movement)
-
-            if preis_gueltig(movement_preis):
-                api_preis = movement_preis
-
-        if api_preis is None:
-            content = cached_lade_produkt_von_api(produkt["ean"])
-            if content and preis_gueltig(content.get("preis")):
-                api_preis = content.get("preis")
-
-    if preis_gueltig(eigener_preis):
-        produkt["preis"] = eigener_preis
-    elif api_preis is not None:
-        produkt["preis"] = api_preis
-    else:
-        produkt["preis"] = 0
+    # preis bleibt sonst aus JSON (lokale_daten["preis"])
     # ─────────────────────────────────────────────────────────────
 
 
@@ -1211,7 +1143,7 @@ def add_to_cart():
         cart.append({
             "id": produkt["id"],
             "title": produkt["name"],
-            "price": to_float(produkt.get("preis", 0)),
+            "price": produkt.get("preis", 0),
             "quantity": 1,
             "ean": produkt.get("ean", "")  # ← sicher
         })
@@ -1505,16 +1437,6 @@ def to_float(value):
         return float(str(value).replace(",", "."))
     except ValueError:
         return 0.0
-
-
-def preis_gueltig(value):
-    """True, wenn der Wert ein Preis > 0 ist (None, "", 0, "0", "abc" → False)"""
-    if value in (None, ""):
-        return False
-    try:
-        return float(str(value).replace(",", ".")) > 0
-    except (TypeError, ValueError):
-        return False
 
 
 def to_int(value):
