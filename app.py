@@ -1165,12 +1165,12 @@ def normalize_cart(client_cart):
 
     result = []
 
-    for item in client_cart:
+
+        for item in client_cart:
         if not isinstance(item, dict):
             continue
 
         try:
-            item_id = int(item.get("id"))
             menge = int(item.get("quantity", 1))
         except (TypeError, ValueError):
             continue
@@ -1179,13 +1179,24 @@ def normalize_cart(client_cart):
             continue
         menge = min(menge, 99)
 
+        try:
+            item_id = int(item.get("id")) if item.get("id") is not None else None
+        except (TypeError, ValueError):
+            item_id = None
+
         if item_id == GUTSCHEIN_ITEM_ID:
             if gutschein_item:
                 result.append(dict(gutschein_item))
             continue
 
-        produkt = finde_produkt(item_id)
+        produkt = finde_produkt(item_id) if item_id is not None else None
+
+        # Fallback: über die EAN suchen (der Browser-Warenkorb nutzt die EAN)
+        if not produkt and item.get("ean"):
+            produkt = finde_produkt_by_ean(item["ean"])
+
         if not produkt:
+            logger.warning("Produkt nicht gefunden: %s", item)
             continue
 
         result.append({
@@ -1195,7 +1206,7 @@ def normalize_cart(client_cart):
             "quantity": menge,
             "ean": produkt.get("ean", "")
         })
-
+            
     return result
 
 
