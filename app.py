@@ -107,6 +107,8 @@ logger = logging.getLogger(__name__)
 
 csrf = CSRFProtect(app)
 
+# ID, unter der der Geschenkgutschein im Warenkorb liegt
+GUTSCHEIN_ITEM_ID = 999999
 
 
 # ---------- BUCHBUTLER API ZUGANG ----------
@@ -192,9 +194,14 @@ def gutschein():
         return render_template("gutschein.html")
 
     try:
-        betrag = float(request.form.get("betrag", 0))
+        betrag = round(float(request.form.get("betrag", 0)), 2)
 
     except ValueError:
+        flash("Ungültiger Betrag", "error")
+        return redirect("/gutschein")
+
+    # Betrag muss positiv sein
+    if betrag <= 0:
         flash("Ungültiger Betrag", "error")
         return redirect("/gutschein")
 
@@ -211,7 +218,7 @@ def gutschein():
 
     # Gutschein als Warenkorbprodukt
     session["cart"] = [{
-        "id": 999999,
+        "id": GUTSCHEIN_ITEM_ID,
         "title": "Geschenkgutschein",
         "price": betrag,
         "quantity": 1,
@@ -228,9 +235,9 @@ def gutschein():
 @app.route("/apply-gutschein", methods=["POST"])
 @csrf.exempt
 def apply_gutschein():
-    body = request.json
+    body = request.json or {}
     code = (body.get("code") or "").strip().upper()
-    
+
     gutschein = Gutschein.query.filter_by(code=code).first()
 
     if not gutschein:
@@ -239,8 +246,13 @@ def apply_gutschein():
     if not gutschein.ist_gueltig():
         return jsonify({"success": False, "message": "Gutschein ungültig oder abgelaufen"})
 
-    # ← Cart aus Request nehmen, nicht aus Session!
-    cart = body.get("cart") or get_cart()
+    # Cart aus Request nehmen, ABER Preise serverseitig neu berechnen!
+    if body.get("cart"):
+        cart = normalize_cart(body["cart"])
+        session["cart"] = cart
+        session.modified = True
+    else:
+        cart = get_cart()
 
     total = sum(
         item["price"] * item.get("quantity", 1)
@@ -248,11 +260,6 @@ def apply_gutschein():
     )
 
     rabatt = min(total, gutschein.restwert)
-
-    # Cart auch gleich in Session speichern (sync)
-    if body.get("cart"):
-        session["cart"] = body["cart"]
-        session.modified = True
 
     session["gutschein"] = {
         "code": gutschein.code,
@@ -273,7 +280,7 @@ def apply_gutschein():
 def calculate_total(cart):
 
     total = sum(
-        item["price"] * item["quantity"]
+        to_float(item["price"]) * int(item["quantity"])
         for item in cart
     )
 
@@ -512,7 +519,7 @@ def capture_paypal_order(order_id):
                         betrag=item["price"],
                     )
 
-                   
+
 
                 except Exception:
                     logger.exception(
@@ -646,7 +653,7 @@ def lade_produkt_von_api(ean):
             return None
 
         attrs = res.get("Artikelattribute") or {}
-      
+
 
         # 🔥 Bild (nur BuchButler Image API)
         bild_url = f"https://api.buchbutler.de/image/{ean}"
@@ -667,7 +674,7 @@ def lade_produkt_von_api(ean):
             "erscheinungsdatum": attr(attrs, "Erscheinungsdatum"),
             "beschreibung": res.get("text_text"),
             "alter_von": attr(attrs, "Altersempfehlung_von"),
-            "alter_bis": attr(attrs, "Altersempfehlung_bis"),          
+            "alter_bis": attr(attrs, "Altersempfehlung_bis"),
             # 🔥 Maße
             "laenge": attr(attrs, "Laenge"),
             "breite": attr(attrs, "Breite"),
@@ -713,7 +720,7 @@ def lade_bestand_von_api(ean):
                 return None
             res = res[0]
 
-     
+
         return {
             "bestand": to_int(res.get("Bestand")),
             "preis": to_float(res.get("Preis")),
@@ -729,7 +736,7 @@ def lade_bestand_von_api(ean):
         return None
 
 # -----------------------------
-# Bestellung an Buchbutler senden 
+# Bestellung an Buchbutler senden
 # -----------------------------
 
 def sende_bestellung_an_buchbutler(bestellung, cart_items):
@@ -741,9 +748,9 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
     db.session.commit()
     # PayPal = bereits bezahlt → Vorkasse (1)
     # Rechnung = Buchbutler rechnet ab → Rechnung (2)
-    mol_zahlart_id = 2 
+    mol_zahlart_id = 2
 
-    
+
     payload = {
         "username": BUCHBUTLER_USER,
         "passwort": BUCHBUTLER_PASSWORD,
@@ -786,7 +793,7 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
         ]
     }
 
-    
+
 
     for i, item in enumerate(cart_items):
         payload["auftrag_position"].append({
@@ -797,20 +804,20 @@ def sende_bestellung_an_buchbutler(bestellung, cart_items):
             "vk_brutto": item["price"],
             "pos_referenz": f"{bestellung.id}-{i}"
         })
-    
+
     response = requests.post(url, json=payload, timeout=20)
-    
+
     data = response.json()
-    
+
     if data.get("import_hash"):
         bestellung.moluna_order_id = data["import_hash"]
         bestellung.moluna_status = "übermittelt"
         db.session.commit()
-        
+
     logger.info("Buchbutler Bestellung: %s", data)
     return data
-    
-    
+
+
 def buchbutler_orderresponse(collectkey):
 
     url = f"{BASE_URL}/ORDERRESPONSE/"
@@ -868,12 +875,13 @@ def admin_required():
 
 
 
-@limiter.limit("5 per minute")
+# FIX: @limiter.limit muss UNTER @app.route stehen, sonst greift das Limit nicht
 @app.route("/ibk-control-8471", methods=["GET", "POST"])
+@limiter.limit("5 per minute")
 def admin_login():
     if request.method == "POST":
         pw = request.form.get("password")
-        if pw == ADMIN_PASSWORD:
+        if ADMIN_PASSWORD and pw and secrets.compare_digest(pw, ADMIN_PASSWORD):
             session.clear()
             session["admin"] = True
             session.permanent = True
@@ -971,10 +979,13 @@ def sync_buchbutler(index):
             produkt["name"] = api.get("name")
             produkt["autor"] = api.get("autor")
 
-       
+
 
         if movement:
-            produkt["preis"] = movement.get("preis")
+            # FIX: manuell gesetzte Preise NICHT überschreiben.
+            # Setze in produkte.json  "preis_manuell": true  bei Produkten mit eigenem Preis.
+            if not produkt.get("preis_manuell"):
+                produkt["preis"] = movement.get("preis")
             produkt["handling_zeit"] = movement.get("handling_zeit")
             produkt["ausverkauft"] = movement.get("ausverkauft", False)
 
@@ -985,8 +996,8 @@ def sync_buchbutler(index):
     next_index = index + 1
 
     return redirect(url_for("sync_buchbutler", index=next_index))
-    
-# suche icon 
+
+# suche icon
 @app.route("/suche", methods=["GET", "POST"])
 def suche():
     query = ""
@@ -1060,34 +1071,47 @@ def produkt_detail(produkt_id, slug):
         ), code=301)
 
     ean = lokale_daten.get("ean")
+    lokaler_preis = lokale_daten.get("preis")
+    hat_lokalen_preis = lokaler_preis not in (None, "")
 
 
        # ── NEU: Offline-Produkt (kein EAN) ──────────────────────────
     if not ean:
         produkt = lokale_daten.copy()
         produkt.setdefault("bestand", "n/a")
-        produkt.setdefault("preis", lokale_daten.get("preis", 0))
+        produkt["preis"] = to_float(lokaler_preis) if hat_lokalen_preis else 0.0
         produkt.setdefault("handling_zeit", "n/a")
         produkt.setdefault("erfuellungsrate", "n/a")
         return render_template("produkt.html", produkt=produkt)
     # ─────────────────────────────────────────────────────────────
 
-   
+
 
     produkt = cached_lade_produkt_von_api(ean)
 
     if not produkt:
         abort(404)
 
+    # lru_cache liefert immer dasselbe Dict → Kopie, damit der Cache sauber bleibt
+    produkt = dict(produkt)
+
     movement = lade_bestand_von_api(ean)
     if movement:
         produkt.update(movement)
 
+    # Preis aus API (Movement bevorzugt) merken, bevor lokale Daten drübergelegt werden
+    api_preis = produkt.get("preis", 0)
+
     produkt.update(lokale_daten)
+
+    # FIX: eigener Preis aus der JSON hat Vorrang, sonst BuchButler-Preis
+    if hat_lokalen_preis:
+        produkt["preis"] = to_float(lokaler_preis)
+    else:
+        produkt["preis"] = to_float(api_preis)
 
 
     produkt.setdefault("bestand", "n/a")
-    produkt.setdefault("preis", 0)
     produkt.setdefault("handling_zeit", "n/a")
     produkt.setdefault("erfuellungsrate", "n/a")
     produkt.setdefault("ausverkauft", False)
@@ -1101,10 +1125,84 @@ def produkt_detail(produkt_id, slug):
 # CART ROUTES
 # ============================
 
+def finde_produkt(produkt_id):
+    return next((p for p in produkte if p.get("id") == produkt_id), None)
+
+
+def server_preis(produkt, movement=None):
+    """
+    Der Preis kommt IMMER vom Server:
+    1. eigener Preis aus produkte.json (hat Vorrang)
+    2. sonst BuchButler-Preis (MOVEMENT API)
+    """
+    lokal = produkt.get("preis")
+    if lokal not in (None, ""):
+        return to_float(lokal)
+
+    if movement is None and produkt.get("ean"):
+        movement = lade_bestand_von_api(produkt["ean"])
+
+    if movement:
+        return to_float(movement.get("preis"))
+
+    return 0.0
+
+
+def normalize_cart(client_cart):
+    """
+    Nimmt einen vom Client geschickten Warenkorb entgegen, übernimmt
+    nur ID + Menge und berechnet Titel/Preis/EAN serverseitig neu.
+    Damit kann niemand Preise im Browser manipulieren.
+    """
+    if not isinstance(client_cart, list):
+        return []
+
+    # Gutschein-Position stammt aus der Session (wurde serverseitig angelegt)
+    gutschein_item = next(
+        (i for i in session.get("cart", []) if i.get("is_gutschein")),
+        None
+    )
+
+    result = []
+
+    for item in client_cart:
+        if not isinstance(item, dict):
+            continue
+
+        try:
+            item_id = int(item.get("id"))
+            menge = int(item.get("quantity", 1))
+        except (TypeError, ValueError):
+            continue
+
+        if menge < 1:
+            continue
+        menge = min(menge, 99)
+
+        if item_id == GUTSCHEIN_ITEM_ID:
+            if gutschein_item:
+                result.append(dict(gutschein_item))
+            continue
+
+        produkt = finde_produkt(item_id)
+        if not produkt:
+            continue
+
+        result.append({
+            "id": produkt["id"],
+            "title": (produkt.get("name") or "").strip(),
+            "price": server_preis(produkt),
+            "quantity": menge,
+            "ean": produkt.get("ean", "")
+        })
+
+    return result
+
+
 @app.route("/add-to-cart", methods=["POST"])
 def add_to_cart():
     produkt_id = int(request.form.get("produkt_id"))
-    produkt = next((p for p in produkte if p["id"] == produkt_id), None)
+    produkt = finde_produkt(produkt_id)
 
     if not produkt:
         abort(404)
@@ -1112,14 +1210,17 @@ def add_to_cart():
     # ✅ WICHTIG: Kopie machen (kein globales Update!)
     produkt = produkt.copy()
 
+    movement = None
 
-    
-    # ── NEU: nur API-Aufruf wenn EAN vorhanden ───────────────────
+    # ── nur API-Aufruf wenn EAN vorhanden ────────────────────────
     if produkt.get("ean"):
         movement = lade_bestand_von_api(produkt["ean"])
         if movement:
-            produkt.update(movement)
-    # preis bleibt sonst aus JSON (lokale_daten["preis"])
+            # Bestand / Ausverkauft-Status aus API übernehmen,
+            # aber NICHT den Preis (siehe server_preis unten)
+            produkt["ausverkauft"] = movement.get("ausverkauft", produkt.get("ausverkauft", False))
+            produkt["bestand"] = movement.get("bestand")
+            produkt["handling_zeit"] = movement.get("handling_zeit")
     # ─────────────────────────────────────────────────────────────
 
 
@@ -1137,17 +1238,18 @@ def add_to_cart():
             found = True
             break
 
-  
+
 
     if not found:
         cart.append({
             "id": produkt["id"],
-            "title": produkt["name"],
-            "price": produkt.get("preis", 0),
+            "title": (produkt.get("name") or "").strip(),
+            # FIX: eigener Preis aus JSON hat Vorrang, als float
+            "price": server_preis(produkt, movement),
             "quantity": 1,
             "ean": produkt.get("ean", "")  # ← sicher
         })
-        
+
 
     save_cart(cart)
     return redirect(url_for("cart"))
@@ -1169,20 +1271,19 @@ def remove_from_cart(produkt_id):
 
 
 @app.route("/sync-cart", methods=["POST"])
-@csrf.exempt  
+@csrf.exempt
 def sync_cart():
     data = request.get_json()
 
     if not data:
         return {"status": "error"}, 400
 
-    session["cart"] = data
+    # FIX: Preise nie vom Client übernehmen, sondern serverseitig neu berechnen
+    session["cart"] = normalize_cart(data)
     session.modified = True
 
-    print("SYNCED CART:", session["cart"])
+    return {"status": "ok", "cart": session["cart"]}
 
-    return {"status": "ok"}
-    
 # ============================
 # CHECKOUT
 # ============================
@@ -1215,10 +1316,11 @@ def checkout():
                 gutschein = Gutschein(code=code, wert=10, user_id=user.id)
                 user.punkte -= 100
                 db.session.add(gutschein)
+                # FIX: send_email kennt kein "body", sondern "html"
                 send_email(
                     subject="Dein Gutschein 🎁",
-                    body=f"Dein Code: {code}",
-                    recipient=user.email
+                    recipient=user.email,
+                    html=f"<p>Dein Code: <strong>{code}</strong></p>"
                 )
             db.session.commit()
 
@@ -1312,7 +1414,7 @@ def checkouttest():
 
             db.session.commit()
 
-       
+
 
             # An Buchbutler senden (mol_zahlart_id=2 = Rechnung)
             buch_items = [i for i in cart_items if not i.get("is_gutschein") and i.get("ean")]
@@ -1354,6 +1456,10 @@ def free_checkout():
 
     if not cart_items:
         return jsonify({"status": "error", "message": "Warenkorb leer"}), 400
+
+    # Sicherheit: nur wenn der Gutschein den Warenkorb wirklich komplett deckt
+    if calculate_total(cart_items) > 0:
+        return jsonify({"status": "error", "message": "Betrag nicht vollständig gedeckt"}), 400
 
     bestellung = Bestellung(
         email=session.get("checkout_email"),
@@ -1481,10 +1587,6 @@ def buchbutler_request(endpoint, ean):
 
     return data["response"]
 
-
-
-# Oben bei den Imports in app.py ergänzen (falls noch nicht vorhanden):
-# from werkzeug.security import generate_password_hash, check_password_hash
 
 
 # =====================================================
@@ -1758,7 +1860,7 @@ def workshops_overview():
 # KONTAKT
 # ============================
 
-@app.route("/kontakt")  
+@app.route("/kontakt")
 def kontakt():
     return render_template("kontakt.html", user_email=session.get("user_email"))
 
@@ -1791,7 +1893,7 @@ def submit():
 # WIderruf
 # ============================
 
-@app.route("/widerruf")  
+@app.route("/widerruf")
 def widerruf():
     return render_template("widerruf.html", user_email=session.get("user_email"))
 
@@ -1815,12 +1917,12 @@ def submitwiderruf():
             recipient=EMAIL_SENDER,
             html=f"""
                 <p><b>Von:</b> {name} ({email})</p>
-                
+
                 <p><b>anschrift:</b> {anschrift}</p>
                 <p><b>anzahl:</b> {anzahl}</p>
                 <p><b>warenbezeichnung:</b> {warenbezeichnung}</p>
                 <p><b>datum:</b> {datum}</p>
-                
+
                 <p>{message}</p>
             """,
             plain_text=f"Von: {name} <{email}>\n\n{message}"
@@ -1912,7 +2014,7 @@ def newsletter():
         <p>Danke für deine Anmeldung!</p>
         <p>Klicke auf den Button, um deine E-Mail zu bestätigen:</p>
 
-        <a href="{confirm_url}" 
+        <a href="{confirm_url}"
            style="
                display: inline-block;
                padding: 12px 20px;
@@ -2039,7 +2141,7 @@ def bestelldanke():
 @app.route("/newsletterbesteatigung")
 def newsletterbesteatigung():
     return render_template("newsletterbesteatigung.html", user_email=session.get("user_email"))
-    
+
 @app.route("/newsletteranmeldung")
 def newsletteranmeldung():
     return render_template("newsletteranmeldung.html", user_email=session.get("user_email"))
@@ -2052,11 +2154,11 @@ def illustratoren():
 def ueberibk():
     return render_template("ueberibk.html", user_email=session.get("user_email"))
 
-    
+
 @app.route("/uberibk")
 def uberibk():
     return render_template("uberibk.html", user_email=session.get("user_email"))
-    
+
 # ============================
 # INDEX HAUPTSEITE
 # ============================
@@ -2065,8 +2167,8 @@ def uberibk():
 def index():
 
     kategorienamen = [
-      "Neuerscheinungen", "Bob der Künstler",  "Jacominus Gainsborough","Zahlen und Alphabet", "Wortlust und Zeichenfreude",  "Mut oder Angst?!", 
-         "Schlaues Mitraten und Mitmachen", "Klassiker", "Gedanken zum Lebensende",  "Monstergeschichten", 
+      "Neuerscheinungen", "Bob der Künstler",  "Jacominus Gainsborough","Zahlen und Alphabet", "Wortlust und Zeichenfreude",  "Mut oder Angst?!",
+         "Schlaues Mitraten und Mitmachen", "Klassiker", "Gedanken zum Lebensende",  "Monstergeschichten",
         "Wichtige Fragen",  "Kunst und Künstlerdasein",
         "Kinder und Gefühle",  "Dazugehören und Anderssein","Familie und Freunde", "Weihnachten", "Reisen",  "Bücher über Illustratoren und Illustrationskunst", "Gebrauchte Bücher" ]
 
@@ -2079,9 +2181,9 @@ def index():
         "Mut oder Angst?!": {
             "kurz": "Mut ist etwas Gutes!",
             "lang": "Wer sein Herz in die Hand nimmt und das Zaudern überwindet, auf den wartet ein ganz besonderes Hochgefühl – mal leise, mal kraftvoll, aber immer spürbar. Davon erzählen diese Bücher auf ganz unterschiedliche Weise.\nDa sind die poetischen Bilder und Gedichte, die genau diesen Moment einfangen, in dem aus Zögern plötzlich Mut wird. Da ist Anna, die ihre Angst nicht einfach wegschiebt, sondern ihr mit Fantasie, Freundschaft und liebevoller Unterstützung begegnet – mit Riesen, Rittern und vielen anderen Begleitern durch die Nacht.\nUnd da ist der Blickwechsel: Was, wenn Angst ganz anders verstanden wird? Wenn aus dem „Angsthasen“ ein „Muthase“ wird – und plötzlich Mut, Klugheit und Sensibilität sichtbar werden, wo vorher vorschnell bewertet wurde?\nNicht zuletzt erzählen die Geschichten auch davon, wie man mit Veränderungen umgeht, neue Wege findet und den eigenen Platz behauptet – manchmal leise, manchmal überraschend.\n\nBücher für Kinder, ja – aber eigentlich für alle, die sich erinnern möchten, wie sich Mut anfühlt."
+        }
     }
-}
-   
+
 
     kategorien = [
         (k, [p for p in produkte if k in p.get("kategorie", [])])
@@ -2101,11 +2203,12 @@ def index():
         kategorie_beschreibungen=kategorie_beschreibungen,
         user_email=session.get("user_email")
     )
-    
 
 
 
-    
+
+
+
 # =====================================================
 # START (RENDER READY)
 # =====================================================
