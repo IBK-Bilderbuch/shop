@@ -1173,7 +1173,7 @@ def normalize_cart(client_cart):
     result = []
 
 
-        for item in client_cart:
+    for item in client_cart:
         if not isinstance(item, dict):
             continue
 
