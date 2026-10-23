@@ -1129,6 +1129,13 @@ def finde_produkt(produkt_id):
     return next((p for p in produkte if p.get("id") == produkt_id), None)
 
 
+def finde_produkt_by_ean(ean):
+    return next(
+        (p for p in produkte if p.get("ean") and str(p["ean"]) == str(ean)),
+        None
+    )
+
+
 def server_preis(produkt, movement=None):
     """
     Der Preis kommt IMMER vom Server:
