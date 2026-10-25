@@ -247,8 +247,8 @@ def apply_gutschein():
         return jsonify({"success": False, "message": "Gutschein ungültig oder abgelaufen"})
 
     # Cart aus Request nehmen, ABER Preise serverseitig neu berechnen!
-    if body.get("cart"):
-        cart = normalize_cart(body["cart"])
+    cart = normalize_cart(body["cart"]) if body.get("cart") else []
+    if cart:
         session["cart"] = cart
         session.modified = True
     else:
@@ -332,7 +332,14 @@ def paypal_access_token():
         auth=(PAYPAL_CLIENT_ID, PAYPAL_SECRET),
         data={"grant_type": "client_credentials"},
     )
-    return response.json().get("access_token")
+    data = response.json()
+    token = data.get("access_token")
+    if not token:
+        logger.error(
+            "PayPal TOKEN FEHLER (mode=%s, status=%s): %s",
+            PAYPAL_MODE, response.status_code, data
+        )
+    return token
 
 
 
@@ -344,13 +351,22 @@ def create_paypal_order():
     cart_items = get_cart()
     total = calculate_total(cart_items)
 
+    logger.info("PayPal create-order: %d Positionen, total=%.2f", len(cart_items), total)
+
     if not cart_items:
+        logger.error("PayPal create-order: Warenkorb in der Session ist LEER")
         return jsonify({"error": "Warenkorb leer"}), 400
 
     # WICHTIG:
     # Wenn Gutschein alles bezahlt hat
     # dann KEIN PayPal starten
     if total <= 0:
+
+        # Kostenlos NUR, wenn ein Gutschein den Betrag wirklich deckt.
+        # Sonst ist ein Preis kaputt → PayPal nicht überspringen.
+        if not session.get("gutschein"):
+            logger.error("PayPal create-order: total=0 ohne Gutschein, Positionen: %s", cart_items)
+            return jsonify({"error": "Ungültiger Warenkorbpreis"}), 400
 
         return jsonify({
             "free_checkout": True
@@ -412,6 +428,7 @@ def capture_paypal_order(order_id):
         data = response.json()
 
         if data.get("status") != "COMPLETED":
+            logger.error("PayPal CAPTURE FEHLER (status=%s): %s", response.status_code, data)
             return jsonify({
                 "status": "error",
                 "message": "PayPal-Zahlung nicht abgeschlossen",
@@ -425,6 +442,7 @@ def capture_paypal_order(order_id):
         cart_items = get_cart()
 
         if not cart_items:
+            logger.error("PayPal capture: Zahlung ok, aber Session-Warenkorb ist LEER (order %s)", order_id)
             return jsonify({
                 "status": "error",
                 "message": "Warenkorb leer"
@@ -1155,10 +1173,11 @@ def server_preis(produkt, movement=None):
     if movement is None and produkt.get("ean"):
         movement = lade_bestand_von_api(produkt["ean"])
 
-    if movement:
+    if movement and to_float(movement.get("preis")) > 0:
         return to_float(movement.get("preis"))
 
-    return 0.0
+    # Fallback, wenn die API nicht antwortet: zuletzt gesyncter Preis aus der JSON
+    return to_float(produkt.get("preis"))
 
 
 def normalize_cart(client_cart):
@@ -1167,6 +1186,19 @@ def normalize_cart(client_cart):
     nur ID + Menge und berechnet Titel/Preis/EAN serverseitig neu.
     Damit kann niemand Preise im Browser manipulieren.
     """
+    # Tolerant gegenüber dem Format: Liste ODER Objekt mit "items"/"cart"/...
+    if isinstance(client_cart, dict):
+        for key in ("items", "cart", "cart_items", "positions", "produkte"):
+            if isinstance(client_cart.get(key), list):
+                client_cart = client_cart[key]
+                break
+        else:
+            # Objekt der Form {"501": {...}, "225": {...}} → ID aus dem Schlüssel
+            if client_cart and all(isinstance(v, dict) for v in client_cart.values()):
+                client_cart = [
+                    {**v, "id": v.get("id", k)} for k, v in client_cart.items()
+                ]
+
     if not isinstance(client_cart, list):
         return []
 
@@ -1182,9 +1214,20 @@ def normalize_cart(client_cart):
         if not isinstance(item, dict):
             continue
 
+        raw_id = next(
+            (item[k] for k in ("id", "produkt_id", "product_id", "productId", "pid")
+             if item.get(k) not in (None, "")),
+            None
+        )
+        raw_menge = next(
+            (item[k] for k in ("quantity", "menge", "qty", "anzahl")
+             if item.get(k) not in (None, "")),
+            1
+        )
+
         try:
-            item_id = int(item.get("id"))
-            menge = int(item.get("quantity", 1))
+            item_id = int(raw_id)
+            menge = int(raw_menge)
         except (TypeError, ValueError):
             continue
 
@@ -1201,10 +1244,15 @@ def normalize_cart(client_cart):
         if not produkt:
             continue
 
+        preis = server_preis(produkt)
+        if preis <= 0:
+            logger.error("normalize_cart: Produkt %s hat keinen gültigen Preis, wird verworfen", item_id)
+            continue
+
         result.append({
             "id": produkt["id"],
             "title": (produkt.get("name") or "").strip(),
-            "price": server_preis(produkt),
+            "price": preis,
             "quantity": menge,
             "ean": produkt.get("ean", "")
         })
@@ -1242,6 +1290,12 @@ def add_to_cart():
         return redirect(request.referrer or url_for("index"))
 
 
+    preis_neu = server_preis(produkt, movement)
+    if preis_neu <= 0:
+        logger.error("add-to-cart: Produkt %s hat keinen gültigen Preis", produkt_id)
+        flash("Für dieses Produkt ist gerade kein Preis verfügbar.", "error")
+        return redirect(request.referrer or url_for("index"))
+
     cart = get_cart()
 
     found = False
@@ -1258,7 +1312,7 @@ def add_to_cart():
             "id": produkt["id"],
             "title": (produkt.get("name") or "").strip(),
             # FIX: eigener Preis aus JSON hat Vorrang, als float
-            "price": server_preis(produkt, movement),
+            "price": preis_neu,
             "quantity": 1,
             "ean": produkt.get("ean", "")  # ← sicher
         })
@@ -1292,7 +1346,19 @@ def sync_cart():
         return {"status": "error"}, 400
 
     # FIX: Preise nie vom Client übernehmen, sondern serverseitig neu berechnen
-    session["cart"] = normalize_cart(data)
+    neu = normalize_cart(data)
+
+    # SICHERUNG: Kann der Server nichts aus den Client-Daten übernehmen,
+    # darf der vorhandene (vom Server selbst angelegte) Warenkorb nicht
+    # geleert werden. Sonst scheitert PayPal mit "Warenkorb leer".
+    if not neu and get_cart():
+        logger.error("sync-cart: Client-Daten nicht lesbar, Session-Warenkorb bleibt. Client-Daten: %s", data)
+        return {"status": "ok", "cart": get_cart()}
+
+    if isinstance(data, list) and len(neu) != len(data):
+        logger.warning("sync-cart: %d von %d Positionen verworfen. Client-Daten: %s",
+                       len(data) - len(neu), len(data), data)
+    session["cart"] = neu
     session.modified = True
 
     return {"status": "ok", "cart": session["cart"]}
