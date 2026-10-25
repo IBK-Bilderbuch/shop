@@ -982,10 +982,12 @@ def sync_buchbutler(index):
 
 
         if movement:
-            # FIX: manuell gesetzte Preise NICHT überschreiben.
-            # Setze in produkte.json  "preis_manuell": true  bei Produkten mit eigenem Preis.
-            if not produkt.get("preis_manuell"):
+            # FIX: eigene Preise NIE überschreiben.
+            # Der Sync darf "preis" nur setzen, wenn noch keiner da ist
+            # oder wenn der vorhandene Preis selbst vom Sync stammt.
+            if not hat_eigenen_preis(produkt):
                 produkt["preis"] = movement.get("preis")
+                produkt["preis_quelle"] = "api"
             produkt["handling_zeit"] = movement.get("handling_zeit")
             produkt["ausverkauft"] = movement.get("ausverkauft", False)
 
@@ -1072,7 +1074,7 @@ def produkt_detail(produkt_id, slug):
 
     ean = lokale_daten.get("ean")
     lokaler_preis = lokale_daten.get("preis")
-    hat_lokalen_preis = lokaler_preis not in (None, "")
+    hat_lokalen_preis = hat_eigenen_preis(lokale_daten)
 
 
        # ── NEU: Offline-Produkt (kein EAN) ──────────────────────────
@@ -1129,11 +1131,16 @@ def finde_produkt(produkt_id):
     return next((p for p in produkte if p.get("id") == produkt_id), None)
 
 
-def finde_produkt_by_ean(ean):
-    return next(
-        (p for p in produkte if p.get("ean") and str(p["ean"]) == str(ean)),
-        None
-    )
+def hat_eigenen_preis(produkt):
+    """
+    True, wenn in produkte.json ein selbst gesetzter Preis steht.
+    Preise, die der Sync eingetragen hat (preis_quelle == "api"),
+    zählen NICHT als eigener Preis und werden live aus der API geholt.
+    """
+    preis = produkt.get("preis")
+    if preis in (None, ""):
+        return False
+    return produkt.get("preis_quelle") != "api"
 
 
 def server_preis(produkt, movement=None):
@@ -1142,9 +1149,8 @@ def server_preis(produkt, movement=None):
     1. eigener Preis aus produkte.json (hat Vorrang)
     2. sonst BuchButler-Preis (MOVEMENT API)
     """
-    lokal = produkt.get("preis")
-    if lokal not in (None, ""):
-        return to_float(lokal)
+    if hat_eigenen_preis(produkt):
+        return to_float(produkt.get("preis"))
 
     if movement is None and produkt.get("ean"):
         movement = lade_bestand_von_api(produkt["ean"])
@@ -1172,12 +1178,12 @@ def normalize_cart(client_cart):
 
     result = []
 
-
     for item in client_cart:
         if not isinstance(item, dict):
             continue
 
         try:
+            item_id = int(item.get("id"))
             menge = int(item.get("quantity", 1))
         except (TypeError, ValueError):
             continue
@@ -1186,24 +1192,13 @@ def normalize_cart(client_cart):
             continue
         menge = min(menge, 99)
 
-        try:
-            item_id = int(item.get("id")) if item.get("id") is not None else None
-        except (TypeError, ValueError):
-            item_id = None
-
         if item_id == GUTSCHEIN_ITEM_ID:
             if gutschein_item:
                 result.append(dict(gutschein_item))
             continue
 
-        produkt = finde_produkt(item_id) if item_id is not None else None
-
-        # Fallback: über die EAN suchen (der Browser-Warenkorb nutzt die EAN)
-        if not produkt and item.get("ean"):
-            produkt = finde_produkt_by_ean(item["ean"])
-
+        produkt = finde_produkt(item_id)
         if not produkt:
-            logger.warning("Produkt nicht gefunden: %s", item)
             continue
 
         result.append({
@@ -1213,7 +1208,7 @@ def normalize_cart(client_cart):
             "quantity": menge,
             "ean": produkt.get("ean", "")
         })
-            
+
     return result
 
 
