@@ -1180,6 +1180,31 @@ def server_preis(produkt, movement=None):
     return to_float(produkt.get("preis"))
 
 
+def finde_produkt_fuer_clientitem(item):
+    """
+    Dein Warenkorb im Browser kennt keine ID, nur title/ean/quantity.
+    Zuordnung deshalb: 1. über die EAN, 2. (Produkte ohne EAN) über den Namen.
+    """
+    ean = str(item.get("ean") or "").strip()
+    if ean:
+        return next(
+            (p for p in produkte if str(p.get("ean") or "").strip() == ean),
+            None
+        )
+
+    title = (item.get("title") or "").strip().lower()
+    if not title:
+        return None
+
+    # Ohne EAN nur Offline-Produkte (ebenfalls ohne EAN) berücksichtigen
+    return next(
+        (p for p in produkte
+         if not str(p.get("ean") or "").strip()
+         and (p.get("name") or "").strip().lower() == title),
+        None
+    )
+
+
 def normalize_cart(client_cart):
     """
     Nimmt einen vom Client geschickten Warenkorb entgegen, übernimmt
@@ -1226,7 +1251,6 @@ def normalize_cart(client_cart):
         )
 
         try:
-            item_id = int(raw_id)
             menge = int(raw_menge)
         except (TypeError, ValueError):
             continue
@@ -1235,18 +1259,32 @@ def normalize_cart(client_cart):
             continue
         menge = min(menge, 99)
 
-        if item_id == GUTSCHEIN_ITEM_ID:
+        try:
+            item_id = int(raw_id) if raw_id is not None else None
+        except (TypeError, ValueError):
+            item_id = None
+
+        ist_gutschein = (
+            item.get("is_gutschein")
+            or item_id == GUTSCHEIN_ITEM_ID
+            or (item.get("title") or "").strip().lower() == "geschenkgutschein"
+        )
+        if ist_gutschein:
+            # Gutschein-Position kommt immer aus der Session (Server hat sie angelegt)
             if gutschein_item:
                 result.append(dict(gutschein_item))
             continue
 
-        produkt = finde_produkt(item_id)
+        produkt = finde_produkt(item_id) if item_id is not None else None
         if not produkt:
+            produkt = finde_produkt_fuer_clientitem(item)
+        if not produkt:
+            logger.warning("normalize_cart: kein Produkt gefunden für %s", item)
             continue
 
         preis = server_preis(produkt)
         if preis <= 0:
-            logger.error("normalize_cart: Produkt %s hat keinen gültigen Preis, wird verworfen", item_id)
+            logger.error("normalize_cart: Produkt %s hat keinen gültigen Preis, wird verworfen", produkt.get("id"))
             continue
 
         result.append({
