@@ -256,6 +256,22 @@
     "kategorie":["kinder", "ab4", "Weihnachten", "Feiertage", "Deutschsprachige Bücher", "Sydney Smith", "Mac Barnett", "Bernadette Ott", "Gebrauchte Bücher"]
   },
 
+
+{ "id": 225,
+    "name": "Katzenpfade",
+    "ean": "9783458645986",   
+    "beschreibung": "Die Katze und ihr Mensch drehen gerne eine Runde durch die Nachbarschaft. Und immer sagt der Mensch, wo es langgeht. Für das Spielen und Sich-Streicheln-Lassen bleibt da gar keine Zeit. 'Warum bestimmst eigentlich immer du?', fragt deshalb die Katze. Beim nächsten Spaziergang sind die Rollen also einmal umgekehrt und die Katze entscheidet. Den Eichhörnchen nachjagen, auf Bäume klettern, viele Umwege machen – ihr Mensch trottet dabei zunächst gelangweilt hinterher. Und entdeckt doch auf den Wegen der Katze die erstaunlichsten Dinge, die man nur sieht, wenn man die Welt einmal aus der Sicht des anderen betrachtet. \n\nEine wundervolle Geschichte über zwei ganz unterschiedliche Freunde, den Mut, gemeinsam neue Wege einzuschlagen und die Abenteuer und Überraschungen, die dabei auf sie warten.\n\n",
+
+    "bilder": [
+      "images/dervogelinmir/katzenpfade.webp",
+      "images/dervogelinmir/katzenpfade1.jpg",
+      "images/dervogelinmir/katzenpfade2.jpg"
+],
+  "kategorie":["Kinder", "ab5", "Neuerscheinungen", "Familie und Freunde", "Deutschsprachige Bücher", "Sara Lundberg"]
+  }, 
+
+
+  
 {  "id": 224,
     "name": "Wie kommt der Weihnachtsmann durch den Schornstein?",
     "ean": "9783968260495",
@@ -996,6 +1012,7 @@
 {
   "id": 20,
   "name": "There was an old lady",
+  "preis": 21.00,
   "ean": "9781851244942",
   "beschreibung": "One day an old lady swallows a fly and the only way she can get rid of it is to swallow a wriggling, tickling spider ... For over a century this subversive rhyme has delighted children and parents alike. Graboff's bright and startling illustrations combine beautifully with the traditional verse to bring this classic tale to life.\n\n",
   "bilder": [
@@ -1009,6 +1026,7 @@
   "id": 21,
   "name": "Hungry Goat",
   "ean": "9781851245031",
+  "preis": 21.00,
   "beschreibung": "The (very) hungry goat has a big appetite which gets him into all kinds of adventures. He’ll eat anything, from pig swill to frying pans and even barbed wire. As a result he grows fatter and fatter until one day he gobbles up something that sends him on the biggest adventure of all. Abner Graboff’s timeless illustrations bring this greedy animal to life in a comic rhyming tale for younger children.\n\n",
   "bilder": [
      "images/hungrygoat/hungrygoat.webp"
