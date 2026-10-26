@@ -1,4 +1,15 @@
 [
+ {
+  "id": 2020,
+  "name": "Fitness pour drôles d'oiseaux",
+  "preis": "12.90",
+  "beschreibung": "Après son titre Yoga pour coincés des plumes, l'autrice-illustratrice à succès Marion Deuchars emmène Bob, son célèbre oiseau bien-aimé, dans une série d'entraînements quotidiens qui se concentrent sur différentes parties du corps.\n\nLe cadeau idéal pour tous ceux qui préfèrent être charmés (et non dirigés) pour faire de l'exercice. \n\nDites adieu à la peur de l'entraînement et offrez-vous une douce remise en forme avec le sourire grâce aux connaissances et techniques transmises avec humour et bienveillance par l'autrice.\n\n",
+
+  "bilder": [
+    "images/bobtheartist/fitnesspourdroles.webp"
+  ],
+ "kategorie": ["kinder",   "ab3", "Bob der Künstler", "Marion Deuchars", "Französischsprachige Bücher" ]
+   },
   
   {
   "id": 2019,
@@ -257,7 +268,7 @@
   },
 
 
-{ "id": 225,
+{ "id": 226,
     "name": "Katzenpfade",
     "ean": "9783458645986",   
     "beschreibung": "Die Katze und ihr Mensch drehen gerne eine Runde durch die Nachbarschaft. Und immer sagt der Mensch, wo es langgeht. Für das Spielen und Sich-Streicheln-Lassen bleibt da gar keine Zeit. 'Warum bestimmst eigentlich immer du?', fragt deshalb die Katze. Beim nächsten Spaziergang sind die Rollen also einmal umgekehrt und die Katze entscheidet. Den Eichhörnchen nachjagen, auf Bäume klettern, viele Umwege machen – ihr Mensch trottet dabei zunächst gelangweilt hinterher. Und entdeckt doch auf den Wegen der Katze die erstaunlichsten Dinge, die man nur sieht, wenn man die Welt einmal aus der Sicht des anderen betrachtet. \n\nEine wundervolle Geschichte über zwei ganz unterschiedliche Freunde, den Mut, gemeinsam neue Wege einzuschlagen und die Abenteuer und Überraschungen, die dabei auf sie warten.\n\n",
@@ -272,7 +283,7 @@
 
 
   
-{  "id": 224,
+{  "id": 225,
     "name": "Wie kommt der Weihnachtsmann durch den Schornstein?",
     "ean": "9783968260495",
     "beschreibung": "Wie kommt der Weihnachtsmann durch den Schornstein? Das weiß niemand. Aber in diesem Buch gibt es einige Ideen.\n\n Wenn der Weihnachtsmann an Heiligabend kommt, steigt er dann mit den Füßen oder mit dem Kopf durch den Schornstein? Was ist, wenn er stecken bleibt? Was ist, wenn es keinen Schornstein gibt? Vielleicht rutscht er unter der Tür hindurch, so dünn wie ein Stück Papier? Oder ist es möglich, dass er sich durch den Wasserhahn ergießt? Was passiert, wenn er einmal drinnen ist?\n\n Kindliche Fragen werden gestellt, die sowohl witzig als auch plausibel erscheinen.\n\n",
@@ -286,7 +297,7 @@
   },
    
  {
-  "id": 223,
+  "id": 224,
   "name": "Yoga - Federleicht!",
   "ean": "9783038762485",
   "beschreibung": "Yoga mit Bob, dem Vogel: Humorvolle Anleitungen für die grundlegenden Übungen. \n\n Wer bisher noch kein Yoga praktiziert hat, wird es spätestens beim Blick in dieses Buch sofort beginnen wollen! Die Yoga-Übungen werden von Bob, dem liebevoll-witzig gezeichneten Vogel, vorgeführt. In ihrer gekonnten Abstraktion und mit der klaren Anleitung werden die Asanas so anschaulich präsentiert, dass auch Anfänger sofort loslegen können. Wer als praktizierender Yogi einfach nur frischen Antrieb braucht: hier ist er!- Das Yoga-Buch von der international bekannten Grafikerin Marion Deuchars- Gezeichnete Yoga-Anleitungen: Bob der Vogel macht´s vor!- Entspannung mit Yoga: Atmung, Dehnung, Achtsamkeit- Yoga-Positionen vom Lotussitz über die Vorwärtsbeuge bis zum Baum- Nützlich und inspirierend: Für Yoga-Anfänger wie auch für geübte Yogis jeden AltersDas Yoga-Buch für Körper, Geist und SeeleMarion Deuchars, Bestsellerautorin und Grafikerin, praktiziert selbst seit vielen Jahren Yoga. Diese Leidenschaft transportiert sie zusammen mit ihrem unverwechselbaren Zeichenstil – herausgekommen ist eine humorvolle Verführung zum Selbertun. Als Kompagnon für alle Übenden gibt es einen kleinen Vogel, mit dem es sich sofort identifizieren lässt. Und für den Fall, dass es jemandem nach der ersten Begeisterung nicht leichtfallen sollte weiterzumachen, hat sie spritzige Motivationen in Form netter Randbemerkungen eingebaut. Dieses unwiderstehlich charmante Buch ist ein wunderbares Geschenk für alle Yogis: Es zaubert ein Lächeln ins Gesicht!\n\n",
@@ -295,13 +306,13 @@
   "bilder": [
     "images/bobtheartist/yogafederleicht.webp"
   ],
- "kategorie": ["kinder",   "ab3",  "Bob der Künstler", "Deutschsprachige Bücher" ],
+ "kategorie": ["kinder",   "ab3",  "Bob der Künstler",  "Marion Deuchars", "Deutschsprachige Bücher" ],
  "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783038762485"
 },
    
 
    {
-  "id": 222,
+  "id": 223,
   "name": "Fitness - Federleicht!",
   "ean": "9783038763215",
   "beschreibung": "Fitness kann auch Spaß machen!Das perfekte Geschenk für alle, die sich lieber verzaubern als herumkommandieren lassen. In dieser charmanten Fortsetzung des Bestsellers 'Yoga - Federleicht' führt Marion Deuchars ihren beliebten Vogel Bob durch sein tägliches Workout.Von ganzheitlichen 10-Minuten-Workouts bis hin zu spezifischen Übungen, die sich auf verschiedene Körperteile konzentrieren, sorgen ihre schrulligen Charaktere und ihr charmanter Stil für eine humorvolle Note in diesem beliebten Genre.Verabschieden Sie sich von der Angst vor dem Training und meistern Sie die wichtigsten Schritte zur Fitness mit einem Lächeln auf den Lippen. Was dieser Vogel kann, kann jeder!\n\n",
@@ -309,9 +320,10 @@
   "bilder": [
     "images/bobtheartist/fitnessfederleicht.webp"
   ],
- "kategorie": ["kinder",   "ab3", "Bob der Künstler", "Kunst und Künstlerdasein", "Deutschsprachige Bücher" ],
+ "kategorie": ["kinder",   "ab3", "Bob der Künstler", "Kunst und Künstlerdasein",  "Marion Deuchars", "Deutschsprachige Bücher" ],
  "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783038763215"
 },
+   
 
     {
   "id": 221,
@@ -321,7 +333,7 @@
   "bilder": [
     "images/bobtheartist/einelinieaufreisen.webp"
   ],
- "kategorie": ["kinder",   "ab3",   "Kunst und Künstlerdasein", "Deutschsprachige Bücher" ]
+ "kategorie": ["kinder",   "ab3",   "Kunst und Künstlerdasein",  "Marion Deuchars", "Deutschsprachige Bücher" ]
 },
 
    {
@@ -332,7 +344,7 @@
  "bilder": [
     "images/bobtheartist/bobblueperiod.webp"
   ],
- "kategorie": ["kinder",   "ab3", "Bob der Künstler", "Kunst und Künstlerdasein", "Englischsprachige Bücher" ]
+ "kategorie": ["kinder",   "ab3", "Bob der Künstler", "Kunst und Künstlerdasein", "Marion Deuchars", "Englischsprachige Bücher" ]
 },
 {
   "id": 219,
