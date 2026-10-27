@@ -266,8 +266,71 @@
 ],
     "kategorie":["kinder", "ab4", "Weihnachten", "Feiertage", "Deutschsprachige Bücher", "Sydney Smith", "Mac Barnett", "Bernadette Ott", "Gebrauchte Bücher"]
   },
+ 
+ { 
+    "id": 231,
+    "name": "Die Fürstin der Raben",
+    "ean": "9783964282279",
+    "beschreibung": "Eine mystische Geschichte vom Anderssein, von Liebe und Vergänglichkeit\n\nMargarete (17) und Josua (16) leben auf einem entlegenen Hof. Die Geschwister verbindet eine innige Beziehung und die Liebe zum Wald. Margarete ist hochsensibel – Lärm versetzt sie in Panik; Menschen sieht sie in Farben, ihre Umgebung in Zahlen. Akribisch dokumentiert sie ihr Leben in Tagebüchern. In der Schule wird sie gemobbt, und Josua hat immer das Gefühl, sie beschützen zu müssen.\n\nEines Tages trifft er im Wald auf die geheimnisvolle Sarah und ihre zwei Raben, und die Geschwister freunden sich mit ihr an. Doch während Margarete spürt, dass mit Sarah etwas nicht stimmt, keimt zwischen Josua und Sarah eine zarte Liebe. Als Sarah das Dorf verlässt, um einen Auftrag zu erfüllen, erscheinen um den Hof unzählige Raben. Nach Sarahs Rückkehr verbringen die beiden Mädchen eine Nacht im Wald – am nächsten Morgen macht Josua eine unglaubliche Entdeckung …\n\n",
+    "bilder": [
+      "images/weihnachten/diefuerstinderraben.webp"
+    ],
+    "kategorie":["Deutschsprachige Bücher",  "ab14", "Dazugehören und Anderssein", "Ulrike Möltgen", "Hannes Wirlinger"],
+    "leseprobe_url": "https://www.book2look.com/book/z5WGI4IMwj"  
+},
+ 
+ { 
+    "id": 230,
+    "name": "Der Vogelschorsch",
+    "ean": "9783964280312",
+    "beschreibung": "Manche Menschen überfallen einen wie ein heftiger Sturm, andere Menschen wehen sanft wie eine Wolke in ein Leben – die besonderen unter den Menschen suchen einen wie ein warmer Mairegen Tropfen für Tropfen heim … Sie graben sich wie kunstvolle Gravuren unauslöschlich in unser Gedächtnis. Solche Menschen vergisst man sein ganzes Leben nicht. So ein herausragender Mensch war für mich der Vogelschorsch.\n\nLena sieht den Vogelschorsch zum ersten Mal, als es Fische regnet. Fasziniert von seiner eigentümlichen Art verbringt sie immer mehr Zeit mit ihm und findet so Ablenkung von ihrem eigenen Gefühlschaos. Dann entdeckt sie das dunkle Geheimnis ihres neuen Freundes und als Lena und der Vogelschorsch im Wald erschossene Vögel finden, geht in ihrer beider Leben etwas unwiederbringlich kaputt …\n\nHannes Wirlingers Debüt ist ein sprachliches Kunstwerk. Die träumerischen Bilder von Ulrike Möltgen fangen die Atmosphäre der Geschichte aufs Eindringlichste ein – schaurig, traurig, schön.",
+
+    "bilder": [
+      "images/weihnachten/dervogelschorsch.webp"
+    ],
+    "kategorie":["Deutschsprachige Bücher",  "ab14", "Familie und Freunde", "Ulrike Möltgen", "Hannes Wirlinger"],
+    "leseprobe_url": "https://www.book2look.com/book/DLnlf3CqiB"  
+},
+
+{ 
+ "id": 229,
+    "name": "Das kostbarste aller Güter",
+    "ean": "9783964280732",
+    "beschreibung": "Eine arme Holzfällersfrau träumt davon, ein Kind zu haben. Ihr Wunsch wird von einem Güterzug erfüllt, ausgerechnet einem Zug, der Menschen in Konzentrationslager transportiert. Jean-Claude Grumberg erzählt auf sehr poetische, ja, märchenhafte Art von den Schrecken dieses Abschnitts unserer Geschichte. Die wesentliche Frage wird am Ende angesprochen: wahre Geschichte oder nicht?\n\nIn einer Pirouette beantwortet der Autor diese Frage und schreibt damit die vielleicht allerschönste Passage der Erzählung.\n\nMit diesem einfachen Märchen werden die Unmenschlichkeiten und der Wahnsinn, zu denen Menschen fähig sind, geschildert, aber dies ist auch die großartige Geschichte der Liebe von Eltern zu ihrem Kind, die Jean-Claude Grumberg mit solcher Schönheit und Poesie beschreibt, dass einem das Herz aufgeht; darin wird ein Kind zum »kostbarsten aller Güter«, das je in einem Güterwagen transportiert worden ist.\n\nAnrührend und zugleich eindringlich illustriert von der wunderbaren Ulrike Möltgen.",   
+    "bilder": [
+      "images/weihnachten/daskostbarsteallergueter.webp"
+    ],
+  "kategorie":["Für Erwachsene", "Deutschsprachige Bücher", "Wichtige Fragen", "Ulrike Möltgen", "Jean-Claude Grumberg"],
+  "leseprobe_url": "https://www.book2look.com/book/Nb6nSK4CE3"  
+},
+
+ 
+  { "id": 228,
+    "name": "Ich war die ganze Welt",
+    "ean": "9783779507703",
+    "beschreibung": "Ein Mädchen träumt den eigenen Körper als Landschaft: In ihrer Hand liegt der Dschungel, im Haar sitzt mit wehender Mähne ein Löwe. Auf ihrem Bein steht ein Zirkuszelt. Der Direktor ist ein grober Mann, gierig nach Erfolg und Sensation fängt er den stolzen Löwen ein. Doch als die Peitsche knallt und der Löwe springt, ermächtigt sich die Träumende: Mir reicht das jetzt! Das ist mein Traum, ich lass die Erde beben! Das Gefängnis des Löwen stürzt ein, das Mädchen stellt ihn zurück in seine Welt.\n\nIn farbintensiven Bildern erzählt Ulrike Möltgen ihre Traumgeschichte. Sie fesselt den Blick mit fein ausgeführten Details und durch die Sinnlichkeit ihrer Illustration: Mit pastos aufgetragenen Ölfarben, pudrigen Kreiden, gespannten Schnüren und aufwendigen Collagen erschafft sie eine Welt, die kleine und große Betrachter sofort einfängt und lange festhält.\n\n",
+   
+    "bilder": [
+      "images/weihnachten/ichwardiewelt.webp"
+    ],
+  "kategorie":["kinder", "ab4", "Deutschsprachige Bücher", "Mut oder Angst?!", "Ulrike Möltgen" ],
+  "leseprobe_url": "https://www.book2look.com/embed/icrqphknho&euid=286784415&ruid=0&referurl=www.book2look.com&refererpath=admin.book2look.com"
+  },
 
 
+
+ { "id": 227,
+    "name": "Vorfreude auf Weihnachten",
+    "ean": "9783458195689",
+    "beschreibung": "Das Schönste an Weihnachten ist doch die Vorfreude auf das Fest! Otfried Preußler, Selma Lagerlöf, Rafik Schami, Axel Hacke und viele andere erzählen Geschichten, mit denen man das Warten auf die Bescherung verkürzen kann: von einem Pfarrer, der nicht rechtzeitig in seine Kirche gelangte, oder von einem Monster, das am Heiligen Abend das Rehragout entführte. Ulrike Möltgen hat die weihnachtlichen Erzählungen und Gedichte mit ihren unverwechselbaren Bildern versehen. Zum Entdecken, Lesen und Vorlesen!",
+
+    "bilder": [
+      "images/weihnachten/vorfreudeweihnachten.webp"
+    ],
+  "kategorie":["Für Erwachsene", "Neuerscheinungen", "Weihnachten", "Feiertage", "Deutschsprachige Bücher",  "Ulrike Möltgen" ],
+  "leseprobe_url": "https://res.cloudinary.com/suhrkamp/images/q_auto/v1783988852/166171/vorfreude-auf-weihnachten_9783458195689_leseprobe.pdf"
+  },
+ 
 { "id": 226,
     "name": "Katzenpfade",
     "ean": "9783458645986",   
@@ -588,8 +651,7 @@
   { "id": 201,
     "name": "Der gestohlene Weihnachtsbaum",
     "ean": "9783458205326",
-    "beschreibung": "Was tun, wenn Weihnachten kurz vor der Tür steht und immer noch kein Baum im Haus ist? Oder der Wunschzettel lang ist, aber man »immer so mit dem Pfennig rechnen muss«? Und ob die Tiere draußen auch das Fest feiern können? Der Bestsellerautor Hans Fallada erinnert in seinen Erzählungen an die schönste Zeit des Jahres: »Dies Gefühl aufzuwachen und zu wissen: Heute ist wirklich Weihnachten. Wovon wir seit einem Vierteljahr geredet, auf was wir so lange schon gehofft hatten, nun war es wirklich da!« Und mit den wunderbaren Illustrationen von Ulrike Möltgen kann man sich die Geschichten zum Fest gemeinsam anschauen und lesen!\n\nHans Fallada (1893-1947) war ein deutscher Schriftsteller. Zu seinen bekanntesten Werken gehören Kleiner Mann - was nun? und Jeder stirbt für sich allein.\n\nHans Fallada (1893-1947) war ein deutscher Schriftsteller. Zu seinen bekanntesten Werken gehören Kleiner Mann - was nun? und Jeder stirbt für sich allein.\n\n",
-   
+    "beschreibung": "Was tun, wenn Weihnachten kurz vor der Tür steht und immer noch kein Baum im Haus ist? Oder der Wunschzettel lang ist, aber man »immer so mit dem Pfennig rechnen muss«? Und ob die Tiere draußen auch das Fest feiern können? Der Bestsellerautor Hans Fallada erinnert in seinen Erzählungen an die schönste Zeit des Jahres: »Dies Gefühl aufzuwachen und zu wissen: Heute ist wirklich Weihnachten. Wovon wir seit einem Vierteljahr geredet, auf was wir so lange schon gehofft hatten, nun war es wirklich da!« Und mit den wunderbaren Illustrationen von Ulrike Möltgen kann man sich die Geschichten zum Fest gemeinsam anschauen und lesen!\n\nHans Fallada (1893-1947) war ein deutscher Schriftsteller. Zu seinen bekanntesten Werken gehören Kleiner Mann - was nun? und Jeder stirbt für sich allein.\n\n",
     "bilder": [
       "images/weihnachten/dergestohleneweihnachtsbaum.webp",
       "images/weihnachten/dergestohleneweihnachtsbaum1.webp",
