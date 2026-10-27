@@ -266,6 +266,18 @@
 ],
     "kategorie":["kinder", "ab4", "Weihnachten", "Feiertage", "Deutschsprachige Bücher", "Sydney Smith", "Mac Barnett", "Bernadette Ott", "Gebrauchte Bücher"]
   },
+
+{ 
+    "id": 232,
+    "name": "An Großvaters Hand",
+    "ean": "9783954703333",
+    "beschreibung": "Einmal eine Nacht alleine im Wald sein, das wünscht sich der kleine Michael. Die Großeltern erlauben es schließlich, mit seinen vier Jahren ist er alt genug, meinen sie. Ein paar Stunden hält der Kleine es aus, dann läuft er schnell wieder zurück nach Hause. Sie leben sehr ärmlich auf dem Land, die Großeltern und er, aber er fühlt die Armut nicht, weil da so viel Liebe ist.\n\nMit umwerfender Zärtlichkeit erzählt der berühmte Dichter und Verleger Michael Krüger von seinen ersten Jahren auf dem Land und später im zerbombten Berlin. Tiere spielen dabei eine bedeutende Rolle, sei es der Professor Ziegenbock oder später die womöglich aus Jamaika hergeschickte Schildkröte mit Namen „Janek oder Jacek“. Oder die anderen alle. Erinnerungen voller großer Lebensfreundlichkeit und Wärme, die Ulrike Möltgen mit traumschönen Bildern begleitet.\n\n",
+"bilder": [
+      "images/weihnachten/angrossvatershand.webp"
+    ],
+    "kategorie":["Deutschsprachige Bücher", "Neuerscheinungen",  "ab7", "Familie und Freunde", "Ulrike Möltgen", "Michael Krüger"],
+    "leseprobe_url": "https://www.book2look.com/book/fk3rzgT2at"  
+},
  
  { 
     "id": 231,
