@@ -10,9 +10,37 @@
   ],
  "kategorie": ["kinder",   "ab3", "Bob der Künstler", "Marion Deuchars", "Französischsprachige Bücher" ]
    },
-  
+
   {
-  "id": 2019,
+  "id":2022,
+  "name":"Das Nachtkind (Gebraucht - wie neu)",
+  "preis": "14.00",
+  "beschreibung": "Eines Abends besucht das Nachtkind die Katze. Die freut sich sehr, denn sie hat Angst allein in der Dunkelheit. So wird der Besuch eine lieb gewonnene Gewohnheit, bis das Nachtkind entdeckt wird. Woher kommt es, und was will es hier? Erschrocken läuft es davon. Trotzdem finden die beiden wieder zueinander, gemeinsam ist es einfach schöner.\n\n Über den Autor \n Armin Kaster las als Junge Weltliteratur, die er nicht verstand, und wünschte sich dennoch Schriftsteller zu werden. Nach exotischen Ausflügen in den Groß- und Außenhandel sowie die Wirtschaftswissenschaft, bog er ab zur Pädagogik und danach zur Kunst. Jetzt arbeitet er als freier Autor und Künstler und lebt mit seiner Familie in Düsseldorf. Seit Jahren führt er literarisch-künstlerische Projekte mit Kindern und Jugendlichen im In- und Ausland durch. Dabei begeistern ihn vor allem die originellen Lebenswelten junger Menschen, die er am liebsten in Geschichten verwandelt.\n\n",
+     
+"bilder": [
+    "images/freundschaft/nachtkind.webp"
+],
+  "kategorie": ["Deutschsprachige Bücher",  "Familie und Freunde", "ab4", "Sabine Rufener", "Armin Kaster",  "Gebrauchte Bücher" ],
+  "leseprobe_pdf": "nachtkind.pdf"
+
+   },
+ 
+  { "id": 2021,
+    "name": "Ich bin wie der Fluss (Gebraucht - wie neu)",
+    "preis": "14.00",
+    "beschreibung": "Außergewöhnliche Geschichte eines Jungen, der es schafft, sich aus seiner Isolation zu befreien - brillant illustriert. Für Kinder und Erwachsene. \n\n Ein Junge, der stottert. Er fühlt sich nicht in der Lage, so zu kommunizieren, wie er es möchte. Denn die Worte bleiben stecken. Seine Tage sind meist ganz still und in der Schule hofft er, dass er nichts sagen muss. Erst als sein Vater ihn mit zum Fluss nimmt und ihm vor Augen führt, dass seine Sprache wie das Wasser ist, sprudelnd, aufwühlend, wirbelnd, herabstürzend, findet er seine Stimme wieder. Und seinen Mut.\n\n",
+   
+    "bilder": [
+      "images/ssmith/ichbinwiederfluss.webp",
+      "images/ssmith/ichbinwiederfluss1.webp",
+      "images/ssmith/ichbinwiederfluss2.webp",
+      "images/ssmith/ichbinwiederfluss3.webp"
+],
+    "kategorie":["kinder", "ab5", "Dazugehören und Anderssein", "Deutschsprachige Bücher", "Sydney Smith", "Jordan Scott",  "Gebrauchte Bücher" ]
+  },
+ 
+  {
+  "id": 2020,
   "name": "Der geheimnisvolle Koffer von Herrn Benjamin (Gebraucht - wie neu)",
   "preis": "12.00",
   "beschreibung": "Herr Benjamin ist ein Philosoph mit ungewöhnlichen Ideen. Doch eines Tages entscheidet man in seinem Land, dass ungewöhnliche Ideen nicht erwünscht sind. Er muss fliehen und nimmt einen schweren Koffer mit auf seinen Weg. Niemand weiß, was in dem Koffer ist. Leider gelingt Herrn Benjamin die Flucht nicht. Er verschwindet spurlos und mit ihm der Koffer. Aber das Mysterium um den Koffer bleibt bestehen. Es muss etwas ganz Besonderes in ihm gewesen sein.Ein packendes Bilderbuchdebüt einer vielversprechenden Künstlerin zum Thema Flucht.\n\n",
@@ -22,6 +50,20 @@
   "kategorie": ["Deutschsprachige Bücher", "Dazugehören und Anderssein", "Flucht",  "ab4", "Pei-Yu Chang",  "Gebrauchte Bücher" ],
   "leseprobe_url": "https://www.book2look.com/book/xpgVxzZGrx"
 },
+
+ {
+  "id":2019,
+  "name": "... 6, 7, 8 Gute Nacht (Gebraucht - sehr guter Zustand)",
+  "preis": "15.00",
+  "bilder": [
+    "images/zahlenundbuchschtaben/gutenacht.webp"
+      ],
+  "beschreibung": "Wenn Elefanten wie Schmetterlinge in die Lüfte steigen und das Wildschwein Margareth im Rüschenrock spazieren geht, wenn wilde, freie Seejungfrauen sich Donald Duck anschauen und Fischer-Fritz mit Einrad-Fischen um die Wette schwimmt, dann sind wir dort, wo Schlüsselbein und Schlüsselblume Freunde sind, an einem  besonderen Ort. \n\nEs gibt viele Arten, Gute Nacht zu sagen. Mit Michael Rohers phantasievollen Bildern und verspielten Reimen macht das Schlafengehen Spaß. Die liebevoll detaillierten Zeichnungen laden wunderbar zum Weiterträumen ein, zum Erfinden, Verdrehen und Staunen.\n\n",  
+  "leseprobe_url": "https://blickinsbuch.net/go.php?id=9322941228&ean=9783902373915",
+  "kategorie": ["kinder",  "ab4", "Zahlen und Alphabet", "Deutschsprachige Bücher", "Michael Roher",  "Gebrauchte Bücher" ]
+
+   },
+ 
 
   {
   "id": 2018,
@@ -107,18 +149,7 @@
   "leseprobe_pdf": "huebsch.pdf"
   },
 
-   {
-  "id":2012,
-  "name":"Freunde (Gebraucht - guter Zustand)",
-  "preis": "14.00",   
-  "beschreibung": "Anhand einer Welt von kunterbunten drolligen kleinen Monstern zeigt Mies van Hout auf, was echte Freunde alles miteinander machen. Spielen und Spass haben, miteinander lachen, aber auch argern, kampfen und beleidigt sein, gehort dazu. Wie mit Konflikten umzugehen ist und wie gut es tut, sich nach einem Streit wieder zu versohnen, Vertrauen zu haben und zu knuddeln, alles das vermittelt dieses Bilderbuch auf humorvolle künstlerische Weise. Durch die Gestaltung der Emotionen zweier Monsterfreunde auf jeder Doppelseite istdas Buch vielseitig einsetzbar in Kindergarten und Grundschule, im therapeutischen Bereich oder in der Familie.\n\n",
-  "bilder": [
-    "images/miesvanhout/freunde.webp"
-      ],
-  "kategorie": ["kinder",  "ab3", "Familie und Freunde", "Deutschsprachige Bücher", "Mies van Hout", "Gebrauchte Bücher"],
-   "leseprobe_url": "https://www.blickinsbuch.net/go.php?id=7093121140&ean=9783905945362"
-
-   },
+   
 
 
   {
