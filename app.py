@@ -1,1180 +1,2334 @@
-"""IBK Büchertausch - Buchtausch-App.
-
-Flask-Hauptanwendung. Struktur bewusst angelehnt an das bestehende
-Buchhandlung-Projekt (app.py / models.py / extensions.py), damit Wartung
-und Deployment-Workflow vertraut bleiben.
-
-Module:
-  geo.py            PLZ/Ort -> Koordinaten, Umkreis
-  notifications.py  Zaehler, Live-Ereignisse, E-Mail-Benachrichtigungen
-  mailer.py         SMTP-Versand
-  images.py         Foto-Upload (verkleinern, in der Datenbank speichern)
-  migrate.py        ergaenzt neue Spalten in bestehenden Tabellen
-"""
-import logging
 import os
-import re
-import threading
-import time
-from collections import defaultdict, deque
-from datetime import datetime, timedelta, timezone
-from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+import json
+import logging
+from datetime import datetime
+from dotenv import load_dotenv
+import requests
+import uuid
+from models import User
+
 
 from flask import (
-    Flask, Response, abort, flash, jsonify, redirect, render_template,
-    request, url_for,
+    Flask, render_template, request,
+    redirect, flash, abort,
+    session, url_for, jsonify
 )
-from flask_login import current_user, login_required, login_user, logout_user
-from flask_wtf.csrf import CSRFError
-from itsdangerous import BadSignature, SignatureExpired, URLSafeTimedSerializer
-from sqlalchemy import func, or_
-from sqlalchemy.orm import joinedload
-from werkzeug.exceptions import RequestEntityTooLarge
-from werkzeug.middleware.proxy_fix import ProxyFix
 
-import geo
-import mailer
-import notifications
-from extensions import csrf, db, login_manager
-from images import ImageError, process_upload
-from migrate import ensure_columns
-from models import Block, Book, BookImage, Match, Message, Report, Swipe, User
+from flask_sqlalchemy import SQLAlchemy
+from flask_wtf.csrf import CSRFProtect
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
-log = logging.getLogger(__name__)
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
-CONDITIONS = ["Neuwertig", "Sehr gut", "Gut", "Ordentlich"]
-REPORT_REASONS = {
-    "spam": "Spam oder Werbung",
-    "belaestigung": "Belästigung oder unangemessenes Verhalten",
-    "betrug": "Verdacht auf Betrug",
-    "nicht_erschienen": "Nicht zum Treffen erschienen",
-    "sonstiges": "Sonstiges",
-}
-EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]{2,}$")
-MIN_PASSWORD = 8
-RESET_MAX_AGE = 3600  # Passwort-Reset-Links gelten 1 Stunde
-
-try:
-    LOCAL_TZ = ZoneInfo("Europe/Berlin")
-except ZoneInfoNotFoundError:  # tzdata fehlt -> UTC statt Absturz
-    LOCAL_TZ = timezone.utc
+# Modelle importieren
+from models import db, Bestellung, BestellPosition, NewsletterSubscriber,  Gutschein, Workshop, WorkshopSlot, WorkshopBuchung
+from models import Produkt
 
 
-# ---------------------------------------------------------------- Hilfsfunktionen
+from datetime import timedelta
 
-_hits = defaultdict(deque)
-_hits_lock = threading.Lock()
+from functools import lru_cache
 
+import re
 
-def rate_limited(key: str, limit: int, window_seconds: int) -> bool:
-    """True, wenn das Limit fuer diesen Schluessel schon erreicht ist (zaehlt sonst mit)."""
-    now = time.monotonic()
-    with _hits_lock:
-        dq = _hits[key]
-        while dq and now - dq[0] > window_seconds:
-            dq.popleft()
-        if len(dq) >= limit:
-            return True
-        dq.append(now)
-        if len(_hits) > 5000:  # Speicher begrenzen
-            for k in [k for k, v in _hits.items() if not v]:
-                del _hits[k]
-        return False
+import secrets
+import string
 
 
-def client_ip() -> str:
-    return request.remote_addr or "unknown"
+from sitemap_generator import build_sitemap_xml
+import xml.etree.ElementTree as ET
+from flask import Response
 
 
-def safe_next(url):
-    """Nur interne Pfade zulassen (Schutz vor Open-Redirect nach dem Login)."""
-    if url and url.startswith("/") and not url.startswith("//") and "\\" not in url:
-        return url
-    return None
+from gutschein_pdf import send_gutschein_email
+
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
-def wants_json() -> bool:
-    return request.headers.get("X-Requested-With") == "fetch"
+# =====================================================
+# CONFIG
+# =====================================================
+
+load_dotenv()
+
+app = Flask(__name__)
+limiter = Limiter(get_remote_address, app=app)
+
+PAYPAL_WEBHOOK_ID = os.environ.get("PAYPAL_WEBHOOK_ID")
+PAYPAL_CLIENT_ID = os.getenv("PAYPAL_CLIENT_ID")
+PAYPAL_SECRET = os.getenv("PAYPAL_SECRET")
+PAYPAL_MODE = os.getenv("PAYPAL_MODE", "sandbox")
+
+PAYPAL_BASE = (
+    "https://api-m.sandbox.paypal.com"
+    if PAYPAL_MODE == "sandbox"
+    else "https://api-m.paypal.com"
+)
+
+app.config["SESSION_COOKIE_HTTPONLY"] = True
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=1)
+app.config["SESSION_COOKIE_SECURE"] = os.getenv("FLASK_ENV") == "production"
+app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
+app.config["SESSION_PERMANENT"] = False
+
+app.config["PAYPAL_CLIENT_ID"] = PAYPAL_CLIENT_ID
 
 
-def base_url() -> str:
-    return os.environ.get("APP_BASE_URL") or request.url_root
+app.config["SECRET_KEY"] = os.getenv("FLASK_SECRET_KEY")
+
+if not app.config["SECRET_KEY"]:
+    raise RuntimeError("FLASK_SECRET_KEY fehlt!")
+
+database_url = os.getenv("DATABASE_URL", "sqlite:///ibk-shop-db.db")
+database_url = database_url.replace("postgres://", "postgresql://")
+
+app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db.init_app(app)
+with app.app_context():
+    db.create_all()
+
+# ← NEU: Bilder beim Start konvertieren
+from bildcomprim import walk_and_optimize
+walk_and_optimize("static/images")
 
 
-def to_local(dt):
-    if dt is None:
-        return None
-    return dt.replace(tzinfo=timezone.utc).astimezone(LOCAL_TZ)
+
+ADMIN_PASSWORD = os.getenv("FLASK_ADMIN_PASSWORD")
+
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
+EMAIL_SENDER = os.getenv("EMAIL_SENDER")
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+csrf = CSRFProtect(app)
+
+# ID, unter der der Geschenkgutschein im Warenkorb liegt
+GUTSCHEIN_ITEM_ID = 999999
 
 
-def day_label(dt) -> str:
-    local = to_local(dt)
-    today = to_local(datetime.utcnow()).date()
-    if local.date() == today:
-        return "Heute"
-    if local.date() == today - timedelta(days=1):
-        return "Gestern"
-    return local.strftime("%d.%m.%Y")
+# ---------- BUCHBUTLER API ZUGANG ----------
 
 
-def short_when(dt) -> str:
-    if dt is None:
-        return ""
-    local = to_local(dt)
-    if local.date() == to_local(datetime.utcnow()).date():
-        return local.strftime("%H:%M")
-    return local.strftime("%d.%m.")
+
+BUCHBUTLER_USER = os.getenv("BUCHBUTLER_USER")
+BUCHBUTLER_PASSWORD = os.getenv("BUCHBUTLER_PASSWORD")
+
+BUCHBUTLER_MOL_KUNDE_ID = os.getenv("BUCHBUTLER_MOL_KUNDE_ID")
+BUCHBUTLER_RECHNUNGSADRESSE_ID = os.getenv("BUCHBUTLER_RECHNUNGSADRESSE_ID", "1")
+BUCHBUTLER_VERKAUFSKANAL_ID = os.getenv("BUCHBUTLER_VERKAUFSKANAL_ID", "1")
+
+BASE_URL = "https://api.buchbutler.de"
 
 
-MAX_IMAGES = 5
 
 
-def gallery_ids(book):
-    """IDs aller Fotos eines Buchs in Anzeige-Reihenfolge (Titelbild zuerst)."""
-    ids = [r[0] for r in db.session.query(BookImage.id).filter(BookImage.book_id == book.id)
-           .order_by(BookImage.position, BookImage.id).all()]
-    if book.image_id and book.image_id not in ids:   # Altbestand: Einzelfoto ohne book_id
-        ids.insert(0, book.image_id)
-    return ids
+@app.route("/login", methods=["GET", "POST"])
+@csrf.exempt
+def login():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        user = User.query.filter_by(email=email).first()
+
+        if not user or not user.check_password(password):
+            flash("Login fehlgeschlagen", "error")
+            return redirect("/login")
+
+        session["user_id"] = user.id
+        return redirect("/")
+
+    return render_template("login.html")
 
 
-def gallery(book):
-    return [{"id": i, "url": url_for("image_file", image_id=i)} for i in gallery_ids(book)]
+@app.route("/logout")
+def logout():
+    session.pop("user_id", None)
+    return redirect("/")
+# =====================================================
+# Gutschein
+# =====================================================
+
+@app.route("/admin/gutscheine")
+def admin_gutscheine():
+    if not session.get("admin"):
+        abort(403)
+    alle = Gutschein.query.all()
+    return "<br>".join(
+        f"{g.code} | Wert: {g.wert}€ | Rest: {g.restwert}€ | Aktiv: {g.aktiv}"
+        for g in alle
+    ) or "Keine Gutscheine in der Datenbank"
 
 
-def apply_gallery(book, ordered_ids):
-    """Setzt Reihenfolge/Titelbild eines Buchs. ordered_ids muessen zu diesem Buch gehoeren."""
-    for pos, image_id in enumerate(ordered_ids):
-        BookImage.query.filter_by(id=image_id).update({"book_id": book.id, "position": pos})
-    book.image_id = ordered_ids[0] if ordered_ids else None
-    if ordered_ids:
-        book.image_filename = None
 
 
-def read_new_images():
-    """Alle neu hochgeladenen Fotos aus dem Formular (Feld 'images', Altfeld 'image')."""
-    files = [f for f in request.files.getlist("images") + request.files.getlist("image") if f and f.filename]
-    return [BookImage(data=process_upload(f), mimetype="image/jpeg") for f in files]
+# GUTSCHEIN CODE GENERATOR
+# =====================================================
+
+def generate_gutschein_code(length=12):
+    alphabet = string.ascii_uppercase + string.digits
+
+    while True:
+        code = ''.join(secrets.choice(alphabet) for _ in range(length))
+
+        exists = Gutschein.query.filter_by(code=code).first()
+        if not exists:
+            return code
 
 
-def delete_book_images(book_ids, extra_image_ids=()):
-    if book_ids:
-        BookImage.query.filter(BookImage.book_id.in_(book_ids)).delete(synchronize_session=False)
-    if extra_image_ids:
-        BookImage.query.filter(BookImage.id.in_(list(extra_image_ids))).delete(synchronize_session=False)
+# GUTSCHEIN PRODUKT (IM WARENKORB KAUFEN)
+# =====================================================
 
 
-def book_img_url(book):
-    if book is None:
-        return None
-    if book.image_id:
-        return url_for("image_file", image_id=book.image_id)
-    if book.image_filename:
-        # Altbestand aus der ersten Version: Datei liegt auf der Platte. Auf Render geht sie bei
-        # jedem Deploy verloren - dann besser den Platzhalter zeigen als ein kaputtes Bild.
-        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "uploads",
-                            os.path.basename(book.image_filename))
-        if os.path.exists(path):
-            return url_for("static", filename="uploads/" + book.image_filename)
-    return None
+
+@app.route("/gutschein", methods=["GET", "POST"])
+@csrf.exempt
+def gutschein():
+
+    if request.method == "GET":
+        return render_template("gutschein.html")
+
+    try:
+        betrag = round(float(request.form.get("betrag", 0)), 2)
+
+    except ValueError:
+        flash("Ungültiger Betrag", "error")
+        return redirect("/gutschein")
+
+    # Betrag muss positiv sein
+    if betrag <= 0:
+        flash("Ungültiger Betrag", "error")
+        return redirect("/gutschein")
+
+    email = request.form.get("email")
+
+    if not email:
+        flash("Bitte Email eingeben", "error")
+        return redirect("/gutschein")
+
+    # WICHTIG
+    session["checkout_email"] = email
+    session.pop("gutschein", None)  # ← NEU: alten Gutschein löschen
 
 
-def serialize_book(book):
-    return {
-        "id": book.id, "title": book.title, "author": book.author,
-        "condition": book.condition, "description": book.description or "",
-        "img": book_img_url(book),
-        "imgs": [g["url"] for g in gallery(book)],
-        "distance": getattr(book, "distance_text", ""),
-        "owner": book.owner.name.split(" ")[0],
-        "place": book.owner.city or "",
+    # Gutschein als Warenkorbprodukt
+    session["cart"] = [{
+        "id": GUTSCHEIN_ITEM_ID,
+        "title": "Geschenkgutschein",
+        "price": betrag,
+        "quantity": 1,
+        "is_gutschein": True
+    }]
+
+    session.modified = True
+
+    return jsonify({"success": True})
+
+# GUTSCHEIN ANWENDEN (CHECKOUT / CART)
+# =====================================================
+
+@app.route("/apply-gutschein", methods=["POST"])
+@csrf.exempt
+def apply_gutschein():
+    body = request.json or {}
+    code = (body.get("code") or "").strip().upper()
+
+    gutschein = Gutschein.query.filter_by(code=code).first()
+
+    if not gutschein:
+        return jsonify({"success": False, "message": "Ungültiger Code"})
+
+    if not gutschein.ist_gueltig():
+        return jsonify({"success": False, "message": "Gutschein ungültig oder abgelaufen"})
+
+    # Cart aus Request nehmen, ABER Preise serverseitig neu berechnen!
+    cart = normalize_cart(body["cart"]) if body.get("cart") else []
+    if cart:
+        session["cart"] = cart
+        session.modified = True
+    else:
+        cart = get_cart()
+
+    total = sum(
+        item["price"] * item.get("quantity", 1)
+        for item in cart
+    )
+
+    rabatt = min(total, gutschein.restwert)
+
+    session["gutschein"] = {
+        "code": gutschein.code,
+        "betrag": rabatt
     }
+    session.modified = True
+
+    return jsonify({
+        "success": True,
+        "rabatt": rabatt,
+        "new_total": max(total - rabatt, 0)
+    })
 
 
-def distance_between(a, b):
-    if a is None or b is None or not (a.has_location and b.has_location):
-        return None
-    return geo.haversine_km(a.lat, a.lon, b.lat, b.lon)
+# TOTAL BERECHNUNG (OHNE GUTSCHEIN!)
+# =====================================================
 
+def calculate_total(cart):
 
-def serialize_message(msg, uid):
-    return {
-        "id": msg.id,
-        "mine": msg.sender_id == uid,
-        "content": msg.content,
-        "time": to_local(msg.created_at).strftime("%H:%M"),
-        "day": day_label(msg.created_at),
-        "read": msg.read_at is not None,
-    }
+    total = sum(
+        to_float(item["price"]) * int(item["quantity"])
+        for item in cart
+    )
 
+    gutschein = session.get("gutschein")
 
-def apply_location(user, text: str, country: str):
-    """Setzt/loescht den Standort. Gibt (ok, fehlertext) zurueck."""
-    country = country if country in geo.COUNTRIES else "DE"
-    text = (text or "").strip()
-    if not text:
-        user.plz = user.city = user.lat = user.lon = None
-        user.country = country
-        return True, None
-    result = geo.geocode(text, country)
-    if not result:
-        return False, (f"„{text}“ wurde nicht gefunden. Bitte gib eine gültige Postleitzahl "
-                       f"oder einen Ortsnamen in {geo.COUNTRIES[country]} ein.")
-    parsed = geo.parse_query(text, country)
-    user.country = country
-    user.lat, user.lon = result["lat"], result["lon"]
-    user.plz = result.get("plz") or (parsed[1] if parsed and parsed[0] == "plz" else None)
-    user.city = result.get("city") or (parsed[1] if parsed and parsed[0] == "city" else None)
-    return True, None
+    gutschein_wert = 0
 
-
-def parse_radius(value, default):
-    if value == "all":
-        return None
-    try:
-        v = int(value)
-    except (TypeError, ValueError):
-        return default
-    return v if v in geo.RADIUS_CHOICES else default
-
-
-def reset_serializer():
-    return URLSafeTimedSerializer(
-        __import__("flask").current_app.config["SECRET_KEY"], salt="password-reset")
-
-
-def make_reset_token(user) -> str:
-    return reset_serializer().dumps({"u": user.id, "h": user.password_fingerprint()})
-
-
-def load_reset_user(token):
-    try:
-        data = reset_serializer().loads(token, max_age=RESET_MAX_AGE)
-    except (SignatureExpired, BadSignature):
-        return None
-    user = db.session.get(User, data.get("u"))
-    if user is None or user.password_fingerprint() != data.get("h") or user.is_banned:
-        return None  # Passwort wurde inzwischen geaendert -> Link ist verbraucht
-    return user
-
-
-# ---------------------------------------------------------------- Feed / Matching
-
-def build_feed(user):
-    """Alle fuer user sichtbaren, noch nicht bewerteten Buecher - nach Entfernung sortiert."""
-    swiped = db.session.query(Swipe.book_id).filter(Swipe.user_id == user.id)
-    q = (
-        Book.query.join(User, Book.owner_id == User.id)
-        .options(joinedload(Book.owner))
-        .filter(
-            Book.owner_id != user.id,
-            Book.is_active.is_(True),
-            Book.deleted_at.is_(None),
-            ~Book.id.in_(swiped),
+    if gutschein:
+        gutschein_wert = float(
+            gutschein.get("betrag", 0)
         )
+
+    return max(total - gutschein_wert, 0)
+
+
+# OPTIONAL: GUTSCHEIN AUS SESSION HOLEN
+# =====================================================
+
+def get_gutschein():
+    return session.get("gutschein")
+
+
+# =====================================================
+# PRODUKTE LADEN
+# =====================================================
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+json_path = os.path.join(basedir, "produkte.json")
+
+if os.path.exists(json_path):
+    with open(json_path, encoding="utf-8") as f:
+        produkte = json.load(f)
+else:
+    produkte = []
+
+
+
+
+
+
+
+# =====================================================
+# PAYPAL
+# =====================================================
+
+def paypal_access_token():
+    response = requests.post(
+        f"{PAYPAL_BASE}/v1/oauth2/token",
+        auth=(PAYPAL_CLIENT_ID, PAYPAL_SECRET),
+        data={"grant_type": "client_credentials"},
     )
-    hidden = notifications.blocked_ids(user.id)
-    if hidden:
-        q = q.filter(~Book.owner_id.in_(hidden))
-
-    radius = user.radius_km if user.has_location else None
-    query = q
-    if radius:
-        lat_min, lat_max, lon_min, lon_max = geo.bounding_box(user.lat, user.lon, radius)
-        query = q.filter(User.lat.between(lat_min, lat_max), User.lon.between(lon_min, lon_max))
-
-    books = query.order_by(Book.created_at.desc()).limit(500).all()
-
-    feed = []
-    for book in books:
-        km = distance_between(user, book.owner)
-        if radius and (km is None or km > radius):
-            continue
-        book.distance_km = km
-        book.distance_text = geo.format_distance(km) if km is not None else ""
-        feed.append(book)
-    feed.sort(key=lambda b: (b.distance_km is None, b.distance_km or 0))  # stabil: neueste zuerst
-
-    outside = 0
-    if not feed and radius:
-        outside = q.count()  # Buecher, die nur wegen des Radius ausgeblendet sind
-    return feed, outside
-
-
-def skipped_query(user):
-    """Von user uebersprungene Buecher, die noch eine zweite Chance verdienen."""
-    q = (
-        db.session.query(Swipe).join(Book, Swipe.book_id == Book.id)
-        .options(joinedload(Swipe.book).joinedload(Book.owner))
-        .filter(
-            Swipe.user_id == user.id, Swipe.liked.is_(False), Swipe.dismissed.is_(False),
-            Book.is_active.is_(True), Book.deleted_at.is_(None),
+    data = response.json()
+    token = data.get("access_token")
+    if not token:
+        logger.error(
+            "PayPal TOKEN FEHLER (mode=%s, status=%s): %s",
+            PAYPAL_MODE, response.status_code, data
         )
+    return token
+
+
+
+
+
+@app.route("/create-paypal-order", methods=["POST"])
+@csrf.exempt
+def create_paypal_order():
+    cart_items = get_cart()
+    total = calculate_total(cart_items)
+
+    logger.info("PayPal create-order: %d Positionen, total=%.2f", len(cart_items), total)
+
+    if not cart_items:
+        logger.error("PayPal create-order: Warenkorb in der Session ist LEER")
+        return jsonify({"error": "Warenkorb leer"}), 400
+
+    # WICHTIG:
+    # Wenn Gutschein alles bezahlt hat
+    # dann KEIN PayPal starten
+    if total <= 0:
+
+        # Kostenlos NUR, wenn ein Gutschein den Betrag wirklich deckt.
+        # Sonst ist ein Preis kaputt → PayPal nicht überspringen.
+        if not session.get("gutschein"):
+            logger.error("PayPal create-order: total=0 ohne Gutschein, Positionen: %s", cart_items)
+            return jsonify({"error": "Ungültiger Warenkorbpreis"}), 400
+
+        return jsonify({
+            "free_checkout": True
+        })
+
+    access_token = paypal_access_token()
+
+    response = requests.post(
+        f"{PAYPAL_BASE}/v2/checkout/orders",
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {access_token}",
+        },
+        json={
+            "intent": "CAPTURE",
+            "purchase_units": [{
+                "amount": {
+                    "currency_code": "EUR",
+                    "value": f"{total:.2f}"
+                }
+            }]
+        },
     )
-    hidden = notifications.blocked_ids(user.id)
-    if hidden:
-        q = q.filter(~Book.owner_id.in_(hidden))
-    return q
+
+    order_data = response.json()
+
+    if "id" not in order_data:
+        logger.error(f"PayPal Fehler: {order_data}")
+        return jsonify({
+            "error": "PayPal order creation failed",
+            "details": order_data
+        }), 400
+
+    return jsonify({"id": order_data["id"]})
 
 
-def try_create_match(me, liked_book):
-    """Legt ein Match an, wenn der Besitzer des gelikten Buchs ein Buch von mir geliked hat."""
-    owner_id = liked_book.owner_id
-    hit = (
-        db.session.query(Swipe)
-        .join(Book, Swipe.book_id == Book.id)
-        .filter(
-            Swipe.user_id == owner_id,
-            Swipe.liked.is_(True),
-            Book.owner_id == me.id,
-            Book.is_active.is_(True),      # getauschte/pausierte Buecher zaehlen nicht
-            Book.deleted_at.is_(None),
-        )
-        .order_by(Swipe.created_at.desc())
-        .first()
-    )
-    if hit is None:
-        return None
 
-    u1, u2 = sorted([me.id, owner_id])
-    if Match.query.filter_by(user1_id=u1, user2_id=u2, status="active").first():
-        return None
 
-    my_book = hit.book
-    book1_id, book2_id = (my_book.id, liked_book.id) if u1 == me.id else (liked_book.id, my_book.id)
-    match = Match(
-        user1_id=u1, user2_id=u2, book1_id=book1_id, book2_id=book2_id,
-        user1_seen=(u1 == me.id), user2_seen=(u2 == me.id),  # ich sehe es sofort, die andere Seite nicht
-    )
-    db.session.add(match)
-    db.session.commit()
+@app.route("/capture-paypal-order/<order_id>", methods=["POST"])
+@csrf.exempt
+def capture_paypal_order(order_id):
 
     try:
-        notifications.email_new_match(
-            match, db.session.get(User, owner_id), base_url(), os.environ.get("SITE_NAME", "IBK Büchertausch"))
-    except Exception:
-        log.exception("Match-Mail fehlgeschlagen")
-    return match
+
+        # -----------------------------------
+        # PayPal Capture
+        # -----------------------------------
+
+        access_token = paypal_access_token()
+
+        response = requests.post(
+            f"{PAYPAL_BASE}/v2/checkout/orders/{order_id}/capture",
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {access_token}",
+            }
+        )
+
+        data = response.json()
+
+        if data.get("status") != "COMPLETED":
+            logger.error("PayPal CAPTURE FEHLER (status=%s): %s", response.status_code, data)
+            return jsonify({
+                "status": "error",
+                "message": "PayPal-Zahlung nicht abgeschlossen",
+                "data": data
+            }), 400
+
+        # -----------------------------------
+        # Warenkorb laden
+        # -----------------------------------
+
+        cart_items = get_cart()
+
+        if not cart_items:
+            logger.error("PayPal capture: Zahlung ok, aber Session-Warenkorb ist LEER (order %s)", order_id)
+            return jsonify({
+                "status": "error",
+                "message": "Warenkorb leer"
+            }), 400
+
+        # -----------------------------------
+        # Bestellung speichern
+        # -----------------------------------
+
+        bestellung = Bestellung(
+            email=session.get("checkout_email"),
+            vorname=session.get("checkout_vorname"),
+            nachname=session.get("checkout_nachname"),
+            strasse=session.get("checkout_strasse"),
+            hausnummer=session.get("checkout_hausnummer"),
+            plz=session.get("checkout_plz"),
+            stadt=session.get("checkout_stadt"),
+            land=session.get("checkout_land"),
+            telefon=session.get("checkout_telefon"),
+            paymentmethod="paypal"
+        )
+
+        db.session.add(bestellung)
+
+        # Damit bestellung.id sofort existiert
+        db.session.flush()
+
+        # -----------------------------------
+        # Gutschein aus Session anwenden
+        # -----------------------------------
+
+        gutschein_session = session.get("gutschein")
+
+        if gutschein_session:
+
+            gutschein = Gutschein.query.filter_by(
+                code=gutschein_session["code"]
+            ).first()
+
+            if gutschein and gutschein.ist_gueltig():
+
+                verwendeter_betrag = float(
+                    gutschein_session["betrag"]
+                )
+
+                gutschein.restwert -= verwendeter_betrag
+
+                if gutschein.restwert <= 0:
+                    gutschein.restwert = 0
+                    gutschein.aktiv = False
+
+        # -----------------------------------
+        # Bestellpositionen speichern
+        # -----------------------------------
+
+        for item in cart_items:
+
+            db.session.add(
+                BestellPosition(
+                    bestellung_id=bestellung.id,
+                    bezeichnung=item["title"],
+                    menge=item["quantity"],
+                    preis=item["price"]
+                )
+            )
+
+            # -----------------------------------
+            # Gutschein erzeugen
+            # -----------------------------------
+
+            if item.get("is_gutschein"):
+
+                code = generate_gutschein_code()
+
+                gutschein = Gutschein(
+                    code=code,
+                    wert=item["price"],
+                    restwert=item["price"],
+                    aktiv=True,
+                    empfaenger_email=session.get("checkout_email"),
+                    bestellung_id=bestellung.id
+                )
+
+                db.session.add(gutschein)
+
+                try:
 
 
-def purge_user(uid: int):
-    """Loescht ein Konto und ALLE zugehoerigen Daten (DSGVO: Recht auf Loeschung)."""
-    for m in Match.query.filter(or_(Match.user1_id == uid, Match.user2_id == uid)).all():
-        db.session.delete(m)  # Nachrichten werden per Cascade mitgeloescht
-    db.session.flush()
-
-    books = Book.query.filter_by(owner_id=uid).all()
-    book_ids = [b.id for b in books]
-    image_ids = [b.image_id for b in books if b.image_id]
-    legacy_files = [b.image_filename for b in books if b.image_filename]
-
-    if book_ids:
-        Swipe.query.filter(Swipe.book_id.in_(book_ids)).delete(synchronize_session=False)
-    Swipe.query.filter_by(user_id=uid).delete(synchronize_session=False)
-    Block.query.filter(or_(Block.blocker_id == uid, Block.blocked_id == uid)).delete(synchronize_session=False)
-    Report.query.filter(or_(Report.reporter_id == uid, Report.reported_id == uid)).delete(synchronize_session=False)
-    Book.query.filter_by(owner_id=uid).delete(synchronize_session=False)
-    delete_book_images(book_ids, image_ids)
-    User.query.filter_by(id=uid).delete(synchronize_session=False)
-    db.session.commit()
-
-    upload_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "uploads")
-    for name in legacy_files:
-        try:
-            os.remove(os.path.join(upload_dir, os.path.basename(name)))
-        except OSError:
-            pass
+                    send_gutschein_email(
+                        recipient=session.get("checkout_email"),
+                        code=code,
+                        betrag=item["price"],
+                    )
 
 
-# ---------------------------------------------------------------- App-Fabrik
 
-def create_app(test_config=None):
-    app = Flask(__name__)
+                except Exception:
+                    logger.exception(
+                        "Gutschein Email fehlgeschlagen"
+                    )
 
-    on_render = bool(os.environ.get("RENDER"))
-    secret = os.environ.get("SECRET_KEY")
-    if on_render and not secret:
-        raise RuntimeError("SECRET_KEY fehlt - bitte in Render unter Environment setzen.")
-    app.config["SECRET_KEY"] = secret or "dev-only-insecure-key"
+        # -----------------------------------
+        # Alles speichern
+        # -----------------------------------
 
-    database_url = os.environ.get("DATABASE_URL", "sqlite:///local.db")
-    # Render liefert "postgres://" oder "postgresql://" ohne Treiberangabe.
-    # Wir erzwingen explizit psycopg2 (das installierte Paket), damit
-    # SQLAlchemy nicht versucht, das nicht-installierte "psycopg" (v3) zu laden.
-    if database_url.startswith("postgres://"):
-        database_url = database_url.replace("postgres://", "postgresql+psycopg2://", 1)
-    elif database_url.startswith("postgresql://") and "+psycopg" not in database_url:
-        database_url = database_url.replace("postgresql://", "postgresql+psycopg2://", 1)
-    app.config["SQLALCHEMY_DATABASE_URI"] = database_url
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {"pool_pre_ping": True}  # tote DB-Verbindungen erkennen
+        db.session.commit()
 
-    app.config["MAX_CONTENT_LENGTH"] = 30 * 1024 * 1024  # bis zu 5 Handyfotos
-    app.config["WTF_CSRF_ENABLED"] = os.environ.get("WTF_CSRF_ENABLED", "1") != "0"
-    app.config["WTF_CSRF_TIME_LIMIT"] = None  # Token gilt so lange wie die Sitzung
-    app.config["SESSION_COOKIE_HTTPONLY"] = True
-    app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
-    app.config["SESSION_COOKIE_SECURE"] = on_render
-    app.config["REMEMBER_COOKIE_DURATION"] = timedelta(days=30)
-    app.config["REMEMBER_COOKIE_HTTPONLY"] = True
-    app.config["REMEMBER_COOKIE_SAMESITE"] = "Lax"
-    app.config["REMEMBER_COOKIE_SECURE"] = on_render
-    if test_config:
-        app.config.update(test_config)
+       # -----------------------------------
+        # Nur echte Bücher an BuchButler
+        # senden (kein Gutschein, kein Offline-Produkt)
+        # -----------------------------------
 
-    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1)
+        buch_items = [
+            item for item in cart_items
+            if not item.get("is_gutschein") and item.get("ean")
+        ]
 
-    db.init_app(app)
-    csrf.init_app(app)
-    login_manager.init_app(app)
+        if buch_items:
 
-    with app.app_context():
-        db.create_all()          # neue Tabellen
-        ensure_columns(db)       # neue Spalten in bestehenden Tabellen
+            try:
+                sende_bestellung_an_buchbutler(
+                    bestellung,
+                    buch_items
+                )
 
-    register_hooks(app)
-    register_routes(app)
-    return app
+            except Exception:
+                logger.exception(
+                    "BuchButler Bestellung fehlgeschlagen"
+                )
+        # -----------------------------------
+        # Session aufräumen
+        # -----------------------------------
+
+        session.pop("cart", None)
+        session.pop("gutschein", None)
+
+        # -----------------------------------
+        # Erfolgreich
+        # -----------------------------------
+
+        return jsonify({
+            "status": "success",
+            "order_id": order_id
+        })
+
+    except Exception as e:
+
+        logger.exception(
+            "Fehler beim Capturen der PayPal-Zahlung"
+        )
+
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
 
 
-def register_hooks(app: Flask):
 
-    @login_manager.user_loader
-    def load_user(session_id):
-        try:
-            uid, fingerprint = str(session_id).split(":", 1)
-            user = db.session.get(User, int(uid))
-        except (ValueError, TypeError):
+def verify_webhook(headers, body):
+
+    access_token = paypal_access_token()
+
+    response = requests.post(
+        f"{PAYPAL_BASE}/v1/notifications/verify-webhook-signature",
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {access_token}",
+        },
+        json={
+            "transmission_id": headers.get("PAYPAL-TRANSMISSION-ID"),
+            "transmission_time": headers.get("PAYPAL-TRANSMISSION-TIME"),
+            "cert_url": headers.get("PAYPAL-CERT-URL"),
+            "auth_algo": headers.get("PAYPAL-AUTH-ALGO"),
+            "transmission_sig": headers.get("PAYPAL-TRANSMISSION-SIG"),
+            "webhook_id": PAYPAL_WEBHOOK_ID,
+            "webhook_event": body
+        }
+    )
+
+    return response.json().get("verification_status") == "SUCCESS"
+
+
+
+@app.route("/paypal-webhook", methods=["POST"])
+@csrf.exempt
+def paypal_webhook():
+
+    body = request.get_data(as_text=True)
+    event = json.loads(body)
+    headers = request.headers
+
+    if not verify_webhook(headers, body):
+        return "", 400
+
+    event_type = event.get("event_type")
+
+    if event_type == "PAYMENT.CAPTURE.COMPLETED":
+        capture = event["resource"]
+        order_id = capture["supplementary_data"]["related_ids"]["order_id"]
+        amount = capture["amount"]["value"]
+        logger.info(f"PayPal Zahlung abgeschlossen: {order_id} – {amount} EUR")
+
+
+
+    return "", 200
+
+
+
+# -----------------------------
+# CONTENT API
+# -----------------------------
+@lru_cache(maxsize=128)
+def cached_lade_produkt_von_api(ean):
+    return lade_produkt_von_api(ean)
+
+
+def lade_produkt_von_api(ean):
+
+    if not check_auth():
+        return None
+
+    try:
+        res = buchbutler_request("CONTENT", ean)
+
+        if not res:
             return None
-        if user is None or user.password_fingerprint() != fingerprint or user.is_banned:
-            return None  # Passwort geaendert oder Konto gesperrt -> abmelden
-        return user
 
-    @app.before_request
-    def touch_last_seen():
-        if current_user.is_authenticated and request.endpoint != "static":
-            now = datetime.utcnow()
-            if current_user.last_seen is None or now - current_user.last_seen > timedelta(seconds=60):
-                current_user.last_seen = now
-                db.session.commit()
+        attrs = res.get("Artikelattribute") or {}
 
-    @app.after_request
-    def security_headers(resp):
-        resp.headers.setdefault("X-Content-Type-Options", "nosniff")
-        resp.headers.setdefault("X-Frame-Options", "DENY")
-        resp.headers.setdefault("Referrer-Policy", "same-origin")
+
+        # 🔥 Bild (nur BuchButler Image API)
+        bild_url = f"https://api.buchbutler.de/image/{ean}"
+
+        produkt = {
+            "id": to_int(res.get("pim_artikel_id")),
+            "ean": ean,
+            "name": res.get("bezeichnung"),
+            "autor": attr(attrs, "Autor"),
+            "illustrator": attr(attrs, "Illustrator"),
+            "preis": to_float(res.get("vk_brutto")),
+            "isbn": attr(attrs, "ISBN_13"),
+            "seiten": attr(attrs, "Seiten"),
+            "format": attr(attrs, "Buchtyp"),
+            "sprache": attr(attrs, "Sprache"),
+            "verlag": attr(attrs, "Verlag"),
+            "erscheinungsjahr": attr(attrs, "Erscheinungsjahr"),
+            "erscheinungsdatum": attr(attrs, "Erscheinungsdatum"),
+            "beschreibung": res.get("text_text"),
+            "alter_von": attr(attrs, "Altersempfehlung_von"),
+            "alter_bis": attr(attrs, "Altersempfehlung_bis"),
+            # 🔥 Maße
+            "laenge": attr(attrs, "Laenge"),
+            "breite": attr(attrs, "Breite"),
+            "hoehe": attr(attrs, "Hoehe"),
+
+            # 🔥 Gewicht
+
+
+            "gewicht": attr(attrs, "Gewicht"),
+
+
+            # 🔥 Bilder
+            "bilder": [bild_url],
+
+            "extra": attrs
+        }
+
+        return produkt
+
+    except Exception:
+        logger.exception("Fehler beim Laden von CONTENT API")
+        return None
+
+# -----------------------------
+# MOVEMENT API
+# -----------------------------
+
+def lade_bestand_von_api(ean):
+    """Lädt Bestand / Preis / Lieferdaten"""
+
+    if not check_auth():
+        return None
+
+    try:
+        res = buchbutler_request("MOVEMENT", ean)
+
+        if not res:
+            return None
+
+        # 🔥 FIX — falls Liste zurückkommt
+        if isinstance(res, list):
+            if len(res) == 0:
+                return None
+            res = res[0]
+
+
+        return {
+            "bestand": to_int(res.get("Bestand")),
+            "preis": to_float(res.get("Preis")),
+            "erfuellungsrate": res.get("Erfuellungsrate"),
+            "handling_zeit": res.get("Handling_Zeit_in_Werktagen"),
+            "ausverkauft": ist_ausverkauft(res.get("Handling_Zeit_in_Werktagen"))
+
+        }
+
+
+    except Exception:
+        logger.exception("Fehler beim Laden von MOVEMENT API")
+        return None
+
+# -----------------------------
+# Bestellung an Buchbutler senden
+# -----------------------------
+
+def sende_bestellung_an_buchbutler(bestellung, cart_items):
+
+    url = f"{BASE_URL}/ORDER/"
+
+    collectkey = str(uuid.uuid4())
+    bestellung.collectkey = collectkey
+    db.session.commit()
+    # PayPal = bereits bezahlt → Vorkasse (1)
+    # Rechnung = Buchbutler rechnet ab → Rechnung (2)
+    mol_zahlart_id = 2
+
+
+    payload = {
+        "username": BUCHBUTLER_USER,
+        "passwort": BUCHBUTLER_PASSWORD,
+
+        "auftrag_kopf": {
+            "mol_kunde_id": int(BUCHBUTLER_MOL_KUNDE_ID),
+            "rechnungsadresse_id": int(BUCHBUTLER_RECHNUNGSADRESSE_ID),
+            "mol_zahlart_id": mol_zahlart_id,  # ← dynamisch
+            "bestelldatum": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "bestellreferenz": f"IBK-{bestellung.id}",
+            "seite": "ibk-bilderbuch.de",
+            "bestellfreigabe": 1,
+            "mol_verkaufskanal_id": int(BUCHBUTLER_VERKAUFSKANAL_ID)
+        },
+
+        "lieferadresse": {
+            "anrede": "",
+            "vorname": bestellung.vorname,
+            "nachname": bestellung.nachname,
+            "strasse": bestellung.strasse,
+            "hausnummer": bestellung.hausnummer,
+            "plz": bestellung.plz,
+            "ort": bestellung.stadt,
+            "land": bestellung.land,
+            "land_iso": "DE",
+            "tel": bestellung.telefon
+        },
+
+        "auftrag_position": [],
+
+        "auftrag_zusatz": [
+            {
+                "typ": "SHIPPING_OPTION",
+                "value": "1040"
+            },
+            {
+                "typ": "collectkey",
+                "value": collectkey
+            }
+        ]
+    }
+
+
+
+    for i, item in enumerate(cart_items):
+        payload["auftrag_position"].append({
+            "ean": item["ean"],
+            "pos_bezeichnung": item["title"],
+            "menge": item["quantity"],
+            "ek_netto": 0,
+            "vk_brutto": item["price"],
+            "pos_referenz": f"{bestellung.id}-{i}"
+        })
+
+    response = requests.post(url, json=payload, timeout=20)
+
+    data = response.json()
+
+    if data.get("import_hash"):
+        bestellung.moluna_order_id = data["import_hash"]
+        bestellung.moluna_status = "übermittelt"
+        db.session.commit()
+
+    logger.info("Buchbutler Bestellung: %s", data)
+    return data
+
+
+def buchbutler_orderresponse(collectkey):
+
+    url = f"{BASE_URL}/ORDERRESPONSE/"
+
+    payload = {
+        "username": BUCHBUTLER_USER,
+        "passwort": BUCHBUTLER_PASSWORD,
+        "collectkey": collectkey
+    }
+
+    try:
+        response = requests.post(url, json=payload, timeout=10)
+
+        # Wenn keine erfolgreiche Antwort
+        if response.status_code != 200:
+            logger.warning(f"ORDERRESPONSE Statuscode: {response.status_code}")
+            return None
+
+        # Wenn Antwort leer ist
+        if not response.text.strip():
+            logger.info("ORDERRESPONSE leer")
+            return None
+
+        return response.json()
+
+    except Exception:
+        logger.exception("ORDERRESPONSE Fehler")
+        return None
+# =====================================================
+# ROUTES
+# =====================================================
+
+# sitemap.xml
+
+@app.route("/sitemap.xml")
+def sitemap():
+    xml_element = build_sitemap_xml()
+
+    xml_str = ET.tostring(xml_element, encoding="utf-8", method="xml")
+
+    return Response(xml_str, mimetype="application/xml")
+
+# Admin Test
+@app.route("/admin-test")
+def admin_test():
+    alle = Bestellung.query.all()
+    return {"anzahl_bestellungen": len(alle)}
+
+
+
+def admin_required():
+    if not session.get("admin"):
+        return redirect(url_for("admin_login"))
+    return None
+
+
+
+# FIX: @limiter.limit muss UNTER @app.route stehen, sonst greift das Limit nicht
+@app.route("/ibk-control-8471", methods=["GET", "POST"])
+@limiter.limit("5 per minute")
+def admin_login():
+    if request.method == "POST":
+        pw = request.form.get("password")
+        if ADMIN_PASSWORD and pw and secrets.compare_digest(pw, ADMIN_PASSWORD):
+            session.clear()
+            session["admin"] = True
+            session.permanent = True
+            return redirect("/admin/bestellungen")
+        else:
+            flash("Falsches Passwort!", "error")
+    return render_template("admin_login.html")
+
+
+
+# Admin Bestellungen anzeigen
+
+
+
+
+@app.route("/admin/bestellungen")
+def admin_bestellungen():
+
+    resp = admin_required()
+    if resp:
         return resp
 
-    @app.context_processor
-    def inject_globals():
-        ctx = {
-            "SITE_NAME": os.environ.get("SITE_NAME", "IBK Büchertausch"),
-            "now_year": datetime.now().year,
-            "PARENT_URL": os.environ.get("PARENT_URL", "https://ibk-bilderbuch.de"),
-            "PARENT_NAME": os.environ.get("PARENT_NAME", "IBK"),
-            "IMPRESSUM_URL": os.environ.get("IMPRESSUM_URL", ""),
-            "PRIVACY_URL": os.environ.get("PRIVACY_URL") or url_for("privacy"),
-            "COUNTRIES": geo.COUNTRIES,
-            "RADIUS_CHOICES": geo.RADIUS_CHOICES,
-            "CONDITIONS": CONDITIONS,
-            "book_img": book_img_url,
-        }
-        if current_user.is_authenticated:
-            ctx["nav"] = {
-                "counts": notifications.counts(current_user.id),
-                "since": notifications.watermark(current_user.id),
-            }
-        return ctx
+    alle = Bestellung.query.order_by(Bestellung.bestelldatum.desc()).all()
 
-    app.add_template_filter(lambda dt: to_local(dt).strftime("%H:%M") if dt else "", "localtime")
-    app.add_template_filter(short_when, "short_when")
-    app.add_template_filter(day_label, "day_label")
+    for b in alle:
 
-    @app.errorhandler(404)
-    def not_found(e):
-        return render_template("404.html"), 404
+        if getattr(b, "collectkey", None):
 
-    @app.errorhandler(CSRFError)
-    def csrf_error(e):
-        if wants_json():
-            return jsonify(error="Sitzung abgelaufen - bitte Seite neu laden."), 400
-        flash("Die Sitzung ist abgelaufen. Bitte versuche es noch einmal.", "error")
-        return redirect(request.referrer or url_for("index"))
+            response = buchbutler_orderresponse(b.collectkey)
 
-    @app.errorhandler(RequestEntityTooLarge)
-    def too_large(e):
-        flash("Die Fotos sind zusammen zu groß (maximal 30 MB). Wähle weniger oder kleinere Fotos.", "error")
-        return redirect(request.referrer or url_for("my_books"))
+            if response and "response" in response:
+                status = response["response"].get("status")
+                lieferungen = response["response"].get("lieferungen", [])
 
-    @app.errorhandler(429)
-    def too_many(e):
-        if wants_json():
-            return jsonify(error="Zu viele Anfragen - bitte kurz warten."), 429
-        return render_template("404.html", message="Zu viele Anfragen. Bitte warte einen Moment."), 429
+                # Status speichern
+                b.moluna_status = status if status else "unbekannt"
 
+                # Trackingnummern & andere Felder sammeln
+                trackingnummern = []
+                logistiker_list = []
+                paketart_list = []
+                eans = []
 
-def register_routes(app: Flask):
+                for lieferung in lieferungen:
+                    if lieferung.get("trackingnummer"):
+                        trackingnummern.append(lieferung["trackingnummer"])
+                    if lieferung.get("logistiker"):
+                        logistiker_list.append(lieferung["logistiker"])
+                    if lieferung.get("logistik_produkt"):
+                        paketart_list.append(lieferung["logistik_produkt"])
+                    if lieferung.get("ean"):
+                        eans.append(lieferung["ean"])
 
-    # ------------------------------------------------------------ Allgemein
+                # Optional: als kommagetrennte Strings speichern
+                b.trackingnummer = ", ".join(trackingnummern) if trackingnummern else None
+                b.logistiker = ", ".join(logistiker_list) if logistiker_list else None
+                b.paketart = ", ".join(paketart_list) if paketart_list else None
+                b.eans = ", ".join(eans) if eans else None
 
-    @app.route("/healthz")
-    def healthz():
-        return "ok", 200, {"Cache-Control": "no-store"}
-
-    @app.route("/datenschutz")
-    def privacy():
-        return render_template("datenschutz.html")
-
-    @app.route("/")
-    def index():
-        if current_user.is_authenticated:
-            return redirect(url_for("discover"))
-        return render_template("index.html")
-
-    # ------------------------------------------------------------ Konto: Registrierung / Login
-
-    @app.route("/register", methods=["GET", "POST"])
-    def register():
-        if current_user.is_authenticated:
-            return redirect(url_for("discover"))
-
-        if request.method == "POST":
-            if rate_limited(f"register:{client_ip()}", 10, 3600):
-                flash("Zu viele Registrierungen von dieser Adresse. Bitte versuche es später erneut.", "error")
-                return render_template("register.html"), 429
-
-            name = request.form.get("name", "").strip()[:100]
-            email = request.form.get("email", "").strip().lower()[:255]
-            password = request.form.get("password", "")
-            country = request.form.get("country", "DE")
-            location = request.form.get("location", "").strip()
-            form_data = {"name": name, "email": email, "location": location, "country": country}
-
-            error = None
-            if not name or not email or not password:
-                error = "Bitte Name, E-Mail und Passwort ausfüllen."
-            elif not EMAIL_RE.match(email):
-                error = "Bitte gib eine gültige E-Mail-Adresse ein."
-            elif len(password) < MIN_PASSWORD:
-                error = f"Das Passwort muss mindestens {MIN_PASSWORD} Zeichen lang sein."
-            elif request.form.get("accept_privacy") != "yes":
-                error = "Bitte bestätige die Datenschutzerklärung."
-            elif User.query.filter_by(email=email).first():
-                error = "Für diese E-Mail existiert bereits ein Konto."
-            if error:
-                flash(error, "error")
-                return render_template("register.html", form=form_data), 400
-
-            user = User(name=name, email=email, terms_accepted_at=datetime.utcnow())
-            user.set_password(password)
-            ok, loc_error = apply_location(user, location, country) if location else (True, None)
-            if not ok:
-                apply_location(user, "", country)
-            db.session.add(user)
-            db.session.commit()
-
-            login_user(user, remember=True)
-            flash("Willkommen beim " + os.environ.get("SITE_NAME", "IBK Büchertausch") + "!", "success")
-            if not ok:
-                flash(loc_error + " Du kannst den Standort jederzeit im Profil nachtragen.", "info")
-            return redirect(url_for("my_books" if ok else "discover"))
-
-        return render_template("register.html", form={"country": "DE"})
-
-    @app.route("/login", methods=["GET", "POST"])
-    def login():
-        if current_user.is_authenticated:
-            return redirect(url_for("discover"))
-
-        if request.method == "POST":
-            email = request.form.get("email", "").strip().lower()
-            password = request.form.get("password", "")
-            if rate_limited(f"login:{client_ip()}:{email}", 10, 900):
-                flash("Zu viele Anmeldeversuche. Bitte warte ein paar Minuten.", "error")
-                return render_template("login.html"), 429
-
-            user = User.query.filter_by(email=email).first()
-            if user is None or not user.check_password(password):
-                flash("E-Mail oder Passwort ist falsch.", "error")
-                return render_template("login.html", email=email), 401
-            if user.is_banned:
-                flash("Dieses Konto wurde gesperrt.", "error")
-                return render_template("login.html", email=email), 403
-
-            login_user(user, remember=request.form.get("remember") == "yes")
-            return redirect(safe_next(request.args.get("next")) or url_for("discover"))
-
-        return render_template("login.html")
-
-    @app.route("/logout")
-    @login_required
-    def logout():
-        logout_user()
-        return redirect(url_for("index"))
-
-    @app.route("/forgot-password", methods=["GET", "POST"])
-    def forgot_password():
-        if request.method == "POST":
-            if rate_limited(f"forgot:{client_ip()}", 5, 3600):
-                flash("Zu viele Anfragen. Bitte versuche es in einer Stunde erneut.", "error")
-                return render_template("forgot_password.html"), 429
-            email = request.form.get("email", "").strip().lower()
-            user = User.query.filter_by(email=email).first() if email else None
-            if user and not user.is_banned:
-                link = base_url().rstrip("/") + url_for("reset_password", token=make_reset_token(user))
-                site = os.environ.get("SITE_NAME", "IBK Büchertausch")
-                text = (
-                    f"Hallo {user.name},\n\n"
-                    f"für dein {site}-Konto wurde ein neues Passwort angefordert.\n"
-                    f"Mit diesem Link kannst du es setzen (gültig für 1 Stunde, nur einmal nutzbar):\n\n"
-                    f"{link}\n\n"
-                    f"Wenn du das nicht warst, ignoriere diese E-Mail einfach - dein Passwort bleibt unverändert.\n"
-                )
-                html = mailer.button_email(
-                    site, f"Hallo {user.name},",
-                    ["für dein Konto wurde ein neues Passwort angefordert. "
-                     "Klicke auf den Button, um ein neues Passwort zu setzen."],
-                    "Neues Passwort festlegen", link,
-                    ["Der Link ist 1 Stunde gültig und kann nur einmal benutzt werden.",
-                     "Wenn du das nicht warst, ignoriere diese E-Mail einfach. Dein Passwort bleibt unverändert."])
-                mailer.send_mail(user.email, f"Passwort zurücksetzen – {site}", text, html)
-            if mailer.is_configured():
-                flash("Falls ein Konto mit dieser E-Mail existiert, haben wir dir einen Link zum "
-                      "Zurücksetzen geschickt. Bitte prüfe auch den Spam-Ordner.", "info")
             else:
-                flash("Der E-Mail-Versand ist noch nicht eingerichtet. Bitte wende dich an den Betreiber.", "error")
-            return redirect(url_for("login"))
-        return render_template("forgot_password.html")
+                b.moluna_status = "keine Antwort"
+                b.trackingnummer = None
+                b.logistiker = None
+                b.paketart = None
+                b.eans = None
 
-    @app.route("/reset-password/<token>", methods=["GET", "POST"])
-    def reset_password(token):
-        user = load_reset_user(token)
-        if user is None:
-            flash("Dieser Link ist ungültig oder abgelaufen. Bitte fordere einen neuen an.", "error")
-            return redirect(url_for("forgot_password"))
-        if request.method == "POST":
-            password = request.form.get("password", "")
-            if len(password) < MIN_PASSWORD:
-                flash(f"Das Passwort muss mindestens {MIN_PASSWORD} Zeichen lang sein.", "error")
-                return render_template("reset_password.html", token=token), 400
-            if password != request.form.get("password2", ""):
-                flash("Die beiden Passwörter stimmen nicht überein.", "error")
-                return render_template("reset_password.html", token=token), 400
-            user.set_password(password)  # entwertet auch den Link und alle alten Sitzungen
-            db.session.commit()
-            flash("Dein Passwort wurde geändert. Du kannst dich jetzt anmelden.", "success")
-            return redirect(url_for("login"))
-        return render_template("reset_password.html", token=token)
+    # Commit nach allen Updates
+    db.session.commit()
 
-    # ------------------------------------------------------------ Entdecken / Swipe
+    return render_template(
+        "admin_bestellungen.html",
+        bestellungen=alle
+    )
 
-    @app.route("/discover")
-    @login_required
-    def discover():
-        feed, outside = build_feed(current_user)
-        my_active = Book.query.filter_by(owner_id=current_user.id, is_active=True, deleted_at=None).count()
-        next_radius = next((r for r in geo.RADIUS_CHOICES if current_user.radius_km and r > current_user.radius_km), None)
-        batch = feed[:30]
-        return render_template(
-            "discover.html", books=[serialize_book(b) for b in batch], more=len(feed) > len(batch),
-            outside=outside, my_active=my_active, next_radius=next_radius,
-            skipped=skipped_query(current_user).count(),
+
+@app.route("/admin/sync-buchbutler/<int:index>")
+def sync_buchbutler(index):
+
+    if not session.get("admin"):
+        abort(403)
+
+    if index >= len(produkte):
+        return "✅ Sync komplett"
+
+    produkt = produkte[index]
+    ean = produkt.get("ean")
+
+    if ean:
+        print("SYNC:", ean)
+
+        api = lade_produkt_von_api(ean)
+        movement = lade_bestand_von_api(ean)
+
+        if api:
+            produkt["name"] = api.get("name")
+            produkt["autor"] = api.get("autor")
+
+
+
+        if movement:
+            # FIX: eigene Preise NIE überschreiben.
+            # Der Sync darf "preis" nur setzen, wenn noch keiner da ist
+            # oder wenn der vorhandene Preis selbst vom Sync stammt.
+            if not hat_eigenen_preis(produkt):
+                produkt["preis"] = movement.get("preis")
+                produkt["preis_quelle"] = "api"
+            produkt["handling_zeit"] = movement.get("handling_zeit")
+            produkt["ausverkauft"] = movement.get("ausverkauft", False)
+
+        # sofort speichern → kein RAM Wachstum
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(produkte, f, ensure_ascii=False, indent=2)
+
+    next_index = index + 1
+
+    return redirect(url_for("sync_buchbutler", index=next_index))
+
+# suche icon
+@app.route("/suche", methods=["GET", "POST"])
+def suche():
+    query = ""
+    ergebnisse = []
+
+    if request.method == "POST":
+        query = request.form.get("q", "").lower()
+
+        for produkt in produkte:
+            name = produkt.get("name", "").lower()
+
+            if query in name:
+                ergebnisse.append(produkt)
+
+    return render_template(
+        "suche.html",
+        query=query,
+        ergebnisse=ergebnisse
+    )
+
+
+@app.route("/<kategorietype>/<name>")
+def kategorie(kategorietype, name):
+    name = name.replace('-', ' ')
+    ergebnisse = []
+    for produkt in produkte:
+        kategorien = produkt.get("kategorie", [])
+        kategorien_lower = [k.lower() for k in kategorien]
+        if name.lower() in kategorien_lower:
+            ergebnisse.append(produkt)
+    return render_template("kategorie.html", produkte=ergebnisse, titel=name)
+
+
+
+# Produkt Detail
+
+def slugify(text):
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9äöüßé ]', '', text)
+    return text.replace(" ", "-")
+
+for p in produkte:
+    if not p.get("slug"):
+        p["slug"] = slugify(p.get("name", "produkt"))
+
+with open("produkte.json", "w", encoding="utf-8") as f:
+    json.dump(produkte, f, ensure_ascii=False, indent=2)
+
+app.template_filter('slugify')(slugify)
+
+@app.route('/produkt/<int:produkt_id>/<slug>')
+def produkt_detail(produkt_id, slug):
+
+    lokale_daten = next(
+        (p.copy() for p in produkte if p["id"] == produkt_id),
+        None
+    )
+
+    if not lokale_daten:
+        abort(404)
+
+    # ✅ richtigen slug berechnen
+    richtiger_slug = lokale_daten.get("slug")
+
+    # 🔥 WICHTIG: redirect wenn falsch
+    if slug != richtiger_slug:
+        return redirect(url_for(
+            "produkt_detail",
+            produkt_id=produkt_id,
+            slug=richtiger_slug
+        ), code=301)
+
+    ean = lokale_daten.get("ean")
+    lokaler_preis = lokale_daten.get("preis")
+    hat_lokalen_preis = hat_eigenen_preis(lokale_daten)
+
+
+       # ── NEU: Offline-Produkt (kein EAN) ──────────────────────────
+    if not ean:
+        produkt = lokale_daten.copy()
+        produkt.setdefault("bestand", "n/a")
+        produkt["preis"] = to_float(lokaler_preis) if hat_lokalen_preis else 0.0
+        produkt.setdefault("handling_zeit", "n/a")
+        produkt.setdefault("erfuellungsrate", "n/a")
+        return render_template("produkt.html", produkt=produkt)
+    # ─────────────────────────────────────────────────────────────
+
+
+
+    produkt = cached_lade_produkt_von_api(ean)
+
+    if not produkt:
+        abort(404)
+
+    # lru_cache liefert immer dasselbe Dict → Kopie, damit der Cache sauber bleibt
+    produkt = dict(produkt)
+
+    movement = lade_bestand_von_api(ean)
+    if movement:
+        produkt.update(movement)
+
+    # Preis aus API (Movement bevorzugt) merken, bevor lokale Daten drübergelegt werden
+    api_preis = produkt.get("preis", 0)
+
+    produkt.update(lokale_daten)
+
+    # FIX: eigener Preis aus der JSON hat Vorrang, sonst BuchButler-Preis
+    if hat_lokalen_preis:
+        produkt["preis"] = to_float(lokaler_preis)
+    else:
+        produkt["preis"] = to_float(api_preis)
+
+
+    produkt.setdefault("bestand", "n/a")
+    produkt.setdefault("handling_zeit", "n/a")
+    produkt.setdefault("erfuellungsrate", "n/a")
+    produkt.setdefault("ausverkauft", False)
+
+    return render_template(
+        "produkt.html",
+        produkt=produkt
+    )
+
+# ============================
+# CART ROUTES
+# ============================
+
+def finde_produkt(produkt_id):
+    return next((p for p in produkte if p.get("id") == produkt_id), None)
+
+
+def hat_eigenen_preis(produkt):
+    """
+    True, wenn in produkte.json ein selbst gesetzter Preis steht.
+    Preise, die der Sync eingetragen hat (preis_quelle == "api"),
+    zählen NICHT als eigener Preis und werden live aus der API geholt.
+    """
+    preis = produkt.get("preis")
+    if preis in (None, ""):
+        return False
+    return produkt.get("preis_quelle") != "api"
+
+
+def server_preis(produkt, movement=None):
+    """
+    Der Preis kommt IMMER vom Server:
+    1. eigener Preis aus produkte.json (hat Vorrang)
+    2. sonst BuchButler-Preis (MOVEMENT API)
+    """
+    if hat_eigenen_preis(produkt):
+        return to_float(produkt.get("preis"))
+
+    if movement is None and produkt.get("ean"):
+        movement = lade_bestand_von_api(produkt["ean"])
+
+    if movement and to_float(movement.get("preis")) > 0:
+        return to_float(movement.get("preis"))
+
+    # Fallback, wenn die API nicht antwortet: zuletzt gesyncter Preis aus der JSON
+    return to_float(produkt.get("preis"))
+
+
+def finde_produkt_fuer_clientitem(item):
+    """
+    Dein Warenkorb im Browser kennt keine ID, nur title/ean/quantity.
+    Zuordnung deshalb: 1. über die EAN, 2. (Produkte ohne EAN) über den Namen.
+    """
+    ean = str(item.get("ean") or "").strip()
+    if ean:
+        return next(
+            (p for p in produkte if str(p.get("ean") or "").strip() == ean),
+            None
         )
 
-    @app.route("/second-chance")
-    @login_required
-    def second_chance():
-        rows = skipped_query(current_user).order_by(Swipe.created_at.desc()).limit(200).all()
-        items = []
-        for sw in rows:
-            km = distance_between(current_user, sw.book.owner)
-            items.append({"book": sw.book, "owner": sw.book.owner,
-                          "distance": geo.format_distance(km) if km is not None else ""})
-        return render_template("second_chance.html", items=items)
+    title = (item.get("title") or "").strip().lower()
+    if not title:
+        return None
 
-    @app.route("/second-chance/<int:book_id>/dismiss", methods=["POST"])
-    @login_required
-    def dismiss_book(book_id):
-        sw = Swipe.query.filter_by(user_id=current_user.id, book_id=book_id, liked=False).first()
-        if sw is None:
-            abort(404)
-        sw.dismissed = True
-        db.session.commit()
-        flash("Das Buch wird dir nicht mehr angezeigt.", "success")
-        return redirect(url_for("second_chance"))
+    # Ohne EAN nur Offline-Produkte (ebenfalls ohne EAN) berücksichtigen
+    return next(
+        (p for p in produkte
+         if not str(p.get("ean") or "").strip()
+         and (p.get("name") or "").strip().lower() == title),
+        None
+    )
 
-    @app.route("/second-chance/reset", methods=["POST"])
-    @login_required
-    def reset_skipped():
-        ids = [sw.book_id for sw in skipped_query(current_user).all()]
-        if ids:
-            Swipe.query.filter(Swipe.user_id == current_user.id, Swipe.book_id.in_(ids),
-                               Swipe.liked.is_(False)).delete(synchronize_session=False)
-            db.session.commit()
-        flash(f"{len(ids)} Buch{'er' if len(ids) != 1 else ''} wieder in deinem Stapel." if ids
-              else "Es gibt nichts zurückzulegen.", "success")
-        return redirect(url_for("discover"))
 
-    @app.route("/location", methods=["POST"])
-    @login_required
-    def save_location():
-        country = request.form.get("country", current_user.country)
-        ok, error = apply_location(current_user, request.form.get("location", ""), country)
-        if not ok:
-            db.session.rollback()
-            flash(error, "error")
+def normalize_cart(client_cart):
+    """
+    Nimmt einen vom Client geschickten Warenkorb entgegen, übernimmt
+    nur ID + Menge und berechnet Titel/Preis/EAN serverseitig neu.
+    Damit kann niemand Preise im Browser manipulieren.
+    """
+    # Tolerant gegenüber dem Format: Liste ODER Objekt mit "items"/"cart"/...
+    if isinstance(client_cart, dict):
+        for key in ("items", "cart", "cart_items", "positions", "produkte"):
+            if isinstance(client_cart.get(key), list):
+                client_cart = client_cart[key]
+                break
         else:
-            if "radius" in request.form:
-                current_user.radius_km = parse_radius(request.form.get("radius"), current_user.radius_km)
-            db.session.commit()
-            flash("Standort gespeichert." if current_user.has_location else "Standort entfernt.", "success")
-        return redirect(safe_next(request.form.get("next")) or url_for("discover"))
+            # Objekt der Form {"501": {...}, "225": {...}} → ID aus dem Schlüssel
+            if client_cart and all(isinstance(v, dict) for v in client_cart.values()):
+                client_cart = [
+                    {**v, "id": v.get("id", k)} for k, v in client_cart.items()
+                ]
 
-    @app.route("/swipe/<int:book_id>/<decision>", methods=["POST"])
-    @login_required
-    def swipe(book_id, decision):
-        if decision not in ("like", "skip"):
-            abort(400)
-        book = db.session.get(Book, book_id)
-        if (book is None or book.owner_id == current_user.id or book.deleted_at or not book.is_active
-                or book.owner.is_banned or book.owner_id in notifications.blocked_ids(current_user.id)):
-            abort(404)
-        if rate_limited(f"swipe:{current_user.id}", 120, 60):
-            abort(429)
+    if not isinstance(client_cart, list):
+        return []
 
-        existing = Swipe.query.filter_by(user_id=current_user.id, book_id=book_id).first()
-        if existing is None:
-            existing = Swipe(user_id=current_user.id, book_id=book_id)
-            db.session.add(existing)
-        existing.liked = decision == "like"
-        existing.dismissed = False
-        existing.created_at = datetime.utcnow()
-        db.session.commit()
+    # Gutschein-Position stammt aus der Session (wurde serverseitig angelegt)
+    gutschein_item = next(
+        (i for i in session.get("cart", []) if i.get("is_gutschein")),
+        None
+    )
 
-        match = try_create_match(current_user, book) if existing.liked else None
+    result = []
 
-        if wants_json():
-            payload = {"matched": match is not None}
-            if match:
-                mine, theirs = match.my_book(current_user.id), match.their_book(current_user.id)
-                payload.update({
-                    "match_id": match.id,
-                    "other_name": match.other_user(current_user.id).name,
-                    "my_book": {"title": mine.title, "img": book_img_url(mine)},
-                    "their_book": {"title": theirs.title, "img": book_img_url(theirs)},
-                    "chat_url": url_for("chat", match_id=match.id),
-                })
-            return jsonify(payload)
+    for item in client_cart:
+        if not isinstance(item, dict):
+            continue
 
-        if match:
-            flash("Es ist ein Match! Ihr könnt jetzt chatten.", "success")
-            return redirect(url_for("chat", match_id=match.id))
-        return redirect(safe_next(request.form.get("next")) or url_for("discover"))
-
-    # ------------------------------------------------------------ Meine Buecher
-
-    @app.route("/books")
-    @login_required
-    def my_books():
-        books = (Book.query.filter_by(owner_id=current_user.id, deleted_at=None)
-                 .order_by(Book.created_at.desc()).all())
-        likes = dict(
-            db.session.query(Swipe.book_id, func.count(Swipe.id))
-            .filter(Swipe.book_id.in_([b.id for b in books] or [0]), Swipe.liked.is_(True))
-            .group_by(Swipe.book_id).all()
+        raw_id = next(
+            (item[k] for k in ("id", "produkt_id", "product_id", "productId", "pid")
+             if item.get(k) not in (None, "")),
+            None
         )
-        return render_template("my_books.html", books=books, likes=likes)
-
-    def read_book_form():
-        title = request.form.get("title", "").strip()[:255]
-        author = request.form.get("author", "").strip()[:255]
-        condition = request.form.get("condition", "Gut")
-        description = request.form.get("description", "").strip()[:1000]
-        if not title or not author:
-            return None, "Titel und Autor sind Pflichtfelder."
-        if condition not in CONDITIONS:
-            condition = "Gut"
-        return {"title": title, "author": author, "condition": condition,
-                "description": description or None}, None
-
-    @app.route("/books/add", methods=["POST"])
-    @login_required
-    def add_book():
-        data, error = read_book_form()
-        if error:
-            flash(error, "error")
-            return redirect(url_for("my_books"))
+        raw_menge = next(
+            (item[k] for k in ("quantity", "menge", "qty", "anzahl")
+             if item.get(k) not in (None, "")),
+            1
+        )
 
         try:
-            images = read_new_images()
-            if len(images) > MAX_IMAGES:
-                raise ImageError(f"Du kannst höchstens {MAX_IMAGES} Fotos pro Buch hochladen.")
-        except ImageError as exc:
-            flash(str(exc), "error")
-            return redirect(url_for("my_books"))
+            menge = int(raw_menge)
+        except (TypeError, ValueError):
+            continue
 
-        book = Book(owner_id=current_user.id, **data)
-        db.session.add(book)
-        db.session.flush()
-        for img in images:
-            db.session.add(img)
-        db.session.flush()
-        apply_gallery(book, [img.id for img in images])
-        db.session.commit()
-        flash(f"„{book.title}“ wurde hochgeladen.", "success")
-        return redirect(url_for("my_books"))
+        if menge < 1:
+            continue
+        menge = min(menge, 99)
 
-    def own_book_or_404(book_id):
-        book = db.session.get(Book, book_id)
-        if book is None or book.owner_id != current_user.id or book.deleted_at:
-            abort(404)
-        return book
+        try:
+            item_id = int(raw_id) if raw_id is not None else None
+        except (TypeError, ValueError):
+            item_id = None
 
-    @app.route("/books/<int:book_id>/edit", methods=["GET", "POST"])
-    @login_required
-    def edit_book(book_id):
-        book = own_book_or_404(book_id)
-        if request.method == "POST":
-            data, error = read_book_form()
-            if error:
-                flash(error, "error")
-                return render_template("edit_book.html", book=book), 400
-            current = gallery_ids(book)
-            remove = {int(x) for x in request.form.getlist("remove_image_ids") if x.isdigit()} & set(current)
-            remaining = [i for i in current if i not in remove]
-            cover = request.form.get("cover_image_id", type=int)
-            if cover in remaining:
-                remaining.remove(cover)
-                remaining.insert(0, cover)
-            try:
-                new_images = read_new_images()
-                if len(remaining) + len(new_images) > MAX_IMAGES:
-                    raise ImageError(f"Du kannst höchstens {MAX_IMAGES} Fotos pro Buch haben "
-                                     f"(aktuell {len(remaining)}).")
-            except ImageError as exc:
-                flash(str(exc), "error")
-                return render_template("edit_book.html", book=book, photos=gallery(book)), 400
-
-            for key, value in data.items():
-                setattr(book, key, value)
-            for img in new_images:
-                db.session.add(img)
-            db.session.flush()
-            apply_gallery(book, remaining + [img.id for img in new_images])
-            if remove:
-                BookImage.query.filter(BookImage.id.in_(remove)).delete(synchronize_session=False)
-                if not remaining and not new_images:
-                    book.image_id = book.image_filename = None
-            db.session.commit()
-            flash("Änderungen gespeichert.", "success")
-            return redirect(url_for("my_books"))
-        return render_template("edit_book.html", book=book, photos=gallery(book))
-
-    @app.route("/books/<int:book_id>/toggle", methods=["POST"])
-    @login_required
-    def toggle_book(book_id):
-        book = own_book_or_404(book_id)
-        if book.swapped_at:                       # "Wieder anbieten"
-            book.swapped_at, book.is_active = None, True
-            flash(f"„{book.title}“ wird wieder angeboten.", "success")
-        else:
-            book.is_active = not book.is_active
-            flash(f"„{book.title}“ " + ("wird wieder angeboten." if book.is_active else "ist pausiert und wird nicht mehr angezeigt."), "success")
-        db.session.commit()
-        return redirect(url_for("my_books"))
-
-    @app.route("/books/<int:book_id>/delete", methods=["POST"])
-    @login_required
-    def delete_book(book_id):
-        book = own_book_or_404(book_id)
-        Swipe.query.filter_by(book_id=book.id).delete(synchronize_session=False)
-        in_match = Match.query.filter(or_(Match.book1_id == book.id, Match.book2_id == book.id)).first()
-        if in_match:
-            # Teil eines Matches: nur ausblenden, damit Chats und Tauschhistorie intakt bleiben
-            book.deleted_at, book.is_active = datetime.utcnow(), False
-        else:
-            image_id = book.image_id
-            book_pk = book.id
-            db.session.delete(book)
-            db.session.flush()
-            delete_book_images([book_pk], [image_id] if image_id else [])
-        db.session.commit()
-        flash("Buch entfernt.", "success")
-        return redirect(url_for("my_books"))
-
-    @app.route("/media/image/<int:image_id>")
-    @login_required
-    def image_file(image_id):
-        image = db.session.get(BookImage, image_id)
-        if image is None:
-            abort(404)
-        return Response(image.data, mimetype=image.mimetype,
-                        headers={"Cache-Control": "private, max-age=604800, immutable"})
-
-    @app.route("/media/book/<int:book_id>")
-    @login_required
-    def book_image(book_id):
-        book = db.session.get(Book, book_id)
-        if book is None or not book.image_id:
-            abort(404)
-        image = db.session.get(BookImage, book.image_id)
-        if image is None:
-            abort(404)
-        return Response(image.data, mimetype=image.mimetype,
-                        headers={"Cache-Control": "private, max-age=604800, immutable"})
-
-    # ------------------------------------------------------------ Matches & Chat
-
-    @app.route("/matches")
-    @login_required
-    def matches():
-        uid = current_user.id
-        items = (notifications.visible_matches_query(uid)
-                 .options(joinedload(Match.book1), joinedload(Match.book2),
-                          joinedload(Match.user1), joinedload(Match.user2)).all())
-        ids = [m.id for m in items] or [0]
-
-        unread = dict(
-            db.session.query(Message.match_id, func.count(Message.id))
-            .filter(Message.match_id.in_(ids), Message.sender_id != uid, Message.read_at.is_(None))
-            .group_by(Message.match_id).all()
+        ist_gutschein = (
+            item.get("is_gutschein")
+            or item_id == GUTSCHEIN_ITEM_ID
+            or (item.get("title") or "").strip().lower() == "geschenkgutschein"
         )
-        last_ids = [row[0] for row in db.session.query(func.max(Message.id))
-                    .filter(Message.match_id.in_(ids)).group_by(Message.match_id).all()]
-        last = {msg.match_id: msg for msg in Message.query.filter(Message.id.in_(last_ids or [0])).all()}
+        if ist_gutschein:
+            # Gutschein-Position kommt immer aus der Session (Server hat sie angelegt)
+            if gutschein_item:
+                result.append(dict(gutschein_item))
+            continue
 
-        rows = []
-        for m in items:
-            other = m.other_user(uid)
-            km = distance_between(current_user, other)
-            msg = last.get(m.id)
-            rows.append({
-                "match": m, "other": other, "mine": m.my_book(uid), "theirs": m.their_book(uid),
-                "unread": unread.get(m.id, 0), "is_new": not m.seen_by(uid),
-                "last": msg, "when": (msg.created_at if msg else m.created_at),
-                "distance": geo.format_distance(km) if km is not None else "",
-            })
-        rows.sort(key=lambda r: r["when"], reverse=True)
-        return render_template(
-            "matches.html",
-            active=[r for r in rows if r["match"].status == "active"],
-            completed=[r for r in rows if r["match"].status != "active"],
-        )
+        produkt = finde_produkt(item_id) if item_id is not None else None
+        if not produkt:
+            produkt = finde_produkt_fuer_clientitem(item)
+        if not produkt:
+            logger.warning("normalize_cart: kein Produkt gefunden für %s", item)
+            continue
 
-    def get_match_or_404(match_id):
-        m = db.session.get(Match, match_id)
-        if m is None or current_user.id not in (m.user1_id, m.user2_id):
-            abort(404)
-        if m.other_user(current_user.id).id in notifications.blocked_ids(current_user.id):
-            abort(404)
-        return m
+        preis = server_preis(produkt)
+        if preis <= 0:
+            logger.error("normalize_cart: Produkt %s hat keinen gültigen Preis, wird verworfen", produkt.get("id"))
+            continue
 
-    def mark_read(m):
-        now = datetime.utcnow()
-        Message.query.filter(
-            Message.match_id == m.id, Message.sender_id != current_user.id, Message.read_at.is_(None)
-        ).update({"read_at": now}, synchronize_session=False)
-        m.mark_seen(current_user.id)
-        db.session.commit()
+        result.append({
+            "id": produkt["id"],
+            "title": (produkt.get("name") or "").strip(),
+            "price": preis,
+            "quantity": menge,
+            "ean": produkt.get("ean", "")
+        })
 
-    @app.route("/chat/<int:match_id>", methods=["GET", "POST"])
-    @login_required
-    def chat(match_id):
-        m = get_match_or_404(match_id)
-        uid = current_user.id
+    return result
 
-        if request.method == "POST":
-            content = (request.form.get("content") or "").strip()
-            if not content or len(content) > 2000:
-                if wants_json():
-                    return jsonify(error="Die Nachricht ist leer oder zu lang (max. 2000 Zeichen)."), 400
-                return redirect(url_for("chat", match_id=m.id))
-            if rate_limited(f"msg:{uid}", 40, 60):
-                abort(429)
-            msg = Message(match_id=m.id, sender_id=uid, content=content)
-            m.mark_seen(uid)
-            db.session.add(msg)
+
+@app.route("/add-to-cart", methods=["POST"])
+def add_to_cart():
+    produkt_id = int(request.form.get("produkt_id"))
+    produkt = finde_produkt(produkt_id)
+
+    if not produkt:
+        abort(404)
+
+    # ✅ WICHTIG: Kopie machen (kein globales Update!)
+    produkt = produkt.copy()
+
+    movement = None
+
+    # ── nur API-Aufruf wenn EAN vorhanden ────────────────────────
+    if produkt.get("ean"):
+        movement = lade_bestand_von_api(produkt["ean"])
+        if movement:
+            # Bestand / Ausverkauft-Status aus API übernehmen,
+            # aber NICHT den Preis (siehe server_preis unten)
+            produkt["ausverkauft"] = movement.get("ausverkauft", produkt.get("ausverkauft", False))
+            produkt["bestand"] = movement.get("bestand")
+            produkt["handling_zeit"] = movement.get("handling_zeit")
+    # ─────────────────────────────────────────────────────────────
+
+
+    if produkt.get("ausverkauft"):
+        flash("Dieses Produkt ist leider ausverkauft.", "error")
+        return redirect(request.referrer or url_for("index"))
+
+
+    preis_neu = server_preis(produkt, movement)
+    if preis_neu <= 0:
+        logger.error("add-to-cart: Produkt %s hat keinen gültigen Preis", produkt_id)
+        flash("Für dieses Produkt ist gerade kein Preis verfügbar.", "error")
+        return redirect(request.referrer or url_for("index"))
+
+    cart = get_cart()
+
+    found = False
+    for item in cart:
+        if item["id"] == produkt_id:
+            item["quantity"] += 1
+            found = True
+            break
+
+
+
+    if not found:
+        cart.append({
+            "id": produkt["id"],
+            "title": (produkt.get("name") or "").strip(),
+            # FIX: eigener Preis aus JSON hat Vorrang, als float
+            "price": preis_neu,
+            "quantity": 1,
+            "ean": produkt.get("ean", "")  # ← sicher
+        })
+
+
+    save_cart(cart)
+    return redirect(url_for("cart"))
+
+
+
+@app.route("/cart")
+def cart():
+    cart_items = get_cart()
+    total = calculate_total(cart_items)
+    return render_template("cart.html", cart_items=cart_items, total=total)
+
+@app.route("/remove-from-cart/<int:produkt_id>")
+def remove_from_cart(produkt_id):
+    cart = get_cart()
+    cart = [item for item in cart if item["id"] != produkt_id]
+    save_cart(cart)
+    return redirect(url_for("cart"))
+
+
+@app.route("/sync-cart", methods=["POST"])
+@csrf.exempt
+def sync_cart():
+    data = request.get_json()
+
+    if not data:
+        return {"status": "error"}, 400
+
+    # FIX: Preise nie vom Client übernehmen, sondern serverseitig neu berechnen
+    neu = normalize_cart(data)
+
+    # SICHERUNG: Kann der Server nichts aus den Client-Daten übernehmen,
+    # darf der vorhandene (vom Server selbst angelegte) Warenkorb nicht
+    # geleert werden. Sonst scheitert PayPal mit "Warenkorb leer".
+    if not neu and get_cart():
+        logger.error("sync-cart: Client-Daten nicht lesbar, Session-Warenkorb bleibt. Client-Daten: %s", data)
+        return {"status": "ok", "cart": get_cart()}
+
+    if isinstance(data, list) and len(neu) != len(data):
+        logger.warning("sync-cart: %d von %d Positionen verworfen. Client-Daten: %s",
+                       len(data) - len(neu), len(data), data)
+    session["cart"] = neu
+    session.modified = True
+
+    return {"status": "ok", "cart": session["cart"]}
+
+# ============================
+# CHECKOUT
+# ============================
+
+@app.route("/checkout", methods=["GET", "POST"])
+def checkout():
+    cart_items = get_cart()
+    total = calculate_total(cart_items)
+
+    logger.info("Checkout gestartet")
+
+    if request.method == "POST":
+
+        email = request.form.get("email")
+
+        if not email or not cart_items:
+            flash("Bitte gültige Daten eingeben.", "error")
+            return redirect(url_for("checkout"))
+
+
+         # Kunde erfassen / Punkte vergeben
+        if "user_id" in session:
+            user = User.query.get(session["user_id"])
+            punkte = int(total)  # Beispiel: 1€ = 1 Punkt
+            user.punkte += punkte
+
+            # Gutschein vergeben bei 100 Punkten
+            if user.punkte >= 100:
+                code = str(uuid.uuid4())[:8]
+                gutschein = Gutschein(code=code, wert=10, user_id=user.id)
+                user.punkte -= 100
+                db.session.add(gutschein)
+                # FIX: send_email kennt kein "body", sondern "html"
+                send_email(
+                    subject="Dein Gutschein 🎁",
+                    recipient=user.email,
+                    html=f"<p>Dein Code: <strong>{code}</strong></p>"
+                )
             db.session.commit()
+
+        try:
+            session["checkout_email"] = request.form.get("email")
+            session["checkout_vorname"] = request.form.get("vorname")
+            session["checkout_nachname"] = request.form.get("nachname")
+            session["checkout_strasse"] = request.form.get("strasse")
+            session["checkout_hausnummer"] = request.form.get("hausnummer")
+            session["checkout_plz"] = request.form.get("plz")
+            session["checkout_stadt"] = request.form.get("stadt")
+            session["checkout_land"] = request.form.get("land")
+            session["checkout_telefon"] = request.form.get("telefon")
+            session["checkout_adresszusatz"] = request.form.get("adresszusatz")
+
+            logger.info("Kundendaten für PayPal gespeichert")
+
+        except Exception as e:
+            logger.error(f"Checkout Fehler: {e}")
+            flash("Fehler beim Checkout.", "error")
+            return redirect(url_for("checkout"))
+
+    return render_template(
+        "checkout.html",
+        cart_items=cart_items,
+        total=total
+    )
+
+
+@app.route("/checkouttest", methods=["GET", "POST"])
+def checkouttest():
+    cart_items = get_cart()
+    total = calculate_total(cart_items)
+
+    if request.method == "POST":
+        email = request.form.get("email")
+        zahlart = request.form.get("zahlart", "paypal")  # ← NEU
+
+        if not email or not cart_items:
+            flash("Bitte gültige Daten eingeben.", "error")
+            return redirect(url_for("checkout"))
+
+        # Session speichern
+        session["checkout_email"] = email
+        session["checkout_vorname"] = request.form.get("vorname")
+        session["checkout_nachname"] = request.form.get("nachname")
+        session["checkout_strasse"] = request.form.get("strasse")
+        session["checkout_hausnummer"] = request.form.get("hausnummer")
+        session["checkout_plz"] = request.form.get("plz")
+        session["checkout_stadt"] = request.form.get("stadt")
+        session["checkout_land"] = request.form.get("land")
+        session["checkout_telefon"] = request.form.get("telefon")
+        session["checkout_zahlart"] = zahlart  # ← NEU
+
+        # ── RECHNUNG: sofort Bestellung anlegen ──────────────────
+        if zahlart == "rechnung":
+            bestellung = Bestellung(
+                email=email,
+                vorname=session.get("checkout_vorname"),
+                nachname=session.get("checkout_nachname"),
+                strasse=session.get("checkout_strasse"),
+                hausnummer=session.get("checkout_hausnummer"),
+                plz=session.get("checkout_plz"),
+                stadt=session.get("checkout_stadt"),
+                land=session.get("checkout_land"),
+                telefon=session.get("checkout_telefon"),
+                paymentmethod="rechnung"
+            )
+            db.session.add(bestellung)
+            db.session.flush()
+
+            for item in cart_items:
+                db.session.add(BestellPosition(
+                    bestellung_id=bestellung.id,
+                    bezeichnung=item["title"],
+                    menge=item["quantity"],
+                    preis=item["price"]
+                ))
+
+            # Gutschein anwenden
+            gutschein_session = session.get("gutschein")
+            if gutschein_session:
+                gutschein = Gutschein.query.filter_by(
+                    code=gutschein_session["code"]
+                ).first()
+                if gutschein and gutschein.ist_gueltig():
+                    gutschein.restwert -= float(gutschein_session["betrag"])
+                    if gutschein.restwert <= 0:
+                        gutschein.restwert = 0
+                        gutschein.aktiv = False
+
+            db.session.commit()
+
+
+
+            # An Buchbutler senden (mol_zahlart_id=2 = Rechnung)
+            buch_items = [i for i in cart_items if not i.get("is_gutschein") and i.get("ean")]
+            if buch_items:
+                try:
+                    sende_bestellung_an_buchbutler(bestellung, buch_items)
+                except Exception:
+                    logger.exception("BuchButler Rechnung fehlgeschlagen")
+
+            # Bestätigungsmail
             try:
-                notifications.email_new_message(
-                    m, msg, m.other_user(uid), base_url(), os.environ.get("SITE_NAME", "IBK Büchertausch"))
+                send_email(
+                    subject="Deine Bestellung bei ibk-bilderbuch.de",
+                    recipient=email,
+                    html=f"<p>Vielen Dank für deine Bestellung #{bestellung.id}!<br>Zahlungsart: Rechnung</p>"
+                )
             except Exception:
-                log.exception("Nachrichten-Mail fehlgeschlagen")
-            if wants_json():
-                return jsonify(ok=True, message=serialize_message(msg, uid))
-            return redirect(url_for("chat", match_id=m.id))
+                logger.exception("Bestätigungsmail fehlgeschlagen")
 
-        mark_read(m)
-        other = m.other_user(uid)
-        km = distance_between(current_user, other)
-        messages = [serialize_message(x, uid) for x in m.messages]
-        return render_template(
-            "chat.html", match=m, other=other, mine=m.my_book(uid), theirs=m.their_book(uid),
-            messages=messages, distance=geo.format_distance(km) if km is not None else "",
-            report_reasons=REPORT_REASONS,
+            session.pop("cart", None)
+            session.pop("gutschein", None)
+
+            return redirect(url_for("bestelldanke"))
+
+        # ── PAYPAL: nur Session speichern, JS übernimmt ──────────
+        # render_template unten zeigt PayPal-Button
+
+    return render_template(
+        "checkouttest.html",
+        cart_items=cart_items,
+        total=total
+    )
+
+
+@app.route("/free-checkout", methods=["POST"])
+@csrf.exempt
+def free_checkout():
+    cart_items = get_cart()
+
+    if not cart_items:
+        return jsonify({"status": "error", "message": "Warenkorb leer"}), 400
+
+    # Sicherheit: nur wenn der Gutschein den Warenkorb wirklich komplett deckt
+    if calculate_total(cart_items) > 0:
+        return jsonify({"status": "error", "message": "Betrag nicht vollständig gedeckt"}), 400
+
+    bestellung = Bestellung(
+        email=session.get("checkout_email"),
+        vorname=session.get("checkout_vorname"),
+        nachname=session.get("checkout_nachname"),
+        strasse=session.get("checkout_strasse"),
+        hausnummer=session.get("checkout_hausnummer"),
+        plz=session.get("checkout_plz"),
+        stadt=session.get("checkout_stadt"),
+        land=session.get("checkout_land"),
+        telefon=session.get("checkout_telefon"),
+        paymentmethod="gutschein"
+    )
+    db.session.add(bestellung)
+    db.session.flush()
+
+    # Gutschein abbuchen
+    gutschein_session = session.get("gutschein")
+    if gutschein_session:
+        gutschein = Gutschein.query.filter_by(
+            code=gutschein_session["code"]
+        ).first()
+        if gutschein and gutschein.ist_gueltig():
+            gutschein.restwert -= float(gutschein_session["betrag"])
+            if gutschein.restwert <= 0:
+                gutschein.restwert = 0
+                gutschein.aktiv = False
+
+    # Positionen speichern
+    for item in cart_items:
+        db.session.add(BestellPosition(
+            bestellung_id=bestellung.id,
+            bezeichnung=item["title"],
+            menge=item["quantity"],
+            preis=item["price"]
+        ))
+
+    db.session.commit()
+
+    # Bücher an BuchButler
+    buch_items = [
+        item for item in cart_items
+        if not item.get("is_gutschein") and item.get("ean")
+    ]
+    if buch_items:
+        try:
+            sende_bestellung_an_buchbutler(bestellung, buch_items)
+        except Exception:
+            logger.exception("BuchButler free-checkout fehlgeschlagen")
+
+    session.pop("cart", None)
+    session.pop("gutschein", None)
+
+    return jsonify({"status": "success"})
+# =====================================================
+# HILFSFUNKTIONEN CART
+# =====================================================
+
+def get_cart():
+    return session.get("cart", [])
+
+def save_cart(cart):
+    session["cart"] = cart
+    session.modified = True
+
+
+
+
+def check_auth():
+    if not BUCHBUTLER_USER or not BUCHBUTLER_PASSWORD:
+        logger.error("Buchbutler Zugangsdaten fehlen")
+        return False
+    return True
+
+
+def to_float(value):
+    """Konvertiert API Preis sicher"""
+    if not value:
+        return 0.0
+    try:
+        return float(str(value).replace(",", "."))
+    except ValueError:
+        return 0.0
+
+
+def to_int(value):
+    """Konvertiert Zahlen sicher"""
+    if not value:
+        return 0
+    try:
+        return int(value)
+    except ValueError:
+        return 0
+
+
+def attr(attrs, key):
+    """Greift sicher auf Artikelattribute zu"""
+    return (attrs.get(key) or {}).get("Wert", "")
+
+
+def ist_ausverkauft(handling_zeit, schwelle=998):
+    """BuchButler liefert ab ~998 Werktage als Signal für 'nicht lieferbar'"""
+    try:
+        return int(handling_zeit) >= schwelle
+    except (TypeError, ValueError):
+        return False
+
+def buchbutler_request(endpoint, ean):
+    """Allgemeine Request Funktion"""
+    url = f"{BASE_URL}/{endpoint}/"
+
+    params = {
+        "username": BUCHBUTLER_USER,
+        "passwort": BUCHBUTLER_PASSWORD,
+        "ean": ean
+    }
+
+    response = requests.get(url, params=params, timeout=10)
+    response.raise_for_status()
+
+    data = response.json()
+
+    if not data or "response" not in data:
+        return None
+
+    return data["response"]
+
+
+
+# =====================================================
+# WORKSHOP
+# =====================================================
+
+
+
+
+@app.route("/workshop/<workshop_ref>")
+def workshop_detail(workshop_ref):
+
+    # Falls jemand noch eine alte Zahlen-URL aufruft (z.B. /workshop/1),
+    # automatisch auf die neue, lesbare Slug-URL weiterleiten
+    if workshop_ref.isdigit():
+        workshop = Workshop.query.get_or_404(int(workshop_ref))
+        return redirect(url_for("workshop_detail", workshop_ref=workshop.slug), code=301)
+
+    workshop = Workshop.query.filter_by(slug=workshop_ref).first_or_404()
+    slots = [s for s in workshop.slots if s.ist_buchbar()]
+    return render_template("workshop.html", workshop=workshop, slots=slots)
+
+
+# Workshop buchen — PayPal Order erstellen
+@app.route("/workshop/<int:slot_id>/create-order", methods=["POST"])
+@csrf.exempt
+def workshop_create_order(slot_id):
+    slot = WorkshopSlot.query.get_or_404(slot_id)
+
+    if not slot.ist_buchbar():
+        return jsonify({"error": "Slot nicht mehr buchbar"}), 400
+
+    access_token = paypal_access_token()
+
+    response = requests.post(
+        f"{PAYPAL_BASE}/v2/checkout/orders",
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {access_token}",
+        },
+        json={
+            "intent": "CAPTURE",
+            "purchase_units": [{
+                "amount": {
+                    "currency_code": "EUR",
+                    "value": f"{slot.workshop.preis:.2f}"
+                }
+            }]
+        }
+    )
+
+    order_data = response.json()
+
+    if "id" not in order_data:
+        return jsonify({"error": "PayPal Fehler", "details": order_data}), 400
+
+    # Slot-ID in Session merken
+    session["workshop_slot_id"] = slot_id
+    session["workshop_name"] = request.json.get("name")
+    session["workshop_email"] = request.json.get("email")
+
+    return jsonify({"id": order_data["id"]})
+
+
+# Workshop buchen — PayPal Capture
+@app.route("/workshop/capture/<order_id>", methods=["POST"])
+@csrf.exempt
+def workshop_capture(order_id):
+    try:
+        access_token = paypal_access_token()
+
+        response = requests.post(
+            f"{PAYPAL_BASE}/v2/checkout/orders/{order_id}/capture",
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {access_token}",
+            }
         )
 
-    @app.route("/chat/<int:match_id>/messages")
-    @login_required
-    def chat_messages(match_id):
-        m = get_match_or_404(match_id)
-        uid = current_user.id
-        after = request.args.get("after", type=int, default=0)
-        if request.args.get("mark") == "1":  # nur, wenn der Tab wirklich sichtbar ist
-            mark_read(m)
-        new = Message.query.filter(Message.match_id == m.id, Message.id > after).order_by(Message.id).all()
-        my_read = db.session.query(func.max(Message.id)).filter(
-            Message.match_id == m.id, Message.sender_id == uid, Message.read_at.isnot(None)).scalar() or 0
-        return jsonify(messages=[serialize_message(x, uid) for x in new],
-                       my_read_up_to=my_read, status=m.status)
+        data = response.json()
 
-    @app.route("/chat/<int:match_id>/complete", methods=["POST"])
-    @login_required
-    def complete_match(match_id):
-        m = get_match_or_404(match_id)
-        now = datetime.utcnow()
-        m.status, m.completed_at = "completed", now
-        for b in (m.book1, m.book2):
-            b.is_active, b.swapped_at = False, now
-        db.session.commit()
-        flash("Super, der Tausch ist abgeschlossen! Beide Bücher werden nicht mehr angeboten.", "success")
-        return redirect(url_for("chat", match_id=m.id))
+        if data.get("status") != "COMPLETED":
+            return jsonify({"status": "error", "message": "Zahlung nicht abgeschlossen"}), 400
 
-    @app.route("/chat/<int:match_id>/reopen", methods=["POST"])
-    @login_required
-    def reopen_match(match_id):
-        m = get_match_or_404(match_id)
-        m.status, m.completed_at = "active", None
-        for b in (m.book1, m.book2):
-            if b.swapped_at and not b.deleted_at:
-                b.is_active, b.swapped_at = True, None
-        db.session.commit()
-        flash("Der Tausch ist wieder offen.", "success")
-        return redirect(url_for("chat", match_id=m.id))
+        slot_id = session.get("workshop_slot_id")
+        name = session.get("workshop_name")
+        email = session.get("workshop_email")
 
-    @app.route("/chat/<int:match_id>/block", methods=["POST"])
-    @login_required
-    def block_user(match_id):
-        m = get_match_or_404(match_id)
-        other = m.other_user(current_user.id)
-        if not Block.query.filter_by(blocker_id=current_user.id, blocked_id=other.id).first():
-            db.session.add(Block(blocker_id=current_user.id, blocked_id=other.id))
-            db.session.commit()
-        flash(f"{other.name} wurde blockiert. Ihr seht eure Bücher und Chats nicht mehr.", "success")
-        return redirect(url_for("matches"))
+        if not slot_id or not email:
+            return jsonify({"status": "error", "message": "Session abgelaufen"}), 400
 
-    @app.route("/chat/<int:match_id>/report", methods=["POST"])
-    @login_required
-    def report_user(match_id):
-        m = get_match_or_404(match_id)
-        other = m.other_user(current_user.id)
-        reason = request.form.get("reason", "sonstiges")
-        if reason not in REPORT_REASONS:
-            reason = "sonstiges"
-        if rate_limited(f"report:{current_user.id}", 5, 3600):
-            abort(429)
-        details = request.form.get("details", "").strip()[:1000]
-        db.session.add(Report(reporter_id=current_user.id, reported_id=other.id,
-                              reason=reason, details=details or None))
-        if request.form.get("also_block") == "yes" and not Block.query.filter_by(
-                blocker_id=current_user.id, blocked_id=other.id).first():
-            db.session.add(Block(blocker_id=current_user.id, blocked_id=other.id))
+        slot = WorkshopSlot.query.get_or_404(slot_id)
+
+        if not slot.ist_buchbar():
+            return jsonify({"status": "error", "message": "Slot nicht mehr verfügbar"}), 400
+
+        # Buchung speichern
+        buchung = WorkshopBuchung(
+            slot_id=slot_id,
+            name=name,
+            email=email,
+            paypal_order_id=order_id
+        )
+        db.session.add(buchung)
+
+        # Platz abziehen
+        slot.plaetze_frei -= 1
+
         db.session.commit()
 
-        admin_mail = os.environ.get("ADMIN_EMAIL")
-        if admin_mail:
-            mailer.send_mail(
-                admin_mail, f"Meldung: {other.name} (ID {other.id})",
-                f"{current_user.name} (ID {current_user.id}) meldet {other.name} (ID {other.id}), {other.email}\n"
-                f"Grund: {REPORT_REASONS[reason]}\n\n{details}\n")
-        flash("Danke für deine Meldung. Wir sehen sie uns an.", "success")
-        return redirect(url_for("matches") if request.form.get("also_block") == "yes"
-                        else url_for("chat", match_id=m.id))
+        # Bestätigungsmail
+        try:
+            send_email(
+                subject=f"Buchungsbestätigung: {slot.workshop.titel}",
+                recipient=email,
+                html=f"""
+                <p>Hallo {name},</p>
+                <p>deine Buchung für <strong>{slot.workshop.titel}</strong> am
+                <strong>{slot.datum.strftime('%d.%m.%Y %H:%M')} Uhr</strong>
+                ist bestätigt!</p>
+                <p>Wir freuen uns auf dich.</p>
+                """
+            )
+        except Exception:
+            logger.exception("Workshop Bestätigungsmail fehlgeschlagen")
 
-    # ------------------------------------------------------------ Live-Benachrichtigungen
+        # Session aufräumen
+        session.pop("workshop_slot_id", None)
+        session.pop("workshop_name", None)
+        session.pop("workshop_email", None)
 
-    @app.route("/api/notifications")
-    @login_required
-    def api_notifications():
-        uid = current_user.id
-        since_match = request.args.get("since_match", type=int, default=0)
-        since_message = request.args.get("since_message", type=int, default=0)
-        current_match = request.args.get("current_match", type=int)
-        wm = notifications.watermark(uid)  # zuerst: Ereignisse danach gehen nicht verloren
-        events = notifications.events_since(
-            uid, since_match, since_message, current_match, wm["match"], wm["message"])
-        return jsonify(counts=notifications.counts(uid), events=events, since=wm)
+        return jsonify({"status": "success"})
 
-    # ------------------------------------------------------------ Profil
+    except Exception as e:
+        logger.exception("Workshop Capture Fehler")
+        return jsonify({"status": "error", "message": str(e)}), 500
 
-    @app.route("/profile")
-    @login_required
-    def profile():
-        blocked = (User.query.join(Block, Block.blocked_id == User.id)
-                   .filter(Block.blocker_id == current_user.id).all())
-        return render_template(
-            "profile.html", mail_configured=mailer.is_configured(), blocked=blocked,
-            books_count=Book.query.filter_by(owner_id=current_user.id, deleted_at=None).count(),
+
+# ── ADMIN ──────────────────────────────────────────
+
+
+# Hilfsfunktion: eindeutigen Slug aus dem Titel erzeugen
+def erzeuge_eindeutigen_workshop_slug(titel):
+    basis_slug = slugify(titel)
+    slug = basis_slug
+    zaehler = 2
+
+    while Workshop.query.filter_by(slug=slug).first():
+        slug = f"{basis_slug}-{zaehler}"
+        zaehler += 1
+
+    return slug
+
+
+# Hilfsfunktion: darf die aktuelle Person diesen Workshop bearbeiten?
+# (Superadmin ODER hat sich mit dem Workshop-Passwort für genau diesen
+#  Workshop freigeschaltet)
+def workshop_zugriff_ok(workshop_id):
+    return session.get("admin") or session.get(f"ws_zugriff_{workshop_id}")
+
+
+@app.route("/admin/workshops")
+def admin_workshops():
+    if not session.get("admin"):
+        abort(403)
+    workshops = Workshop.query.order_by(Workshop.erstellt_am.desc()).all()
+    return render_template("admin_workshops.html", workshops=workshops)
+
+
+@app.route("/admin/workshop/neu", methods=["GET", "POST"])
+@csrf.exempt
+def admin_workshop_neu():
+    if not session.get("admin"):
+        abort(403)
+
+    if request.method == "POST":
+        titel = request.form.get("titel")
+        verwalter_passwort = request.form.get("verwalter_passwort")
+
+        workshop = Workshop(
+            titel=titel,
+            beschreibung=request.form.get("beschreibung"),
+            bild=request.form.get("bild"),
+            preis=float(request.form.get("preis", 0)),
+            aktiv=True,
+            slug=erzeuge_eindeutigen_workshop_slug(titel)
         )
 
-    @app.route("/unblock/<int:user_id>", methods=["POST"])
-    @login_required
-    def unblock_user(user_id):
-        Block.query.filter_by(blocker_id=current_user.id, blocked_id=user_id).delete()
+        if verwalter_passwort:
+            workshop.verwalter_passwort_hash = generate_password_hash(verwalter_passwort)
+
+        db.session.add(workshop)
         db.session.commit()
-        flash("Blockierung aufgehoben.", "success")
-        return redirect(url_for("profile"))
 
-    @app.route("/profile/update", methods=["POST"])
-    @login_required
-    def update_profile():
-        name = request.form.get("name", "").strip()[:100]
-        if not name:
-            flash("Der Name darf nicht leer sein.", "error")
-            return redirect(url_for("profile"))
-        current_user.name = name
-        current_user.email_notifications = request.form.get("email_notifications") == "yes"
-        db.session.commit()
-        flash("Profil gespeichert.", "success")
-        return redirect(url_for("profile"))
+        return redirect(f"/admin/workshop/{workshop.slug}")
 
-    @app.route("/profile/password", methods=["POST"])
-    @login_required
-    def change_password():
-        if rate_limited(f"pwchange:{current_user.id}", 10, 3600):
-            abort(429)
-        if not current_user.check_password(request.form.get("current_password", "")):
-            flash("Das aktuelle Passwort ist falsch.", "error")
-            return redirect(url_for("profile"))
-        new = request.form.get("new_password", "")
-        if len(new) < MIN_PASSWORD:
-            flash(f"Das neue Passwort muss mindestens {MIN_PASSWORD} Zeichen lang sein.", "error")
-            return redirect(url_for("profile"))
-        if new != request.form.get("new_password2", ""):
-            flash("Die beiden neuen Passwörter stimmen nicht überein.", "error")
-            return redirect(url_for("profile"))
-        current_user.set_password(new)
-        db.session.commit()
-        login_user(current_user, remember=True)  # dieses Geraet bleibt angemeldet, alle anderen nicht
-        flash("Passwort geändert. Auf allen anderen Geräten wurdest du abgemeldet.", "success")
-        return redirect(url_for("profile"))
-
-    @app.route("/profile/delete", methods=["POST"])
-    @login_required
-    def delete_account():
-        if rate_limited(f"delete:{current_user.id}", 5, 3600):
-            abort(429)
-        if request.form.get("confirm") != "yes" or not current_user.check_password(request.form.get("password", "")):
-            flash("Zum Löschen bitte das Passwort eingeben und die Bestätigung ankreuzen.", "error")
-            return redirect(url_for("profile") + "#konto-loeschen")
-        uid = current_user.id
-        logout_user()
-        purge_user(uid)
-        flash("Dein Konto und alle zugehörigen Daten wurden gelöscht.", "success")
-        return redirect(url_for("index"))
+    return render_template("admin_workshop_neu.html")
 
 
-app = create_app()
+@app.route("/admin/workshop/<slug>", methods=["GET", "POST"])
+@csrf.exempt
+def admin_workshop_detail(slug):
+    workshop = Workshop.query.filter_by(slug=slug).first_or_404()
+
+    ist_superadmin = session.get("admin")
+    schon_freigeschaltet = session.get(f"ws_zugriff_{workshop.id}")
+
+    if not ist_superadmin and not schon_freigeschaltet:
+
+        if request.method == "POST":
+            eingabe = request.form.get("verwalter_passwort", "")
+
+            if workshop.verwalter_passwort_hash and check_password_hash(
+                workshop.verwalter_passwort_hash, eingabe
+            ):
+                session[f"ws_zugriff_{workshop.id}"] = True
+            else:
+                flash("Falsches Passwort.", "error")
+                return render_template("workshop_passwort_abfrage.html", workshop=workshop)
+        else:
+            return render_template("workshop_passwort_abfrage.html", workshop=workshop)
+
+    return render_template("admin_workshop_detail.html", workshop=workshop)
+
+
+@app.route("/admin/workshop/<int:workshop_id>/slot/neu", methods=["POST"])
+@csrf.exempt
+def admin_slot_neu(workshop_id):
+    if not workshop_zugriff_ok(workshop_id):
+        abort(403)
+
+    workshop = Workshop.query.get_or_404(workshop_id)
+
+    from datetime import datetime
+    datum_str = request.form.get("datum")
+    plaetze = int(request.form.get("plaetze", 10))
+
+    datum = datetime.strptime(datum_str, "%Y-%m-%dT%H:%M")
+
+    slot = WorkshopSlot(
+        workshop_id=workshop_id,
+        datum=datum,
+        plaetze_gesamt=plaetze,
+        plaetze_frei=plaetze,
+        aktiv=True
+    )
+    db.session.add(slot)
+    db.session.commit()
+
+    return redirect(f"/admin/workshop/{workshop.slug}")
+
+
+@app.route("/admin/slot/<int:slot_id>/deaktivieren", methods=["POST"])
+@csrf.exempt
+def admin_slot_deaktivieren(slot_id):
+    slot = WorkshopSlot.query.get_or_404(slot_id)
+
+    if not workshop_zugriff_ok(slot.workshop_id):
+        abort(403)
+
+    slot.aktiv = False
+    db.session.commit()
+    return redirect(f"/admin/workshop/{slot.workshop.slug}")
+
+
+@app.route("/workshops")
+def workshops_overview():
+    workshops = Workshop.query.filter_by(aktiv=True).order_by(Workshop.erstellt_am.desc()).all()
+    return render_template("workshops.html", workshops=workshops)
+# ============================
+# KONTAKT
+# ============================
+
+@app.route("/kontakt")
+def kontakt():
+    return render_template("kontakt.html", user_email=session.get("user_email"))
+
+@app.route("/submit", methods=["POST"])
+@csrf.exempt
+def submit():
+    name = request.form.get("name")
+    email = request.form.get("email")
+    message = request.form.get("message")
+    if not name or not email or not message:
+        flash("Bitte fülle alle Felder aus!", "error")
+        return redirect("/kontakt")
+    try:
+        send_email(
+            subject=f"Neue Nachricht von {name}",
+            recipient=EMAIL_SENDER,
+            html=f"""
+                <p><b>Von:</b> {name} ({email})</p>
+                <p>{message}</p>
+            """,
+            plain_text=f"Von: {name} <{email}>\n\n{message}"
+        )
+        flash("Danke! Deine Nachricht wurde gesendet.", "success")
+    except Exception as e:
+        flash(f"Fehler beim Senden: {e}", "error")
+    return redirect("/kontaktdanke")
+
+
+# ============================
+# WIderruf
+# ============================
+
+@app.route("/widerruf")
+def widerruf():
+    return render_template("widerruf.html", user_email=session.get("user_email"))
+
+@app.route("/submitwiderruf", methods=["POST"])
+@csrf.exempt
+def submitwiderruf():
+    name = request.form.get("name")
+    email = request.form.get("email")
+    message = request.form.get("message")
+
+    anschrift = request.form.get("anschrift")
+    anzahl = request.form.get("anzahl")
+    warenbezeichnung = request.form.get("warenbezeichnung")
+    datum = request.form.get("datum")
+    if not name or not email or not anschrift or not anzahl or not warenbezeichnung or not datum:
+        flash("Bitte fülle alle Felder aus!", "error")
+        return redirect("/widerruf")
+    try:
+        send_email(
+            subject=f"Neue Nachricht von {name}",
+            recipient=EMAIL_SENDER,
+            html=f"""
+                <p><b>Von:</b> {name} ({email})</p>
+
+                <p><b>anschrift:</b> {anschrift}</p>
+                <p><b>anzahl:</b> {anzahl}</p>
+                <p><b>warenbezeichnung:</b> {warenbezeichnung}</p>
+                <p><b>datum:</b> {datum}</p>
+
+                <p>{message}</p>
+            """,
+            plain_text=f"Von: {name} <{email}>\n\n{message}"
+        )
+        flash("Danke! Deine Nachricht wurde gesendet.", "success")
+    except Exception as e:
+        flash(f"Fehler beim Senden: {e}", "error")
+    return redirect("/kontaktdanke")
+
+# ============================
+# NEWSLETTER
+# ============================
+
+
+def send_email(subject, recipient, html, plain_text=None):
+    if not SENDGRID_API_KEY or not EMAIL_SENDER:
+        logger.warning("SendGrid nicht konfiguriert")
+        return
+
+    message = Mail(
+        from_email=EMAIL_SENDER,
+        to_emails=recipient,
+        subject=subject,
+        html_content=html,
+        plain_text_content=plain_text
+    )
+
+    sg = SendGridAPIClient(SENDGRID_API_KEY)
+
+    try:
+        sg.send(message)
+    except Exception:
+        logger.exception("Email Versand fehlgeschlagen")
+
+
+@app.route("/admin/newsletter")
+def admin_newsletter():
+    if not session.get("admin"):
+        abort(403)
+
+    subscribers = NewsletterSubscriber.query.order_by(
+        NewsletterSubscriber.created_at.desc()
+    ).all()
+
+    return render_template(
+        "admin_newsletter.html",
+        subscribers=subscribers
+    )
+
+
+@app.route("/newsletter", methods=["POST"])
+def newsletter():
+    email = request.form.get("email")
+
+    # Honeypot-Check — Bots füllen dieses Feld aus, Menschen sehen es nicht
+    if request.form.get("website"):
+        logger.info(f"Newsletter Honeypot ausgelöst: IP={get_remote_address()}")
+        flash("Bitte bestätige deine Anmeldung per E-Mail.", "success")
+        return redirect("/newsletterbesteatigung")
+
+    if not email:
+        flash("Bitte gib eine gültige E-Mail-Adresse ein.", "error")
+        return redirect("/")
+
+    # Prüfen ob schon vorhanden
+    existing = NewsletterSubscriber.query.filter_by(email=email).first()
+    if existing:
+        flash("Du bist bereits angemeldet.", "info")
+        return redirect("/")
+
+    # Token erzeugen
+    token = str(uuid.uuid4())
+
+    subscriber = NewsletterSubscriber(
+        email=email,
+        token=token,
+        confirmed=False
+    )
+
+    db.session.add(subscriber)
+    db.session.commit()
+
+    # Bestätigungslink
+    confirm_url = url_for("confirm_newsletter", token=token, _external=True)
+    # HTML-Mail
+    html_body = f"""
+    <div style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
+        <h2>Newsletter bestätigen</h2>
+        <p>Danke für deine Anmeldung!</p>
+        <p>Klicke auf den Button, um deine E-Mail zu bestätigen:</p>
+
+        <a href="{confirm_url}"
+           style="
+               display: inline-block;
+               padding: 12px 20px;
+               background-color: #7393B3;
+               color: white;
+               text-decoration: none;
+               border-radius: 6px;
+               font-weight: bold;
+           ">
+           Jetzt bestätigen
+        </a>
+    </div>
+    """
+
+    send_email(
+        subject="Bitte bestätige deine Newsletter-Anmeldung",
+        recipient=email,
+        html=html_body
+    )
+
+    flash("Bitte bestätige deine Anmeldung per E-Mail.", "success")
+    return redirect("/newsletterbesteatigung")
+
+
+@app.route("/newsletter/confirm/<token>")
+def confirm_newsletter(token):
+    subscriber = NewsletterSubscriber.query.filter_by(token=token).first()
+
+    if not subscriber:
+        flash("Ungültiger Bestätigungslink.", "error")
+        return redirect("/")
+
+    subscriber.confirmed = True
+    subscriber.token = None
+    db.session.commit()
+
+    flash("Newsletter erfolgreich bestätigt 🎉", "success")
+    return redirect("/danke")
+
+
+@app.route("/admin/send-newsletter", methods=["POST"])
+def send_newsletter():
+    if not session.get("admin"):
+        abort(403)
+
+    subject = request.form.get("subject")
+    content = request.form.get("content")  # HTML erlaubt
+
+    subscribers = NewsletterSubscriber.query.filter_by(confirmed=True).all()
+
+    for sub in subscribers:
+        unsubscribe_url = url_for(
+            "unsubscribe_newsletter",
+            token=sub.token,
+            _external=True
+        )
+
+        html_body = f"""
+        <div style="font-family: Arial, sans-serif; padding: 20px;">
+            {content}
+
+            <p style="margin-top:20px; font-size:12px; color: gray;">
+                <a href="{unsubscribe_url}">Abmelden vom Newsletter</a>
+            </p>
+        </div>
+        """
+
+        send_email(
+            subject=subject,
+            recipient=sub.email,
+            html=html_body
+        )
+
+    return f"{len(subscribers)} Emails gesendet ✅"
+
+
+@app.route("/newsletter/unsubscribe/<token>")
+def unsubscribe_newsletter(token):
+    subscriber = NewsletterSubscriber.query.filter_by(token=token).first()
+
+    if not subscriber:
+        flash("Ungültiger Abmeldelink.", "error")
+        return redirect("/")
+
+    db.session.delete(subscriber)
+    db.session.commit()
+
+    flash("Du hast dich erfolgreich vom Newsletter abgemeldet.", "success")
+    return redirect("/")
+# ============================
+# RECHTLICHES
+# ============================
+
+@app.route("/agb")
+def agb():
+    return render_template("agb.html", user_email=session.get("user_email"))
+
+@app.route("/datenschutz")
+def datenschutz():
+    return render_template("datenschutz.html", user_email=session.get("user_email"))
+
+@app.route("/impressum")
+def impressum():
+    return render_template("impressum.html", user_email=session.get("user_email"))
+
+
+
+# ============================
+# DANKE SEITEN
+# ============================
+
+@app.route("/danke")
+def danke():
+    return render_template("danke.html", user_email=session.get("user_email"))
+
+@app.route("/kontaktdanke")
+def kontaktdanke():
+    return render_template("kontaktdanke.html", user_email=session.get("user_email"))
+
+@app.route("/bestelldanke")
+def bestelldanke():
+    return render_template("bestelldanke.html", user_email=session.get("user_email"))
+
+@app.route("/newsletterbesteatigung")
+def newsletterbesteatigung():
+    return render_template("newsletterbesteatigung.html", user_email=session.get("user_email"))
+
+@app.route("/newsletteranmeldung")
+def newsletteranmeldung():
+    return render_template("newsletteranmeldung.html", user_email=session.get("user_email"))
+
+@app.route("/illustratoren")
+def illustratoren():
+    return render_template("illustratoren.html", user_email=session.get("user_email"))
+
+@app.route("/ueberibk")
+def ueberibk():
+    return render_template("ueberibk.html", user_email=session.get("user_email"))
+
+
+@app.route("/uberibk")
+def uberibk():
+    return render_template("uberibk.html", user_email=session.get("user_email"))
+
+# ============================
+# INDEX HAUPTSEITE
+# ============================
+
+@app.route("/")
+def index():
+
+    kategorienamen = [
+      "Neuerscheinungen", "Bob der Künstler",  "Jacominus Gainsborough","Zahlen und Alphabet", "Wortlust und Zeichenfreude",  "Mut oder Angst?!",
+         "Schlaues Mitraten und Mitmachen", "Klassiker", "Gedanken zum Lebensende",  "Monstergeschichten",
+        "Wichtige Fragen",  "Kunst und Künstlerdasein",
+        "Kinder und Gefühle",  "Dazugehören und Anderssein","Familie und Freunde", "Weihnachten", "Reisen",  "Bücher über Illustratoren und Illustrationskunst", "Gebrauchte Bücher" ]
+
+    kategorie_beschreibungen = {
+        "Jacominus Gainsborough": {
+            "kurz": "Einer, der sich erinnert. Und manchmal auch vergisst.",
+            "lang": "Jacominus sitzt im Garten, denkt nach, lauscht dem Wind. Eine Erinnerung streift ihn – kaum greifbar, wie ein Traum, der sich beim Aufwachen auflöst. Und doch ist da etwas, das bleibt: ein Gefühl, warm und vertraut. Es sind die winzig kleinen Sekunden, die zählen. Die kaum sichtbaren Augenblicke zwischen zwei Herzschlägen, in denen sich alles entscheiden kann. Ein Blick. Ein Lächeln. Ein Wiedersehen. Und irgendwo ist immer jemand unterwegs. Über Wiesen, durch Straßen, vorbei an flüchtigen Begegnungen. Schritt für Schritt, einer Verabredung entgegen. Vielleicht Punkt zwölf. Vielleicht genau im richtigen Moment. So entfaltet sich ein Leben – nicht laut und in Bildern und Worten, die bleiben. In Begegnungen, die alles verändern können. Kein außergewöhnliches Leben. Und doch ein ganz besonderes. Das Leben von Jacominus Gainsborough"
+        },
+
+        "Mut oder Angst?!": {
+            "kurz": "Mut ist etwas Gutes!",
+            "lang": "Wer sein Herz in die Hand nimmt und das Zaudern überwindet, auf den wartet ein ganz besonderes Hochgefühl – mal leise, mal kraftvoll, aber immer spürbar. Davon erzählen diese Bücher auf ganz unterschiedliche Weise.\nDa sind die poetischen Bilder und Gedichte, die genau diesen Moment einfangen, in dem aus Zögern plötzlich Mut wird. Da ist Anna, die ihre Angst nicht einfach wegschiebt, sondern ihr mit Fantasie, Freundschaft und liebevoller Unterstützung begegnet – mit Riesen, Rittern und vielen anderen Begleitern durch die Nacht.\nUnd da ist der Blickwechsel: Was, wenn Angst ganz anders verstanden wird? Wenn aus dem „Angsthasen“ ein „Muthase“ wird – und plötzlich Mut, Klugheit und Sensibilität sichtbar werden, wo vorher vorschnell bewertet wurde?\nNicht zuletzt erzählen die Geschichten auch davon, wie man mit Veränderungen umgeht, neue Wege findet und den eigenen Platz behauptet – manchmal leise, manchmal überraschend.\n\nBücher für Kinder, ja – aber eigentlich für alle, die sich erinnern möchten, wie sich Mut anfühlt."
+        }
+    }
+
+
+    kategorien = [
+        (k, [p for p in produkte if k in p.get("kategorie", [])])
+        for k in kategorienamen
+    ]
+
+    # leere Kategorien entfernen
+    kategorien = [
+        (titel, liste)
+        for titel, liste in kategorien
+        if liste
+    ]
+
+    return render_template(
+        "index.html",
+        kategorien=kategorien,
+        kategorie_beschreibungen=kategorie_beschreibungen,
+        user_email=session.get("user_email")
+    )
+
+
+
+
+
+
+# =====================================================
+# START (RENDER READY)
+# =====================================================
 
 if __name__ == "__main__":
-    app.run(debug=True, port=int(os.environ.get("PORT", 5000)))
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
